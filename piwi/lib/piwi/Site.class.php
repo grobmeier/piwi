@@ -1,0 +1,19 @@
+<?        class Site {            var $xml;            var $xp;            var $openpath;
+            var $site;                        function Site($site) {
+            	$this->site = $site;            }            function insert($id) {                if (file_exists($this->site) && $this->xml == null) {                    $this->xml = simplexml_load_file($this->site);                }                $result = $this->xml->xpath("//page[@id='".$id."']");                if($result != null) {                    include($result[0]['href']);                } else {                    echo "404- Could not find page.";                }            }
+            
+            public function extension($id) {
+             	if (file_exists($this->site) && $this->xml == null) {                    $this->xml = simplexml_load_file($this->site);                }                $result = $this->xml->xpath("//page[@id='".$id."']");                if($result != null) {                   $parts = explode(".",$result[0]['href']);
+                   return end($parts);
+                }
+                return null;
+            }
+            
+            public function read($id) {                if (file_exists($this->site) && $this->xml == null) {                    $this->xml = simplexml_load_file($this->site);                }                $result = $this->xml->xpath("//page[@id='".$id."']");                if($result != null) {                    return new XMLPage($result[0]['href']);                } else {                    echo "404- Could not find page.";                }            }                        function navigation($id) {                $this->openpath = array();                $xpath = "//page[@id='".$id."']";                $doc = new DOMDocument();                // $doc->validateOnParse = true;                $doc->load($this->site);                                $this->xp = new DOMXPath($doc);                $domNodeList = $this->xp->query($xpath);                $z = 0;                foreach ($domNodeList as $element) {                    while($element->nodeName != "site") {                            $this->openpath[$z] = $element->getAttribute("id");                            $z++;                            $element = $element->parentNode;                    }                }                                $xpath = "/site/page";                $nodelist = $this->xp->query($xpath);                $result = array();                $result = $this->recurse($result, $nodelist, $xpath);
+				return $result;            }                        function recurse($result, $nodelist, $xpath) {                    $i = 0;                    foreach ($nodelist as $element) {
+                    	if($element->getAttribute("nav") != "false") {	                        $id = $element->getAttribute("id");    	               		$result[$i]['id'] = $id;
+        	           		$result[$i]['href'] = $element->getAttribute("href");
+            	       		$result[$i]['label'] = $element->getAttribute("label");
+                   		                   		                	    	if(in_array($id, $this->openpath)) {                    	        if($element->hasChildNodes()) {                        	        $x2 = $xpath.'/page';	                           	    $x3 = $xpath."[@id='".$id."']/*";
+    		                        $n = $this->xp->query($x3);                                   $result[$i]['childs'] = $this->recurse(array(), $n, $x2);            	                }                	    	}                    		$i++;
+                    	}                  	}                  	return $result;            }        }?>
