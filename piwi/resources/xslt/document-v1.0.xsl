@@ -105,7 +105,7 @@
 			<h4><xsl:value-of select="@headline" /></h4>
 			<span class="date"><xsl:value-of select="@date" /></span>
 	        <span class="text"> - 
-		       	<xsl:value-of select="." />	        </span>
+		       	<xsl:apply-templates />	        </span>
 		</div>
 	</xsl:template>
 	
