@@ -12,7 +12,7 @@ if($_REQUEST['p'] == "google") {
 */
 
 // Path to the current template
-$pathToTemplate = 'templates/mac/';
+$pathToTemplate = 'templates/default/';
 
 		
 $id = "default";
