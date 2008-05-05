@@ -1,6 +1,6 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE site SYSTEM "dtd/site.dtd">
 <site>
-	<page id="default" label="Home" href="content/xml/default.xml" />
-	<page id="kontakt" label="Kontakt" href="content/xml/kontakt.xml" />
+	<page id="default" label="Home" href="content/default/xml/default.xml" />
+	<page id="kontakt" label="Kontakt" href="content/default/xml/kontakt.xml" />
 </site>
