@@ -1,0 +1,10 @@
+TODO
+=======
+
+- Implement connectors
+- Implement generators
+- Implement forms and "switches": a switch is an entry in the site.xml which points to a script. if the script returns
+  with error, then a switch can choose an errorpage. Switches are defined in switch.xml
+- Implement DBClass
+- Implement Cache-mechanism
+- refactor old stuff
