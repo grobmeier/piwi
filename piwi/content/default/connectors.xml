@@ -1,0 +1,16 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE connectors SYSTEM "dtd/connectors.dtd">
+<connectors>
+	<connector  id="default-connection"
+				class="SQLLiteConnector">
+		<file>dbdefault.sqlite3</file>
+		<mode>0666</mode>
+	</connector>
+	<connector  id="second-connection"
+				class="MySQLConnector">
+		<user>name</user>
+		<password>password</password>
+		<port>3306</port>
+		<url>localhost</url>
+	</connector>
+</connectors>
