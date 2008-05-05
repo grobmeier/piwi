@@ -1,6 +1,12 @@
 <?
+// Default page view
 include("lib/piwi/XMLPage.class.php");
 include("lib/piwi/Site.class.php");
+
+// Connectors classes - replace with autoload
+include("lib/piwi/connector/Connector.if.php");
+include("lib/piwi/connector/SQLiteConnector.class.php");
+include("lib/piwi/connector/MySQLConnector.class.php");
 
 // scripts
 /*
