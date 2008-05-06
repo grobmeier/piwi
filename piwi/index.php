@@ -3,7 +3,11 @@
 include("lib/piwi/XMLPage.class.php");
 include("lib/piwi/Site.class.php");
 
+// Default Exception
+include("lib/piwi/PiwiException.class.php");
+
 // Connectors classes - replace with autoload
+include("lib/piwi/connector/ConnectorFactory.class.php");
 include("lib/piwi/connector/Connector.if.php");
 include("lib/piwi/connector/SQLiteConnector.class.php");
 include("lib/piwi/connector/MySQLConnector.class.php");
@@ -16,6 +20,9 @@ if($_REQUEST['p'] == "google") {
 	echo $redirectTo;
 }
 */
+
+$connectors = new ConnectorFactory('content/default/connectors.xml');
+$connectors->getInstance("default-connection");
 
 // Path to the current template
 $pathToTemplate = 'templates/default/';
