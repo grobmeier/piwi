@@ -2,7 +2,7 @@
 <!DOCTYPE connectors SYSTEM "dtd/connectors.dtd">
 <connectors>
 	<connector  id="default-connection"
-				class="SQLLiteConnector">
+				class="SQLiteConnector">
 		<file>dbdefault.sqlite3</file>
 		<mode>0666</mode>
 	</connector>
