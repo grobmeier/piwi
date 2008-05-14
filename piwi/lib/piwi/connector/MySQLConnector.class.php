@@ -9,6 +9,10 @@ class MySQLConnector implements Connector {
     	
     }
    
+   function execute($sql) {
+   	
+   }
+   
     function setProperty($key,$value) {
     	
     }

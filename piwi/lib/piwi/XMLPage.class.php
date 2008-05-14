@@ -30,5 +30,11 @@ class XMLPage {
 		}
 		return $result;
 	}
+	
+	public static function transformPart($xslFile, $xml) {
+		$xslt = new xsltProcessor;
+		$xslt->importStyleSheet(DomDocument::load($xslFile));
+		return $xslt->transformToXML(DomDocument::loadXML($xml));
+	}
 }
 ?>

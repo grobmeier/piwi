@@ -10,12 +10,16 @@
 
 <div id="container">       
 	<div id="menu">		 <?=$topNav?>	</div>
-	<div id="logo"></div>	<div id="content">		<div id="subcontent">		</div>  		<div id="article">						<? 
+	<div id="logo"></div>	<div id="content">		<div id="subcontent">		</div>  		<div id="article">			<? 
 				if($valid != "" || $valid != null) {
 					echo "<font color='#ff0000'>".$valid."</font>";		
 				}
 			?>
-			<?=$content['article']?>	    </div>    <div id="footer"></div></div>
+			<?=$content['article']?>	    	</div>
+    	<div id="article">
+    		SQLite-Content:<br>
+    		<?=$generators->getInstance("default-content")->generate();?>
+    	</div>    <div id="footer"></div></div>
 
 </body>
 </html>

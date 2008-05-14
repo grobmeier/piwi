@@ -12,6 +12,10 @@ include("lib/piwi/connector/Connector.if.php");
 include("lib/piwi/connector/SQLiteConnector.class.php");
 include("lib/piwi/connector/MySQLConnector.class.php");
 
+// Generator classes - replace with autoload
+include("lib/piwi/generator/GeneratorFactory.class.php");
+include("lib/piwi/generator/Generator.if.php");
+include("lib/piwi/generator/SQLiteContentGenerator.class.php");
 
 // scripts
 /*
@@ -22,8 +26,9 @@ if($_REQUEST['p'] == "google") {
 }
 */
 
+// TODO: globals are evil :-)
 $connectors = new ConnectorFactory('content/default/connectors.xml');
-$connectors->getInstance("default-connection");
+$generators = new GeneratorFactory('content/default/generators.xml');
 
 // Path to the current template
 $pathToTemplate = 'templates/default/';

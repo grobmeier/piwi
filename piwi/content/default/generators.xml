@@ -2,12 +2,7 @@
 <!DOCTYPE generators SYSTEM "dtd/generators.dtd">
 <generators>
 	<generator  id="default-content"
-				class="SQLLiteContentGenerator">
-		<connection>
-			default-connection
-		</connection>
-		<sql>
-			SELECT * FROM content where ID='${id}'
-		</sql>
+				class="SQLiteContentGenerator">
+		<connection>default-connection</connection>
 	</generator>
 </generators>
