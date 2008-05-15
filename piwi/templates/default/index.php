@@ -9,7 +9,7 @@
 <body>
 
 <div id="container">       
-	<div id="menu">		 <?=$topNav?>	</div>
+	<div id="menu">		 <?=$htmlNav?>	</div>
 	<div id="logo"></div>	<div id="content">		<div id="subcontent">		</div>  		<div id="article">			<? 
 				if($valid != "" || $valid != null) {
 					echo "<font color='#ff0000'>".$valid."</font>";		
