@@ -77,7 +77,7 @@ if($ext == "xml") {
 
 // TODO: navigation builder not dynamic
 $nav = $site->navigation($id); 
-$navBuilder = new SimpleTextNavigation("content/default/xml/");
+$navBuilder = new SimpleTextNavigation('content/'.$instanceName.'/xml/');
 $htmlNav = $navBuilder->build($nav);
 
 // Include your template here
