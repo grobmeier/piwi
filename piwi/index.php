@@ -17,6 +17,11 @@ include("lib/piwi/generator/GeneratorFactory.class.php");
 include("lib/piwi/generator/Generator.if.php");
 include("lib/piwi/generator/SQLiteContentGenerator.class.php");
 
+// Navigation classes - replace with autoload
+include("lib/piwi/navigation/Navigation.if.php");
+include("lib/piwi/navigation/SimpleTextNavigation.class.php");
+
+
 // scripts
 /*
 if($_REQUEST['p'] == "google") {
@@ -49,36 +54,11 @@ if($ext == "xml") {
 	$content = $page->transform();
 }
 
+// TODO: navigation builder not dynamic
 $nav = $site->navigation($id); 
+$navBuilder = new SimpleTextNavigation("content/default/xml/");
+$htmlNav = $navBuilder->build($nav);
 
-
-$topNav = "";
-$navString = "";
-
-foreach($nav as $parent) {
-	$linkid = $parent['id'];
-	
-	$topLink = "";
-   	// $topLink .= "<tr>";
-   	$topLink .= "<a class=\"links\" href=\"".$linkid.".html\">".$parent['label']."</a>&nbsp;&nbsp;";
-   
-	
-	if($parent['childs'] != null) {
-		foreach($parent['childs'] as $entry) {
-			if(strpos($entry['href'], "content/default/xml/") !== false) {
-		    	$link = str_replace("content/default/xml/", "", $entry['href']);
-		    }
-    		        	
-		    $link = str_replace(".xml", ".html", $link);
-		    $navString .= "<a href=\"".$entry['id'].".html\">".$entry['label']."</a><br>";
-		    $target = "";
-		}
-	}
-	
-	//$topLink .= "</tr>";
-    $topNav .= $topLink;
-	$topNav .= "\n";
-}
 
 // Include your template here
 include('templates/default/index.php');
