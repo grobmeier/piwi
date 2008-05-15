@@ -28,7 +28,10 @@ if($_REQUEST['p'] == "google") {
 
 // TODO: globals are evil :-)
 $connectors = new ConnectorFactory('content/default/connectors.xml');
+// the following var is used in the generatorfactory class - should be
+// not such an important variable. 
 $generators = new GeneratorFactory('content/default/generators.xml');
+
 
 // Path to the current template
 $pathToTemplate = 'templates/default/';

@@ -1,5 +1,7 @@
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="html" encoding="iso-8859-1" indent="no"/>
+<xsl:stylesheet version="1.0" 
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:php="http://php.net/xsl">
+<xsl:output method="html" encoding="UTF-8" indent="no"/>
 	<xsl:template match="/document/header">
 	</xsl:template>
 
@@ -26,6 +28,12 @@
 	<xsl:template match="section">
 		<h3><xsl:value-of select="title" /></h3>
 		<xsl:apply-templates /> 
+	</xsl:template>
+
+	<xsl:template match="generator">
+		<xsl:for-each select="php:function('GeneratorFactory::callGenerator',string(@id))">
+    		<xsl:apply-templates />
+   		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template match="p">

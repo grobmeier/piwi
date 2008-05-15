@@ -7,7 +7,7 @@ class SQLiteContentGenerator implements Generator {
     function SQLiteContentGenerator() {
     }
    
-    function generate() {
+    function generate($output = "html") {
     	// TODO - inject
     	global $connectors;
     	
@@ -37,10 +37,13 @@ class SQLiteContentGenerator implements Generator {
 		}
 		$piwixml .= "</document>";
 		
-		$result = XMLPage::transformPart(
+		if($output == "html") {
+			return XMLPage::transformPart(
 						"resources/xslt/document-v1.0.xsl", 
 						$piwixml);
-		return $result;
+		} else if ($output == "xml") {
+			return $piwixml;
+		}
 	}
 	
     function setProperty($key,$value) {

@@ -17,8 +17,8 @@
 			?>
 			<?=$content['article']?>	    	</div>
     	<div id="article">
-    		SQLite-Content:<br>
-    		<?=$generators->getInstance("default-content")->generate();?>
+    		Manually added SQLite-Content:<br>
+    		<?=$generators->getInstance("default-content")->generate(); ?>
     	</div>    <div id="footer"></div></div>
 
 </body>

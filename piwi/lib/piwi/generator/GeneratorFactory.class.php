@@ -55,5 +55,20 @@ class GeneratorFactory {
 				PiwiException::ERR_NO_XML_DEFINITION);
         }
     }
+    
+    /**
+     * callGenerator is used within the XSLT-Stylesheets
+     * to interpret the <generator /> tag. 
+     * TODO: the global var generators should be avoided
+     * @return should return PIWI-xml (depends on generator)
+     */
+    public static function callGenerator($id) {
+		global $generators;
+		$xml = $generators->getInstance($id)->generate("xml");
+		$doc = new DOMDocument;
+	    $doc->loadXml($xml);
+	    return $doc;
+	}
 }
+
 ?>

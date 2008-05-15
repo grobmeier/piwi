@@ -15,7 +15,8 @@ class XMLPage {
 	}
 	
 	public function transform() {
-		$xsl = new DOMDocument;		$xsl->load("resources/xslt/document-v1.0.xsl");		// Configure the transformer		$proc = new XSLTProcessor;		$proc->importStyleSheet($xsl); // attach the xsl rules
+		$xsl = new DOMDocument;		$xsl->load("resources/xslt/document-v1.0.xsl");		// Configure the transformer		$proc = new XSLTProcessor;
+		$proc->registerPHPFunctions();		$proc->importStyleSheet($xsl); // attach the xsl rules
 		// $xml = $proc->transformToXML($this->dom);
 		
 		$r = new DOMDocument($xml);
@@ -33,6 +34,7 @@ class XMLPage {
 	
 	public static function transformPart($xslFile, $xml) {
 		$xslt = new xsltProcessor;
+		$xslt->registerPHPFunctions();
 		$xslt->importStyleSheet(DomDocument::load($xslFile));
 		return $xslt->transformToXML(DomDocument::loadXML($xml));
 	}
