@@ -3,6 +3,7 @@ class XMLPage {
 	var $source;
 	var $dom;
 	var $simpleXML;
+	var $template = "";
 	
 	public function XMLPage($source) {
 		$this->source = $source;
@@ -10,6 +11,14 @@ class XMLPage {
 		$this->simpleXML = simplexml_import_dom($this->dom);
 	}
 
+	public function setTemplate($name) {
+		$this->template = $name;
+	}
+
+	public function getTemplate() {
+		return $this->template;
+	}
+	
 	public function sourceString() {
 		return $this->simpleXML->asXML();
 	}
