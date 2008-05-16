@@ -21,14 +21,12 @@ class SQLite3Connector implements Connector {
    		}
    		$result = $this->db->query($sql);
    		
-   		/*
    		$i = 0;
-   		while($temp = sqlite_fetch_array($result)) {
+   		while($temp = $result->fetch()) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
-		return $resultArray;*/
-		return $result->fetch();
+		return $resultArray;
     }
         
     function setProperty($key,$value) {
