@@ -15,8 +15,12 @@ class SimpleTextNavigation implements Navigation {
 			$linkid = $parent['id'];
 			
 			$topLink = "";
-		   	$topLink .= "<a class=\"links\" href=\"".$linkid.".html\">".$parent['label']."</a>&nbsp;&nbsp;";
-		   
+		   	if(strpos($parent['href'], "http://") !== false) {
+		   		$topLink .= "<a class=\"links\" href=\"".$parent['href']."\">".$parent['label']."</a>&nbsp;&nbsp;";
+			} else {
+   				$topLink .= "<a class=\"links\" href=\"".$linkid.".html\">".$parent['label']."</a>&nbsp;&nbsp;";
+			}
+			
 			if($parent['childs'] != null) {
 				foreach($parent['childs'] as $entry) {
 					if(strpos($entry['href'], $this->$pathToContent) !== false) {
