@@ -42,6 +42,12 @@
 		</p>
 	</xsl:template>
 	
+	<xsl:template match="up">
+		<span class="up">
+			<xsl:apply-templates />		
+		</span>
+	</xsl:template>
+	
 	<xsl:template match="a">
 		<a>
 			<xsl:attribute name="href">
