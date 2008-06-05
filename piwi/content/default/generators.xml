@@ -5,4 +5,9 @@
 				class="SQLiteContentGenerator">
 		<connection>default-connection</connection>
 	</generator>
+	<generator id="gallery"
+			   class="GalleryGenerator">
+		<pathtomedia>content/default/files/gallery/media/</pathtomedia>
+		<pathtoupload>content/default/files/gallery/upload/</pathtoupload>
+	</generator>
 </generators>

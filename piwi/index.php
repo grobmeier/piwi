@@ -34,6 +34,7 @@ include("lib/piwi/connector/MySQLConnector.class.php");
 include("lib/piwi/generator/GeneratorFactory.class.php");
 include("lib/piwi/generator/Generator.if.php");
 include("lib/piwi/generator/SQLiteContentGenerator.class.php");
+include("lib/piwi/generator/GalleryGenerator.class.php");
 
 // Navigation classes - replace with autoload
 include("lib/piwi/navigation/Navigation.if.php");

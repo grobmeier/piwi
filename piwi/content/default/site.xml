@@ -2,5 +2,6 @@
 <!DOCTYPE site SYSTEM "dtd/site.dtd">
 <site>
 	<page id="default" label="Home" href="content/default/xml/default.xml" />
+	<page id="gallery" label="Gallery" href="content/default/xml/gallery.xml" />
 	<page id="kontakt" label="Kontakt" href="content/default/xml/kontakt.xml" template="other.php" />
 </site>
