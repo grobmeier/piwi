@@ -20,6 +20,9 @@
 // TODO: use of namespaces, when namespaces are not longer experimental
 // http://www.php.net/manual/de/language.namespaces.definition.php
 
+// ClassLoader
+include("lib/piwi/classloader/ClassLoader.class.php");
+
 // Default page serializer
 include("lib/piwi/XMLPage.class.php");
 include("lib/piwi/Site.class.php");
@@ -36,7 +39,6 @@ include("lib/piwi/connector/MySQLConnector.class.php");
 // Generator classes - replace with autoload
 include("lib/piwi/generator/GeneratorFactory.class.php");
 include("lib/piwi/generator/Generator.if.php");
-include("custom/lib/generator/SQLiteContentGenerator.class.php");
 include("lib/piwi/generator/GalleryGenerator.class.php");
 
 // Navigation classes - replace with autoload
@@ -44,8 +46,36 @@ include("lib/piwi/navigation/Navigation.if.php");
 include("lib/piwi/navigation/SimpleTextNavigation.class.php");
 
 // *** Configuration
-// Instnace Name (Name of the folders where your content is placed)
+// Instance Name (Name of the folders where your content is placed)
 $instanceName = "default";
+
+// AUTOLOAD - Classloader. Variable is outside to avoid multiple instances.
+$classloader = null;
+/**
+ * Autoload uses the ClassLoader class tu recursivly look up
+ * needed classes. Use one file per class/interface and name it: 
+ * 	- yourclass.class.php
+ * 	- yourinterface.if.php
+ * Currently, only custom classes should be lookuped. When the classloader
+ * cache has been implemented, the lookup of coreclasses must be evaluated.
+ */
+function __autoload($class) {
+	global $classloader;
+	if($classloader == null) {
+		$classloader = new ClassLoader();
+	}
+	
+	$directorys = array(
+             			'custom/lib/piwi'
+    				);
+       
+    foreach($directorys as $directory) {
+       $result = $classloader->loadClass($directory,$class);
+       if($result == true) {
+			return;       	
+       }
+    }
+}
 
 // scripts
 /*
