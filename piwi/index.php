@@ -17,6 +17,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// TODO: use of namespaces, when namespaces are not longer experimental
+// http://www.php.net/manual/de/language.namespaces.definition.php
+
 // Default page serializer
 include("lib/piwi/XMLPage.class.php");
 include("lib/piwi/Site.class.php");
