@@ -3,7 +3,7 @@
 <connectors>
 	<connector  id="default-connection"
 				class="SQLiteConnector">
-		<file>content/default/db/dbdefault.sqlite3</file>
+		<file>custom/content/default/db/dbdefault.sqlite3</file>
 		<mode>0666</mode>
 	</connector>
 	<connector  id="second-connection"

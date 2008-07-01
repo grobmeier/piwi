@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// Default page view
+// Default page serializer
 include("lib/piwi/XMLPage.class.php");
 include("lib/piwi/Site.class.php");
 
@@ -33,7 +33,7 @@ include("lib/piwi/connector/MySQLConnector.class.php");
 // Generator classes - replace with autoload
 include("lib/piwi/generator/GeneratorFactory.class.php");
 include("lib/piwi/generator/Generator.if.php");
-include("lib/piwi/generator/SQLiteContentGenerator.class.php");
+include("custom/lib/generator/SQLiteContentGenerator.class.php");
 include("lib/piwi/generator/GalleryGenerator.class.php");
 
 // Navigation classes - replace with autoload
@@ -54,10 +54,10 @@ if($_REQUEST['p'] == "google") {
 */
 
 // TODO: globals are evil :-)
-$connectors = new ConnectorFactory('content/'.$instanceName.'/connectors.xml');
+$connectors = new ConnectorFactory('custom/content/'.$instanceName.'/connectors.xml');
 // the following var is used in the generatorfactory class - should be
 // not such an important variable. 
-$generators = new GeneratorFactory('content/'.$instanceName.'/generators.xml');
+$generators = new GeneratorFactory('custom/content/'.$instanceName.'/generators.xml');
 
 
 // Path to the current template
@@ -69,7 +69,7 @@ if($_REQUEST['p'] != null) {
 	$id = $_REQUEST['p'];
 }
 
-$site = new Site('content/'.$instanceName.'/site.xml');
+$site = new Site('custom/content/'.$instanceName.'/site.xml');
 $ext = $site->extension($id);
 if($ext == "xml") {
 	$page = $site->read($id);
@@ -78,7 +78,7 @@ if($ext == "xml") {
 
 // TODO: navigation builder not dynamic
 $nav = $site->navigation($id); 
-$navBuilder = new SimpleTextNavigation('content/'.$instanceName.'/xml/');
+$navBuilder = new SimpleTextNavigation('custom/content/'.$instanceName.'/xml/');
 $htmlNav = $navBuilder->build($nav);
 
 // Include your template here

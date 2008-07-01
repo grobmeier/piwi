@@ -82,7 +82,7 @@ class GalleryGenerator implements Generator {
 	
 			if($count != 0) {
 				while($count <= $cols) {
-					$piwixml .= "<td>&nbsp;</td>";
+					$piwixml .= "<td></td>";
 					$count++;
 				}	
 				$piwixml .= "</tr>";

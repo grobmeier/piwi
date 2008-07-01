@@ -7,6 +7,10 @@ background: #f5f4f4; margin: 20pt;
     padding: 10px 10px 10px 50px;
 }
 
+a img {
+	border: 0px;
+}
+
 img.left {   		float:left;  		padding: 10px 10px 10px 10px;  	}  	  	img.right {   		float:right;  		padding: 10px 10px 10px 10px;  	}
 
 #content {		background-repeat: no-repeat;		background-position: center;		//height: 650px;		position:relative;	}	
