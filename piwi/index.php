@@ -46,11 +46,16 @@ include("lib/piwi/navigation/Navigation.if.php");
 include("lib/piwi/navigation/SimpleTextNavigation.class.php");
 
 // *** Configuration
+// Path to this webapp. Needed by cacheimplementations or other
+// file writing functions
+DEFINE('PIWI_ROOT', dirname(__FILE__));
+
 // Instance Name (Name of the folders where your content is placed)
 $instanceName = "default";
 
 // AUTOLOAD - Classloader. Variable is outside to avoid multiple instances.
 $classloader = null;
+
 /**
  * Autoload uses the ClassLoader class tu recursivly look up
  * needed classes. Use one file per class/interface and name it: 
@@ -62,7 +67,7 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if($classloader == null) {
-		$classloader = new ClassLoader();
+		$classloader = new ClassLoader(PIWI_ROOT.'/cache/classloader.cache.xml');
 	}
 	
 	$directorys = array(
@@ -121,5 +126,9 @@ if($page->getTemplate() != "") {
 	include($pathToTemplate.'/'.$page->getTemplate());
 } else {
 	include($pathToTemplate.'/index.php');
+}
+
+if($classloader != null) {
+	$classloader->shutdown();
 }
 ?>
