@@ -9,9 +9,7 @@
 	</xsl:template>
 
 	<xsl:template match="/document">
-		<document>
 		<xsl:apply-templates />
-		</document>
 	</xsl:template>
 	
 	<xsl:template match="/document/content">
