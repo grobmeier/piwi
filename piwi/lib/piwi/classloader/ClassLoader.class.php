@@ -61,7 +61,6 @@ class ClassLoader {
 					require_once($path.'/'.$class.'.class.php');
 			        return true;
 				} else {
-					echo "Try to delete from cache";
 					$this->cache->invalidate();
 				}
 			}

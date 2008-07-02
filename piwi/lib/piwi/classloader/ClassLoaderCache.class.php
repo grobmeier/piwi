@@ -40,15 +40,6 @@ class ClassLoaderCache {
 			$this->changed = false;
 		}
 	}
-
-function dnl2array($domnodelist) {
-    $return = array();
-    for ($i = 0; $i < $domnodelist->length; ++$i) {
-    	echo ".";
-        $return[] = $domnodelist->item($i);
-    }
-    return $return;
-}
 	
 	/**
 	 * Lookup a class by the given id in the cache. 
