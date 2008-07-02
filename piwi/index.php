@@ -96,13 +96,15 @@ $generators = new GeneratorFactory('custom/content/'.$instanceName.'/generators.
 // Path to the current template
 $pathToTemplate = 'custom/templates/'.$instanceName.'/';
 
-		
+// TODO: pass all requests to class	which determines params etc. as a
+// replacement for mod_rewrite (which may not work at all systems)	
 $id = "default";
 if($_REQUEST['p'] != null) {
 	$id = $_REQUEST['p'];
 }
 
 $site = new Site('custom/content/'.$instanceName.'/site.xml');
+// TODO: Serializer implementation
 $ext = $site->extension($id);
 if($ext == "xml") {
 	$page = $site->read($id);
