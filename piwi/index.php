@@ -94,7 +94,7 @@ $generators = new GeneratorFactory('custom/content/'.$instanceName.'/generators.
 
 
 // Path to the current template
-$pathToTemplate = 'templates/'.$instanceName.'/';
+$pathToTemplate = 'custom/templates/'.$instanceName.'/';
 
 		
 $id = "default";
