@@ -99,7 +99,7 @@ $generators = new GeneratorFactory('custom/content/'.$instanceName.'/generators.
 
 
 // Path to the current template
-$pathToTemplate = 'custom/templates/'.$instanceName.'/';
+$pathToTemplate = 'custom/content/'.$instanceName.'/templates';
 
 // TODO: pass all requests to class	which determines params etc. as a
 // replacement for mod_rewrite (which may not work at all systems)	

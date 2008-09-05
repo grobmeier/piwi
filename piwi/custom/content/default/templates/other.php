@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Christian Grobmeier - Open Source, J2EE & more</title>
-<link href="custom/templates/default/style.css" rel="stylesheet" type="text/css" />
+<link href="custom/content/default/templates/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
