@@ -7,7 +7,7 @@
 	</generator>
 	<generator id="gallery"
 			   class="GalleryGenerator">
-		<pathtomedia>custom/content/files/gallery/media/</pathtomedia>
-		<pathtoupload>custom/content/files/gallery/upload/</pathtoupload>
+		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
+		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
 	</generator>
 </generators>

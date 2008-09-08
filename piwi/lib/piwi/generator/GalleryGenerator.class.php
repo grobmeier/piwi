@@ -48,7 +48,6 @@ class GalleryGenerator implements Generator {
 				$piwixml .= "<p><a href=\"./index.php?p=gallery\">Get me back to galleries!</a></p>";
 			}
 			
-			$piwixml .= "<p>";
 			$piwixml .= "<table>";
 			foreach($images as $file) {
 				if($count == 0) {
@@ -102,7 +101,6 @@ class GalleryGenerator implements Generator {
 			}
 
 			$piwixml .= "</table>";
-			$piwixml .= "</p>";
 			$piwixml .= "</section>";
 		}
 		$piwixml .= "</document>";

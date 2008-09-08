@@ -103,14 +103,10 @@ a:hover
    text-decoration:     none;
 }
 
-.news
+hr
 {
-   padding-bottom:      10px;
-}
-
-.separator
-{
-   border-top:          1px solid #dcdcdc;
+   border:              solid #dcdcdc 1px;
+   height:              1px;
    margin-top:          5px;
    margin-bottom:       25px;
 }
@@ -136,13 +132,6 @@ h2
    font-weight:         bold;
    margin:              0px 0px 15px 0px;
    padding:             0px;
-}
-
-.date
-{
-   clear:               left;
-   font-size:           0.7em;
-   text-align:          right;   
 }
 
 .right

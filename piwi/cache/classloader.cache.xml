@@ -1,0 +1,3 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE classloadercache SYSTEM "dtd/classloadercache.dtd">
+<classloadercache><class id="SQLiteContentGenerator" path="custom/lib/piwi/generator"/></classloadercache>

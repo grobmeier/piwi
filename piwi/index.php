@@ -17,6 +17,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
 // TODO: use of namespaces, when namespaces are not longer experimental
 // http://www.php.net/manual/de/language.namespaces.definition.php
 
@@ -122,7 +123,7 @@ $htmlNav = $navBuilder->build($nav);
 if($page->getTemplate() != "") {
 	include($templatesPath.'/'.$page->getTemplate());
 } else {
-	include($templatesPath.'/index.php');
+	include($templatesPath.'/default.php');
 }
 
 if($classloader != null) {
