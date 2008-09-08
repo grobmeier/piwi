@@ -1,0 +1,8 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE site SYSTEM "dtd/site.dtd">
+<site>
+	<page id="default" label="Home" href="custom/content/xml/default.xml" />
+	<page id="sqlite" label="SQLite Database" href="custom/content/xml/sqlite.xml" />
+	<page id="gallery" label="Gallery" href="custom/content/xml/gallery.xml" />
+	<page id="other_template" label="Other Template" href="custom/content/xml/other_template.xml" template="other.php" />
+</site>

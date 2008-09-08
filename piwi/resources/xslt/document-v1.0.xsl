@@ -7,7 +7,15 @@
 
 	<xsl:template match="title">
 	</xsl:template>
+	
+	<xsl:template match="header">
+		<h1><xsl:apply-templates/></h1>
+	</xsl:template>
 
+	<xsl:template match="separator">
+		<div class="separator"></div>
+	</xsl:template>
+	
 	<xsl:template match="/document">
 		<xsl:apply-templates />
 	</xsl:template>
@@ -18,13 +26,12 @@
 		    <xsl:value-of select="@position" />
 		</xsl:attribute> 
 
-		<h2><xsl:value-of select="title" /></h2>
 		<xsl:apply-templates select="section" />
 		</content>
 	</xsl:template>
 
 	<xsl:template match="section">
-		<h3><xsl:value-of select="title" /></h3>
+		<h2><xsl:value-of select="title" /></h2>
 		<xsl:apply-templates /> 
 	</xsl:template>
 

@@ -1,0 +1,159 @@
+﻿body 
+{
+   background-color:    #ffffff;
+   color:               #000000;
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   margin:              10px 0px 10px 0px;
+}
+
+/* Container */
+#container
+{
+   margin:              auto; 
+   width:               960px;         
+}
+/* Container Ende */
+
+/* Header */
+#header
+{
+   background-image:    url(images/piwi-logo.png);
+   background-repeat:   no-repeat;
+   margin-bottom:       1px;  
+   text-align:          center;
+   height:              150px;
+}
+/* Header Ende */
+
+/* Menu */
+#menu
+{
+   background-image:    url(images/menu.png);
+   background-repeat:   no-repeat;
+   line-height:         1.8em;
+   margin-top:          10px;
+   padding:             7px 30px 0px 0px;
+   height:              32px;
+   text-align:          center;
+}
+
+#menu a
+{
+   color:               #ffffff;
+   font-weight:         bold;
+   text-decoration:     none; 
+   margin-left:         25px;
+   margin-right:        25px;
+}
+
+#menu a:hover
+{
+   color:               #449c52;
+   font-weight:         bold;
+   text-decoration:     none;
+   margin-left:         25px;
+   margin-right:        25px;
+}
+/* Menu Ende */
+
+/* Footer */
+#footer
+{     
+   background-image:    url(images/footer.png);
+   background-repeat:   no-repeat;
+   font-size:           0.7em;
+   height:              23px;
+   line-height:         1.2em;
+   padding:             4px 20px 6px 20px;
+}
+
+#footer a
+{  
+   text-decoration:     none;
+}
+
+#footer a:hover
+{
+   color:               #000000;
+   text-decoration:     none;
+}
+/* Footer Ende */
+
+/* Content */
+#content
+{     
+   background-color:    #f5f5f5;
+   border:              1px solid #dcdcdc;     
+   font-size:           0.9em;
+   line-height:         1.4em;   
+   padding:             30px;
+   text-align:          justify;
+}
+/* Content Ende */
+
+a
+{
+   color:               #449c52;
+   text-decoration:     none;
+}
+
+a:hover
+{
+   color:               #c5dc08;
+   text-decoration:     none;
+}
+
+.news
+{
+   padding-bottom:      10px;
+}
+
+.separator
+{
+   border-top:          1px solid #dcdcdc;
+   margin-top:          5px;
+   margin-bottom:       25px;
+}
+
+img
+{
+   border:              0px;
+}
+
+h1
+{
+   color:               #449c52;
+   font-size:           1.2em;
+   font-weight:         bold;
+   margin:              0px 0px 20px 0px;
+   padding:             0px;
+}
+
+h2
+{
+   color:               #000000;
+   font-size:           1.0em;
+   font-weight:         bold;
+   margin:              0px 0px 15px 0px;
+   padding:             0px;
+}
+
+.date
+{
+   clear:               left;
+   font-size:           0.7em;
+   text-align:          right;   
+}
+
+.right
+{  
+   float:               right;
+}
+
+textarea, input
+{
+   background-color:    #ffffff;
+   border:              1px solid  #dcdcdc;  
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   font-size:           0.9em;   
+}

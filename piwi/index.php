@@ -51,7 +51,8 @@ include("lib/piwi/navigation/SimpleTextNavigation.class.php");
 DEFINE('PIWI_ROOT', dirname(__FILE__));
 
 // Instance Name (Name of the folders where your content is placed)
-$instanceName = "default";
+$contentPath = "custom/content";
+$templatesPath = "custom/templates";
 
 // AUTOLOAD - Classloader. Variable is outside to avoid multiple instances.
 $classloader = null;
@@ -92,14 +93,10 @@ if($_REQUEST['p'] == "google") {
 */
 
 // TODO: globals are evil :-)
-$connectors = new ConnectorFactory('custom/content/'.$instanceName.'/connectors.xml');
+$connectors = new ConnectorFactory($contentPath.'/connectors.xml');
 // the following var is used in the generatorfactory class - should be
 // not such an important variable. 
-$generators = new GeneratorFactory('custom/content/'.$instanceName.'/generators.xml');
-
-
-// Path to the current template
-$pathToTemplate = 'custom/content/'.$instanceName.'/templates';
+$generators = new GeneratorFactory($contentPath.'/generators.xml');
 
 // TODO: pass all requests to class	which determines params etc. as a
 // replacement for mod_rewrite (which may not work at all systems)	
@@ -108,7 +105,7 @@ if($_REQUEST['p'] != null) {
 	$id = $_REQUEST['p'];
 }
 
-$site = new Site('custom/content/'.$instanceName.'/site.xml');
+$site = new Site($contentPath.'/site.xml');
 // TODO: Serializer implementation
 $ext = $site->extension($id);
 if($ext == "xml") {
@@ -118,14 +115,14 @@ if($ext == "xml") {
 
 // TODO: navigation builder not dynamic
 $nav = $site->navigation($id); 
-$navBuilder = new SimpleTextNavigation('custom/content/'.$instanceName.'/xml/');
+$navBuilder = new SimpleTextNavigation($contentPath.'/xml');
 $htmlNav = $navBuilder->build($nav);
 
 // Include your template here
 if($page->getTemplate() != "") {
-	include($pathToTemplate.'/'.$page->getTemplate());
+	include($templatesPath.'/'.$page->getTemplate());
 } else {
-	include($pathToTemplate.'/index.php');
+	include($templatesPath.'/index.php');
 }
 
 if($classloader != null) {

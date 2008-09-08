@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding="utf-8" standalone='yes'?>
+<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">
+<document>
+<header>
+	<keywords>PIWI - PHP Transformation Framework</keywords>
+	<title>PIWI - PHP Transformation Framework</title>
+</header>
+
+   <content position="article">
+      <header>Other Template</header>
+      <section>
+         <p>This site uses an other template, which can be defined in the site.xml.</p>
+      </section>
+      <separator />
+      <section>
+         <title>Description</title>
+         <p>
+            PIWI is an XML/XSLT Transformation Framework written in
+            PHP. It's basic concepts and ideas have been stolen from
+            the great Java-Applications
+            <a href="http://cocoon.apache.org" rel="nofollow">
+               Apache Cocoon
+            </a>
+            and
+            <a href="http://forrest.apache.org" rel="nofollow">
+               Apache Forrest
+            </a>
+            . Cocoon is still great, but very complex and of course
+            in Java, which makes it not useful for people who want
+            the power for their small project, but not the pain.
+            <br />
+            <br />
+            PIWI runs on every standard PHP-Webhost with PHP &gt; 5
+            installed.
+         </p>
+      </section>
+   </content> 
+</document>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding="utf-8" standalone='yes'?>
+<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">
+<document>
+	<header>
+		<keywords>PIWI Transformation Framework</keywords>
+		<title>PIWI Transformation Framework</title>
+	</header>
+
+	<content position="article">
+		<header>Gallery</header>
+		<section>
+			<p>
+				This site uses a generator for the picture
+				gallery.
+			</p>
+		</section>
+		<separator />
+		<section>
+			<title>About this gallery</title>
+			<p>
+				All images here are taken from FreeFoto.com and licensed
+				under the Creative Commons license:
+				<a
+					href="http://creativecommons.org/licenses/by-nc-nd/3.0">
+					http://creativecommons.org/licenses/by-nc-nd/3.0
+				</a>
+			</p>
+		</section>
+		<generator id="gallery" />
+	</content>
+</document>
