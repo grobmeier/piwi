@@ -1,12 +1,13 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE generators SYSTEM "dtd/generators.dtd">
 <generators>
-	<generator  id="sqlite"
-				class="SQLiteContentGenerator">
-		<connection>default-connection</connection>
+   <generator id="sqlite2" class="SQLiteContentGenerator">
+      <connection>sqlite2Connector</connection>
+   </generator>
+	<generator id="sqlite3" class="SQLiteContentGenerator">
+		<connection>sqlite3Connector</connection>
 	</generator>
-	<generator id="gallery"
-			   class="GalleryGenerator">
+	<generator id="gallery" class="GalleryGenerator">
 		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
 		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
 	</generator>

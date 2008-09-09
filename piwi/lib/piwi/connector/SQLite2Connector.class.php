@@ -1,35 +1,37 @@
 <?php
 
-class SQLite3Connector implements Connector {
+class SQLite2Connector implements Connector {
 
-	private $file = null;	
+	private $file = null;
+	private $mode = null;	
 	private $dbConnection = null;
-	
+		
     function SQLiteConnector() {
     }
     
     function connect() {
-    	if($this->file == null) {
+    	if(!$this->file) {
    			throw new DatabaseException(
 				'No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_FILENAME_SPECIFIED);
    		}
+   		   		
+   		$this->dbConnection = sqlite_open($this->file, $this->mode, $sqliteerror);
    		
-   		try {
-			$this->dbConnection = new PDO('sqlite:'.$this->file);			
-		} catch( PDOException $exception ) {
-			throw new DatabaseException(
-				'Establishing database connection failed ('.$exception->getMessage().').', 
+   		if ($sqliteerror != null) {
+   			throw new DatabaseException(
+				'Establishing database connection failed ('.$sqliteerror.').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
-		}
+    	}
     }
     
     function execute($sql) {
    		if($this->dbConnection == null) {
    			$this->connect();
    		}
-   		$result = $this->dbConnection->query($sql);
    		
+   		$result = sqlite_query($this->dbConnection,$sql);
+		
    		if ($result == false){
    			throw new DatabaseException(
 				'Querying database failed.', 
@@ -37,7 +39,7 @@ class SQLite3Connector implements Connector {
    		}
    		
    		$i = 0;
-   		while($temp = $result->fetch()) {
+   		while($temp = sqlite_fetch_array($result)) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
@@ -47,6 +49,10 @@ class SQLite3Connector implements Connector {
     function setProperty($key,$value) {
     	if($key == "file") {
     		$this->file = $value;
+    	}
+    	
+    	if($key == "mode") {
+    		$this->mode = $value;
     	}
     }
 }

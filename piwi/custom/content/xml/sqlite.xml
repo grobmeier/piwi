@@ -10,12 +10,16 @@
 		<header>SQLite Database</header>
 		<section>
 			<p>
-				This site retrieves its contents from a SQLite Database.
+				This site retrieves its contents from both, a SQLite 2 and a SQLite 3 Database.
 			</p>
 		</section>
 		<separator />
 		<section>
-			<generator id="sqlite" />
+         <generator id="sqlite2" />
+      </section>
+      <separator />
+		<section>
+			<generator id="sqlite3" />
 		</section>
 	</content>
 </document>

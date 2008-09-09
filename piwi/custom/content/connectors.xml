@@ -1,13 +1,14 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE connectors SYSTEM "dtd/connectors.dtd">
 <connectors>
-	<connector  id="default-connection"
-				class="SQLiteConnector">
-		<file>custom/content/db/dbdefault.sqlite3</file>
+	<connector id="sqlite2Connector" class="SQLite2Connector">
+		<file>custom/content/db/sqlite2_sample.sqlite2</file>
 		<mode>0666</mode>
 	</connector>
-	<connector  id="second-connection"
-				class="MySQLConnector">
+	<connector id="sqlite3Connector" class="SQLite3Connector">
+		<file>custom/content/db/sqlite3_sample.sqlite3</file>
+	</connector>
+	<connector id="mySQLConnector" class="MySQLConnector">
 		<user>name</user>
 		<password>password</password>
 		<port>3306</port>

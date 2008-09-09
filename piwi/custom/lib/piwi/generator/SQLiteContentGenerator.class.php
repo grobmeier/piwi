@@ -25,15 +25,17 @@ class SQLiteContentGenerator implements Generator {
 		$piwixml = "<?xml version='1.0'?>";
 		$piwixml .= "<!DOCTYPE document PUBLIC \"-//PIWI//DTD Documentation V1.0//EN\" \"dtd/document-v10.dtd\">";
 		$piwixml .= "<document>";
-		foreach($dbresult as $row) {
-			$piwixml .= "<section>";
-			$piwixml .= "<title>";
-			$piwixml .= $row['subject'];
-			$piwixml .= "</title>";
-			$piwixml .= "<p>";
-			$piwixml .= $row['content'];
-			$piwixml .= "</p>";		
-			$piwixml .= "</section>";
+		if ($dbresult != null) {
+			foreach($dbresult as $row) {
+				$piwixml .= "<section>";
+				$piwixml .= "<title>";
+				$piwixml .= $row['subject'];
+				$piwixml .= "</title>";
+				$piwixml .= "<p>";
+				$piwixml .= $row['content'];
+				$piwixml .= "</p>";		
+				$piwixml .= "</section>";
+			}
 		}
 		$piwixml .= "</document>";
 		

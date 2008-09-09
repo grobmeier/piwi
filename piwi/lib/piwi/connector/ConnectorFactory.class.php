@@ -51,7 +51,7 @@ class ConnectorFactory {
 			$this->connectors[$id] = $connector;
         } else {
             throw new PiwiException(
-				"Could not find connector definition in xml file", 
+				"Could not find connector definition in xml file.", 
 				PiwiException::ERR_NO_XML_DEFINITION);
         }
     }
