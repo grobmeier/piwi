@@ -14,10 +14,6 @@ class SQLiteContentGenerator implements Generator {
     	if($this->connection == null) {
 			$this->connection = $connectors->getInstance($this->connName);
 		} 
-		
-		// $this->connection->execute('CREATE TABLE content ( subject VARCHAR ( 100 ) NOT NULL , content LONGTEXT NOT NULL ) ;  ');
-  		// $this->connection->execute("INSERT INTO content ( subject , content ) VALUES ( 'My seconde content' , 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.' ) "); 
-		// $sql = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
 
 		$sql= "SELECT rowid, subject, content FROM content";
 		$dbresult = $this->connection->execute($sql);

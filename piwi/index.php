@@ -1,49 +1,55 @@
 <?
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
+ * or more contributor license agreements. See the NOTICE file
  * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
+ * regarding copyright ownership. The ASF licenses this file
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
+ * with the License. You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
+ * KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations
  * under the License.
  */
- 
+
+error_reporting(0);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
 // ClassLoader
-include("lib/piwi/classloader/ClassLoader.class.php");
+include ("lib/piwi/classloader/ClassLoader.class.php");
 
 // Default page serializer
-include("lib/piwi/XMLPage.class.php");
-include("lib/piwi/Site.class.php");
+include ("lib/piwi/XMLPage.class.php");
+include ("lib/piwi/Site.class.php");
 
 // Default Exception
-include("lib/piwi/connector/DatabaseException.class.php");
-include("lib/piwi/PiwiException.class.php");
+include ("lib/piwi/connector/DatabaseException.class.php");
+include ("lib/piwi/PiwiException.class.php");
 
 // Connectors classes - replace with autoload
-include("lib/piwi/connector/ConnectorFactory.class.php");
-include("lib/piwi/connector/Connector.if.php");
-include("lib/piwi/connector/SQLite2Connector.class.php");
-include("lib/piwi/connector/SQLite3Connector.class.php");
-include("lib/piwi/connector/MySQLConnector.class.php");
+include ("lib/piwi/connector/ConnectorFactory.class.php");
+include ("lib/piwi/connector/Connector.if.php");
+include ("lib/piwi/connector/SQLite2Connector.class.php");
+include ("lib/piwi/connector/SQLite3Connector.class.php");
+include ("lib/piwi/connector/MySQLConnector.class.php");
 
 // Generator classes - replace with autoload
-include("lib/piwi/generator/GeneratorFactory.class.php");
-include("lib/piwi/generator/Generator.if.php");
-include("lib/piwi/generator/GalleryGenerator.class.php");
+include ("lib/piwi/generator/GeneratorFactory.class.php");
+include ("lib/piwi/generator/Generator.if.php");
+include ("lib/piwi/generator/SiteGenerator.class.php");
+include ("lib/piwi/generator/GalleryGenerator.class.php");
+include ("lib/piwi/generator/ExceptionPageGenerator.class.php");
 
 // Navigation classes - replace with autoload
-include("lib/piwi/navigation/Navigation.if.php");
-include("lib/piwi/navigation/SimpleTextNavigation.class.php");
+include ("lib/piwi/navigation/Navigation.if.php");
+include ("lib/piwi/navigation/SimpleTextNavigation.class.php");
 
 // *** Configuration
 // Path to this webapp. Needed by cacheimplementations or other
@@ -67,21 +73,22 @@ $classloader = null;
  */
 function __autoload($class) {
 	global $classloader;
-	if($classloader == null) {
-		$classloader = new ClassLoader(PIWI_ROOT.'/cache/classloader.cache.xml');
+	if ($classloader == null) {
+		$classloader = new ClassLoader(PIWI_ROOT . '/cache/classloader.cache.xml');
 	}
-	
-	$directorys = array(
-             			'custom/lib/piwi'
-    				);
-       
-    foreach($directorys as $directory) {
-       $result = $classloader->loadClass($directory,$class);
-       if($result == true) {
-			return;       	
-       }
-    }
+
+	$directorys = array (
+		'custom/lib/piwi'
+	);
+
+	foreach ($directorys as $directory) {
+		$result = $classloader->loadClass($directory, $class);
+		if ($result == true) {
+			return;
+		}
+	}
 }
+
 
 // scripts
 /*
@@ -93,39 +100,47 @@ if($_REQUEST['p'] == "google") {
 */
 
 // TODO: globals are evil :-)
-$connectors = new ConnectorFactory($contentPath.'/connectors.xml');
+$connectors = new ConnectorFactory($contentPath . '/connectors.xml');
 // the following var is used in the generatorfactory class - should be
 // not such an important variable. 
-$generators = new GeneratorFactory($contentPath.'/generators.xml');
+$generators = new GeneratorFactory($contentPath . '/generators.xml');
 
 // TODO: pass all requests to class	which determines params etc. as a
 // replacement for mod_rewrite (which may not work at all systems)	
 $id = "default";
-if($_REQUEST['p'] != null) {
+if ($_REQUEST['p'] != null) {
 	$id = $_REQUEST['p'];
 }
 
-$site = new Site($contentPath.'/site.xml');
+$site = new Site($contentPath . '/site.xml');
 // TODO: Serializer implementation
 $ext = $site->extension($id);
-if($ext == "xml") {
-	$page = $site->read($id);
-	$content = $page->transform();
+if ($ext == "xml") {
+	try {
+		$page = $site->read($id);
+		$content = $page->transform();
+	} catch( Exception $exception ) {
+		$exceptionPageGenerator = new ExceptionPageGenerator($exception);
+		$page = new XMLPage();
+		$page->setDom($exceptionPageGenerator->generate());
+		$page->setTemplate("default.php");
+		$content = $page->transform();
+	}	
 }
 
 // TODO: navigation builder not dynamic
-$nav = $site->navigation($id); 
-$navBuilder = new SimpleTextNavigation($contentPath.'/xml');
+$nav = $site->navigation($id);
+$navBuilder = new SimpleTextNavigation($contentPath . '/xml');
 $htmlNav = $navBuilder->build($nav);
 
 // Include your template here
-if($page->getTemplate() != "") {
-	include($templatesPath.'/'.$page->getTemplate());
+if ($page->getTemplate() != "") {
+	include ($templatesPath . '/' . $page->getTemplate());
 } else {
-	include($templatesPath.'/default.php');
+	include ($templatesPath . '/default.php');
 }
 
-if($classloader != null) {
+if ($classloader != null) {
 	$classloader->shutdown();
 }
 ?>
