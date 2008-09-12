@@ -1,22 +1,32 @@
 <?php
-
+/**
+ * Establishes connections to SQLite 3 databases.
+ */
 class SQLite3Connector implements Connector {
-
-	private $file = null;	
+	/** The path of the database file. */
+	private $file = null;
+	
+	/** The connection. */
 	private $dbConnection = null;
 	
-    function SQLiteConnector() {
+	/**
+	 * Constructor.
+	 */
+    public function __construct() {
     }
     
-    function connect() {
+	/**
+	 * Establishes a connection to the database.
+	 */
+    public function connect() {
     	if($this->file == null) {
    			throw new DatabaseException(
 				'No database specified (Correct your "connectors.xml").',
-				DatabaseException::ERR_NO_FILENAME_SPECIFIED);
+				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
    		
    		try {
-			$this->dbConnection = new PDO('sqlite:'.$this->file);			
+			$this->dbConnection = new PDO('sqlite:' . $this->file);			
 		} catch( PDOException $exception ) {
 			throw new DatabaseException(
 				'Establishing database connection failed ('.$exception->getMessage().').', 
@@ -24,13 +34,20 @@ class SQLite3Connector implements Connector {
 		}
     }
     
-    function execute($sql) {
+	/**
+	 * Executes the given query.
+	 * @param string $sql The query to execute.
+	 * @return array The result of the query.
+	 */
+    public function execute($sql) {
    		if($this->dbConnection == null) {
    			$this->connect();
    		}
+   		
+   		// Execute query
    		$result = $this->dbConnection->query($sql);
    		
-   		if ($result == false){
+   		if (!$result){
    			throw new DatabaseException(
 				'Querying database failed.', 
 				DatabaseException::ERR_QUERY_FAILED);
@@ -44,7 +61,12 @@ class SQLite3Connector implements Connector {
 		return $resultArray;
     }
         
-    function setProperty($key,$value) {
+	/**
+	 * Used to pass parameters to the Connector.
+	 * @param string $key The name of the parameter.
+	 * @param object $value The value of the parameter.
+	 */
+    public function setProperty($key, $value) {
     	if($key == "file") {
     		$this->file = $value;
     	}

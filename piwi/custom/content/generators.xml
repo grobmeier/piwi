@@ -2,12 +2,12 @@
 <!DOCTYPE generators SYSTEM "dtd/generators.dtd">
 <generators>
    <generator id="sqlite2" class="SQLiteContentGenerator">
-      <connection>sqlite2Connector</connection>
+      <connector>sqlite2Connector</connector>
    </generator>
 	<generator id="sqlite3" class="SQLiteContentGenerator">
-		<connection>sqlite3Connector</connection>
+		<connector>sqlite3Connector</connector>
 	</generator>
-	<generator id="gallery" class="GalleryGenerator">
+	<generator id="gallery" class="SimpleGalleryGenerator">
 		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
 		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
 	</generator>

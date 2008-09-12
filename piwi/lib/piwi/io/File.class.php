@@ -1,29 +1,49 @@
 <?
+/**
+ * Represents a file.
+ */
 class File {
-	var $path;
-	var $name;
+	/** The path to the file. */
+	private $path = null;
 	
-	function File($_path, $_name) {
-		$this->path = $_path;
-		$this->name = $_name;
+	/** The name of the file. */
+	private $name = null;
+	
+	/**
+	 * Constructor.
+	 * @param string $path The path to the file.
+	 * @param string $name The name of the file.
+	 */
+	public function __construct($path, $name) {
+		$this->path = $path;
+		$this->name = $name;
 	}
 	
-	function getPath() {
+	/**
+	 * Returns the path to the file.
+	 * @return string The path to the file.
+	 */
+	public function getPath() {
 		return $this->path;
 	}
 	
-	function getName() {
+	/**
+	 * Returns the name of the file.
+	 * @return string The name of the file.
+	 */
+	public function getName() {
 		return $this->name;
 	}
-	
-	
+
 	/**
-	 * Deletes a folder recursive 
+	 * Deletes the file.
+	 * @return integer 0 if file has been deleted otherwise -1
 	 */
-	function delete() {
+	public function delete() {
 		$path = $this->path."/".$this->name;
-	 //  	if (is_file ($path) || is_link ($path)) {
-			$res = unlink ($path);			if (!$res) {	        	closedir ($dir); // Verzeichnis schliessen	            return -1; // melde ihn
-	  //      }
-	    }	}	
+		if (is_file ($path) || is_link ($path)) {
+			$result = unlink($path);			if ($result) {	            return 0;
+			}
+	    }
+	    return -1;	}	
 }

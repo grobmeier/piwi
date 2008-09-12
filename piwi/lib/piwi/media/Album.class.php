@@ -1,32 +1,63 @@
 <?
+/**
+ * Represents an photoalbum (a set of images).
+ */
 class Album {
-	var $name;
-	var $images;
-	var $createdAt; 
+	/** The name of the album. */
+	private $name = null;
 	
-	function Album($name) {
-		$this->images = array();
+	/** The images in the album. */
+	private $images = array();
+	
+	/** The date when the album has been created. */
+	private $createdAt = null; 
+	
+	/**
+	 * Constructor.
+	 * @param string $name The name of the album.
+	 */
+	public function __construct($name) {
 		$this->name = $name;
 	}
 	
-	function setCreatedAt($t) {
-		$this->createdAt = $t;
-	}
-	
-	function getCreatedAt() {
-		return $this->createdAt;
-	}
-	
-	function addImage($image) {
-		array_push($this->images, $image);
-	}
-	
-	function getName() {
+	/**
+	 * Returns the name of the album.
+	 * @return string The name of the album.
+	 */
+	public function getName() {
 		return $this->name;	
 	}
 	
-	function getImages() {
+	/**
+	 * Adds an image to the album.
+	 * @param string $image The image to add.
+	 */	
+	public function addImage($image) {
+		array_push($this->images, $image);
+	}
+	
+	/**
+	 * Returns the images in the album.
+	 * @return array The images in the album.
+	 */
+	public function getImages() {
 		return $this->images;
+	}
+
+	/**
+	 * Returns the date when the album has been created.
+	 * @return int The date when the album has been created.
+	 */
+	public function getCreatedAt() {
+		return $this->createdAt;
+	}
+
+	/**
+	 * Sets the date when the album has been created.
+	 * @return int $date The date when the album has been created.
+	 */
+	public function setCreatedAt($date) {
+		$this->createdAt = $date;
 	}
 }
 ?>

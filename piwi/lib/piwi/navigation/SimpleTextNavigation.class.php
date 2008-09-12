@@ -1,17 +1,25 @@
 <?php
+/**
+ * Creates a simple navigation.
+ */
 class SimpleTextNavigation implements Navigation {
-	
-	var $pathToContent = "";
-	
-	function SimpleTextNavigation($pathToContent) {
-		$this->$pathToContent = $pathToContent;	
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
 	}
 	
-	function build($nav) {
+	/**
+	 * Builds the navigation.
+	 * @param string $contentPath Name of the folder where the content is placed.
+	 * @param array $navigation The pages of the website.
+	 * @return string The navigation as HTML.
+	 */
+	public function generate($contentPath, $navigation) {
 		$topNav = "";
 		$navString = "";
 		
-		foreach($nav as $parent) {
+		foreach($navigation as $parent) {
 			$linkid = $parent['id'];
 			
 			$topLink = "";
@@ -21,10 +29,10 @@ class SimpleTextNavigation implements Navigation {
    				$topLink .= "<a class=\"links\" href=\"".$linkid.".html\">".$parent['label']."</a>&nbsp;&nbsp;";
 			}
 			
-			if($parent['childs'] != null) {
+			if(isset($parent['childs'])) {
 				foreach($parent['childs'] as $entry) {
-					if(strpos($entry['href'], $this->$pathToContent) !== false) {
-				    	$link = str_replace($this->$pathToContent, "", $entry['href']);
+					if(strpos($entry['href'], $contentPath) !== false) {
+				    	$link = str_replace($contentPath, "", $entry['href']);
 				    }
 		    		        	
 				    $link = str_replace(".xml", ".html", $link);
@@ -38,5 +46,4 @@ class SimpleTextNavigation implements Navigation {
 		return $topNav;
 	}
 }
-
 ?>

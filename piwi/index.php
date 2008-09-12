@@ -1,6 +1,5 @@
 <?
-
-/*
+/**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements. See the NOTICE file
  * distributed with this work for additional information
@@ -19,48 +18,44 @@
  * under the License.
  */
 
-error_reporting(0);
-//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>> Custom Configuration <<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+ 
+// Error reporting
+//error_reporting(0); // hidde all errors
+//error_reporting(E_ALL); // show all errors
 
-// ClassLoader
-include ("lib/piwi/classloader/ClassLoader.class.php");
+/** Name of the folder where your content is placed. */
+DEFINE('CONTENT_PATH', 'custom/content');
 
-// Default page serializer
-include ("lib/piwi/XMLPage.class.php");
-include ("lib/piwi/Site.class.php");
+/** Name of the folder where your templates are placed. */
+DEFINE('TEMPLATES_PATH', 'custom/templates');
 
-// Default Exception
-include ("lib/piwi/connector/DatabaseException.class.php");
-include ("lib/piwi/PiwiException.class.php");
+/** Name of the folder where your custom classes are placed. */
+DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
 
-// Connectors classes - replace with autoload
-include ("lib/piwi/connector/ConnectorFactory.class.php");
-include ("lib/piwi/connector/Connector.if.php");
-include ("lib/piwi/connector/SQLite2Connector.class.php");
-include ("lib/piwi/connector/SQLite3Connector.class.php");
-include ("lib/piwi/connector/MySQLConnector.class.php");
-
-// Generator classes - replace with autoload
-include ("lib/piwi/generator/GeneratorFactory.class.php");
-include ("lib/piwi/generator/Generator.if.php");
-include ("lib/piwi/generator/SiteGenerator.class.php");
-include ("lib/piwi/generator/GalleryGenerator.class.php");
-include ("lib/piwi/generator/ExceptionPageGenerator.class.php");
-
-// Navigation classes - replace with autoload
-include ("lib/piwi/navigation/Navigation.if.php");
-include ("lib/piwi/navigation/SimpleTextNavigation.class.php");
-
-// *** Configuration
-// Path to this webapp. Needed by cacheimplementations or other
-// file writing functions
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>> Piwi Configuration <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+ 
+/** Path to this webapp. Needed by cacheimplementations or other file writing functions. */
 DEFINE('PIWI_ROOT', dirname(__FILE__));
 
-// Instance Name (Name of the folders where your content is placed)
-$contentPath = "custom/content";
-$templatesPath = "custom/templates";
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Class Loading <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */ 
+ 
+/** ClassLoader which makes other includes dispensable. */
+require ("lib/piwi/classloader/ClassLoader.class.php");
 
-// AUTOLOAD - Classloader. Variable is outside to avoid multiple instances.
+/** Instance of the Classloader. */
 $classloader = null;
 
 /**
@@ -77,8 +72,9 @@ function __autoload($class) {
 		$classloader = new ClassLoader(PIWI_ROOT . '/cache/classloader.cache.xml');
 	}
 
-	$directorys = array (
-		'custom/lib/piwi'
+	$directorys = array (		
+		PIWI_ROOT . '/lib/piwi', 
+		CUSTOM_CLASSES_PATH
 	);
 
 	foreach ($directorys as $directory) {
@@ -89,56 +85,46 @@ function __autoload($class) {
 	}
 }
 
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */ 
 
-// scripts
-/*
-if($_REQUEST['p'] == "google") {
-	include("scripts/googleintegration.php");
-	$_REQUEST['p'] = $redirectTo;
-	echo $redirectTo;
-}
-*/
+// Initialize the singleton factories for managing Generators and Connectors
+GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
+ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
 
-// TODO: globals are evil :-)
-$connectors = new ConnectorFactory($contentPath . '/connectors.xml');
-// the following var is used in the generatorfactory class - should be
-// not such an important variable. 
-$generators = new GeneratorFactory($contentPath . '/generators.xml');
-
-// TODO: pass all requests to class	which determines params etc. as a
-// replacement for mod_rewrite (which may not work at all systems)	
-$id = "default";
-if ($_REQUEST['p'] != null) {
-	$id = $_REQUEST['p'];
+// Determinate the requested page
+$pageId = "default";
+if (isset($_REQUEST['page'])) {
+	$pageId = $_REQUEST['page'];
 }
 
-$site = new Site($contentPath . '/site.xml');
-// TODO: Serializer implementation
-$ext = $site->extension($id);
-if ($ext == "xml") {
-	try {
-		$page = $site->read($id);
-		$content = $page->transform();
-	} catch( Exception $exception ) {
-		$exceptionPageGenerator = new ExceptionPageGenerator($exception);
-		$page = new XMLPage();
-		$page->setDom($exceptionPageGenerator->generate());
-		$page->setTemplate("default.php");
-		$content = $page->transform();
-	}	
-}
+$site = new Site(CONTENT_PATH, 'site.xml', $pageId);
+	
+try {
+	// Generate page
+	$site->readContent();
+	$CONTENT = $site->transform();
+} catch( Exception $exception ) {
+	// Show a page displaying the error
+	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
+	$site->setContent($exceptionPageGenerator->generate());
+	$CONTENT = $site->transform();
+}		
+			
+// Generate navigation
+$HTML_NAVIGATION = $site->generateNavigation();			
 
-// TODO: navigation builder not dynamic
-$nav = $site->navigation($id);
-$navBuilder = new SimpleTextNavigation($contentPath . '/xml');
-$htmlNav = $navBuilder->build($nav);
+// Show generated page
+include (TEMPLATES_PATH . '/' . $site->getTemplate());
 
-// Include your template here
-if ($page->getTemplate() != "") {
-	include ($templatesPath . '/' . $page->getTemplate());
-} else {
-	include ($templatesPath . '/default.php');
-}
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>> ShutDown Classloader <<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */ 
 
 if ($classloader != null) {
 	$classloader->shutdown();

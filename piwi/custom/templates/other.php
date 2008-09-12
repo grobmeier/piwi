@@ -13,9 +13,9 @@
 	<div id="header">
 	</div>
 	<div id="menu">
-		<?=$htmlNav?></div>
+		<?=$HTML_NAVIGATION?></div>
 	<div id="content">
-		<?=$content['article']?>
+		<?=$CONTENT['article']?>
 	</div>
 	<div id="footer">
 		<div class="right">

@@ -1,14 +1,14 @@
 <?
 class MediaCenter {
-	var $pathToImages;
-	var $pathToUpload;
+	private $pathToImages;
+	private $pathToUpload;
 	
-	function MediaCenter($_pathToImages, $_pathToUpload) {
-		$this->pathToImages = $_pathToImages;
-		$this->pathToUpload = $_pathToUpload;
+	public function __construct($pathToImages, $pathToUpload) {
+		$this->pathToImages = $pathToImages;
+		$this->pathToUpload = $pathToUpload;
 	}
 	
-	function getFolders() {
+	public function getFolders() {
 		$result = array();
 		$verz = opendir($this->pathToImages);
 		$i = 0;
@@ -24,7 +24,7 @@ class MediaCenter {
 		return $result;
 	}
 	
-	function keyExists($arr, $intKey) {
+	public function keyExists($arr, $intKey) {
 		if(array_key_exists($intKey, $arr)) {
  			$intKey = $intKey+1;
  			return $this->keyExists($arr, $intKey);
@@ -33,7 +33,7 @@ class MediaCenter {
 		}
 	}
 	
-	function view($albumName = "") {
+	public function view($albumName = "") {
 		$verz = opendir($this->pathToImages);
 		$result = array();
 		$i = 0;
@@ -58,7 +58,7 @@ class MediaCenter {
 		return $result;
 	}
 	
-	function showImages($path, $folder, $album) {
+	public function showImages($path, $folder, $album) {
 		$verz = opendir($path."/".$folder."/thumbs/");
 		while($file = readdir($verz)) {  
 			$info = @getimagesize($file);  
@@ -73,7 +73,7 @@ class MediaCenter {
 		return $album;
 	}
 	
-	function upload() {
+	public function upload() {
 		$newfile = $this->pathToUpload . "/" . $_FILES['imgfile']['name'];
 		
 		if (is_uploaded_file($_FILES['imgfile']['tmp_name'])) {
@@ -88,10 +88,6 @@ class MediaCenter {
 		
 		$image = new Image($this->pathToUpload."/", $_FILES['imgfile']['name']);
 		return $image;
-	}
-	
+	}	
 }
 ?>
-
-
-

@@ -17,7 +17,7 @@ require_once('ClassLoaderCache.class.php');
  * it like mentioned above and puts it into the cache.
  */
 class ClassLoader {
-	/** ClassLoader Cache - will be initalized lazily */
+	/** ClassLoader Cache - will be initalized lazily. */
 	private $cache = null;
 	
 	/**
@@ -26,11 +26,11 @@ class ClassLoader {
 	 * destination to an cachefile. If the file doesn't exist,
 	 * it will be created. If it exists, it will be used.
 	 * If this argument is not passed, no cache is used at all.
-	 * @param String $pathtocachefile Destinatino to the cache file
+	 * @param string $pathtocachefile Path to the cache file.
 	 */
-	function ClassLoader($pathtocachefile = null) {
-		if($pathtocachefile != null) {
-			$this->cache = new ClassLoaderCache($pathtocachefile);
+	public function __construct($pathToCacheFile = null) {
+		if($pathToCacheFile != null) {
+			$this->cache = new ClassLoaderCache($pathToCacheFile);
 		}	
 	}
 	
@@ -46,14 +46,14 @@ class ClassLoader {
 	}
 	
 	/**
-	 * Trys to load a class from the given dir. 
-	 * All subdirs are used for lookup. 
-	 * @param String $dir The path in which the class should be found
-	 * @param String $class The name of the class
-	 * @return boolean True, if the class could be found, false otherwise
+	 * Trys to load a class from the given directory. 
+	 * All subdirectories are used for lookup. 
+	 * @param string $directory The path in which the class should be found.
+	 * @param string $class The name of the class.
+	 * @return boolean True, if the class could be found, false otherwise.
 	 */
-	public function loadClass($dir, $class, $cache = true) {
-		/* Check if this class is in the cache */
+	public function loadClass($directory, $class, $cache = true) {
+		// Check if this class is in the cache
 		if($this->cache != null && $cache == true) {
 			$path = $this->cache->getClassById($class);
 			if($path != null) {
@@ -66,28 +66,28 @@ class ClassLoader {
 			}
 		}
 		
-		/* Lookup class in the filesystem */
-		if ($handle = opendir($dir)) {
+		// Lookup class in the filesystem
+		if ($handle = opendir($directory)) {
 		    while (false !== ($file = readdir($handle))) {
 		    	if ($file != "." && $file != "..") {
-		        	if(is_dir($dir.'/'.$file)) {
+		        	if(is_dir($directory.'/'.$file)) {
 		        		if(substr($file, 0, 1) != ".") {
-		        			$result = $this->loadClass($dir.'/'.$file, $class, false);
+		        			$result = $this->loadClass($directory.'/'.$file, $class, false);
 			        		if($result == true) {
 			        			return true;
 			        		}
 		        		} 
 		        	} else {
 		            	if($file == $class.'.class.php') {
-		            		require_once($dir.'/'.$class.'.class.php');
+		            		require_once($directory.'/'.$class.'.class.php');
 		            		if($this->cache != null) {
-		            			$this->cache->addClassToCache($class, $dir);
+		            			$this->cache->addClassToCache($class, $directory);
 		            		}
 		            		return true;
 		            	} else if($file == $class.'.if.php') {
-		            		require_once($dir.'/'.$class.'.if.php');
+		            		require_once($directory.'/'.$class.'.if.php');
 		            		if($this->cache != null) {
-		            			$this->cache->addClassToCache($class, $dir);
+		            			$this->cache->addClassToCache($class, $directory);
 		            		}
 		            		return true;
 		            	}

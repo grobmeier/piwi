@@ -1,19 +1,14 @@
 <?php
-require_once("./lib/piwi/media/MediaCenter.class.php");
-require_once("./lib/piwi/media/Album.class.php");
-require_once("./lib/piwi/io/Image.class.php");
-require_once("./lib/piwi/io/Folder.class.php");
-require_once("./lib/piwi/io/File.class.php");
 
-class GalleryGenerator implements Generator {
+class SimpleGalleryGenerator implements Generator {
 	
-	var $pathtomedia = "";
-	var $pathtoupload = ""; 
+	private $pathtomedia = "";
+	private $pathtoupload = ""; 
     	
-    function GalleryGenerator() {
+    public function __construct() {
     }
    
-    function generate($output = "html") {
+    public function generate() {
 
 		$plugin = new MediaCenter($this->pathtomedia, $this->pathtoupload);
 		$albums = $plugin->view($_GET['album']);
@@ -23,7 +18,7 @@ class GalleryGenerator implements Generator {
 		foreach($result as $r) {
 			$new[$r->getCreatedAt()] = $r;
 		}
-		krsort($new);
+		ksort($new);
 
 		$piwixml = "<?xml version='1.0'?>";
 		$piwixml .= "<!DOCTYPE document PUBLIC \"-//PIWI//DTD Documentation V1.0//EN\" \"dtd/document-v10.dtd\">";
@@ -44,8 +39,8 @@ class GalleryGenerator implements Generator {
 			$piwixml .= $folder;
 			$piwixml .= "</title>";
 			
-			if($_GET['album'] != "") {
-				$piwixml .= "<p><a href=\"./index.php?p=gallery\">Get me back to galleries!</a></p>";
+			if(isset($_GET['album'])) {
+				$piwixml .= "<p><a href=\"./index.php?page=gallery\">Get me back to galleries!</a></p>";
 			}
 			
 			$piwixml .= "<table>";
@@ -56,7 +51,7 @@ class GalleryGenerator implements Generator {
 				
 				$piwixml .= "<td>
 								<a href=\"".$this->pathtomedia."/".$folder."/originals/".$file."\">
-								<image path=\"".$this->pathtomedia."/".$folder."/thumbs/".$file."\">$file</image>
+								<img src=\"".$this->pathtomedia."/".$folder."/thumbs/".$file."\" />
 								</a>
 							</td>";
 					
@@ -67,7 +62,7 @@ class GalleryGenerator implements Generator {
 					$count++;
 				}
 		
-				if($_GET['album'] == "") {
+				if(!isset($_GET['album'])) {
 					if($countMaxImg == $maxImage) {
 						$countMaxImg = 0;
 						$moreMessage = 1;
@@ -91,13 +86,13 @@ class GalleryGenerator implements Generator {
 			if($moreMessage != 0) {
 				$t = $cols+1;
 			$piwixml .= "<tr><td colspan=\"".$t."\">
-							<a href=\"./index.php?p=gallery&amp;album=".urlencode($folder)."\">More in ".$folder."</a>
+							<a href=\"./index.php?page=gallery&amp;album=".urlencode($folder)."\">More in ".$folder."</a>
 							</td>
 						</tr>";
 			}
 			
-			if($_GET['album'] != "") {
-				$piwixml .= "<tr><td colspan=\"".$t."\"><br/><a href=\"./index.php?p=gallery\">Get me back to galleries!</a></td></tr>";
+			if(isset($_GET['album'])) {
+				$piwixml .= "<tr><td colspan=\"".$t."\"><br/><a href=\"./index.php?page=gallery\">Get me back to galleries!</a></td></tr>";
 			}
 
 			$piwixml .= "</table>";
@@ -105,16 +100,14 @@ class GalleryGenerator implements Generator {
 		}
 		$piwixml .= "</document>";
 		
-		if($output == "html") {
-			return XMLPage::transformPart(
-						"resources/xslt/document-v1.0.xsl", 
-						$piwixml);
-		} else if ($output == "xml") {
-			return $piwixml;
-		}
+		return $piwixml;
 	}
 	
-    function setProperty($key,$value) {
+	/** Used to pass parameters to the Generator.
+	 * @param string $key The name of the parameter.
+	 * @param object $value The value of the parameter.
+	 */
+    public function setProperty($key, $value) {
     	if($key == "pathtomedia") {
     		$this->pathtomedia = $value;
     	} else if($key == "pathtoupload") {

@@ -1,21 +1,33 @@
 <?php
-
+/**
+ * Establishes connections to SQLite 2 databases.
+ */
 class SQLite2Connector implements Connector {
-
+	/** The path of the database file. */
 	private $file = null;
-	private $mode = null;	
+	
+	/** The mode of the connection (default is: 0666). */
+	private $mode = 0666;	
+	
+	/** The connection. */
 	private $dbConnection = null;
 		
-    function SQLiteConnector() {
+	/**
+	 * Constructor.
+	 */
+    public function __construct() {
     }
     
-    function connect() {
+    /**
+	 * Establishes a connection to the database.
+	 */
+    public function connect() {
     	if(!$this->file) {
    			throw new DatabaseException(
 				'No database specified (Correct your "connectors.xml").',
-				DatabaseException::ERR_NO_FILENAME_SPECIFIED);
+				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
-   		   		
+   		$sqliteerror = null;
    		$this->dbConnection = sqlite_open($this->file, $this->mode, $sqliteerror);
    		
    		if ($sqliteerror != null) {
@@ -24,15 +36,21 @@ class SQLite2Connector implements Connector {
 				DatabaseException::ERR_CONNECTION_FAILED);
     	}
     }
-    
-    function execute($sql) {
+
+	/**
+	 * Executes the given query.
+	 * @param string $sql The query to execute.
+	 * @return array The result of the query.
+	 */
+    public function execute($sql) {
    		if($this->dbConnection == null) {
    			$this->connect();
    		}
    		
+   		// Execute query
    		$result = sqlite_query($this->dbConnection,$sql);
 		
-   		if ($result == false){
+   		if (!$result){
    			throw new DatabaseException(
 				'Querying database failed.', 
 				DatabaseException::ERR_QUERY_FAILED);
@@ -45,13 +63,16 @@ class SQLite2Connector implements Connector {
    		}
 		return $resultArray;
     }
-        
-    function setProperty($key,$value) {
+    
+	/**
+	 * Used to pass parameters to the Connector.
+	 * @param string $key The name of the parameter.
+	 * @param object $value The value of the parameter.
+	 */
+    public function setProperty($key, $value) {
     	if($key == "file") {
     		$this->file = $value;
-    	}
-    	
-    	if($key == "mode") {
+    	} else if($key == "mode") {
     		$this->mode = $value;
     	}
     }

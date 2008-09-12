@@ -9,9 +9,9 @@
 		<file>custom/content/db/sqlite3_sample.sqlite3</file>
 	</connector>
 	<connector id="mySQLConnector" class="MySQLConnector">
-		<user>name</user>
+		<server>127.0.0.1:3306</server>
+		<database>databasename</database>
+		<username>username</username>
 		<password>password</password>
-		<port>3306</port>
-		<url>localhost</url>
 	</connector>
 </connectors>

@@ -1,10 +1,10 @@
 <?
 class Pager {
-	var $rows;
-	var $currentPage;
-	var $rowsPerPage;
+	private $rows;
+	private $currentPage;
+	private $rowsPerPage;
 	
-	function Pager($currentPage, $rows, $rowsPerPage = 20) {
+	public function __construct($currentPage, $rows, $rowsPerPage = 20) {
 		if($currentPage == "" || $currentPage == 0) {
 			$currentPage = 1;
 		}
@@ -13,7 +13,7 @@ class Pager {
 		$this->rowsPerPage = $rowsPerPage;
 	}
 	
-	function countPages() {
+	public function countPages() {
 		$count = intval( $this->rows /  $this->rowsPerPage );
 		if( $this->rows % $this->rowsPerPage ) {
 					$count++;
@@ -21,11 +21,11 @@ class Pager {
 		return $count;
 	}
 	
-	function getCurrentPage() {
+	public function getCurrentPage() {
 		return $this->currentPage;
 	}
 	
-	function getNextPage() {
+	public function getNextPage() {
 		if(($this->currentPage+1) > $this->countPages()) {
 			return 1;
 		} else {
@@ -33,7 +33,7 @@ class Pager {
 		}
 	}
 	
-	function getPreviousPage() {
+	public function getPreviousPage() {
 		if(($this->currentPage-1) <= 0) {
 			return $this->countPages();
 		} else {
@@ -41,7 +41,7 @@ class Pager {
 		}
 	}
 	
-	function mysqlLimits() {
+	public function mysqlLimits() {
 		$limits['start'] = ($this->currentPage-1) * $this->rowsPerPage;
 		$limits['end'] = ($this->currentPage-1) * $this->rowsPerPage + $this->rowsPerPage;
 		return $limits;

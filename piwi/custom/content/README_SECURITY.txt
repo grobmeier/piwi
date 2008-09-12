@@ -1,7 +1,7 @@
 Dear user,
 
 i have not tested or developed this app with an eye at
-security. Therefor you should know that if you place this
+security. Therefore you should know that if you place this
 folder on a path visible to every visitor, then your
 passwords may be visible to them. Most passwords are unleashed
 in connectors.xml.

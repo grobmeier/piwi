@@ -120,13 +120,13 @@
 		</td>
 	</xsl:template>
 
-	<xsl:template match="image">
+	<xsl:template match="img">
 		<img>
 			<xsl:attribute name="alt">
     			<xsl:value-of select="." />
   			</xsl:attribute>
 			<xsl:attribute name="src">
-    			<xsl:value-of select="@path" />
+    			<xsl:value-of select="@src" />
   			</xsl:attribute>
 			<xsl:if test="string(@class) != ''">
 				<xsl:attribute name="class">

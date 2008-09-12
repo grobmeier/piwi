@@ -1,15 +1,19 @@
 <?
+/**
+ * Represents a folder.
+ */
 class Image {
-	var $HEIGHT = 0;
-	var $WIDTH = 1;
+	private $HEIGHT = 0;
+	private $WIDTH = 1;
 	
-	var $pathToImage;
-	var $name;
+	private $pathToImage = null;
+	private $name = null;
+	private $absolute = null;
 	
-	function Image($_pathToImages, $_name) {
-		$this->pathToImages = $_pathToImages;
-		$this->name = $_name;
-		$this->absolute = $_pathToImages."/".$_name;
+	function __construct($pathToImages, $name) {
+		$this->pathToImages = $pathToImages;
+		$this->name = $name;
+		$this->absolute = $pathToImages."/".$name;
 	}
 	
 	function getDimensions($maxWidth, $maxHeight) {
