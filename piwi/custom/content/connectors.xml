@@ -1,5 +1,4 @@
 <?xml version='1.0' standalone='yes'?>
-<!DOCTYPE connectors SYSTEM "dtd/connectors.dtd">
 <connectors>
 	<connector id="sqlite2Connector" class="SQLite2Connector">
 		<file>custom/content/db/sqlite2_sample.sqlite2</file>

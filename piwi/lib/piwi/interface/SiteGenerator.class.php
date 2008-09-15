@@ -16,20 +16,20 @@ abstract class SiteGenerator implements Generator {
 	 * @return string The xml output as string.
 	 */
     public function generate() {
-		$piwixml = "<?xml version='1.0' encoding='utf-8' standalone='yes'?>";
-		$piwixml .= "<!DOCTYPE document PUBLIC \"-//PIWI//DTD Documentation V1.0//EN\" \"dtd/document-v10.dtd\">";
-		$piwixml .= "<document>";
-		$piwixml .= "<header>";
-		$piwixml .= "<keywords>PIWI - PHP Transformation Framework</keywords>";
-		$piwixml .= "<title>PIWI - PHP Transformation Framework</title>";
-		$piwixml .= "</header>";
+		$piwixml = '<?xml version="1.0" encoding="utf-8" standalone="yes"?>';
+		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
+		$piwixml .= '<document>';
+		$piwixml .= '<header>';
+		$piwixml .= '<keywords>PIWI - PHP Transformation Framework</keywords>';
+		$piwixml .= '<title>PIWI - PHP Transformation Framework</title>';
+		$piwixml .= '</header>';
 
 		$piwixml .= "<content position='article'>";
 		
 		$piwixml .= $this->generateSections();
 
-		$piwixml .= "</content>";
-		$piwixml .= "</document>";
+		$piwixml .= '</content>';
+		$piwixml .= '</document>';
 		return $piwixml;
 	}
 	

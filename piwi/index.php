@@ -25,7 +25,7 @@
  */
  
 // Error reporting
-//error_reporting(0); // hidde all errors
+error_reporting(0); // hidde all errors
 //error_reporting(E_ALL); // show all errors
 
 /** Name of the folder where your content is placed. */
@@ -69,11 +69,11 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if ($classloader == null) {
-		$classloader = new ClassLoader(PIWI_ROOT . '/cache/classloader.cache.xml');
+		$classloader = new ClassLoader('cache/classloader.cache.xml');
 	}
 
 	$directorys = array (		
-		PIWI_ROOT . '/lib/piwi', 
+		'lib/piwi', 
 		CUSTOM_CLASSES_PATH
 	);
 

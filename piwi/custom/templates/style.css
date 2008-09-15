@@ -46,6 +46,11 @@
    margin-right:        25px;
 }
 
+#menu a.selected /* Additional formating for selected menu item. */
+{
+   color:               #449c52;
+}
+
 #menu a:hover
 {
    color:               #449c52;

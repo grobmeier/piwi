@@ -60,6 +60,9 @@ class ClassLoader {
 				if(file_exists($path.'/'.$class.'.class.php')) {
 					require_once($path.'/'.$class.'.class.php');
 			        return true;
+				} else if(file_exists($path.'/'.$class.'.if.php')) {
+					require_once($path.'/'.$class.'.if.php');
+			        return true;
 				} else {
 					$this->cache->invalidate();
 				}

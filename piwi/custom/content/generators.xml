@@ -1,5 +1,4 @@
 <?xml version='1.0' standalone='yes'?>
-<!DOCTYPE generators SYSTEM "dtd/generators.dtd">
 <generators>
    <generator id="sqlite2" class="SQLiteContentGenerator">
       <connector>sqlite2Connector</connector>

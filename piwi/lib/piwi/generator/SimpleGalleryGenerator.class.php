@@ -20,9 +20,9 @@ class SimpleGalleryGenerator implements Generator {
 		}
 		ksort($new);
 
-		$piwixml = "<?xml version='1.0'?>";
-		$piwixml .= "<!DOCTYPE document PUBLIC \"-//PIWI//DTD Documentation V1.0//EN\" \"dtd/document-v10.dtd\">";
-		$piwixml .= "<document>";
+		$piwixml = '<?xml version="1.0"?>';
+		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
+		$piwixml .= '<document>';
 
 		foreach($new as $album) {
 			$folder = $album->getName();
@@ -40,7 +40,7 @@ class SimpleGalleryGenerator implements Generator {
 			$piwixml .= "</title>";
 			
 			if(isset($_GET['album'])) {
-				$piwixml .= "<p><a href=\"./index.php?page=gallery\">Get me back to galleries!</a></p>";
+				$piwixml .= '<p><a href="./index.php?page=gallery">Get me back to galleries!</a></p>';
 			}
 			
 			$piwixml .= "<table>";
@@ -49,11 +49,11 @@ class SimpleGalleryGenerator implements Generator {
 					$piwixml .= "<tr>";
 				}
 				
-				$piwixml .= "<td>
-								<a href=\"".$this->pathtomedia."/".$folder."/originals/".$file."\">
-								<img src=\"".$this->pathtomedia."/".$folder."/thumbs/".$file."\" />
+				$piwixml .= '<td>
+								<a href="'.$this->pathtomedia.'/'.$folder.'/originals/'.$file.'">
+								<img src="'.$this->pathtomedia.'/'.$folder.'/thumbs/'.$file.'" />
 								</a>
-							</td>";
+							</td>';
 					
 				if($count == $cols) {
 					$piwixml .= "</tr>";
@@ -85,20 +85,20 @@ class SimpleGalleryGenerator implements Generator {
 			$t = $cols+1;
 			if($moreMessage != 0) {
 				$t = $cols+1;
-			$piwixml .= "<tr><td colspan=\"".$t."\">
-							<a href=\"./index.php?page=gallery&amp;album=".urlencode($folder)."\">More in ".$folder."</a>
+			$piwixml .= '<tr><td colspan="'.$t.'">
+							<a href="./index.php?page=gallery&amp;album='.urlencode($folder).'">More in '.$folder.'</a>
 							</td>
-						</tr>";
+						</tr>';
 			}
 			
 			if(isset($_GET['album'])) {
-				$piwixml .= "<tr><td colspan=\"".$t."\"><br/><a href=\"./index.php?page=gallery\">Get me back to galleries!</a></td></tr>";
+				$piwixml .= '<tr><td colspan="'.$t.'"><br/><a href="./index.php?page=gallery">Get me back to galleries!</a></td></tr>';
 			}
 
-			$piwixml .= "</table>";
-			$piwixml .= "</section>";
+			$piwixml .= '</table>';
+			$piwixml .= '</section>';
 		}
-		$piwixml .= "</document>";
+		$piwixml .= '</document>';
 		
 		return $piwixml;
 	}
