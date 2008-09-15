@@ -90,10 +90,10 @@ class ClassLoaderCache {
 	 */
 	private function loadCache() {
 		if (!file_exists($this->pathToCacheFile)) {
-			$cachefile = '<?xml version="1.0" standalone="yes"?>\n';
-			$cachefile .= '<!DOCTYPE classloadercache SYSTEM "dtd/classloadercache.dtd">\n';
-			$cachefile .= '<classloadercache />\n';
-			$fpread = fopen($this->pathToCacheFile,'a+');
+			$cachefile = "<?xml version='1.0' standalone='yes'?>\n";
+			$cachefile .= "<!DOCTYPE classloadercache SYSTEM \"dtd/classloadercache.dtd\">\n";
+			$cachefile .= "<classloadercache />\n";
+			$fpread = fopen($this->pathToCacheFile,"a+");
 			fwrite($fpread,$cachefile);
 			fclose($fpread);
 		} 
