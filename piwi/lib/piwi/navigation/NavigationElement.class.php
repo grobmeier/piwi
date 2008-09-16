@@ -12,6 +12,9 @@ class NavigationElement {
 	/** The children. */
 	private $children = null;
 	
+	/** The parent NavigationElement. */
+	private $parent = null;
+	
 	/** Indicates whether the children are currently visible. */
 	private $open = false;
 	
@@ -89,6 +92,22 @@ class NavigationElement {
 	 */
 	public function setSelected($selected) {
 		return $this->selected = $selected;
+	}
+	
+	/**
+	 * Returns the parent NavigationElement.
+	 * @return NavigationElement The parent NavigationElement.
+	 */
+	public function getParent() {
+		return $this->parent;
+	}
+	
+	/**
+	 * Sets the parent NavigationElement.
+	 * @param NavigationElement $selected the parent NavigationElement.
+	 */
+	public function setParent(NavigationElement $parent) {
+		return $this->parent = $parent;
 	}
 }
 ?>

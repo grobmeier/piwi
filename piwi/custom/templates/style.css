@@ -12,7 +12,7 @@
    margin:              auto; 
    width:               960px;         
 }
-/* Container Ende */
+/* Container End */
 
 /* Header */
 #header
@@ -23,7 +23,7 @@
    text-align:          center;
    height:              150px;
 }
-/* Header Ende */
+/* Header End */
 
 /* Menu */
 #menu
@@ -59,7 +59,7 @@
    margin-left:         25px;
    margin-right:        25px;
 }
-/* Menu Ende */
+/* Menu End */
 
 /* Footer */
 #footer
@@ -82,7 +82,7 @@
    color:               #000000;
    text-decoration:     none;
 }
-/* Footer Ende */
+/* Footer End */
 
 /* Content */
 #content
@@ -94,7 +94,25 @@
    padding:             30px;
    text-align:          justify;
 }
-/* Content Ende */
+/* Content End */
+
+/* SiteMapPath */
+.sitemappath
+{
+	margin-bottom:		15px;
+	font-size:			0.7em;
+}
+
+.sitemappath a
+{
+	color:              #cc0000;
+}
+
+.sitemappath a:hover
+{
+	color:              #000000;
+}
+/* SiteMapPath End */
 
 a
 {
@@ -139,7 +157,8 @@ h2
    padding:             0px;
 }
 
-ul, li {
+ul, li
+{
    margin-left:         0px;
 }
 

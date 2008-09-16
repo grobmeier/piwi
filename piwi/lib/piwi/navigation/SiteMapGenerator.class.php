@@ -33,9 +33,7 @@ final class SiteMapGenerator implements Generator {
 		$piwixml .= '<title>';
 		$piwixml .= $this->header;
 		$piwixml .= '</title>';
-		$piwixml .= '<p>';
 		$piwixml .= $this->getSiteMapAsXml(Site::getInstance()->getCustomSiteMap($this->pageId, $this->depth, $this->includeParent));
-		$piwixml .= '</p>';
 		$piwixml .= '</section>';
 		$piwixml .= '</document>';
 		

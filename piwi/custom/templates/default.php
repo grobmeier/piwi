@@ -15,6 +15,10 @@
 	<div id="menu">
 		<?=$HTML_NAVIGATION?></div>
 	<div id="content">
+		<div class="sitemappath">
+			<?=$SITE_MAP_PATH?>
+		</div>
+		
 		<?=$CONTENT['article']?>
 	</div>
 	<div id="footer">

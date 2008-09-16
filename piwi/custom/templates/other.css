@@ -12,27 +12,27 @@
 	margin:					auto;	
 	width:					960px;			
 }
-/* Container Ende */
+/* Container End */
 
 /* Header */
 #header
 {
-	background-image: 	url(images/piwi-logo.png);
-	background-repeat:	no-repeat;
+	background-image: 		url(images/piwi-logo.png);
+	background-repeat:		no-repeat;
 	margin-bottom:			1px;	
 	text-align: 			center;
 	height:					150px;
 }
-/* Header Ende */
+/* Header End */
 
 /* Menu */
 #menu
 {
 	background-image:		url(images/menu.png);
-	background-repeat:	no-repeat;
+	background-repeat:		no-repeat;
 	line-height:			1.8em;
 	margin-top:				10px;
-	padding:				   7px 30px 0px 0px;
+	padding:				7px 30px 0px 0px;
 	height:					32px;
 	text-align:				center;
 }
@@ -48,7 +48,7 @@
 
 #menu a.selected /* Additional formating for selected menu item. */
 {
-   color:               #449c52;
+   color:               	#449c52;
 }
 
 #menu a:hover
@@ -59,17 +59,17 @@
 	margin-left:			25px;
 	margin-right:			25px;
 }
-/* Menu Ende */
+/* Menu End */
 
 /* Footer */
 #footer
 {		
 	background-image:		url(images/footer.png);
-	background-repeat:	no-repeat;
+	background-repeat:		no-repeat;
 	font-size:				0.7em;
 	height:					23px;
 	line-height:			1.2em;
-	padding:				   4px 20px 6px 20px;
+	padding:				4px 20px 6px 20px;
 }
 
 #footer a
@@ -82,7 +82,7 @@
 	color:					#000000;
 	text-decoration:		none;
 }
-/* Footer Ende */
+/* Footer End */
 
 /* Content */
 #content
@@ -91,10 +91,28 @@
 	border:					1px solid #dcdcdc;		
 	font-size:				0.9em;
 	line-height:			1.4em;	
-	padding:				   30px;
+	padding:				30px;
 	text-align:				justify;
 }
-/* Content Ende */
+/* Content End */
+
+/* SiteMapPath */
+.sitemappath
+{
+	margin-bottom:			15px;
+	font-size:				0.7em;
+}
+
+.sitemappath a
+{
+	color:              	#cc0000;
+}
+
+.sitemappath a:hover
+{
+	color:              	#000000;
+}
+/* SiteMapPath End */
 
 a
 {
@@ -110,10 +128,10 @@ a:hover
 
 hr
 {
-   border:              solid #dcdcdc 1px;
-   height:              1px;
-   margin-top:          5px;
-   margin-bottom:       25px;
+   border:              	solid #dcdcdc 1px;
+   height:              	1px;
+   margin-top:          	5px;
+   margin-bottom:       	25px;
 }
 
 img
@@ -127,7 +145,7 @@ h1
 	font-size:				1.2em;
 	font-weight:			bold;
 	margin:					0px 0px 20px 0px;
-	padding:				   0px;
+	padding:				0px;
 }
 
 h2
@@ -136,22 +154,23 @@ h2
 	font-size:				1.0em;
 	font-weight:			bold;
 	margin:					0px 0px 15px 0px;
-	padding:				   0px;
+	padding:				0px;
 }
 
-ul, li {
-   margin-left:         0px;
+ul, li
+{
+   margin-left:         	0px;
 }
 
 textarea, input
 {
-   background-color:    #ffffff;
-   border:              1px solid  #dcdcdc;  
-   font-family:         "Verdana", "Arial", "Sans-Serif";
-   font-size:           0.9em;   
+   background-color:    	#ffffff;
+   border:              	1px solid  #dcdcdc;  
+   font-family:         	"Verdana", "Arial", "Sans-Serif";
+   font-size:           	0.9em;   
 }
 
 .right
 {  
-   float:               right;
+   float:               	right;
 }

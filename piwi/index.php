@@ -110,6 +110,11 @@ $navigation = Site::getInstance()->getNavigationGenerator();
 $siteMap = Site::getInstance()->getCustomSiteMap(null, -1);
 $HTML_NAVIGATION = $navigation->generate($siteMap);			
 
+// Generate siteMapPath
+$siteMapPathNavigation = new SiteMapPathNavigation();
+$siteMap = Site::getInstance()->getCustomSiteMap($pageId, 0);
+$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMap);
+	
 // Show generated page
 include (TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
 ?>
