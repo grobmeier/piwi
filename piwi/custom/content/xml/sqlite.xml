@@ -11,7 +11,7 @@
 		<section>
 			<p>
 				This site retrieves its contents from both, a SQLite 2 and a SQLite 3 database.<br />
-				A Connector for MySQL databases is also available.
+				A Connector for MySQL and MSSQL databases is also available.
 			</p>
 		</section>
 		<separator />

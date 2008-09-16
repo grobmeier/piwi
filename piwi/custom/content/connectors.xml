@@ -13,4 +13,10 @@
 		<username>username</username>
 		<password>password</password>
 	</connector>
+	<connector id="msSQLConnector" class="MSSQLConnector">
+		<server>127.0.0.1</server>
+		<database>databasename</database>
+		<username>username</username>
+		<password>password</password>
+	</connector>
 </connectors>
