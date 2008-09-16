@@ -34,17 +34,23 @@ abstract class SiteGenerator implements Generator {
 	}
 	
 	/**
-	 * Generates the sections that will be placed as content.
-	 * @return string The xml output as string.
-	 */
-	abstract protected function generateSections();
-	
-	/**
 	 * Used to pass parameters to the Generator.
 	 * @param string $key The name of the parameter.
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value){    	
     }
+    
+	/**
+	 * ---------------------------------------------------------------------
+	 * >>>>>>>>>>>>>>>>>>>>>>>>>> Abstract Methods <<<<<<<<<<<<<<<<<<<<<<<<<
+	 * ---------------------------------------------------------------------
+	 */ 
+	 
+	/**
+	 * Generates the sections that will be placed as content.
+	 * @return string The xml output as string.
+	 */
+	abstract protected function generateSections();
 }
 ?>

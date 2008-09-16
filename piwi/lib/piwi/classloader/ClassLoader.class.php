@@ -33,18 +33,7 @@ class ClassLoader {
 			$this->cache = new ClassLoaderCache($pathToCacheFile);
 		}	
 	}
-	
-	/**
-	 * Closes the classloader. Closes all files, caches and whatever
-	 * necessary to make the classloader work.
-	 */
-	public function shutdown() {
-		// Write cache
-		if($this->cache != null) {
-			$this->cache->writeCache();
-		}
-	}
-	
+
 	/**
 	 * Trys to load a class from the given directory. 
 	 * All subdirectories are used for lookup. 

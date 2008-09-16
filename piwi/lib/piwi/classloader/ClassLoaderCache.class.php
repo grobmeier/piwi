@@ -24,6 +24,20 @@ class ClassLoaderCache {
 	}
 	
 	/**
+	 * Destructor.
+	 */
+	public function __destruct() {
+		echo $this->pathToCacheFile;
+		// Writes the cache if is has changed
+		if($this->changed) {
+			$fpread = fopen($this->pathToCacheFile, "w");
+			fwrite($fpread, $this->cachexml->asXML());
+			fclose($fpread);
+			$this->changed = false;
+		}
+	}
+	
+	/**
 	 * Adds a class to the cache.
 	 * Forces the cache to write, when the writeCache method is
 	 * called.
@@ -69,20 +83,6 @@ class ClassLoaderCache {
 		} else {
 			return $result[0]['path'];
 		}
-	}
-	
-	/**
-	 * Writes the cache if is has changed.
-	 */
-	public function writeCache() {
-		if(!$this->changed) {
-			return;
-		}
-		
-		$fpread = fopen($this->pathToCacheFile,"w");
-		fwrite($fpread,$this->cachexml->asXML());
-		fclose($fpread);
-		$this->changed = false;
 	}
 	
 	/**

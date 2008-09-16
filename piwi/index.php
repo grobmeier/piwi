@@ -60,7 +60,7 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if ($classloader == null) {
-		$classloader = new ClassLoader('cache/classloader.cache.xml');
+		$classloader = new ClassLoader(dirname(__FILE__) . '/cache/classloader.cache.xml');
 	}
 
 	$directorys = array (		
@@ -92,7 +92,7 @@ if (isset($_REQUEST['page'])) {
 	$pageId = $_REQUEST['page'];
 }
 
-$site = new Site(CONTENT_PATH, 'site.xml', $pageId);
+$site = new XMLSite($pageId, CONTENT_PATH, 'site.xml');
 	
 try {
 	// Generate page
@@ -104,20 +104,10 @@ try {
 	$site->setContent($exceptionPageGenerator->generate());
 	$CONTENT = $site->transform();
 }		
-			
+
 // Generate navigation
 $HTML_NAVIGATION = $site->generateNavigation();			
 
 // Show generated page
 include (TEMPLATES_PATH . '/' . $site->getTemplate());
-
-/**
- * -------------------------------------------------------------------------
- * >>>>>>>>>>>>>>>>>>>>>>>>>> ShutDown Classloader <<<<<<<<<<<<<<<<<<<<<<<<<
- * -------------------------------------------------------------------------
- */ 
-
-if ($classloader != null) {
-	$classloader->shutdown();
-}
 ?>
