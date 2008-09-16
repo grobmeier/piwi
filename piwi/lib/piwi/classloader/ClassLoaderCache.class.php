@@ -27,7 +27,6 @@ class ClassLoaderCache {
 	 * Destructor.
 	 */
 	public function __destruct() {
-		echo $this->pathToCacheFile;
 		// Writes the cache if is has changed
 		if($this->changed) {
 			$fpread = fopen($this->pathToCacheFile, "w");
