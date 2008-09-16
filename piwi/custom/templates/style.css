@@ -139,9 +139,8 @@ h2
    padding:             0px;
 }
 
-.right
-{  
-   float:               right;
+ul, li {
+   margin-left:         0px;
 }
 
 textarea, input
@@ -150,4 +149,9 @@ textarea, input
    border:              1px solid  #dcdcdc;  
    font-family:         "Verdana", "Arial", "Sans-Serif";
    font-size:           0.9em;   
+}
+
+.right
+{  
+   float:               right;
 }

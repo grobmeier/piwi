@@ -92,22 +92,24 @@ if (isset($_REQUEST['page'])) {
 	$pageId = $_REQUEST['page'];
 }
 
-$site = new XMLSite($pageId, CONTENT_PATH, 'site.xml');
-	
+Site::setInstance(new XMLSite($pageId, CONTENT_PATH, 'site.xml'));
+
 try {
 	// Generate page
-	$site->readContent();
-	$CONTENT = $site->transform();
+	Site::getInstance()->readContent();
+	$CONTENT = Site::getInstance()->transform();
 } catch( Exception $exception ) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
-	$site->setContent($exceptionPageGenerator->generate());
-	$CONTENT = $site->transform();
+	Site::getInstance()->setContent($exceptionPageGenerator->generate());
+	$CONTENT = Site::getInstance()->transform();
 }		
 
 // Generate navigation
-$HTML_NAVIGATION = $site->generateNavigation();			
+$navigation = Site::getInstance()->getNavigationGenerator();
+$siteMap = Site::getInstance()->getCustomSiteMap(null, -1);
+$HTML_NAVIGATION = $navigation->generate($siteMap);			
 
 // Show generated page
-include (TEMPLATES_PATH . '/' . $site->getTemplate());
+include (TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
 ?>

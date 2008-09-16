@@ -1,13 +1,19 @@
 <?xml version='1.0' standalone='yes'?>
 <generators>
-   <generator id="sqlite2" class="SQLiteContentGenerator">
-      <connector>sqlite2Connector</connector>
-   </generator>
+	<generator id="sqlite2" class="SQLiteContentGenerator">
+		<connector>sqlite2Connector</connector>
+	</generator>
 	<generator id="sqlite3" class="SQLiteContentGenerator">
 		<connector>sqlite3Connector</connector>
 	</generator>
 	<generator id="gallery" class="SimpleGalleryGenerator">
 		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
 		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
+	</generator>
+	<generator id="sitemap" class="SiteMapGenerator">
+		<header>Contents of this Website</header>
+		<pageId></pageId>
+		<depth>-1</depth>
+		<includeParent>1</includeParent>
 	</generator>
 </generators>

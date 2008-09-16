@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site>
+<site navigation="SimpleTextNavigation">
 	<page id="default" label="Home" href="xml/default.xml" />
 	<page id="sqlite" label="SQLite Database" href="xml/sqlite.xml" />
 	<page id="gallery" label="Gallery" href="xml/gallery.xml" />
+	<page id="sitemap" label="SiteMap" href="xml/sitemap.xml" />
 	<page id="other_template" label="Other Template" href="xml/other_template.xml" template="other.php" />
 </site>

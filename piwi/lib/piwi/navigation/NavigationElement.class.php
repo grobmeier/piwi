@@ -44,8 +44,6 @@ class NavigationElement {
 		return $this->label;
 	}
 	
-	
-	
 	/**
 	 * Returns the children of the NavigationElement.
 	 * @return array The children.
@@ -58,7 +56,7 @@ class NavigationElement {
 	 * @param array $children The children to add.
 	 */
 	public function setChildren($children) {
-		$this->children[sizof($this->children)] = $child;
+		$this->children = $children;
 	}
 	
 	/**
