@@ -30,9 +30,11 @@ final class SiteMapGenerator implements Generator {
 		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
 		$piwixml .= '<document>';
 		$piwixml .= '<section>';
-		$piwixml .= '<title>';
-		$piwixml .= $this->header;
-		$piwixml .= '</title>';
+		if ($this->header != "") {
+			$piwixml .= '<title>';
+			$piwixml .= $this->header;
+			$piwixml .= '</title>';
+		}
 		$piwixml .= $this->getSiteMapAsXml(Site::getInstance()->getCustomSiteMap($this->pageId, $this->depth, $this->includeParent));
 		$piwixml .= '</section>';
 		$piwixml .= '</document>';

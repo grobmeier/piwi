@@ -10,6 +10,7 @@
       <header>Other Template</header>
       <section>
          <p>This site uses an other template, which can be defined in the site.xml.</p>
+         <p>So it is possible to use several layouts for different pages of your website.</p>
       </section>
       <separator />
       <section>

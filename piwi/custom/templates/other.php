@@ -13,7 +13,8 @@
 	<div id="header">
 	</div>
 	<div id="menu">
-		<?=$HTML_NAVIGATION?></div>
+		<?=$HTML_NAVIGATION?>
+	</div>
 	<div id="content">
 		<div class="sitemappath">
 			<?=$SITE_MAP_PATH?>

@@ -34,5 +34,7 @@
 				installed.
 			</p>
 		</section>
+		<separator />
+		<generator id="featuresSiteMap" />
 	</content>
 </document>

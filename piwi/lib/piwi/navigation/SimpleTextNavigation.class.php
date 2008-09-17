@@ -15,18 +15,32 @@ class SimpleTextNavigation implements NavigationGenerator {
 	 * @return string The navigation as HTML.
 	 */
 	public function generate($navigationElements) {
-		$navigationHTML = "";
-		
-		foreach($navigationElements as $navigationElement) {
-			// If the page is selected set another css class to highlight the item
-			$cssClass = "";
-			if ($navigationElement->isSelected()) {
-				$cssClass = ' class="selected"';
-			}
-			$navigationHTML .= '<a href="' . $navigationElement-> getId() . '.html"' . $cssClass . '>' . $navigationElement->getLabel() . '</a>';
-		}
-		
-		return $navigationHTML;
+		return $this->getNavigation($navigationElements) . '<div style="clear: both"> </div>';
 	}
+	
+	/**
+     * Returns the recursivly built navigation.
+     * @param array $navigationElements The navigation which is an array of NavigationElements representing the website structure.
+     * @return string The recursivly built navigation.
+     */
+    private function getNavigation($navigationElements) {
+    	if ($navigationElements == null) {
+    		return '';
+    	} else {
+    		$result = '<ul>';
+    		
+    		foreach ($navigationElements as $element) {
+    			// If the page is selected set another css class to highlight the item
+				$cssClass = "";
+				if ($element->isOpen()) {
+					$cssClass = ' class="selected"';
+				}
+    			$result .= '<li' . $cssClass . '><a href="' . $element-> getId() . '.html">' . $element->getLabel() . '</a>' . $this->getNavigation($element->getChildren()) . '</li>';
+    		}
+    		
+    		$result .= '</ul>';
+    		return $result;
+    	}
+    }
 }
 ?>

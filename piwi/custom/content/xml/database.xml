@@ -7,11 +7,11 @@
 	</header>
 
 	<content position="article">
-		<header>SQLite Database</header>
+		<header>Database Access</header>
 		<section>
 			<p>
 				This site retrieves its contents from both, a SQLite 2 and a SQLite 3 database.<br />
-				A Connector for MySQL and MSSQL databases is also available.
+				Connectors for MySQL and MSSQL databases are also available.
 			</p>
 		</section>
 		<separator />

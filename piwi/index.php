@@ -107,7 +107,7 @@ try {
 
 // Generate navigation
 $navigation = Site::getInstance()->getNavigationGenerator();
-$siteMap = Site::getInstance()->getCustomSiteMap(null, -1);
+$siteMap = Site::getInstance()->getCustomSiteMap(null, 1);
 $HTML_NAVIGATION = $navigation->generate($siteMap);			
 
 // Generate siteMapPath

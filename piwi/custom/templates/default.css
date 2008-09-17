@@ -19,7 +19,7 @@
 {
    background-image:    url(images/piwi-logo.png);
    background-repeat:   no-repeat;
-   margin-bottom:       1px;  
+   margin-bottom:       10px;  
    text-align:          center;
    height:              150px;
 }
@@ -30,34 +30,85 @@
 {
    background-image:    url(images/menu.png);
    background-repeat:   no-repeat;
-   line-height:         1.8em;
-   margin-top:          10px;
-   padding:             7px 30px 0px 0px;
-   height:              32px;
-   text-align:          center;
+   line-height:         1.9em;
+   padding:             8px 0px 0px 0px;
+   height:              30px;
 }
 
-#menu a
+#menu ul li a
 {
-   color:               #ffffff;
-   font-weight:         bold;
-   text-decoration:     none; 
-   margin-left:         25px;
-   margin-right:        25px;
+   	color:               #ffffff;
+   	text-decoration:     none;
 }
 
-#menu a.selected /* Additional formating for selected menu item. */
+
+#menu ul li a:hover
 {
-   color:               #449c52;
+	color:               #449c52;   
+   	text-decoration:     none;
 }
 
-#menu a:hover
+#menu ul li.selected a
 {
-   color:               #449c52;
-   font-weight:         bold;
-   text-decoration:     none;
-   margin-left:         25px;
-   margin-right:        25px;
+   	color:               #449c52;
+}
+
+#menu ul li.selected ul li a
+{
+   	color:               #ffffff;
+}
+
+#menu ul li.selected ul li a:hover
+{
+   	color:               #449c52;
+}
+
+#menu ul
+{
+	background-color: 	#c5dc08;
+	margin: 			0px; 
+	padding: 			0px;
+}
+
+#menu ul li
+{ 
+	list-style: 		none;
+	float: 				left;
+	font-weight:        bold;
+	position: 			relative;
+	margin: 			0px 0px 0px 35px;
+    padding-right: 		40px;
+}
+
+#menu ul li ul 
+{
+    position: 			absolute;
+    top: 				1.9em;
+    left: 				-0.5em;
+    display: 			none;
+    border:				1px solid #dcdcdc;
+	line-height:		1.0em;
+    width: 				100%;
+}
+
+#menu ul li:hover ul
+{
+    display: block;
+}
+  
+#menu ul li ul li
+{
+	background-color: 	#b6cc0c;
+	margin: 			1px;
+    float:				none;
+    display: 			block;
+    padding: 			5px 15px 5px 15px;
+    font-weight:     	normal;
+}
+
+#menu ul li ul li.selected
+{
+	background-color: 	#a1b50d;
 }
 /* Menu End */
 
@@ -155,11 +206,6 @@ h2
    font-weight:         bold;
    margin:              0px 0px 15px 0px;
    padding:             0px;
-}
-
-ul, li
-{
-   margin-left:         0px;
 }
 
 textarea, input

@@ -2,18 +2,18 @@
 <!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">
 <document>
 	<header>
-		<keywords>PIWI - PHP Transformation Framework</keywords>
-		<title>PIWI - PHP Transformation Framework</title>
+		<keywords>PIWI Transformation Framework</keywords>
+		<title>PIWI Transformation Framework</title>
 	</header>
 
 	<content position="article">
-		<header>SiteMap</header>
+		<header>Piwi Features</header>
 		<section>
 			<p>
-				This site shows all pages of the website in its hierarchical order.
+				Here you get an overview of the main features of Piwi.
 			</p>
 		</section>
 		<separator />
-      <generator id="fullSiteMap" />
+		<generator id="featuresSiteMap" />
 	</content>
 </document>

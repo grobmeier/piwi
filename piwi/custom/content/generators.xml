@@ -10,10 +10,13 @@
 		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
 		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
 	</generator>
-	<generator id="sitemap" class="SiteMapGenerator">
-		<header>Contents of this Website</header>
-		<pageId></pageId>
+	<generator id="featuresSiteMap" class="SiteMapGenerator">
+		<header>Features</header>
+		<pageId>features</pageId>
 		<depth>-1</depth>
-		<includeParent>1</includeParent>
+		<includeParent>0</includeParent>
+	</generator>
+	<generator id="fullSiteMap" class="SiteMapGenerator">
+		<header>Contents of this Website</header>
 	</generator>
 </generators>
