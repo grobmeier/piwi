@@ -138,16 +138,16 @@ abstract class Site {
      * Returns the NavigationElement with the given in id or null if no item is found.
      * @param array $siteMap The array of NavigationElements to search in.
      * @param string $id The id of the NavigationElement.
+     * @param NavigationElement $foundElement The NavigationElement with the given in id or null if no item has been found yet.
      * @return NavigationElement The NavigationElement with the given in id or null if no item is found.
      */
-    private function getSiteMapItemsById($siteMap, $id) {
-    	$foundElement = null;
+    private function getSiteMapItemsById($siteMap, $id, NavigationElement $foundElement = null) {
         foreach($siteMap as $element) {
         	if ($element->getId() == $id) {
         		$foundElement = $element;
         		break;
         	} else if ($element->getChildren() != null) {
-        		$foundElement = $this->getSiteMapItemsById($element->getChildren(), $id);
+        		$foundElement = $this->getSiteMapItemsById($element->getChildren(), $id, $foundElement);
         	}
         }
         
