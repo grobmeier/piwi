@@ -12,28 +12,5 @@
          <p>This site uses an other template, which can be defined in the site.xml.</p>
          <p>So it is possible to use several layouts for different pages of your website.</p>
       </section>
-      <separator />
-      <section>
-         <title>Description</title>
-         <p>
-            PIWI is an XML/XSLT Transformation Framework written in
-            PHP. It's basic concepts and ideas have been stolen from
-            the great Java-Applications
-            <a href="http://cocoon.apache.org" rel="nofollow">
-               Apache Cocoon
-            </a>
-            and
-            <a href="http://forrest.apache.org" rel="nofollow">
-               Apache Forrest
-            </a>
-            . Cocoon is still great, but very complex and of course
-            in Java, which makes it not useful for people who want
-            the power for their small project, but not the pain.
-            <br />
-            <br />
-            PIWI runs on every standard PHP-Webhost with PHP &gt; 5
-            installed.
-         </p>
-      </section>
    </content> 
 </document>
