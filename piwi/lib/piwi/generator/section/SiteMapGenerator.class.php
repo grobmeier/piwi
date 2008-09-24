@@ -2,7 +2,7 @@
 /**
  * Generates a sitemap of the website.
  */
-final class SiteMapGenerator implements Generator {
+final class SiteMapGenerator implements SectionGenerator {
 	/** Shows only the NavigationElement with this id and its subitems. Set to 'null' if all NavigationElements should be shown. */
 	private $pageId = null;
 	

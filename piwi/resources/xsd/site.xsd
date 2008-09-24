@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://piwi.googlecode.com/xsd/site" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/site">
+<schema targetNamespace="http://piwi.googlecode.com/xsd/site"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/site">
 
 
-    <complexType name="page">
-    	<sequence>
-    		<element name="page" type="tns:page" maxOccurs="unbounded" minOccurs="0"></element>
-    	</sequence>
-    	<attribute name="id" type="string" use="required"></attribute>
-    	<attribute name="label" type="string" use="required"></attribute>
-    	<attribute name="href" type="string" use="required"></attribute>
-    	<attribute name="template" type="string" use="optional"></attribute>
-    </complexType>
+	<complexType name="page">
+		<sequence>
+			<element name="page" type="tns:page" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="label" type="string" use="required"></attribute>
+		<attribute name="href" type="string" use="required"></attribute>
+		<attribute name="template" type="string" use="optional"></attribute>
+	</complexType>
 
 
-    <element name="site" type="tns:site"></element>
+	<element name="site" type="tns:site"></element>
 
-    <complexType name="site">
-    	<sequence>
-    		<element name="page" type="tns:page" minOccurs="0"
-    			maxOccurs="unbounded">
-    		</element>
-    	</sequence>
-    	<attribute name="navigation" type="string" use="optional"></attribute>
-    </complexType>
+	<complexType name="site">
+		<sequence>
+			<element name="page" type="tns:page" minOccurs="0"
+				maxOccurs="unbounded">
+				<unique name="UniquePageId">
+					<selector xpath=".//tns:page" />
+					<field xpath="@id" />
+				</unique>
+			</element>
+
+
+		</sequence>
+		<attribute name="navigation" type="string" use="optional"></attribute>
+
+
+	</complexType>
 </schema>

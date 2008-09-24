@@ -75,8 +75,12 @@ abstract class Site {
     public function getNavigationGenerator() {
 		$navigationClass = $this->getCustomNavigationGenerator();
 		if ($navigationClass != null) {
-			$class = new ReflectionClass($navigationClass);
-			$navigationGenerator = $class->newInstance();
+			try {
+				$class = new ReflectionClass($navigationClass);
+				$navigationGenerator = $class->newInstance();
+			} catch( ReflectionException $exception ) {
+				$navigationGenerator = new SimpleTextNavigation();
+			}	
 		} else {
 			$navigationGenerator = new SimpleTextNavigation();
 		}

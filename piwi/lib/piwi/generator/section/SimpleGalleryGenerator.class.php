@@ -1,6 +1,6 @@
 <?php
 
-class SimpleGalleryGenerator implements Generator {
+class SimpleGalleryGenerator implements SectionGenerator {
 	
 	private $pathtomedia = "";
 	private $pathtoupload = ""; 

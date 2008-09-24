@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site navigation="SimpleTextNavigation" xmlns="http://piwi.googlecode.com/xsd/site" 
+<site navigation="SimpleTextNavigation2" xmlns="http://piwi.googlecode.com/xsd/site" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
 	<page id="default" label="Home" href="xml/default.xml" />
