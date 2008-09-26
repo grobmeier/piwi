@@ -92,29 +92,25 @@ if (isset($_REQUEST['page'])) {
 	$pageId = $_REQUEST['page'];
 }
 
-Site::setInstance(new XMLSite($pageId, CONTENT_PATH, 'site.xml'));
+// Determinate requested format
+$extension = "html";
+if (isset($_REQUEST['extension'])) {
+	$extension = $_REQUEST['extension'];
+}
+
+// Init site
+Site::setInstance(new XMLSite($pageId, CONTENT_PATH, 'site.xml'), TEMPLATES_PATH);
 
 try {
 	// Generate page
-	Site::getInstance()->readContent();
-	$CONTENT = Site::getInstance()->transform();
+	Site::getInstance()->generateContent();
 } catch( Exception $exception ) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	Site::getInstance()->setContent($exceptionPageGenerator->generate());
-	$CONTENT = Site::getInstance()->transform();
-}		
+}
 
-// Generate navigation
-$navigation = Site::getInstance()->getNavigationGenerator();
-$siteMap = Site::getInstance()->getCustomSiteMap(null, 1);
-$HTML_NAVIGATION = $navigation->generate($siteMap);			
-
-// Generate siteMapPath
-$siteMapPathNavigation = new SiteMapPathNavigation();
-$siteMap = Site::getInstance()->getCustomSiteMap($pageId, 0);
-$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMap);
-	
-// Show generated page
-include (TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
+// Call Serializer
+$serializer = Site::getInstance()->getSerializer($extension);
+$serializer->serialize(Site::getInstance()->getContent(), $pageId, dirname(__FILE__) . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
 ?>

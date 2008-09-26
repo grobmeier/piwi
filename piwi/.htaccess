@@ -1,4 +1,4 @@
 #AddType x-mapp-php5 .php
 
 RewriteEngine on
-RewriteRule (.*).html$ index.php?page=$1
+RewriteRule (.*)\.(html|htm|pdf)$ index.php?page=$1&extension=$2 [QSA]

@@ -27,8 +27,6 @@ final class SiteMapGenerator implements SectionGenerator {
 	 */
     public function generate() {
 		$piwixml = '<?xml version="1.0"?>';
-		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
-		$piwixml .= '<document>';
 		$piwixml .= '<section>';
 		if ($this->header != "") {
 			$piwixml .= '<title>';
@@ -37,7 +35,6 @@ final class SiteMapGenerator implements SectionGenerator {
 		}
 		$piwixml .= $this->getSiteMapAsXml(Site::getInstance()->getCustomSiteMap($this->pageId, $this->depth, $this->includeParent));
 		$piwixml .= '</section>';
-		$piwixml .= '</document>';
 		
 		return $piwixml;
 	}

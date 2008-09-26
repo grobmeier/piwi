@@ -2,11 +2,9 @@
 <schema targetNamespace="http://piwi.googlecode.com/xsd/site"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://piwi.googlecode.com/xsd/site">
-
-
-	<complexType name="page">
+	<complexType name="pageType">
 		<sequence>
-			<element name="page" type="tns:page" maxOccurs="unbounded"
+			<element name="page" type="tns:pageType" maxOccurs="unbounded"
 				minOccurs="0">
 			</element>
 		</sequence>
@@ -15,24 +13,17 @@
 		<attribute name="href" type="string" use="required"></attribute>
 		<attribute name="template" type="string" use="optional"></attribute>
 	</complexType>
-
-
-	<element name="site" type="tns:site"></element>
-
-	<complexType name="site">
+	<element name="site" type="tns:siteType">
+		<unique name="UniquePageId">
+			<selector xpath=".//tns:page" />
+			<field xpath="@id" />
+		</unique>
+	</element>
+	<complexType name="siteType">
 		<sequence>
-			<element name="page" type="tns:page" minOccurs="0"
-				maxOccurs="unbounded">
-				<unique name="UniquePageId">
-					<selector xpath=".//tns:page" />
-					<field xpath="@id" />
-				</unique>
+			<element name="page" type="tns:pageType" minOccurs="0" maxOccurs="unbounded">
 			</element>
-
-
 		</sequence>
 		<attribute name="navigation" type="string" use="optional"></attribute>
-
-
 	</complexType>
 </schema>

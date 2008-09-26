@@ -21,8 +21,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 		ksort($new);
 
 		$piwixml = '<?xml version="1.0"?>';
-		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
-		$piwixml .= '<document>';
+		$piwixml .= '<div>';
 
 		foreach($new as $album) {
 			$folder = $album->getName();
@@ -98,7 +97,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			$piwixml .= '</table>';
 			$piwixml .= '</section>';
 		}
-		$piwixml .= '</document>';
+		$piwixml .= '</div>';
 		
 		return $piwixml;
 	}

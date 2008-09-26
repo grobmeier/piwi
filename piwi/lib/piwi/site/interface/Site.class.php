@@ -11,9 +11,6 @@ abstract class Site {
 	
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
-	
-	/** The serializer used for transformation. */
-	private $serializer = null;
 
 	/** The template of the requested page. */
 	private $template = "default.php";
@@ -25,9 +22,9 @@ abstract class Site {
 	private $siteMap = null;
 	
     /**
-     * Reads the xml of the requested page.
+     * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */
-    public function readContent() {
+    public function generateContent() {
     	if ($this->pageId == null) {
 			throw new PiwiException(
 				"The requested page has not been specified.", 
@@ -50,22 +47,26 @@ abstract class Site {
         if ($template != null) {
         	$this->template = $template;
         }
+        
+        // Load xslt file
+		$xsl = new DOMDocument;
+		$xsl->load("resources/xslt/GeneratorTransformation.xsl");
+		
+		// Configure the transformer
+		$processor = new XSLTProcessor;
+		$processor->registerPHPFunctions();
+		$processor->importStyleSheet($xsl);
+		
+		// Transform the Generators
+		$this->content = $processor->transformToDoc($this->content);
     }    
             
    	/** 
-   	 * Transforms the page using the specified serializer.
-   	 * @return string The serialized content.
+   	 * Returns the Serializer for the given extension.
+   	 * @return Serializer The Serializer for the given extension.
    	 */
-    public function transform() {
-    	if ($this->content == null) {
-    		throw new PiwiException(
-				"The page has not been loaded yet. Invoke method 'readContent' or 'setContent' on '" . __CLASS__ . "' first.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
-    	}
-    	if ($this->serializer == null) {
-    		$this->serializer = new HTMLSerializer();    	
-    	}
-    	return $this->serializer->serialize($this->content);
+    public function getSerializer($extension) {   	
+    	return new HTMLSerializer();
     }
 
 	/**
@@ -183,6 +184,20 @@ abstract class Site {
     public function getTemplate() {
     	return $this->template;
     }
+
+	/**
+	 * Returns the content of the requested page as DOMDocument.
+	 * @return DOMDocument The content of the requested page as DOMDocument.
+	 */
+    public function getContent() {
+    	if ($this->content == null) {
+    		throw new PiwiException(
+				"The page has not been loaded yet. Invoke method 'generateContent' or 'setContent' on '" . __CLASS__ . "' first.", 
+				PiwiException :: ERR_ILLEGAL_STATE);
+    	}
+    	
+    	return $this->content;
+    }  
 
     /**
      * Sets the content of the page.

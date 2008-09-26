@@ -1,22 +1,23 @@
 <?php
 /**
- * Interface that serializers have to implement.
+ * Serializes the given XML to HTML.
  */
 class HTMLSerializer implements Serializer {
 	/**
 	 * Transform the given xml to the output format.
 	 * @param DOMDocument $domDocument The content as DOMDocument.
-	 * @return string The transformed content.
+	 * @param string $pageId The id of the requested page.
+	 * @param string $templatePath The path to the template which should be used.
 	 */
-	public function serialize(DOMDocument $domDocument) {
+	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
 		// Load xslt file
 		$xsl = new DOMDocument;
-		$xsl->load("resources/xslt/document-v1.0.xsl");
+		$xsl->load("resources/xslt/HTMLTransformation-v1.0.xsl");
 		
 		// Configure the transformer
-		$proc = new XSLTProcessor;
-		$proc->registerPHPFunctions();
-		$proc->importStyleSheet($xsl); // attach the xsl rules
+		$processor = new XSLTProcessor;
+		$processor->registerPHPFunctions();
+		$processor->importStyleSheet($xsl);
 
 		$elements = $domDocument->getElementsByTagName('content');
 
@@ -25,9 +26,22 @@ class HTMLSerializer implements Serializer {
 
 			$template = new DOMDocument();
 			$template->loadXML($simplexml->asXML());
-			$result[$elements->item($i)->getAttribute("position")] = $proc->transformToXML($template);
+
+			$CONTENT[$elements->item($i)->getAttribute("position")] = $processor->transformToXML($template);
 		}
-		return $result;
+		
+		// Generate navigation
+		$navigationGenerator = Site::getInstance()->getNavigationGenerator();
+		$siteMap = Site::getInstance()->getCustomSiteMap(null, 1);
+		$HTML_NAVIGATION = $navigationGenerator->generate($siteMap);			
+		
+		// Generate siteMapPath
+		$siteMapPathNavigation = new SiteMapPathNavigation();
+		$siteMap = Site::getInstance()->getCustomSiteMap($pageId, 0);
+		$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMap);
+			
+		// Show generated page
+		include ($templatePath);
 	}
 }
 ?>
