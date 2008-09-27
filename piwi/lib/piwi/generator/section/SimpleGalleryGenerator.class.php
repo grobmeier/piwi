@@ -39,7 +39,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			$piwixml .= "</title>";
 			
 			if(isset($_GET['album'])) {
-				$piwixml .= '<p><a href="./index.php?page=gallery">Get me back to galleries!</a></p>';
+				$piwixml .= '<p><a href="./gallery.html">Get me back to galleries!</a></p>';
 			}
 			
 			$piwixml .= "<table>";
@@ -85,13 +85,13 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			if($moreMessage != 0) {
 				$t = $cols+1;
 			$piwixml .= '<tr><td colspan="'.$t.'">
-							<a href="./index.php?page=gallery&amp;album='.urlencode($folder).'">More in '.$folder.'</a>
+							<a href="./gallery.html?album='.urlencode($folder).'">More in '.$folder.'</a>
 							</td>
 						</tr>';
 			}
 			
 			if(isset($_GET['album'])) {
-				$piwixml .= '<tr><td colspan="'.$t.'"><br/><a href="./index.php?page=gallery">Get me back to galleries!</a></td></tr>';
+				$piwixml .= '<tr><td colspan="'.$t.'"><br/><a href="./gallery.html">Get me back to galleries!</a></td></tr>';
 			}
 
 			$piwixml .= '</table>';
