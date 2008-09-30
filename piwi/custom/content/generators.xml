@@ -7,7 +7,7 @@
 		<connector>sqlite3Connector</connector>
 	</generator>
 	<generator id="gallery" class="SimpleGalleryGenerator">
-		<pathtomedia>custom/content/files/gallery/media</pathtomedia>
+		<pathtoalbums>custom/content/files/gallery/media</pathtoalbums>
 		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
 	</generator>
 	<generator id="featuresSiteMap" class="SiteMapGenerator">

@@ -1,67 +1,60 @@
 <?
+/**
+ * Used to handle Albums and to upload images.
+ */
 class MediaCenter {
-	private $pathToImages;
-	private $pathToUpload;
+	/** The folder whose subfolders contain the albums. */
+	private $pathToAlbums = null;
 	
-	public function __construct($pathToImages, $pathToUpload) {
-		$this->pathToImages = $pathToImages;
+	/** The folder where uploaded files will be placed. */
+	private $pathToUpload = null; 
+	
+	/** Constructor.
+	 * @param string $pathToAlbums The folder whose subfolders contain the albums.
+	 * @param string $pathToUpload The folder where uploaded files will be placed.
+	 */
+	public function __construct($pathToAlbums, $pathToUpload) {
+		$this->pathToAlbums = $pathToAlbums;
 		$this->pathToUpload = $pathToUpload;
 	}
 	
-	public function getFolders() {
-		$result = array();
-		$verz = opendir($this->pathToImages);
-		$i = 0;
-		while($folder = readdir($verz)) {  
-			if(	!is_file($folder) &&
-				substr($folder, 0, 1) != ".") {
-				$folder = new Folder($this->pathToImages, $folder);	
-				$result[$i] = $folder;
-				$i++;
-			}
-		}
-		closedir($verz);
-		return $result;
-	}
-	
-	public function keyExists($arr, $intKey) {
-		if(array_key_exists($intKey, $arr)) {
- 			$intKey = $intKey+1;
- 			return $this->keyExists($arr, $intKey);
-		} else {
-			return $intKey;
-		}
-	}
-	
-	public function view($albumName = "") {
-		$verz = opendir($this->pathToImages);
-		$result = array();
-		$i = 0;
-		while($folder = readdir($verz)) {  
-			$info = @getimagesize($folder);  
+	/**
+	 * Returns the albums sorted by date.
+	 * @param string $albumName If only one specific album should be displayed specify its name, otherwise all albums will be returned.
+	 * @return array The albums sorted by date as an array of Albums.
+	 */
+	public function getAlbums($albumName = null) {
+		$albumFolder = opendir($this->pathToAlbums);
+		$albums = array();
+		while($folder = readdir($albumFolder)) {  
 			if(	$folder != "." && 
 				$folder != ".." && 
 				!is_dir($folder) &&
 				substr($folder, 0, 1) != ".") {
-					// if one wants a specific album
-					if($albumName != "" && $albumName != $folder) {
-						// ignore this album
-					} else {
+					// if one wants a specific album ignore all other albums
+					if ($albumName == null || $albumName == $folder) {
 						$album = new Album($folder);
-						$album->setCreatedAt(filectime($this->pathToImages."/".$folder));
-						$result[$i] = $this->showImages($this->pathToImages, $folder, $album);
-						$i++;
+						$album->setCreatedAt(filectime($this->pathToAlbums . "/" . $folder));
+						$albums[$album->getCreatedAt()] = $this->addImagesToAlbum($album, $this->pathToAlbums . "/" . $folder . "/thumbs/");
 					}
 			}
 		}
-		closedir($verz);
-		return $result;
+		closedir($albumFolder);
+		
+		// Sort albums by date
+		krsort($albums);		
+		
+		return $albums;
 	}
 	
-	public function showImages($path, $folder, $album) {
-		$verz = opendir($path."/".$folder."/thumbs/");
-		while($file = readdir($verz)) {  
-			$info = @getimagesize($file);  
+	/**
+	 * Retrieves all images of the given folder and adds them to the album.
+	 * @param Album $album The album to which the images should be added.
+	 * @param string $folder The folder whose images should be added to the album.
+	 */
+	private function addImagesToAlbum($album, $folder) {		
+		$imageFolder = opendir($folder);
+		while ($file = readdir($imageFolder)) {  
 			if(	$file != "." && 
 				$file != ".." && 
 				!is_dir($file) &&
@@ -69,25 +62,8 @@ class MediaCenter {
 					$album->addImage($file);
 				}
 		}
-		closedir($verz);
+		closedir($imageFolder);
 		return $album;
 	}
-	
-	public function upload() {
-		$newfile = $this->pathToUpload . "/" . $_FILES['imgfile']['name'];
-		
-		if (is_uploaded_file($_FILES['imgfile']['tmp_name'])) {
-		   if (!move_uploaded_file($_FILES['imgfile']['tmp_name'], $newfile)) {
-		      print "Error Uploading File.";
-		      exit();
-		   }
-		} else {
-			echo "File not uploaded- did not come via post.";
-		}
-		chmod($newfile, 0777); 
-		
-		$image = new Image($this->pathToUpload."/", $_FILES['imgfile']['name']);
-		return $image;
-	}	
 }
 ?>

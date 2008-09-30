@@ -1,29 +1,38 @@
 <?php
-
+/**
+ * Generates a picture gallery.
+ * The pictures from the each subfolder of a given folder will be presented as a gallery.
+ */
 class SimpleGalleryGenerator implements SectionGenerator {
+	/** The folder whose subfolders contain the albums. */
+	private $pathToAlbums = null;
 	
-	private $pathtomedia = "";
-	private $pathtoupload = ""; 
-    	
+	/** The folder where uploaded files will be placed. */
+	private $pathToUpload = null; 
+    
+    /**
+     * Constructor.
+     */
     public function __construct() {
     }
    
+	/**
+	 * Generates the sections that will be placed as content.
+	 * @return string The xml output as string.
+	 */
     public function generate() {
-
-		$plugin = new MediaCenter($this->pathtomedia, $this->pathtoupload);
-		$albums = $plugin->view($_GET['album']);
-
-		$result = $albums;
-		$new = array();
-		foreach($result as $r) {
-			$new[$r->getCreatedAt()] = $r;
+		// Retrieve the all albums or one specific album if attribute is set
+		$mediaCenter = new MediaCenter($this->pathToAlbums, $this->pathToUpload);
+		if (isset($_REQUEST['album'])) {
+			$albums = $mediaCenter->getAlbums($_GET['album']);
+		} else {
+			$albums = $mediaCenter->getAlbums();
 		}
-		ksort($new);
 
-		$piwixml = '<?xml version="1.0"?>';
-		$piwixml .= '<div>';
+		// Generate the xml output
+		$piwixml = '<div>';
 
-		foreach($new as $album) {
+		foreach($albums as $album) {
 			$folder = $album->getName();
 			$images = $album->getImages();
 	
@@ -49,8 +58,8 @@ class SimpleGalleryGenerator implements SectionGenerator {
 				}
 				
 				$piwixml .= '<td>
-								<a href="'.$this->pathtomedia.'/'.$folder.'/originals/'.$file.'">
-								<img src="'.$this->pathtomedia.'/'.$folder.'/thumbs/'.$file.'" />
+								<a href="'.$this->pathToAlbums.'/'.$folder.'/originals/'.$file.'">
+								<img src="'.$this->pathToAlbums.'/'.$folder.'/thumbs/'.$file.'" />
 								</a>
 							</td>';
 					
@@ -107,10 +116,10 @@ class SimpleGalleryGenerator implements SectionGenerator {
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "pathtomedia") {
-    		$this->pathtomedia = $value;
+    	if($key == "pathtoalbums") {
+    		$this->pathToAlbums = $value;
     	} else if($key == "pathtoupload") {
-    		$this->pathtoupload = $value;
+    		$this->pathToUpload = $value;
     	}
     }
 }

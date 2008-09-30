@@ -26,8 +26,7 @@ final class SiteMapGenerator implements SectionGenerator {
 	 * @return string The xml output as string.
 	 */
     public function generate() {
-		$piwixml = '<?xml version="1.0"?>';
-		$piwixml .= '<section>';
+		$piwixml = '<section>';
 		if ($this->header != "") {
 			$piwixml .= '<title>';
 			$piwixml .= $this->header;

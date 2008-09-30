@@ -37,13 +37,12 @@ class File {
 
 	/**
 	 * Deletes the file.
-	 * @return integer 0 if file has been deleted otherwise -1
+	 * @return boolean True if file has been deleted successfully otherwise false.
 	 */
 	public function delete() {
-		$path = $this->path."/".$this->name;
+		$path = $this->path . "/" . $this->name;
 		if (is_file ($path) || is_link ($path)) {
-			$result = unlink($path);			if ($result) {	            return 0;
-			}
+			return unlink($path);
 	    }
-	    return -1;	}	
+	    return false;	}	
 }
