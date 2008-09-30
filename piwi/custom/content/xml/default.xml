@@ -1,11 +1,5 @@
 <?xml version='1.0' encoding="utf-8" standalone='yes'?>
-<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">
 <document>
-	<header>
-		<keywords>PIWI - PHP Transformation Framework</keywords>
-		<title>PIWI - PHP Transformation Framework</title>
-	</header>
-
 	<content position="article">
 		<header>Welcome</header>
 		<section>
