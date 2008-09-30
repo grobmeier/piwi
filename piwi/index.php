@@ -26,6 +26,7 @@
  
 // Error reporting
 error_reporting(0); // hidde all errors
+//error_reporting(E_ERROR); // show only errors
 //error_reporting(E_ALL); // show all errors
 
 /** Name of the folder where your content is placed. */
@@ -42,6 +43,9 @@ DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Class Loading <<<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
  */ 
+ 
+/** The root path of Piwi */
+DEFINE('PIWI_ROOT', dirname(__FILE__));
  
 /** ClassLoader which makes other includes dispensable. */
 require ("lib/piwi/classloader/ClassLoader.class.php");
@@ -60,7 +64,7 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if ($classloader == null) {
-		$classloader = new ClassLoader(dirname(__FILE__) . '/cache/classloader.cache.xml');
+		$classloader = new ClassLoader(PIWI_ROOT . '/cache/classloader.cache.xml');
 	}
 
 	$directorys = array (		
@@ -86,20 +90,8 @@ function __autoload($class) {
 GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
 
-// Determinate the requested page
-$pageId = "default";
-if (isset($_REQUEST['page'])) {
-	$pageId = $_REQUEST['page'];
-}
-
-// Determinate requested format
-$extension = "html";
-if (isset($_REQUEST['extension'])) {
-	$extension = $_REQUEST['extension'];
-}
-
 // Init site
-Site::setInstance(new XMLSite($pageId, CONTENT_PATH, 'site.xml'), TEMPLATES_PATH);
+Site::setInstance(new XMLSite(CONTENT_PATH, 'site.xml'));
 
 try {
 	// Generate page
@@ -111,6 +103,6 @@ try {
 }
 
 // Call Serializer
-$serializer = Site::getInstance()->getSerializer($extension);
-$serializer->serialize(Site::getInstance()->getContent(), $pageId, dirname(__FILE__) . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
+$serializer = Site::getInstance()->getSerializer();
+$serializer->serialize(Site::getInstance()->getContent(), Site::getPageId(), PIWI_ROOT . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
 ?>

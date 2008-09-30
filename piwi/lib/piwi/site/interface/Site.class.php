@@ -6,9 +6,6 @@ abstract class Site {
 	/**Singleton instance of the Site. */
 	private static $siteInstance = null;
 	
-	/** The id of the requested page. */
-	protected $pageId = null;
-	
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
 
@@ -25,12 +22,6 @@ abstract class Site {
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */
     public function generateContent() {
-    	if ($this->pageId == null) {
-			throw new PiwiException(
-				"The requested page has not been specified.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
-    	}
-    	
     	$filePath = $this->contentPath . '/' . $this->getFilePath();
 
     	if (!file_exists($filePath)) {
@@ -63,10 +54,15 @@ abstract class Site {
             
    	/** 
    	 * Returns the Serializer for the given extension.
-   	 * @return Serializer The Serializer for the given extension.
    	 */
-    public function getSerializer($extension) {   	
-    	return new HTMLSerializer();
+    public function getSerializer() {
+    	$extension = Site::getExtension();
+    	
+    	if ($extension == "xml") {
+    		return new PiwiXMLSerializer();
+    	} else {
+    		return new HTMLSerializer();
+    	}    	
     }
 
 	/**
@@ -223,6 +219,30 @@ abstract class Site {
 	public static function setInstance(Site $site) {
 		Site::$siteInstance = $site;
 	}
+	
+	/** 
+	 * Returns the id of the requested page.
+	 * @return string The id of the requested page.
+	 */
+	public static function getPageId() {
+		if (isset($_REQUEST['page'])) {
+			return $_REQUEST['page'];
+		} else {
+			return "default";
+		}
+	}	
+	
+	/** 
+	 * Returns the extension/format of the requested page (e.g. 'html', 'xml' or 'pdf').
+	 * @return string The extension/format of the requested page.
+	 */
+	public static function getExtension() {
+		if (isset($_REQUEST['extension'])) {
+			return $_REQUEST['extension'];
+		} else {
+			return "html";
+		}
+	}	
 	
 	/**
 	 * ---------------------------------------------------------------------
