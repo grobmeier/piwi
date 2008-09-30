@@ -46,18 +46,18 @@ class Folder {
 	
 	/**
 	 * Deletes the folder recursivly.
-	 * @return integer 0 if folder has been deleted or -1 if folder does not exist.
+	 * @return boolean True if folder has been deleted otherwise false.
 	 */
 	public function delete() {
-		$path = $this->path."/".$this->name;
+		$path = $this->path . "/" . $this->name;
 	    if (!is_dir($path)) {
-   	        return -1;	    }
+   	        return false;	    }
 	    $dir = opendir ($path);	    	    while ($entry = readdir($dir)) {
 	        if ($entry == '.' || $entry == '..') {
 	        	continue;
-	        }	        if (is_dir ($path.'/'.$entry)) {	            // Recurse
+	        }	        if (is_dir ($path . '/'. $entry)) {	            // Recurse
 	            $tempFolder = new Folder($path, $entry);
-	            $tempFolder->delete();	        } else if (is_file ($path.'/'.$entry) || is_link ($path.'/'.$entry)) {	            $result = unlink ($path.'/'.$entry);	            if (!$result) {	                closedir ($dir);	                return -1;	            }	        } else {	            closedir ($dir); 	            return -1;
+	            $tempFolder->delete();	        } else if (is_file ($path . '/' . $entry) || is_link ($path . '/' . $entry)) {	            $result = unlink ($path . '/' . $entry);	            if (!$result) {	                closedir ($dir);	                return false;	            }	        } else {	            closedir ($dir); 	            return false;
 	        }	    }	    	    closedir ($dir);	    $res = rmdir ($path);
-	    return 0;	}
+	    return true;	}
 }
