@@ -69,9 +69,10 @@ class ConnectorFactory {
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
 			$this->xml = simplexml_load_file($this->connectorsXMLPath);
+			$this->xml->registerXPathNamespace('connectors', 'http://piwi.googlecode.com/xsd/connectors');
 		}
 
-		$result = $this->xml->xpath("//connector[@id='" . $connectorId . "']");
+		$result = $this->xml->xpath("//connectors:connector[@id='" . $connectorId . "']");
 		if ($result != null) {
 			$class = new ReflectionClass((string)$result[0]->attributes()->class);
 			$connector = $class->newInstance();

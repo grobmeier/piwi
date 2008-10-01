@@ -10,14 +10,10 @@ class HTMLSerializer implements Serializer {
 	 * @param string $templatePath The path to the template which should be used.
 	 */
 	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
-		// Load xslt file
-		$xsl = new DOMDocument;
-		$xsl->load("resources/xslt/HTMLTransformation-v1.0.xsl");
-		
 		// Configure the transformer
 		$processor = new XSLTProcessor;
 		$processor->registerPHPFunctions();
-		$processor->importStyleSheet($xsl);
+		$processor->importStyleSheet(DOMDocument::load("resources/xslt/HTMLTransformation-v1.0.xsl"));
 
 		$elements = $domDocument->getElementsByTagName('content');
 

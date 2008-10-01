@@ -1,6 +1,6 @@
 <?
 /**
- * Used to handle Albums and to upload images.
+ * Used to handle Albums.
  */
 class MediaCenter {
 	/** The folder whose subfolders contain the albums. */

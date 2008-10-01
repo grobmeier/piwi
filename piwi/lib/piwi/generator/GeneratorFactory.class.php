@@ -62,9 +62,10 @@ class GeneratorFactory {
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
 			$this->xml = simplexml_load_file($this->generatorsXMLPath);
+			$this->xml->registerXPathNamespace('generators', 'http://piwi.googlecode.com/xsd/generators');
 		}
 
-		$result = $this->xml->xpath("//generator[@id='" . $generatorId . "']");
+		$result = $this->xml->xpath("//generators:generator[@id='" . $generatorId . "']");
 		if ($result != null) {
 			$class = new ReflectionClass((string)$result[0]->attributes()->class);
 			$generator = $class->newInstance();

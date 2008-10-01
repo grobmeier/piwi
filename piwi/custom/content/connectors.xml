@@ -1,5 +1,7 @@
-<?xml version='1.0' standalone='yes'?>
-<connectors>
+<?xml version="1.0" encoding="UTF-8"?>
+<connectors xmlns="http://piwi.googlecode.com/xsd/connectors" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/connectors ../../resources/xsd/connectors.xsd">
 	<connector id="sqlite2Connector" class="SQLite2Connector">
 		<file>custom/content/db/sqlite2_sample.sqlite2</file>
 		<mode>0666</mode>

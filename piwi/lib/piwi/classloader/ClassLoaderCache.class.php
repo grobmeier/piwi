@@ -76,7 +76,7 @@ class ClassLoaderCache {
 		if($this->cachexml == null) {
 			$this->loadCache();
 		}	
-		$result = $this->cachexml->xpath("//class[@id='".$classId."']");
+		$result = $this->cachexml->xpath("//cache:class[@id='".$classId."']");
 		if(empty($result)) {
 			return null;
 		} else {
@@ -89,14 +89,17 @@ class ClassLoaderCache {
 	 */
 	private function loadCache() {
 		if (!file_exists($this->pathToCacheFile)) {
-			$cachefile = "<?xml version='1.0' standalone='yes'?>\n";
-			$cachefile .= "<!DOCTYPE classloadercache SYSTEM \"dtd/classloadercache.dtd\">\n";
-			$cachefile .= "<classloadercache />\n";
+			$cachefile = '<?xml version="1.0" encoding="UTF-8"?>';
+			$cachefile .= '<classloadercache xmlns="http://piwi.googlecode.com/xsd/cache" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/cache ../resources/xsd/cache.xsd" />';
 			$fpread = fopen($this->pathToCacheFile,"a+");
 			fwrite($fpread,$cachefile);
 			fclose($fpread);
 		} 
     	$this->cachexml = simplexml_load_file($this->pathToCacheFile);
+    	$this->cachexml->registerXPathNamespace('cache', 'http://piwi.googlecode.com/xsd/cache');
+    	
 	}
 }
 ?>

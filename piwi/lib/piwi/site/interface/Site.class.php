@@ -38,15 +38,11 @@ abstract class Site {
         if ($template != null) {
         	$this->template = $template;
         }
-        
-        // Load xslt file
-		$xsl = new DOMDocument;
-		$xsl->load("resources/xslt/GeneratorTransformation.xsl");
-		
+
 		// Configure the transformer
 		$processor = new XSLTProcessor;
 		$processor->registerPHPFunctions();
-		$processor->importStyleSheet($xsl);
+		$processor->importStyleSheet(DOMDocument::load("resources/xslt/GeneratorTransformation.xsl"));
 		
 		// Transform the Generators
 		$this->content = $processor->transformToDoc($this->content);
@@ -76,6 +72,9 @@ abstract class Site {
 				$class = new ReflectionClass($navigationClass);
 				$navigationGenerator = $class->newInstance();
 			} catch( ReflectionException $exception ) {
+				if (error_reporting() > E_ERROR) {
+					echo("Custom Navigation Generator not found: " . $navigationClass);
+				}
 				$navigationGenerator = new SimpleTextNavigation();
 			}	
 		} else {

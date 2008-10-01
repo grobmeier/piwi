@@ -39,9 +39,7 @@ class SQLiteContentGenerator implements Generator {
 		$dbresult = $this->connection->execute($sql);
 		
 		// generate xml
-		$piwixml = '<?xml version="1.0"?>';
-		$piwixml .= '<!DOCTYPE document PUBLIC "-//PIWI//DTD Documentation V1.0//EN" "dtd/document-v10.dtd">';
-		$piwixml .= '<document>';
+		$piwixml = '<div>';
 		if ($dbresult != null) {
 			foreach($dbresult as $row) {
 				$piwixml .= '<section>';
@@ -54,7 +52,7 @@ class SQLiteContentGenerator implements Generator {
 				$piwixml .= '</section>';
 			}
 		}
-		$piwixml .= '</document>';
+		$piwixml .= '</div>';
 		
 		return $piwixml;
 	}

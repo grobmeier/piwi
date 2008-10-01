@@ -1,5 +1,7 @@
-<?xml version='1.0' standalone='yes'?>
-<generators>
+<?xml version="1.0" encoding="UTF-8"?>
+<generators xmlns="http://piwi.googlecode.com/xsd/generators" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xsd/generators.xsd">
 	<generator id="sqlite2" class="SQLiteContentGenerator">
 		<connector>sqlite2Connector</connector>
 	</generator>
