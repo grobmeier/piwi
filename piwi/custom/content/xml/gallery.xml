@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>Gallery</header>
+		<section>
+			<p>
+				This site uses a generator for the picture
+				gallery.
+			</p>
+		</section>
+		<separator />
+		<section>
+			<title>About this gallery</title>
+			<p>
+				All images here are taken from FreeFoto.com and licensed
+				under the Creative Commons license:
+				<a
+					href="http://creativecommons.org/licenses/by-nc-nd/3.0">
+					http://creativecommons.org/licenses/by-nc-nd/3.0
+				</a>
+			</p>
+		</section>
+		<generator id="gallery" />
+	</content>
+</document>

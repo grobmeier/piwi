@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/generators"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/generators">
+	<complexType name="generatorType">
+        <sequence>
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"></any>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="class" type="string" use="required"></attribute>
+	</complexType>
+	<element name="generators" type="tns:generatorTypesType">
+		<unique name="UniqueGeneratorId">
+			<selector xpath=".//tns:generator" />
+			<field xpath="@id" />
+		</unique>
+	</element>
+	<complexType name="generatorTypesType">
+		<sequence>
+			<element name="generator" type="tns:generatorType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>		
+	</complexType>
+</schema>
