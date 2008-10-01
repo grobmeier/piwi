@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://piwi.googlecode.com/xsd/content"
+<schema targetNamespace="http://piwi.googlecode.com/xsd/piwixml"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://piwi.googlecode.com/xsd/content">
+	xmlns:tns="http://piwi.googlecode.com/xsd/piwixml">
 	<complexType name="contentType">
         <sequence>
 			<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"></any>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
 		<header>Piwi Features</header>
 		<section>
