@@ -5,10 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 	<content position="article">
 		<header>SiteMap</header>
 		<section>
-			<p>
-				This site shows all pages of the website in its hierarchical
-				order.
-			</p>
+			This site shows all pages of the website in its hierarchical order.
 		</section>
 		<separator />
 		<generator id="fullSiteMap" />

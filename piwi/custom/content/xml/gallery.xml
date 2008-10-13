@@ -5,10 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 	<content position="article">
 		<header>Gallery</header>
 		<section>
-			<p>
-				This site uses a generator for the picture
-				gallery.
-			</p>
+			This site uses a generator for the picture gallery.
 		</section>
 		<separator />
 		<generator id="gallery" />

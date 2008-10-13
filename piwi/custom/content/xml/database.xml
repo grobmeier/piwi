@@ -5,12 +5,10 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 	<content position="article">
 		<header>Database Access</header>
 		<section>
-			<p>
-				This site retrieves its contents from both, a SQLite 2 and a SQLite
-				3 database.
-				<br />
-				Connectors for MySQL and MSSQL databases are also available.
-			</p>
+			This site retrieves its contents from both, a SQLite 2 and a SQLite
+			3 database.
+			<br />
+			Connectors for MySQL and MSSQL databases are also available.
 		</section>
 		<separator />
 		<generator id="sqlite2" />

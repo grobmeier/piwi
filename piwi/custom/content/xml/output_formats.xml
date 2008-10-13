@@ -5,26 +5,26 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 	<content position="article">
 		<header>Multiple Formats</header>
 		<section>
-			<p>
-				PiwiXML can be serialized to several different formats. Currently
-				HTML and XML are supported.
-				<br />
-				PDF support is planned for one of the next releases.
-				<br />
-				<br />
-				You can view this page in the different formats simply by changing
-				the extension to the desired one:
-				<ul>
-					<li>
-						HTML:
-						<a href="output_formats.html">output_format.html</a>
-					</li>
-					<li>
-						XML:
-						<a href="output_formats.xml">output_format.xml</a>
-					</li>
-				</ul>
-			</p>
+			PiwiXML can be serialized to several different formats. Currently
+			HTML, PDF and XML are supported.
+			<br />
+			<br />
+			You can view this page in the different formats simply by changing
+			the extension to the desired one:
+			<ul>
+				<li>
+					HTML:
+					<a href="output_formats.html">output_format.html</a>
+				</li>
+              <li>
+                 PDF:
+                 <a href="output_formats.pdf">output_format.pdf</a>
+              </li>
+				<li>
+					XML:
+					<a href="output_formats.xml">output_format.xml</a>
+				</li>
+			</ul>
 		</section>
 	</content>
 </document>

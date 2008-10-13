@@ -46,9 +46,7 @@ class SQLiteContentGenerator implements Generator {
 				$piwixml .= '<title>';
 				$piwixml .= $row['subject'];
 				$piwixml .= '</title>';
-				$piwixml .= '<p>';
 				$piwixml .= $row['content'];
-				$piwixml .= '</p>';		
 				$piwixml .= '</section>';
 			}
 		}

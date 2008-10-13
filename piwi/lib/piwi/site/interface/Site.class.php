@@ -56,6 +56,8 @@ abstract class Site {
     	
     	if ($extension == "xml") {
     		return new PiwiXMLSerializer();
+    	} else if ($extension == "pdf") {
+    		return new PDFSerializer();
     	} else {
     		return new HTMLSerializer();
     	}    	

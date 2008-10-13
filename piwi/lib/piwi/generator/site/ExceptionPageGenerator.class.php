@@ -22,9 +22,7 @@ final class ExceptionPageGenerator extends SiteGenerator {
     protected function generateSections() {
 		$piwixml = "<header>Error</header>";
 		$piwixml .= "<section>";
-		$piwixml .= "<p>";
 		$piwixml .= $this->exception->getMessage();
-		$piwixml .= "</p>";
 		$piwixml .= "</section>";
 		return $piwixml;
 	}

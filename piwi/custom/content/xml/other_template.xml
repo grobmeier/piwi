@@ -5,8 +5,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
    <content position="article">
       <header>Other Template</header>
       <section>
-         <p>This site uses an other template, which can be defined in the site.xml.</p>
-         <p>So it is possible to use several layouts for different pages of your website.</p>
+         This site uses an other template, which can be defined in the site.xml.
+         <br /><br />
+         So it is possible to use several layouts for different pages of your website.
       </section>
    </content> 
 </document>

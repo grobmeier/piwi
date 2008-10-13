@@ -14,12 +14,11 @@
 		</xsl:copy>
 	</xsl:template>
    
-   <!-- DIVs must be handled separetly, otherwise a not allowed 'xmlns' could occur  -->
+   <!-- DIVs must be handled separetly, they should not occur in the generated html, 
+   since HTML2FPDF can not handle images placed within DIVs  -->
    <xsl:template match="div">
-	   <div>
-		   <xsl:copy-of select="@*" />
-		   <xsl:apply-templates />
-	   </div>
+	   <xsl:copy-of select="@*" />
+	   <xsl:apply-templates />
    </xsl:template>   
    
 	<xsl:template match="header">

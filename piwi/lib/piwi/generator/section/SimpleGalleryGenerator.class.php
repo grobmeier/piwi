@@ -32,78 +32,43 @@ class SimpleGalleryGenerator implements SectionGenerator {
 		// Generate the xml output
 		$piwixml = '<div>';
 
+
 		foreach($albums as $album) {
 			$folder = $album->getName();
-			$images = $album->getImages();
+			$images = $album->getImages();	
 	
-			$cols = 4;
-			$count = 0;
-			$countMaxImg = 0;
-			$maxImage = 4;
-			$moreMessage = 0;
-	
+			$count = 0; 
+			$maxImage = 5; // maximum number of pictures per album
+			
 			$piwixml .= "<section>";
 			$piwixml .= "<title>";
 			$piwixml .= $folder;
 			$piwixml .= "</title>";
 			
-			if(isset($_GET['album'])) {
-				$piwixml .= '<p><a href="./' . Site::getPageId() . '.' . Site::getExtension() . '">Get me back to galleries!</a></p>';
-			}
+			// if no album is selected show 5 images of each otherwise show the full album
+			$albumSelected = isset($_GET['album']);
 			
-			$piwixml .= "<table>";
-			foreach($images as $file) {
-				if($count == 0) {
-					$piwixml .= "<tr>";
-				}
+			if ($albumSelected && $_GET['album'] != $folder){
+				// if album is selected show only images of this album
+				continue;
+			}
 				
-				$piwixml .= '<td>
-								<a href="'.$this->pathToAlbums.'/'.$folder.'/originals/'.$file.'">
-								<img src="'.$this->pathToAlbums.'/'.$folder.'/thumbs/'.$file.'" />
-								</a>
-							</td>';
-					
-				if($count == $cols) {
-					$piwixml .= "</tr>";
-					$count = 0;
-				} else {
-					$count++;
+			foreach($images as $file) {				
+				if (!$albumSelected && $count == $maxImage) {
+					// stop after the specified number of pictures
+					break;
 				}
-		
-				if(!isset($_GET['album'])) {
-					if($countMaxImg == $maxImage) {
-						$countMaxImg = 0;
-						$moreMessage = 1;
-						break;
-					} else {
-						$countMaxImg++;
-						$moreMessage = 0;
-					}
-				}
-			}	
-	
-			if($count != 0) {
-				while($count <= $cols) {
-					$piwixml .= "<td></td>";
-					$count++;
-				}	
-				$piwixml .= "</tr>";
-			}
-	
-			$t = $cols+1;
-			if($moreMessage != 0) {
-				$t = $cols+1;
-			$piwixml .= '<tr><td colspan="'.$t.'">
-							<a href="./' . Site::getPageId() . '.' . Site::getExtension() . '?album='.urlencode($folder).'">More in '.$folder.'</a>
-							</td>
-						</tr>';
+				$piwixml .= '<a href="'.$this->pathToAlbums.'/'.$folder.'/originals/'.$file.'">
+						<img src="'.$this->pathToAlbums.'/'.$folder.'/thumbs/'.$file.'" alt="' . $file . '" />
+						</a>';
+				$count++;
 			}
 			
-			if(isset($_GET['album'])) {
-				$piwixml .= '<tr><td colspan="'.$t.'"><br/><a href="./' . Site::getPageId() . '.' . Site::getExtension() . '">Get me back to galleries!</a></td></tr>';
+			if ($albumSelected){
+				$piwixml .= '<p><a href="./' . Site::getPageId() . '.' . Site::getExtension() . '">Get me back to galleries</a></p>';
+			} else {
+				$piwixml .= '<p><a href="./' . Site::getPageId() . '.' . Site::getExtension() . '?album='.urlencode($folder).'">More in '.$folder.'</a></p>';
 			}
-
-			$piwixml .= '</table>';
 			$piwixml .= '</section>';
 		}
 		$piwixml .= '</div>';
