@@ -21,9 +21,17 @@
 	</element>
 	<complexType name="siteType">
 		<sequence>
-			<element name="page" type="tns:pageType" minOccurs="0" maxOccurs="unbounded">
-			</element>
+            <element name="globalconfiguration" type="tns:globalConfigurationType" minOccurs="0" maxOccurs="1"></element>
+            <element name="page" type="tns:pageType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
 		</sequence>
+		
+	</complexType>
+
+
+	<complexType name="globalConfigurationType">
 		<attribute name="navigation" type="string" use="optional"></attribute>
+		<attribute name="cachetime" type="int" use="optional"></attribute>
 	</complexType>
 </schema>

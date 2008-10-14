@@ -19,6 +19,9 @@ class PiwiException extends Exception {
     /** Errorcode ERR_404. */
     const ERR_404					= 1005;
     
+    /** Errorcode INVALID_XML_DEFINITION. */
+	const INVALID_XML_DEFINITION	= 1006;
+	
 	/**
 	 * Constructor.
 	 * @param string $message The error message.

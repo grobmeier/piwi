@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Wed, 01 Oct 2008 17:00:25 +0200">
+<meta name="when" content="Tue, 14 Oct 2008 15:21:13 +0200">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -90,6 +90,11 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 </p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  integer</td>
+<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
+Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
+</tr>
+<tr>
 <td class="type"> DOMDocument</td>
 <td class="description"><p class="name"><a href="#getContent()">getContent</a>()</p><p class="description">
 Returns the content of the requested page as DOMDocument.</p></td>
@@ -111,11 +116,6 @@ Returns the 'SiteMap' which is an array of NavigationElements representing the w
 Returns the template of the requested page or null if not specified.</p></td>
 </tr>
 <tr>
-<td class="type">static  string</td>
-<td class="description"><p class="name"><a href="#getExtension()">getExtension</a>()</p><p class="description">
-Returns the extension/format of the requested page (e.g. </p></td>
-</tr>
-<tr>
 <td class="type">protected abstract  string</td>
 <td class="description"><p class="name"><a href="#getFilePath()">getFilePath</a>()</p><p class="description">
 Returns the path of the xml file containing the content of the requested page.</p></td>
@@ -134,11 +134,6 @@ Returns the singleton instance of the Site.</p></td>
 <td class="type"> <a href="../default/navigationgenerator.html">NavigationGenerator</a></td>
 <td class="description"><p class="name"><a href="#getNavigationGenerator()">getNavigationGenerator</a>()</p><p class="description">
 Returns the NavigationGenerator which should be used to generate the navigation.</p></td>
-</tr>
-<tr>
-<td class="type">static  string</td>
-<td class="description"><p class="name"><a href="#getPageId()">getPageId</a>()</p><p class="description">
-Returns the id of the requested page.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -228,6 +223,18 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 
 <hr>
 
+<h3 id="getCacheTime()">getCacheTime</h3>
+<code class="signature">protected abstract  integer <strong>getCacheTime</strong>()</code>
+<div class="details">
+<p>
+Returns the cachetime (the time that may pass until the content of the page is regenerated).</p><dl>
+<dt>Returns:</dt>
+<dd>The cachetime.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getContent()">getContent</h3>
 <code class="signature">public  DOMDocument <strong>getContent</strong>()</code>
 <div class="details">
@@ -281,18 +288,6 @@ Returns the template of the requested page or null if not specified.</p><dl>
 
 <hr>
 
-<h3 id="getExtension()">getExtension</h3>
-<code class="signature">public static  string <strong>getExtension</strong>()</code>
-<div class="details">
-<p>
-Returns the extension/format of the requested page (e.g. 'html', 'xml' or 'pdf').</p><dl>
-<dt>Returns:</dt>
-<dd>The extension/format of the requested page.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getFilePath()">getFilePath</h3>
 <code class="signature">protected abstract  string <strong>getFilePath</strong>()</code>
 <div class="details">
@@ -336,18 +331,6 @@ Returns the singleton instance of the Site.</p><dl>
 Returns the NavigationGenerator which should be used to generate the navigation.</p><dl>
 <dt>Returns:</dt>
 <dd>The navigation generator.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getPageId()">getPageId</h3>
-<code class="signature">public static  string <strong>getPageId</strong>()</code>
-<div class="details">
-<p>
-Returns the id of the requested page.</p><dl>
-<dt>Returns:</dt>
-<dd>The id of the requested page.</dd>
 </dl>
 </div>
 

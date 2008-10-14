@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
 
-<title>NavigationGenerator (Piwi - XML Transformation Framework)</title>
+<title>PDFSerializer (Piwi - XML Transformation Framework)</title>
 
 </head>
 <body id="definition" onload="parent.document.title=document.title;">
@@ -28,7 +28,7 @@
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/navigationgenerator.html" target="_top">No frames</a>
+<a href="../default/pdfserializer.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
@@ -36,18 +36,18 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </div>
 <hr>
 
-<div class="qualifiedName">default.NavigationGenerator</div>
+<div class="qualifiedName">default.PDFSerializer</div>
 
-<h1>Interface NavigationGenerator</h1>
+<h1>Class PDFSerializer</h1>
 
-<pre class="tree"><strong>NavigationGenerator</strong><br /></pre>
+<pre class="tree"><strong>PDFSerializer</strong><br /></pre>
 
 <hr>
 
-<p class="signature">public  interface <strong>NavigationGenerator</strong></p>
+<p class="signature">public  class <strong>PDFSerializer</strong></p>
 
 <div class="comment" id="overview_description"><p>
-Interface that navigation generators have to implement.
+Serializes the given XML to PDF.
 /</p></div>
 
 <hr>
@@ -55,22 +55,22 @@ Interface that navigation generators have to implement.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type"> string</td>
-<td class="description"><p class="name"><a href="#generate()">generate</a>(array navigationElements)</p><p class="description">
-Builds the navigation.</p></td>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#serialize()">serialize</a>(DOMDocument domDocument, string pageId, string templatePath)</p><p class="description">
+Transform the given xml to the output format.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="generate()">generate</h3>
-<code class="signature">public  string <strong>generate</strong>(array navigationElements)</code>
+<h3 id="serialize()">serialize</h3>
+<code class="signature">public  void <strong>serialize</strong>(DOMDocument domDocument, string pageId, string templatePath)</code>
 <div class="details">
 <p>
-Builds the navigation.</p><dl>
+Transform the given xml to the output format.</p><dl>
 <dt>Parameters:</dt>
-<dd>navigationElements - The NavigationElements of the website.</dd>
-<dt>Returns:</dt>
-<dd>The navigation as HTML.</dd>
+<dd>domDocument - The content as DOMDocument.</dd>
+<dd>pageId - The id of the requested page.</dd>
+<dd>templatePath - The path to the template which should be used.</dd>
 </dl>
 </div>
 
@@ -90,7 +90,7 @@ Builds the navigation.</p><dl>
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/navigationgenerator.html" target="_top">No frames</a>
+<a href="../default/pdfserializer.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>

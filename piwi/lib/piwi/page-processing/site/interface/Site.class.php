@@ -17,22 +17,33 @@ abstract class Site {
 	
 	/** The 'SiteMap' which is an array of NavigationElements representing the whole website structure. */
 	private $siteMap = null;
-	
+		
     /**
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */
     public function generateContent() {
-    	$filePath = $this->contentPath . '/' . $this->getFilePath();
-
-    	if (!file_exists($filePath)) {
-			throw new PiwiException(
-				"Could not find the the requested page (Path: '" . $filePath . "').", 
-				PiwiException :: ERR_404);
-		}
+    	$cachetime = $this->getCacheTime();
+    	
+    	// Try to get contents from cache
+    	$cache = new Cache($cachetime);
+		$content = $cache->getPage();
+		if ($content != null) {
+			// Page has been found in cache
+			$this->content = $content;
+		} else {
+			// Load page
+			$filePath = $this->contentPath . '/' . $this->getFilePath();
 	
-		$this->content = new DOMDocument;
-		$this->content->load($filePath);
+	    	if (!file_exists($filePath)) {
+				throw new PiwiException(
+					"Could not find the the requested page (Path: '" . $filePath . "').", 
+					PiwiException :: ERR_404);
+			}
 		
+			$this->content = new DOMDocument;
+			$this->content->load($filePath);
+		}
+
 		// Set template if specified
 		$template = $this->getCustomTemplate();
         if ($template != null) {
@@ -46,13 +57,16 @@ abstract class Site {
 		
 		// Transform the Generators
 		$this->content = $processor->transformToDoc($this->content);
+		
+		// Save page in cache
+		$cache->cachePage($this->content);
     }    
             
    	/** 
    	 * Returns the Serializer for the given extension.
    	 */
     public function getSerializer() {
-    	$extension = Site::getExtension();
+    	$extension = Request::getExtension();
     	
     	if ($extension == "xml") {
     		return new PiwiXMLSerializer();
@@ -221,30 +235,6 @@ abstract class Site {
 		Site::$siteInstance = $site;
 	}
 	
-	/** 
-	 * Returns the id of the requested page.
-	 * @return string The id of the requested page.
-	 */
-	public static function getPageId() {
-		if (isset($_REQUEST['page'])) {
-			return $_REQUEST['page'];
-		} else {
-			return "default";
-		}
-	}	
-	
-	/** 
-	 * Returns the extension/format of the requested page (e.g. 'html', 'xml' or 'pdf').
-	 * @return string The extension/format of the requested page.
-	 */
-	public static function getExtension() {
-		if (isset($_REQUEST['extension'])) {
-			return $_REQUEST['extension'];
-		} else {
-			return "html";
-		}
-	}	
-	
 	/**
 	 * ---------------------------------------------------------------------
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>> Abstract Methods <<<<<<<<<<<<<<<<<<<<<<<<<
@@ -274,5 +264,11 @@ abstract class Site {
      * @return string The classname of the custom NavigationGenerator Class or null if not specified.
      */
     protected abstract function getCustomNavigationGenerator();
+    
+    /**
+     * Returns the cachetime (the time that may pass until the content of the page is regenerated).
+     * @return integer The cachetime.
+     */
+    protected abstract function getCacheTime();
 }
 ?>

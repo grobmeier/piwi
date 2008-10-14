@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Wed, 01 Oct 2008 17:00:26 +0200">
+<meta name="when" content="Tue, 14 Oct 2008 15:21:13 +0200">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -86,6 +86,10 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <td class="description"><p class="name"><a href="#generateSubnavigation()">generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, mixed parentNavigationElement)</p><p class="description">     * Generates the submenus of the given nodes.</p></td>
 </tr>
 <tr>
+<td class="type">protected  integer</td>
+<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">     * Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
+</tr>
+<tr>
 <td class="type">protected  string</td>
 <td class="description"><p class="name"><a href="#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>()</p><p class="description">     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
 </tr>
@@ -109,7 +113,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Site</th></tr>
-<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getContent()">getContent</a>, <a href="../default/site.html#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getCustomTemplate()">getCustomTemplate</a>, <a href="../default/site.html#getExtension()">getExtension</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getNavigationGenerator()">getNavigationGenerator</a>, <a href="../default/site.html#getPageId()">getPageId</a>, <a href="../default/site.html#getSerializer()">getSerializer</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
+<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getContent()">getContent</a>, <a href="../default/site.html#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getCustomTemplate()">getCustomTemplate</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getNavigationGenerator()">getNavigationGenerator</a>, <a href="../default/site.html#getSerializer()">getSerializer</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="domXPath">domXPath</h3>
@@ -158,6 +162,17 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <dd>openpath - The ids nodes that lead to the current pageId.</dd>
 <dt>Returns:</dt>
 <dd>description</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getCacheTime()">getCacheTime</h3>
+<code class="signature">protected  integer <strong>getCacheTime</strong>()</code>
+<div class="details">
+<p>     * Returns the cachetime (the time that may pass until the content of the page is regenerated).</p><dl>
+<dt>Returns:</dt>
+<dd>The cachetime.</dd>
 </dl>
 </div>
 

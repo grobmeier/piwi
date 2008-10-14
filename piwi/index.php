@@ -104,5 +104,5 @@ try {
 
 // Call Serializer
 $serializer = Site::getInstance()->getSerializer();
-$serializer->serialize(Site::getInstance()->getContent(), Site::getPageId(), PIWI_ROOT . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
+$serializer->serialize(Site::getInstance()->getContent(), Request::getPageId(), PIWI_ROOT . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
 ?>
