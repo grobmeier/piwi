@@ -31,7 +31,7 @@ abstract class Site {
 			// Page has been found in cache
 			$this->content = $content;
 		} else {
-			// Load page
+			// Page has not been found in cache, so load it and save it in the cache
 			$filePath = $this->contentPath . '/' . $this->getFilePath();
 	
 	    	if (!file_exists($filePath)) {
@@ -41,7 +41,18 @@ abstract class Site {
 			}
 		
 			$this->content = new DOMDocument;
-			$this->content->load($filePath);
+			$this->content->load($filePath);			
+
+			// Configure the transformer
+			$processor = new XSLTProcessor;
+			$processor->registerPHPFunctions();
+			$processor->importStyleSheet(DOMDocument::load("resources/xslt/GeneratorTransformation.xsl"));
+			
+			// Transform the Generators
+			$this->content = $processor->transformToDoc($this->content);
+			
+			// Save page in cache
+			$cache->cachePage($this->content);
 		}
 
 		// Set template if specified
@@ -49,17 +60,6 @@ abstract class Site {
         if ($template != null) {
         	$this->template = $template;
         }
-
-		// Configure the transformer
-		$processor = new XSLTProcessor;
-		$processor->registerPHPFunctions();
-		$processor->importStyleSheet(DOMDocument::load("resources/xslt/GeneratorTransformation.xsl"));
-		
-		// Transform the Generators
-		$this->content = $processor->transformToDoc($this->content);
-		
-		// Save page in cache
-		$cache->cachePage($this->content);
     }    
             
    	/** 

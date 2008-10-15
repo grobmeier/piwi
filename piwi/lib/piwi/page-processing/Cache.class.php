@@ -9,8 +9,6 @@ class Cache {
 	/** The name of the cached file, containing the requested page. */
 	private $filePath = null;
 	
-	private $successfullyLoaded = false;
-	
     /**
      * Constructor.
      * @param integer $cachetime The cachetime (the time that may pass until the content of the page is regenerated).
@@ -44,8 +42,6 @@ class Cache {
 			$cachedcontent = new DOMDocument;
 			$cachedcontent->load($filePath);
 			
-			$this->successfullyLoaded = true;
-			
 			return $cachedcontent;
 		}
     }
@@ -66,9 +62,7 @@ class Cache {
     	}
     	
     	// Save only if content has not been loaded from cached file
-    	if ($this->cachetime != 0 && !$this->successfullyLoaded) {
-    		$page->save($this->filePath);
-    	}
+    	$page->save($this->filePath);
     }
 }
 ?>
