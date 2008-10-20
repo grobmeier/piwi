@@ -30,7 +30,7 @@ class Request {
 	public static function getParameters() {
 		$result = array();
 		
-		foreach($_REQUEST as $key => $value) {
+		foreach($_GET as $key => $value) {
 			if ($key != "page" && $key != "extension"){
 				$result[$key] = $value;
 			}
