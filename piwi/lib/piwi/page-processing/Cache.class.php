@@ -29,9 +29,9 @@ class Cache {
 			$filePath .=  '_' . $key . '_' . $value;
 		}
 		
-		// Hash the filename, to avoid long filenames
-		$filePath = 'cache/' . Request::getPageId() . sha1($filePath) . '.xml';
-		
+		// Hash the parameters, to avoid long filenames
+		$filePath = 'cache/' . Request::getPageId() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
+
 		// Set filePath in instance so a file can later be created with this filename		
 		$this->filePath = $filePath;
 		
