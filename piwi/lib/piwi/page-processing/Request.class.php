@@ -8,8 +8,8 @@ class Request {
 	 * @return string The id of the requested page.
 	 */
 	public static function getPageId() {
-		if (isset($_REQUEST['page'])) {
-			return $_REQUEST['page'];
+		if (isset($_GET['page'])) {
+			return $_GET['page'];
 		} else {
 			return "default";
 		}
@@ -20,8 +20,8 @@ class Request {
 	 * @return string The extension/format of the requested page.
 	 */
 	public static function getExtension() {
-		if (isset($_REQUEST['extension'])) {
-			return $_REQUEST['extension'];
+		if (isset($_GET['extension'])) {
+			return $_GET['extension'];
 		} else {
 			return "html";
 		}

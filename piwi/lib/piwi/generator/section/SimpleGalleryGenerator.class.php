@@ -23,7 +23,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
     public function generate() {
 		// Retrieve the all albums or one specific album if attribute is set
 		$mediaCenter = new MediaCenter($this->pathToAlbums, $this->pathToUpload);
-		if (isset($_REQUEST['album'])) {
+		if (isset($_GET['album'])) {
 			$albums = $mediaCenter->getAlbums($_GET['album']);
 		} else {
 			$albums = $mediaCenter->getAlbums();
