@@ -181,7 +181,7 @@ hr
 {
    border:              solid #dcdcdc 1px;
    height:              1px;
-   margin-top:          5px;
+   margin-top:          25px;
    margin-bottom:       25px;
 }
 
@@ -208,6 +208,12 @@ h2
    padding:             0px;
 }
 
+form
+{
+   padding:             8px;
+   background-color:    #e5e5e5;
+}
+
 textarea, input
 {
    background-color:    #ffffff;
@@ -219,4 +225,14 @@ textarea, input
 .right
 {  
    float:               right;
+}
+
+.bold
+{
+   font-weight:         bold;
+}
+
+.error
+{
+   color:               #cc0000;
 }

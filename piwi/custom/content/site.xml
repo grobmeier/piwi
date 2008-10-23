@@ -2,10 +2,11 @@
 <site xmlns="http://piwi.googlecode.com/xsd/site" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
-	<globalconfiguration navigation="SimpleTextNavigation" cachetime="3600" />
+	<globalconfiguration navigation="SimpleTextNavigation" cachetime="0" />
 	<page id="default" label="Home" href="xml/default.xml" />
 	<page id="features" label="Piwi Features" href="xml/features.xml">
 		<page id="database" label="Database Access" href="xml/database.xml" />
+		<page id="forms" label="Forms" href="xml/forms.xml" />
 		<page id="gallery" label="Gallery" href="xml/gallery.xml" />		
 		<page id="sitemap" label="SiteMap" href="xml/sitemap.xml" />
 		<page id="caching" label="Caching" href="xml/caching.xml" />

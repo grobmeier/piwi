@@ -18,7 +18,8 @@ class Cache {
     }
     
     public function getPage() {   
-    	if ($this->cachetime == 0) {
+    	// Check if cache is enabled and if post data is send
+    	if ($this->cachetime == 0 || sizeof($_POST) > 0) {
     		return null;
     	}
     	
@@ -30,7 +31,7 @@ class Cache {
 		}
 		
 		// Hash the parameters, to avoid long filenames
-		$filePath = 'cache/' . Request::getPageId() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
+		$filePath = 'cache/' . Request::getPageId() . '_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
 
 		// Set filePath in instance so a file can later be created with this filename		
 		$this->filePath = $filePath;
@@ -51,7 +52,8 @@ class Cache {
      * @param datatype $page The page to cache.
      */
     public function cachePage(DOMDocument $page) {
-    	if ($this->cachetime == 0) {
+    	// Check if cache is enabled and if post data is send
+    	if ($this->cachetime == 0 || sizeof($_POST) > 0) {
     		return;
     	}
     	

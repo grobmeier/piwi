@@ -20,8 +20,17 @@
 		   <xsl:copy-of select="@*" />
 		   <xsl:apply-templates />
 	   </div>
-   </xsl:template>   
+   </xsl:template>
    
+   <!-- FORMs must be handled separetly, otherwise a not allowed 'xmlns' could occur  -->
+   <xsl:template match="form">
+      <form>
+         <xsl:copy-of select="@*" />
+         <xsl:apply-templates />
+      </form>
+   </xsl:template>  
+   
+   <!-- Piwi Elements -->
 	<xsl:template match="header">
 		<h1>
 			<xsl:apply-templates />

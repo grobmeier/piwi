@@ -37,58 +37,58 @@
 
 #menu ul li a
 {
-   	color:               #ffffff;
-   	text-decoration:     none;
+   color:               #ffffff;
+   text-decoration:     none;
 }
 
 
 #menu ul li a:hover
 {
 	color:               #449c52;   
-   	text-decoration:     none;
+   text-decoration:     none;
 }
 
 #menu ul li.selected a
 {
-   	color:               #449c52;
+   color:               #449c52;
 }
 
 #menu ul li.selected ul li a
 {
-   	color:               #ffffff;
+   color:               #ffffff;
 }
 
 #menu ul li.selected ul li a:hover
 {
-   	color:               #449c52;
+   color:               #449c52;
 }
 
 #menu ul
 {
 	background-color: 	#c5dc08;
-	margin: 			0px; 
-	padding: 			0px;
+	margin: 			      0px; 
+	padding:             0px;
 }
 
 #menu ul li
 { 
-	list-style: 		none;
-	float: 				left;
-	font-weight:        bold;
-	position: 			relative;
-	margin: 			0px 0px 0px 35px;
-    padding-right: 		40px;
+	list-style: 		   none;
+	float: 				   left;
+	font-weight:         bold;
+	position: 			   relative;
+	margin: 			      0px 0px 0px 35px;
+   padding-right: 		40px;
 }
 
 #menu ul li ul 
 {
-    position: 			absolute;
-    top: 				1.9em;
-    left: 				-0.5em;
-    display: 			none;
-    border:				1px solid #dcdcdc;
-	line-height:		1.0em;
-    width: 				100%;
+    position: 			  absolute;
+    top: 				  1.9em;
+    left: 				  -0.5em;
+    display: 			  none;
+    border:				  1px solid #dcdcdc;
+	 line-height:		  1.0em;
+    width: 				  100%;
 }
 
 #menu ul li:hover ul
@@ -98,17 +98,17 @@
   
 #menu ul li ul li
 {
-	background-color: 	#b6cc0c;
-	margin: 			1px;
-    float:				none;
-    display: 			block;
-    padding: 			5px 15px 5px 15px;
-    font-weight:     	normal;
+   background-color:   #b6cc0c;
+   margin: 			     1px;
+   float:				  none;
+   display: 			  block;
+   padding: 			  5px 15px 5px 15px;
+   font-weight:     	  normal;
 }
 
 #menu ul li ul li.selected
 {
-	background-color: 	#a1b50d;
+	background-color:   #a1b50d;
 }
 /* Menu End */
 
@@ -150,8 +150,8 @@
 /* SiteMapPath */
 .sitemappath
 {
-	margin-bottom:		15px;
-	font-size:			0.7em;
+	margin-bottom:		  15px;
+	font-size:			  0.7em;
 }
 
 .sitemappath a
@@ -181,7 +181,7 @@ hr
 {
    border:              solid #dcdcdc 1px;
    height:              1px;
-   margin-top:          5px;
+   margin-top:          25px;
    margin-bottom:       25px;
 }
 
@@ -208,6 +208,12 @@ h2
    padding:             0px;
 }
 
+form
+{
+   padding:             8px;
+   background-color:    #e5e5e5;
+}
+
 textarea, input
 {
    background-color:    #ffffff;
@@ -219,4 +225,14 @@ textarea, input
 .right
 {  
    float:               right;
+}
+
+.bold
+{
+   font-weight:         bold;
+}
+
+.error
+{
+   color:               #cc0000;
 }

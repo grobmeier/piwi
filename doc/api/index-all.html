@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Tue, 14 Oct 2008 15:21:13 +0200">
+<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -43,6 +43,7 @@
 <a href="#letterP">P</a>
 <a href="#letterR">R</a>
 <a href="#letterS">S</a>
+<a href="#letterV">V</a>
 <a href="#letterX">X</a>
 <hr>
 
@@ -97,6 +98,10 @@ ClassLoader loads classes necessary for PIWI.
 <dd>
 SimpleXML based cache implementation for the Classloader.
 </dd>
+<dt><a href="default/comparevalidator.html">CompareValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Checks if the value of a field matches the value of another field.
+</dd>
 <dt><a href="default/sqlite3connector.html#connect()">connect()</a> - Method in class <a href="default/sqlite3connector.html">default.SQLite3Connector</a></dt>
 <dd>
 Establishes a connection to the database.
@@ -149,6 +154,10 @@ Represents a file.
 <dd>
 Represents a folder.
 </dd>
+<dt><a href="default/formprocessor.html">FormProcessor()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Processes forms specified as PiwiForms.
+</dd>
 </dl>
 <h1 id="letterG">G</h1>
 <dl>
@@ -159,6 +168,9 @@ Builds the navigation.</dd>
 <dd>
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 </dd>
+<dt><a href="default/formprocessor.html#generateFormControl()">generateFormControl()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Converts the given form element (like <input />, <textarea />) to PiwiXML.</dd>
 <dt><a href="default/sitegenerator.html#generateSections()">generateSections()</a> - Method in class <a href="default/sitegenerator.html">default.SiteGenerator</a></dt>
 <dd>
 Generates the sections that will be placed as content.</dd>
@@ -256,6 +268,10 @@ Returns the path to the folder.</dd>
 <dt><a href="default/pager.html#getPreviousPage()">getPreviousPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the previous page.</dd>
+<dt><a href="default/formprocessor.html#getResults()">getResults()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Returns an array containing all results of the currently processed form.
+</dd>
 <dt><a href="default/site.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the Serializer for the given extension.
@@ -306,6 +322,9 @@ Indicates whether the children are currently visible.</dd>
 <dt><a href="default/navigationelement.html#isSelected()">isSelected()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the NavigationElement is currently selected.</dd>
+<dt><a href="default/validator.html#isValid()">isValid()</a> - Method in class <a href="default/validator.html">default.Validator</a></dt>
+<dd>
+Executes the Validator.</dd>
 </dl>
 <h1 id="letterL">L</h1>
 <dl>
@@ -347,6 +366,9 @@ Interface that navigation generators have to implement.
 <h1 id="letterP">P</h1>
 <dl>
 <dt><a href="default/pager.html">Pager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Helper class to page contents of a database query.
+</dd>
 <dt><a href="default/pdfserializer.html">PDFSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to PDF.
@@ -360,12 +382,27 @@ processing the requested page.
 <dd>
 Serializes the given XML to PiwiXML.
 </dd>
+<dt><a href="default/stepprocessor.html#process()">process()</a> - Method in class <a href="default/stepprocessor.html">default.StepProcessor</a></dt>
+<dd>
+Performs a custom action within a form using the results of the form.</dd>
 </dl>
 <h1 id="letterR">R</h1>
 <dl>
+<dt><a href="default/rangevalidator.html">RangeValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Checks if the value of a field is in a specific range.
+</dd>
+<dt><a href="default/regularexpressionvalidator.html">RegularExpressionValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Checks if he value of a field matches the specified regular expression.
+</dd>
 <dt><a href="default/request.html">Request()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Provides information about the current request that is performed by a user.
+</dd>
+<dt><a href="default/requiredfieldvalidator.html">RequiredFieldValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Checks if the value of a field is not empty.
 </dd>
 </dl>
 <h1 id="letterS">S</h1>
@@ -434,6 +471,20 @@ Establishes connections to SQLite 2 databases.
 <dt><a href="default/sqlite3connector.html">SQLite3Connector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Establishes connections to SQLite 3 databases.
+</dd>
+<dt><a href="default/stepprocessor.html">StepProcessor()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Interface that Step Processors have to implement.
+</dd>
+</dl>
+<h1 id="letterV">V</h1>
+<dl>
+<dt><a href="default/validator.html#validate()">validate()</a> - Method in class <a href="default/validator.html">default.Validator</a></dt>
+<dd>
+Evaluates the Validator.</dd>
+<dt><a href="default/validator.html">Validator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Abstract class that validators have to inherit from.
 </dd>
 </dl>
 <h1 id="letterX">X</h1>

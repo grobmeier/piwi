@@ -21,6 +21,9 @@ class PiwiException extends Exception {
     
     /** Errorcode INVALID_XML_DEFINITION. */
 	const INVALID_XML_DEFINITION	= 1006;
+
+    /** Errorcode FORMS_ERROR. */
+	const FORMS_ERROR				= 1007;
 	
 	/**
 	 * Constructor.

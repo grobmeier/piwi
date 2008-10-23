@@ -1,4 +1,7 @@
 <?
+/**
+ * Helper class to page contents of a database query.
+ */
 class Pager {
 	/** The number of the current page. */
 	private $currentPage;	

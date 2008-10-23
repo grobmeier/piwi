@@ -1,7 +1,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
 	exclude-result-prefixes="php">
-	<xsl:output method="xml" encoding="UTF-8" indent="no" />
+	<xsl:output method="html" encoding="UTF-8" indent="no" />
 	
 	<xsl:template match="/content">
 		<xsl:apply-templates />
@@ -21,6 +21,17 @@
 	   <xsl:apply-templates />
    </xsl:template>   
    
+   <!-- INPUTs must be handled separetly, otherwise hidden fields would appear in the PDF  -->
+   <xsl:template match="input">
+	  <xsl:if test="@type != 'hidden'">
+	      <xsl:copy>
+	         <xsl:copy-of select="@*" />
+	         <xsl:apply-templates />       
+	      </xsl:copy>
+	  </xsl:if>
+   </xsl:template> 
+   
+   <!-- Piwi Elements -->
 	<xsl:template match="header">
 		<h1>
 			<xsl:apply-templates />

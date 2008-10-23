@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Tue, 14 Oct 2008 15:21:13 +0200">
+<meta name="when" content="Thu, 23 Oct 2008 16:53:17 +0200">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -47,6 +47,9 @@ ClassLoader loads classes necessary for PIWI.
 <tr><td class="name"><a href="../default/classloadercache.html">ClassLoaderCache</a></td><td class="description">
 SimpleXML based cache implementation for the Classloader.
 </td></tr>
+<tr><td class="name"><a href="../default/comparevalidator.html">CompareValidator</a></td><td class="description">
+Checks if the value of a field matches the value of another field.
+</td></tr>
 <tr><td class="name"><a href="../default/connectorfactory.html">ConnectorFactory</a></td><td class="description">
 Used to initiate and retrieve Connectors.
 </td></tr>
@@ -58,6 +61,9 @@ Represents a file.
 </td></tr>
 <tr><td class="name"><a href="../default/folder.html">Folder</a></td><td class="description">
 Represents a folder.
+</td></tr>
+<tr><td class="name"><a href="../default/formprocessor.html">FormProcessor</a></td><td class="description">
+Processes forms specified as PiwiForms.
 </td></tr>
 <tr><td class="name"><a href="../default/generatorfactory.html">GeneratorFactory</a></td><td class="description">
 Used to initiate and retrieve Generators.
@@ -83,12 +89,23 @@ Creates a simple navigation.
 <tr><td class="name"><a href="../default/pdfserializer.html">PDFSerializer</a></td><td class="description">
 Serializes the given XML to PDF.
 </td></tr>
-<tr><td class="name"><a href="../default/pager.html">Pager</a></td><td class="description"></td></tr>
+<tr><td class="name"><a href="../default/pager.html">Pager</a></td><td class="description">
+Helper class to page contents of a database query.
+</td></tr>
 <tr><td class="name"><a href="../default/piwixmlserializer.html">PiwiXMLSerializer</a></td><td class="description">
 Serializes the given XML to PiwiXML.
 </td></tr>
+<tr><td class="name"><a href="../default/rangevalidator.html">RangeValidator</a></td><td class="description">
+Checks if the value of a field is in a specific range.
+</td></tr>
+<tr><td class="name"><a href="../default/regularexpressionvalidator.html">RegularExpressionValidator</a></td><td class="description">
+Checks if he value of a field matches the specified regular expression.
+</td></tr>
 <tr><td class="name"><a href="../default/request.html">Request</a></td><td class="description">
 Provides information about the current request that is performed by a user.
+</td></tr>
+<tr><td class="name"><a href="../default/requiredfieldvalidator.html">RequiredFieldValidator</a></td><td class="description">
+Checks if the value of a field is not empty.
 </td></tr>
 <tr><td class="name"><a href="../default/sqlite2connector.html">SQLite2Connector</a></td><td class="description">
 Establishes connections to SQLite 2 databases.
@@ -114,6 +131,9 @@ Generates a sitemap of the website.
 <tr><td class="name"><a href="../default/sitemappathnavigation.html">SiteMapPathNavigation</a></td><td class="description">
 Creates a SiteMapPath which consists of the NavigationElements leading to the requested page.
 </td></tr>
+<tr><td class="name"><a href="../default/validator.html">Validator</a></td><td class="description">
+Abstract class that validators have to inherit from.
+</td></tr>
 <tr><td class="name"><a href="../default/xmlsite.html">XMLSite</a></td><td class="description"> * Renders the requested page and creates the navigation based on 'site.xml'.</td></tr>
 </table>
 
@@ -133,6 +153,9 @@ Interface that SectionGenerators have to implement.
 </td></tr>
 <tr><td class="name"><a href="../default/serializer.html">Serializer</a></td><td class="description">
 Interface that serializers have to implement.
+</td></tr>
+<tr><td class="name"><a href="../default/stepprocessor.html">StepProcessor</a></td><td class="description">
+Interface that Step Processors have to implement.
 </td></tr>
 </table>
 

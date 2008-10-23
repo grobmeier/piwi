@@ -4,6 +4,7 @@
 	xmlns:php="http://php.net/xsl" xmlns:piwixml="http://piwi.googlecode.com/xsd/piwixml" exclude-result-prefixes="php">
 	<xsl:output method="xml" encoding="UTF-8" indent="no" />
 
+   <!-- Copy everything that is not a generator or a form -->
    <xsl:template match="*">
       <xsl:copy>
          <xsl:copy-of select="@*"/>
@@ -11,9 +12,18 @@
       </xsl:copy>
    </xsl:template>
    
+   <!-- Execute generators -->
    <xsl:template match="piwixml:generator">
       <xsl:for-each
-         select="php:function('GeneratorFactory::callGenerator',string(@id))">
+         select="php:function('GeneratorFactory::callGenerator', string(@id))">
+         <xsl:copy-of select="." />
+      </xsl:for-each>
+   </xsl:template>
+   
+   <!-- Evaluate forms -->
+   <xsl:template match="piwixml:piwiform">
+      <xsl:for-each
+         select="php:function('FormProcessor::process', string(@path))">
          <xsl:copy-of select="." />
       </xsl:for-each>
    </xsl:template>
