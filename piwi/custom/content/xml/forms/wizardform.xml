@@ -5,13 +5,13 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resource
    <configuration submitText="Next Step" />
 	 <step>
 	   <stepprocessor class="WizardProcessor"/>
-	   <span>Name: </span><input name="Name" type="text" size="30" maxlength="30" />
+	   Name: <input name="Name" type="text" size="30" maxlength="30" />
 	   <br /><br />
-	   <span>Birthday: </span><input name="Birthday" type="text" size="30" maxlength="10" />
+	   Birthday: <input name="Birthday" type="text" size="30" maxlength="10" />
 	 </step>
 	 <step>
 	   <stepprocessor class="WizardProcessor"/>
-      <span>Comment: </span> <textarea name="Comment" type="text" maxlength="100" cols="50" rows="3" />
+      Comment: <textarea name="Comment" type="text" maxlength="100" cols="50" rows="3" />
     </step>
 	 <step>
 	  <stepprocessor class="WizardProcessor"/>

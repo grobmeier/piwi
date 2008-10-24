@@ -18,7 +18,7 @@ class WizardProcessor implements StepProcessor{
 			$result .= "Birthday: " . $values['Birthday'] . '<br />';
 			$result .= "Comment: " . $values['Comment'];
 		}
-		return $result;
+		return '<div>' . $result . '</div>';
 	}
 }
 ?>

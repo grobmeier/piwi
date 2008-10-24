@@ -5,30 +5,41 @@
 	<configuration submitText="Send Data"
 		resetText="Reset" />
 	<step>
-		<span>Name:</span>
+	   Gender:
+	   <input name="Gender" type="radio" value="Male" /> Male
+	   <input name="Gender" type="radio" value="Female" /> Female
+      <validator class="RequiredFieldValidator" fieldToValidate="Gender"
+      message="You must select a gender." />
+      <br />
+      <br />
+		Name:
 		<input name="Name" type="text" size="30" maxlength="30" value="Name" />
 		<validator class="RequiredFieldValidator" fieldToValidate="Name"
 			message="You must enter a name." initialValue="Name" />
 		<br />
 		<br />
-		<span>Email:</span>
+		Email:
 		<input name="Email" type="text" size="30" maxlength="50" />
 		<validator class="RegularExpressionValidator"
 			fieldToValidate="Email" pattern="/[\.a-z0-9_-]+@[a-z0-9-]{2,}\.[a-z]{2,4}$/i"
 			message="You must enter a valid email." />
 		<br />
 		<br />
-		<span>Confirm Email:</span>
+		Confirm Email:
 		<input name="Email2" type="text" size="30" maxlength="50" />
 		<validator class="CompareValidator" fieldToValidate="Email2"
 			fieldNameToCompare="Email" message="Email must be the same." />
 		<br />
 		<br />
-		<span>Number (0-10):</span>
+		Number (0-10):
 		<input name="Number" type="text" size="30" maxlength="10" />
 		<validator class="RangeValidator" fieldToValidate="Number"
 			minimumValue="0" maximumValue="10"
 			message="You must enter a number in the range 0-10." />
+      <br />
+      <br />
+		Newsletter:
+      <input name="Newsletter" type="checkbox" value="Yes" /> Yes / No
 	</step>
 	<step>
 		<stepprocessor class="ValidationProcessor" />

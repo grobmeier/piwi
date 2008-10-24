@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:17 +0200">
+<meta name="when" content="Fri, 24 Oct 2008 15:05:32 +0200">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -67,7 +67,16 @@ It is also possible to handle multiple forms on one page.
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#namesOfCheckboxes">$namesOfCheckboxes</a></p><p class="description">Array of the names of all CheckBoxes in the current form.
+</p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#numberOfSteps">$numberOfSteps</a></p><p class="description">The total number of steps of the currently processed form. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#validate">$validate</a></p><p class="description">True if validation has to be performed, otherwise false. </p></td>
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
@@ -78,9 +87,24 @@ It is also possible to handle multiple forms on one page.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type">private static  string</td>
-<td class="description"><p class="name"><a href="#generateFormControl()">generateFormControl</a>(DOMElement domElement, boolean validate)</p><p class="description">
-Converts the given form element (like , ) to PiwiXML.</p></td>
+<td class="type">static  DOMDocument</td>
+<td class="description"><p class="name"><a href="#executeStepProcessor()">executeStepProcessor</a>(array domElement)</p><p class="description">
+Executes the given StepProcessor.</p></td>
+</tr>
+<tr>
+<td class="type">static  DOMDocument</td>
+<td class="description"><p class="name"><a href="#executeValidator()">executeValidator</a>(array domElement)</p><p class="description">
+Executes the given Validator.</p></td>
+</tr>
+<tr>
+<td class="type">static  DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateInput()">generateInput</a>(array domElement)</p><p class="description">
+Converts the given INPUT element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type">static  DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateTextArea()">generateTextArea</a>(array domElement)</p><p class="description">
+Converts the given TEXTAREA element to PiwiXML.</p></td>
 </tr>
 <tr>
 <td class="type">static  integer</td>
@@ -114,10 +138,26 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 
 <hr>
 
+<h3 id="namesOfCheckboxes">namesOfCheckboxes</h3>
+<code class="signature">private static  mixed <strong>$namesOfCheckboxes</strong></code>
+<div class="details">
+<p>Array of the names of all CheckBoxes in the current form.
+This is needed since checkboxes to reject them from hidden fields.
+/</p></div>
+
+<hr>
+
 <h3 id="numberOfSteps">numberOfSteps</h3>
 <code class="signature">private static  mixed <strong>$numberOfSteps</strong></code>
 <div class="details">
 <p>The total number of steps of the currently processed form. */</p></div>
+
+<hr>
+
+<h3 id="validate">validate</h3>
+<code class="signature">private static  mixed <strong>$validate</strong> = true</code>
+<div class="details">
+<p>True if validation has to be performed, otherwise false. */</p></div>
 
 <hr>
 
@@ -129,16 +169,57 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="generateFormControl()">generateFormControl</h3>
-<code class="signature">private static  string <strong>generateFormControl</strong>(DOMElement domElement, boolean validate)</code>
+<h3 id="executeStepProcessor()">executeStepProcessor</h3>
+<code class="signature">public static  DOMDocument <strong>executeStepProcessor</strong>(array domElement)</code>
 <div class="details">
 <p>
-Converts the given form element (like <input />, <textarea />) to PiwiXML.</p><dl>
+Executes the given StepProcessor.</p><dl>
 <dt>Parameters:</dt>
-<dd>domElement - The DOMElement to convert.</dd>
-<dd>validate - Set to true if validators should be evaluated otherwise false.</dd>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
 <dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement.</dd>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="executeValidator()">executeValidator</h3>
+<code class="signature">public static  DOMDocument <strong>executeValidator</strong>(array domElement)</code>
+<div class="details">
+<p>
+Executes the given Validator.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateInput()">generateInput</h3>
+<code class="signature">public static  DOMDocument <strong>generateInput</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given INPUT element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateTextArea()">generateTextArea</h3>
+<code class="signature">public static  DOMDocument <strong>generateTextArea</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given TEXTAREA element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
 </dl>
 </div>
 

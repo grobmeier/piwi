@@ -18,6 +18,14 @@ class FormProcessor {
 	/** The total number of steps of the currently processed form. */
 	private static $numberOfSteps = 0;
 	
+	/** True if validation has to be performed, otherwise false. */
+	private static $validate = true;
+	
+	/** Array of the names of all CheckBoxes in the current form.
+	 * This is needed since checkboxes to reject them from hidden fields.
+	 */
+	private static $namesOfCheckboxes;
+	
 	/**
 	 * Loads the form from the given file and generates the the content as PiwiXML.
 	 * @param $string $path The path to the file containing the form.
@@ -27,8 +35,10 @@ class FormProcessor {
 		// Increase id of form to give every form an unique id
 		FormProcessor::$formId++;
 		
-		// Reset $validationFailed
+		// Reset variables
 		FormProcessor::$validationFailed = false;
+		FormProcessor::$validate = true;
+		FormProcessor::$namesOfCheckboxes = array();
 		
 		// Create DOMXPath to query the forms xml
 		if (!file_exists($path)) {
@@ -58,32 +68,42 @@ class FormProcessor {
 		
 		$stepXML = '';
 		
+		// Configure the transformer
+		$processor = new XSLTProcessor;
+		$processor->registerPHPFunctions();
+		$processor->importStyleSheet(DOMDocument::load("resources/xslt/FormTransformation.xsl"));		
+		
 		// Validate formdata of last step
 		if (FormProcessor::$currentStep > 0) {
-			$lastStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']');
+			$lastStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']')->item(0));
 			
-			foreach ($lastStepXML->item(0)->getElementsByTagName('*') as $domElement) {
-				$stepXML .= FormProcessor::generateFormControl($domElement, true);       
-			}
+			$template = new DOMDocument();
+			$template->loadXML($lastStepXML->asXML());
+			
+			$stepXML = substr($processor->transformToXML($template), 39);
 		}
 		
 		// If validation was successful show next step
 		if (!FormProcessor::$validationFailed) {
 			FormProcessor::$currentStep++;
-			$stepXML = '';
-			$currentStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']');
+			FormProcessor::$validate = false;
 			
-			foreach ($currentStepXML->item(0)->getElementsByTagName('*') as $domElement) {
-				$stepXML .= FormProcessor::generateFormControl($domElement, false);	       
-			}			
+			$stepXML = '';
+			$currentStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']')->item(0));
+			
+			$template = new DOMDocument();
+			$template->loadXML($currentStepXML->asXML());
+			
+			$stepXML = substr($processor->transformToXML($template), 39);
 		}
 
 		// Build xml
 		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post">';
 		$piwixml .= '<input name="' . FormProcessor::$formId . 'currentstep" type="hidden" value="' . FormProcessor::$currentStep . '" />';
 
+		// Add current values as hidden field (but no checkboxes), so save their state
 		foreach ($_POST as $key => $value) {
-			if ($key != FormProcessor::$formId . 'currentstep') {
+			if ($key != FormProcessor::$formId . 'currentstep' && !(isset(FormProcessor::$namesOfCheckboxes[$key]))) {
 				$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
 			}
 		}
@@ -100,7 +120,7 @@ class FormProcessor {
 			// Reset button
 			if ($configuration->hasAttribute("resetText")) {
 				$piwixml .= ' <input type="reset" value="' . $configuration->getAttribute("resetText") . '" />';
-			}	
+			}
 		}		
 		$piwixml .= '</form>';
 
@@ -110,68 +130,126 @@ class FormProcessor {
 	}
 	
 	/**
-	 * Converts the given form element (like <input />, <textarea />) to PiwiXML.
-	 * @param DOMElement $domElement The DOMElement to convert.
-	 * @param boolean $validate Set to true if validators should be evaluated otherwise false.
-	 * @return string The PiwiXML of the given DOMElement.
+	 * Converts the given INPUT element to PiwiXML.
+	 * @param array $domElement An array containing the DOMElement to convert.
+	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	private static function generateFormControl(DOMElement $domElement, $validate) {
-		// Get value
-		$value = $domElement->getAttribute("value");
-
-		if (isset($_POST[FormProcessor::$formId . $domElement->getAttribute("name")])) {
-			$value = $_POST[FormProcessor::$formId . $domElement->getAttribute("name")];
-		} 
+	public static function generateInput($domElement) {
+		$value = $domElement[0]->getAttribute("value");
+		$checked = $domElement[0]->getAttribute("checked");
 		
-		if ($domElement->nodeName == "input") {
-			return ' <input name="' . FormProcessor::$formId . $domElement->getAttribute("name") . '"'
-					. ($domElement->hasAttribute("type") ? ' type="' . $domElement->getAttribute("type") . '" ' : 'type="text" ')
-					. ($domElement->hasAttribute("maxlength") ? ' maxlength="' . $domElement->getAttribute("maxlength") . ' " ' : '')
-					. ($domElement->hasAttribute("size") ? ' size="' . $domElement->getAttribute("size") . '" ' : '')
-					. 'value="' . $value . '"'
-					. ' />';
-		} else if ($domElement->nodeName == "textarea") {
-			return ' <textarea name="' . FormProcessor::$formId . $domElement->getAttribute("name") . '"'
-					. ($domElement->hasAttribute("cols") ? ' cols="' . $domElement->getAttribute("cols") . '" ' : '')
-					. ($domElement->hasAttribute("rows") ? ' rows="' . $domElement->getAttribute("rows") . '" ' : '')
+		$checkable = $domElement[0]->getAttribute("type") == 'radio' || $domElement[0]->getAttribute("type") == 'checkbox';
+		
+		// if INPUT is a CheckBox or RadioButton and if request is a postback, then determinate it's checked state to set the same status again
+		if ($checkable && sizeof($_POST) > 0) {
+			if (isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")]) && $value == $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")]) {
+				$checked = 'checked';
+			} else {
+				$checked = '';
+			}			
+		}
+		
+		// if INPUT is a CheckBox add it to the array to reject it from the hidden field list
+		if ($domElement[0]->getAttribute("type") == 'checkbox') {
+			FormProcessor::$namesOfCheckboxes[FormProcessor::$formId . $domElement[0]->getAttribute("name")] = $domElement[0]->getAttribute("name");
+		}		
+		
+		// if INPUT is a normal TextField and if request is a postback, then set the value to the entered one
+		if (!$checkable && isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")])) {
+			$value = $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")];
+		} 
+
+		$xml = ' <input name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ')
+		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . $domElement[0]->getAttribute("maxlength") . '" ' : '')
+		. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
+		. (($checked != '') ? ' checked="' . $checked . '" ' : '')
+		. 'value="' . $value . '"'		
+		. ' />';
+					
+		$doc = new DOMDocument;
+		$doc->loadXml($xml);
+		return $doc;
+	}
+
+	/**
+	 * Converts the given TEXTAREA element to PiwiXML.
+	 * @param array $domElement An array containing the DOMElement to convert.
+	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
+	 */
+	public static function generateTextArea($domElement) {
+		$value = $domElement[0]->getAttribute("value");
+
+		if (isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")])) {
+			$value = $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")];
+		} 
+
+		$xml = ' <textarea name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . $domElement[0]->getAttribute("cols") . '" ' : '')
+					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . $domElement[0]->getAttribute("rows") . '" ' : '')
 					. '>'
 					. ($value == "" ? ' ' : $value)
 					. '</textarea>';
-		} else if ($domElement->nodeName == "validator" && $validate) {
-			// Create instance of Validator
-			$class = new ReflectionClass($domElement->getAttribute("class"));
-			$validator = $class->newInstance($domElement);
+					
+		$doc = new DOMDocument;
+		$doc->loadXml($xml);
+		return $doc;
+	}
 
-			if (!$validator instanceof Validator){
-				throw new PiwiException(
-					"The Class with id '" . $domElement->getAttribute("class") . "' is not an instance of Validator.", 
-					PiwiException :: ERR_WRONG_TYPE);
-			}
-			
-			$errorMessage = $validator->validate();
-			if ($errorMessage != null) {
-				$errorMessage = '<span class="error"> ' . $errorMessage . '</span>';
-				FormProcessor::$validationFailed = true;				
-			}
-			
-			return $errorMessage;
-		} else if ($domElement->nodeName == "stepprocessor") {
-			// Create instance of StepProcessor
-			$class = new ReflectionClass($domElement->getAttribute("class"));
-			$stepProcessor = $class->newInstance();
-
-			if (!$stepProcessor instanceof StepProcessor){
-				throw new PiwiException(
-					"The Class with id '" . $domElement->getAttribute("class") . "' is not an instance of StepProcessor.", 
-					PiwiException :: ERR_WRONG_TYPE);
-			}
-			
-			return $stepProcessor->process(FormProcessor::getResults());
-			
-		} else if ($domElement->nodeName != "validator") {
-			$xml = $domElement->ownerDocument->saveXML($domElement);
-			return $xml;
+	/**
+	 * Executes the given Validator.
+	 * @param array $domElement An array containing the DOMElement to convert.
+	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
+	 */
+	public static function executeValidator($domElement) {		
+		if (!FormProcessor::$validate) {
+			return new DOMDocument();
 		}
+		
+		// Create instance of Validator
+		$class = new ReflectionClass($domElement[0]->getAttribute("class"));
+		$validator = $class->newInstance($domElement[0]);
+
+		if (!$validator instanceof Validator){
+			throw new PiwiException(
+				"The Class with id '" . $domElement[0]->getAttribute("class") . "' is not an instance of Validator.", 
+				PiwiException :: ERR_WRONG_TYPE);
+		}
+		
+		$errorMessage = $validator->validate();
+		
+		if ($errorMessage == null) {
+			return new DOMDocument();
+		} else {
+			$errorMessage = '<span class="error"> ' . $errorMessage . '</span>';
+			FormProcessor::$validationFailed = true;				
+			$doc = new DOMDocument;		
+			$doc->loadXml($errorMessage);
+			return $doc;
+		}
+	}	
+	
+	/**
+	 * Executes the given StepProcessor.
+	 * @param array $domElement An array containing the DOMElement to convert.
+	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
+	 */
+	public static function executeStepProcessor($domElement) {
+		// Create instance of StepProcessor
+		$class = new ReflectionClass($domElement[0]->getAttribute("class"));
+		$stepProcessor = $class->newInstance();
+
+		if (!$stepProcessor instanceof StepProcessor){
+			throw new PiwiException(
+				"The Class with id '" . $domElement[0]->getAttribute("class") . "' is not an instance of StepProcessor.", 
+				PiwiException :: ERR_WRONG_TYPE);
+		}
+		
+		$xml = $stepProcessor->process(FormProcessor::getResults());
+		
+		$doc = new DOMDocument;
+		$doc->loadXml($xml);
+		return $doc;
 	}
 	
 	/**
