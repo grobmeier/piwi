@@ -21,10 +21,8 @@ class FormProcessor {
 	/** True if validation has to be performed, otherwise false. */
 	private static $validate = true;
 	
-	/** Array of the names of all CheckBoxes in the current form.
-	 * This is needed since checkboxes to reject them from hidden fields.
-	 */
-	private static $namesOfCheckboxes;
+	/** Array of the names of all fields in the current form that should be rejected from hidden fields. */
+	private static $ignoredFields;
 	
 	/**
 	 * Loads the form from the given file and generates the the content as PiwiXML.
@@ -38,7 +36,7 @@ class FormProcessor {
 		// Reset variables
 		FormProcessor::$validationFailed = false;
 		FormProcessor::$validate = true;
-		FormProcessor::$namesOfCheckboxes = array();
+		FormProcessor::$ignoredFields = array();
 		
 		// Create DOMXPath to query the forms xml
 		if (!file_exists($path)) {
@@ -103,8 +101,14 @@ class FormProcessor {
 
 		// Add current values as hidden field (but no checkboxes), so save their state
 		foreach ($_POST as $key => $value) {
-			if ($key != FormProcessor::$formId . 'currentstep' && !(isset(FormProcessor::$namesOfCheckboxes[$key]))) {
-				$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
+			if ($key != FormProcessor::$formId . 'currentstep' && !(isset(FormProcessor::$ignoredFields[$key]))) {
+				if (is_array($value)) {
+					foreach ($value as $var) {
+       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
+					}					
+				} else { 
+					$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
+				}
 			}
 		}
 		
@@ -135,6 +139,9 @@ class FormProcessor {
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
 	public static function generateInput($domElement) {
+		// Remove '[]' from field name, to handle arrays correctly
+		$name = str_replace("[]", "", FormProcessor::$formId . $domElement[0]->getAttribute("name"));
+		
 		$value = $domElement[0]->getAttribute("value");
 		$checked = $domElement[0]->getAttribute("checked");
 		
@@ -142,8 +149,18 @@ class FormProcessor {
 		
 		// if INPUT is a CheckBox or RadioButton and if request is a postback, then determinate it's checked state to set the same status again
 		if ($checkable && sizeof($_POST) > 0) {
-			if (isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")]) && $value == $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")]) {
-				$checked = 'checked';
+			if (isset($_POST[$name])) {
+				if (is_array($_POST[$name])) {
+					$checked = '';
+					foreach ($_POST[$name] as $var) {
+						if ($value == $var) {
+							$checked = 'checked';
+							break;
+						}
+					}			
+				} else if ($value == $_POST[$name]) {
+					$checked = 'checked';
+				}
 			} else {
 				$checked = '';
 			}			
@@ -151,18 +168,19 @@ class FormProcessor {
 		
 		// if INPUT is a CheckBox add it to the array to reject it from the hidden field list
 		if ($domElement[0]->getAttribute("type") == 'checkbox') {
-			FormProcessor::$namesOfCheckboxes[FormProcessor::$formId . $domElement[0]->getAttribute("name")] = $domElement[0]->getAttribute("name");
+			FormProcessor::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
 		}		
 		
 		// if INPUT is a normal TextField and if request is a postback, then set the value to the entered one
-		if (!$checkable && isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")])) {
-			$value = $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")];
+		if (!$checkable && isset($_POST[$name])) {
+			$value = $_POST[$name];
 		} 
 
 		$xml = ' <input name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
 		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ')
 		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . $domElement[0]->getAttribute("maxlength") . '" ' : '')
 		. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
+		. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
 		. (($checked != '') ? ' checked="' . $checked . '" ' : '')
 		. 'value="' . $value . '"'		
 		. ' />';
@@ -173,12 +191,72 @@ class FormProcessor {
 	}
 
 	/**
+	 * Converts the given SELECT element to PiwiXML.
+	 * @param array $domElement An array containing the DOMElement to convert.
+	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
+	 */
+	public static function generateSelect($domElement) {
+		// Remove '[]' from field name, to handle arrays correctly
+		$name = str_replace("[]", "", FormProcessor::$formId . $domElement[0]->getAttribute("name"));
+		
+		$xml = ' <select name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+			. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
+			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . $domElement[0]->getAttribute("multiple") . '" ' : '')
+			. '>';
+
+		FormProcessor::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
+
+		foreach ($domElement[0]->childNodes as $option) {
+       		if ($option->nodeName == 'option') {
+       			$selected = $option->getAttribute("selected");
+   				$value = $option->getAttribute("value");
+
+				if ($value == '') {
+					$value = $option->textContent;
+				}
+
+				//If request is a postback, then determinate it's selected state to set the same status again
+				if (sizeof($_POST) > 0) {
+					if (isset($_POST[$name])) {
+						if (is_array($_POST[$name])) {
+							$selected = '';
+							foreach ($_POST[$name] as $var) {
+								if ($value == $var) {
+									$selected = 'selected';
+									break;
+								}
+							}			
+						} else if ($value == $_POST[$name]) {
+							$selected = 'selected';
+						}
+					} else {
+						$selected = '';
+					}			
+				}
+				
+       			$xml .= "<option"
+       			. (($selected != '') ? ' selected="' . $selected . '" ' : '')
+       			. ($option->hasAttribute("value") ? ' value="' . $option->getAttribute("value") . '" ' : '')
+       			. '>'
+       			. $option->textContent
+				. '</option>';
+       		}
+		}
+	
+		$xml .= '</select>';
+					
+		$doc = new DOMDocument;
+		$doc->loadXml($xml);
+		return $doc;
+	}
+	
+	/**
 	 * Converts the given TEXTAREA element to PiwiXML.
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
 	public static function generateTextArea($domElement) {
-		$value = $domElement[0]->getAttribute("value");
+		$value = $domElement[0]->textContent;
 
 		if (isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")])) {
 			$value = $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")];
@@ -187,6 +265,7 @@ class FormProcessor {
 		$xml = ' <textarea name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
 					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . $domElement[0]->getAttribute("cols") . '" ' : '')
 					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . $domElement[0]->getAttribute("rows") . '" ' : '')
+					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
 					. '>'
 					. ($value == "" ? ' ' : $value)
 					. '</textarea>';

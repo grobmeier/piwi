@@ -40,6 +40,16 @@
       <br />
 		Newsletter:
       <input name="Newsletter" type="checkbox" value="Yes" /> Yes / No
+      <br />
+      <br />
+      Interests:
+      <select name="Interests[]" size="3" multiple="multiple">
+	      <option value="Music">Music</option>
+	      <option value="Sports">Sports</option>
+	      <option value="Computer">Computer</option>
+      </select>
+		<validator class="RequiredFieldValidator"
+		         fieldToValidate="Interests" message="Please select at least one interest." />
 	</step>
 	<step>
 		<stepprocessor class="ValidationProcessor" />

@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 24 Oct 2008 15:05:32 +0200">
+<meta name="when" content="Mon, 27 Oct 2008 11:16:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -67,8 +67,7 @@ It is also possible to handle multiple forms on one page.
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#namesOfCheckboxes">$namesOfCheckboxes</a></p><p class="description">Array of the names of all CheckBoxes in the current form.
-</p></td>
+<td class="description"><p class="name"><a href="#ignoredFields">$ignoredFields</a></p><p class="description">Array of the names of all fields in the current form that should be rejected from hidden fields. </p></td>
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
@@ -100,6 +99,11 @@ Executes the given Validator.</p></td>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#generateInput()">generateInput</a>(array domElement)</p><p class="description">
 Converts the given INPUT element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type">static  DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateSelect()">generateSelect</a>(array domElement)</p><p class="description">
+Converts the given SELECT element to PiwiXML.</p></td>
 </tr>
 <tr>
 <td class="type">static  DOMDocument</td>
@@ -138,12 +142,10 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 
 <hr>
 
-<h3 id="namesOfCheckboxes">namesOfCheckboxes</h3>
-<code class="signature">private static  mixed <strong>$namesOfCheckboxes</strong></code>
+<h3 id="ignoredFields">ignoredFields</h3>
+<code class="signature">private static  mixed <strong>$ignoredFields</strong></code>
 <div class="details">
-<p>Array of the names of all CheckBoxes in the current form.
-This is needed since checkboxes to reject them from hidden fields.
-/</p></div>
+<p>Array of the names of all fields in the current form that should be rejected from hidden fields. */</p></div>
 
 <hr>
 
@@ -202,6 +204,20 @@ Executes the given Validator.</p><dl>
 <div class="details">
 <p>
 Converts the given INPUT element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateSelect()">generateSelect</h3>
+<code class="signature">public static  DOMDocument <strong>generateSelect</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given SELECT element to PiwiXML.</p><dl>
 <dt>Parameters:</dt>
 <dd>domElement - An array containing the DOMElement to convert.</dd>
 <dt>Returns:</dt>

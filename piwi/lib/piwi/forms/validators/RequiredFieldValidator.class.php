@@ -9,6 +9,9 @@ class RequiredFieldValidator extends Validator {
 	 * @return boolean Returns true if validation is successful otherwise false.
 	 */
 	protected function isValid($fieldName) {
+		// Remove '[]' from field name, to handle arrays correctly
+		$fieldName = str_replace("[]", "", $fieldName);
+
 		if (!isset($_POST[$fieldName]) || $_POST[$fieldName] == '') {
 			return false;
 		} else {

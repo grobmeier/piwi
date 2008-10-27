@@ -23,6 +23,13 @@
       </xsl:for-each>
    </xsl:template>
 
+   <xsl:template match="select">
+      <xsl:for-each
+         select="php:function('FormProcessor::generateSelect', .)">
+         <xsl:copy-of select="." />
+      </xsl:for-each>
+   </xsl:template>
+   
    <xsl:template match="textarea">
       <xsl:for-each
          select="php:function('FormProcessor::generateTextArea', .)">
