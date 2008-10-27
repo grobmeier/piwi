@@ -23,7 +23,7 @@
    <!-- Evaluate forms -->
    <xsl:template match="piwixml:piwiform">
       <xsl:for-each
-         select="php:function('FormProcessor::process', string(@path))">
+         select="php:function('FormProcessor::process', string(@id))">
          <xsl:copy-of select="." />
       </xsl:for-each>
    </xsl:template>

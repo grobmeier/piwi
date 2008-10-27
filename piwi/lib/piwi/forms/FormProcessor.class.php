@@ -26,41 +26,34 @@ class FormProcessor {
 	
 	/**
 	 * Loads the form from the given file and generates the the content as PiwiXML.
-	 * @param $string $path The path to the file containing the form.
+	 * @param string $id The id of the form.
 	 * @return DOMDocument The rendered form as PiwiXML.
 	 */
-	public static function process($path) {
+	public static function process($id) {
 		// Increase id of form to give every form an unique id
-		FormProcessor::$formId++;
+		self::$formId++;
 		
 		// Reset variables
-		FormProcessor::$validationFailed = false;
-		FormProcessor::$validate = true;
-		FormProcessor::$ignoredFields = array();
+		self::$validationFailed = false;
+		self::$validate = true;
+		self::$ignoredFields = array();
 		
-		// Create DOMXPath to query the forms xml
-		if (!file_exists($path)) {
-			throw new PiwiException(
-				"Could not find the forms definition file (Path: '" . $path . "').", 
-				PiwiException :: ERR_NO_XML_DEFINITION);
-		}
-		$domXPath = new DOMXPath(DOMDocument::load($path));
-		$domXPath->registerNamespace('piwiform', 'http://piwi.googlecode.com/xsd/piwiform');
+		$domXPath = FormFactory::getFormById($id);
 	
 		// Determinate the current step in the formular
 		// if request is a postback increase number of steps otherwise begin with step 1
-		FormProcessor::$currentStep = 0;
+		self::$currentStep = 0;
 		
-		if (isset($_POST[FormProcessor::$formId . 'currentstep'])) {
-			FormProcessor::$currentStep = $_POST[FormProcessor::$formId . 'currentstep'];
+		if (isset($_POST[self::$formId . 'currentstep'])) {
+			self::$currentStep = $_POST[self::$formId . 'currentstep'];
 		}
 		
 		// Determinate number of total steps in form
-		FormProcessor::$numberOfSteps = $domXPath->evaluate('count(/piwiform:form/piwiform:step)');
+		self::$numberOfSteps = $domXPath->evaluate('count(/piwiform:form/piwiform:step)');
 		
-		if (FormProcessor::$currentStep > FormProcessor::$numberOfSteps || FormProcessor::$currentStep < 0) {
+		if (self::$currentStep > self::$numberOfSteps || self::$currentStep < 0) {
 			throw new PiwiException(
-				"This form only has " . $numberOfSteps . " steps, you requested number " . FormProcessor::$currentStep . ".", 
+				"This form only has " . $numberOfSteps . " steps, you requested number " . self::$currentStep . ".", 
 				PiwiException :: FORMS_ERROR);
 		}
 		
@@ -72,8 +65,8 @@ class FormProcessor {
 		$processor->importStyleSheet(DOMDocument::load("resources/xslt/FormTransformation.xsl"));		
 		
 		// Validate formdata of last step
-		if (FormProcessor::$currentStep > 0) {
-			$lastStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']')->item(0));
+		if (self::$currentStep > 0) {
+			$lastStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0));
 			
 			$template = new DOMDocument();
 			$template->loadXML($lastStepXML->asXML());
@@ -82,12 +75,12 @@ class FormProcessor {
 		}
 		
 		// If validation was successful show next step
-		if (!FormProcessor::$validationFailed) {
-			FormProcessor::$currentStep++;
-			FormProcessor::$validate = false;
+		if (!self::$validationFailed) {
+			self::$currentStep++;
+			self::$validate = false;
 			
 			$stepXML = '';
-			$currentStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . FormProcessor::$currentStep . ']')->item(0));
+			$currentStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0));
 			
 			$template = new DOMDocument();
 			$template->loadXML($currentStepXML->asXML());
@@ -97,11 +90,11 @@ class FormProcessor {
 
 		// Build xml
 		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post">';
-		$piwixml .= '<input name="' . FormProcessor::$formId . 'currentstep" type="hidden" value="' . FormProcessor::$currentStep . '" />';
+		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
 
 		// Add current values as hidden field (but no checkboxes), so save their state
 		foreach ($_POST as $key => $value) {
-			if ($key != FormProcessor::$formId . 'currentstep' && !(isset(FormProcessor::$ignoredFields[$key]))) {
+			if ($key != self::$formId . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
 				if (is_array($value)) {
 					foreach ($value as $var) {
        					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
@@ -116,7 +109,7 @@ class FormProcessor {
 		$piwixml .= $stepXML;
 		
 		// Show buttons	if not in last step
-		if (FormProcessor::$currentStep < FormProcessor::$numberOfSteps) {
+		if (self::$currentStep < self::$numberOfSteps) {
 			// Send button
 			$configuration = $domXPath->query('/piwiform:form/piwiform:configuration')->item(0);
 			$piwixml .= '<br /><br /><input type="submit" value="' . $configuration->getAttribute("submitText") . '" />';
@@ -140,7 +133,7 @@ class FormProcessor {
 	 */
 	public static function generateInput($domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
-		$name = str_replace("[]", "", FormProcessor::$formId . $domElement[0]->getAttribute("name"));
+		$name = str_replace("[]", "", self::$formId . $domElement[0]->getAttribute("name"));
 		
 		$value = $domElement[0]->getAttribute("value");
 		$checked = $domElement[0]->getAttribute("checked");
@@ -168,7 +161,7 @@ class FormProcessor {
 		
 		// if INPUT is a CheckBox add it to the array to reject it from the hidden field list
 		if ($domElement[0]->getAttribute("type") == 'checkbox') {
-			FormProcessor::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
+			self::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
 		}		
 		
 		// if INPUT is a normal TextField and if request is a postback, then set the value to the entered one
@@ -176,7 +169,7 @@ class FormProcessor {
 			$value = $_POST[$name];
 		} 
 
-		$xml = ' <input name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <input name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
 		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ')
 		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . $domElement[0]->getAttribute("maxlength") . '" ' : '')
 		. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
@@ -197,14 +190,14 @@ class FormProcessor {
 	 */
 	public static function generateSelect($domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
-		$name = str_replace("[]", "", FormProcessor::$formId . $domElement[0]->getAttribute("name"));
+		$name = str_replace("[]", "", self::$formId . $domElement[0]->getAttribute("name"));
 		
-		$xml = ' <select name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <select name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
 			. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
 			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . $domElement[0]->getAttribute("multiple") . '" ' : '')
 			. '>';
 
-		FormProcessor::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
+		self::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
 
 		foreach ($domElement[0]->childNodes as $option) {
        		if ($option->nodeName == 'option') {
@@ -258,11 +251,11 @@ class FormProcessor {
 	public static function generateTextArea($domElement) {
 		$value = $domElement[0]->textContent;
 
-		if (isset($_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")])) {
-			$value = $_POST[FormProcessor::$formId . $domElement[0]->getAttribute("name")];
+		if (isset($_POST[self::$formId . $domElement[0]->getAttribute("name")])) {
+			$value = $_POST[self::$formId . $domElement[0]->getAttribute("name")];
 		} 
 
-		$xml = ' <textarea name="' . FormProcessor::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <textarea name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
 					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . $domElement[0]->getAttribute("cols") . '" ' : '')
 					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . $domElement[0]->getAttribute("rows") . '" ' : '')
 					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
@@ -281,7 +274,7 @@ class FormProcessor {
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
 	public static function executeValidator($domElement) {		
-		if (!FormProcessor::$validate) {
+		if (!self::$validate) {
 			return new DOMDocument();
 		}
 		
@@ -301,7 +294,7 @@ class FormProcessor {
 			return new DOMDocument();
 		} else {
 			$errorMessage = '<span class="error"> ' . $errorMessage . '</span>';
-			FormProcessor::$validationFailed = true;				
+			self::$validationFailed = true;				
 			$doc = new DOMDocument;		
 			$doc->loadXml($errorMessage);
 			return $doc;
@@ -324,7 +317,7 @@ class FormProcessor {
 				PiwiException :: ERR_WRONG_TYPE);
 		}
 		
-		$xml = $stepProcessor->process(FormProcessor::getResults());
+		$xml = $stepProcessor->process(self::getResults());
 		
 		$doc = new DOMDocument;
 		$doc->loadXml($xml);
@@ -341,12 +334,12 @@ class FormProcessor {
 		$results = array();		
 		
 		foreach ($_POST as $key => $value) {
-			if ($key{0} == FormProcessor::$formId && $key != FormProcessor::$formId . 'currentstep') {				
+			if ($key{0} == self::$formId && $key != self::$formId . 'currentstep') {				
 				$results[substr($key, 1)] = $value;
 			}
 		}
-		$results["CURRENT_STEPS"] = FormProcessor::$currentStep;
-		$results["NUMBER_OF_STEPS"] = FormProcessor::$numberOfSteps;
+		$results["CURRENT_STEPS"] = self::$currentStep;
+		$results["NUMBER_OF_STEPS"] = self::$numberOfSteps;
 		
 		return $results;
 	}
@@ -355,7 +348,7 @@ class FormProcessor {
 	 * @return integer The id of the currently processed form.
 	 */
 	public static function getId() {
-		return FormProcessor::$formId;
+		return self::$formId;
 	}
 }
 ?>

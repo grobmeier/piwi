@@ -13,14 +13,14 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 			<title>Wizards</title>
          This is a sample wizard with multiple steps:
          <br /><br />
-         <piwiform path="custom/content/xml/forms/wizardform.xml" />
+         <piwiform id="wizardform" />
 		</section>
 		<separator />
 		<section>
          <title>Validators</title>
          This form uses validators to verify the entered values:
          <br /><br />   
-         <piwiform path="custom/content/xml/forms/validatorform.xml" />
+         <piwiform id="validatorform" />
       </section>
 	</content>
 </document>

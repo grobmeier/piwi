@@ -89,6 +89,7 @@ function __autoload($class) {
 // Initialize the singleton factories for managing Generators and Connectors
 GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
+FormFactory::initialize(CONTENT_PATH . '/forms.xml');
 
 // Init site
 Site::setInstance(new XMLSite(CONTENT_PATH, 'site.xml'));

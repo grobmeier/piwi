@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Mon, 27 Oct 2008 11:16:02 +0100">
+<meta name="when" content="Mon, 27 Oct 2008 14:26:27 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -122,7 +122,7 @@ Returns an array containing all results of the currently processed form.
 </tr>
 <tr>
 <td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#process()">process</a>($string path)</p><p class="description">
+<td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
 </tr>
 </table>
@@ -267,12 +267,12 @@ The array also contains the current step and the total number of steps in the fo
 <hr>
 
 <h3 id="process()">process</h3>
-<code class="signature">public static  DOMDocument <strong>process</strong>($string path)</code>
+<code class="signature">public static  DOMDocument <strong>process</strong>(string id)</code>
 <div class="details">
 <p>
 Loads the form from the given file and generates the the content as PiwiXML.</p><dl>
 <dt>Parameters:</dt>
-<dd>path - The path to the file containing the form.</dd>
+<dd>id - The id of the form.</dd>
 <dt>Returns:</dt>
 <dd>The rendered form as PiwiXML.</dd>
 </dl>

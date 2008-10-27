@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
+<meta name="when" content="Mon, 27 Oct 2008 14:26:27 +0100">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -143,6 +143,12 @@ Generates an errorpage.
 <dt><a href="default/sqlite3connector.html#execute()">execute()</a> - Method in class <a href="default/sqlite3connector.html">default.SQLite3Connector</a></dt>
 <dd>
 Executes the given query.</dd>
+<dt><a href="default/formprocessor.html#executeStepProcessor()">executeStepProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Executes the given StepProcessor.</dd>
+<dt><a href="default/formprocessor.html#executeValidator()">executeValidator()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Executes the given Validator.</dd>
 </dl>
 <h1 id="letterF">F</h1>
 <dl>
@@ -153,6 +159,10 @@ Represents a file.
 <dt><a href="default/folder.html">Folder()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Represents a folder.
+</dd>
+<dt><a href="default/formfactory.html">FormFactory()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Used to retrieve Forms.
 </dd>
 <dt><a href="default/formprocessor.html">FormProcessor()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
@@ -168,14 +178,20 @@ Builds the navigation.</dd>
 <dd>
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 </dd>
-<dt><a href="default/formprocessor.html#generateFormControl()">generateFormControl()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessor.html#generateInput()">generateInput()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
-Converts the given form element (like <input />, <textarea />) to PiwiXML.</dd>
+Converts the given INPUT element to PiwiXML.</dd>
 <dt><a href="default/sitegenerator.html#generateSections()">generateSections()</a> - Method in class <a href="default/sitegenerator.html">default.SiteGenerator</a></dt>
 <dd>
 Generates the sections that will be placed as content.</dd>
+<dt><a href="default/formprocessor.html#generateSelect()">generateSelect()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Converts the given SELECT element to PiwiXML.</dd>
 <dt><a href="default/xmlsite.html#generateSubnavigation()">generateSubnavigation()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Generates the submenus of the given nodes.</dd>
+<dt><a href="default/formprocessor.html#generateTextArea()">generateTextArea()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Converts the given TEXTAREA element to PiwiXML.</dd>
 <dt><a href="default/generator.html">Generator()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Interface that Generators have to implement.
@@ -221,6 +237,10 @@ Returns the 'SiteMap' which is an array of NavigationElements representing the w
 Returns the extension/format of the requested page (e.g. </dd>
 <dt><a href="default/xmlsite.html#getFilePath()">getFilePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the path of the xml file containing the content of the requested page.</dd>
+<dt><a href="default/formfactory.html#getFormById()">getFormById()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
+<dd>
+Returns the Form with the given id as DOMXPath.
+</dd>
 <dt><a href="default/xmlsite.html#getFullSiteMap()">getFullSiteMap()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</dd>
 <dt><a href="default/generatorfactory.html#getGeneratorById()">getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
@@ -306,6 +326,9 @@ Initializes the singleton instance of this Class.</dd>
 <dd>
 Constructs an instance of the Connector with the given id.
 </dd>
+<dt><a href="default/formfactory.html#initializeForm()">initializeForm()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
+<dd>
+Constructs an DOMXPath of the From with the given id.</dd>
 <dt><a href="default/generatorfactory.html#initializeGenerator()">initializeGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Constructs an instance of the Generator with the given id.

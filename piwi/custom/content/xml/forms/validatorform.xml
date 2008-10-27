@@ -49,7 +49,7 @@
 	      <option value="Computer">Computer</option>
       </select>
 		<validator class="RequiredFieldValidator"
-		         fieldToValidate="Interests" message="Please select at least one interest." />
+		         fieldToValidate="Interests[]" message="Please select at least one interest." />
 	</step>
 	<step>
 		<stepprocessor class="ValidationProcessor" />
