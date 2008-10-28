@@ -85,6 +85,8 @@ function __autoload($class) {
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
  */ 
+// Start Session
+SessionManager::startSession();
 
 // Initialize the singleton factories for managing Generators and Connectors
 GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
