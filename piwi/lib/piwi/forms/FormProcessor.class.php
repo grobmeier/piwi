@@ -71,7 +71,7 @@ class FormProcessor {
 			$template = new DOMDocument();
 			$template->loadXML($lastStepXML->asXML());
 			
-			$stepXML = substr($processor->transformToXML($template), 39);
+			$stepXML = $processor->transformToXML($template);
 		}
 		
 		// If validation was successful show next step
@@ -85,7 +85,7 @@ class FormProcessor {
 			$template = new DOMDocument();
 			$template->loadXML($currentStepXML->asXML());
 			
-			$stepXML = substr($processor->transformToXML($template), 39);
+			$stepXML = $processor->transformToXML($template);
 		}
 
 		// Build xml

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<title>PIWI - PHP Transformation Framework</title>
 	<link href="custom/templates/other.css" rel="stylesheet" type="text/css" />
 </head>
