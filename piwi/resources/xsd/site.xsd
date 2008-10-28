@@ -14,24 +14,41 @@
 		<attribute name="template" type="string" use="optional"></attribute>
 	</complexType>
 	<element name="site" type="tns:siteType">
-		<unique name="UniquePageId">
-			<selector xpath=".//tns:page" />
-			<field xpath="@id" />
+		<unique name="UniqueLanguageRegion">
+			<selector xpath=".//tns:language" />
+			<field xpath="@region" />
 		</unique>
 	</element>
 	<complexType name="siteType">
 		<sequence>
-            <element name="globalconfiguration" type="tns:globalConfigurationType" minOccurs="0" maxOccurs="1"></element>
-            <element name="page" type="tns:pageType" minOccurs="0"
+			<element name="globalconfiguration" type="tns:globalConfigurationType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+
+			<element name="language" type="tns:languageType" minOccurs="1"
 				maxOccurs="unbounded">
-			</element>
+				<unique name="UniquePageId">
+					<selector xpath=".//tns:page" />
+					<field xpath="@id" />
+				</unique>
+			</element>
 		</sequence>
-		
+
 	</complexType>
 
 
 	<complexType name="globalConfigurationType">
 		<attribute name="navigation" type="string" use="optional"></attribute>
 		<attribute name="cachetime" type="int" use="optional"></attribute>
+	</complexType>
+
+	<complexType name="languageType">
+		<sequence>
+			<element name="page" type="tns:pageType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+		<attribute name="region" type="string" use="required"></attribute>
+
 	</complexType>
 </schema>
