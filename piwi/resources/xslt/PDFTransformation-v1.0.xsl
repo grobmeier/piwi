@@ -17,7 +17,6 @@
    <!-- DIVs must be handled separetly, they should not occur in the generated html, 
    since HTML2FPDF can not handle images placed within DIVs  -->
    <xsl:template match="div">
-	   <xsl:copy-of select="@*" />
 	   <xsl:apply-templates />
    </xsl:template>   
    
