@@ -15,7 +15,7 @@ class SimpleTextNavigation implements NavigationGenerator {
 	 * @return string The navigation as HTML.
 	 */
 	public function generate($navigationElements) {
-		return $this->getNavigation($navigationElements) . '<div style="clear: both"> </div>';
+		return $this->getNavigation($navigationElements);
 	}
 	
 	/**

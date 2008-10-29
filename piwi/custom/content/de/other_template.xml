@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+   <content position="article">
+      <header>Other Template</header>
+      <section>
+         This site uses an other template, which can be defined in the site.xml.
+         <br /><br />
+         So it is possible to use several layouts for different pages of your website.
+      </section>
+   </content> 
+</document>

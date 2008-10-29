@@ -7,15 +7,29 @@
 		<attribute name="path" type="string" use="required"></attribute>
 	</complexType>
 	<element name="forms" type="tns:formsType">
-		<unique name="UniqueFormId">
-			<selector xpath=".//tns:form" />
-			<field xpath="@id" />
-		</unique>
+      <unique name="UniqueLanguageRegion">
+         <selector xpath=".//tns:language" />
+         <field xpath="@region" />
+      </unique>
 	</element>
 	<complexType name="formsType">
 		<sequence>
-			<element name="form" type="tns:formType" minOccurs="0" maxOccurs="unbounded">
+			<element name="language" type="tns:languageType" minOccurs="1" maxOccurs="unbounded">
+			      <unique name="UniqueFormId">
+         <selector xpath=".//tns:form" />
+         <field xpath="@id" />
+      </unique>
 			</element>
 		</sequence>		
 	</complexType>
+	
+	  <complexType name="languageType">
+      <sequence>
+         <element name="form" type="tns:formType" minOccurs="0"
+            maxOccurs="unbounded">
+         </element>
+      </sequence>
+      <attribute name="region" type="string" use="required"></attribute>
+
+   </complexType>
 </schema>

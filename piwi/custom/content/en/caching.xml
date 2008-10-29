@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>Caching</header>
+		<section>
+			Piwi supports caching. That means you can specify a timespan after which pages are regenerated and not read from cache.
+			<br />
+			Piwi is differing between different parameters, so calling the same page with different parameters will result in multiple cached pages.
+			<br /><br />
+			To configure caching, just edit the settings within your 'site.xml'. Set the attribute 'cachetime' to the desired number of seconds.
+			To disable caching set it to 0 or delete the attribute.
+			<br /><br />
+			Currently it is only possible to define one global 'cachetime', for the future it is planed to also allow specific settings for each page.
+		</section>
+	</content>
+</document>

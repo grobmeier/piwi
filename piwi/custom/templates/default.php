@@ -13,7 +13,11 @@
 	<div id="header">
 	</div>
 	<div id="menu">
-		<?=$HTML_NAVIGATION?>
+		<?=$HTML_NAVIGATION?>		
+		<span style="float: right">
+			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=de' ?>"><img src="custom/templates/images/flag_de.gif" alt="Deutsch" /></a>
+			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=default' ?>"><img src="custom/templates/images/flag_en.gif" alt="English" /></a>
+		</span>
 	</div>
 	<div id="content">
 		<div class="sitemappath">

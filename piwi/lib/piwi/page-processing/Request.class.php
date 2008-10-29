@@ -31,7 +31,7 @@ class Request {
 		$result = array();
 		
 		foreach($_GET as $key => $value) {
-			if ($key != "page" && $key != "extension"){
+			if ($key != "page" && $key != "extension" && $key != "language"){
 				$result[$key] = $value;
 			}
 		}
