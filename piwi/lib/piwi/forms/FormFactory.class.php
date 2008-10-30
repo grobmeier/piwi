@@ -74,7 +74,7 @@ class FormFactory {
 		$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . SessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
 		
 		
-		if ($result->length == 0 && SessionManager::getUserLanguage() != 'default') {
+		if ($result == null && SessionManager::getUserLanguage() != 'default') {
 			SessionManager::setUserLanguage('default');
 			$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . SessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
 		}
