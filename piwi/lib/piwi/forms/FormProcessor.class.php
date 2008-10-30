@@ -89,7 +89,7 @@ class FormProcessor {
 		}
 
 		// Build xml
-		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post">';
+		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
 		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
 
 		// Add current values as hidden field (but no checkboxes), so save their state
