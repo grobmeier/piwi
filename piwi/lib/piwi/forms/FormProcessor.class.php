@@ -91,25 +91,25 @@ class FormProcessor {
 		// Build xml
 		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
 		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
-
-		// Add current values as hidden field (but no checkboxes), so save their state
-		foreach ($_POST as $key => $value) {
-			if ($key != self::$formId . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
-				if (is_array($value)) {
-					foreach ($value as $var) {
-       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
-					}					
-				} else { 
-					$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
-				}
-			}
-		}
 		
 		// add step
 		$piwixml .= $stepXML;
 		
 		// Show buttons	if not in last step
 		if (self::$currentStep < self::$numberOfSteps) {
+			// Add current values as hidden field (but no checkboxes), to save their state
+			foreach ($_POST as $key => $value) {
+				if ($key != self::$formId . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
+					if (is_array($value)) {
+						foreach ($value as $var) {
+	       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
+						}					
+					} else { 
+						$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
+					}
+				}
+			}
+		
 			// Send button
 			$configuration = $domXPath->query('/piwiform:form/piwiform:configuration')->item(0);
 			$piwixml .= '<br /><br /><input type="submit" value="' . $configuration->getAttribute("submitText") . '" />';
@@ -317,7 +317,7 @@ class FormProcessor {
 				PiwiException :: ERR_WRONG_TYPE);
 		}
 		
-		$xml = $stepProcessor->process(self::getResults());
+		$xml = $stepProcessor->process(self::getResults(), self::getFiles());
 		
 		$doc = new DOMDocument;
 		$doc->loadXml($xml);
@@ -342,6 +342,23 @@ class FormProcessor {
 		$results["NUMBER_OF_STEPS"] = self::$numberOfSteps;
 		
 		return $results;
+	}
+
+	/**
+	 * Returns an array containing all files of the currently processed form.
+	 * These values are used in StepProcessors to handle posted files.
+	 * @return array Array containing all files of the currently processed form.
+	 */	
+	private static function getFiles() {
+		$files = array();		
+		
+		foreach ($_FILES as $key => $value) {
+			if ($key{0} == self::$formId && $value['name'] != "") {				
+				$files[substr($key, 1)] = $value;
+			}
+		}
+		
+		return $files;
 	}
 	
 	/** Returns the id of the currently processed form. 

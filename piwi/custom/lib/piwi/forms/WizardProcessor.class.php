@@ -6,9 +6,10 @@ class WizardProcessor implements StepProcessor{
 	/**
 	 * Performs a custom action within a form using the results of the form.
 	 * @param array $values The values of the form.
+	 * @param array $files The files that have been posted.
 	 * @return string The desired result as PiwiXML
 	 */
-	public function process(array $values) {
+	public function process(array $values, array $files) {
 		// Show current step
 		$result = '<span class="bold">Step ' . $values["CURRENT_STEPS"] . ' / ' .  $values["NUMBER_OF_STEPS"] . '</span><br /><br />';
 		
