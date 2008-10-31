@@ -21,14 +21,13 @@ class SessionManager {
 				$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 				if (in_array($language, Site::getInstance()->getSupportedLanguages())) {
 					$_SESSION['language'] = $language;
-				} else {
-					// Use 'default' language is not available
-					$_SESSION['language'] = 'default';
 				}							
-			} else {
-				// Use 'default' if no language has not been set
-				$_SESSION['language'] = 'default';
 			}
+		}
+		
+		if (!isset($_SESSION['language'])) {
+			// Use 'default' if no language has not been set
+			$_SESSION['language'] = 'default';
 		}
 		return $_SESSION['language'];
 	}
