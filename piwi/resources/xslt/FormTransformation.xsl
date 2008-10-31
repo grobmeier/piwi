@@ -15,6 +15,11 @@
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
+
+   <!-- Used for legacy html -->
+   <xsl:template match="html">
+      <xsl:copy-of select="node()"/>
+   </xsl:template>
    
    <xsl:template match="input">
       <xsl:for-each
@@ -37,6 +42,7 @@
       </xsl:for-each>
    </xsl:template>
    
+   <!-- Executes a Validator -->
    <xsl:template match="validator">
       <xsl:for-each
          select="php:function('FormProcessor::executeValidator', .)">
@@ -44,6 +50,7 @@
       </xsl:for-each>
    </xsl:template>
    
+   <!-- Executes a StepProcessor -->
    <xsl:template match="stepprocessor">
       <xsl:for-each
          select="php:function('FormProcessor::executeStepProcessor', .)">

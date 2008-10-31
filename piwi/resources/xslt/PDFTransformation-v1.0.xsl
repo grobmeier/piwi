@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
 	exclude-result-prefixes="php">
@@ -7,6 +8,7 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	
+	<!-- Copy everything that is not a generator or a form -->
 	<xsl:template match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*" />
@@ -14,13 +16,18 @@
 		</xsl:copy>
 	</xsl:template>
    
+   <!-- Used for legacy html -->
+   <xsl:template match="html">
+      <xsl:copy-of select="node()"/>
+   </xsl:template>
+   
    <!-- DIVs must be handled separetly, they should not occur in the generated html, 
    since HTML2FPDF can not handle images placed within DIVs  -->
    <xsl:template match="div">
 	   <xsl:apply-templates />
-   </xsl:template>   
+   </xsl:template>
    
-   <!-- INPUTs must be handled separetly, otherwise hidden fields would appear in the PDF  -->
+   <!-- INPUTs must be handled separetly, otherwise hidden fields would appear in the PDF -->
    <xsl:template match="input">
 	  <xsl:if test="@type != 'hidden'">
 	      <xsl:copy>
