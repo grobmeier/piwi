@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
+<meta name="when" content="Fri, 31 Oct 2008 14:34:01 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -145,6 +145,11 @@ Returns the Serializer for the given extension.
 <td class="type">private  <a href="../default/navigationelement.html">NavigationElement</a></td>
 <td class="description"><p class="name"><a href="#getSiteMapItemsById()">getSiteMapItemsById</a>(array siteMap, string id, <a href="../default/navigationelement.html">NavigationElement</a> foundElement)</p><p class="description">
 Returns the NavigationElement with the given in id or null if no item is found.</p></td>
+</tr>
+<tr>
+<td class="type">abstract  array</td>
+<td class="description"><p class="name"><a href="#getSupportedLanguages()">getSupportedLanguages</a>()</p><p class="description">
+Returns a list of supported languages.</p></td>
 </tr>
 <tr>
 <td class="type"> string</td>
@@ -356,6 +361,18 @@ Returns the NavigationElement with the given in id or null if no item is found.<
 <dd>foundElement - The NavigationElement with the given in id or null if no item has been found yet.</dd>
 <dt>Returns:</dt>
 <dd>The NavigationElement with the given in id or null if no item is found.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getSupportedLanguages()">getSupportedLanguages</h3>
+<code class="signature">public abstract  array <strong>getSupportedLanguages</strong>()</code>
+<div class="details">
+<p>
+Returns a list of supported languages.</p><dl>
+<dt>Returns:</dt>
+<dd>List of supported languages.</dd>
 </dl>
 </div>
 

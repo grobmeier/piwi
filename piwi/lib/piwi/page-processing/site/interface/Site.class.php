@@ -270,5 +270,11 @@ abstract class Site {
      * @return integer The cachetime.
      */
     protected abstract function getCacheTime();
+    
+    /**
+     * Returns a list of supported languages.
+     * @return array List of supported languages.
+     */
+    public abstract function getSupportedLanguages();
 }
 ?>

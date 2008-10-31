@@ -73,12 +73,6 @@ class FormFactory {
 
 		$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . SessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
 		
-		
-		if ($result == null && SessionManager::getUserLanguage() != 'default') {
-			SessionManager::setUserLanguage('default');
-			$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . SessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
-		}
-		
 		if ($result != null) {			
 			$domXPath = new DOMXPath(DOMDocument::load((string)$result[0]->attributes()->path));
 			$domXPath->registerNamespace('piwiform', 'http://piwi.googlecode.com/xsd/piwiform');

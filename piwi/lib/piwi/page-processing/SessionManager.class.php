@@ -10,27 +10,27 @@ class SessionManager {
 	public static function getUserLanguage() {
 		// Check if user has changed its prefered language
 		if (isset($_GET['language'])) {
-			$_SESSION['language'] = $_GET['language'];
+			if (in_array($_GET['language'], Site::getInstance()->getSupportedLanguages())) {
+				$_SESSION['language'] = $_GET['language'];
+			}	
 		}
 		
 		if (!isset($_SESSION['language'])) {
 			if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 				// Language has not been set by user, so get prefered language from browser
-				$_SESSION['language'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);					
-			}  else {
+				$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+				if (in_array($language, Site::getInstance()->getSupportedLanguages())) {
+					$_SESSION['language'] = $language;
+				} else {
+					// Use 'default' language is not available
+					$_SESSION['language'] = 'default';
+				}							
+			} else {
 				// Use 'default' if no language has not been set
 				$_SESSION['language'] = 'default';
 			}
 		}
 		return $_SESSION['language'];
-	}
-	
-	/**
-	 * Sets the user language in the Session.
-	 * @param string $language The language to set.
-	 */
-	public static function setUserLanguage($language) {
-		$_SESSION['language'] = $language;
 	}
 	
 	/**

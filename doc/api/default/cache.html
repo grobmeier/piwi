@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:17 +0200">
+<meta name="when" content="Fri, 31 Oct 2008 14:34:01 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -80,8 +80,9 @@ Constructor.</p></td>
 Caches the given page so that it can be reused within further requests.</p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#getPage()">getPage</a>()</p></td>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#getPage()">getPage</a>()</p><p class="description">
+Returns a DOMDocument containing the cached page or null if page has not been found in cache.</p></td>
 </tr>
 </table>
 
@@ -127,8 +128,13 @@ Caches the given page so that it can be reused within further requests.</p><dl>
 <hr>
 
 <h3 id="getPage()">getPage</h3>
-<code class="signature">public  void <strong>getPage</strong>()</code>
+<code class="signature">public  DOMDocument <strong>getPage</strong>()</code>
 <div class="details">
+<p>
+Returns a DOMDocument containing the cached page or null if page has not been found in cache.</p><dl>
+<dt>Returns:</dt>
+<dd>The DOMDocument containing the cached page or null if page has not been found in cache.</dd>
+</dl>
 </div>
 
 <hr>

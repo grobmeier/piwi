@@ -16,10 +16,14 @@ class Cache {
     public function __construct($cachetime) {
     	$this->cachetime = $cachetime;
     }
-    
+
+	/**
+	 * Returns a DOMDocument containing the cached page or null if page has not been found in cache.
+	 * @return DOMDocument The DOMDocument containing the cached page or null if page has not been found in cache.
+	 */
     public function getPage() {   
     	// Check if cache is enabled and if post data is send
-    	if ($this->cachetime == 0 || sizeof($_POST) > 0) {
+    	if ($this->cachetime == 0 || sizeof($_POST) > 0 || sizeof($_FILES) > 0) {
     		return null;
     	}
     	
@@ -53,7 +57,7 @@ class Cache {
      */
     public function cachePage(DOMDocument $page) {
     	// Check if cache is enabled and if post data is send
-    	if ($this->cachetime == 0 || sizeof($_POST) > 0) {
+    	if ($this->cachetime == 0 || sizeof($_POST) > 0 || sizeof($_FILES) > 0) {
     		return;
     	}
     	
