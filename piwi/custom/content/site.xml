@@ -18,9 +18,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" />
 		<page id="features" label="Piwi Features" href="de/features.xml">
-			<page id="database" label="Databank Zugriff" href="de/database.xml" />
+			<page id="database" label="Datenbank Zugriff" href="de/database.xml" />
 			<page id="forms" label="Formulare" href="de/forms.xml" />
-			<page id="gallery" label="Gallerie" href="de/gallery.xml" />		
+			<page id="gallery" label="Galerie" href="de/gallery.xml" />		
 			<page id="sitemap" label="SiteMap" href="de/sitemap.xml" />
 			<page id="caching" label="Caching" href="de/caching.xml" />
 			<page id="output_formats" label="Verschiedene Formate" href="de/output_formats.xml" />

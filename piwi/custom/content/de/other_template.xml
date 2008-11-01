@@ -3,11 +3,11 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
    <content position="article">
-      <header>Other Template</header>
+      <header>Anderes Template</header>
       <section>
-         This site uses an other template, which can be defined in the site.xml.
+         Diese Seite verwendet ein anderes Template, dieses kann in der Datei 'site.xml' festgelegt werden.
          <br /><br />
-         So it is possible to use several layouts for different pages of your website.
+         So ist es möglich verschiedene Seiten der Website in unterschiedlichen Layouts auszugeben.
       </section>
    </content> 
 </document>

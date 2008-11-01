@@ -3,14 +3,12 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Multiple Formats</header>
+		<header>Verschiedene Formate</header>
 		<section>
-			PiwiXML can be serialized to several different formats. Currently
-			HTML, PDF and XML are supported.
+			PiwiXML kann in verschiedenen Formaten ausgegeben werden. Momentan werden HTML, PDF und XML unterstützt.
 			<br />
 			<br />
-			You can view this page in the different formats simply by changing
-			the extension to the desired one:
+			Sie können eine Seite in einem anderen Format anzeigen, indem Sie einfach die Dateiendung auf das gewünschte Format ändern:
 			<ul>
 				<li>
 					HTML:

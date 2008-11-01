@@ -3,22 +3,23 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Forms</header>
-		<p>Piwi is able to handle forms. Forms can have multiple steps (Wizards).<br />
-			The values entered by a user can be verified by using Validators.<br />
-         It is also possible to handle multiple forms on one page.
+		<header>Formulare</header>
+		<p>Piwi kann mit Formularen umgehen. Formulare können aus mehreren Schritten bestehen (Wizard).<br />
+		Die eingegebenen Werte können mit Validatoren überprüft werden.		
+		<br />
+		Ebenso ist es möglich mehrer Formulare auf einer Seite zu verwenden.
       </p>
 		<separator />
 		<section>
-			<title>Wizards</title>
-         This is a sample wizard with multiple steps:
+			<title>Wizard</title>
+			Dieses Formular besteht aus mehreren Schritten:
          <br /><br />
          <piwiform id="wizardform" />
 		</section>
 		<separator />
 		<section>
-         <title>Validators</title>
-         This form uses validators to verify the entered values:
+         <title>Validatoren</title>
+         Dieses Formular verwendet Validatoren um die eingegebenen Werte zu überprüfen:
          <br /><br />   
          <piwiform id="validatorform" />
       </section>

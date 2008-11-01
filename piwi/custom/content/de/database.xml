@@ -3,12 +3,12 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Database Access</header>
+		<header>Datenbank Zugriff</header>
 		<section>
-			This site retrieves its contents from both, a SQLite 2 and a SQLite
-			3 database.
+			Diese Seite bezieht ihr Inhalte aus einer SQLite 2 bzw. SQLite
+			3 Datenbank.
 			<br />
-			Connectors for MySQL and MSSQL databases are also available.
+			Konnektoren für MySQL und MSSQL Datenbanken stehen ebenfalls zur Verfügung.
 		</section>
 		<separator />
 		<generator id="sqlite2" />

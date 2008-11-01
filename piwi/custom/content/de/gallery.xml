@@ -3,9 +3,9 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Gallery</header>
+		<header>Galerie</header>
 		<section>
-			This site uses a generator for the picture gallery.
+			Diese Seite verwendet einen Generator für die Bildergalerie.
 		</section>
 		<separator />
 		<generator id="gallery" />
