@@ -27,6 +27,10 @@ class Request {
 		}
 	}
 	
+	/** 
+	 * Returns all parameters that are not PIWI internal contained in $_GET.
+	 * @return array Array containing the parameters.
+	 */
 	public static function getParameters() {
 		$result = array();
 		

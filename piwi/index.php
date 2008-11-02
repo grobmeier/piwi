@@ -58,8 +58,7 @@ $classloader = null;
  * needed classes. Use one file per class/interface and name it: 
  * 	- yourclass.class.php
  * 	- yourinterface.if.php
- * Currently, only custom classes should be lookuped. When the classloader
- * cache has been implemented, the lookup of coreclasses must be evaluated.
+ * @param string $class Name of the of the class or interface.
  */
 function __autoload($class) {
 	global $classloader;

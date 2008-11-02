@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -57,19 +57,20 @@ A Step Processor can be executed within a step in a form.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#process()">process</a>(array values)</p><p class="description">
+<td class="description"><p class="name"><a href="#process()">process</a>(array values, array files)</p><p class="description">
 Performs a custom action within a form using the results of the form.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="process()">process</h3>
-<code class="signature">public  string <strong>process</strong>(array values)</code>
+<code class="signature">public  string <strong>process</strong>(array values, array files)</code>
 <div class="details">
 <p>
 Performs a custom action within a form using the results of the form.</p><dl>
 <dt>Parameters:</dt>
 <dd>values - The values of the form.</dd>
+<dd>files - The files that have been posted.</dd>
 <dt>Returns:</dt>
 <dd>The desired result as PiwiXML</dd>
 </dl>

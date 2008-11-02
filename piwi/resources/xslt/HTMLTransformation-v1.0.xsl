@@ -8,7 +8,7 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	
-	<!-- Copy everything that is not a generator or a form -->
+	<!-- Copy everything that is not a specific piwixml tag -->
 	<xsl:template match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*" />

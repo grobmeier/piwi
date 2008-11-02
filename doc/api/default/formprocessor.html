@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Mon, 27 Oct 2008 14:26:27 +0100">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -109,6 +109,12 @@ Converts the given SELECT element to PiwiXML.</p></td>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#generateTextArea()">generateTextArea</a>(array domElement)</p><p class="description">
 Converts the given TEXTAREA element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type">private static  array</td>
+<td class="description"><p class="name"><a href="#getFiles()">getFiles</a>()</p><p class="description">
+Returns an array containing all files of the currently processed form.
+</p></td>
 </tr>
 <tr>
 <td class="type">static  integer</td>
@@ -236,6 +242,19 @@ Converts the given TEXTAREA element to PiwiXML.</p><dl>
 <dd>domElement - An array containing the DOMElement to convert.</dd>
 <dt>Returns:</dt>
 <dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getFiles()">getFiles</h3>
+<code class="signature">private static  array <strong>getFiles</strong>()</code>
+<div class="details">
+<p>
+Returns an array containing all files of the currently processed form.
+These values are used in StepProcessors to handle posted files.</p><dl>
+<dt>Returns:</dt>
+<dd>Array containing all files of the currently processed form.</dd>
 </dl>
 </div>
 

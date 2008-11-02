@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -65,8 +65,9 @@ Returns the extension/format of the requested page (e.g. </p></td>
 Returns the id of the requested page.</p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#getParameters()">getParameters</a>()</p></td>
+<td class="type">static  array</td>
+<td class="description"><p class="name"><a href="#getParameters()">getParameters</a>()</p><p class="description">
+Returns all parameters that are not PIWI internal contained in $_GET.</p></td>
 </tr>
 </table>
 
@@ -96,8 +97,13 @@ Returns the id of the requested page.</p><dl>
 <hr>
 
 <h3 id="getParameters()">getParameters</h3>
-<code class="signature">public static  void <strong>getParameters</strong>()</code>
+<code class="signature">public static  array <strong>getParameters</strong>()</code>
 <div class="details">
+<p>
+Returns all parameters that are not PIWI internal contained in $_GET.</p><dl>
+<dt>Returns:</dt>
+<dd>Array containing the parameters.</dd>
+</dl>
 </div>
 
 <hr>

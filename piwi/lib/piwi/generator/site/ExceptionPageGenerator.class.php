@@ -11,7 +11,7 @@ final class ExceptionPageGenerator extends SiteGenerator {
    	 * Constructor.
    	 * @param exception $exception The exception that should be displayed.
    	 */
-    public function __construct($exception) {
+    public function __construct(Exception $exception) {
     	$this->exception = $exception;
     }
    

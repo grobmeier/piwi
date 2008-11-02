@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 31 Oct 2008 14:34:01 +0100">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -61,10 +61,6 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#siteFilename">$siteFilename</a></p><p class="description">The name of the file containing the site information. </p></td>
-</tr>
-<tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#siteXml">$siteXml</a></p><p class="description">The site definition as DOMDocument. </p></td>
 </tr>
 </table>
 
@@ -134,13 +130,6 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<h3 id="siteXml">siteXml</h3>
-<code class="signature">private  mixed <strong>$siteXml</strong> = null</code>
-<div class="details">
-<p>The site definition as DOMDocument. */</p></div>
-
-<hr>
-
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="XMLSite()">XMLSite</h3>
 <code class="signature">public <strong>XMLSite</strong>(string contentPath, string siteFilename)</code>
@@ -165,7 +154,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <dd>xpath - The xpathquerystring of the current layer.</dd>
 <dd>openpath - The ids nodes that lead to the current pageId.</dd>
 <dt>Returns:</dt>
-<dd>description</dd>
+<dd>Array containing the submenus of the given nodes.</dd>
 </dl>
 </div>
 

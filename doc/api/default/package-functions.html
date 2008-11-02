@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Thu, 23 Oct 2008 16:53:18 +0200">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -44,7 +44,7 @@ Detail: <a href="#detail_function">Function</a>
 <tr><th colspan="2" class="title">Function Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#__autoload()">__autoload</a>(mixed class)</p><p class="description">
+<td class="description"><p class="name"><a href="#__autoload()">__autoload</a>(string class)</p><p class="description">
 Autoload uses the ClassLoader class tu recursivly look up
 needed classes. </p></td>
 </tr>
@@ -52,16 +52,17 @@ needed classes. </p></td>
 
 <h2 id="detail_function">Function Detail</h2>
 <h3 id="__autoload()">__autoload</h3>
-<code class="signature">public  void <strong>__autoload</strong>(mixed class)</code>
+<code class="signature">public  void <strong>__autoload</strong>(string class)</code>
 <div class="details">
 <p>
 Autoload uses the ClassLoader class tu recursivly look up
 needed classes. Use one file per class/interface and name it: 
 	- yourclass.class.php
-	- yourinterface.if.php
-Currently, only custom classes should be lookuped. When the classloader
-cache has been implemented, the lookup of coreclasses must be evaluated.
-/</p>
+	- yourinterface.if.php</p>
+<dl>
+<dt>Parameters:</dt>
+<dd>class - Name of the of the class or interface.</dd>
+</dl>
 </div>
 
 <hr>
