@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:php="http://php.net/xsl" xmlns:piwixml="http://piwi.googlecode.com/xsd/piwixml" exclude-result-prefixes="php">
 	<xsl:output method="xml" encoding="UTF-8" indent="no" omit-xml-declaration="yes" />
 
@@ -11,11 +11,6 @@
          <xsl:apply-templates/>
       </xsl:copy>
    </xsl:template>
-
-   <!-- Used for legacy html -->
-	<xsl:template match="html">
-      <xsl:copy-of select="node()"/>
-	</xsl:template>
 
    <!-- Execute generators -->
    <xsl:template match="piwixml:generator">

@@ -89,7 +89,7 @@ class FormProcessor {
 		}
 
 		// Build xml
-		$piwixml = '<form action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
+		$piwixml = '<form xmlns="http://piwi.googlecode.com/xsd/piwixml" action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
 		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
 		
 		// add step

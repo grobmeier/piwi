@@ -15,27 +15,6 @@
 			<xsl:apply-templates />			
 		</xsl:copy>
 	</xsl:template>
-   
-   <!-- Used for legacy html -->
-   <xsl:template match="html">
-      <xsl:copy-of select="node()"/>
-   </xsl:template>
-   
-   <!-- DIVs must be handled separetly, otherwise a not allowed 'xmlns' could occur  -->
-   <xsl:template match="div">
-	   <div>
-		   <xsl:copy-of select="@*" />
-		   <xsl:apply-templates />
-	   </div>
-   </xsl:template>
-   
-   <!-- FORMs must be handled separetly, otherwise a not allowed 'xmlns' could occur  -->
-   <xsl:template match="form">
-      <form>
-         <xsl:copy-of select="@*" />
-         <xsl:apply-templates />
-      </form>
-   </xsl:template>  
 
    <!-- Piwi Elements -->
 	<xsl:template match="header">

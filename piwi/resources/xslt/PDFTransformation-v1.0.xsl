@@ -15,12 +15,7 @@
 			<xsl:apply-templates />			
 		</xsl:copy>
 	</xsl:template>
-   
-   <!-- Used for legacy html -->
-   <xsl:template match="html">
-      <xsl:copy-of select="node()"/>
-   </xsl:template>
-   
+      
    <!-- DIVs must be handled separetly, they should not occur in the generated html, 
    since HTML2FPDF can not handle images placed within DIVs  -->
    <xsl:template match="div">

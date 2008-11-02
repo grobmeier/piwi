@@ -9,8 +9,8 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 		<connector>sqlite3Connector</connector>
 	</generator>
 	<generator id="gallery" class="SimpleGalleryGenerator">
-		<pathtoalbums>custom/content/files/gallery/media</pathtoalbums>
-		<pathtoupload>custom/content/files/gallery/upload</pathtoupload>
+		<pathtoalbums>custom/files/gallery/media</pathtoalbums>
+		<pathtoupload>custom/files/gallery/upload</pathtoupload>
 	</generator>
 	<generator id="featuresSiteMap" class="SiteMapGenerator">
 		<header>Features</header>

@@ -30,9 +30,8 @@ class SimpleGalleryGenerator implements SectionGenerator {
 		}
 
 		// Generate the xml output
-		$piwixml = '<div>';
-
-
+		$piwixml = '';
+		
 		foreach($albums as $album) {
 			$folder = $album->getName();
 			$images = $album->getImages();	
@@ -71,7 +70,6 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			}
 			$piwixml .= '</section>';
 		}
-		$piwixml .= '</div>';
 		
 		return $piwixml;
 	}

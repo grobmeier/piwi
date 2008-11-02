@@ -3,11 +3,11 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/connectors ../../resources/xsd/connectors.xsd">
 	<connector id="sqlite2Connector" class="SQLite2Connector">
-		<file>custom/content/db/sqlite2_sample.sqlite2</file>
+		<file>custom/files/db/sqlite2_sample.sqlite2</file>
 		<mode>0666</mode>
 	</connector>
 	<connector id="sqlite3Connector" class="SQLite3Connector">
-		<file>custom/content/db/sqlite3_sample.sqlite3</file>
+		<file>custom/files/db/sqlite3_sample.sqlite3</file>
 	</connector>
 	<connector id="mySQLConnector" class="MySQLConnector">
 		<server>127.0.0.1:3306</server>
