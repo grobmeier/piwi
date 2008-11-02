@@ -101,7 +101,7 @@ class GeneratorFactory {
 
 		$xml = self :: $generatorFactoryInstance->getGeneratorById($generatorId)->generate();
 		$doc = new DOMDocument;
-		$doc->loadXml($xml);
+		$doc->loadXml('<section xmlns="http://piwi.googlecode.com/xsd/piwixml">' . $xml . '</section>');
 		return $doc;
 	}
 }

@@ -26,16 +26,17 @@ class MediaCenter {
 	public function getAlbums($albumName = null) {
 		$albumFolder = opendir($this->pathToAlbums);
 		$albums = array();
+		$count = 0;
 		while($folder = readdir($albumFolder)) {  
 			if(	$folder != "." && 
 				$folder != ".." && 
 				!is_dir($folder) &&
 				substr($folder, 0, 1) != ".") {
-					// if one wants a specific album ignore all other albums
+					// if one wants a specific album ignore all other albums					
 					if ($albumName == null || $albumName == $folder) {
 						$album = new Album($folder);
 						$album->setCreatedAt(filectime($this->pathToAlbums . "/" . $folder));
-						$albums[$album->getCreatedAt()] = $this->addImagesToAlbum($album, $this->pathToAlbums . "/" . $folder . "/thumbs/");
+						$albums[$album->getCreatedAt() . ($count++)] = $this->addImagesToAlbum($album, $this->pathToAlbums . "/" . $folder . "/thumbs/");
 					}
 			}
 		}
@@ -52,7 +53,7 @@ class MediaCenter {
 	 * @param Album $album The album to which the images should be added.
 	 * @param string $folder The folder whose images should be added to the album.
 	 */
-	private function addImagesToAlbum($album, $folder) {		
+	private function addImagesToAlbum(Album $album, $folder) {		
 		$imageFolder = opendir($folder);
 		while ($file = readdir($imageFolder)) {  
 			if(	$file != "." && 
