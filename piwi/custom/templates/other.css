@@ -40,8 +40,8 @@
 {
    	color:               #ffffff;
    	text-decoration:     none;
+   display: 			block;
 }
-
 
 #menu ul li a:hover
 {
@@ -52,6 +52,11 @@
 #menu ul li.selected a
 {
    	color:               #449c52;
+}
+
+#menu ul li ul li a
+{
+   padding: 			  5px 15px 5px 15px;
 }
 
 #menu ul li.selected ul li a
@@ -77,8 +82,7 @@
 	float: 				left;
 	font-weight:        bold;
 	position: 			relative;
-	margin: 			0px 0px 0px 35px;
-    padding-right: 		40px;
+	margin: 			0px 40px 0px 35px;
 }
 
 #menu ul li ul 
@@ -89,7 +93,7 @@
     display: 			none;
     border:				1px solid #dcdcdc;
 	line-height:		1.0em;
-    width: 				100%;
+    width: 				230px;
 }
 
 #menu ul li:hover ul
@@ -103,7 +107,6 @@
 	margin: 			1px;
     float:				none;
     display: 			block;
-    padding: 			5px 15px 5px 15px;
     font-weight:     	normal;
 }
 
