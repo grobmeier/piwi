@@ -35,7 +35,7 @@ class PDFSerializer implements Serializer {
 		// generate PDF		
 		$html2pdf = new HTML2FPDF();		
 		$html2pdf->AddPage();
-		$html2pdf->WriteHTML($html);
+		$html2pdf->WriteHTML(utf8_decode($html));
 		$html2pdf->Output($pageId . '.pdf', 'I');
 	}
 }
