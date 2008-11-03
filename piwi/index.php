@@ -67,7 +67,7 @@ function __autoload($class) {
 	}
 
 	$directorys = array (		
-		'lib/piwi', 
+		'lib', 
 		CUSTOM_CLASSES_PATH
 	);
 
