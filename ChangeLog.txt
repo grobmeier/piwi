@@ -1,4 +1,4 @@
-0.0.5 - Forms framwork Release
+0.0.5 - Forms Framework Release
 
     * New: Added form framework with validators
     * New: Included html2fpdf as PDF-Serializer
