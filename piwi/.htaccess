@@ -1,4 +1,6 @@
 #AddType x-mapp-php5 .php
 
-RewriteEngine on
-RewriteRule ^(?!custom/)(.*)\.(html|htm|xml|pdf)$ index.php?page=$1&extension=$2 [QSA]
+RewriteEngine   on
+RewriteBase / 
+RewriteRule custom/(.*)$ custom/$1 [L]
+RewriteRule (.*)\.(html|htm|xml|pdf)$ index.php?page=$1&extension=$2

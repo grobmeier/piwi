@@ -92,10 +92,6 @@ class FormProcessor {
 		$piwixml = '<form xmlns="http://piwi.googlecode.com/xsd/piwixml" action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
 		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
 		
-		// add step
-		$piwixml .= $stepXML;
-		
-		// Show buttons	if not in last step
 		if (self::$currentStep < self::$numberOfSteps) {
 			// Add current values as hidden field (but no checkboxes), to save their state
 			foreach ($_POST as $key => $value) {
@@ -109,7 +105,13 @@ class FormProcessor {
 					}
 				}
 			}
+		}
 		
+		// add step
+		$piwixml .= $stepXML;
+		
+		// Show buttons	if not in last step
+		if (self::$currentStep < self::$numberOfSteps) {
 			// Send button
 			$configuration = $domXPath->query('/piwiform:form/piwiform:configuration')->item(0);
 			$piwixml .= '<br /><br /><input type="submit" value="' . $configuration->getAttribute("submitText") . '" />';
