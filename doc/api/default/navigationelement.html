@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>NavigationElement (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/navigationelement.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">default.NavigationElement</div>
+
+<h1>Class NavigationElement</h1>
+
+<pre class="tree"><strong>NavigationElement</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>NavigationElement</strong></p>
+
+<div class="comment" id="overview_description"><p>
+Creates a simple navigation.
+/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#children">$children</a></p><p class="description">The children. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#id">$id</a></p><p class="description">The id of the page. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#label">$label</a></p><p class="description">The label of the page, which will be displayed. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#open">$open</a></p><p class="description">Indicates whether the children are currently visible. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#parent">$parent</a></p><p class="description">The parent NavigationElement. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#selected">$selected</a></p><p class="description">Indicates whether the NavigationElement is currently selected. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#NavigationElement()">NavigationElement</a>(string id, string label)</p><p class="description">
+Constructor.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getChildren()">getChildren</a>()</p><p class="description">
+Returns the children of the NavigationElement.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getId()">getId</a>()</p><p class="description">
+Returns the id of the page.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getLabel()">getLabel</a>()</p><p class="description">
+Returns the label of the page.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../default/navigationelement.html">NavigationElement</a></td>
+<td class="description"><p class="name"><a href="#getParent()">getParent</a>()</p><p class="description">
+Returns the parent NavigationElement.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isOpen()">isOpen</a>()</p><p class="description">
+Indicates whether the children are currently visible.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isSelected()">isSelected</a>()</p><p class="description">
+Indicates whether the NavigationElement is currently selected.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setChildren()">setChildren</a>(array children)</p><p class="description">Sets the children</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setOpen()">setOpen</a>(boolean open)</p><p class="description">
+Sets the NavigationElement to open.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setParent()">setParent</a>(mixed parent, <a href="../default/navigationelement.html">NavigationElement</a> selected)</p><p class="description">
+Sets the parent NavigationElement.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setSelected()">setSelected</a>(boolean selected)</p><p class="description">
+Sets the NavigationElement to selected.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="children">children</h3>
+<code class="signature">private  mixed <strong>$children</strong> = null</code>
+<div class="details">
+<p>The children. */</p></div>
+
+<hr>
+
+<h3 id="id">id</h3>
+<code class="signature">private  mixed <strong>$id</strong> = null</code>
+<div class="details">
+<p>The id of the page. */</p></div>
+
+<hr>
+
+<h3 id="label">label</h3>
+<code class="signature">private  mixed <strong>$label</strong> = null</code>
+<div class="details">
+<p>The label of the page, which will be displayed. */</p></div>
+
+<hr>
+
+<h3 id="open">open</h3>
+<code class="signature">private  mixed <strong>$open</strong> = false</code>
+<div class="details">
+<p>Indicates whether the children are currently visible. */</p></div>
+
+<hr>
+
+<h3 id="parent">parent</h3>
+<code class="signature">private  mixed <strong>$parent</strong> = null</code>
+<div class="details">
+<p>The parent NavigationElement. */</p></div>
+
+<hr>
+
+<h3 id="selected">selected</h3>
+<code class="signature">private  mixed <strong>$selected</strong> = false</code>
+<div class="details">
+<p>Indicates whether the NavigationElement is currently selected.  */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="NavigationElement()">NavigationElement</h3>
+<code class="signature">public <strong>NavigationElement</strong>(string id, string label)</code>
+<div class="details">
+<p>
+Constructor.</p><dl>
+<dt>Parameters:</dt>
+<dd>id - The id of the page.</dd>
+<dd>label - The label of the page, which will be displayed.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="getChildren()">getChildren</h3>
+<code class="signature">public  array <strong>getChildren</strong>()</code>
+<div class="details">
+<p>
+Returns the children of the NavigationElement.</p><dl>
+<dt>Returns:</dt>
+<dd>The children.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getId()">getId</h3>
+<code class="signature">public  string <strong>getId</strong>()</code>
+<div class="details">
+<p>
+Returns the id of the page.</p><dl>
+<dt>Returns:</dt>
+<dd>The id.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getLabel()">getLabel</h3>
+<code class="signature">public  string <strong>getLabel</strong>()</code>
+<div class="details">
+<p>
+Returns the label of the page.</p><dl>
+<dt>Returns:</dt>
+<dd>The label.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getParent()">getParent</h3>
+<code class="signature">public  <a href="../default/navigationelement.html">NavigationElement</a> <strong>getParent</strong>()</code>
+<div class="details">
+<p>
+Returns the parent NavigationElement.</p><dl>
+<dt>Returns:</dt>
+<dd>The parent NavigationElement.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="isOpen()">isOpen</h3>
+<code class="signature">public  boolean <strong>isOpen</strong>()</code>
+<div class="details">
+<p>
+Indicates whether the children are currently visible.</p><dl>
+<dt>Returns:</dt>
+<dd>True if open.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="isSelected()">isSelected</h3>
+<code class="signature">public  boolean <strong>isSelected</strong>()</code>
+<div class="details">
+<p>
+Indicates whether the NavigationElement is currently selected.</p><dl>
+<dt>Returns:</dt>
+<dd>True if selected.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setChildren()">setChildren</h3>
+<code class="signature">public  void <strong>setChildren</strong>(array children)</code>
+<div class="details">
+<p>Sets the children</p><dl>
+<dt>Parameters:</dt>
+<dd>children - The children to add.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setOpen()">setOpen</h3>
+<code class="signature">public  void <strong>setOpen</strong>(boolean open)</code>
+<div class="details">
+<p>
+Sets the NavigationElement to open.</p><dl>
+<dt>Parameters:</dt>
+<dd>open - Indicates whether the children are currently visible.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setParent()">setParent</h3>
+<code class="signature">public  void <strong>setParent</strong>(mixed parent, <a href="../default/navigationelement.html">NavigationElement</a> selected)</code>
+<div class="details">
+<p>
+Sets the parent NavigationElement.</p><dl>
+<dt>Parameters:</dt>
+<dd>selected - the parent NavigationElement.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setSelected()">setSelected</h3>
+<code class="signature">public  void <strong>setSelected</strong>(boolean selected)</code>
+<div class="details">
+<p>
+Sets the NavigationElement to selected.</p><dl>
+<dt>Parameters:</dt>
+<dd>selected - Indicates whether the NavigationElement is currently selected.</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/navigationelement.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

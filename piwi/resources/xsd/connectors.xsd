@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/connectors"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/connectors">
+	<complexType name="connectorType">
+        <sequence>
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"></any>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="class" type="string" use="required"></attribute>
+	</complexType>
+	<element name="connectors" type="tns:connectorsType">
+		<unique name="UniqueConnectorId">
+			<selector xpath=".//tns:connector" />
+			<field xpath="@id" />
+		</unique>
+	</element>
+	<complexType name="connectorsType">
+		<sequence>
+			<element name="connector" type="tns:connectorType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>		
+	</complexType>
+</schema>

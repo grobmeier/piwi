@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/piwiform"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/piwiform">
+	<element name="form" type="tns:formType">
+		<unique name="UniqueInputName">
+			<selector xpath=".//tns:input" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+	<complexType name="formType">
+
+		<sequence>
+			<element name="configuration" type="tns:configurationType"
+				minOccurs="1" maxOccurs="1">
+			</element>
+			<element name="step" type="tns:stepType" minOccurs="1" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="stepType" mixed="true">
+        <sequence>
+
+			<any processContents="skip" minOccurs="0" maxOccurs="unbounded" namespace="##any">
+			</any>
+		</sequence>
+
+		<anyAttribute namespace="##any" processContents="skip"></anyAttribute>
+	</complexType>
+
+	<complexType name="configurationType">
+    	<attribute name="submitText" type="string" use="required"></attribute>
+    	<attribute name="resetText" type="string" use="optional"></attribute>
+    </complexType>
+
+</schema>

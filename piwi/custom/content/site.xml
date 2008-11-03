@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns="http://piwi.googlecode.com/xsd/site" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
+	<globalconfiguration navigation="SimpleTextNavigation" cachetime="0" />
+	<language region="default">
+		<page id="default" label="Home" href="en/default.xml" />
+		<page id="features" label="Piwi Features" href="en/features.xml">
+			<page id="database" label="Database Access" href="en/database.xml" />
+			<page id="forms" label="Forms" href="en/forms.xml" />
+			<page id="internationalization" label="Internationalization" href="en/internationalization.xml" />
+			<page id="gallery" label="Gallery" href="en/gallery.xml" />		
+			<page id="sitemap" label="SiteMap" href="en/sitemap.xml" />
+			<page id="caching" label="Caching" href="en/caching.xml" />
+			<page id="output_formats" label="Multiple Formats" href="en/output_formats.xml" />
+			<page id="other_template" label="Other Template" href="en/other_template.xml" template="other.php" />
+		</page>
+	</language>
+	<language region="de">
+		<page id="default" label="Start" href="de/default.xml" />
+		<page id="features" label="Piwi Features" href="de/features.xml">
+			<page id="database" label="Datenbank Zugriff" href="de/database.xml" />
+			<page id="forms" label="Formulare" href="de/forms.xml" />
+			<page id="internationalization" label="Lokalisierbarkeit" href="de/internationalization.xml" />
+			<page id="gallery" label="Galerie" href="de/gallery.xml" />		
+			<page id="sitemap" label="SiteMap" href="de/sitemap.xml" />
+			<page id="caching" label="Caching" href="de/caching.xml" />
+			<page id="output_formats" label="Verschiedene Formate" href="de/output_formats.xml" />
+			<page id="other_template" label="Anderes Template" href="de/other_template.xml" template="other.php" />
+		</page>
+	</language>
+</site>

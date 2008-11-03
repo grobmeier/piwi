@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns="http://piwi.googlecode.com/xsd/forms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/forms ../../resources/xsd/forms.xsd">
+	<language region="default">
+		<form id="wizardform" path="custom/content/en/forms/wizardform.xml" />
+		<form id="validatorform" path="custom/content/en/forms/validatorform.xml" />
+	</language>
+	<language region="de">
+		<form id="wizardform" path="custom/content/de/forms/wizardform.xml" />
+		<form id="validatorform" path="custom/content/de/forms/validatorform.xml" />
+	</language>
+</forms>

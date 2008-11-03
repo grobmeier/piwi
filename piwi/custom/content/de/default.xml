@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>Willkommen</header>
+		<section>
+			<p>Auf der Piwi Website</p>
+		</section>
+		<separator />
+		<section>
+			<title>Beschreibung</title>
+			PIWI ist ein XML/XSLT Transformations Framework welches in PHP
+			geschrieben wurde.
+			Einige Konzepte und Ideen wurden von den großartigen Java-Applikation
+			<a href="http://cocoon.apache.org" rel="nofollow">
+				Apache Cocoon
+			</a>
+			und
+			<a href="http://forrest.apache.org" rel="nofollow">
+				Apache Forrest</a>
+			übernommen.
+			Cocoon ist nach wie vor gut, aber sehr komplex und natürlich in Java, was
+			Leuten mit kleinen Projekten den Einstieg erschwert.
+			<br />
+			<br />
+			PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
+		</section>
+		<separator />
+		<generator id="featuresSiteMap" />
+	</content>
+</document>

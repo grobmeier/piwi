@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/forms"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/forms">
+	<complexType name="formType">
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="path" type="string" use="required"></attribute>
+	</complexType>
+	<element name="forms" type="tns:formsType">
+      <unique name="UniqueLanguageRegion">
+         <selector xpath=".//tns:language" />
+         <field xpath="@region" />
+      </unique>
+	</element>
+	<complexType name="formsType">
+		<sequence>
+			<element name="language" type="tns:languageType" minOccurs="1" maxOccurs="unbounded">
+			      <unique name="UniqueFormId">
+         <selector xpath=".//tns:form" />
+         <field xpath="@id" />
+      </unique>
+			</element>
+		</sequence>		
+	</complexType>
+	
+	  <complexType name="languageType">
+      <sequence>
+         <element name="form" type="tns:formType" minOccurs="0"
+            maxOccurs="unbounded">
+         </element>
+      </sequence>
+      <attribute name="region" type="string" use="required"></attribute>
+
+   </complexType>
+</schema>

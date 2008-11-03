@@ -1,0 +1,242 @@
+﻿body 
+{
+   background-color:    #ffffff;
+   color:               #000000;
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   margin:              10px 0px 10px 0px;
+}
+
+/* Container */
+#container
+{
+   margin:              auto; 
+   width:               960px;         
+}
+/* Container End */
+
+/* Header */
+#header
+{
+   background-image:    url(images/piwi-logo.png);
+   background-repeat:   no-repeat;
+   margin-bottom:       10px;  
+   text-align:          center;
+   height:              150px;
+}
+/* Header End */
+
+/* Menu */
+#menu
+{
+   background-image:    url(images/menu.png);
+   background-repeat:   no-repeat;
+   line-height:         1.9em;
+   padding:             8px 0px 0px 0px;
+   height:              30px;
+   padding-right:        30px;
+}
+
+#menu ul li a
+{
+   	color:               #ffffff;
+   	text-decoration:     none;
+   display: 			block;
+}
+
+#menu ul li a:hover
+{
+	color:               #449c52;   
+   	text-decoration:     none;
+}
+
+#menu ul li.selected a
+{
+   	color:               #449c52;
+}
+
+#menu ul li ul li a
+{
+   padding: 			  5px 15px 5px 15px;
+}
+
+#menu ul li.selected ul li a
+{
+   	color:               #ffffff;
+}
+
+#menu ul li.selected ul li a:hover
+{
+   	color:               #449c52;
+}
+
+#menu ul
+{
+	background-color: 	#c5dc08;
+	margin: 			0px; 
+	padding: 			0px;
+}
+
+#menu ul li
+{ 
+	list-style: 		none;
+	float: 				left;
+	font-weight:        bold;
+	position: 			relative;
+	margin: 			0px 40px 0px 35px;
+}
+
+#menu ul li ul 
+{
+    position: 			absolute;
+    top: 				1.9em;
+    left: 				-0.5em;
+    display: 			none;
+    border:				1px solid #dcdcdc;
+	line-height:		1.0em;
+    width: 				230px;
+}
+
+#menu ul li:hover ul
+{
+    display: block;
+}
+  
+#menu ul li ul li
+{
+	background-color: 	#b6cc0c;
+	margin: 			1px;
+    float:				none;
+    display: 			block;
+    font-weight:     	normal;
+}
+
+#menu ul li ul li.selected
+{
+	background-color: 	#a1b50d;
+}
+/* Menu End */
+
+/* Footer */
+#footer
+{     
+   background-image:    url(images/footer.png);
+   background-repeat:   no-repeat;
+   font-size:           0.7em;
+   height:              23px;
+   line-height:         1.2em;
+   padding:             4px 20px 6px 20px;
+}
+
+#footer a
+{  
+   text-decoration:     none;
+}
+
+#footer a:hover
+{
+   color:               #000000;
+   text-decoration:     none;
+}
+/* Footer End */
+
+/* Content */
+#content
+{     
+   background-color:    #ffffff;
+   border:              1px solid #dcdcdc;     
+   font-size:           0.9em;
+   line-height:         1.4em;   
+   padding:             30px;
+   text-align:          justify;
+}
+/* Content End */
+
+/* SiteMapPath */
+.sitemappath
+{
+	margin-bottom:		15px;
+	font-size:			0.7em;
+}
+
+.sitemappath a
+{
+	color:              #cc0000;
+}
+
+.sitemappath a:hover
+{
+	color:              #000000;
+}
+/* SiteMapPath End */
+
+a
+{
+   color:               #449c52;
+   text-decoration:     none;
+}
+
+a:hover
+{
+   color:               #c5dc08;
+   text-decoration:     none;
+}
+
+hr
+{
+   border:              solid #dcdcdc 1px;
+   height:              1px;
+   margin-top:          25px;
+   margin-bottom:       25px;
+}
+
+img
+{
+   border:              0px;
+}
+
+h1
+{
+   color:               #cc0000;
+   font-size:           1.2em;
+   font-weight:         bold;
+   margin:              0px 0px 20px 0px;
+   padding:             0px;
+}
+
+h2
+{
+   color:               #000000;
+   font-size:           1.0em;
+   font-weight:         bold;
+   margin:              0px 0px 15px 0px;
+   padding:             0px;
+}
+
+form
+{
+   padding:             8px;
+   background-color:    #e5e5e5;
+}
+
+textarea, input
+{
+   background-color:    #ffffff;
+   border:              1px solid  #dcdcdc;  
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   font-size:           0.9em;   
+}
+
+.right
+{  
+   float:               right;
+}
+
+.bold
+{
+   font-weight:         bold;
+}
+
+.error
+{
+   color:               #cc0000;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators xmlns="http://piwi.googlecode.com/xsd/generators" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xsd/generators.xsd">
+	<generator id="sqlite2" class="SQLiteContentGenerator">
+		<connector>sqlite2Connector</connector>
+	</generator>
+	<generator id="sqlite3" class="SQLiteContentGenerator">
+		<connector>sqlite3Connector</connector>
+	</generator>
+	<generator id="gallery" class="SimpleGalleryGenerator">
+		<pathtoalbums>custom/files/gallery/media</pathtoalbums>
+		<pathtoupload>custom/files/gallery/upload</pathtoupload>
+	</generator>
+	<generator id="featuresSiteMap" class="SiteMapGenerator">
+		<header>Features</header>
+		<pageId>features</pageId>
+		<depth>-1</depth>
+		<includeParent>0</includeParent>
+	</generator>
+	<generator id="fullSiteMap" class="SiteMapGenerator">
+		<header>Contents of this Website</header>
+	</generator>
+</generators>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://piwi.googlecode.com/xsd/piwiform"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resources/xsd/piwiform.xsd">
+	<configuration submitText="Senden"
+		resetText="Löschen" />
+	<step>
+	   Geschlecht:
+	   <input name="Gender" type="radio" value="Male" /> männlich
+	   <input name="Gender" type="radio" value="Female" /> weiblich
+      <validator class="RequiredFieldValidator" fieldToValidate="Gender"
+      message="Wählen Sie ein Geschlecht." />
+      <br />
+      <br />
+		Name:
+		<input name="Name" type="text" size="30" maxlength="30" value="Name" />
+		<validator class="RequiredFieldValidator" fieldToValidate="Name"
+			message="Geben Sie einen Namen ein" initialValue="Name" />
+		<br />
+		<br />
+		Email:
+		<input name="Email" type="text" size="30" maxlength="50" />
+		<validator class="RegularExpressionValidator"
+			fieldToValidate="Email" pattern="/[\.a-z0-9_-]+@[a-z0-9-]{2,}\.[a-z]{2,4}$/i"
+			message="Geben Sie eine gültige Email an." />
+		<br />
+		<br />
+		Email Wiederholung:
+		<input name="Email2" type="text" size="30" maxlength="50" />
+		<validator class="CompareValidator" fieldToValidate="Email2"
+			fieldNameToCompare="Email" message="Emailadressen müssen übereinstimmen." />
+		<br />
+		<br />
+		Nummer (0-10):
+		<input name="Number" type="text" size="30" maxlength="10" />
+		<validator class="RangeValidator" fieldToValidate="Number"
+			minimumValue="0" maximumValue="10"
+			message="Geben Sie eine Nummer zwischen 0 und 10 ein." />
+      <br />
+      <br />
+		Newsletter:
+      <input name="Newsletter" type="checkbox" value="Yes" /> Ja / Nein
+      <br />
+      <br />
+      Hobbies:
+      <select name="Interests[]" size="3" multiple="multiple">
+	      <option value="Music">Musik</option>
+	      <option value="Sports">Sport</option>
+	      <option value="Computer">Computer</option>
+      </select>
+		<validator class="RequiredFieldValidator"
+		         fieldToValidate="Interests[]" message="Bitte wählen Sie mindestens ein Hobby:" />
+	</step>
+	<step>
+		<stepprocessor class="ValidationProcessor" />
+	</step>
+</form>

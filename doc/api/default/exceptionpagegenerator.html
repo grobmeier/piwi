@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ExceptionPageGenerator (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/exceptionpagegenerator.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">default.ExceptionPageGenerator</div>
+
+<h1>Class ExceptionPageGenerator</h1>
+
+<pre class="tree"><a href="../default/sitegenerator.html">SiteGenerator</a><br>  |<br>  +--<strong>ExceptionPageGenerator</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public final  class <strong>ExceptionPageGenerator</strong><br>extends <a href="../default/sitegenerator.html">SiteGenerator</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+Generates an errorpage.
+Can be used to display a well formated message when an error occurs.
+/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#exception">$exception</a></p><p class="description">The exception that should be displayed. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#ExceptionPageGenerator()">ExceptionPageGenerator</a>(exception exception)</p><p class="description">
+Constructor.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">protected  string</td>
+<td class="description"><p class="name"><a href="#generateSections()">generateSections</a>()</p><p class="description">
+Generates the sections that will be placed as content.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setProperty()">setProperty</a>(string key, object value)</p><p class="description">Used to pass parameters to the Generator.</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from default.SiteGenerator</th></tr>
+<tr><td><a href="../default/sitegenerator.html#generate()">generate</a>, <a href="../default/sitegenerator.html#generateSections()">generateSections</a>, <a href="../default/sitegenerator.html#setProperty()">setProperty</a></td></tr></table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="exception">exception</h3>
+<code class="signature">private  mixed <strong>$exception</strong> = null</code>
+<div class="details">
+<p>The exception that should be displayed. */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="ExceptionPageGenerator()">ExceptionPageGenerator</h3>
+<code class="signature">public <strong>ExceptionPageGenerator</strong>(exception exception)</code>
+<div class="details">
+<p>
+Constructor.</p><dl>
+<dt>Parameters:</dt>
+<dd>exception - The exception that should be displayed.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="generateSections()">generateSections</h3>
+<code class="signature">protected  string <strong>generateSections</strong>()</code>
+<div class="details">
+<p>
+Generates the sections that will be placed as content.</p><dl>
+<dt>Returns:</dt>
+<dd>The xml output as string.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setProperty()">setProperty</h3>
+<code class="signature">public  void <strong>setProperty</strong>(string key, object value)</code>
+<div class="details">
+<p>Used to pass parameters to the Generator.</p><dl>
+<dt>Parameters:</dt>
+<dd>key - The name of the parameter.</dd>
+<dd>value - The value of the parameter.</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/exceptionpagegenerator.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>
