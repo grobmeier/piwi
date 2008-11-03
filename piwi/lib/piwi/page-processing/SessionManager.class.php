@@ -4,8 +4,8 @@
  */
 class SessionManager {
 	/**
-	 * Returns the prefered language of the user or 'default' if none is set.
-	 * @return string The prefered language of the user.
+	 * Returns the preferred language of the user or 'default' if none is set.
+	 * @return string The preferred language of the user.
 	 */
 	public static function getUserLanguage() {
 		// Check if user has changed its prefered language
