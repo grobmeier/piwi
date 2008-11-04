@@ -21,7 +21,7 @@
 	</element>
 	<complexType name="siteType">
 		<sequence>
-			<element name="globalconfiguration" type="tns:globalConfigurationType"
+			<element name="configuration" type="tns:configurationType"
 				minOccurs="0" maxOccurs="1">
 			</element>
 
@@ -37,9 +37,10 @@
 	</complexType>
 
 
-	<complexType name="globalConfigurationType">
-		<attribute name="navigation" type="string" use="optional"></attribute>
-		<attribute name="cachetime" type="int" use="optional"></attribute>
+	<complexType name="configurationType">
+        <sequence>
+        	<any minOccurs="0" maxOccurs="unbounded" processContents="skip" namespace="##any"></any>
+        </sequence>
 	</complexType>
 
 	<complexType name="languageType">

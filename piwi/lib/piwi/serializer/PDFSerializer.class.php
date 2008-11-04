@@ -12,7 +12,6 @@ class PDFSerializer implements Serializer {
 	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
 		// Configure the transformer
 		$processor = new XSLTProcessor;
-		$processor->registerPHPFunctions();
 		$processor->importStyleSheet(DOMDocument::load("resources/xslt/PDFTransformation-v1.0.xsl"));
 
 		$elements = $domDocument->getElementsByTagName('content');

@@ -2,8 +2,11 @@
 <xsl:stylesheet version="1.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
 	exclude-result-prefixes="php">
+
+   <!-- Output configuration -->
 	<xsl:output method="xml" encoding="UTF-8" indent="no" omit-xml-declaration="yes" />
 	
+	<!-- Only evaluate elements under '/content' (ignore the root) -->
 	<xsl:template match="/content">
 		<xsl:apply-templates />
 	</xsl:template>
@@ -37,39 +40,39 @@
 		<hr />
 	</xsl:template>
 	
-	<xsl:template match="plain">
-		<xsl:call-template name="linefeedToBr">
-			<xsl:with-param name="StringToTransform" select="." />
-		</xsl:call-template>
-	</xsl:template>
-	
-	<xsl:template name="linefeedToBr">
+   <xsl:template match="plain">
+      <xsl:call-template name="linefeedToBr">
+         <xsl:with-param name="StringToTransform" select="." />
+      </xsl:call-template>
+   </xsl:template>
+   
+   <xsl:template name="linefeedToBr">
       <!-- import $StringToTransform -->
-		<xsl:param name="StringToTransform" />
-		<xsl:choose>
+      <xsl:param name="StringToTransform" />
+      <xsl:choose>
          <!-- string contains linefeed -->
-			<xsl:when test="contains($StringToTransform,'&#xA;')">
+         <xsl:when test="contains($StringToTransform,'&#xA;')">
             <!-- output substring that comes before the first linefeed -->
             <!-- note: use of substring-before() function means        -->
             <!-- $StringToTransform will be treated as a string,       -->
             <!-- even if it is a node-set or result tree fragment.     -->
             <!-- So hopefully $StringToTransform is really a string!   -->
-				<xsl:value-of select="substring-before($StringToTransform,'&#xA;')" />
+            <xsl:value-of select="substring-before($StringToTransform,'&#xA;')" />
             <!-- by putting a 'br' element in the result tree instead  -->
             <!-- of the linefeed character, a <br> will be output at   -->
             <!-- that point in the HTML                                -->
-				<br />
+            <br />
             <!-- repeat for the remainder of the original string -->
-				<xsl:call-template name="lf2br">
-					<xsl:with-param name="StringToTransform">
-						<xsl:value-of select="substring-after($StringToTransform,'&#xA;')" />
-					</xsl:with-param>
-				</xsl:call-template>
-			</xsl:when>
+            <xsl:call-template name="lf2br">
+               <xsl:with-param name="StringToTransform">
+                  <xsl:value-of select="substring-after($StringToTransform,'&#xA;')" />
+               </xsl:with-param>
+            </xsl:call-template>
+         </xsl:when>
          <!-- string does not contain newline, so just output it -->
-			<xsl:otherwise>
-				<xsl:value-of select="$StringToTransform" />
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:template>
+         <xsl:otherwise>
+            <xsl:value-of select="$StringToTransform" />
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:template>
 </xsl:stylesheet>

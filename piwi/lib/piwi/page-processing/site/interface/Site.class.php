@@ -209,6 +209,19 @@ abstract class Site {
     	
     	return $this->content;
     }  
+    
+    /**
+     * Returns the path of the a custom XSLT stylesheet or the path of an empty stylesheet if none is specified.
+     * @return string The path of the a custom XSLT stylesheet or the path of an empty stylesheet if none is specified.
+     */
+    public function getCustomXSLTStylesheet() {
+		$customXSLTStylesheet = getCustomXSLTStylesheetPath();
+		if ($customXSLTStylesheet != null) {
+			return $customXSLTStylesheet;
+		} else {
+			return 'EmptyTransformation.xsl';
+		} 	
+    }
 
     /**
      * Sets the content of the page.
@@ -270,6 +283,12 @@ abstract class Site {
      * @return integer The cachetime.
      */
     protected abstract function getCacheTime();
+    
+    /**
+     * Returns the path of the a custom XSLT stylesheet or null if none is specified.
+     * @return string The path of the a custom XSLT stylesheet or null if none is specified.
+     */
+    protected abstract function getCustomXSLTStylesheetPath();
     
     /**
      * Returns a list of supported languages.
