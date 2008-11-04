@@ -2,8 +2,11 @@
 <xsl:stylesheet version="1.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"
 	exclude-result-prefixes="php">
-
-   <!-- Output configuration -->
+	
+	<!-- Custom transformation -->
+	<xsl:include href="xsltsss://customStyleSheet"/>
+	
+   	<!-- Output configuration -->
 	<xsl:output method="xml" encoding="UTF-8" indent="no" omit-xml-declaration="yes" />
 	
 	<!-- Only evaluate elements under '/content' (ignore the root) -->

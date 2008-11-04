@@ -10,6 +10,9 @@ class PDFSerializer implements Serializer {
 	 * @param string $templatePath The path to the template which should be used.
 	 */
 	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
+		// Register stream wrapper to include custom XSLTStylesheets
+		stream_wrapper_register("xsltsss", "XSLTStylesheetStream");
+		
 		// Configure the transformer
 		$processor = new XSLTProcessor;
 		$processor->importStyleSheet(DOMDocument::load("resources/xslt/PDFTransformation-v1.0.xsl"));

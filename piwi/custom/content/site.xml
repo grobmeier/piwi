@@ -5,7 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 	<configuration>
 	  <cachetime>0</cachetime>
 	  <navigation>SimpleTextNavigation</navigation>
-	  <customXSLTStylesheet>EmptyTransformation.xsl</customXSLTStylesheet>
+	  <customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
 	</configuration>
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" />

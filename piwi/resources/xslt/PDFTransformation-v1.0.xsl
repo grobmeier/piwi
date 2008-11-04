@@ -4,10 +4,10 @@
 	exclude-result-prefixes="php">
 	
 	<!-- Custom transformation -->
-   <xsl:import href="EmptyTransformation.xsl"/>
+	<xsl:include href="xsltsss://customStyleSheet"/>
    
-   <!-- Output configuration -->
-   <xsl:output method="html" encoding="UTF-8" indent="no" omit-xml-declaration="yes" />
+   	<!-- Output configuration -->
+   	<xsl:output method="html" encoding="UTF-8" indent="no" omit-xml-declaration="yes" />
 	
 	<!-- Only evaluate elements under '/content' (ignore the root) -->
 	<xsl:template match="/content">
