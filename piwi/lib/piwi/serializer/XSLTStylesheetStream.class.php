@@ -1,6 +1,12 @@
 <?php
+/**
+ * A Stream used to embed custom XSLT-Transformations into PIWI-XML.
+ */
 class XSLTStylesheetStream {
+	/** The current position in the streamed document. */
     private $position = 0;
+    
+    /** The document to stream. */
     private $template = '<?xml version="1.0" encoding="UTF-8"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"></xsl:stylesheet>';
 
     public function stream_open($path, $mode, $options, &$opened_path)

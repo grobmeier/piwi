@@ -12,6 +12,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 		<page id="features" label="Piwi Features" href="en/features.xml">
 			<page id="database" label="Database Access" href="en/database.xml" />
 			<page id="forms" label="Forms" href="en/forms.xml" />
+			<page id="transformation" label="XSLT Transformation" href="en/transformation.xml" />
 			<page id="internationalization" label="Internationalization" href="en/internationalization.xml" />
 			<page id="gallery" label="Gallery" href="en/gallery.xml" />		
 			<page id="sitemap" label="SiteMap" href="en/sitemap.xml" />
@@ -25,6 +26,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 		<page id="features" label="Piwi Features" href="de/features.xml">
 			<page id="database" label="Datenbank Zugriff" href="de/database.xml" />
 			<page id="forms" label="Formulare" href="de/forms.xml" />
+			<page id="transformation" label="XSLT Transformationen" href="de/transformation.xml" />
 			<page id="internationalization" label="Lokalisierbarkeit" href="de/internationalization.xml" />
 			<page id="gallery" label="Galerie" href="de/gallery.xml" />		
 			<page id="sitemap" label="SiteMap" href="de/sitemap.xml" />
