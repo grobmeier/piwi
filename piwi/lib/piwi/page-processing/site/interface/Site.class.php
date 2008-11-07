@@ -22,8 +22,28 @@ abstract class Site {
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */
     public function generateContent() {
-    	$cachetime = $this->getCacheTime();
+    	$allowedRoles = $this->getAllowedRoles();
+
+    	// If authorization is required check if user has authorization
+    	if (!in_array('?', $allowedRoles)) {    	
+    		$class = new ReflectionClass($this->getRoleProvider());
+			$roleProvider = $class->newInstance();
+			
+			if (!$roleProvider instanceof RoleProvider) {
+				throw new PiwiException(
+					"The Class with name '" . $this->getRoleProvider() . "' is not an instance of RoleProvider.", 
+					PiwiException :: ERR_WRONG_TYPE);
+			}
+			
+			// TODO: check if user is already logged in
+			//	-> YES: check if he is in correct role
+			//		-> YES: show page
+			//		-> NO: Show permission denied
+			// -> NO: show login page
+    	}    	
     	
+    	$cachetime = $this->getCacheTime();
+  
     	// Try to get contents from cache
     	$cache = new Cache($cachetime);
 		$content = $cache->getPage();
@@ -270,6 +290,21 @@ abstract class Site {
      * @return integer The cachetime.
      */
     protected abstract function getCacheTime();
+    
+    /**
+     * Returns the possible roles a user needs to access the currently requested page.
+     * The possible roles are returned as array.
+     * The array contains only '?' if no authentication is required.
+     * The array contains only '*' if any authenticated user allowed to access the page.
+     * @return array The possible roles a user needs to access the currently requested page.
+     */
+    protected abstract function getAllowedRoles();
+    
+    /** 
+     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.
+     * @return string The classname of the RoleProvider which manages the authentication of users or null if none is specified.
+     */
+    protected abstract function getRoleProvider();
     
     /**
      * Returns the path of the a custom XSLT stylesheet or null if none is specified.

@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
+<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -90,6 +90,12 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 </p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  array</td>
+<td class="description"><p class="name"><a href="#getAllowedRoles()">getAllowedRoles</a>()</p><p class="description">
+Returns the possible roles a user needs to access the currently requested page.
+</p></td>
+</tr>
+<tr>
 <td class="type">protected abstract  integer</td>
 <td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
 Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
@@ -116,6 +122,11 @@ Returns the 'SiteMap' which is an array of NavigationElements representing the w
 Returns the template of the requested page or null if not specified.</p></td>
 </tr>
 <tr>
+<td class="type">abstract  string</td>
+<td class="description"><p class="name"><a href="#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>()</p><p class="description">
+Returns the path of the a custom XSLT stylesheet or null if none is specified.</p></td>
+</tr>
+<tr>
 <td class="type">protected abstract  string</td>
 <td class="description"><p class="name"><a href="#getFilePath()">getFilePath</a>()</p><p class="description">
 Returns the path of the xml file containing the content of the requested page.</p></td>
@@ -134,6 +145,11 @@ Returns the singleton instance of the Site.</p></td>
 <td class="type"> <a href="../default/navigationgenerator.html">NavigationGenerator</a></td>
 <td class="description"><p class="name"><a href="#getNavigationGenerator()">getNavigationGenerator</a>()</p><p class="description">
 Returns the NavigationGenerator which should be used to generate the navigation.</p></td>
+</tr>
+<tr>
+<td class="type">protected abstract  string</td>
+<td class="description"><p class="name"><a href="#getRoleProvider()">getRoleProvider</a>()</p><p class="description">
+Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -228,6 +244,21 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 
 <hr>
 
+<h3 id="getAllowedRoles()">getAllowedRoles</h3>
+<code class="signature">protected abstract  array <strong>getAllowedRoles</strong>()</code>
+<div class="details">
+<p>
+Returns the possible roles a user needs to access the currently requested page.
+The possible roles are returned as array.
+The array contains only '?' if no authentication is required.
+The array contains only '*' if any authenticated user allowed to access the page.</p><dl>
+<dt>Returns:</dt>
+<dd>The possible roles a user needs to access the currently requested page.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getCacheTime()">getCacheTime</h3>
 <code class="signature">protected abstract  integer <strong>getCacheTime</strong>()</code>
 <div class="details">
@@ -293,6 +324,18 @@ Returns the template of the requested page or null if not specified.</p><dl>
 
 <hr>
 
+<h3 id="getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</h3>
+<code class="signature">public abstract  string <strong>getCustomXSLTStylesheetPath</strong>()</code>
+<div class="details">
+<p>
+Returns the path of the a custom XSLT stylesheet or null if none is specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The path of the a custom XSLT stylesheet or null if none is specified.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getFilePath()">getFilePath</h3>
 <code class="signature">protected abstract  string <strong>getFilePath</strong>()</code>
 <div class="details">
@@ -336,6 +379,18 @@ Returns the singleton instance of the Site.</p><dl>
 Returns the NavigationGenerator which should be used to generate the navigation.</p><dl>
 <dt>Returns:</dt>
 <dd>The navigation generator.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getRoleProvider()">getRoleProvider</h3>
+<code class="signature">protected abstract  string <strong>getRoleProvider</strong>()</code>
+<div class="details">
+<p>
+Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The classname of the RoleProvider which manages the authentication of users or null if none is specified.</dd>
 </dl>
 </div>
 

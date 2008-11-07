@@ -4,7 +4,7 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 07 Nov 2008 09:21:32 +0100">
+<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -204,6 +204,8 @@ Used to initiate and retrieve Generators.
 <dt><a href="default/mediacenter.html#getAlbums()">getAlbums()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
 <dd>
 Returns the albums sorted by date.</dd>
+<dt><a href="default/xmlsite.html#getAllowedRoles()">getAllowedRoles()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>     * Returns the possible roles a user needs to access the currently requested page.</dd>
 <dt><a href="default/xmlsite.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the cachetime (the time that may pass until the content of the page is regenerated).</dd>
 <dt><a href="default/navigationelement.html#getChildren()">getChildren()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
@@ -225,6 +227,8 @@ Returns the date when the album has been created.</dd>
 <dt><a href="default/pager.html#getCurrentPage()">getCurrentPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the current page.</dd>
+<dt><a href="default/xmlsite.html#getCurrentPageDOMNode()">getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>	 * Returns the DOMNode representing the current page.</dd>
 <dt><a href="default/xmlsite.html#getCustomNavigationGenerator()">getCustomNavigationGenerator()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</dd>
 <dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
@@ -303,6 +307,8 @@ Returns the number of the previous page.</dd>
 <dd>
 Returns an array containing all results of the currently processed form.
 </dd>
+<dt><a href="default/xmlsite.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</dd>
 <dt><a href="default/site.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the Serializer for the given extension.
@@ -358,9 +364,16 @@ in the filesystem.
 <dt><a href="default/navigationelement.html#isOpen()">isOpen()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the children are currently visible.</dd>
+<dt><a href="default/roleprovider.html#isPasswordValid()">isPasswordValid()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
+<dd>
+Validates the password of the given user.
+</dd>
 <dt><a href="default/navigationelement.html#isSelected()">isSelected()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the NavigationElement is currently selected.</dd>
+<dt><a href="default/roleprovider.html#isUserInRole()">isUserInRole()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
+<dd>
+Checks if a user has one of the given roles. </dd>
 <dt><a href="default/validator.html#isValid()">isValid()</a> - Method in class <a href="default/validator.html">default.Validator</a></dt>
 <dd>
 Executes the Validator.</dd>
@@ -442,6 +455,10 @@ Provides information about the current request that is performed by a user.
 <dt><a href="default/requiredfieldvalidator.html">RequiredFieldValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Checks if the value of a field is not empty.
+</dd>
+<dt><a href="default/roleprovider.html">RoleProvider()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Interface that role providers have to implement.
 </dd>
 </dl>
 <h1 id="letterS">S</h1>

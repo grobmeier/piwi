@@ -4,14 +4,15 @@
 	xmlns:tns="http://piwi.googlecode.com/xsd/site">
 	<complexType name="pageType">
 		<sequence>
-			<element name="page" type="tns:pageType" maxOccurs="unbounded"
-				minOccurs="0">
+			<element name="page" type="tns:pageType"
+				maxOccurs="unbounded" minOccurs="0">
 			</element>
 		</sequence>
 		<attribute name="id" type="string" use="required"></attribute>
 		<attribute name="label" type="string" use="required"></attribute>
 		<attribute name="href" type="string" use="required"></attribute>
-		<attribute name="template" type="string" use="optional"></attribute>
+        <attribute name="roles" type="string" use="optional"></attribute>
+        <attribute name="template" type="string" use="optional"></attribute>
 	</complexType>
 	<element name="site" type="tns:siteType">
 		<unique name="UniqueLanguageRegion">
@@ -39,7 +40,18 @@
 
 	<complexType name="configurationType">
         <sequence>
-        	<any minOccurs="0" maxOccurs="unbounded" processContents="skip" namespace="##any"></any>
+
+        	<element name="cachetime" type="boolean" minOccurs="0"
+        		maxOccurs="1">
+        	</element>
+
+        	<element name="navigation" type="string" minOccurs="0"
+        		maxOccurs="1">
+        	</element>
+        	<element name="customXSLTStylesheet" type="string"
+        		minOccurs="0" maxOccurs="1">
+        	</element>
+        	<element name="authentication" type="tns:authenticationType" minOccurs="0" maxOccurs="1"></element>
         </sequence>
 	</complexType>
 
@@ -51,5 +63,11 @@
 		</sequence>
 		<attribute name="region" type="string" use="required"></attribute>
 
+	</complexType>
+
+	<complexType name="authenticationType">
+
+		<attribute name="enabled" type="boolean" use="required"></attribute>
+		<attribute name="roleProvider" type="string" use="required"></attribute>
 	</complexType>
 </schema>
