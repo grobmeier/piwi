@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Mon, 03 Nov 2008 20:12:40 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -60,6 +59,28 @@ Manages all Session features.
 Returns the preferred language of the user or 'default' if none is set.</p></td>
 </tr>
 <tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#getUserName()">getUserName</a>()</p><p class="description">
+Returns the username if the user is currently logged in, otherwise null.</p></td>
+</tr>
+<tr>
+<td class="type">static  boolean</td>
+<td class="description"><p class="name"><a href="#isUserAuthenticated()">isUserAuthenticated</a>()</p><p class="description">
+Returns true if the current user is authenticated.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#loginUser()">loginUser</a>(mixed username, mixed password, mixed useCookies)</p><p class="description">
+Logs in the given user if its password is valid.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#logoutUser()">logoutUser</a>()</p><p class="description">
+Logs out the user.
+</p></td>
+</tr>
+<tr>
 <td class="type">static  void</td>
 <td class="description"><p class="name"><a href="#startSession()">startSession</a>()</p><p class="description">
 Starts the Session.
@@ -77,6 +98,49 @@ Returns the preferred language of the user or 'default' if none is set.</p><dl>
 <dd>The preferred language of the user.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="getUserName()">getUserName</h3>
+<code class="signature">public static  string <strong>getUserName</strong>()</code>
+<div class="details">
+<p>
+Returns the username if the user is currently logged in, otherwise null.</p><dl>
+<dt>Returns:</dt>
+<dd>The username if the user is currently logged in, otherwise null.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="isUserAuthenticated()">isUserAuthenticated</h3>
+<code class="signature">public static  boolean <strong>isUserAuthenticated</strong>()</code>
+<div class="details">
+<p>
+Returns true if the current user is authenticated.</p><dl>
+<dt>Returns:</dt>
+<dd>True if the current user is authenticated.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="loginUser()">loginUser</h3>
+<code class="signature">public static  void <strong>loginUser</strong>(mixed username, mixed password, mixed useCookies)</code>
+<div class="details">
+<p>
+Logs in the given user if its password is valid.
+The password is valid the user will be redirected to the 
+/</p></div>
+
+<hr>
+
+<h3 id="logoutUser()">logoutUser</h3>
+<code class="signature">public static  void <strong>logoutUser</strong>()</code>
+<div class="details">
+<p>
+Logs out the user.
+/</p></div>
 
 <hr>
 

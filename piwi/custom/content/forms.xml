@@ -4,9 +4,11 @@
 	<language region="default">
 		<form id="wizardform" path="custom/content/en/forms/wizardform.xml" />
 		<form id="validatorform" path="custom/content/en/forms/validatorform.xml" />
+		<form id="loginform" path="custom/content/en/forms/loginform.xml" />
 	</language>
 	<language region="de">
 		<form id="wizardform" path="custom/content/de/forms/wizardform.xml" />
 		<form id="validatorform" path="custom/content/de/forms/validatorform.xml" />
+		<form id="loginform" path="custom/content/de/forms/loginform.xml" />
 	</language>
 </forms>

@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -66,7 +65,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <table class="inherit">
 <tr><th colspan="2">Fields inherited from default.Site</th></tr>
-<tr><td><a href="../default/site.html#content">content</a>, <a href="../default/site.html#contentPath">contentPath</a>, <a href="../default/site.html#siteInstance">siteInstance</a>, <a href="../default/site.html#siteMap">siteMap</a>, <a href="../default/site.html#template">template</a></td></tr></table>
+<tr><td><a href="../default/site.html#content">content</a>, <a href="../default/site.html#contentPath">contentPath</a>, <a href="../default/site.html#roleProvider">roleProvider</a>, <a href="../default/site.html#siteInstance">siteInstance</a>, <a href="../default/site.html#template">template</a></td></tr></table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
@@ -95,7 +94,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </tr>
 <tr>
 <td class="type">protected  string</td>
-<td class="description"><p class="name"><a href="#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>()</p><p class="description">     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
+<td class="description"><p class="name"><a href="#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>()</p><p class="description">     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
 </tr>
 <tr>
 <td class="type">protected  string</td>
@@ -115,7 +114,11 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </tr>
 <tr>
 <td class="type">protected  string</td>
-<td class="description"><p class="name"><a href="#getRoleProvider()">getRoleProvider</a>()</p><p class="description">     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p></td>
+<td class="description"><p class="name"><a href="#getLoginPageId()">getLoginPageId</a>()</p><p class="description">     * Returns the id of the login page.</p></td>
+</tr>
+<tr>
+<td class="type">protected  string</td>
+<td class="description"><p class="name"><a href="#getRoleProviderClass()">getRoleProviderClass</a>()</p><p class="description">     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
@@ -129,7 +132,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Site</th></tr>
-<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRoles()">getAllowedRoles</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getContent()">getContent</a>, <a href="../default/site.html#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getCustomTemplate()">getCustomTemplate</a>, <a href="../default/site.html#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getNavigationGenerator()">getNavigationGenerator</a>, <a href="../default/site.html#getRoleProvider()">getRoleProvider</a>, <a href="../default/site.html#getSerializer()">getSerializer</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
+<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRoles()">getAllowedRoles</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getContent()">getContent</a>, <a href="../default/site.html#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getCustomTemplate()">getCustomTemplate</a>, <a href="../default/site.html#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getLoginPageId()">getLoginPageId</a>, <a href="../default/site.html#getNavigationGenerator()">getNavigationGenerator</a>, <a href="../default/site.html#getRoleProvider()">getRoleProvider</a>, <a href="../default/site.html#getRoleProviderClass()">getRoleProviderClass</a>, <a href="../default/site.html#getSerializer()">getSerializer</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="domXPath">domXPath</h3>
@@ -209,8 +212,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<h3 id="getCustomNavigationGenerator()">getCustomNavigationGenerator</h3>
-<code class="signature">protected  string <strong>getCustomNavigationGenerator</strong>()</code>
+<h3 id="getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</h3>
+<code class="signature">protected  string <strong>getCustomNavigationGeneratorClass</strong>()</code>
 <div class="details">
 <p>     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</p><dl>
 <dt>Returns:</dt>
@@ -264,8 +267,19 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<h3 id="getRoleProvider()">getRoleProvider</h3>
-<code class="signature">protected  string <strong>getRoleProvider</strong>()</code>
+<h3 id="getLoginPageId()">getLoginPageId</h3>
+<code class="signature">protected  string <strong>getLoginPageId</strong>()</code>
+<div class="details">
+<p>     * Returns the id of the login page.</p><dl>
+<dt>Returns:</dt>
+<dd>The id of the login page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getRoleProviderClass()">getRoleProviderClass</h3>
+<code class="signature">protected  string <strong>getRoleProviderClass</strong>()</code>
 <div class="details">
 <p>     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p><dl>
 <dt>Returns:</dt>

@@ -11,8 +11,11 @@
 		<attribute name="id" type="string" use="required"></attribute>
 		<attribute name="label" type="string" use="required"></attribute>
 		<attribute name="href" type="string" use="required"></attribute>
-        <attribute name="roles" type="string" use="optional"></attribute>
-        <attribute name="template" type="string" use="optional"></attribute>
+		<attribute name="roles" type="string" use="optional"></attribute>
+		<attribute name="template" type="string" use="optional"></attribute>
+
+		<attribute name="hideInNavigation" type="boolean" use="optional"></attribute>
+		<attribute name="hideInSiteMap" type="boolean" use="optional"></attribute>
 	</complexType>
 	<element name="site" type="tns:siteType">
 		<unique name="UniqueLanguageRegion">
@@ -69,5 +72,6 @@
 
 		<attribute name="enabled" type="boolean" use="required"></attribute>
 		<attribute name="roleProvider" type="string" use="required"></attribute>
+		<attribute name="loginPageId" type="string" use="required"></attribute>
 	</complexType>
 </schema>

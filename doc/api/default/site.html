@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -63,12 +62,12 @@ Renders the requested page and creates the navigation.
 <td class="description"><p class="name"><a href="#contentPath">$contentPath</a></p><p class="description">Name of the folder where the content is placed. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#siteInstance">$siteInstance</a></p><p class="description">Singleton instance of the Site. </p></td>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#roleProvider">$roleProvider</a></p><p class="description">Instance of the RoleProvider. </p></td>
 </tr>
 <tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#siteMap">$siteMap</a></p><p class="description">The 'SiteMap' which is an array of NavigationElements representing the whole website structure. </p></td>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#siteInstance">$siteInstance</a></p><p class="description">Singleton instance of the Site. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -107,7 +106,7 @@ Returns the content of the requested page as DOMDocument.</p></td>
 </tr>
 <tr>
 <td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getCustomNavigationGenerator()">getCustomNavigationGenerator</a>()</p><p class="description">
+<td class="description"><p class="name"><a href="#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>()</p><p class="description">
 Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
 </tr>
 <tr>
@@ -142,13 +141,23 @@ Returns the 'SiteMap' which is an array of NavigationElements representing the w
 Returns the singleton instance of the Site.</p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  string</td>
+<td class="description"><p class="name"><a href="#getLoginPageId()">getLoginPageId</a>()</p><p class="description">
+Returns the id of the login page.</p></td>
+</tr>
+<tr>
 <td class="type"> <a href="../default/navigationgenerator.html">NavigationGenerator</a></td>
 <td class="description"><p class="name"><a href="#getNavigationGenerator()">getNavigationGenerator</a>()</p><p class="description">
 Returns the NavigationGenerator which should be used to generate the navigation.</p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  string</td>
+<td class="type"> <a href="../default/roleprovider.html">RoleProvider</a></td>
 <td class="description"><p class="name"><a href="#getRoleProvider()">getRoleProvider</a>()</p><p class="description">
+Returns the RoleProvider which manages the authentication of users.</p></td>
+</tr>
+<tr>
+<td class="type">protected abstract  string</td>
+<td class="description"><p class="name"><a href="#getRoleProviderClass()">getRoleProviderClass</a>()</p><p class="description">
 Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p></td>
 </tr>
 <tr>
@@ -199,17 +208,17 @@ Sets the singleton instance of the Site.</p></td>
 
 <hr>
 
+<h3 id="roleProvider">roleProvider</h3>
+<code class="signature">private  mixed <strong>$roleProvider</strong> = null</code>
+<div class="details">
+<p>Instance of the RoleProvider. */</p></div>
+
+<hr>
+
 <h3 id="siteInstance">siteInstance</h3>
 <code class="signature">private static  mixed <strong>$siteInstance</strong> = null</code>
 <div class="details">
 <p>Singleton instance of the Site. */</p></div>
-
-<hr>
-
-<h3 id="siteMap">siteMap</h3>
-<code class="signature">private  mixed <strong>$siteMap</strong> = null</code>
-<div class="details">
-<p>The 'SiteMap' which is an array of NavigationElements representing the whole website structure. */</p></div>
 
 <hr>
 
@@ -283,8 +292,8 @@ Returns the content of the requested page as DOMDocument.</p><dl>
 
 <hr>
 
-<h3 id="getCustomNavigationGenerator()">getCustomNavigationGenerator</h3>
-<code class="signature">protected abstract  string <strong>getCustomNavigationGenerator</strong>()</code>
+<h3 id="getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</h3>
+<code class="signature">protected abstract  string <strong>getCustomNavigationGeneratorClass</strong>()</code>
 <div class="details">
 <p>
 Returns the classname of the custom NavigationGenerator Class or null if not specified.</p><dl>
@@ -372,6 +381,18 @@ Returns the singleton instance of the Site.</p><dl>
 
 <hr>
 
+<h3 id="getLoginPageId()">getLoginPageId</h3>
+<code class="signature">protected abstract  string <strong>getLoginPageId</strong>()</code>
+<div class="details">
+<p>
+Returns the id of the login page.</p><dl>
+<dt>Returns:</dt>
+<dd>The id of the login page.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getNavigationGenerator()">getNavigationGenerator</h3>
 <code class="signature">public  <a href="../default/navigationgenerator.html">NavigationGenerator</a> <strong>getNavigationGenerator</strong>()</code>
 <div class="details">
@@ -385,7 +406,19 @@ Returns the NavigationGenerator which should be used to generate the navigation.
 <hr>
 
 <h3 id="getRoleProvider()">getRoleProvider</h3>
-<code class="signature">protected abstract  string <strong>getRoleProvider</strong>()</code>
+<code class="signature">public  <a href="../default/roleprovider.html">RoleProvider</a> <strong>getRoleProvider</strong>()</code>
+<div class="details">
+<p>
+Returns the RoleProvider which manages the authentication of users.</p><dl>
+<dt>Returns:</dt>
+<dd>The RoleProvider which manages the authentication of users.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getRoleProviderClass()">getRoleProviderClass</h3>
+<code class="signature">protected abstract  string <strong>getRoleProviderClass</strong>()</code>
 <div class="details">
 <p>
 Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p><dl>

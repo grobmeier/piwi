@@ -3,7 +3,7 @@
  * Renders the requested page and creates the navigation.
  */
 abstract class Site {
-	/**Singleton instance of the Site. */
+	/** Singleton instance of the Site. */
 	private static $siteInstance = null;
 	
 	/** Name of the folder where the content is placed. */
@@ -14,10 +14,10 @@ abstract class Site {
 	
 	/** The content of the requested page as DOMDocument. */
 	private $content = null;
-	
-	/** The 'SiteMap' which is an array of NavigationElements representing the whole website structure. */
-	private $siteMap = null;
 		
+	/** Instance of the RoleProvider. */
+	private $roleProvider = null;
+	
     /**
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */
@@ -25,21 +25,21 @@ abstract class Site {
     	$allowedRoles = $this->getAllowedRoles();
 
     	// If authorization is required check if user has authorization
-    	if (!in_array('?', $allowedRoles)) {    	
-    		$class = new ReflectionClass($this->getRoleProvider());
-			$roleProvider = $class->newInstance();
+    	if (!in_array('?', $allowedRoles)) {
+			$roleProvider = $this->getRoleProvider();
 			
-			if (!$roleProvider instanceof RoleProvider) {
-				throw new PiwiException(
-					"The Class with name '" . $this->getRoleProvider() . "' is not an instance of RoleProvider.", 
-					PiwiException :: ERR_WRONG_TYPE);
+			// Check if user is already logged in
+			if (SessionManager::isUserAuthenticated()) {
+				// Check whether user has required role
+				if (!in_array('*', $allowedRoles) && !$roleProvider->isUserInRole(SessionManager::getUserName(), $allowedRoles)) {
+					throw new PiwiException(
+						"Permission denied.", 
+						PiwiException :: PERMISSION_DENIED);
+				}
+			} else {
+				// Since user is not logged in, show login page				
+				Request::setPageId($this->getLoginPageId());
 			}
-			
-			// TODO: check if user is already logged in
-			//	-> YES: check if he is in correct role
-			//		-> YES: show page
-			//		-> NO: Show permission denied
-			// -> NO: show login page
     	}    	
     	
     	$cachetime = $this->getCacheTime();
@@ -97,12 +97,31 @@ abstract class Site {
     	}    	
     }
 
+    /** 
+     * Returns the RoleProvider which manages the authentication of users.
+     * @return RoleProvider The RoleProvider which manages the authentication of users.
+     */
+	public function getRoleProvider() {
+		if ($this->roleProvider == null) {
+		   	$class = new ReflectionClass($this->getRoleProviderClass());
+			$roleProvider = $class->newInstance();
+			
+			if (!$roleProvider instanceof RoleProvider) {
+				throw new PiwiException(
+					"The Class with name '" . $this->getRoleProvider() . "' is not an instance of RoleProvider.", 
+					PiwiException :: ERR_WRONG_TYPE);
+			}
+			$this->roleProvider = $roleProvider;
+		}
+		return $this->roleProvider;		
+	}
+
 	/**
 	 * Returns the NavigationGenerator which should be used to generate the navigation.
 	 * @return NavigationGenerator The navigation generator.
 	 */
     public function getNavigationGenerator() {
-		$navigationClass = $this->getCustomNavigationGenerator();
+		$navigationClass = $this->getCustomNavigationGeneratorClass();
 		if ($navigationClass != null) {
 			try {
 				$class = new ReflectionClass($navigationClass);
@@ -136,17 +155,15 @@ abstract class Site {
 	 * @return The 'SiteMap' which is an array of NavigationElements representing the website structure.
 	 */
     public function getCustomSiteMap($id, $depth, $includeParent = true) {
-    	if ($this->siteMap == null) {
-	    	$this->siteMap = $this->getFullSiteMap();  		
-    	}
-        
+    	$siteMap = $this->getFullSiteMap();  		
+
         // Build menu
         // If id is specified show only this item and its subitems
         if ($id != null) {        
 	        $navigationElements = array();
 	        
 	        // retrieve the NavigationElement with the given id
-	        $element = $this->getSiteMapItemsById($this->siteMap, $id);
+	        $element = $this->getSiteMapItemsById($siteMap, $id);
 	        
 	        // if parent should be not included show only its children otherwise the parent itself
 	        if ($element != null && $includeParent) {
@@ -158,9 +175,9 @@ abstract class Site {
 	        	}
 	        }
         } else {
-        	$navigationElements = $this->siteMap;
+        	$navigationElements = $siteMap;
         }
-        
+       
         // If depth is greater than -1, cut off subitems
         if ($depth >= 0) {
 	    	foreach($navigationElements as $element) {
@@ -283,7 +300,7 @@ abstract class Site {
      * Returns the classname of the custom NavigationGenerator Class or null if not specified.
      * @return string The classname of the custom NavigationGenerator Class or null if not specified.
      */
-    protected abstract function getCustomNavigationGenerator();
+    protected abstract function getCustomNavigationGeneratorClass();
     
     /**
      * Returns the cachetime (the time that may pass until the content of the page is regenerated).
@@ -304,7 +321,13 @@ abstract class Site {
      * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.
      * @return string The classname of the RoleProvider which manages the authentication of users or null if none is specified.
      */
-    protected abstract function getRoleProvider();
+    protected abstract function getRoleProviderClass();
+    
+    /**
+     * Returns the id of the login page.
+     * @return string The id of the login page.
+     */
+    protected abstract function getLoginPageId();
     
     /**
      * Returns the path of the a custom XSLT stylesheet or null if none is specified.

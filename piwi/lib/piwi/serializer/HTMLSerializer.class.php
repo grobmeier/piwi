@@ -35,8 +35,8 @@ class HTMLSerializer implements Serializer {
 		
 		// Generate siteMapPath
 		$siteMapPathNavigation = new SiteMapPathNavigation();
-		$siteMap = Site::getInstance()->getCustomSiteMap($pageId, 0);
-		$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMap);
+		$siteMapPath = Site::getInstance()->getCustomSiteMap($pageId, 0);		
+		$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMapPath);
 			
 		// Show generated page
 		include ($templatePath);

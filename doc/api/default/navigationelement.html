@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Sun, 02 Nov 2008 17:38:45 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -60,6 +59,14 @@ Creates a simple navigation.
 </tr>
 <tr>
 <td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#hideInNavigation">$hideInNavigation</a></p><p class="description">Indicates whether the item is shown in the Navigation. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#hideInSiteMap">$hideInSiteMap</a></p><p class="description">Indicates whether the item is shown in the SiteMap. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#id">$id</a></p><p class="description">The id of the page. </p></td>
 </tr>
 <tr>
@@ -112,6 +119,16 @@ Returns the parent NavigationElement.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isHiddenInNavigation()">isHiddenInNavigation</a>()</p><p class="description">
+Indicates whether the item is shown in the Navigation.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isHiddenInSiteMap()">isHiddenInSiteMap</a>()</p><p class="description">
+Indicates whether the item is shown in the SiteMap.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isOpen()">isOpen</a>()</p><p class="description">
 Indicates whether the children are currently visible.</p></td>
 </tr>
@@ -123,6 +140,16 @@ Indicates whether the NavigationElement is currently selected.</p></td>
 <tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setChildren()">setChildren</a>(array children)</p><p class="description">Sets the children</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setHiddenInNavigation()">setHiddenInNavigation</a>(boolean hideInNavigation)</p><p class="description">
+Indicates whether the item is shown in the Navigation.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setHiddenInSiteMap()">setHiddenInSiteMap</a>(boolean hideInSiteMap)</p><p class="description">
+Indicates whether the item is shown in the SiteMap.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -146,6 +173,20 @@ Sets the NavigationElement to selected.</p></td>
 <code class="signature">private  mixed <strong>$children</strong> = null</code>
 <div class="details">
 <p>The children. */</p></div>
+
+<hr>
+
+<h3 id="hideInNavigation">hideInNavigation</h3>
+<code class="signature">private  mixed <strong>$hideInNavigation</strong> = false</code>
+<div class="details">
+<p>Indicates whether the item is shown in the Navigation. */</p></div>
+
+<hr>
+
+<h3 id="hideInSiteMap">hideInSiteMap</h3>
+<code class="signature">private  mixed <strong>$hideInSiteMap</strong> = false</code>
+<div class="details">
+<p>Indicates whether the item is shown in the SiteMap. */</p></div>
 
 <hr>
 
@@ -180,7 +221,7 @@ Sets the NavigationElement to selected.</p></td>
 <h3 id="selected">selected</h3>
 <code class="signature">private  mixed <strong>$selected</strong> = false</code>
 <div class="details">
-<p>Indicates whether the NavigationElement is currently selected.  */</p></div>
+<p>Indicates whether the NavigationElement is currently selected. */</p></div>
 
 <hr>
 
@@ -247,6 +288,30 @@ Returns the parent NavigationElement.</p><dl>
 
 <hr>
 
+<h3 id="isHiddenInNavigation()">isHiddenInNavigation</h3>
+<code class="signature">public  boolean <strong>isHiddenInNavigation</strong>()</code>
+<div class="details">
+<p>
+Indicates whether the item is shown in the Navigation.</p><dl>
+<dt>Returns:</dt>
+<dd>True if Element should be hidden in Navigation.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="isHiddenInSiteMap()">isHiddenInSiteMap</h3>
+<code class="signature">public  boolean <strong>isHiddenInSiteMap</strong>()</code>
+<div class="details">
+<p>
+Indicates whether the item is shown in the SiteMap.</p><dl>
+<dt>Returns:</dt>
+<dd>True if Element should be hidden in SiteMap.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="isOpen()">isOpen</h3>
 <code class="signature">public  boolean <strong>isOpen</strong>()</code>
 <div class="details">
@@ -277,6 +342,30 @@ Indicates whether the NavigationElement is currently selected.</p><dl>
 <p>Sets the children</p><dl>
 <dt>Parameters:</dt>
 <dd>children - The children to add.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setHiddenInNavigation()">setHiddenInNavigation</h3>
+<code class="signature">public  void <strong>setHiddenInNavigation</strong>(boolean hideInNavigation)</code>
+<div class="details">
+<p>
+Indicates whether the item is shown in the Navigation.</p><dl>
+<dt>Parameters:</dt>
+<dd>hideInNavigation - True if Element should be hidden in Navigation.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setHiddenInSiteMap()">setHiddenInSiteMap</h3>
+<code class="signature">public  void <strong>setHiddenInSiteMap</strong>(boolean hideInSiteMap)</code>
+<div class="details">
+<p>
+Indicates whether the item is shown in the SiteMap.</p><dl>
+<dt>Parameters:</dt>
+<dd>hideInSiteMap - True if Element should be hidden in SiteMap.</dd>
 </dl>
 </div>
 

@@ -15,7 +15,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 	<generator id="featuresSiteMap" class="SiteMapGenerator">
 		<header>Features</header>
 		<pageId>features</pageId>
-		<depth>-1</depth>
+		<depth>0</depth>
 		<includeParent>0</includeParent>
 	</generator>
 	<generator id="fullSiteMap" class="SiteMapGenerator">

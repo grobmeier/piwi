@@ -18,8 +18,14 @@ class NavigationElement {
 	/** Indicates whether the children are currently visible. */
 	private $open = false;
 	
-	/** Indicates whether the NavigationElement is currently selected.  */
+	/** Indicates whether the NavigationElement is currently selected. */
 	private $selected = false;
+	
+	/** Indicates whether the item is shown in the Navigation. */
+	private $hideInNavigation = false;
+	
+	/** Indicates whether the item is shown in the SiteMap. */
+	private $hideInSiteMap = false;
 	
 	/**
 	 * Constructor.
@@ -108,6 +114,38 @@ class NavigationElement {
 	 */
 	public function setParent(NavigationElement $parent) {
 		return $this->parent = $parent;
+	}
+		
+	/**
+	 * Indicates whether the item is shown in the Navigation.
+	 * @return boolean True if Element should be hidden in Navigation.
+	 */
+	public function isHiddenInNavigation() {
+		return $this->hideInNavigation;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the Navigation.
+	 * @param boolean $hideInNavigation True if Element should be hidden in Navigation.
+	 */
+	public function setHiddenInNavigation($hideInNavigation) {
+		return $this->hideInNavigation = $hideInNavigation;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the SiteMap.
+	 * @return boolean True if Element should be hidden in SiteMap.
+	 */
+	public function isHiddenInSiteMap() {
+		return $this->hideInSiteMap;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the SiteMap.
+	 * @param boolean $hideInSiteMap True if Element should be hidden in SiteMap.
+	 */
+	public function setHiddenInSiteMap($hideInSiteMap) {
+		return $this->hideInSiteMap = $hideInSiteMap;
 	}
 }
 ?>

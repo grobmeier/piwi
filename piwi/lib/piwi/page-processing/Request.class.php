@@ -14,6 +14,14 @@ class Request {
 			return "default";
 		}
 	}	
+
+	/** 
+	 * Sets the id of the requested page.
+	 * @param string $pageId The id of the requested page.
+	 */
+	public static function setPageId($pageId) {
+		$_GET['page'] = $pageId;
+	}
 	
 	/** 
 	 * Returns the extension/format of the requested page (e.g. 'html', 'xml' or 'pdf').

@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -58,7 +57,7 @@ Role providers are used to for user authentication.
 <tr>
 <td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isPasswordValid()">isPasswordValid</a>(mixed username, mixed password)</p><p class="description">
-Validates the password of the given user.
+Checks whether the given user exists and validates its password.
 </p></td>
 </tr>
 <tr>
@@ -73,10 +72,10 @@ Checks if a user has one of the given roles. </p></td>
 <code class="signature">public  boolean <strong>isPasswordValid</strong>(mixed username, mixed password)</code>
 <div class="details">
 <p>
-Validates the password of the given user.
-Returns true if password is valid, otherwise false.</p><dl>
+Checks whether the given user exists and validates its password.
+Returns true if user exists and password is valid, otherwise false.</p><dl>
 <dt>Returns:</dt>
-<dd>True if password is valid, otherwise false.</dd>
+<dd>True if user existspassword is valid, otherwise false.</dd>
 </dl>
 </div>
 

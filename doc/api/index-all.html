@@ -4,7 +4,6 @@
 <head>
 
 <meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
-<meta name="when" content="Fri, 07 Nov 2008 13:02:02 +0100">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -229,7 +228,7 @@ Returns the date when the album has been created.</dd>
 Returns the number of the current page.</dd>
 <dt><a href="default/xmlsite.html#getCurrentPageDOMNode()">getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>	 * Returns the DOMNode representing the current page.</dd>
-<dt><a href="default/xmlsite.html#getCustomNavigationGenerator()">getCustomNavigationGenerator()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/xmlsite.html#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</dd>
 <dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
@@ -273,6 +272,8 @@ Returns the label of the page.</dd>
 <dt><a href="default/pager.html#getLimits()">getLimits()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns an array containing the limits which can be used for querying a database.</dd>
+<dt><a href="default/xmlsite.html#getLoginPageId()">getLoginPageId()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>     * Returns the id of the login page.</dd>
 <dt><a href="default/image.html#getName()">getName()</a> - Method in class <a href="default/image.html">default.Image</a></dt>
 <dd>
 Returns the name of the image.</dd>
@@ -307,7 +308,10 @@ Returns the number of the previous page.</dd>
 <dd>
 Returns an array containing all results of the currently processed form.
 </dd>
-<dt><a href="default/xmlsite.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dd>
+Returns the RoleProvider which manages the authentication of users.</dd>
+<dt><a href="default/xmlsite.html#getRoleProviderClass()">getRoleProviderClass()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</dd>
 <dt><a href="default/site.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
@@ -327,6 +331,9 @@ Returns the template of the requested page.</dd>
 <dt><a href="default/sessionmanager.html#getUserLanguage()">getUserLanguage()</a> - Method in class <a href="default/sessionmanager.html">default.SessionManager</a></dt>
 <dd>
 Returns the preferred language of the user or 'default' if none is set.</dd>
+<dt><a href="default/sessionmanager.html#getUserName()">getUserName()</a> - Method in class <a href="default/sessionmanager.html">default.SessionManager</a></dt>
+<dd>
+Returns the username if the user is currently logged in, otherwise null.</dd>
 </dl>
 <h1 id="letterH">H</h1>
 <dl>
@@ -361,16 +368,25 @@ Resets the cache, should be called if a class
 retrieved from the cache does no more exist 
 in the filesystem.
 </dd>
+<dt><a href="default/navigationelement.html#isHiddenInNavigation()">isHiddenInNavigation()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dd>
+Indicates whether the item is shown in the Navigation.</dd>
+<dt><a href="default/navigationelement.html#isHiddenInSiteMap()">isHiddenInSiteMap()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dd>
+Indicates whether the item is shown in the SiteMap.</dd>
 <dt><a href="default/navigationelement.html#isOpen()">isOpen()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the children are currently visible.</dd>
 <dt><a href="default/roleprovider.html#isPasswordValid()">isPasswordValid()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
 <dd>
-Validates the password of the given user.
+Checks whether the given user exists and validates its password.
 </dd>
 <dt><a href="default/navigationelement.html#isSelected()">isSelected()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the NavigationElement is currently selected.</dd>
+<dt><a href="default/sessionmanager.html#isUserAuthenticated()">isUserAuthenticated()</a> - Method in class <a href="default/sessionmanager.html">default.SessionManager</a></dt>
+<dd>
+Returns true if the current user is authenticated.</dd>
 <dt><a href="default/roleprovider.html#isUserInRole()">isUserInRole()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
 <dd>
 Checks if a user has one of the given roles. </dd>
@@ -388,6 +404,14 @@ Loads the cache file. </dd>
 Trys to load a class from the given directory. </dd>
 <dt><a href="default/xmlsite.html#loadSite()">loadSite()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Loads the 'site.xml'.</dd>
+<dt><a href="default/sessionmanager.html#loginUser()">loginUser()</a> - Method in class <a href="default/sessionmanager.html">default.SessionManager</a></dt>
+<dd>
+Logs in the given user if its password is valid.
+</dd>
+<dt><a href="default/sessionmanager.html#logoutUser()">logoutUser()</a> - Method in class <a href="default/sessionmanager.html">default.SessionManager</a></dt>
+<dd>
+Logs out the user.
+</dd>
 </dl>
 <h1 id="letterM">M</h1>
 <dl>
@@ -486,12 +510,21 @@ Sets the content of the page.</dd>
 <dt><a href="default/album.html#setCreatedAt()">setCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Sets the date when the album has been created.</dd>
+<dt><a href="default/navigationelement.html#setHiddenInNavigation()">setHiddenInNavigation()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dd>
+Indicates whether the item is shown in the Navigation.</dd>
+<dt><a href="default/navigationelement.html#setHiddenInSiteMap()">setHiddenInSiteMap()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dd>
+Indicates whether the item is shown in the SiteMap.</dd>
 <dt><a href="default/site.html#setInstance()">setInstance()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Sets the singleton instance of the Site.</dd>
 <dt><a href="default/navigationelement.html#setOpen()">setOpen()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Sets the NavigationElement to open.</dd>
+<dt><a href="default/request.html#setPageId()">setPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
+<dd>
+Sets the id of the requested page.</dd>
 <dt><a href="default/navigationelement.html#setParent()">setParent()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Sets the parent NavigationElement.</dd>

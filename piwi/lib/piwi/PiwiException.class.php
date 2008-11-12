@@ -24,7 +24,10 @@ class PiwiException extends Exception {
 
     /** Errorcode FORMS_ERROR. */
 	const FORMS_ERROR				= 1007;
-	
+
+    /** Errorcode PERMISSION_DENIED. */
+	const PERMISSION_DENIED			= 1008;
+		
 	/**
 	 * Constructor.
 	 * @param string $message The error message.

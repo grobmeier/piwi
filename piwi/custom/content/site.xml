@@ -6,7 +6,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 	  <cachetime>0</cachetime>
 	  <navigation>SimpleTextNavigation</navigation>
 	  <customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
-	  <authentication enabled="0" roleProvider="SampleRoleProvider" />
+	  <authentication enabled="1" roleProvider="SampleRoleProvider" loginPageId="login" />
 	</configuration>
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" />
@@ -14,7 +14,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="database" label="Database Access" href="en/database.xml" />
 			<page id="forms" label="Forms" href="en/forms.xml" />
 			<page id="transformation" label="XSLT Transformation" href="en/transformation.xml" />
-			<page id="authentication" label="Authentication" href="en/authentication.xml" roles="admin" />
+			<page id="authentication" label="Authentication" href="en/authentication.xml">
+			   <page id="authentication_protected" label="Protected page" href="en/authentication_protected.xml" roles="admin" />
+			</page>
 			<page id="internationalization" label="Internationalization" href="en/internationalization.xml" />
 			<page id="gallery" label="Gallery" href="en/gallery.xml" />		
 			<page id="sitemap" label="SiteMap" href="en/sitemap.xml" />
@@ -22,6 +24,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Multiple Formats" href="en/output_formats.xml" />
 			<page id="other_template" label="Other Template" href="en/other_template.xml" template="other.php" />			
 		</page>
+		<page id="login" label="Login" href="en/login.xml" hideInNavigation="1" hideInSiteMap="1" />
 	</language>
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" />
@@ -29,7 +32,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="database" label="Datenbank Zugriff" href="de/database.xml" />
 			<page id="forms" label="Formulare" href="de/forms.xml" />
 			<page id="transformation" label="XSLT Transformationen" href="de/transformation.xml" />
-			<page id="authentication" label="Authentifizierung" href="de/authentication.xml" roles="admin, test" />
+			<page id="authentication" label="Authentifizierung" href="de/authentication.xml">
+            <page id="authentication_protected" label="Geschützte Seite" href="de/authentication_protected.xml" roles="admin" />
+         </page>
 			<page id="internationalization" label="Lokalisierbarkeit" href="de/internationalization.xml" />
 			<page id="gallery" label="Galerie" href="de/gallery.xml" />		
 			<page id="sitemap" label="SiteMap" href="de/sitemap.xml" />
@@ -37,5 +42,6 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Verschiedene Formate" href="de/output_formats.xml" />
 			<page id="other_template" label="Anderes Template" href="de/other_template.xml" template="other.php" />
 		</page>
+		<page id="login" label="Login" href="de/login.xml" hideInNavigation="1" hideInSiteMap="1" />
 	</language>
 </site>

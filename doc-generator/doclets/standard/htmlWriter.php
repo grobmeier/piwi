@@ -78,8 +78,7 @@ class HTMLWriter
 		$output .= '<html lang="en">'."\n";
 		$output .= "<head>\n\n";
 
-		$output .= '<meta name="generator" content="PHPDoctor '.$this->_doclet->version().' (http://phpdoctor.sourceforge.net/)">'."\n";
-		$output .= '<meta name="when" content="'.date('r').'">'."\n\n";
+		$output .= '<meta name="generator" content="PHPDoctor '.$this->_doclet->version().' (http://phpdoctor.sourceforge.net/)">'."\n\n";
 		
 		$output .= '<link rel="stylesheet" type="text/css" href="'.str_repeat('../', $this->_depth).'stylesheet.css">'."\n";
 		$output .= '<link rel="start" href="'.str_repeat('../', $this->_depth).'overview-summary.html">'."\n\n";
