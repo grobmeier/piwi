@@ -27,7 +27,7 @@
 // Error reporting
 error_reporting(0); // hidde all errors
 //error_reporting(E_ERROR); // show only errors
-error_reporting(E_ALL); // show all errors
+//error_reporting(E_ALL); // show all errors
 
 /** Name of the folder where your content is placed. */
 DEFINE('CONTENT_PATH', 'custom/content');
