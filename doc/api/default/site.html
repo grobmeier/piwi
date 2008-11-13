@@ -167,6 +167,11 @@ Returns the Serializer for the given extension.
 </p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  string</td>
+<td class="description"><p class="name"><a href="#getSerializerClass()">getSerializerClass</a>(mixed extension)</p><p class="description">
+Returns the classname of the Serializer for the given format or null if none is found.</p></td>
+</tr>
+<tr>
 <td class="type">private  <a href="../default/navigationelement.html">NavigationElement</a></td>
 <td class="description"><p class="name"><a href="#getSiteMapItemsById()">getSiteMapItemsById</a>(array siteMap, string id, <a href="../default/navigationelement.html">NavigationElement</a> foundElement)</p><p class="description">
 Returns the NavigationElement with the given in id or null if no item is found.</p></td>
@@ -435,6 +440,18 @@ Returns the classname of the RoleProvider which manages the authentication of us
 <p>
 Returns the Serializer for the given extension.
 /</p></div>
+
+<hr>
+
+<h3 id="getSerializerClass()">getSerializerClass</h3>
+<code class="signature">protected abstract  string <strong>getSerializerClass</strong>(mixed extension)</code>
+<div class="details">
+<p>
+Returns the classname of the Serializer for the given format or null if none is found.</p><dl>
+<dt>Returns:</dt>
+<dd>The classname of the Serializer for the given format or null if none is found.</dd>
+</dl>
+</div>
 
 <hr>
 

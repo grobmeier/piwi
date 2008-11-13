@@ -7,6 +7,12 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 	  <navigation>SimpleTextNavigation</navigation>
 	  <customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
 	  <authentication enabled="1" roleProvider="SampleRoleProvider" loginPageId="login" />
+	  <!-- Configuration of the serializers, if not specified, the default serializer will be used. -->
+     <serializers>
+        <serializer extension="html" serializer="HTMLSerializer" />
+        <serializer extension="pdf" serializer="PDFSerializer" />
+        <serializer extension="xml" serializer="PiwiXMLSerializer" />
+     </serializers>
 	</configuration>
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" />

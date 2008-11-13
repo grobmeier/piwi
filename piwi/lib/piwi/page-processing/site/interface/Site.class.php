@@ -88,13 +88,34 @@ abstract class Site {
     public function getSerializer() {
     	$extension = Request::getExtension();
     	
+    	$serializerClass = $this->getSerializerClass($extension);
+    	
+    	if ($serializerClass != null) {
+	    	try {
+	    		$class = new ReflectionClass($serializerClass);
+				$serializer = $class->newInstance();
+				
+				if (!$serializer instanceof Serializer) {
+					if (error_reporting() > E_ERROR) {
+						echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
+					}
+				} else {
+					return $serializer;
+				}
+			} catch (ReflectionException $exception) {
+				if (error_reporting() > E_ERROR) {
+					echo("Serializer not found: " . $serializerClass);
+				}
+			}
+    	}    	
+    	
     	if ($extension == "xml") {
     		return new PiwiXMLSerializer();
     	} else if ($extension == "pdf") {
     		return new PDFSerializer();
     	} else {
     		return new HTMLSerializer();
-    	}    	
+    	}  	
     }
 
     /** 
@@ -322,6 +343,12 @@ abstract class Site {
      * @return string The classname of the RoleProvider which manages the authentication of users or null if none is specified.
      */
     protected abstract function getRoleProviderClass();
+
+    /** 
+     * Returns the classname of the Serializer for the given format or null if none is found.
+     * @return string The classname of the Serializer for the given format or null if none is found.
+     */
+    protected abstract function getSerializerClass($extension);
     
     /**
      * Returns the id of the login page.
