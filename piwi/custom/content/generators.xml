@@ -11,7 +11,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 	</generator>
 	<generator id="datagrid" class="DataGridGenerator">
       <connector>sqlite3Connector</connector>
-      <headers>Name, Adress, City, Phone</headers>
+      <headers>NAME, ADRESS, CITY, PHONE</headers>
       <sql>SELECT * FROM adresses</sql>
    </generator>
    
@@ -23,12 +23,12 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 	
 	<!-- SITEMAP -->
 	<generator id="featuresSiteMap" class="SiteMapGenerator">
-		<header>Features</header>
+		<header>FEATURES</header>
 		<pageId>features</pageId>
 		<depth>0</depth>
 		<includeParent>0</includeParent>
 	</generator>
 	<generator id="fullSiteMap" class="SiteMapGenerator">
-		<header>Contents of this Website</header>
+		<header>CONTENTS_OF_THIS_WEBSITE</header>
 	</generator>
 </generators>

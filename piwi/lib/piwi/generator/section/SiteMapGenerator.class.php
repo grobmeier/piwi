@@ -29,7 +29,7 @@ final class SiteMapGenerator implements SectionGenerator {
 		$piwixml = '<section>';
 		if ($this->header != "") {
 			$piwixml .= '<title>';
-			$piwixml .= $this->header;
+			$piwixml .= '<label key="' . $this->header . '" />';
 			$piwixml .= '</title>';
 		}
 		$piwixml .= $this->getSiteMapAsXml(Site::getInstance()->getCustomSiteMap($this->pageId, $this->depth, $this->includeParent));

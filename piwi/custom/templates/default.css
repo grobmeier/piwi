@@ -42,29 +42,29 @@ body
 
 #menu ul
 {
-	background-color: 	  #c5dc08;
-	margin: 			        0px; 
-	padding:              0px;
+	background-color: 	#c5dc08;
+	margin: 			      0px; 
+	padding:             0px;
 }
 
 #menu ul li
 { 
-	list-style: 		      none;
-	float: 				        left;
-	font-weight:          bold;
-	position: 			      relative;
-	margin: 			        0px 40px 0px 35px;
+	list-style: 		   none;
+	float: 				   left;
+	font-weight:         bold;
+	position: 			   relative;
+	margin: 			      0px 40px 0px 35px;
 }
 
 #menu ul li ul 
 {
     position: 			    absolute;
-    top: 				        1.9em;
-    left: 				      -0.5em;
-    display: 			      none;
-    border:				      1px solid #dcdcdc;
+    top: 				    1.9em;
+    left: 				    -0.5em;
+    display: 			    none;
+    border:				    1px solid #dcdcdc;
     line-height:		    1.0em;
-    width: 				      230px;
+    width: 				    230px;
 }
 
 #menu ul li:hover ul
@@ -75,22 +75,22 @@ body
 #menu ul li ul li
 {
    background-color:    #b6cc0c;
-   margin: 			        1px;
-   float:				        none;
-   display: 			      block;   
-   font-weight:     	  normal;
+   margin: 			      1px;
+   float:				   none;
+   display: 			   block;   
+   font-weight:     	   normal;
 }
 
 #menu ul li ul li.selected
 {
-	background-color:     #a1b50d;
+	background-color:    #a1b50d;
 }
 
 #menu ul li a
 {
    color:               #ffffff;
    text-decoration:     none;
-   display: 			      block;
+   display: 			   block;
    width:               100%;
 }
 
@@ -107,7 +107,7 @@ body
 
 #menu ul li ul li a
 {
-   padding: 			      5px 15px 5px 15px;
+   padding: 			   5px 15px 5px 15px;
    
 }
 
@@ -232,13 +232,14 @@ textarea, input
 table, tr
 {
    padding:             0px;
+   border-collapse:     collapse;   
 }
 
 th, td
 {
    background-color:    #449c52;
    border:              1px solid  #dcdcdc; 
-   padding              1px;
+   padding:             3px 10px 3px 10px;
    margin:              0px;
 }
 
@@ -246,6 +247,7 @@ td
 {
    background-color:    #c5dc08;
 }
+
 /*
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>CUSTOM-ELEMENTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -264,7 +266,7 @@ td
 
 .sitemappath a:hover
 {
-	color:              #000000;
+   color:               #000000;
 }
 
 .right

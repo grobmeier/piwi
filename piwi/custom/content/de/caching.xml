@@ -9,7 +9,7 @@
 			angeben, nach der die Seiteninhalte neu erzeugt werden und nicht aus
 			dem Cache gelesen werden.
 			<br />
-			Piwi unterscheidet dabei anhand übergebener parameter, d.h. wenn die
+			Piwi unterscheidet dabei anhand übergebener Parameter, d.h. wenn die
 			gleiche Seite mit unterschiedlichen Parameter aufgerufen wird, so
 			werden diese auch separat im Cache hinterlegt.
 			<br />
@@ -20,10 +20,6 @@
 			'cachetime' auf die gewünschte Anzahl von Sekunden.
 			Um Caching ganz zu
 			deaktivieren setzen Sie den Wert auf 0 oder löschen Sie das Attribut.
-			<br />
-			<br />
-			Momentan kann die Cachezeit nur global eingestellt werden. Es ist
-			aber geplant, das spezifisch für jede Seite festzulegen.
 		</section>
 	</content>
 </document>

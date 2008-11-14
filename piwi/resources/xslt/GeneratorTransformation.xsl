@@ -14,17 +14,16 @@
 
    <!-- Execute generators -->
    <xsl:template match="piwixml:generator">
-      <xsl:for-each
-         select="php:function('GeneratorFactory::callGenerator', string(@id))">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:apply-templates select="php:function('GeneratorFactory::callGenerator', string(@id))" />
    </xsl:template>
    
    <!-- Evaluate forms -->
    <xsl:template match="piwixml:piwiform">
-      <xsl:for-each
-         select="php:function('FormProcessor::process', string(@id))">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:apply-templates select="php:function('FormProcessor::process', string(@id))" />
+   </xsl:template>
+   
+   <!-- Translate the labels -->
+   <xsl:template match="piwixml:label">
+      <xsl:value-of select="php:function('ResourcesManager::getLabelText', string(@key))"/>
    </xsl:template>
 </xsl:stylesheet>

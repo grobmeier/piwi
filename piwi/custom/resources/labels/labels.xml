@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labels xmlns="http://piwi.googlecode.com/xsd/labels" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd/labels.xsd">
+	<language region="default">
+	   <!-- LoginProcessor -->
+      <LOGIN_SUCCESS>Login successful.</LOGIN_SUCCESS>
+      <LOGIN_FAILED>Login failed.</LOGIN_FAILED>
+
+      <!-- ValidationProcessor -->
+      <GENDER>Geschlecht</GENDER>
+      <EMAIL>Email</EMAIL>
+      <NUMBER>Nummer</NUMBER>
+      <NEWSLETTER>Newsletter</NEWSLETTER>
+      
+      <!-- WizardProcessor -->
+      <BIRTHDAY>Birthday</BIRTHDAY>
+      <COMMENT>Comment</COMMENT>
+      
+      <!-- DataGridGenerator -->
+      <NAME>Name</NAME>
+      <ADRESS>Adress</ADRESS>
+		<CITY>City</CITY>
+		<PHONE>Phone</PHONE>
+   
+      <!-- FeaturesSiteMap -->
+      <FEATURES>Features</FEATURES>
+      
+      <!-- SiteMap -->
+      <CONTENTS_OF_THIS_WEBSITE>Contents of this Website</CONTENTS_OF_THIS_WEBSITE>
+	</language>
+	<language region="de">
+	   <!-- LoginProcessor -->
+	   <LOGIN_SUCCESS>Login erfolgreich.</LOGIN_SUCCESS>
+	   <LOGIN_FAILED>Login fehlgeschlagen.</LOGIN_FAILED>
+
+      <!-- ValidationProcessor -->
+      <GENDER>Geschlecht</GENDER>
+      <EMAIL>Email</EMAIL>
+      <NUMBER>Nummer</NUMBER>
+      <NEWSLETTER>Newsletter</NEWSLETTER>
+      
+      <!-- WizardProcessor -->
+      <BIRTHDAY>Geburtstag</BIRTHDAY>
+      <COMMENT>Kommentar</COMMENT>
+      
+      <!-- DataGridGenerator -->
+	   <NAME>Name</NAME>
+      <ADRESS>Adresse</ADRESS>
+      <CITY>Stadt</CITY>
+      <PHONE>Telefon</PHONE>            
+
+      <!-- FeaturesSiteMap -->
+	   <FEATURES>Features</FEATURES>
+	   
+	   <!-- SiteMap -->
+	   <CONTENTS_OF_THIS_WEBSITE>Inhalte dieser Webseite</CONTENTS_OF_THIS_WEBSITE>
+	</language>
+</labels>

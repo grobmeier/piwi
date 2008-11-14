@@ -15,9 +15,9 @@ class WizardProcessor implements StepProcessor{
 		
 		// Show results if last step is reached
 		if ($values["CURRENT_STEPS"] == $values["NUMBER_OF_STEPS"]) {
-			$result .= "Name: " . $values['Name'] . '<br />';
-			$result .= "Birthday: " . $values['Birthday'] . '<br />';
-			$result .= "Comment: " . $values['Comment'];
+			$result .= '<label key="NAME" />: ' . $values['Name'] . '<br />';
+			$result .= '<label key="BIRTHDAY" />: ' . $values['Birthday'] . '<br />';
+			$result .= '<label key="COMMENT" />: ' . $values['Comment'];
 		}
 		return '<div>' . $result . '</div>';
 	}

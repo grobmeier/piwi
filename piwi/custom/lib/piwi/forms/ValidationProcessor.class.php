@@ -10,11 +10,11 @@ class ValidationProcessor implements StepProcessor{
 	 * @return string The desired result as PiwiXML
 	 */
 	public function process(array $values, array $files) {
-		$result = "Gender: " . $values['Gender'] . '<br />';
-		$result .= "Name: " . $values['Name'] . '<br />';
-		$result .= "Email: " . $values['Email'] . '<br />';
-		$result .= "Number: " . $values['Number'] . '<br />';
-		$result .= "Newsletter: " . ((isset($values['Newsletter'])) ? $values['Newsletter'] : '-');
+		$result = '<label key="GENDER" />: ' . $values['Gender'] . '<br />';
+		$result .= '<label key="NAME" />: ' . $values['Name'] . '<br />';
+		$result .= '<label key="EMAIL" />: ' . $values['Email'] . '<br />';
+		$result .= '<label key="NUMBER" />: ' . $values['Number'] . '<br />';
+		$result .= '<label key="NEWSLETTER" />: ' . ((isset($values['Newsletter'])) ? $values['Newsletter'] : '-');
 		return '<div>' . $result . '</div>';
 	}
 }

@@ -232,13 +232,14 @@ textarea, input
 table, tr
 {
    padding:             0px;
+   border-collapse:     collapse;   
 }
 
 th, td
 {
    background-color:    #449c52;
    border:              1px solid  #dcdcdc; 
-   padding              1px;
+   padding:             3px 10px 3px 10px;
    margin:              0px;
 }
 

@@ -13,10 +13,10 @@ class LoginProcessor  implements StepProcessor{
 		// Login the user
 		$result = '';
 		if ($values["CURRENT_STEPS"] == $values["NUMBER_OF_STEPS"]) {
-			if (SessionManager::loginUser($values['Name'], $values['Password'], isset($values['Cookies']), 3600)) {
-				$result .= 'Login successful.';
+			if (SessionManager::loginUser($values['Name'], $values['Password'], isset($values['Cookies']), 3600 * 24 * 7)) {
+				$result .= '<label key="LOGIN_SUCCESS" />';
 			} else {
-				$result .= 'Login failed.';
+				$result .= '<label key="LOGIN_FAILED" />';
 			}		
 		}
 		return '<div>' . $result . '</div>';

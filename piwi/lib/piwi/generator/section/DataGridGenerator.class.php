@@ -43,7 +43,7 @@ class DataGridGenerator implements Generator {
 		if ($this->headers != null) {
 			$piwixml .= '<tr>';
 			foreach ($this->headers as $value) {
-       			$piwixml .= '<th>' . $value . '</th>';
+       			$piwixml .= '<th><label key="' . $value . '" /></th>';
 			}
 			$piwixml .= '</tr>';
 		}
