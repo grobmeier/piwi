@@ -69,8 +69,8 @@ Returns the username if the user is currently logged in, otherwise null.</p></td
 Returns true if the current user is authenticated.</p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#loginUser()">loginUser</a>(mixed username, mixed password, mixed useCookies)</p><p class="description">
+<td class="type">static  boolean</td>
+<td class="description"><p class="name"><a href="#loginUser()">loginUser</a>(string username, string password, boolean useCookies, integer sessionTime)</p><p class="description">
 Logs in the given user if its password is valid.
 </p></td>
 </tr>
@@ -126,12 +126,20 @@ Returns true if the current user is authenticated.</p><dl>
 <hr>
 
 <h3 id="loginUser()">loginUser</h3>
-<code class="signature">public static  void <strong>loginUser</strong>(mixed username, mixed password, mixed useCookies)</code>
+<code class="signature">public static  boolean <strong>loginUser</strong>(string username, string password, boolean useCookies, integer sessionTime)</code>
 <div class="details">
 <p>
 Logs in the given user if its password is valid.
-The password is valid the user will be redirected to the 
-/</p></div>
+If the password is valid the user will be redirected to the originally desired page.</p><dl>
+<dt>Parameters:</dt>
+<dd>username - The username.</dd>
+<dd>password - The password.</dd>
+<dd>useCookies - True if cookies should be used.</dd>
+<dd>sessionTime - Number of seconds the cookie should be valid.</dd>
+<dt>Returns:</dt>
+<dd>True if login was successful otherwise false.</dd>
+</dl>
+</div>
 
 <hr>
 

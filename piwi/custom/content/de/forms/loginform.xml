@@ -7,6 +7,8 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resource
 	   Name: <input name="Name" type="text" size="30" maxlength="30" />
 	   <br /><br />
 	   Passwort: <input name="Password" type="password" size="30" maxlength="30" />
+	   <br /><br />
+	   <input name="Cookies" type="checkbox" value="Cookies" /> Dauerhaft einloggen
 	 </step>
 	 <step>
 	  <stepprocessor class="LoginProcessor"/>

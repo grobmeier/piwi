@@ -9,7 +9,7 @@ class SessionManager {
 	public static function startSession() {
 		session_start();
 	}
-	
+
 	/**
 	 * -------------------------------------------------------------------------
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>> Language Management <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -43,21 +43,32 @@ class SessionManager {
 		}
 		return $_SESSION['language'];
 	}
-	
+
 	/**
 	 * -------------------------------------------------------------------------
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>> User Management <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	 * -------------------------------------------------------------------------
-	 */
+	 */	 
 	/**
 	 * Logs in the given user if its password is valid.
-	 * The password is valid the user will be redirected to the 
+	 * If the password is valid the user will be redirected to the originally desired page.
+	 * @param string $username The username.
+	 * @param string $password The password.
+	 * @param boolean $useCookies True if cookies should be used.
+	 * @param integer $sessionTime Number of seconds the cookie should be valid.
+	 * @return boolean True if login was successful otherwise false.
 	 */
-	public static function loginUser($username, $password, $useCookies = false) {
+	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
 		// Validate the password
 		$userValid = Site::getInstance()->getRoleProvider()->isPasswordValid($username, $password);
 		
 		if ($userValid) {
+			// Store cookie
+			if ($useCookies) {
+				setcookie("username", $username, time() + $sessionTime);
+				setcookie("password", $password, time() + $sessionTime);
+			}
+			
 			// Redirect to the desired page
 			if (isset($_SESSION['ReturnUrl'])) {
 				header('Location: ' . $_SESSION['ReturnUrl']);
@@ -79,7 +90,13 @@ class SessionManager {
 	 */
 	public static function logoutUser() {
 		unset($_SESSION['authenticated']);
-		unset($_SESSION['username']);		
+		unset($_SESSION['username']);	
+		
+		// Delete cookie if it exists
+		if (isset($_COOKIE["username"]) || isset($_COOKIE["password"])) {
+			setcookie("username", "", time() - 3600);
+			setcookie("password", "", time() - 3600);
+		}	
 	}
 	
 	/**
@@ -106,7 +123,23 @@ class SessionManager {
 		$_SESSION['ReturnUrl'] = $uri;
 		
 		// Check if user is authenticated
-		return (isset($_SESSION['authenticated']) && $_SESSION['authenticated']);
+		if ((isset($_SESSION['authenticated']) && $_SESSION['authenticated'])) {
+			// In this case the user is already logged in
+			return true;
+		} else if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
+			// In this case the user has a cookie. Validate the password and login the user if it is correct.
+			$userValid = Site::getInstance()->getRoleProvider()->isPasswordValid($_COOKIE["username"], $_COOKIE["password"]);
+			if ($userValid) {
+				// Password is valid
+				$_SESSION['authenticated'] = true;
+				$_SESSION['username'] = $_COOKIE["username"];
+				unset($_SESSION['ReturnUrl']);
+				return true;
+			} else {
+				// In this case the cookie is invalid
+				return false;
+			}
+		}
 	}
 }
 ?>
