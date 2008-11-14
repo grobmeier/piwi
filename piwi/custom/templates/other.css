@@ -229,6 +229,24 @@ textarea, input
    font-size:           0.9em;   
 }
 
+table, tr
+{
+   padding:             0px;
+}
+
+th, td
+{
+   background-color:    #449c52;
+   border:              1px solid  #dcdcdc; 
+   padding              1px;
+   margin:              0px;
+}
+
+td
+{
+   background-color:    #c5dc08;
+}
+
 /*
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>CUSTOM-ELEMENTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -1,19 +1,20 @@
 <?php
 /**
- * Custom Generator.
- * This is a sample of a custom Generator.
- * It generates some content using a database as datasource.
- * The database is accessed by using a Connector.
- * Which connector is used can be configured in the "generators.xml", 
- * so different databases (like MySQL or SQLite) could be accessed easily.
+ * Creates a table containing whose data comes from a database.
  */
-class SQLiteContentGenerator implements Generator {
+class DataGridGenerator implements Generator {
 	/** The name of the Connector that will be used to access the database. */	
 	private $connector = null;
 	
 	/** The connection established by the connector on demand. */
 	private $connection = null;
 	
+	/** The headers of the table. */
+	private $headers = null;
+	
+	/** The SQL-Query to perform. */
+	private $sql = null;
+
 	/**
 	 * Constructor.
 	 */
@@ -35,22 +36,28 @@ class SQLiteContentGenerator implements Generator {
 		}
 
 		// execute query
-		$sql = "SELECT rowid, subject, content FROM content";
-		$dbresult = $this->connection->execute($sql);
+		$dbresult = $this->connection->execute($this->sql);
 		
 		// generate xml
-		$piwixml = '';
+		$piwixml = '<table>';
+		if ($this->headers != null) {
+			$piwixml .= '<tr>';
+			foreach ($this->headers as $value) {
+       			$piwixml .= '<th>' . $value . '</th>';
+			}
+			$piwixml .= '</tr>';
+		}
+		
 		if ($dbresult != null) {
 			foreach($dbresult as $row) {
-				$piwixml .= '<section>';
-				$piwixml .= '<title>';
-				$piwixml .= $row['subject'];
-				$piwixml .= '</title>';
-				$piwixml .= $row['content'];
-				$piwixml .= '<br /><br />';
-				$piwixml .= '</section>';
+				$piwixml .= '<tr>';
+				for ( $index = 0, $max_count = sizeof( $row ) / 2; $index < $max_count; $index++ ) {
+					$piwixml .= '<td>' . $row[$index] . '</td>';
+				}
+				$piwixml .= '</tr>';
 			}
-		}		
+		}
+		$piwixml .= '</table>';
 		return $piwixml;
 	}
 	
@@ -62,6 +69,10 @@ class SQLiteContentGenerator implements Generator {
     function setProperty($key, $value) {
 		if($key == "connector") {
     		$this->connector = $value;
+    	} else if($key == "sql") {
+    		$this->sql = $value;
+    	} else if($key == "headers") {
+    		$this->headers = explode(',', str_replace(", ", ",", $value));
     	}
     }
 }
