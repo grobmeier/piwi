@@ -93,7 +93,7 @@ ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
 FormFactory::initialize(CONTENT_PATH . '/forms.xml');
 
 // Init site
-Site::setInstance(new XMLSite(CONTENT_PATH, 'site.xml'));
+Site::setInstance(new XMLSite(CONTENT_PATH, TEMPLATES_PATH, 'site.xml'));
 
 try {
 	// Generate page
@@ -105,6 +105,5 @@ try {
 }
 
 // Call Serializer
-$serializer = Site::getInstance()->getSerializer();
-$serializer->serialize(Site::getInstance()->getContent(), Request::getPageId(), PIWI_ROOT . '/' . TEMPLATES_PATH . '/' . Site::getInstance()->getTemplate());
+Site::getInstance()->serialize();
 ?>
