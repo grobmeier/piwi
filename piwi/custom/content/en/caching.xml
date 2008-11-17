@@ -9,7 +9,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 			<br />
 			Piwi is differing between different parameters, so calling the same page with different parameters will result in multiple cached pages.
 			<br /><br />
-			To configure caching, just edit the settings within your 'site.xml'. Set the attribute 'cachetime' to the desired number of seconds.
+			To configure caching, just edit the settings within your 'config.xml'. Set the attribute 'cachetime' to the desired number of seconds.
 			To disable caching set it to 0 or delete the attribute.
 		</section>
 	</content>

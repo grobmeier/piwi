@@ -15,7 +15,7 @@
 			<br />
 			<br />
 			Um das Cachingverhalten zu konfigrieren, müssen Sie nur die
-			Einstellungen der Datei 'site.xml' verändern.
+			Einstellungen der Datei 'config.xml' verändern.
 			Setzen Sie das Attribut
 			'cachetime' auf die gewünschte Anzahl von Sekunden.
 			Um Caching ganz zu
