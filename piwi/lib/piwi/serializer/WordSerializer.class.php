@@ -35,6 +35,7 @@ class WordSerializer implements Serializer {
 		
 		// Generate Word
 		header("Content-type: application/vnd-ms-word");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 		header("Content-Disposition: attachment; filename=" . $pageId . ".doc");
 		
 		echo utf8_decode($html);

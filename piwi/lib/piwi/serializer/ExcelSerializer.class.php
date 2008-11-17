@@ -35,6 +35,7 @@ class ExcelSerializer implements Serializer {
 		
 		// Generate Excel
 		header("Content-type: application/vnd-ms-excel"); 
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
  		header("Content-Disposition: attachment; filename=" . $pageId . ".xls");
 		
 		echo utf8_decode($html);

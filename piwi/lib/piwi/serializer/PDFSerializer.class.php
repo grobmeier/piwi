@@ -35,6 +35,7 @@ class PDFSerializer implements Serializer {
 		$html .= "</body></html>";
 
 		// generate PDF		
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 		$html2pdf = new HTML2FPDF();		
 		$html2pdf->AddPage();
 		$html2pdf->WriteHTML(utf8_decode($html));
