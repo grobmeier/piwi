@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
 		<header>Verschiedene Formate</header>
 		<section>
-			PiwiXML kann in verschiedenen Formaten ausgegeben werden. Momentan werden HTML, PDF und XML unterstützt.
+			PiwiXML kann in verschiedenen Formaten ausgegeben werden. Momentan
+			werden HTML, PDF, Excel und XML unterstützt.
 			<br />
 			<br />
-			Sie können eine Seite in einem anderen Format anzeigen, indem Sie einfach die Dateiendung auf das gewünschte Format ändern:
+			Sie können eine Seite in einem anderen Format anzeigen, indem Sie
+			einfach die Dateiendung auf das gewünschte Format ändern:
 			<ul>
 				<li>
 					HTML:
 					<a href="output_formats.html">output_format.html</a>
 				</li>
-              <li>
-                 PDF:
-                 <a href="output_formats.pdf">output_format.pdf</a>
-              </li>
+				<li>
+					PDF:
+					<a href="output_formats.pdf">output_format.pdf</a>
+				</li>
+				<li>
+               Excel:
+               <a href="output_formats.xls">output_format.xls</a>
+            </li>
 				<li>
 					XML:
 					<a href="output_formats.xml">output_format.xml</a>

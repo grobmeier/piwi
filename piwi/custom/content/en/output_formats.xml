@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
 		<header>Multiple Formats</header>
 		<section>
 			PiwiXML can be serialized to several different formats. Currently
-			HTML, PDF and XML are supported.
+			HTML, PDF, Excel and XML are supported.
 			<br />
 			<br />
 			You can view this page in the different formats simply by changing
@@ -16,10 +16,14 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 					HTML:
 					<a href="output_formats.html">output_format.html</a>
 				</li>
-              <li>
-                 PDF:
-                 <a href="output_formats.pdf">output_format.pdf</a>
-              </li>
+				<li>
+					PDF:
+					<a href="output_formats.pdf">output_format.pdf</a>
+				</li>
+				<li>
+					Excel:
+					<a href="output_formats.xls">output_format.xls</a>
+				</li>
 				<li>
 					XML:
 					<a href="output_formats.xml">output_format.xml</a>

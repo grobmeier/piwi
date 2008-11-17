@@ -3,4 +3,4 @@
 RewriteEngine on
 RewriteBase / 
 RewriteRule custom/(.*)$ custom/$1 [L]
-RewriteRule (.*)\.(html|htm|xml|pdf)$ index.php?page=$1&extension=$2 [QSA]
+RewriteRule (.*)\.(html|htm|xml|pdf|xls)$ index.php?page=$1&extension=$2 [QSA]

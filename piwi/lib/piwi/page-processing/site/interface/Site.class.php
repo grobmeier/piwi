@@ -113,6 +113,8 @@ abstract class Site {
     		return new PiwiXMLSerializer();
     	} else if ($extension == "pdf") {
     		return new PDFSerializer();
+    	} else if ($extension == "xls") {
+    		return new ExcelSerializer();
     	} else {
     		return new HTMLSerializer();
     	}  	

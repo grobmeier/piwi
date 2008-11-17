@@ -12,6 +12,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
         <serializer extension="html" serializer="HTMLSerializer" />
         <serializer extension="pdf" serializer="PDFSerializer" />
         <serializer extension="xml" serializer="PiwiXMLSerializer" />
+        <serializer extension="xls" serializer="ExcelSerializer" />
      </serializers>
 	</configuration>
 	<language region="default">
