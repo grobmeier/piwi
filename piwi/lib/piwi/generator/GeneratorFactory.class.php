@@ -7,7 +7,7 @@ class GeneratorFactory {
 	private static $generatorFactoryInstance = null;
 
 	/** Map of the generators that have already been initialized. */
-	private $generators = array ();
+	private $generators = array();
 
 	/** Path of the file containing the xml-definition of the generators that can be used. */
 	private $generatorsXMLPath = null;

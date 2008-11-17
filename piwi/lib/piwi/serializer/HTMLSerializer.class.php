@@ -6,10 +6,8 @@ class HTMLSerializer implements Serializer {
 	/**
 	 * Transform the given xml to the output format.
 	 * @param DOMDocument $domDocument The content as DOMDocument.
-	 * @param string $pageId The id of the requested page.
-	 * @param string $templatePath The path to the template which should be used.
 	 */
-	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
+	public function serialize(DOMDocument $domDocument) {
 		// Register stream wrapper to include custom XSLTStylesheets
 		stream_wrapper_register("xsltsss", "XSLTStylesheetStream");
 		
@@ -35,11 +33,11 @@ class HTMLSerializer implements Serializer {
 		
 		// Generate siteMapPath
 		$siteMapPathNavigation = new SiteMapPathNavigation();
-		$siteMapPath = Site::getInstance()->getCustomSiteMap($pageId, 0);		
+		$siteMapPath = Site::getInstance()->getCustomSiteMap(Request::getPageId(), 0);		
 		$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMapPath);
 			
 		// Show generated page
-		include ($templatePath);
+		include (Site::getInstance()->getTemplate());
 	}
 }
 ?>

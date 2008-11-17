@@ -6,10 +6,8 @@ class PDFSerializer implements Serializer {
 	/**
 	 * Transform the given xml to the output format.
 	 * @param DOMDocument $domDocument The content as DOMDocument.
-	 * @param string $pageId The id of the requested page.
-	 * @param string $templatePath The path to the template which should be used.
 	 */
-	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
+	public function serialize(DOMDocument $domDocument) {
 		// Register stream wrapper to include custom XSLTStylesheets
 		stream_wrapper_register("xsltsss", "XSLTStylesheetStream");
 		
@@ -39,7 +37,7 @@ class PDFSerializer implements Serializer {
 		$html2pdf = new HTML2FPDF();		
 		$html2pdf->AddPage();
 		$html2pdf->WriteHTML(utf8_decode($html));
-		$html2pdf->Output($pageId . '.pdf', 'I');
+		$html2pdf->Output(Request::getPageId() . '.pdf', 'I');
 	}
 }
 ?>

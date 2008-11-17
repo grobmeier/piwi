@@ -9,6 +9,9 @@ abstract class Site {
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
 
+	/** Name of the folder where your templates are placed. */
+	protected $templatesPath = null;
+	
 	/** The template of the requested page. */
 	private $template = "default.php";
 	
@@ -76,19 +79,22 @@ abstract class Site {
 		}
 
 		// Set template if specified
-		$template = $this->getCustomTemplate();
+		$template = $this->getHTMLTemplatePath();
         if ($template != null) {
         	$this->template = $template;
         }
     }    
             
-   	/** 
+   	/**
+   	 * Excecutes the Serializer
    	 * Returns the Serializer for the given extension.
    	 */
-    public function getSerializer() {
+    public function serialize() {
     	$extension = Request::getExtension();
     	
     	$serializerClass = $this->getSerializerClass($extension);
+    	
+    	$serializer = null;
     	
     	if ($serializerClass != null) {
 	    	try {
@@ -96,30 +102,32 @@ abstract class Site {
 				$serializer = $class->newInstance();
 				
 				if (!$serializer instanceof Serializer) {
+					$serializer = null;
 					if (error_reporting() > E_ERROR) {
 						echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
 					}
-				} else {
-					return $serializer;
 				}
-			} catch (ReflectionException $exception) {
+			} catch (ReflectionException $exception) {				
 				if (error_reporting() > E_ERROR) {
 					echo("Serializer not found: " . $serializerClass);
 				}
 			}
-    	}    	
+    	}
+    	if ($serializer == null) {
+	    	if ($extension == "xml") {
+	    		$serializer = new PiwiXMLSerializer();
+	    	} else if ($extension == "pdf") {
+	    		$serializer = new PDFSerializer();
+	    	} else if ($extension == "xls") {
+	    		$serializer = new ExcelSerializer();
+	    	} else if ($extension == "doc") {
+	    		$serializer = new WordSerializer();
+	    	} else {
+	    		$serializer = new HTMLSerializer();
+	    	}
+    	}
     	
-    	if ($extension == "xml") {
-    		return new PiwiXMLSerializer();
-    	} else if ($extension == "pdf") {
-    		return new PDFSerializer();
-    	} else if ($extension == "xls") {
-    		return new ExcelSerializer();
-    	} else if ($extension == "doc") {
-    		return new WordSerializer();
-    	} else {
-    		return new HTMLSerializer();
-    	}  	
+    	$serializer->serialize($this->content);
     }
 
     /** 
@@ -255,22 +263,8 @@ abstract class Site {
      * @return string The template of the requested page.
      */
     public function getTemplate() {
-    	return $this->template;
+    	return $this->templatesPath . '/' . $this->template;
     }
-
-	/**
-	 * Returns the content of the requested page as DOMDocument.
-	 * @return DOMDocument The content of the requested page as DOMDocument.
-	 */
-    public function getContent() {
-    	if ($this->content == null) {
-    		throw new PiwiException(
-				"The page has not been loaded yet. Invoke method 'generateContent' or 'setContent' on '" . __CLASS__ . "' first.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
-    	}
-    	
-    	return $this->content;
-    }  
 
     /**
      * Sets the content of the page.
@@ -313,7 +307,7 @@ abstract class Site {
      * Returns the template of the requested page or null if not specified.
      * @return string The template of the requested page.
      */
-    protected abstract function getCustomTemplate();
+    protected abstract function getHTMLTemplatePath();
     
     /**
      * Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.

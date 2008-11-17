@@ -6,10 +6,8 @@ class ExcelSerializer implements Serializer {
 	/**
 	 * Transform the given xml to the output format.
 	 * @param DOMDocument $domDocument The content as DOMDocument.
-	 * @param string $pageId The id of the requested page.
-	 * @param string $templatePath The path to the template which should be used.
 	 */
-	public function serialize(DOMDocument $domDocument, $pageId, $templatePath) {
+	public function serialize(DOMDocument $domDocument) {
 		// Register stream wrapper to include custom XSLTStylesheets
 		stream_wrapper_register("xsltsss", "XSLTStylesheetStream");
 		
@@ -36,7 +34,7 @@ class ExcelSerializer implements Serializer {
 		// Generate Excel
 		header("Content-type: application/vnd-ms-excel"); 
 		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
- 		header("Content-Disposition: attachment; filename=" . $pageId . ".xls");
+ 		header("Content-Disposition: attachment; filename=" . Request::getPageId() . ".xls");
 		
 		echo utf8_decode($html);
 	}
