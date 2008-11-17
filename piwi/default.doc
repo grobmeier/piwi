@@ -1,0 +1,28 @@
+<html><body>
+		<h1>Willkommen</h1>
+		
+			<p>Auf der Piwi Website</p>
+		
+		<hr>
+		
+			<h2>Beschreibung</h2>
+			PIWI ist ein XML/XSLT Transformations Framework welches in PHP
+			geschrieben wurde.
+			Einige Konzepte und Ideen wurden von den großartigen Java-Applikation
+			<a href="http://cocoon.apache.org" rel="nofollow">
+				Apache Cocoon
+			</a>
+			und
+			<a href="http://forrest.apache.org" rel="nofollow">
+				Apache Forrest</a>
+			übernommen.
+			Cocoon ist nach wie vor gut, aber sehr komplex und natürlich in Java, was
+			Leuten mit kleinen Projekten den Einstieg erschwert.
+			<br>
+			<br>
+			PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
+		
+		<hr>
+		<h2>Features</h2><ul><li><a href="database.html">Datenbank Zugriff</a></li><li><a href="forms.html">Formulare</a></li><li><a href="transformation.html">XSLT Transformationen</a></li><li><a href="authentication.html">Authentifizierung</a></li><li><a href="internationalization.html">Lokalisierbarkeit</a></li><li><a href="gallery.html">Galerie</a></li><li><a href="sitemap.html">SiteMap</a></li><li><a href="caching.html">Caching</a></li><li><a href="output_formats.html">Verschiedene Formate</a></li><li><a href="other_template.html">Anderes Template</a></li></ul>
+	
+</body></html>

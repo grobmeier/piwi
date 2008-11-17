@@ -1,8 +1,8 @@
 <?php
 /**
- * Serializes the given XML to Excel (XSL).
+ * Serializes the given XML to Word (DOC).
  */
-class ExcelSerializer implements Serializer {
+class WordSerializer implements Serializer {
 	/**
 	 * Transform the given xml to the output format.
 	 * @param DOMDocument $domDocument The content as DOMDocument.
@@ -33,9 +33,9 @@ class ExcelSerializer implements Serializer {
 		
 		$html .= "</body></html>";
 		
-		// Generate Excel
-		header("Content-type: application/vnd-ms-excel"); 
- 		header("Content-Disposition: attachment; filename=" . $pageId . ".xls");
+		// Generate Word
+		header("Content-type: application/vnd-ms-word");
+		header("Content-Disposition: attachment; filename=" . $pageId . ".doc");
 		
 		echo utf8_decode($html);
 	}

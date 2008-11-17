@@ -115,6 +115,8 @@ abstract class Site {
     		return new PDFSerializer();
     	} else if ($extension == "xls") {
     		return new ExcelSerializer();
+    	} else if ($extension == "doc") {
+    		return new WordSerializer();
     	} else {
     		return new HTMLSerializer();
     	}  	

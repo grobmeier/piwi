@@ -29,7 +29,7 @@ class Request {
 	 */
 	public static function getExtension() {
 		if (isset($_GET['extension'])) {
-			return str_replace('htm', 'html', $_GET['extension']);
+			return $_GET['extension'];
 		} else {
 			return "html";
 		}

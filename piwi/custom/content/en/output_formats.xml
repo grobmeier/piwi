@@ -6,7 +6,7 @@
 		<header>Multiple Formats</header>
 		<section>
 			PiwiXML can be serialized to several different formats. Currently
-			HTML, PDF, Excel and XML are supported.
+			HTML, PDF, Word, Excel and XML are supported.
 			<br />
 			<br />
 			You can view this page in the different formats simply by changing
@@ -20,6 +20,10 @@
 					PDF:
 					<a href="output_formats.pdf">output_format.pdf</a>
 				</li>
+            <li>
+               Word:
+               <a href="output_formats.doc">output_format.doc</a>
+            </li>
 				<li>
 					Excel:
 					<a href="output_formats.xls">output_format.xls</a>
