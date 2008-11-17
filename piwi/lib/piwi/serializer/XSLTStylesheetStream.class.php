@@ -19,7 +19,7 @@ class XSLTStylesheetStream {
 	public function stream_open($path, $mode, $options, & $opened_path) {
 		// Check if a custom stylesheet is specified.
 		// If yes, then stream this one, otherwise stream an empty stylesheet.
-		$customXSLTStylesheetPath = Site :: getInstance()->getCustomXSLTStylesheetPath();
+		$customXSLTStylesheetPath = ConfigurationManager::getInstance()->getCustomXSLTStylesheetPath();
 		if ($customXSLTStylesheetPath != null && file_exists($customXSLTStylesheetPath)) {
 			$stylesheet = '';
 

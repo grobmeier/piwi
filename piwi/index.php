@@ -91,6 +91,7 @@ SessionManager::startSession();
 GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
 FormFactory::initialize(CONTENT_PATH . '/forms.xml');
+ConfigurationManager::initialize(CONTENT_PATH . '/config.xml');
 
 // Init site
 Site::setInstance(new XMLSite(CONTENT_PATH, TEMPLATES_PATH, 'site.xml'));

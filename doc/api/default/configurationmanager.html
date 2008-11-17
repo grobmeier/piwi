@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ConfigurationManager (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/configurationmanager.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">default.ConfigurationManager</div>
+
+<h1>Class ConfigurationManager</h1>
+
+<pre class="tree"><strong>ConfigurationManager</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ConfigurationManager</strong></p>
+
+<div class="comment" id="overview_description"><p>
+Manages the settings configured in 'config.xml'.
+/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#configFilePath">$configFilePath</a></p><p class="description">Path of the file containing the configuration. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#configurationManagerInstance">$configurationManagerInstance</a></p><p class="description">Singleton instance of the ConfigurationManager. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#domXPath">$domXPath</a></p><p class="description">The DOMXPath of the 'config.xml'. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#roleProvider">$roleProvider</a></p><p class="description">Instance of the RoleProvider. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#ConfigurationManager()">ConfigurationManager</a>(string configFilePath)</p><p class="description">
+Constructor.
+</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
+Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>()</p><p class="description">
+Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>()</p><p class="description">
+Returns the path of the a custom XSLT stylesheet or null if none is specified.</p></td>
+</tr>
+<tr>
+<td class="type">static  <a href="../default/configurationmanager.html">ConfigurationManager</a></td>
+<td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
+Returns the singleton instance of the ConfigurationManager.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getLoginPageId()">getLoginPageId</a>()</p><p class="description">
+Returns the id of the login page.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../default/roleprovider.html">RoleProvider</a></td>
+<td class="description"><p class="name"><a href="#getRoleProvider()">getRoleProvider</a>()</p><p class="description">
+Returns the RoleProvider which manages the authentication of users.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../default/serializer.html">Serializer</a></td>
+<td class="description"><p class="name"><a href="#getSerializer()">getSerializer</a>(mixed extension)</p><p class="description">
+Returns the Serializer for the given format or null if none is found.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string configFilePath)</p><p class="description">
+Initializes the singleton instance of this Class.</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#loadConfig()">loadConfig</a>()</p><p class="description">
+Loads the 'config.xml'.
+</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="configFilePath">configFilePath</h3>
+<code class="signature">private  mixed <strong>$configFilePath</strong> = null</code>
+<div class="details">
+<p>Path of the file containing the configuration. */</p></div>
+
+<hr>
+
+<h3 id="configurationManagerInstance">configurationManagerInstance</h3>
+<code class="signature">private static  mixed <strong>$configurationManagerInstance</strong> = null</code>
+<div class="details">
+<p>Singleton instance of the ConfigurationManager. */</p></div>
+
+<hr>
+
+<h3 id="domXPath">domXPath</h3>
+<code class="signature">private  mixed <strong>$domXPath</strong> = null</code>
+<div class="details">
+<p>The DOMXPath of the 'config.xml'. */</p></div>
+
+<hr>
+
+<h3 id="roleProvider">roleProvider</h3>
+<code class="signature">private  mixed <strong>$roleProvider</strong> = null</code>
+<div class="details">
+<p>Instance of the RoleProvider. */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="ConfigurationManager()">ConfigurationManager</h3>
+<code class="signature">public <strong>ConfigurationManager</strong>(string configFilePath)</code>
+<div class="details">
+<p>
+Constructor.
+Private constructor since only used by 'initialize'.</p><dl>
+<dt>Parameters:</dt>
+<dd>configFilePath - Path of the file containing the configuration.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="getCacheTime()">getCacheTime</h3>
+<code class="signature">public  integer <strong>getCacheTime</strong>()</code>
+<div class="details">
+<p>
+Returns the cachetime (the time that may pass until the content of the page is regenerated).</p><dl>
+<dt>Returns:</dt>
+<dd>The cachetime.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</h3>
+<code class="signature">public  string <strong>getCustomNavigationGeneratorClass</strong>()</code>
+<div class="details">
+<p>
+Returns the classname of the custom NavigationGenerator Class or null if not specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The classname of the custom NavigationGenerator Class or null if not specified.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</h3>
+<code class="signature">public  string <strong>getCustomXSLTStylesheetPath</strong>()</code>
+<div class="details">
+<p>
+Returns the path of the a custom XSLT stylesheet or null if none is specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The path of the a custom XSLT stylesheet or null if none is specified.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getInstance()">getInstance</h3>
+<code class="signature">public static  <a href="../default/configurationmanager.html">ConfigurationManager</a> <strong>getInstance</strong>()</code>
+<div class="details">
+<p>
+Returns the singleton instance of the ConfigurationManager.</p><dl>
+<dt>Returns:</dt>
+<dd>The singleton instance of the ConfigurationManager.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getLoginPageId()">getLoginPageId</h3>
+<code class="signature">public  string <strong>getLoginPageId</strong>()</code>
+<div class="details">
+<p>
+Returns the id of the login page.</p><dl>
+<dt>Returns:</dt>
+<dd>The id of the login page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getRoleProvider()">getRoleProvider</h3>
+<code class="signature">public  <a href="../default/roleprovider.html">RoleProvider</a> <strong>getRoleProvider</strong>()</code>
+<div class="details">
+<p>
+Returns the RoleProvider which manages the authentication of users.</p><dl>
+<dt>Returns:</dt>
+<dd>The RoleProvider which manages the authentication of users.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getSerializer()">getSerializer</h3>
+<code class="signature">public  <a href="../default/serializer.html">Serializer</a> <strong>getSerializer</strong>(mixed extension)</code>
+<div class="details">
+<p>
+Returns the Serializer for the given format or null if none is found.</p><dl>
+<dt>Returns:</dt>
+<dd>The Serializer for the given format or null if none is found.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="initialize()">initialize</h3>
+<code class="signature">public static  void <strong>initialize</strong>(string configFilePath)</code>
+<div class="details">
+<p>
+Initializes the singleton instance of this Class.</p><dl>
+<dt>Parameters:</dt>
+<dd>configFilePath - Path of the file containing the configuration.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="loadConfig()">loadConfig</h3>
+<code class="signature">private  void <strong>loadConfig</strong>()</code>
+<div class="details">
+<p>
+Loads the 'config.xml'.
+/</p></div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/configurationmanager.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

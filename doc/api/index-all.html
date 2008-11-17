@@ -103,6 +103,10 @@ SimpleXML based cache implementation for the Classloader.
 <dd>
 Checks if the value of a field matches the value of another field.
 </dd>
+<dt><a href="default/configurationmanager.html">ConfigurationManager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Manages the settings configured in 'config.xml'.
+</dd>
 <dt><a href="default/sqlite3connector.html#connect()">connect()</a> - Method in class <a href="default/sqlite3connector.html">default.SQLite3Connector</a></dt>
 <dd>
 Establishes a connection to the database.
@@ -214,8 +218,9 @@ Used to initiate and retrieve Generators.
 Returns the albums sorted by date.</dd>
 <dt><a href="default/xmlsite.html#getAllowedRoles()">getAllowedRoles()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the possible roles a user needs to access the currently requested page.</dd>
-<dt><a href="default/xmlsite.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the cachetime (the time that may pass until the content of the page is regenerated).</dd>
+<dt><a href="default/configurationmanager.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the cachetime (the time that may pass until the content of the page is regenerated).</dd>
 <dt><a href="default/navigationelement.html#getChildren()">getChildren()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Returns the children of the NavigationElement.</dd>
@@ -226,9 +231,6 @@ Lookup a class by the given id in the cache. </dd>
 <dd>
 Returns the Connector with the given id.
 </dd>
-<dt><a href="default/site.html#getContent()">getContent()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
-<dd>
-Returns the content of the requested page as DOMDocument.</dd>
 <dt><a href="default/album.html#getCreatedAt()">getCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Returns the date when the album has been created.</dd>
@@ -237,16 +239,16 @@ Returns the date when the album has been created.</dd>
 Returns the number of the current page.</dd>
 <dt><a href="default/xmlsite.html#getCurrentPageDOMNode()">getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>	 * Returns the DOMNode representing the current page.</dd>
-<dt><a href="default/xmlsite.html#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the classname of the custom NavigationGenerator Class or null if not specified.</dd>
+<dt><a href="default/configurationmanager.html#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the classname of the custom NavigationGenerator Class or null if not specified.</dd>
 <dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
 </dd>
-<dt><a href="default/xmlsite.html#getCustomTemplate()">getCustomTemplate()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the template of the requested page or null if not specified.</dd>
-<dt><a href="default/xmlsite.html#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the path of the a custom XSLT stylesheet or null if none is specified.</dd>
+<dt><a href="default/configurationmanager.html#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the path of the a custom XSLT stylesheet or null if none is specified.</dd>
 <dt><a href="default/request.html#getExtension()">getExtension()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Returns the extension/format of the requested page (e.g. </dd>
@@ -266,6 +268,8 @@ Returns the Form with the given id as DOMXPath.
 <dd>
 Returns the Generator with the given id.
 </dd>
+<dt><a href="default/xmlsite.html#getHTMLTemplatePath()">getHTMLTemplatePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>     * Returns the template of the requested page or null if not specified.</dd>
 <dt><a href="default/navigationelement.html#getId()">getId()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Returns the id of the page.</dd>
@@ -285,8 +289,9 @@ Looks up the localized text for the given key.
 <dt><a href="default/pager.html#getLimits()">getLimits()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns an array containing the limits which can be used for querying a database.</dd>
-<dt><a href="default/xmlsite.html#getLoginPageId()">getLoginPageId()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the id of the login page.</dd>
+<dt><a href="default/configurationmanager.html#getLoginPageId()">getLoginPageId()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the id of the login page.</dd>
 <dt><a href="default/image.html#getName()">getName()</a> - Method in class <a href="default/image.html">default.Image</a></dt>
 <dd>
 Returns the name of the image.</dd>
@@ -321,17 +326,12 @@ Returns the number of the previous page.</dd>
 <dd>
 Returns an array containing all results of the currently processed form.
 </dd>
-<dt><a href="default/site.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/configurationmanager.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the RoleProvider which manages the authentication of users.</dd>
-<dt><a href="default/xmlsite.html#getRoleProviderClass()">getRoleProviderClass()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</dd>
-<dt><a href="default/site.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/configurationmanager.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
-Returns the Serializer for the given extension.
-</dd>
-<dt><a href="default/xmlsite.html#getSerializerClass()">getSerializerClass()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>     * Returns the classname of the Serializer for the given format or null if none is found.</dd>
+Returns the Serializer for the given format or null if none is found.</dd>
 <dt><a href="default/sitemapgenerator.html#getSiteMapAsXml()">getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
 <dd>
 Returns the given 'SiteMap' as xml.</dd>
@@ -417,6 +417,10 @@ Loads the cache file. </dd>
 <dt><a href="default/classloader.html#loadClass()">loadClass()</a> - Method in class <a href="default/classloader.html">default.ClassLoader</a></dt>
 <dd>
 Trys to load a class from the given directory. </dd>
+<dt><a href="default/configurationmanager.html#loadConfig()">loadConfig()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Loads the 'config.xml'.
+</dd>
 <dt><a href="default/resourcesmanager.html#loadResources()">loadResources()</a> - Method in class <a href="default/resourcesmanager.html">default.ResourcesManager</a></dt>
 <dd>
 Initializes the resources array.

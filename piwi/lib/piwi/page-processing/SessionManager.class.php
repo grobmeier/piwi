@@ -60,7 +60,7 @@ class SessionManager {
 	 */
 	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
 		// Validate the password
-		$userValid = Site::getInstance()->getRoleProvider()->isPasswordValid($username, $password);
+		$userValid = ConfigurationManager::getInstance()->getRoleProvider()->isPasswordValid($username, $password);
 		
 		if ($userValid) {
 			// Store cookie
@@ -128,7 +128,7 @@ class SessionManager {
 			return true;
 		} else if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
 			// In this case the user has a cookie. Validate the password and login the user if it is correct.
-			$userValid = Site::getInstance()->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
+			$userValid = ConfigurationManager::getInstance()->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
 			if ($userValid) {
 				// Password is valid
 				$_SESSION['authenticated'] = true;

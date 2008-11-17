@@ -17,9 +17,6 @@ abstract class Site {
 	
 	/** The content of the requested page as DOMDocument. */
 	private $content = null;
-		
-	/** Instance of the RoleProvider. */
-	private $roleProvider = null;
 	
     /**
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
@@ -29,7 +26,7 @@ abstract class Site {
 
     	// If authorization is required check if user has authorization
     	if (!in_array('?', $allowedRoles)) {
-			$roleProvider = $this->getRoleProvider();
+			$roleProvider = ConfigurationManager::getInstance()->getRoleProvider();
 			
 			// Check if user is already logged in
 			if (SessionManager::isUserAuthenticated()) {
@@ -41,11 +38,11 @@ abstract class Site {
 				}
 			} else {
 				// Since user is not logged in, show login page				
-				Request::setPageId($this->getLoginPageId());
+				Request::setPageId(ConfigurationManager::getInstance()->getLoginPageId());
 			}
     	}    	
     	
-    	$cachetime = $this->getCacheTime();
+    	$cachetime = ConfigurationManager::getInstance()->getCacheTime();
   
     	// Try to get contents from cache
     	$cache = new Cache($cachetime);
@@ -91,28 +88,9 @@ abstract class Site {
    	 */
     public function serialize() {
     	$extension = Request::getExtension();
-    	
-    	$serializerClass = $this->getSerializerClass($extension);
-    	
-    	$serializer = null;
-    	
-    	if ($serializerClass != null) {
-	    	try {
-	    		$class = new ReflectionClass($serializerClass);
-				$serializer = $class->newInstance();
-				
-				if (!$serializer instanceof Serializer) {
-					$serializer = null;
-					if (error_reporting() > E_ERROR) {
-						echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
-					}
-				}
-			} catch (ReflectionException $exception) {				
-				if (error_reporting() > E_ERROR) {
-					echo("Serializer not found: " . $serializerClass);
-				}
-			}
-    	}
+
+    	$serializer = ConfigurationManager::getInstance()->getSerializer($extension);;
+
     	if ($serializer == null) {
 	    	if ($extension == "xml") {
 	    		$serializer = new PiwiXMLSerializer();
@@ -130,31 +108,12 @@ abstract class Site {
     	$serializer->serialize($this->content);
     }
 
-    /** 
-     * Returns the RoleProvider which manages the authentication of users.
-     * @return RoleProvider The RoleProvider which manages the authentication of users.
-     */
-	public function getRoleProvider() {
-		if ($this->roleProvider == null) {
-		   	$class = new ReflectionClass($this->getRoleProviderClass());
-			$roleProvider = $class->newInstance();
-			
-			if (!$roleProvider instanceof RoleProvider) {
-				throw new PiwiException(
-					"The Class with name '" . $this->getRoleProvider() . "' is not an instance of RoleProvider.", 
-					PiwiException :: ERR_WRONG_TYPE);
-			}
-			$this->roleProvider = $roleProvider;
-		}
-		return $this->roleProvider;		
-	}
-
 	/**
 	 * Returns the NavigationGenerator which should be used to generate the navigation.
 	 * @return NavigationGenerator The navigation generator.
 	 */
     public function getNavigationGenerator() {
-		$navigationClass = $this->getCustomNavigationGeneratorClass();
+		$navigationClass = ConfigurationManager::getInstance()->getCustomNavigationGeneratorClass();
 		if ($navigationClass != null) {
 			try {
 				$class = new ReflectionClass($navigationClass);
@@ -280,7 +239,7 @@ abstract class Site {
 	 * @return Site The singleton instance of the Site.
 	 */
 	public static function getInstance() {
-		return Site::$siteInstance;
+		return self::$siteInstance;
 	}
 	
 	/**
@@ -314,19 +273,7 @@ abstract class Site {
      * @return array Array of NavigationElements representing the whole website structure.
      */
     protected abstract function getFullSiteMap();
-    
-    /**
-     * Returns the classname of the custom NavigationGenerator Class or null if not specified.
-     * @return string The classname of the custom NavigationGenerator Class or null if not specified.
-     */
-    protected abstract function getCustomNavigationGeneratorClass();
-    
-    /**
-     * Returns the cachetime (the time that may pass until the content of the page is regenerated).
-     * @return integer The cachetime.
-     */
-    protected abstract function getCacheTime();
-    
+
     /**
      * Returns the possible roles a user needs to access the currently requested page.
      * The possible roles are returned as array.
@@ -335,31 +282,7 @@ abstract class Site {
      * @return array The possible roles a user needs to access the currently requested page.
      */
     protected abstract function getAllowedRoles();
-    
-    /** 
-     * Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.
-     * @return string The classname of the RoleProvider which manages the authentication of users or null if none is specified.
-     */
-    protected abstract function getRoleProviderClass();
-
-    /** 
-     * Returns the classname of the Serializer for the given format or null if none is found.
-     * @return string The classname of the Serializer for the given format or null if none is found.
-     */
-    protected abstract function getSerializerClass($extension);
-    
-    /**
-     * Returns the id of the login page.
-     * @return string The id of the login page.
-     */
-    protected abstract function getLoginPageId();
-    
-    /**
-     * Returns the path of the a custom XSLT stylesheet or null if none is specified.
-     * @return string The path of the a custom XSLT stylesheet or null if none is specified.
-     */
-    public abstract function getCustomXSLTStylesheetPath();
-    
+        
     /**
      * Returns a list of supported languages.
      * @return array List of supported languages.

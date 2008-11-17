@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/config"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/config">
+	<element name="configuration" type="tns:configurationType">
+		<unique name="UniqueLanguageRegion">
+			<selector xpath=".//tns:language" />
+			<field xpath="@region" />
+		</unique>
+	</element>
+
+
+	<complexType name="configurationType">
+        <sequence>
+
+        	<element name="cachetime" type="boolean" minOccurs="0"
+        		maxOccurs="1">
+        	</element>
+
+        	<element name="navigation" type="string" minOccurs="0"
+        		maxOccurs="1">
+        	</element>
+        	<element name="customXSLTStylesheet" type="string"
+        		minOccurs="0" maxOccurs="1">
+        	</element>
+        	<element name="authentication" type="tns:authenticationType"
+        		minOccurs="0" maxOccurs="1">
+        	</element>
+        	<element name="serializers" type="tns:serializersType" minOccurs="0" maxOccurs="1">
+        	   <unique name="UniqueExtension">
+               <selector xpath=".//tns:serializer" />
+               <field xpath="@extension" />
+            </unique>
+        	</element>
+        </sequence>
+	</complexType>
+
+
+	<complexType name="authenticationType">
+
+		<attribute name="enabled" type="boolean" use="required"></attribute>
+		<attribute name="roleProvider" type="string" use="required"></attribute>
+		<attribute name="loginPageId" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="serializersType">
+		<sequence>
+			<element name="serializer" type="tns:serializerType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="serializerType">
+
+		<attribute name="extension" type="string" use="required"></attribute>
+		<attribute name="serializer" type="string" use="required"></attribute>
+	</complexType>
+</schema>

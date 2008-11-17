@@ -2,19 +2,6 @@
 <site xmlns="http://piwi.googlecode.com/xsd/site" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
-	<configuration>
-	  <cachetime>0</cachetime>
-	  <navigation>SimpleTextNavigation</navigation>
-	  <customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
-	  <authentication enabled="1" roleProvider="SampleRoleProvider" loginPageId="login" />
-	  <!-- Configuration of the serializers, if not specified, the default serializer will be used. -->
-     <serializers>
-        <serializer extension="html" serializer="HTMLSerializer" />
-        <serializer extension="pdf" serializer="PDFSerializer" />
-        <serializer extension="xml" serializer="PiwiXMLSerializer" />
-        <serializer extension="xls" serializer="ExcelSerializer" />
-     </serializers>
-	</configuration>
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" />
 		<page id="features" label="Piwi Features" href="en/features.xml">

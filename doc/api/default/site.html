@@ -62,16 +62,16 @@ Renders the requested page and creates the navigation.
 <td class="description"><p class="name"><a href="#contentPath">$contentPath</a></p><p class="description">Name of the folder where the content is placed. </p></td>
 </tr>
 <tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#roleProvider">$roleProvider</a></p><p class="description">Instance of the RoleProvider. </p></td>
-</tr>
-<tr>
 <td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#siteInstance">$siteInstance</a></p><p class="description">Singleton instance of the Site. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#template">$template</a></p><p class="description">The template of the requested page. </p></td>
+</tr>
+<tr>
+<td class="type">protected  mixed</td>
+<td class="description"><p class="name"><a href="#templatesPath">$templatesPath</a></p><p class="description">Name of the folder where your templates are placed. </p></td>
 </tr>
 </table>
 
@@ -95,35 +95,10 @@ Returns the possible roles a user needs to access the currently requested page.
 </p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  integer</td>
-<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
-Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
-</tr>
-<tr>
-<td class="type"> DOMDocument</td>
-<td class="description"><p class="name"><a href="#getContent()">getContent</a>()</p><p class="description">
-Returns the content of the requested page as DOMDocument.</p></td>
-</tr>
-<tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>()</p><p class="description">
-Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
-</tr>
-<tr>
 <td class="type"> The</td>
 <td class="description"><p class="name"><a href="#getCustomSiteMap()">getCustomSiteMap</a>(string id, integer depth, boolean includeParent)</p><p class="description">
 Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
 </p></td>
-</tr>
-<tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getCustomTemplate()">getCustomTemplate</a>()</p><p class="description">
-Returns the template of the requested page or null if not specified.</p></td>
-</tr>
-<tr>
-<td class="type">abstract  string</td>
-<td class="description"><p class="name"><a href="#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>()</p><p class="description">
-Returns the path of the a custom XSLT stylesheet or null if none is specified.</p></td>
 </tr>
 <tr>
 <td class="type">protected abstract  string</td>
@@ -136,40 +111,19 @@ Returns the path of the xml file containing the content of the requested page.</
 Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  string</td>
+<td class="description"><p class="name"><a href="#getHTMLTemplatePath()">getHTMLTemplatePath</a>()</p><p class="description">
+Returns the template of the requested page or null if not specified.</p></td>
+</tr>
+<tr>
 <td class="type">static  <a href="../default/site.html">Site</a></td>
 <td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
 Returns the singleton instance of the Site.</p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getLoginPageId()">getLoginPageId</a>()</p><p class="description">
-Returns the id of the login page.</p></td>
-</tr>
-<tr>
 <td class="type"> <a href="../default/navigationgenerator.html">NavigationGenerator</a></td>
 <td class="description"><p class="name"><a href="#getNavigationGenerator()">getNavigationGenerator</a>()</p><p class="description">
 Returns the NavigationGenerator which should be used to generate the navigation.</p></td>
-</tr>
-<tr>
-<td class="type"> <a href="../default/roleprovider.html">RoleProvider</a></td>
-<td class="description"><p class="name"><a href="#getRoleProvider()">getRoleProvider</a>()</p><p class="description">
-Returns the RoleProvider which manages the authentication of users.</p></td>
-</tr>
-<tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getRoleProviderClass()">getRoleProviderClass</a>()</p><p class="description">
-Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#getSerializer()">getSerializer</a>()</p><p class="description">
-Returns the Serializer for the given extension.
-</p></td>
-</tr>
-<tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getSerializerClass()">getSerializerClass</a>(mixed extension)</p><p class="description">
-Returns the classname of the Serializer for the given format or null if none is found.</p></td>
 </tr>
 <tr>
 <td class="type">private  <a href="../default/navigationelement.html">NavigationElement</a></td>
@@ -185,6 +139,13 @@ Returns a list of supported languages.</p></td>
 <td class="type"> string</td>
 <td class="description"><p class="name"><a href="#getTemplate()">getTemplate</a>()</p><p class="description">
 Returns the template of the requested page.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#serialize()">serialize</a>()</p><p class="description">
+Excecutes the Serializer
+Returns the Serializer for the given extension.
+</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -213,13 +174,6 @@ Sets the singleton instance of the Site.</p></td>
 
 <hr>
 
-<h3 id="roleProvider">roleProvider</h3>
-<code class="signature">private  mixed <strong>$roleProvider</strong> = null</code>
-<div class="details">
-<p>Instance of the RoleProvider. */</p></div>
-
-<hr>
-
 <h3 id="siteInstance">siteInstance</h3>
 <code class="signature">private static  mixed <strong>$siteInstance</strong> = null</code>
 <div class="details">
@@ -231,6 +185,13 @@ Sets the singleton instance of the Site.</p></td>
 <code class="signature">private  mixed <strong>$template</strong> = "default.php"</code>
 <div class="details">
 <p>The template of the requested page. */</p></div>
+
+<hr>
+
+<h3 id="templatesPath">templatesPath</h3>
+<code class="signature">protected  mixed <strong>$templatesPath</strong> = null</code>
+<div class="details">
+<p>Name of the folder where your templates are placed. */</p></div>
 
 <hr>
 
@@ -273,42 +234,6 @@ The array contains only '*' if any authenticated user allowed to access the page
 
 <hr>
 
-<h3 id="getCacheTime()">getCacheTime</h3>
-<code class="signature">protected abstract  integer <strong>getCacheTime</strong>()</code>
-<div class="details">
-<p>
-Returns the cachetime (the time that may pass until the content of the page is regenerated).</p><dl>
-<dt>Returns:</dt>
-<dd>The cachetime.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getContent()">getContent</h3>
-<code class="signature">public  DOMDocument <strong>getContent</strong>()</code>
-<div class="details">
-<p>
-Returns the content of the requested page as DOMDocument.</p><dl>
-<dt>Returns:</dt>
-<dd>The content of the requested page as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</h3>
-<code class="signature">protected abstract  string <strong>getCustomNavigationGeneratorClass</strong>()</code>
-<div class="details">
-<p>
-Returns the classname of the custom NavigationGenerator Class or null if not specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The classname of the custom NavigationGenerator Class or null if not specified.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getCustomSiteMap()">getCustomSiteMap</h3>
 <code class="signature">public  The <strong>getCustomSiteMap</strong>(string id, integer depth, boolean includeParent)</code>
 <div class="details">
@@ -321,30 +246,6 @@ It is possible to retrieve only certain parts of the 'SiteMap'.</p><dl>
 <dd>includeParent - If false only the children of the parent will be returned. This can only be used if $id is not 'null'.</dd>
 <dt>Returns:</dt>
 <dd>'SiteMap' which is an array of NavigationElements representing the website structure.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getCustomTemplate()">getCustomTemplate</h3>
-<code class="signature">protected abstract  string <strong>getCustomTemplate</strong>()</code>
-<div class="details">
-<p>
-Returns the template of the requested page or null if not specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The template of the requested page.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</h3>
-<code class="signature">public abstract  string <strong>getCustomXSLTStylesheetPath</strong>()</code>
-<div class="details">
-<p>
-Returns the path of the a custom XSLT stylesheet or null if none is specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The path of the a custom XSLT stylesheet or null if none is specified.</dd>
 </dl>
 </div>
 
@@ -374,6 +275,18 @@ Returns the 'SiteMap' which is an array of NavigationElements representing the w
 
 <hr>
 
+<h3 id="getHTMLTemplatePath()">getHTMLTemplatePath</h3>
+<code class="signature">protected abstract  string <strong>getHTMLTemplatePath</strong>()</code>
+<div class="details">
+<p>
+Returns the template of the requested page or null if not specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The template of the requested page.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getInstance()">getInstance</h3>
 <code class="signature">public static  <a href="../default/site.html">Site</a> <strong>getInstance</strong>()</code>
 <div class="details">
@@ -386,18 +299,6 @@ Returns the singleton instance of the Site.</p><dl>
 
 <hr>
 
-<h3 id="getLoginPageId()">getLoginPageId</h3>
-<code class="signature">protected abstract  string <strong>getLoginPageId</strong>()</code>
-<div class="details">
-<p>
-Returns the id of the login page.</p><dl>
-<dt>Returns:</dt>
-<dd>The id of the login page.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getNavigationGenerator()">getNavigationGenerator</h3>
 <code class="signature">public  <a href="../default/navigationgenerator.html">NavigationGenerator</a> <strong>getNavigationGenerator</strong>()</code>
 <div class="details">
@@ -405,51 +306,6 @@ Returns the id of the login page.</p><dl>
 Returns the NavigationGenerator which should be used to generate the navigation.</p><dl>
 <dt>Returns:</dt>
 <dd>The navigation generator.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getRoleProvider()">getRoleProvider</h3>
-<code class="signature">public  <a href="../default/roleprovider.html">RoleProvider</a> <strong>getRoleProvider</strong>()</code>
-<div class="details">
-<p>
-Returns the RoleProvider which manages the authentication of users.</p><dl>
-<dt>Returns:</dt>
-<dd>The RoleProvider which manages the authentication of users.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getRoleProviderClass()">getRoleProviderClass</h3>
-<code class="signature">protected abstract  string <strong>getRoleProviderClass</strong>()</code>
-<div class="details">
-<p>
-Returns the classname of the RoleProvider which manages the authentication of users or null if none is specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The classname of the RoleProvider which manages the authentication of users or null if none is specified.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getSerializer()">getSerializer</h3>
-<code class="signature">public  void <strong>getSerializer</strong>()</code>
-<div class="details">
-<p>
-Returns the Serializer for the given extension.
-/</p></div>
-
-<hr>
-
-<h3 id="getSerializerClass()">getSerializerClass</h3>
-<code class="signature">protected abstract  string <strong>getSerializerClass</strong>(mixed extension)</code>
-<div class="details">
-<p>
-Returns the classname of the Serializer for the given format or null if none is found.</p><dl>
-<dt>Returns:</dt>
-<dd>The classname of the Serializer for the given format or null if none is found.</dd>
 </dl>
 </div>
 
@@ -492,6 +348,16 @@ Returns the template of the requested page.</p><dl>
 <dd>The template of the requested page.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="serialize()">serialize</h3>
+<code class="signature">public  void <strong>serialize</strong>()</code>
+<div class="details">
+<p>
+Excecutes the Serializer
+Returns the Serializer for the given extension.
+/</p></div>
 
 <hr>
 
