@@ -22,8 +22,7 @@
 	   A custom XSLTSTYLESHEET which will be included in the serialization process.
 	   Use this to perfom custom transformations.
 	 -->
-	<customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl
-	</customXSLTStylesheet>
+	<customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
 	
 	<!-- 
 	   Here you can enable/disable AUTHENTICATION.
