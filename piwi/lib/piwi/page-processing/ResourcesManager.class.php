@@ -18,13 +18,12 @@ class ResourcesManager {
 		}
 		
 		foreach (self::$resources as $domXPath) {			
-       		$result = $domXPath->query("/labels:labels/labels:language[@region='" . SessionManager::getUserLanguage() . "']/labels:" . $key);
-       		
+       		$result = $domXPath->query("/labels:labels/labels:language[@region='" . SessionManager::getUserLanguage() . "']/labels:label[@key='" . $key . "']");
+
        		if($result->length >= 1) {
-    			return $result->item(0)->nodeValue;
+    			return $result->item(0)->getAttribute('value');
         	}
 		}
-		
 		return $key;
 	}
 	

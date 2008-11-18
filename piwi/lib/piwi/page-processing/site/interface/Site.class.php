@@ -25,11 +25,12 @@ abstract class Site {
     	$allowedRoles = $this->getAllowedRoles();
 
     	// If authorization is required check if user has authorization
-    	if (!in_array('?', $allowedRoles)) {
+    	if (ConfigurationManager::getInstance()->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
 			$roleProvider = ConfigurationManager::getInstance()->getRoleProvider();
 			
 			// Check if user is already logged in
 			if (SessionManager::isUserAuthenticated()) {
+				
 				// Check whether user has required role
 				if (!in_array('*', $allowedRoles) && !$roleProvider->isUserInRole(SessionManager::getUserName(), $allowedRoles)) {
 					throw new PiwiException(
@@ -89,7 +90,7 @@ abstract class Site {
     public function serialize() {
     	$extension = Request::getExtension();
 
-    	$serializer = ConfigurationManager::getInstance()->getSerializer($extension);;
+    	$serializer = ConfigurationManager::getInstance()->getSerializer($extension);
 
     	if ($serializer == null) {
 	    	if ($extension == "xml") {
@@ -106,36 +107,6 @@ abstract class Site {
     	}
     	
     	$serializer->serialize($this->content);
-    }
-
-	/**
-	 * Returns the NavigationGenerator which should be used to generate the navigation.
-	 * @return NavigationGenerator The navigation generator.
-	 */
-    public function getNavigationGenerator() {
-		$navigationClass = ConfigurationManager::getInstance()->getCustomNavigationGeneratorClass();
-		if ($navigationClass != null) {
-			try {
-				$class = new ReflectionClass($navigationClass);
-				$navigationGenerator = $class->newInstance();
-			} catch( ReflectionException $exception ) {
-				if (error_reporting() > E_ERROR) {
-					echo("Custom Navigation Generator not found: " . $navigationClass);
-				}
-				$navigationGenerator = new SimpleTextNavigation();
-			}	
-		} else {
-			$navigationGenerator = new SimpleTextNavigation();
-		}
-
-		// Check type
-    	if (!$navigationGenerator instanceof NavigationGenerator) {
-    		throw new PiwiException(
-				"The given Class is not an instance of NavigationGenerator.", 
-				PiwiException :: ERR_WRONG_TYPE);
-    	}
-    	
-    	return $navigationGenerator;
     }
     
 	/**

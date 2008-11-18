@@ -13,7 +13,10 @@
       Configuration of the NAVIGATION-GENERATORSs that should be instantiated.
       They will be instantiated with the given name, so you could easily embed them in your templates.
     -->
-   <navigation>SimpleTextNavigation</navigation>
+   <navigationGenerators>
+      <navigationGenerator name="HTML_NAVIGATION" class="SimpleTextNavigation" depth="1" includeParent="1" />
+      <navigationGenerator name="SITE_MAP_PATH" class="SiteMapPathNavigation" pageId="CURRENT_PAGE" depth="0" includeParent="1" />
+   </navigationGenerators>
 	
 	<!-- 
 	   A custom XSLTSTYLESHEET which will be included in the serialization process.
@@ -41,7 +44,7 @@
 		<serializer extension="html" serializer="HTMLSerializer" />
 		<serializer extension="pdf" serializer="PDFSerializer" />
 		<serializer extension="xml" serializer="PiwiXMLSerializer" />
-		<serializer extension="xls" serializer="ExcelSerializer" />
 		<serializer extension="doc" serializer="WordSerializer" />
+		<serializer extension="xls" serializer="ExcelSerializer" />		
 	</serializers>
 </configuration>

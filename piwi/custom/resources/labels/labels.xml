@@ -4,56 +4,56 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd/labels.xsd">
 	<language region="default">
 	   <!-- LoginProcessor -->
-      <LOGIN_SUCCESS>Login successful.</LOGIN_SUCCESS>
-      <LOGIN_FAILED>Login failed.</LOGIN_FAILED>
+	   <label key="LOGIN_SUCCESS" value="Login successful." />
+	   <label key="LOGIN_FAILED" value="Login failed." />
 
       <!-- ValidationProcessor -->
-      <GENDER>Geschlecht</GENDER>
-      <EMAIL>Email</EMAIL>
-      <NUMBER>Nummer</NUMBER>
-      <NEWSLETTER>Newsletter</NEWSLETTER>
+      <label key="GENDER" value="Geschlecht" />
+      <label key="EMAIL" value="Email" />
+      <label key="NUMBER" value="Nummer" />
+      <label key="NEWSLETTER" value="Newsletter" />
       
       <!-- WizardProcessor -->
-      <BIRTHDAY>Birthday</BIRTHDAY>
-      <COMMENT>Comment</COMMENT>
+      <label key="BIRTHDAY" value="Birthday" />
+      <label key="COMMENT" value="Comment" />
       
       <!-- DataGridGenerator -->
-      <NAME>Name</NAME>
-      <ADRESS>Adress</ADRESS>
-		<CITY>City</CITY>
-		<PHONE>Phone</PHONE>
+      <label key="NAME" value="Name" />
+      <label key="ADRESS" value="Adress" />
+      <label key="CITY" value="City" />
+      <label key="PHONE" value="Phone" />
    
       <!-- FeaturesSiteMap -->
-      <FEATURES>Features</FEATURES>
+      <label key="FEATURES" value="Features" />
       
       <!-- SiteMap -->
-      <CONTENTS_OF_THIS_WEBSITE>Contents of this Website</CONTENTS_OF_THIS_WEBSITE>
+      <label key="CONTENTS_OF_THIS_WEBSITE" value="Contents of this Website" />
 	</language>
 	<language region="de">
 	   <!-- LoginProcessor -->
-	   <LOGIN_SUCCESS>Login erfolgreich.</LOGIN_SUCCESS>
-	   <LOGIN_FAILED>Login fehlgeschlagen.</LOGIN_FAILED>
+	   <label key="LOGIN_SUCCESS" value="Login erfolgreich." />
+      <label key="LOGIN_FAILED" value="Login fehlgeschlagen." />
 
       <!-- ValidationProcessor -->
-      <GENDER>Geschlecht</GENDER>
-      <EMAIL>Email</EMAIL>
-      <NUMBER>Nummer</NUMBER>
-      <NEWSLETTER>Newsletter</NEWSLETTER>
+      <label key="GENDER" value="Geschlecht" />
+      <label key="EMAIL" value="Email" />
+      <label key="NUMBER" value="Nummer" />
+      <label key="NEWSLETTER" value="Newsletter" />
       
       <!-- WizardProcessor -->
-      <BIRTHDAY>Geburtstag</BIRTHDAY>
-      <COMMENT>Kommentar</COMMENT>
+      <label key="BIRTHDAY" value="Geburtstag" />
+      <label key="COMMENT" value="Kommentar" />
       
       <!-- DataGridGenerator -->
-	   <NAME>Name</NAME>
-      <ADRESS>Adresse</ADRESS>
-      <CITY>Stadt</CITY>
-      <PHONE>Telefon</PHONE>            
+      <label key="NAME" value="Name" />
+      <label key="ADRESS" value="Adresse" />
+      <label key="CITY" value="Stadt" />
+      <label key="PHONE" value="Telefon" />      
 
       <!-- FeaturesSiteMap -->
-	   <FEATURES>Features</FEATURES>
+      <label key="FEATURES" value="Features" />
 	   
 	   <!-- SiteMap -->
-	   <CONTENTS_OF_THIS_WEBSITE>Inhalte dieser Webseite</CONTENTS_OF_THIS_WEBSITE>
+	   <label key="CONTENTS_OF_THIS_WEBSITE" value="Inhalte dieser Webseite" />
 	</language>
 </labels>

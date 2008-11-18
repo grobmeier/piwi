@@ -25,17 +25,12 @@ class HTMLSerializer implements Serializer {
 
 			$CONTENT[$elements->item($i)->getAttribute("position")] = $processor->transformToXML($template);
 		}
+
+		// Include navigation and siteMapPath
+		foreach (ConfigurationManager::getInstance()->getHTMLNavigations() as $name => $navigation) {
+			$$name = $navigation;
+		}
 		
-		// Generate navigation
-		$navigationGenerator = Site::getInstance()->getNavigationGenerator();
-		$siteMap = Site::getInstance()->getCustomSiteMap(null, 1);
-		$HTML_NAVIGATION = $navigationGenerator->generate($siteMap);			
-		
-		// Generate siteMapPath
-		$siteMapPathNavigation = new SiteMapPathNavigation();
-		$siteMapPath = Site::getInstance()->getCustomSiteMap(Request::getPageId(), 0);		
-		$SITE_MAP_PATH = $siteMapPathNavigation->generate($siteMapPath);
-			
 		// Show generated page
 		include (Site::getInstance()->getTemplate());
 	}

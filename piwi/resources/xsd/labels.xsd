@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/labels"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/labels">
+	<element name="labels" type="tns:labelsType">
+		<unique name="UniqueLanguageRegion">
+			<selector xpath=".//tns:language" />
+			<field xpath="@region" />
+		</unique>
+	</element>
+	<complexType name="labelsType">
+		<sequence>
+			<element name="language" type="tns:languageType" minOccurs="1"
+				maxOccurs="unbounded">
+				<unique name="UniqueLabelKey">
+					<selector xpath=".//tns:label" />
+					<field xpath="@key" />
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="languageType">
+		<sequence>
+
+			<element name="label" type="tns:labelType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+		<attribute name="region" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="labelType">
+		<attribute name="key" type="string" use="required"></attribute>
+		<attribute name="value" type="string" use="required"></attribute>
+	</complexType>
+</schema>

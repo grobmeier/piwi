@@ -89,13 +89,14 @@ Returns the cachetime (the time that may pass until the content of the page is r
 </tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</a>()</p><p class="description">
-Returns the classname of the custom NavigationGenerator Class or null if not specified.</p></td>
-</tr>
-<tr>
-<td class="type"> string</td>
 <td class="description"><p class="name"><a href="#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</a>()</p><p class="description">
 Returns the path of the a custom XSLT stylesheet or null if none is specified.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getHTMLNavigations()">getHTMLNavigations</a>()</p><p class="description">
+Returns an array containing all Navigations.
+</p></td>
 </tr>
 <tr>
 <td class="type">static  <a href="../default/configurationmanager.html">ConfigurationManager</a></td>
@@ -121,6 +122,11 @@ Returns the Serializer for the given format or null if none is found.</p></td>
 <td class="type">static  void</td>
 <td class="description"><p class="name"><a href="#initialize()">initialize</a>(string configFilePath)</p><p class="description">
 Initializes the singleton instance of this Class.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isAuthenticationEnabled()">isAuthenticationEnabled</a>()</p><p class="description">
+Returns true if authentication is enabled otherwise false.</p></td>
 </tr>
 <tr>
 <td class="type">private  void</td>
@@ -186,18 +192,6 @@ Returns the cachetime (the time that may pass until the content of the page is r
 
 <hr>
 
-<h3 id="getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass</h3>
-<code class="signature">public  string <strong>getCustomNavigationGeneratorClass</strong>()</code>
-<div class="details">
-<p>
-Returns the classname of the custom NavigationGenerator Class or null if not specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The classname of the custom NavigationGenerator Class or null if not specified.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath</h3>
 <code class="signature">public  string <strong>getCustomXSLTStylesheetPath</strong>()</code>
 <div class="details">
@@ -205,6 +199,20 @@ Returns the classname of the custom NavigationGenerator Class or null if not spe
 Returns the path of the a custom XSLT stylesheet or null if none is specified.</p><dl>
 <dt>Returns:</dt>
 <dd>The path of the a custom XSLT stylesheet or null if none is specified.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getHTMLNavigations()">getHTMLNavigations</h3>
+<code class="signature">public  array <strong>getHTMLNavigations</strong>()</code>
+<div class="details">
+<p>
+Returns an array containing all Navigations.
+The keys in the array, are the names (specified in 'config.xml') which can be placed in the templates.
+The values are the the generated menus as XHTML.</p><dl>
+<dt>Returns:</dt>
+<dd>Array containing all Navigations.</dd>
 </dl>
 </div>
 
@@ -265,6 +273,18 @@ Returns the Serializer for the given format or null if none is found.</p><dl>
 Initializes the singleton instance of this Class.</p><dl>
 <dt>Parameters:</dt>
 <dd>configFilePath - Path of the file containing the configuration.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="isAuthenticationEnabled()">isAuthenticationEnabled</h3>
+<code class="signature">public  boolean <strong>isAuthenticationEnabled</strong>()</code>
+<div class="details">
+<p>
+Returns true if authentication is enabled otherwise false.</p><dl>
+<dt>Returns:</dt>
+<dd>True if authentication is enabled otherwise false.</dd>
 </dl>
 </div>
 

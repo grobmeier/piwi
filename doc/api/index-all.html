@@ -239,9 +239,6 @@ Returns the date when the album has been created.</dd>
 Returns the number of the current page.</dd>
 <dt><a href="default/xmlsite.html#getCurrentPageDOMNode()">getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>	 * Returns the DOMNode representing the current page.</dd>
-<dt><a href="default/configurationmanager.html#getCustomNavigationGeneratorClass()">getCustomNavigationGeneratorClass()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
-<dd>
-Returns the classname of the custom NavigationGenerator Class or null if not specified.</dd>
 <dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
@@ -267,6 +264,10 @@ Returns the Form with the given id as DOMXPath.
 <dt><a href="default/generatorfactory.html#getGeneratorById()">getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Returns the Generator with the given id.
+</dd>
+<dt><a href="default/configurationmanager.html#getHTMLNavigations()">getHTMLNavigations()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns an array containing all Navigations.
 </dd>
 <dt><a href="default/xmlsite.html#getHTMLTemplatePath()">getHTMLTemplatePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>     * Returns the template of the requested page or null if not specified.</dd>
@@ -298,9 +299,6 @@ Returns the name of the image.</dd>
 <dt><a href="default/simpletextnavigation.html#getNavigation()">getNavigation()</a> - Method in class <a href="default/simpletextnavigation.html">default.SimpleTextNavigation</a></dt>
 <dd>
 Returns the recursivly built navigation.</dd>
-<dt><a href="default/site.html#getNavigationGenerator()">getNavigationGenerator()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
-<dd>
-Returns the NavigationGenerator which should be used to generate the navigation.</dd>
 <dt><a href="default/pager.html#getNextPage()">getNextPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the next page.</dd>
@@ -383,6 +381,9 @@ Resets the cache, should be called if a class
 retrieved from the cache does no more exist 
 in the filesystem.
 </dd>
+<dt><a href="default/configurationmanager.html#isAuthenticationEnabled()">isAuthenticationEnabled()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns true if authentication is enabled otherwise false.</dd>
 <dt><a href="default/navigationelement.html#isHiddenInNavigation()">isHiddenInNavigation()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
 <dd>
 Indicates whether the item is shown in the Navigation.</dd>

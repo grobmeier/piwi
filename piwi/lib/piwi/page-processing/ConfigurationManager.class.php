@@ -109,33 +109,46 @@ class ConfigurationManager {
         } else {
             return null;
         } 
-    }
+    }    
     
     /**
-     * Returns the classname of the custom NavigationGenerator Class or null if not specified.
-     * @return string The classname of the custom NavigationGenerator Class or null if not specified.
+     * Returns an array containing all Navigations.
+     * The keys in the array, are the names (specified in 'config.xml') which can be placed in the templates.
+     * The values are the the generated menus as XHTML.
+     * @return array Array containing all Navigations.
      */
-    public function getCustomNavigationGeneratorClass() {
+    public function getHTMLNavigations() {
     	if ($this->domXPath == null) {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:navigation");
-    	if($result->length == 1) {
-    		$navigation = $result->item(0)->nodeValue;
-    		if ($navigation == "") {
-    			return null;
-    		}
-			return $navigation;
-        } else if ($result->length > 1) {
-       		throw new PiwiException(
-				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
-				PiwiException :: INVALID_XML_DEFINITION);
-        } else {
-            return null;
-        }    	
-    }
+    	$navigations = array();
+    	
+    	foreach ($this->domXPath->query("/config:configuration/config:navigationGenerators/config:navigationGenerator") as $generator) {
+			try {
+				$class = new ReflectionClass($generator->getAttribute('class'));
+			    $navigationGenerator = $class->newInstance();
+			    
+			    $pageId = $generator->getAttribute('pageId') == "" ? null : $generator->getAttribute('pageId');
+			    if ($pageId == 'CURRENT_PAGE') {
+			    	$pageId = Request::getPageId();
+			    }
+			    $depth = $generator->getAttribute('depth') == "" ? -1 : $generator->getAttribute('depth');
+			    $includeParent = $generator->getAttribute('includeParent') == "" ? true : $generator->getAttribute('includeParent');
+			    
+			    $siteMap = Site::getInstance()->getCustomSiteMap($pageId, $depth, $includeParent);
 
+			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($siteMap);
+			} catch( ReflectionException $exception ) {
+				if (error_reporting() > E_ERROR) {
+					echo("Custom Navigation Generator not found: " . $generator->getAttribute('class'));
+				}
+			}			
+		}
+		
+		return $navigations;
+    }
+    
     /**
      * Returns the path of the a custom XSLT stylesheet or null if none is specified.
      * @return string The path of the a custom XSLT stylesheet or null if none is specified.
@@ -151,8 +164,29 @@ class ConfigurationManager {
         } else {
        		return null;
         }    	
-    }  
+    }
 
+	/**
+	 * Returns true if authentication is enabled otherwise false.
+	 * @return boolean True if authentication is enabled otherwise false.
+	 */
+	public function isAuthenticationEnabled() {
+    	if ($this->domXPath == null) {
+    		$this->loadConfig();
+    	}
+    	
+    	$result = $this->domXPath->query("/config:configuration/config:authentication");
+    	if ($result->length == 1) {    		
+    		return $result->item(0)->getAttribute("enabled");
+        } else if ($result->length > 1) {
+       		throw new PiwiException(
+				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
+				PiwiException :: INVALID_XML_DEFINITION);
+        } else {
+       		return false;
+        }
+	}
+	
     /** 
      * Returns the RoleProvider which manages the authentication of users.
      * @return RoleProvider The RoleProvider which manages the authentication of users.
