@@ -129,6 +129,12 @@ class ConfigurationManager {
 				$class = new ReflectionClass($generator->getAttribute('class'));
 			    $navigationGenerator = $class->newInstance();
 			    
+			    if (!$navigationGenerator instanceof NavigationGenerator) {
+		    		if (error_reporting() > E_ERROR) {
+						echo("The Class with name '" . $generator->getAttribute('class') . "' is not an instance of NavigationGenerator.");
+					}
+					continue;
+			    }
 			    $pageId = $generator->getAttribute('pageId') == "" ? null : $generator->getAttribute('pageId');
 			    if ($pageId == 'CURRENT_PAGE') {
 			    	$pageId = Request::getPageId();
