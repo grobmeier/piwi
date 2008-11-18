@@ -6,7 +6,7 @@
 	</element>
 	<complexType name="configurationType">
 		<sequence>
-			<element name="cachetime" type="boolean" minOccurs="0"
+			<element name="cachetime" type="int" minOccurs="0"
 				maxOccurs="1">
 			</element>
 			<element name="navigationGenerators" type="tns:navigationGeneratorsType"
