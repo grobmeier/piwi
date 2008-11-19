@@ -9,6 +9,15 @@ class NavigationElement {
 	/** The label of the page, which will be displayed. */
 	private $label = null;
 	
+	/** The url of the content. */
+	private $filePath = null;
+	
+	/** Indicates whether the item is shown in the Navigation. */
+	private $hideInNavigation = false;
+	
+	/** Indicates whether the item is shown in the SiteMap. */
+	private $hideInSiteMap = false;
+	
 	/** The children. */
 	private $children = null;
 	
@@ -21,20 +30,16 @@ class NavigationElement {
 	/** Indicates whether the NavigationElement is currently selected. */
 	private $selected = false;
 	
-	/** Indicates whether the item is shown in the Navigation. */
-	private $hideInNavigation = false;
-	
-	/** Indicates whether the item is shown in the SiteMap. */
-	private $hideInSiteMap = false;
-	
 	/**
 	 * Constructor.
 	 * @param string $id The id of the page.
 	 * @param string $label The label of the page, which will be displayed.
+	 * @param string $filePath The url of the content. 
 	 */
-	public function __construct($id, $label) {
+	public function __construct($id, $label, $filePath) {
 		$this->id = $id;
 		$this->label = $label;
+		$this->filePath = $filePath;
 	}
 	
 	/**
@@ -47,10 +52,50 @@ class NavigationElement {
 	
 	/**
 	 * Returns the label of the page.
-	 * @return string The label.
+	 * @return string The label of the page.
 	 */
 	public function getLabel(){
 		return $this->label;
+	}
+
+	/**
+	 * Returns the url of the content.
+	 * @return string The url of the content.
+	 */
+	public function getFilePath(){
+		return $this->filePath;
+	}
+			
+	/**
+	 * Indicates whether the item is shown in the Navigation.
+	 * @return boolean True if Element should be hidden in Navigation.
+	 */
+	public function isHiddenInNavigation() {
+		return $this->hideInNavigation;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the Navigation.
+	 * @param boolean $hideInNavigation True if Element should be hidden in Navigation.
+	 */
+	public function setHiddenInNavigation($hideInNavigation) {
+		return $this->hideInNavigation = $hideInNavigation;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the SiteMap.
+	 * @return boolean True if Element should be hidden in SiteMap.
+	 */
+	public function isHiddenInSiteMap() {
+		return $this->hideInSiteMap;
+	}
+	
+	/**
+	 * Indicates whether the item is shown in the SiteMap.
+	 * @param boolean $hideInSiteMap True if Element should be hidden in SiteMap.
+	 */
+	public function setHiddenInSiteMap($hideInSiteMap) {
+		return $this->hideInSiteMap = $hideInSiteMap;
 	}
 	
 	/**
@@ -114,38 +159,6 @@ class NavigationElement {
 	 */
 	public function setParent(NavigationElement $parent) {
 		return $this->parent = $parent;
-	}
-		
-	/**
-	 * Indicates whether the item is shown in the Navigation.
-	 * @return boolean True if Element should be hidden in Navigation.
-	 */
-	public function isHiddenInNavigation() {
-		return $this->hideInNavigation;
-	}
-	
-	/**
-	 * Indicates whether the item is shown in the Navigation.
-	 * @param boolean $hideInNavigation True if Element should be hidden in Navigation.
-	 */
-	public function setHiddenInNavigation($hideInNavigation) {
-		return $this->hideInNavigation = $hideInNavigation;
-	}
-	
-	/**
-	 * Indicates whether the item is shown in the SiteMap.
-	 * @return boolean True if Element should be hidden in SiteMap.
-	 */
-	public function isHiddenInSiteMap() {
-		return $this->hideInSiteMap;
-	}
-	
-	/**
-	 * Indicates whether the item is shown in the SiteMap.
-	 * @param boolean $hideInSiteMap True if Element should be hidden in SiteMap.
-	 */
-	public function setHiddenInSiteMap($hideInSiteMap) {
-		return $this->hideInSiteMap = $hideInSiteMap;
 	}
 }
 ?>

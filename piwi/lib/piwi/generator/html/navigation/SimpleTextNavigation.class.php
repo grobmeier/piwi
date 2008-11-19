@@ -36,7 +36,11 @@ class SimpleTextNavigation implements NavigationGenerator {
 					$cssClass = ' class="selected"';
 				}
 				if (!$element->isHiddenInNavigation()) {
-    				$result .= '<li' . $cssClass . '><a href="' . $element-> getId() . '.html">' . $element->getLabel() . '</a>' . $this->getNavigation($element->getChildren()) . '</li>';
+					$filepath = $element-> getId() . ".html";
+					if (substr($element->getFilePath(), 0, 4) == 'http') {
+						$filepath = $element->getFilePath();
+					}
+    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->getNavigation($element->getChildren()) . '</li>';
 				}
     		}
     		

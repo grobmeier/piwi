@@ -3,11 +3,9 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>SiteMap</header>
+		<header>Documentation</header>
 		<section>
-			This site shows all pages of the website in its hierarchical order.
+			
 		</section>
-		<separator />
-		<generator id="fullSiteMap" />
 	</content>
 </document>

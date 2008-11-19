@@ -67,7 +67,11 @@ final class SiteMapGenerator implements SectionGenerator {
     		
     		foreach ($siteMap as $element) {
     			if (!$element->isHiddenInSiteMap()) {
-    				$result .= '<li><a href="' . $element-> getId() . '.html">' . $element->getLabel() . '</a>' . $this->getSiteMapAsXml($element->getChildren()) . '</li>';
+    				$filepath = $element-> getId() . ".html";
+					if (substr($element->getFilePath(), 0, 4) == 'http') {
+						$filepath = $element->getFilePath();
+					}
+    				$result .= '<li><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->getSiteMapAsXml($element->getChildren()) . '</li>';
     			}
     		}
     		

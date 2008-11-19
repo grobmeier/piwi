@@ -59,6 +59,10 @@ Creates a simple navigation.
 </tr>
 <tr>
 <td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#filePath">$filePath</a></p><p class="description">The url of the content. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#hideInNavigation">$hideInNavigation</a></p><p class="description">Indicates whether the item is shown in the Navigation. </p></td>
 </tr>
 <tr>
@@ -90,7 +94,7 @@ Creates a simple navigation.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#NavigationElement()">NavigationElement</a>(string id, string label)</p><p class="description">
+<td class="description"><p class="name"><a href="#NavigationElement()">NavigationElement</a>(string id, string label, string filePath)</p><p class="description">
 Constructor.</p></td>
 </tr>
 </table>
@@ -101,6 +105,11 @@ Constructor.</p></td>
 <td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getChildren()">getChildren</a>()</p><p class="description">
 Returns the children of the NavigationElement.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getFilePath()">getFilePath</a>()</p><p class="description">
+Returns the url of the content.</p></td>
 </tr>
 <tr>
 <td class="type"> string</td>
@@ -176,6 +185,13 @@ Sets the NavigationElement to selected.</p></td>
 
 <hr>
 
+<h3 id="filePath">filePath</h3>
+<code class="signature">private  mixed <strong>$filePath</strong> = null</code>
+<div class="details">
+<p>The url of the content. */</p></div>
+
+<hr>
+
 <h3 id="hideInNavigation">hideInNavigation</h3>
 <code class="signature">private  mixed <strong>$hideInNavigation</strong> = false</code>
 <div class="details">
@@ -227,13 +243,14 @@ Sets the NavigationElement to selected.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="NavigationElement()">NavigationElement</h3>
-<code class="signature">public <strong>NavigationElement</strong>(string id, string label)</code>
+<code class="signature">public <strong>NavigationElement</strong>(string id, string label, string filePath)</code>
 <div class="details">
 <p>
 Constructor.</p><dl>
 <dt>Parameters:</dt>
 <dd>id - The id of the page.</dd>
 <dd>label - The label of the page, which will be displayed.</dd>
+<dd>filePath - The url of the content.</dd>
 </dl>
 </div>
 
@@ -247,6 +264,18 @@ Constructor.</p><dl>
 Returns the children of the NavigationElement.</p><dl>
 <dt>Returns:</dt>
 <dd>The children.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getFilePath()">getFilePath</h3>
+<code class="signature">public  string <strong>getFilePath</strong>()</code>
+<div class="details">
+<p>
+Returns the url of the content.</p><dl>
+<dt>Returns:</dt>
+<dd>The url of the content.</dd>
 </dl>
 </div>
 
@@ -270,7 +299,7 @@ Returns the id of the page.</p><dl>
 <p>
 Returns the label of the page.</p><dl>
 <dt>Returns:</dt>
-<dd>The label.</dd>
+<dd>The label of the page.</dd>
 </dl>
 </div>
 

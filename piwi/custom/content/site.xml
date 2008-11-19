@@ -18,7 +18,11 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Multiple Formats" href="en/features/output_formats.xml" />
 			<page id="other_template" label="Other Template" href="en/features/other_template.xml" template="other.php" />			
 		</page>
-		<page id="help" label="Help" href="en/help/help.xml" hideInNavigation="0" hideInSiteMap="0" />
+		<page id="help" label="Help" href="en/help/help.xml">
+		   <page id="documentation" label="Documentation" href="en/help/documentation.xml" />
+		   <page id="faq" label="FAQ" href="en/help/faq.xml" />
+		</page>
+		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
 		<page id="login" label="Login" href="en/features/login.xml" hideInNavigation="1" hideInSiteMap="1" />
 	</language>
 	<language region="de">
@@ -37,7 +41,11 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Verschiedene Formate" href="de/features/output_formats.xml" />
 			<page id="other_template" label="Anderes Template" href="de/features/other_template.xml" template="other.php" />
 		</page>		
-		<page id="help" label="Hilfe" href="de/help/help.xml" hideInNavigation="0" hideInSiteMap="0" />
+		<page id="help" label="Hilfe" href="de/help/help.xml">
+         <page id="documentation" label="Dokumentation" href="de/help/documentation.xml" />
+         <page id="faq" label="FAQ" href="de/help/faq.xml" />
+      </page>
+      <page id="download" label="Download" href="http://code.google.com/p/piwi" />
 		<page id="login" label="Login" href="de/features/login.xml" hideInNavigation="1" hideInSiteMap="1" />
 	</language>
 </site>

@@ -5,7 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 	<content position="article">
 		<header>Welcome</header>
 		<section>
-			<p>To the Piwi Websites</p>
+			To the Piwi Websites
 		</section>
 		<separator />
 		<section>

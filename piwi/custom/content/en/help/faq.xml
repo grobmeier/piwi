@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>FAQ</header>
+		<section>
+			<ol>
+				<li>
+					<div class="question">What are the requirements for Piwi?</div>
+					<div class="answer">
+						PIWI runs on every standard PHP-Webhost with PHP > 5 installed.
+						<br />
+						You server must have 'mod_rewrite' enabled.
+					</div>
+				</li>
+				<li>
+					<div class="question">How do I install Piwi?</div>
+					<div class="answer">
+						You can download Piwi from:
+						<a href="http://code.google.com/p/piwi">http://code.google.com/p/piwi
+						</a>
+						<br />
+						After downloading place the 'piwi' folder containing the
+						'index.php' in your favorite webserver.
+						<br />
+						<br />
+						<div class="bold">XAMPP:</div>
+						When you are using XAMPP you have to do the following to use Piwi:
+						<ul>
+							<li>
+								<span class="bold">'\apache\conf\httpd.conf'</span>: <span class="bold">Comment in</span> the following line:
+								<ul>
+									<li><code>LoadModule rewrite_module modules/mod_rewrite.so</code>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span class="bold">'\apache\bin\php.ini'</span>: <span class="bold">Uncomment</span> the following lines:
+								<ul>
+									<li><code>extension=php_domxml.dll</code></li>
+									<li><code>extension=php_pdo_sqlite.dll</code>
+										(only when you want to use SQLite 3 databases)</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="question">How do I get started with Piwi?</div>
+					<div class="answer">
+				     Have a look at the <a href="documentation.html">documentation</a>.
+				     <br />
+				     The API can be found in '/doc/api' in Piwi package.
+					</div>
+				</li>
+			</ol>
+		</section>
+	</content>
+</document>

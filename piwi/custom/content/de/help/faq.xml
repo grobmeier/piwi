@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>FAQ</header>
+		<section>
+			<ol>
+				<li>
+					<div class="question">Welche Voraussetzungen benötigt Piwi?</div>
+					<div class="answer">
+						PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
+						<br />
+						Auf dem Server muss das Modul 'mod_rewrite' aktiviert sein.
+					</div>
+				</li>
+				<li>
+					<div class="question">Wie installiere ich Piwi?</div>
+					<div class="answer">
+						Piwi können Sie hier herunterladen:
+						<a href="http://code.google.com/p/piwi">http://code.google.com/p/piwi 
+						</a>
+						<br />
+						Nach dem Download muss das 'piwi' Verzeichnis, das die 'index.php'
+						enthält, in Ihrem Webserver platziert werden.
+						<br />
+						<br />
+						<div class="bold">XAMPP:</div>
+						Wenn Sie XAMPP als Webserver einsetzen, müssen Sie folgende
+						Einstellungen vornehmen, damit Piwi läuft:
+						<ul>
+							<li>
+								<span class="bold">'\apache\conf\httpd.conf'</span>: Kommentieren Sie folgende Zeile
+								<span class="bold">ein</span>:
+								<ul>
+									<li>
+										<code>LoadModule rewrite_module
+											modules/mod_rewrite.so </code>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span class="bold">'\apache\bin\php.ini'</span>: Kommentieren Sie folgende Zeile
+								<span class="bold">aus</span>:
+								<ul>
+									<li><code>extension=php_domxml.dll</code></li>
+									<li><code>extension=php_pdo_sqlite.dll</code>
+										(nur wenn Sie SQLite 3 Datenbanken einsetzen)</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="question">Wie beginne ich bei der Entwicklung einer Piwi-Seite?</div>
+					<div class="answer">
+						Schauen Sie in unsere
+						<a href="documentation.html">Dokumentation</a>.
+						<br />
+						Die API befindet sich im Verzeichnis '/doc/api' Ihres Piwi-Pakets.
+					</div>
+				</li>
+			</ol>
+		</section>
+	</content>
+</document>

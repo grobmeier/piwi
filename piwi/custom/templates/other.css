@@ -249,6 +249,11 @@ td
    background-color:    #c5dc08;
 }
 
+ol
+{
+   font-weight: bold;
+}
+
 /*
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>CUSTOM-ELEMENTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -268,6 +273,24 @@ td
 .sitemappath a:hover
 {
    color:              #cc0000;
+}
+
+.question
+{
+   color:               #449c52;
+   margin-bottom:       8px;
+}
+
+.answer
+{
+   font-weight:         normal;
+   margin-bottom:       12px;
+   margin-left:         10px;
+}
+
+.answer li
+{
+   margin-bottom: 5px;
 }
 
 .right
