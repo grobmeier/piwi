@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="package" name="Piwi">
+	<property name="name" value="piwi" />
+	<property name="version" value="0.0.6-SNAPSHOT" />
+	<property name="target" value="target/" />
+
+	<target name="clean">
+		<delete dir="${target}" />
+		<mkdir dir="${target}" />
+	</target>
+
+	<target name="documentation">
+		<delete>
+			<fileset dir="doc/api/default" includes="*.html"/>
+		</delete>
+		<exec executable="php" dir="doc-generator">
+			<arg value="phpdoc.php"/>
+		</exec>
+	</target>
+
+	<target name="package" depends="clean, documentation">
+		<!-- Binary Release -->
+		<zip destfile="${target}/${name}-${version}.zip" basedir=".">
+			<exclude name="${target}" />
+			<exclude name="piwi/.metadata/" />
+			<exclude name="piwi/.settings/" />
+			<exclude name="piwi/cache/*.xml" />
+			<!-- Exclude sources -->
+			<exclude name="piwi/.project" />
+         <exclude name="doc-generator/" />
+         <exclude name="build.xml" />
+		</zip>
+		
+		<!-- Source Release -->
+	    <zip destfile="${target}/${name}-${version}-sources.zip" basedir=".">
+	         <exclude name="${target}" />
+	         <exclude name="piwi/.metadata/" />
+	         <exclude name="piwi/.settings/" />
+	         <exclude name="piwi/cache/*.xml" />
+	      </zip>
+	</target>
+</project>
