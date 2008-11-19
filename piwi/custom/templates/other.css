@@ -18,7 +18,7 @@ body
  */
 #header
 {
-   background-image:    url(images/piwi-logo.png);
+   background-image:    url(images/bw/piwi-logo_bw.png);
    background-repeat:   no-repeat;
    margin-bottom:       10px;  
    text-align:          center;
@@ -32,7 +32,7 @@ body
  */
 #menu
 {
-   background-image:    url(images/menu.png);
+   background-image:    url(images/bw/menu_bw.png);
    background-repeat:   no-repeat;
    line-height:         1.9em;
    padding:             8px 0px 0px 0px;
@@ -42,7 +42,7 @@ body
 
 #menu ul
 {
-   background-color:      #c5dc08;
+   background-color:      #eeeeee;
    margin:                0px; 
    padding:              0px;
 }
@@ -62,7 +62,7 @@ body
     top:                     1.9em;
     left:                  -0.5em;
     display:               none;
-    border:                1px solid #dcdcdc;
+    border:                1px solid #eeeeee;
     line-height:         1.0em;
     width:                 230px;
 }
@@ -74,7 +74,7 @@ body
   
 #menu ul li ul li
 {
-   background-color:    #b6cc0c;
+   background-color:    #bbbbbb;
    margin:                1px;
    float:                    none;
    display:                block;   
@@ -83,7 +83,7 @@ body
 
 #menu ul li ul li.selected
 {
-   background-color:     #a1b50d;
+   background-color:     #888888;
 }
 
 #menu ul li a
@@ -96,13 +96,13 @@ body
 
 #menu ul li a:hover
 {
-   color:               #449c52;   
+   color:               #444444;   
    text-decoration:     none;
 }
 
 #menu ul li.selected a
 {
-   color:               #449c52;
+   color:               #444444;
 }
 
 #menu ul li ul li a
@@ -118,7 +118,7 @@ body
 
 #menu ul li.selected ul li a:hover
 {
-   color:               #449c52;
+   color:               #444444;
 }
 /*
  * -------------------------------------------------------------------------
@@ -127,7 +127,7 @@ body
  */
 #footer
 {     
-   background-image:    url(images/footer.png);
+   background-image:    url(images/bw/footer_bw.png);
    background-repeat:   no-repeat;
    font-size:           0.7em;
    height:              23px;
@@ -137,12 +137,13 @@ body
 
 #footer a
 {  
+   color:               #ffffff;
    text-decoration:     none;
 }
 
 #footer a:hover
 {
-   color:               #000000;
+   color:               #444444;
    text-decoration:     none;
 }
 
@@ -174,13 +175,13 @@ body
  */
 a
 {
-   color:               #449c52;
+   color:               #444444;
    text-decoration:     none;
 }
 
 a:hover
 {
-   color:               #c5dc08;
+   color:               #ffffff;
    text-decoration:     none;
 }
 
@@ -199,7 +200,7 @@ img
 
 h1
 {
-   color:               #cc0000;
+   color:               #444444;
    font-size:           1.2em;
    font-weight:         bold;
    margin:              0px 0px 20px 0px;
@@ -261,12 +262,12 @@ td
 
 .sitemappath a
 {
-   color:              #cc0000;
+   color:              #222222;
 }
 
 .sitemappath a:hover
 {
-   color:              #000000;
+   color:              #cc0000;
 }
 
 .right

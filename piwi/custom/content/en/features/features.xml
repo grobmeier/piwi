@@ -4,10 +4,6 @@
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
 		<header>Piwi Features</header>
-		<section>
-		Übersicht über die Features von Piwi.
-		</section>
-		<separator />
 		<generator id="featuresSiteMap" />
 	</content>
 </document>

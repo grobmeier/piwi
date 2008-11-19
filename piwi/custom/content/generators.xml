@@ -22,13 +22,17 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 	</generator>
 	
 	<!-- SITEMAP -->
+	<generator id="fullSiteMap" class="SiteMapGenerator">
+      <header>CONTENTS_OF_THIS_WEBSITE</header>
+   </generator>
 	<generator id="featuresSiteMap" class="SiteMapGenerator">
-		<header>FEATURES</header>
 		<pageId>features</pageId>
 		<depth>0</depth>
 		<includeParent>0</includeParent>
 	</generator>
-	<generator id="fullSiteMap" class="SiteMapGenerator">
-		<header>CONTENTS_OF_THIS_WEBSITE</header>
-	</generator>
+   <generator id="helpSiteMap" class="SiteMapGenerator">
+      <pageId>help</pageId>
+      <depth>0</depth>
+      <includeParent>0</includeParent>
+   </generator>
 </generators>

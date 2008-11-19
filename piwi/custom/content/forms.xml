@@ -2,13 +2,13 @@
 <forms xmlns="http://piwi.googlecode.com/xsd/forms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/forms ../../resources/xsd/forms.xsd">
 	<language region="default">
-		<form id="wizardform" path="custom/content/en/forms/wizardform.xml" />
-		<form id="validatorform" path="custom/content/en/forms/validatorform.xml" />
+		<form id="wizardform" path="custom/content/en/features/forms/wizardform.xml" />
+		<form id="validatorform" path="custom/content/en/features/forms/validatorform.xml" />
 		<form id="loginform" path="custom/content/en/forms/loginform.xml" />
 	</language>
 	<language region="de">
-		<form id="wizardform" path="custom/content/de/forms/wizardform.xml" />
-		<form id="validatorform" path="custom/content/de/forms/validatorform.xml" />
+		<form id="wizardform" path="custom/content/de/features/forms/wizardform.xml" />
+		<form id="validatorform" path="custom/content/de/features/forms/validatorform.xml" />
 		<form id="loginform" path="custom/content/de/forms/loginform.xml" />
 	</language>
 </forms>

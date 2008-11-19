@@ -22,10 +22,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
       <label key="ADRESS" value="Adress" />
       <label key="CITY" value="City" />
       <label key="PHONE" value="Phone" />
-   
-      <!-- FeaturesSiteMap -->
-      <label key="FEATURES" value="Features" />
-      
+         
       <!-- SiteMap -->
       <label key="CONTENTS_OF_THIS_WEBSITE" value="Contents of this Website" />
 	</language>
@@ -49,10 +46,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
       <label key="ADRESS" value="Adresse" />
       <label key="CITY" value="Stadt" />
       <label key="PHONE" value="Telefon" />      
-
-      <!-- FeaturesSiteMap -->
-      <label key="FEATURES" value="Features" />
-	   
+      
 	   <!-- SiteMap -->
 	   <label key="CONTENTS_OF_THIS_WEBSITE" value="Inhalte dieser Webseite" />
 	</language>
