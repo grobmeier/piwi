@@ -2,11 +2,16 @@
 <schema targetNamespace="http://piwi.googlecode.com/xsd/piwixml"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
 	xmlns:tns="http://piwi.googlecode.com/xsd/piwixml">
-	<complexType name="contentType">
-        <sequence>
-			<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"></any>
+	<complexType name="contentType" mixed="true">
+		<sequence>
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any"
+				processContents="skip">
+			</any>
+
 		</sequence>
-		<attribute name="position" type="string" use="required"></attribute>
+		<attribute name="position" type="string" use="required"></attribute>
+
+
 	</complexType>
 	<element name="document" type="tns:documentType">
 		<unique name="UniqueContentPosition">
@@ -20,4 +25,5 @@
 			</element>
 		</sequence>		
 	</complexType>
+
 </schema>

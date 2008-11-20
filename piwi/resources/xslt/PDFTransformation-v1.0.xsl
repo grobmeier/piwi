@@ -3,7 +3,7 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
    <!-- Piwi Elements -->
-   <xsl:include href="PiwiXML.xsl"/>
+   <xsl:include href="PiwiXML-v1.0.xsl"/>
    
 	<!-- Custom transformation -->
 	<xsl:include href="xsltsss://customStyleSheet"/>

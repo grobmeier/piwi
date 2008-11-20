@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" />
-		<page id="features" label="Piwi Features" href="en/features/features.xml">
+		<page id="features" label="Piwi Features" href="en/features.xml">
 			<page id="database" label="Database Access" href="en/features/database.xml" />
 			<page id="forms" label="Forms" href="en/features/forms.xml" />
 			<page id="transformation" label="XSLT Transformation" href="en/features/transformation.xml" />
@@ -18,8 +18,12 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Multiple Formats" href="en/features/output_formats.xml" />
 			<page id="other_template" label="Other Template" href="en/features/other_template.xml" template="other.php" />			
 		</page>
-		<page id="help" label="Help" href="en/help/help.xml">
-		   <page id="documentation" label="Documentation" href="en/help/documentation.xml" />
+		<page id="help" label="Help" href="en/help.xml">
+		   <page id="documentation" label="Documentation" href="en/help/documentation.xml">
+		     <page id="introduction" label="Introduction" href="en/help/documentation/introduction.xml" />
+		     <page id="setup" label="Setup" href="en/help/documentation/setup.xml" />
+		     <page id="usage" label="Usage" href="en/help/documentation/usage.xml" />
+		   </page>
 		   <page id="faq" label="FAQ" href="en/help/faq.xml" />
 		</page>
 		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
@@ -27,7 +31,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 	</language>
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" />
-		<page id="features" label="Piwi Features" href="de/features/features.xml">
+		<page id="features" label="Piwi Features" href="de/features.xml">
 			<page id="database" label="Datenbank Zugriff" href="de/features/database.xml" />
 			<page id="forms" label="Formulare" href="de/features/forms.xml" />
 			<page id="transformation" label="XSLT Transformationen" href="de/features/transformation.xml" />
@@ -41,8 +45,12 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 			<page id="output_formats" label="Verschiedene Formate" href="de/features/output_formats.xml" />
 			<page id="other_template" label="Anderes Template" href="de/features/other_template.xml" template="other.php" />
 		</page>		
-		<page id="help" label="Hilfe" href="de/help/help.xml">
-         <page id="documentation" label="Dokumentation" href="de/help/documentation.xml" />
+		<page id="help" label="Hilfe" href="de/help.xml">
+         <page id="documentation" label="Dokumentation" href="de/help/documentation.xml">
+           <page id="introduction" label="Einführung" href="de/help/documentation/introduction.xml" />
+           <page id="setup" label="Setup" href="de/help/documentation/setup.xml" />
+           <page id="usage" label="Benutzung" href="de/help/documentation/usage.xml" />
+         </page>
          <page id="faq" label="FAQ" href="de/help/faq.xml" />
       </page>
       <page id="download" label="Download" href="http://code.google.com/p/piwi" />
