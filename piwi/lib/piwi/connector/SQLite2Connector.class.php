@@ -22,7 +22,7 @@ class SQLite2Connector implements Connector {
 	 * Establishes a connection to the database.
 	 */
     public function connect() {
-    	if(!$this->file) {
+    	if($this->file == null) {
    			throw new DatabaseException(
 				'No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
