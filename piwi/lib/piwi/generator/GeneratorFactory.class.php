@@ -29,9 +29,7 @@ class GeneratorFactory {
 	 * @param string $generatorsXMLPath Path of the file containing the xml-definition of the generators that can be used.
 	 */
 	public static function initialize($generatorsXMLPath) {
-		if (self :: $generatorFactoryInstance == null) {
-			self :: $generatorFactoryInstance = new GeneratorFactory($generatorsXMLPath);
-		}
+		self :: $generatorFactoryInstance = new GeneratorFactory($generatorsXMLPath);
 	}
 
 	/**

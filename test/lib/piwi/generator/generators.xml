@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators xmlns="http://piwi.googlecode.com/xsd/generators" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<generator id="testGenerator" class="SiteMapGenerator" />
+	<generator id="wrongInterface" class="PiwiException" />
+</generators>

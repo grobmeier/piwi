@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connectors xmlns="http://piwi.googlecode.com/xsd/connectors" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<connector id="testConnector" class="SQLite2Connector" />
+   <connector id="wrongInterface" class="PiwiException" />
+</connectors>

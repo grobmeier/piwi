@@ -29,9 +29,7 @@ class ConnectorFactory {
 	 * @param string $connectorsXMLPath Path of the file containing the xml-definition of the connectors that can be used.
 	 */
 	public static function initialize($connectorsXMLPath) {
-		if (self :: $connectorFactoryInstance == null) {
-			self :: $connectorFactoryInstance = new ConnectorFactory($connectorsXMLPath);
-		}
+		self :: $connectorFactoryInstance = new ConnectorFactory($connectorsXMLPath);
 	}
 
 	/**

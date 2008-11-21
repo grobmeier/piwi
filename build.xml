@@ -18,7 +18,13 @@
 		</exec>
 	</target>
 
-	<target name="package" depends="clean, documentation">
+	<target name="test">
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="test/AllTests.php" />
+		</exec>
+	</target>
+
+	<target name="package" depends="clean, documentation, test">
 		<!-- Binary Release -->
 		<zip destfile="${target}/${name}-${version}.zip">
 			<fileset dir=".">
@@ -28,8 +34,9 @@
 				<exclude name="piwi/.settings/" />
 				<exclude name="piwi/cache/*.xml" />
 				<!-- Exclude sources -->
-				<exclude name="piwi/.project" />
 				<exclude name="doc-generator/" />
+				<exclude name="test/" />
+				<exclude name="piwi/.project" />				
 				<exclude name="build.xml" />
 			</fileset>
 		</zip>
