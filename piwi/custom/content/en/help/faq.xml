@@ -29,17 +29,21 @@
 						When you are using XAMPP you have to do the following to use Piwi:
 						<ul>
 							<li>
-								<span class="bold">'\apache\conf\httpd.conf'</span>: <span class="bold">Comment in</span> the following line:
+								<span class="bold">'\apache\conf\httpd.conf'</span>:
 								<ul>
-									<li><code>LoadModule rewrite_module modules/mod_rewrite.so</code>
+									<li>
+									<span class="bold">Comment in</span> the following line:<br />
+									<code>LoadModule rewrite_module modules/mod_rewrite.so</code>
 									</li>
 								</ul>
 							</li>
 							<li>
-								<span class="bold">'\apache\bin\php.ini'</span>: <span class="bold">Uncomment</span> the following lines:
+								<span class="bold">'\apache\bin\php.ini'</span>: 
 								<ul>
-									<li><code>extension=php_domxml.dll</code></li>
-									<li><code>extension=php_pdo_sqlite.dll</code>
+									<li><span class="bold">Uncomment</span> the following line:<br />
+									<code>extension=php_domxml.dll</code></li>
+									<li><span class="bold">Comment in</span> the following line:<br />
+									<code>extension=php_pdo_sqlite.dll</code>
 										(only when you want to use SQLite 3 databases)</li>
 								</ul>
 							</li>

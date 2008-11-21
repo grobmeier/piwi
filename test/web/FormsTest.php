@@ -2,11 +2,6 @@
 require_once ('test/PiwiWebTestCase.php');
 
 class FormsTest extends PiwiWebTestCase {
-
-	function init() {
-		FormFactory :: initialize(dirname(__FILE__) . '/data/forms.xml');
-	}
-	
 	function testGetFormByCorrectIdButNonInitializedFormFactory() {
         $this->get(self::$HOST . 'forms.html');        
         $this->clickSubmit("Send Data");

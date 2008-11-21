@@ -67,6 +67,7 @@
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="${testdir}TestRunner.php" />
 			<arg value="${target}${reportdir}" />
+			<arg value="PHPCOVERAGE_HOME=${testdir}/spikephpcoverage-0.8.2/src" />
 		</exec>
 	</target>
 </project>

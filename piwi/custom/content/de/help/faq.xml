@@ -30,21 +30,24 @@
 						Einstellungen vornehmen, damit Piwi läuft:
 						<ul>
 							<li>
-								<span class="bold">'\apache\conf\httpd.conf'</span>: Kommentieren Sie folgende Zeile
-								<span class="bold">ein</span>:
+								<span class="bold">'\apache\conf\httpd.conf'</span>:
 								<ul>
-									<li>
+									<li>Kommentieren Sie folgende Zeile
+								<span class="bold">ein</span>:<br />
 										<code>LoadModule rewrite_module
-											modules/mod_rewrite.so </code>
+											modules/mod_rewrite.so</code>
 									</li>
 								</ul>
 							</li>
 							<li>
-								<span class="bold">'\apache\bin\php.ini'</span>: Kommentieren Sie folgende Zeile
-								<span class="bold">aus</span>:
+								<span class="bold">'\apache\bin\php.ini'</span>: 
 								<ul>
-									<li><code>extension=php_domxml.dll</code></li>
-									<li><code>extension=php_pdo_sqlite.dll</code>
+									<li>
+									Kommentieren Sie folgende Zeile
+								<span class="bold">aus</span>:<br />
+								<code>extension=php_domxml.dll</code></li>
+									<li>Kommentieren Sie folgende Zeile
+								<span class="bold">ein</span>:<br /><code>extension=php_pdo_sqlite.dll</code>
 										(nur wenn Sie SQLite 3 Datenbanken einsetzen)</li>
 								</ul>
 							</li>
