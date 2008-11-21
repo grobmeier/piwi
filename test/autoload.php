@@ -10,9 +10,16 @@ function __autoload($class) {
 		$classloader = new ClassLoader();
 	}
 
-  $result = $classloader->loadClass(PIWI_LIB, $class);
-  if ($result == true) {
-    return;
-  }
+	$directorys = array (		
+		'test/lib', 
+		PIWI_LIB
+	);
+
+	foreach ($directorys as $directory) {
+		$result = $classloader->loadClass($directory, $class);
+		if ($result) {
+			return;
+		}
+	}	
 }
 ?>

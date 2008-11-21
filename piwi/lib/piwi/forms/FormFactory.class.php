@@ -29,9 +29,7 @@ class FormFactory {
 	 * @param string $formsXMLPath Path of the file containing the xml-definition of the forms that can be used.
 	 */
 	public static function initialize($formsXMLPath) {
-		if (self :: $formsFactoryInstance == null) {
-			self :: $formsFactoryInstance = new FormFactory($formsXMLPath);
-		}
+		self :: $formsFactoryInstance = new FormFactory($formsXMLPath);
 	}
 
 	/**

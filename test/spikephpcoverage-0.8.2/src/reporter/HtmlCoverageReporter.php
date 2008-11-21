@@ -200,17 +200,17 @@
             $str = "";
             $str .= '<h1>Details</h1> <table class="spikeDataTable" cellpadding="4" cellspacing="0" border="0" id="table2sort" width="800">';
             $str .= '<thead>';
-            $str .= '<tr><td class="spikeDataTableHeadLeft" id="sortCell0" rowspan="2" style="white-space:nowrap" width="52%"><a id="sortCellLink0" class="headerlink" href="javascript:sort(0)" title="Sort Ascending">File Name </a></td>';
+            $str .= '<tr><td class="spikeDataTableHeadLeft" id="sortCell0" rowspan="2" style="white-space:nowrap" width="52%"><a id="sortCellLink0" class="headerlink" href="#" onclick="javascript:sort(0)" title="Sort Ascending">File Name </a></td>';
             $str .= '<td colspan="4" class="spikeDataTableHeadCenter">Lines</td>';
-            $str .= '<td class="spikeDataTableHeadCenterLast" id="sortCell5" rowspan="2"  width="16%" style="white-space:nowrap"><a id="sortCellLink5" class="headerlink" href="javascript:sort(5, \'percentage\')" title="Sort Ascending">Code Coverage </a></td>';
+            $str .= '<td class="spikeDataTableHeadCenterLast" id="sortCell5" rowspan="2"  width="16%" style="white-space:nowrap"><a id="sortCellLink5" class="headerlink" href="#" onclick="javascript:sort(5, \'percentage\')" title="Sort Ascending">Code Coverage </a></td>';
             $str .= '</tr>';
 
             // Second row - subheadings
             $str .= '<tr>';
-            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell1" style="white-space:nowrap" width="8%"><a id="sortCellLink1" title="Sort Ascending" class="headerlink" href="javascript:sort(1, \'number\')">Total </a></td>';
-            $str .= '<td class="spikeDataTableSubHeadCenter"  id="sortCell2" style="white-space:nowrap" width="9%"><a id="sortCellLink2" title="Sort Ascending" class="headerlink" href="javascript:sort(2, \'number\')">Covered </a></td>';
-            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell3" style="white-space:nowrap" width="8%"><a id="sortCellLink3" title="Sort Ascending" class="headerlink" href="javascript:sort(3, \'number\')">Missed </a></td>';
-            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell4" style="white-space:nowrap" width="10%"><a id="sortCellLink4" title="Sort Ascending" class="headerlink" href="javascript:sort(4, \'number\')">Executable </a></td>';
+            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell1" style="white-space:nowrap" width="8%"><a id="sortCellLink1" title="Sort Ascending" class="headerlink" href="#" onclick="javascript:sort(1, \'number\')">Total </a></td>';
+            $str .= '<td class="spikeDataTableSubHeadCenter"  id="sortCell2" style="white-space:nowrap" width="9%"><a id="sortCellLink2" title="Sort Ascending" class="headerlink" href="#" onclick="javascript:sort(2, \'number\')">Covered </a></td>';
+            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell3" style="white-space:nowrap" width="8%"><a id="sortCellLink3" title="Sort Ascending" class="headerlink" href="#" onclick="javascript:sort(3, \'number\')">Missed </a></td>';
+            $str .= '<td class="spikeDataTableSubHeadCenter" id="sortCell4" style="white-space:nowrap" width="10%"><a id="sortCellLink4" title="Sort Ascending" class="headerlink" href="#" onclick="javascript:sort(4, \'number\')">Executable </a></td>';
             $str .= '</tr>';
             $str .= '</thead>';
             return $str;
@@ -272,9 +272,9 @@
 
             $str .= '<table border="0" cellpadding="0" cellspacing="0" id="contentBox" width="800"> <tr>';
             $str .= '<td align="left" valign="top"><h1>Summary</h1>';
-            $str .= '<table class="spikeVerticalTable" cellpadding="4" cellspacing="0" width="800" style="margin-bottom:10px" border="0">';
+            $str .= '<table class="spikeVerticalTable" cellpadding="4" cellspacing="0" width="800" style="margin-bottom:10px" border="0"><tr>';
             $str .= '<td width="380" class="spikeVerticalTableHead" style="font-size:14px">Overall Code Coverage&nbsp;</td>';
-            $str .= '<td class="spikeVerticalTableCell" style="font-size:14px" colspan="2"><strong>' . $this->getGrandCodeCoveragePercentage() . '%</td>';
+            $str .= '<td class="spikeVerticalTableCell" style="font-size:14px" colspan="2"><strong>' . $this->getGrandCodeCoveragePercentage() . '%</strong></td>';
 
             $str .= '</tr><tr>';
 
@@ -569,9 +569,9 @@
         protected function writeFileTableHead() {
             $filestr = "";
 
-            $filestr .= '<td width="10%"class="coverageDetailsHead" >Line #</td>';
+            $filestr .= '<tr><td width="10%"class="coverageDetailsHead" >Line #</td>';
             $filestr .= '<td width="10%" class="coverageDetailsHead">Frequency</td>';
-            $filestr .= '<td  width="80%" class="coverageDetailsHead">Source Line</td>';
+            $filestr .= '<td  width="80%" class="coverageDetailsHead">Source Line</td></tr>';
             return $filestr;
         }
 
@@ -617,7 +617,7 @@
             $filestr .= '<td class="coverageDetails">' . $spanstr . $coverageLineCnt . '</span></td>';
             $filestr .= '<td class="coverageDetailsCode"><code>' . $spanstr . $this->preserveSpacing($line) . '</span></code></td>';
             $filestr .= "</tr>";
-            return $filestr;
+            return str_replace('<code></code>', '', str_replace('<span></span>', '', $filestr));
         }
 
         /*}}}*/

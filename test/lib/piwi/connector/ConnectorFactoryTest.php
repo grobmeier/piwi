@@ -3,25 +3,33 @@ require_once ('test/PiwiTestCase.php');
 
 class ConnectorFactoryTest extends PiwiTestCase {
 
-	function before($message) {
+	function init() {
 		ConnectorFactory :: initialize(dirname(__FILE__) . '/connectors.xml');
 	}
 	
+	function testGetConnectorByCorrectIdButNonInitializedConnectorFactory() {
+		$this->expectException(PiwiException);
+		$connector = ConnectorFactory :: getConnectorById('testConnector');
+	}	
+	
 	function testGetConnectorByWrongId() {
+		$this->init();
 		$this->expectException(PiwiException);
 		$connector = ConnectorFactory :: getConnectorById('666');
 	}
 
 	function testGetConnectorByCorrectId() {
+		$this->init();
 		$connector = ConnectorFactory :: getConnectorById('testConnector');
-		$this->assertTrue($connector instanceof Connector);
+		$this->assertIsA($connector, Connector);
 		
 		// get it again to test caching
 		$connector = ConnectorFactory :: getConnectorById('testConnector');
-		$this->assertTrue($connector instanceof Connector);
+		$this->assertIsA($connector, Connector);
 	}
 
 	function testGetConnectorByCorrectIdButWrongInterface() {
+		$this->init();
 		$this->expectException(PiwiException);
 		$connector = ConnectorFactory :: getConnectorById('wrongInterface');
 	}
