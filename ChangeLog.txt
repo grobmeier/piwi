@@ -1,3 +1,14 @@
+=======================================================================
+=                                                                     =
+=                                                                     =
+=                 PIWI - PHP Transformation Framework                 =
+=                                                                     =
+=                     http://www.piwiframework.de                     =
+=                                                                     =
+=                                                                     =
+=======================================================================
+
+
 0.0.5 - Forms Framework Release
 
     * New: Added form framework with validators

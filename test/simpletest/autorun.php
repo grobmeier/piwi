@@ -12,7 +12,6 @@ require_once dirname(__FILE__) . '/default_reporter.php';
 
 $GLOBALS['SIMPLETEST_AUTORUNNER_INITIAL_CLASSES'] = get_declared_classes();
 register_shutdown_function('simpletest_autorun');
-
 /**
  *    Exit handler to run all recent test cases if no test has
  *    so far been run. Uses the DefaultReporter which can have
@@ -30,8 +29,20 @@ function simpletest_autorun() {
             basename(initial_file()),
             $loader->selectRunnableTests($candidates));
     $result = $suite->run(new DefaultReporter());
-    if (SimpleReporter::inCli()) {
-        exit($result ? 0 : 1);
+    
+    global $cov;
+    global $reporter;
+    
+    if ($cov != null && $reporter != null) {
+        $cov->stopInstrumentation();
+
+        $cov->generateReport();
+        $reporter->printTextSummary();
+        
+        
+        if (SimpleReporter::inCli()) {
+            exit($result ? 0 : 1);
+        }    
     }
 }
 

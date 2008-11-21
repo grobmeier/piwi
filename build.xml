@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="package" name="Piwi">
+	<!-- Properties. -->
 	<property name="name" value="piwi" />
 	<property name="version" value="0.0.6-SNAPSHOT" />
 	<property name="target" value="target/" />
+	<property name="reportdir" value="report/" />
+	<property name="testdir" value="test/" />
 
+	<!-- Clean the output folder. -->
 	<target name="clean">
 		<delete dir="${target}" />
 		<mkdir dir="${target}" />
 	</target>
 
+	<!-- Generates documentation. -->
 	<target name="documentation">
 		<delete>
 			<fileset dir="doc/api/default" includes="*.html" />
@@ -18,12 +23,14 @@
 		</exec>
 	</target>
 
+	<!-- Executes all tests. -->
 	<target name="test">
 		<exec executable="php" dir="." failonerror="true">
-			<arg value="test/AllTests.php" />
+			<arg value="${testdir}/TestRunner.php" />
 		</exec>
 	</target>
 
+	<!-- Build packages for distribution. -->
 	<target name="package" depends="clean, documentation, test">
 		<!-- Binary Release -->
 		<zip destfile="${target}/${name}-${version}.zip">
@@ -36,7 +43,7 @@
 				<!-- Exclude sources -->
 				<exclude name="doc-generator/" />
 				<exclude name="test/" />
-				<exclude name="piwi/.project" />				
+				<exclude name="piwi/.project" />
 				<exclude name="build.xml" />
 			</fileset>
 		</zip>
@@ -51,5 +58,15 @@
 				<exclude name="piwi/cache/*.xml" />
 			</fileset>
 		</zip>
+	</target>
+
+	<!-- Executes all tests and generates a coverage report. -->
+	<target name="report">
+		<delete dir="${target}${reportdir}" />
+		<mkdir dir="${target}${reportdir}" />
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="${testdir}TestRunner.php" />
+			<arg value="${target}${reportdir}" />
+		</exec>
 	</target>
 </project>

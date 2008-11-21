@@ -15,6 +15,10 @@ class ConnectorFactoryTest extends PiwiTestCase {
 	function testGetConnectorByCorrectId() {
 		$connector = ConnectorFactory :: getConnectorById('testConnector');
 		$this->assertTrue($connector instanceof Connector);
+		
+		// get it again to test caching
+		$connector = ConnectorFactory :: getConnectorById('testConnector');
+		$this->assertTrue($connector instanceof Connector);
 	}
 
 	function testGetConnectorByCorrectIdButWrongInterface() {
