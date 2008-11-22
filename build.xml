@@ -3,10 +3,13 @@
 	<!-- Properties. -->
 	<property name="name" value="piwi" />
 	<property name="version" value="0.0.6-SNAPSHOT" />
+	
 	<property name="target" value="target/" />
 	<property name="reportdir" value="report/" />
 	<property name="testdir" value="test/" />
 
+	<property name="server" value="http://127.0.0.1:80/" />
+	
 	<!-- Clean the output folder. -->
 	<target name="clean">
 		<delete dir="${target}" />
@@ -27,6 +30,7 @@
 	<target name="test">
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="${testdir}/TestRunner.php" />
+			<arg value="${server}" />
 		</exec>
 	</target>
 
@@ -66,8 +70,9 @@
 		<mkdir dir="${target}${reportdir}" />
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="${testdir}TestRunner.php" />
+			<arg value="${server}" />
 			<arg value="${target}${reportdir}" />
-			<arg value="PHPCOVERAGE_HOME=${testdir}/spikephpcoverage-0.8.2/src" />
+			<arg value="PHPCOVERAGE_HOME=${testdir}spikephpcoverage-0.8.2/src" />
 		</exec>
 	</target>
 </project>

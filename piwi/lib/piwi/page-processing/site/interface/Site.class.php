@@ -18,6 +18,16 @@ abstract class Site {
 	/** The content of the requested page as DOMDocument. */
 	private $content = null;
 	
+	/**
+     * Constructor.
+     * @param string $contentPath Name of the folder where the content is placed.
+     * @param string $templatesPath Name of the folder where your templates are placed.
+     */
+    public function __construct($contentPath, $templatesPath) {
+    	$this->contentPath = $contentPath;
+    	$this->templatesPath = $templatesPath;
+    }
+    
     /**
      * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
      */

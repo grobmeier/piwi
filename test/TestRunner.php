@@ -1,11 +1,11 @@
 <?php
     // Generate coverage report if path to coverage report is specified
-    if (isset($argv[1])) {
+    if (isset($argv[2])) {
       require_once "test/phpcoverage.inc.php";
       require_once PHPCOVERAGE_HOME . "/CoverageRecorder.php";
       require_once PHPCOVERAGE_HOME . "/reporter/HtmlCoverageReporter.php";
 
-      $reporter = new HtmlCoverageReporter("Code Coverage Report", "", $argv[1]);
+      $reporter = new HtmlCoverageReporter("Code Coverage Report", "", $argv[2]);
 
       $includePaths = array("piwi/lib/piwi");
       $excludePaths = array("test");

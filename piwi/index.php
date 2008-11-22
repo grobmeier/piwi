@@ -20,15 +20,21 @@
 
 /**
  * -------------------------------------------------------------------------
- * >>>>>>>>>>>>>>>>>>>>>>>>>> Custom Configuration <<<<<<<<<<<<<<<<<<<<<<<<<
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>> Error reporting  <<<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
  */
- 
-// Error reporting
+
 error_reporting(0); // hidde all errors
 //error_reporting(E_ERROR); // show only errors
 //error_reporting(E_ALL); // show all errors
 
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Directories  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+ 
+// ATTENTION: Changing the directory structure is not recommended.
 /** Name of the folder where your content is placed. */
 DEFINE('CONTENT_PATH', 'custom/content');
 
