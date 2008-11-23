@@ -74,7 +74,7 @@ Constructor.</p></td>
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type"> void</td>
+<td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#create()">create</a>(integer permissions)</p><p class="description">
 Creates the folder with the given permission.</p></td>
 </tr>
@@ -126,12 +126,14 @@ Constructor.</p><dl>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="create()">create</h3>
-<code class="signature">public  void <strong>create</strong>(integer permissions)</code>
+<code class="signature">public  boolean <strong>create</strong>(integer permissions)</code>
 <div class="details">
 <p>
 Creates the folder with the given permission.</p><dl>
 <dt>Parameters:</dt>
 <dd>permissions - The permissions for the created folder.</dd>
+<dt>Returns:</dt>
+<dd>True if folder has been created and permission has been set, otherwise false.</dd>
 </dl>
 </div>
 

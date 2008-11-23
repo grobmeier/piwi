@@ -98,8 +98,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/cache ../resources/xsd/cache.
 			fclose($fpread);
 		} 
     	$this->cachexml = simplexml_load_file($this->pathToCacheFile);
-    	$this->cachexml->registerXPathNamespace('cache', 'http://piwi.googlecode.com/xsd/cache');
-    	
+    	$this->cachexml->registerXPathNamespace('cache', 'http://piwi.googlecode.com/xsd/cache');    	
 	}
 }
 ?>

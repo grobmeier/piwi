@@ -38,10 +38,14 @@ class Folder {
 	/**
 	 * Creates the folder with the given permission.
 	 * @param integer $permissions The permissions for the created folder.
+	 * @return boolean True if folder has been created and permission has been set, otherwise false.
 	 */
 	public function create($permissions = 0777) {
-		mkdir($this->path."/".$this->name, $permissions);
-		chmod($this->path."/".$this->name, $permissions);
+		$sucess = mkdir($this->path."/".$this->name, $permissions);
+		if (!$sucess) {
+			return false;
+		}
+		return chmod($this->path."/".$this->name, $permissions);
 	}
 	
 	/**
