@@ -17,8 +17,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
    
 	<!-- GALLERY -->
 	<generator id="gallery" class="SimpleGalleryGenerator">
-		<pathtoalbums>custom/files/gallery/media</pathtoalbums>
-		<pathtoupload>custom/files/gallery/upload</pathtoupload>
+		<pathtoalbums>custom/files/gallery</pathtoalbums>
 	</generator>
 	
 	<!-- SITEMAP -->

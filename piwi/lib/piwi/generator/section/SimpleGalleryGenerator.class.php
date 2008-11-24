@@ -6,10 +6,7 @@
 class SimpleGalleryGenerator implements SectionGenerator {
 	/** The folder whose subfolders contain the albums. */
 	private $pathToAlbums = null;
-	
-	/** The folder where uploaded files will be placed. */
-	private $pathToUpload = null; 
-    
+	    
     /**
      * Constructor.
      */
@@ -22,7 +19,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 	 */
     public function generate() {
 		// Retrieve the all albums or one specific album if attribute is set
-		$mediaCenter = new MediaCenter($this->pathToAlbums, $this->pathToUpload);
+		$mediaCenter = new MediaCenter($this->pathToAlbums);
 		if (isset($_GET['album'])) {
 			$albums = $mediaCenter->getAlbums($_GET['album']);
 		} else {
@@ -81,8 +78,6 @@ class SimpleGalleryGenerator implements SectionGenerator {
     public function setProperty($key, $value) {
     	if($key == "pathtoalbums") {
     		$this->pathToAlbums = $value;
-    	} else if($key == "pathtoupload") {
-    		$this->pathToUpload = $value;
     	}
     }
 }

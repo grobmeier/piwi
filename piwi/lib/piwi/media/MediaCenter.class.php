@@ -6,16 +6,11 @@ class MediaCenter {
 	/** The folder whose subfolders contain the albums. */
 	private $pathToAlbums = null;
 	
-	/** The folder where uploaded files will be placed. */
-	private $pathToUpload = null; 
-	
 	/** Constructor.
 	 * @param string $pathToAlbums The folder whose subfolders contain the albums.
-	 * @param string $pathToUpload The folder where uploaded files will be placed.
 	 */
-	public function __construct($pathToAlbums, $pathToUpload) {
+	public function __construct($pathToAlbums) {
 		$this->pathToAlbums = $pathToAlbums;
-		$this->pathToUpload = $pathToUpload;
 	}
 	
 	/**
@@ -44,7 +39,7 @@ class MediaCenter {
 		
 		// Sort albums by date
 		krsort($albums);		
-		
+
 		return $albums;
 	}
 	

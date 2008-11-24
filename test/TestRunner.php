@@ -1,4 +1,10 @@
 <?php
+    // Local server 
+    if (isset($argv[1])) {
+      require_once "test/PiwiWebTestCase.php";
+      PiwiWebTestCase::$HOST = $argv[1];
+    }
+
     // Generate coverage report if path to coverage report is specified
     if (isset($argv[2])) {
       require_once "test/phpcoverage.inc.php";
@@ -15,7 +21,7 @@
     }
     
     // TEST CASES   
-    include('simpletest/autorun.php');
+    require_once('test/simpletest/autorun.php');
 
     class AllTests extends TestSuite {
         function AllTests() {
