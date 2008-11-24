@@ -15,13 +15,15 @@
    <navigationGenerators>
       <navigationGenerator name="HTML_NAVIGATION" class="SimpleTextNavigation" depth="1" includeParent="1" />
       <navigationGenerator name="SITE_MAP_PATH" class="SiteMapPathNavigation" pageId="CURRENT_PAGE" depth="0" includeParent="1" />
+      <navigationGenerator name="666_1" class="TestRoleProvider" />
+      <navigationGenerator name="666_2" class="666" />
    </navigationGenerators>
 	
 	<!-- 
 	   A custom XSLTSTYLESHEET which will be included in the serialization process.
 	   Use this to perfom custom transformations.
 	 -->
-	<customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
+	<customXSLTStylesheet>test</customXSLTStylesheet>
 	
 	<!-- 
 	   Here you can enable/disable AUTHENTICATION.
@@ -42,7 +44,7 @@
 		<serializer extension="html" serializer="HTMLSerializer" />
 		<serializer extension="pdf" serializer="PDFSerializer" />
 		<serializer extension="xml" serializer="PiwiXMLSerializer" />
-		<serializer extension="doc" serializer="WordSerializer" />
-		<serializer extension="xls" serializer="ExcelSerializer" />		
+		<serializer extension="doc" serializer="666" />
+		<serializer extension="xls" serializer="TestRoleProvider" />
 	</serializers>
 </configuration>

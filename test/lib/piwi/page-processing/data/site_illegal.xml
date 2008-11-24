@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns="http://piwi.googlecode.com/xsd/site" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<language region="default">
+		<page id="default" label="Home" href="666.xml" />
+		<page id="test" label="Test" href="test.xml">
+      <page id="test" label="Test" href="test.xml" />
+		</page>
+	</language>
+</site>

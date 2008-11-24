@@ -17,6 +17,7 @@
   $this->addFile('test/lib/piwi/pager/PagerTest.php');
   
   $this->addFile('test/lib/piwi/page-processing/XMLSiteTest.php');
+  $this->addFile('test/lib/piwi/page-processing/ConfigurationManagerTest.php');
   
   // Webtest
   $this->addFile('test/web/FormsTest.php');

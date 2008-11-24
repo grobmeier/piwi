@@ -2,20 +2,13 @@
 require_once ('test/PiwiTestCase.php');
 
 class XMLSiteTest extends PiwiTestCase {
-
-	private $currentPage = 0;
-	private $rows = 30;
-	private $rowsPerPage = 20;
 	
 	private $site = null;
 	
-	function setUp() {
-		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config.xml');
-	}
-	
 	function before($message) {
 		Request::setPageId('default');
-		$this->site = new XMLSite(dirname(__FILE__) . '/data', 'templates', 'site.xml');				
+		$this->site = new XMLSite(dirname(__FILE__) . '/data', 'templates', 'site.xml');	
+		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config.xml');			
 	}
 	
 	function testGenerateContent() {
@@ -29,6 +22,33 @@ class XMLSiteTest extends PiwiTestCase {
 		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config_cache.xml');
 		$this->site->generateContent();
 		$this->site->generateContent();
+	}
+	
+	function testGenerateContentWithIllegalPageId() {
+		Request::setPageId('666');
+		$this->expectException(PiwiException, 'PageId should be illegal.');
+		$this->site->generateContent();
+	}
+	
+	function testGenerateContentWithNonExistingContentFile() {
+		$site = new XMLSite(dirname(__FILE__) . '/data', 'templates', 'site_illegal.xml');	
+
+		$this->expectException(PiwiException, 'Page should not exist.');
+		$errorlevel = error_reporting();
+		error_reporting(0);
+		$site->generateContent();
+		error_reporting($errorlevel);
+	}
+	
+	function testGenerateContentWithDoublePageId() {
+		$site = new XMLSite(dirname(__FILE__) . '/data', 'templates', 'site_illegal.xml');	
+		Request::setPageId('test');
+		
+		$this->expectException(PiwiException, 'PageId should exist twice.');
+		$errorlevel = error_reporting();
+		error_reporting(0);
+		$site->generateContent();
+		error_reporting($errorlevel);
 	}
 	
 	function testGetTemplate() {
@@ -84,8 +104,8 @@ class XMLSiteTest extends PiwiTestCase {
 	function testGetSupportedLanguagesWithIllegalPath() {
 		$site = new XMLSite(dirname(__FILE__) . '/data', 'templates', '666.xml');
 		
-		$this->expectException(PiwiException, 'Path should be illegat.');
-		$site->getSupportedLanguages();		
+		$this->expectException(PiwiException, 'Path should be illegal.');
+		$site->getSupportedLanguages();
 	}
 	
 	private function validateSiteMap($siteMap) {

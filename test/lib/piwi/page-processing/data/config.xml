@@ -21,7 +21,7 @@
 	   A custom XSLTSTYLESHEET which will be included in the serialization process.
 	   Use this to perfom custom transformations.
 	 -->
-	<customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
+	<customXSLTStylesheet>test</customXSLTStylesheet>
 	
 	<!-- 
 	   Here you can enable/disable AUTHENTICATION.
@@ -42,7 +42,7 @@
 		<serializer extension="html" serializer="HTMLSerializer" />
 		<serializer extension="pdf" serializer="PDFSerializer" />
 		<serializer extension="xml" serializer="PiwiXMLSerializer" />
-		<serializer extension="doc" serializer="WordSerializer" />
-		<serializer extension="xls" serializer="ExcelSerializer" />		
+		<serializer extension="doc" serializer="666" />
+		<serializer extension="xls" serializer="TestRoleProvider" />
 	</serializers>
 </configuration>

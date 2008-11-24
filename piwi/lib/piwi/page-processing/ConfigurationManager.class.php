@@ -56,11 +56,7 @@ class ConfigurationManager {
     	
     	$result = $this->domXPath->query("/config:configuration/config:cachetime");
     	if($result->length == 1) {
-    		$cachetime = $result->item(0)->nodeValue;
-    		if ($cachetime == "") {
-    			return 0;
-    		}
-			return $cachetime;
+    		return $result->item(0)->nodeValue;
         } else if ($result->length > 1) {
        		throw new PiwiException(
 				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
@@ -90,16 +86,17 @@ class ConfigurationManager {
 					
 					if (!$serializer instanceof Serializer) {
 						$serializer = null;
-						if (error_reporting() > E_ERROR) {
+						if (error_reporting() > E_ERROR) {							
 							echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
 						}
 					}
-				} catch (ReflectionException $exception) {				
+				} catch (ReflectionException $exception) {		
 					if (error_reporting() > E_ERROR) {
 						echo("Serializer not found: " . $serializerClass);
 					}
 				}
 	    	}
+	    	return $serializer;
         } else if ($result->length > 1) {
        		throw new PiwiException(
 				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
@@ -125,7 +122,7 @@ class ConfigurationManager {
     	foreach ($this->domXPath->query("/config:configuration/config:navigationGenerators/config:navigationGenerator") as $generator) {
 			try {
 				$class = new ReflectionClass($generator->getAttribute('class'));
-			    $navigationGenerator = $class->newInstance();
+			    $navigationGenerator = $class->newInstance();			    
 			    
 			    if (!$navigationGenerator instanceof NavigationGenerator) {
 		    		if (error_reporting() > E_ERROR) {
@@ -133,16 +130,19 @@ class ConfigurationManager {
 					}
 					continue;
 			    }
+			    
 			    $pageId = $generator->getAttribute('pageId') == "" ? null : $generator->getAttribute('pageId');
 			    if ($pageId == 'CURRENT_PAGE') {
 			    	$pageId = Request::getPageId();
-			    }
+			    }	    
+			    
 			    $depth = $generator->getAttribute('depth') == "" ? -1 : $generator->getAttribute('depth');
 			    $includeParent = $generator->getAttribute('includeParent') == "" ? true : $generator->getAttribute('includeParent');
-			    
+
 			    $siteMap = Site::getInstance()->getCustomSiteMap($pageId, $depth, $includeParent);
 
 			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($siteMap);
+
 			} catch( ReflectionException $exception ) {
 				if (error_reporting() > E_ERROR) {
 					echo("Custom Navigation Generator not found: " . $generator->getAttribute('class'));
