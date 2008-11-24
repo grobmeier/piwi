@@ -34,8 +34,9 @@ class Pager {
 	 */
 	public function countPages() {
 		$count = intval($this->rows / $this->rowsPerPage);
-		if ($this->rows % $this->rowsPerPage) {
-					$count++;
+
+		if ($this->rows % $this->rowsPerPage > 0) {
+			$count++;
 		}
 		return $count;
 	}
@@ -54,9 +55,10 @@ class Pager {
 	 */	
 	public function getNextPage() {
 		if(($this->currentPage + 1) > $this->countPages()) {
-			return 1;
+			$this->currentPage = 1;
+			return $this->currentPage;
 		} else {
-			return $this->currentPage + 1;
+			return ++$this->currentPage;
 		}
 	}
 
@@ -66,9 +68,10 @@ class Pager {
 	 */		
 	public function getPreviousPage() {
 		if(($this->currentPage - 1) <= 0) {
-			return $this->countPages();
+			$this->currentPage = $this->countPages();
+			return $this->currentPage;
 		} else {
-			return $this->currentPage - 1;
+			return --$this->currentPage;
 		}
 	}
 	
@@ -78,7 +81,7 @@ class Pager {
 	 */	
 	public function getLimits() {
 		$limits['start'] = ($this->currentPage - 1) * $this->rowsPerPage;
-		$limits['end'] = ($this->currentPage - 1) * $this->rowsPerPage + $this->rowsPerPage;
+		$limits['end'] = $this->currentPage * $this->rowsPerPage;
 		return $limits;
 	}
 }

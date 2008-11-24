@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://piwi.googlecode.com/xsd/config"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!-- 
+	   The timespan in seconds after which a page will be regenerated.
+	   Set to '0' to disable the CACHE.
+	 -->
+	<cachetime>0</cachetime>
+	
+   <!-- 
+      Configuration of the NAVIGATION-GENERATORSs that should be instantiated.
+      They will be instantiated with the given name, so you could easily embed them in your templates.
+    -->
+   <navigationGenerators>
+      <navigationGenerator name="HTML_NAVIGATION" class="SimpleTextNavigation" depth="1" includeParent="1" />
+      <navigationGenerator name="SITE_MAP_PATH" class="SiteMapPathNavigation" pageId="CURRENT_PAGE" depth="0" includeParent="1" />
+   </navigationGenerators>
+	
+	<!-- 
+	   A custom XSLTSTYLESHEET which will be included in the serialization process.
+	   Use this to perfom custom transformations.
+	 -->
+	<customXSLTStylesheet>custom/resources/xslt/CustomTransformation.xsl</customXSLTStylesheet>
+	
+	<!-- 
+	   Here you can enable/disable AUTHENTICATION.
+	   The 'roleProvider' is the class used for the authentication.
+	   The 'loginPageId' is the ID of the page being displayed when authentication is required.
+	   To protect pages set the roles in the 'site.xml'.
+	 -->
+	<authentication enabled="1" roleProvider="TestRoleProvider"
+		loginPageId="test1" />
+		
+	<!--
+		Configuration of the SERIALIZERs.
+		If no serializer for a extension is specified, the default serializer will be used.
+		To embed a custom serializer specify the extension and the classname of the serializer.
+		If you add a new extension you also have to adjust the '.htaccess' file in the root folder.
+	 -->
+	<serializers>
+		<serializer extension="html" serializer="HTMLSerializer" />
+		<serializer extension="pdf" serializer="PDFSerializer" />
+		<serializer extension="xml" serializer="PiwiXMLSerializer" />
+		<serializer extension="doc" serializer="WordSerializer" />
+		<serializer extension="xls" serializer="ExcelSerializer" />		
+	</serializers>
+</configuration>

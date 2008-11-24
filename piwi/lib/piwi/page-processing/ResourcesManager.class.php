@@ -34,7 +34,7 @@ class ResourcesManager {
 		self::$resources = array();
 		
 		// Load the internal labels
-		$domXPath = new DOMXPath(DOMDocument::load('resources/labels/labels.xml'));
+		$domXPath = new DOMXPath(DOMDocument::load($GLOBALS['PIWI_ROOT'] . 'resources/labels/labels.xml'));
 		$domXPath->registerNamespace('labels', 'http://piwi.googlecode.com/xsd/labels');
 		
 		self::$resources[] = $domXPath;
@@ -42,7 +42,7 @@ class ResourcesManager {
 		// Load custom labels
 		$path = 'custom/resources/labels/labels.xml';
 		if (file_exists($path)) {
-			$domXPath = new DOMXPath(DOMDocument::load('custom/resources/labels/labels.xml'));
+			$domXPath = new DOMXPath(DOMDocument::load($GLOBALS['PIWI_ROOT'] . 'custom/resources/labels/labels.xml'));
 			$domXPath->registerNamespace('labels', 'http://piwi.googlecode.com/xsd/labels');
 			
 			self::$resources[] = $domXPath;

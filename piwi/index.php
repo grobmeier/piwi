@@ -51,7 +51,7 @@ DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
  */ 
  
 /** The root path of Piwi */
-DEFINE('PIWI_ROOT', dirname(__FILE__));
+$GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
  
 /** ClassLoader which makes other includes dispensable. */
 require ("lib/piwi/classloader/ClassLoader.class.php");
@@ -69,7 +69,7 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if ($classloader == null) {
-		$classloader = new ClassLoader(PIWI_ROOT . '/cache/classloader.cache.xml');
+		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . '/cache/classloader.cache.xml');
 	}
 
 	$directorys = array (		
@@ -94,13 +94,13 @@ function __autoload($class) {
 SessionManager::startSession();
 
 // Initialize the singleton factories for managing Generators and Connectors
-GeneratorFactory::initialize(CONTENT_PATH . '/generators.xml');
-ConnectorFactory::initialize(CONTENT_PATH . '/connectors.xml');
-FormFactory::initialize(CONTENT_PATH . '/forms.xml');
-ConfigurationManager::initialize(CONTENT_PATH . '/config.xml');
+GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');
+ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml');
+FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');
+ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config.xml');
 
 // Init site
-Site::setInstance(new XMLSite(CONTENT_PATH, TEMPLATES_PATH, 'site.xml'));
+Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, $GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
 
 try {
 	// Generate page

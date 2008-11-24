@@ -4,15 +4,12 @@ require_once ('test/PiwiTestCase.php');
 class FolderTest extends PiwiTestCase {
 
 	private $dir = null;
-	private	$name = null;
-	private	$name2 = null;
-	private $fileName = null;
+	private	$name = 'test';
+	private	$name2 = 'test2';
+	private $fileName = 'test.txt';
 	
 	function setUp() {
 		$this->dir = dirname(__FILE__);
-		$this->name = 'test';
-		$this->name2 = 'test2';
-		$this->fileName = 'test.txt';
 	}
 	
 	function testProperties() {

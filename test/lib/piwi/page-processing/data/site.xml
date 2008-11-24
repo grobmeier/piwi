@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns="http://piwi.googlecode.com/xsd/site" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<language region="default">
+		<page id="default" label="Home" href="default.xml" />
+		<page id="hidden" label="Hidden" href="hidden.xml" roles="admin" hideInNavigation="1" hideInSiteMap="1" />
+		<page id="test1" label="Test" href="test.xml" template="other.php">
+      <page id="test2" label="Test" href="test.xml">
+        <page id="test3" label="Test" href="test.xml" />
+      </page>
+		</page>
+	</language>
+	<language region="de">
+		<page id="default" label="Home" href="default.xml" />
+		<page id="hidden" label="Hidden" href="hidden.xml" roles="admin" hideInNavigation="1" hideInSiteMap="1" />
+		<page id="test1" label="Test" href="test.xml" template="other.php">
+      <page id="test2" label="Test" href="test.xml">
+        <page id="test3" label="Test" href="test.xml" />
+      </page>
+		</page>
+	</language>
+</site>

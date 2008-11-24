@@ -77,7 +77,7 @@ abstract class Site {
 			// Configure the transformer
 			$processor = new XSLTProcessor;
 			$processor->registerPHPFunctions();
-			$processor->importStyleSheet(DOMDocument::load("resources/xslt/GeneratorTransformation.xsl"));
+			$processor->importStyleSheet(DOMDocument::load($GLOBALS['PIWI_ROOT'] . "resources/xslt/GeneratorTransformation.xsl"));
 			
 			// Transform the Generators
 			$this->content = $processor->transformToDoc($this->content);

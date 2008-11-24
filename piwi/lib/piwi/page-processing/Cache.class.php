@@ -38,14 +38,14 @@ class Cache {
 		$filePath = 'cache/' . Request::getPageId() . '_' . SessionManager::getUserLanguage() . '_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
 
 		// Set filePath in instance so a file can later be created with this filename		
-		$this->filePath = $filePath;
+		$this->filePath = $GLOBALS['PIWI_ROOT'] . $filePath;
 		
 		// Check if file exists or if has expired
-		if (!file_exists($filePath) || time() > (filectime($filePath) + $this->cachetime)) {
+		if (!file_exists($this->filePath) || time() > (filemtime($this->filePath) + $this->cachetime)) {
 			return null;
 		} else {
 			$cachedcontent = new DOMDocument;
-			$cachedcontent->load($filePath);
+			$cachedcontent->load($this->filePath);
 			
 			return $cachedcontent;
 		}

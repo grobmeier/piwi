@@ -3,11 +3,10 @@ require_once ('test/PiwiTestCase.php');
 
 class AlbumTest extends PiwiTestCase {
 
-	private	$name = null;
+	private	$name = 'test';
 	private $time = null;
 	
 	function setUp() {
-		$this->name = 'test';
 		$this->time = time();
 	}
 	

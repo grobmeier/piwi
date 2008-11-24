@@ -29,9 +29,7 @@ class ConfigurationManager {
 	 * @param string $configFilePath Path of the file containing the configuration.
 	 */
 	public static function initialize($configFilePath) {
-		if (self :: $configurationManagerInstance == null) {
-			self :: $configurationManagerInstance = new ConfigurationManager($configFilePath);
-		}
+		self :: $configurationManagerInstance = new ConfigurationManager($configFilePath);
 	}
 
 	/**

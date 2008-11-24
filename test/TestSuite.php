@@ -12,7 +12,11 @@
   $this->addFile('test/lib/piwi/io/FolderTest.php');  
   
   $this->addFile('test/lib/piwi/media/AlbumTest.php');
-  $this->addFile('test/lib/piwi/media/MediaCenterTest.php');
+  $this->addFile('test/lib/piwi/media/MediaCenterTest.php');  
+  
+  $this->addFile('test/lib/piwi/pager/PagerTest.php');
+  
+  $this->addFile('test/lib/piwi/page-processing/XMLSiteTest.php');
   
   // Webtest
   $this->addFile('test/web/FormsTest.php');
