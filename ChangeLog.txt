@@ -9,6 +9,17 @@
 =======================================================================
 
 
+0.0.6 - Authentication Release
+
+    * Fix: Extract configuration from 'site.xml'
+    * New: Add authentication features (via session and cookies)
+    * New: Added support for custom XSLT-Transformation
+    * New: Added support for internationalization in generators
+    * New: Added serializer for Word and Excel
+    * New: Dynamic configuration of Navigation(s) and SiteMapPath in 'config.xml'
+    * New: Wrote Unit tests
+    * New: Added Ant file
+    
 0.0.5 - Forms Framework Release
 
     * New: Added form framework with validators
