@@ -90,6 +90,11 @@ Generates the submenus of the given nodes.</p></td>
 Returns the possible roles a user needs to access the currently requested page.</p></td>
 </tr>
 <tr>
+<td class="type">protected  integer</td>
+<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
+Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p></td>
+</tr>
+<tr>
 <td class="type">private  DOMNode</td>
 <td class="description"><p class="name"><a href="#getCurrentPageDOMNode()">getCurrentPageDOMNode</a>()</p><p class="description">
 Returns the DOMNode representing the current page.</p></td>
@@ -123,7 +128,7 @@ Loads the 'site.xml'.</p></td>
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Site</th></tr>
-<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRoles()">getAllowedRoles</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getHTMLTemplatePath()">getHTMLTemplatePath</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#serialize()">serialize</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
+<tr><td><a href="../default/site.html#cutOffSiteMap()">cutOffSiteMap</a>, <a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRoles()">getAllowedRoles</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getCustomSiteMap()">getCustomSiteMap</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getHTMLTemplatePath()">getHTMLTemplatePath</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getSiteMapItemsById()">getSiteMapItemsById</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#serialize()">serialize</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="domXPath">domXPath</h3>
@@ -183,6 +188,18 @@ The array contains only '?' if no authentication is required.
 The array contains only '*' if any authenticated user allowed to access the page.</p><dl>
 <dt>Returns:</dt>
 <dd>The possible roles a user needs to access the currently requested page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getCacheTime()">getCacheTime</h3>
+<code class="signature">protected  integer <strong>getCacheTime</strong>()</code>
+<div class="details">
+<p>
+Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The page specific cachetime or null if none is specified.</dd>
 </dl>
 </div>
 

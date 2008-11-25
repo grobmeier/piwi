@@ -63,7 +63,6 @@ class XMLSite extends Site {
     		$this->loadSite();
     	}
 
-		// If Authentication is enabled look up roles
 		$result = $this->getCurrentPageDOMNode()->getAttribute("roles");
 		if ($result == "") {
     		return array('?');
@@ -71,6 +70,44 @@ class XMLSite extends Site {
     		return explode(',', str_replace(' ', '', $result));
     	}
     }
+       
+    /**
+     * Returns a list of supported languages.
+     * @return array List of supported languages.
+     */
+    public function getSupportedLanguages() {
+    	if ($this->domXPath == null) {
+    		$this->loadSite();
+    	}
+    	
+    	$xpath = "/site:site/site:language/@region";
+    	$languages = $this->domXPath->query($xpath);
+    	
+    	$result = array();
+    	$count = 0;
+    	foreach ($languages as $value) {
+       		$result[$count++] = $value->value;
+		}
+		
+		return $result;
+    }   
+    
+	/**
+	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.
+     * @return integer The page specific cachetime or null if none is specified.
+	 */
+	protected function getCacheTime() {
+    	if ($this->domXPath == null) {
+    		$this->loadSite();
+    	}
+
+		$result = $this->getCurrentPageDOMNode()->getAttribute("cachetime");
+		if ($result == "") {
+    		return null;
+    	} else {
+    		return $result;
+    	}
+	}
       
     /**
 	 * -------------------------------------------------------------------------
@@ -143,28 +180,7 @@ class XMLSite extends Site {
       	}
       	return $result;
     } 
- 
-    /**
-     * Returns a list of supported languages.
-     * @return array List of supported languages.
-     */
-    public function getSupportedLanguages() {
-    	if ($this->domXPath == null) {
-    		$this->loadSite();
-    	}
-    	
-    	$xpath = "/site:site/site:language/@region";
-    	$languages = $this->domXPath->query($xpath);
-    	
-    	$result = array();
-    	$count = 0;
-    	foreach ($languages as $value) {
-       		$result[$count++] = $value->value;
-		}
-		
-		return $result;
-    }   
-    
+	
     /**
 	 * -------------------------------------------------------------------------
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>Private Helper Methods<<<<<<<<<<<<<<<<<<<<<<<

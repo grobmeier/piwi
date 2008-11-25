@@ -103,6 +103,11 @@ Returns the possible roles a user needs to access the currently requested page.
 </p></td>
 </tr>
 <tr>
+<td class="type">protected abstract  integer</td>
+<td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
+Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p></td>
+</tr>
+<tr>
 <td class="type"> The</td>
 <td class="description"><p class="name"><a href="#getCustomSiteMap()">getCustomSiteMap</a>(string id, integer depth, boolean includeParent)</p><p class="description">
 Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
@@ -246,6 +251,18 @@ The array contains only '?' if no authentication is required.
 The array contains only '*' if any authenticated user allowed to access the page.</p><dl>
 <dt>Returns:</dt>
 <dd>The possible roles a user needs to access the currently requested page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getCacheTime()">getCacheTime</h3>
+<code class="signature">protected abstract  integer <strong>getCacheTime</strong>()</code>
+<div class="details">
+<p>
+Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p><dl>
+<dt>Returns:</dt>
+<dd>The page specific cachetime or null if none is specified.</dd>
 </dl>
 </div>
 

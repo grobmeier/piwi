@@ -52,7 +52,12 @@ abstract class Site {
 			}
 		}
 
+		// Determinate global cachetime, if page specific cachetime exists use this
 		$cachetime = ConfigurationManager :: getInstance()->getCacheTime();
+		$specificCacheTime = $this->getCacheTime();
+		if ($specificCacheTime != null) {
+			$cachetime = $specificCacheTime;
+		}
 
 		// Try to get contents from cache
 		$cache = new Cache($cachetime);
@@ -271,5 +276,11 @@ abstract class Site {
 	 * @return array List of supported languages.
 	 */
 	public abstract function getSupportedLanguages();
+	
+	/**
+	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.
+     * @return integer The page specific cachetime or null if none is specified.
+	 */
+	protected abstract function getCacheTime();
 }
 ?>

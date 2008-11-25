@@ -14,8 +14,11 @@
 		<attribute name="roles" type="string" use="optional"></attribute>
 		<attribute name="template" type="string" use="optional"></attribute>
 
-		<attribute name="hideInNavigation" type="boolean" use="optional"></attribute>
+		<attribute name="hideInNavigation" type="boolean"
+			use="optional">
+		</attribute>
 		<attribute name="hideInSiteMap" type="boolean" use="optional"></attribute>
+		<attribute name="cachetime" type="int" use="optional"></attribute>
 	</complexType>
 	<element name="site" type="tns:siteType">
 		<unique name="UniqueLanguageRegion">

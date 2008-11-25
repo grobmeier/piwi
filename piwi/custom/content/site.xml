@@ -28,7 +28,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
 		</page>
 		<page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
 		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
-		<page id="login" label="Login" href="en/features/login.xml" hideInNavigation="1" hideInSiteMap="1" />
+		<page id="login" label="Login" href="en/features/login.xml" hideInNavigation="1" hideInSiteMap="1" cachetime="0" />
 	</language>
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" />
@@ -56,6 +56,6 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site
       </page>
       <page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
       <page id="download" label="Download" href="http://code.google.com/p/piwi" />
-		<page id="login" label="Login" href="de/features/login.xml" hideInNavigation="1" hideInSiteMap="1" />
+		<page id="login" label="Login" href="de/features/login.xml" hideInNavigation="1" hideInSiteMap="1" cachetime="0" />
 	</language>
 </site>
