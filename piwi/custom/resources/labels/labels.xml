@@ -7,6 +7,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
 	   <label key="LOGIN_SUCCESS" value="Login successful." />
 	   <label key="LOGIN_FAILED" value="Login failed." />
 
+      <!-- LogoutProcessor -->
+      <label key="LOGOUT_SUCCESS" value="Logged out successfully." />
+      
       <!-- ValidationProcessor -->
       <label key="GENDER" value="Geschlecht" />
       <label key="EMAIL" value="Email" />
@@ -31,6 +34,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
 	   <label key="LOGIN_SUCCESS" value="Login erfolgreich." />
       <label key="LOGIN_FAILED" value="Login fehlgeschlagen." />
 
+      <!-- LogoutProcessor -->
+      <label key="LOGOUT_SUCCESS" value="Logout erfolgreich." />
+      
       <!-- ValidationProcessor -->
       <label key="GENDER" value="Geschlecht" />
       <label key="EMAIL" value="Email" />

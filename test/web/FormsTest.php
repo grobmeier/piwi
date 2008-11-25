@@ -2,6 +2,7 @@
 require_once ('test/PiwiWebTestCase.php');
 
 class FormsTest extends PiwiWebTestCase {
+	
 	function testGetFormByCorrectIdButNonInitializedFormFactory() {
 		$this->get(self :: $HOST . 'forms.html');
 		$this->clickSubmit("Send Data");
@@ -17,6 +18,7 @@ class FormsTest extends PiwiWebTestCase {
 		// check if validator fails
 		$this->setFieldByName('2Email', 'test@test.de');
 		$this->clickSubmit("Send Data");
+		$this->assertNoText('You must enter a valid email.', 'Validator failed.');
 		$this->assertWantedText('Email must be the same.', 'Validator failed.');
 	}
 }

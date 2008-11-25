@@ -4,8 +4,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
    <content position="article">
       <header>Login</header>
-      <section>
-         <piwiform id="loginform" />
+      <section>         
+         <generator id="login_logout" />
       </section>
    </content>
 </document>

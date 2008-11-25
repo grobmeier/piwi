@@ -15,6 +15,9 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
       <sql>SELECT * FROM adresses</sql>
    </generator>
    
+   <!-- LOGIN -->
+   <generator id="login_logout" class="LoginLogoutGenerator" />
+   
 	<!-- GALLERY -->
 	<generator id="gallery" class="SimpleGalleryGenerator">
 		<pathtoalbums>custom/files/gallery</pathtoalbums>

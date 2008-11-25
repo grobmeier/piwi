@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://piwi.googlecode.com/xsd/piwiform" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resources/xsd/piwiform.xsd">
+   <configuration submitText="Logout" />
+	 <step>
+	   You are currently logged in.
+	 </step>
+	 <step>
+	  <stepprocessor class="LogoutProcessor"/>
+	 </step>
+</form>

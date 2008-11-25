@@ -65,7 +65,7 @@ Returns the username if the user is currently logged in, otherwise null.</p></td
 </tr>
 <tr>
 <td class="type">static  boolean</td>
-<td class="description"><p class="name"><a href="#isUserAuthenticated()">isUserAuthenticated</a>()</p><p class="description">
+<td class="description"><p class="name"><a href="#isUserAuthenticated()">isUserAuthenticated</a>(boolean storeRequestedURL)</p><p class="description">
 Returns true if the current user is authenticated.</p></td>
 </tr>
 <tr>
@@ -114,10 +114,12 @@ Returns the username if the user is currently logged in, otherwise null.</p><dl>
 <hr>
 
 <h3 id="isUserAuthenticated()">isUserAuthenticated</h3>
-<code class="signature">public static  boolean <strong>isUserAuthenticated</strong>()</code>
+<code class="signature">public static  boolean <strong>isUserAuthenticated</strong>(boolean storeRequestedURL)</code>
 <div class="details">
 <p>
 Returns true if the current user is authenticated.</p><dl>
+<dt>Parameters:</dt>
+<dd>storeRequestedURL - Set to true if the current URL should be stored, to perform a redirect after login.</dd>
 <dt>Returns:</dt>
 <dd>True if the current user is authenticated.</dd>
 </dl>

@@ -5,7 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources
 	<content position="article">
 		<header>Login</header>
 		<section>
-			<piwiform id="loginform" />
+			<generator id="login_logout" />
 		</section>
 	</content>
 </document>

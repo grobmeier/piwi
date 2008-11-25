@@ -20,5 +20,9 @@
   $this->addFile('test/lib/piwi/page-processing/ConfigurationManagerTest.php');
   
   // Webtest
+  $this->addFile('test/web/FormsTest.php');  
+  $this->addFile('test/web/AuthenticationTest.php');
+  $this->addFile('test/web/DatabaseTest.php');
   $this->addFile('test/web/FormsTest.php');
+  $this->addFile('test/web/LocalizationTest.php');
 ?>
