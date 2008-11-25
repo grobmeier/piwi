@@ -48,6 +48,16 @@
 								</ul>
 							</li>
 						</ul>
+						<br />
+						<div class="bold">Other hosting providers:</div>
+						Depending on your hosting provider you maybe have to <span
+		class="bold">comment in</span> some settings in the main <span class="bold">'.htaccess'</span> file:
+                  <ul>
+                     <li>Use this line to <span class="bold">enable PHP 5</span>. This is only required if PHP 4 is the default PHP engine.<br />
+                     <code>AddType x-mapp-php5 .php</code></li>
+                     <li>Use this line if you get <span class="bold">404-errors</span>.<br />
+                     <code>RewriteBase /</code></li>
+                  </ul>
 					</div>
 				</li>
 				<li>

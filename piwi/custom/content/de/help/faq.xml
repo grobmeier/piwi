@@ -52,6 +52,16 @@
 								</ul>
 							</li>
 						</ul>
+						<br />
+						<div class="bold">Andere Webhoster:</div>
+						Abhängig von Ihrem Webhoster müssen Sie eventuell einige Einstellungen in der <span class="bold">'.htaccess'</span> Datei <span
+      class="bold">einkommentieren</span>:
+                  <ul>
+                     <li>Verwenden Sie diese Zeile um <span class="bold">PHP 5 zu aktivieren</span>. Das ist nur nötig, wenn standardmäßig PHP 4 verwendet wird.<br />
+                     <code>AddType x-mapp-php5 .php</code></li>
+                     <li>Verwenden Sie diese Zeile wenn <span class="bold">404-Fehler</span> auftreten.<br />
+                     <code>RewriteBase /</code></li>
+                  </ul>
 					</div>
 				</li>
 				<li>

@@ -8,7 +8,7 @@
 	<property name="reportdir" value="report/" />
 	<property name="testdir" value="test/" />
 
-	<property name="server" value="http://127.0.0.1:81/" />
+	<property name="server" value="http://127.0.0.1:80/" />
 	
 	<!-- Clean the output folder. -->
 	<target name="clean">

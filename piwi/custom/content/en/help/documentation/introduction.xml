@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resources/xsd/piwixml.xsd">
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resources/xsd/piwixml.xsd">
 	<content position="article">
 		<header>Introduction</header>
-		<section>
-
-		</section>
+		<section> PIWI is not a CMS. If you are looking for something which
+			enables you to edit your content within an online html editor or
+			similar, you are wrong. PIWI is here to integrate different
+			datasources like CMS, flat files or databases, change that
+			input into PIWI-XML and then serialize it in multiple formats like HTML or PDF. 
+			Currently PIWI focus is in generating XML from
+			different sources and transforming it into HTML. This means that PIWI
+			is web-centric and so it supports features and helpers which are
+			quite usable for the web.</section>
 	</content>
 </document>
