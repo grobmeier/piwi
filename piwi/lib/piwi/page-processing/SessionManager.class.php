@@ -38,7 +38,7 @@ class SessionManager {
 		}
 		
 		if (!isset($_SESSION['language'])) {
-			// Use 'default' if no language has not been set
+			// Use 'default' if no language has been set
 			$_SESSION['language'] = 'default';
 		}
 		return $_SESSION['language'];

@@ -17,13 +17,9 @@ class HTMLSerializer implements Serializer {
 
 		$elements = $domDocument->getElementsByTagName('content');
 
-		for ($i = 0; $i < $elements->length; $i++) {
-			$simplexml = simplexml_import_dom($elements->item($i));
-
-			$template = new DOMDocument();
-			$template->loadXML($simplexml->asXML());
-
-			$CONTENT[$elements->item($i)->getAttribute("position")] = $processor->transformToXML($template);
+		foreach ($elements as $item) {
+			$position = DOMDocument::loadXML($domDocument->saveXML($item));
+			$CONTENT[$item->getAttribute("position")] = $processor->transformToXML($position);
 		}
 
 		// Include navigation and siteMapPath

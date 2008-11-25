@@ -66,10 +66,8 @@ class FormProcessor {
 		
 		// Validate formdata of last step
 		if (self::$currentStep > 0) {
-			$lastStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0));
-			
-			$template = new DOMDocument();
-			$template->loadXML($lastStepXML->asXML());
+			$lastStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
+			$template = DOMDocument::loadXML($lastStepXML->ownerDocument->saveXML($lastStepXML));
 			
 			$stepXML = $processor->transformToXML($template);
 		}
@@ -80,10 +78,8 @@ class FormProcessor {
 			self::$validate = false;
 			
 			$stepXML = '';
-			$currentStepXML = simplexml_import_dom($domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0));
-			
-			$template = new DOMDocument();
-			$template->loadXML($currentStepXML->asXML());
+			$currentStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
+			$template = DOMDocument::loadXML($currentStepXML->ownerDocument->saveXML($currentStepXML));
 			
 			$stepXML = $processor->transformToXML($template);
 		}

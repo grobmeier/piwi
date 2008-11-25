@@ -20,13 +20,10 @@ class ExcelSerializer implements Serializer {
 		// Generate HTML
 		$html = '<html><body>';
 
-		for ($i = 0; $i < $elements->length; $i++) {
-			$simplexml = simplexml_import_dom($elements->item($i));
-
-			$template = new DOMDocument();
-			$template->loadXML($simplexml->asXML());
-
-			$html .= $processor->transformToXML($template);
+		foreach ($elements as $item) {
+			$position = DOMDocument::loadXML($domDocument->saveXML($item));
+			$html .=  $processor->transformToXML($position);
+			$html .= "<br />";
 		}
 		
 		$html .= "</body></html>";

@@ -20,13 +20,10 @@ class WordSerializer implements Serializer {
 		// Generate HTML
 		$html = '<html><body>';
 
-		for ($i = 0; $i < $elements->length; $i++) {
-			$simplexml = simplexml_import_dom($elements->item($i));
-
-			$template = new DOMDocument();
-			$template->loadXML($simplexml->asXML());
-
-			$html .= $processor->transformToXML($template);
+		foreach ($elements as $item) {
+			$position = DOMDocument::loadXML($domDocument->saveXML($item));
+			$html .=  $processor->transformToXML($position);
+			$html .= "<br />";
 		}
 		
 		$html .= "</body></html>";
@@ -34,7 +31,7 @@ class WordSerializer implements Serializer {
 		// Generate Word
 		header("Content-type: application/vnd-ms-word");
 		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-		header("Content-Disposition: attachment; filename=" . $pageId . ".doc");
+		header("Content-Disposition: attachment; filename=" . Request::getPageId() . ".doc");
 		
 		echo utf8_decode($html);
 	}
