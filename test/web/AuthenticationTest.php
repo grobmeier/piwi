@@ -3,6 +3,14 @@ require_once ('test/PiwiWebTestCase.php');
 
 class AuthenticationTest extends PiwiWebTestCase {
 	
+	private $username = 'test';
+	
+	private $password = 'test';
+	
+	private $excryptedUsername = '%2BI-.%01%00';
+	
+	private $excryptedPassword = '%2BI-.%01%00';
+	
 	function testAuthenticationWithoutCookies() {
 		$this->get(self :: $HOST . 'authentication_protected.html');
 		
@@ -24,10 +32,12 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Password', 'Login not displayed.');		
 		
 		// check if login succeeds
-		$this->setFieldByName('1Name', 'test');
-		$this->setFieldByName('1Password', 'test');
+		$this->setFieldByName('1Name', $this->username);
+		$this->setFieldByName('1Password', $this->password);
 		$this->clickSubmit('Login');
 		$this->assertWantedText('Protected page', 'Login failed.');
+		$this->assertNoCookie('username', 'Cookie invalid.');
+		$this->assertNoCookie('password', 'Cookie invalid.');
 		
 		// leave page and go to it again
 		$this->get(self :: $HOST . 'default.html');
@@ -64,13 +74,13 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Password', 'Login not displayed.');		
 		
 		// check if login succeeds
-		$this->setFieldByName('1Name', 'test');
-		$this->setFieldByName('1Password', 'test');
+		$this->setFieldByName('1Name', $this->username);
+		$this->setFieldByName('1Password', $this->password);
 		$this->setFieldByName('1Cookies', 'Cookies');
 		$this->clickSubmit('Login');
 		$this->assertWantedText('Protected page', 'Login failed.');
-		$this->assertCookie('username', '%2BI-.%01%00', 'Cookie invalid.');
-		$this->assertCookie('password', '%2BI-.%01%00', 'Cookie invalid.');
+		$this->assertCookie('username', $this->excryptedUsername, 'Cookie invalid.');
+		$this->assertCookie('password', $this->excryptedPassword, 'Cookie invalid.');
 		
 		// leave page and go to it again
 		$this->get(self :: $HOST . 'default.html');
@@ -86,8 +96,8 @@ class AuthenticationTest extends PiwiWebTestCase {
 	}
 	
 	function testAuthenticationWithExistingCookie() {
-		$this->setCookie('username', '%2BI-.%01%00');
-		$this->setCookie('password', '%2BI-.%01%00');
+		$this->setCookie('username', $this->excryptedUsername);
+		$this->setCookie('password', $this->excryptedPassword);
 		$this->get(self :: $HOST . 'authentication_protected.html');
 		$this->assertWantedText('Protected page', 'Login failed.');
 	}
@@ -104,8 +114,8 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Login', 'Login not displayed.');
 		
 		// check if login succeeds
-		$this->setFieldByName('1Name', 'test');
-		$this->setFieldByName('1Password', 'test');
+		$this->setFieldByName('1Name', $this->username);
+		$this->setFieldByName('1Password', $this->password);
 		$this->clickSubmit('Login');
 		$this->assertWantedText('Protected page', 'Login failed.');
 		
@@ -126,13 +136,13 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Login', 'Login not displayed.');
 		
 		// check if login succeeds
-		$this->setFieldByName('1Name', 'test');
-		$this->setFieldByName('1Password', 'test');
+		$this->setFieldByName('1Name', $this->username);
+		$this->setFieldByName('1Password', $this->password);
 		$this->setFieldByName('1Cookies', 'Cookies');
 		$this->clickSubmit('Login');
 		$this->assertWantedText('Protected page', 'Login failed.');
-		$this->assertCookie('username', '%2BI-.%01%00', 'Cookie invalid.');
-		$this->assertCookie('password', '%2BI-.%01%00', 'Cookie invalid.');
+		$this->assertCookie('username', $this->excryptedUsername, 'Cookie invalid.');
+		$this->assertCookie('password', $this->excryptedPassword, 'Cookie invalid.');
 		
 		// check if logout works
 		$this->get(self :: $HOST . 'login.html');
