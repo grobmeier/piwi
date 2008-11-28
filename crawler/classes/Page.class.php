@@ -48,7 +48,7 @@ class Page {
        		}
 		}		
 		
-		return array();
+		return $internalLinks;
 	}
 	
 	/**
@@ -59,7 +59,8 @@ class Page {
 		if ($this->content == null) {
 			return;
 		}
-		$fpread = fopen($targetDirectory . $this->language . $this->url, "w");
+		$filename = str_replace('?', '_' , str_replace('&', '_' ,$this->url));
+		$fpread = fopen($targetDirectory . $this->language . $filename, "w");
 		fwrite($fpread, $this->content);
 		fclose($fpread);
 		$this->content = null;

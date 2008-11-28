@@ -69,7 +69,7 @@ class Crawler {
 			$page = array_pop($this->pagesToBeCrawled);
 			
 			if ($language == '') {
-				echo "DEFAULT: " . $page->getURL() . "\n";
+				echo "default: " . $page->getURL() . "\n";
 			} else {
 				echo $language . ": " . $page->getURL() . "\n";
 			}			
