@@ -154,6 +154,23 @@ class ConfigurationManager {
     }
     
     /**
+     * Returns the path of the a custom labels file or null if none is specified.
+     * @return string The path of the a custom labels file or null if none is specified.
+     */
+    public function getCustomLabelsPath() {
+    	if ($this->domXPath == null) {
+    		$this->loadConfig();
+    	}
+    	
+    	$result = $this->domXPath->query("/config:configuration/config:customLabels");
+    	if ($result->length == 1) {
+    		return $result->item(0)->nodeValue;
+        } else {
+       		return null;
+        }  
+    }    
+    
+    /**
      * Returns the path of the a custom XSLT stylesheet or null if none is specified.
      * @return string The path of the a custom XSLT stylesheet or null if none is specified.
      */

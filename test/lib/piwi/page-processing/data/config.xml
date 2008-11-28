@@ -18,6 +18,12 @@
    </navigationGenerators>
 	
 	<!-- 
+     The xml file containing LABELs. Use this file to specify internationalized
+     text. Which can be used in Generators and StepProcessors.
+   -->
+  <customLabels>test</customLabels>
+   
+	<!-- 
 	   A custom XSLTSTYLESHEET which will be included in the serialization process.
 	   Use this to perfom custom transformations.
 	 -->

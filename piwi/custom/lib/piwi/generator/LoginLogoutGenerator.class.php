@@ -15,7 +15,7 @@ class LoginLogoutGenerator implements Generator {
 	 * Returns the xml output of the Generator.
 	 * @return string The xml output as string.
 	 */
-    function generate() {
+    public function generate() {
 		// generate xml
 		$piwixml = '<piwiform id="loginform" />';
 		
@@ -29,9 +29,9 @@ class LoginLogoutGenerator implements Generator {
 	/**
 	 * Used to pass parameters to the Generator.
 	 * @param string $key The name of the parameter.
-	 * @param object $value The value of the parameter.
+	 * @param string $value The value of the parameter.
 	 */
-    function setProperty($key, $value) {
+    public function setProperty($key, $value) {
     }
 }
 ?>

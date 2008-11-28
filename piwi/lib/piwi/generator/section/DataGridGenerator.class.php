@@ -25,7 +25,7 @@ class DataGridGenerator implements Generator {
 	 * Returns the xml output of the Generator.
 	 * @return string The xml output as string.
 	 */
-    function generate() {
+    public function generate() {
 		/**
 		 * Establish connection.
 		 * The Connector is retrieved from the ConnectorFactory, 
@@ -64,9 +64,9 @@ class DataGridGenerator implements Generator {
 	/**
 	 * Used to pass parameters to the Generator.
 	 * @param string $key The name of the parameter.
-	 * @param object $value The value of the parameter.
+	 * @param string $value The value of the parameter.
 	 */
-    function setProperty($key, $value) {
+    public function setProperty($key, $value) {
 		if($key == "connector") {
     		$this->connector = $value;
     	} else if($key == "sql") {

@@ -35,11 +35,18 @@ class ConfigurationManagerTest extends PiwiTestCase {
 		$this->assertEqual(0, sizeof($navigation), 'HTMLNavigations have incorrect size.');
 	}
 	
+	function testGetCustomLabelsPath() {
+		$this->assertEqual('test', ConfigurationManager::getInstance()->getCustomLabelsPath(), 'CustomLabelsPath does not match.');
+		
+		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config_empty.xml');
+		$this->assertNull(ConfigurationManager::getInstance()->getCustomLabelsPath(), 'CustomLabelsPath is not null.');
+	}
+	
 	function testGetCustomXSLTStylesheetPath() {
 		$this->assertEqual('test', ConfigurationManager::getInstance()->getCustomXSLTStylesheetPath(), 'XSLTStylesheetPath does not match.');
 		
 		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config_empty.xml');
-		$this->assertNull(ConfigurationManager::getInstance()->getCustomXSLTStylesheetPath('xls'), 'XSLTStylesheetPath is not null.');
+		$this->assertNull(ConfigurationManager::getInstance()->getCustomXSLTStylesheetPath(), 'XSLTStylesheetPath is not null.');
 	}
 	
 	function testIsAuthenticationEnabled() {

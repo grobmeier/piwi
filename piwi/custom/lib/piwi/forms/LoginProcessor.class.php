@@ -2,7 +2,7 @@
 /**
  * Custom Step Processors used within Login Form.
  */
-class LoginProcessor  implements StepProcessor{
+class LoginProcessor implements StepProcessor{
 	/**
 	 * Performs a custom action within a form using the results of the form.
 	 * @param array $values The values of the form.
