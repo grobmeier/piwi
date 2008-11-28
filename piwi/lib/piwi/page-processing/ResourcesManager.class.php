@@ -40,9 +40,9 @@ class ResourcesManager {
 		self::$resources[] = $domXPath;
 		
 		// Load custom labels
-		$path = 'custom/resources/labels/labels.xml';
+		$path = ConfigurationManager::getInstance()->getCustomLabelsPath();
 		if (file_exists($path)) {
-			$domXPath = new DOMXPath(DOMDocument::load($GLOBALS['PIWI_ROOT'] . ConfigurationManager::getInstance()->getCustomLabelsPath()));
+			$domXPath = new DOMXPath(DOMDocument::load($GLOBALS['PIWI_ROOT'] . $path));
 			$domXPath->registerNamespace('labels', 'http://piwi.googlecode.com/xsd/labels');
 			
 			self::$resources[] = $domXPath;
