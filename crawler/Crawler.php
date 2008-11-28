@@ -23,7 +23,7 @@ if (isset($argv[1])) {
 } else {
 	echo "Error:   No server is specified.\n";
 	echo "Syntax:  Crawler SERVER [LANGUAGES] [TARGETDIRECTORY]\n";
-	echo "Example: Crawler http://127.0.0.1:80 default,de target\n";
+	echo "Example: Crawler http://127.0.0.1:80/default.html default,de target\n";
 	exit(1);
 }
 ?>

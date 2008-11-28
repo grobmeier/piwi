@@ -84,7 +84,7 @@
 		<mkdir dir="${target}${crawldir}" />
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="crawler/Crawler.php" />
-			<arg value="${server}" />
+			<arg value="${server}default.html" />
 			<arg value="${target}${crawldir}" />
 			<arg value="${crawlerLanguages}" />
 		</exec>
