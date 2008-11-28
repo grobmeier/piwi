@@ -10,7 +10,7 @@
 	<property name="testdir" value="test/" />
 
 	<property name="server" value="http://127.0.0.1:80/" />
-	<property name="crawlerLanguages" value="de" />
+	<property name="crawlerLanguages" value="default, de" />
 
 	<!-- Clean the output folder. -->
 	<target name="clean">
@@ -84,9 +84,10 @@
 		<mkdir dir="${target}${crawldir}" />
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="crawler/Crawler.php" />
-			<arg value="${server}default.html" />
-			<arg value="${target}${crawldir}" />
+			<arg value="${server}" />
+			<arg value="default.html" />
 			<arg value="${crawlerLanguages}" />
+			<arg value="${target}${crawldir}" />			
 		</exec>
 	</target>
 </project>

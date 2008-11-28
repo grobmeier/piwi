@@ -61,9 +61,9 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			}
 			
 			if ($albumSelected){
-				$piwixml .= '<p><a href="./' . Request::getPageId() . '.' . Request::getExtension() . '"><label key="BACK_TO_GALLERIES" /></a></p>';
+				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . '"><label key="BACK_TO_GALLERIES" /></a></p>';
 			} else {
-				$piwixml .= '<p><a href="./' . Request::getPageId() . '.' . Request::getExtension() . '?album='.urlencode($folder).'"><label key="MORE_IN" /> '.$folder.'</a></p>';
+				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . '?album='.urlencode($folder).'"><label key="MORE_IN" /> '.$folder.'</a></p>';
 			}
 			$piwixml .= '</section>';
 		}
