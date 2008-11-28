@@ -3,13 +3,15 @@
 	<!-- Properties. -->
 	<property name="name" value="piwi" />
 	<property name="version" value="0.0.7-SNAPSHOT" />
-	
+
 	<property name="target" value="target/" />
 	<property name="reportdir" value="report/" />
+	<property name="crawldir" value="crawled/" />	
 	<property name="testdir" value="test/" />
 
 	<property name="server" value="http://127.0.0.1:80/" />
-	
+	<property name="crawlerLanguages" value="de" />
+
 	<!-- Clean the output folder. -->
 	<target name="clean">
 		<delete dir="${target}" />
@@ -47,7 +49,7 @@
 				<!-- Exclude sources -->
 				<exclude name="doc-generator/" />
 				<exclude name="test/" />
-				<exclude name="piwi/.project" />
+				<exclude name="*/.project" />
 				<exclude name="build.xml" />
 			</fileset>
 		</zip>
@@ -73,6 +75,18 @@
 			<arg value="${server}" />
 			<arg value="${target}${reportdir}" />
 			<arg value="PHPCOVERAGE_HOME=${testdir}spikephpcoverage-0.8.2/src" />
+		</exec>
+	</target>
+
+	<!-- Crawls a PIWI-Webpage, to make it static. -->
+	<target name="crawl">
+		<delete dir="${target}${crawldir}" />
+		<mkdir dir="${target}${crawldir}" />
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="crawler/Crawler.php" />
+			<arg value="${server}" />
+			<arg value="${target}${crawldir}" />
+			<arg value="${crawlerLanguages}" />
 		</exec>
 	</target>
 </project>
