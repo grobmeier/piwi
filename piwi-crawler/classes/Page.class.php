@@ -147,7 +147,7 @@ class Page {
 		
 		$directory = Crawler :: $targetDirectory . "resources/";
 		if (($filename = strrchr($url, "/")) != false) {
-			$relativePath = str_replace($filename, "", $url);
+			$relativePath = str_replace($filename, "", $url) . '/';
 		}
 
 		if (!is_dir($directory . $relativePath) && !mkdir($directory . $relativePath, 0777, true)) {
@@ -165,10 +165,10 @@ class Page {
 
 		// Also save resources from CSS
 		if (strpos($url, ".css") != false) {		
-			preg_match_all("~url\(\"*'*(.+)'*\"*\)~", $content, $matches);
+			preg_match_all("~url\(\"*'*(.+?)'*\"*\)~", $content, $matches);
 
 			foreach ($matches[1] as $resource) {
-				Page::saveResource($relativePath . '/' . $resource);
+				Page::saveResource($relativePath . $resource);
 			}
 		}
 		
