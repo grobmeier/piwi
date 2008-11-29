@@ -28,6 +28,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 			installed.
 		</section>
 		<separator />
+		<title>Piwi Features</title>
 		<generator id="featuresSiteMap" />
 	</content>
 </document>

@@ -83,7 +83,7 @@
 		<delete dir="${target}${crawldir}" />
 		<mkdir dir="${target}${crawldir}" />
 		<exec executable="php" dir="." failonerror="true">
-			<arg value="crawler/Crawler.php" />
+			<arg value="piwi-crawler/Crawler.php" />
 			<arg value="${server}" />
 			<arg value="default.html" />
 			<arg value="${crawlerLanguages}" />

@@ -5,7 +5,7 @@ require_once('Page.class.php');
  */
 class Crawler {
 	/** The adress of the server. */
-	private $server = null;
+	public static $server = null;
 	
 	/** The url where the crawling should be started. */
 	private $startURL = null;
@@ -30,7 +30,7 @@ class Crawler {
 	 * @param string $targetDirectory The directory where the crawled site should be placed.
 	 */
 	public function __construct($server, $startURL, $languages, $targetDirectory) {
-		$this->server = $server;
+		self :: $server = $server;
 		$this->startURL = $startURL;
 		$this->languages = $languages;
 		$this->targetDirectory = $targetDirectory;
@@ -62,7 +62,7 @@ class Crawler {
 		$this->pagesToBeCrawled = array();
 		
 		// Set start url
-		$this->pagesToBeCrawled[$this->startURL] = new Page($this->server, $this->startURL, $language);
+		$this->pagesToBeCrawled[$this->startURL] = new Page($this->startURL, $language);
 		
 		// Crawl until no more pages can be found
 		while (sizeof($this->pagesToBeCrawled) > 0) {
@@ -77,7 +77,7 @@ class Crawler {
 			foreach ($page->getInternalLinks() as $url) {
 				// Only add pages that are not crawled yet
 				if ($page->getURL() != $url && !isset($this->pagesToBeCrawled[$url]) && !isset($this->pagesAlreadyCrawled[$url])) {
-					$this->pagesToBeCrawled[$url] = new Page($this->server, $url, $language);
+					$this->pagesToBeCrawled[$url] = new Page($url, $language);
 				}
 			}
 			
