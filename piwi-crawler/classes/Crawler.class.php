@@ -14,7 +14,7 @@ class Crawler {
 	private $languages = null;
 	
 	/** The directory where the crawled site should be placed. */
-	private $targetDirectory = null;
+	public static $targetDirectory = null;
 	
 	/** The pages that still have to be crawled. */
 	private $pagesToBeCrawled = null;
@@ -33,7 +33,7 @@ class Crawler {
 		self :: $server = $server;
 		$this->startURL = $startURL;
 		$this->languages = $languages;
-		$this->targetDirectory = $targetDirectory;
+		self :: $targetDirectory = $targetDirectory;
 	}
 	
 	/**
@@ -82,7 +82,7 @@ class Crawler {
 			}
 			
 			$this->pagesAlreadyCrawled[$page->getURL()] = $page;
-			$page->save($this->targetDirectory);
+			$page->save();
 		}
 	}
 }

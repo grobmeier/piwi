@@ -67,15 +67,13 @@ class Page {
 	
 	/**
 	 * Saves the webpage to disk.
-	 * @param string $targetDirectory The directory where the page webpage should be saved in.
 	 */
-	public function save($targetDirectory) {
+	public function save() {
 		if ($this->content == null) {
 			return;
 		}
 		
-		$this->rewriteLinks();
-		$this->saveResources();
+		$this->rewriteLinks();		
 		
 		$filename = $this->url;
 		// Build filename
@@ -83,7 +81,7 @@ class Page {
 			$filename = self :: createFilename($filename);
 		}
 		
-		$fpread = fopen($targetDirectory . $this->language . $filename, "w");
+		$fpread = fopen(Crawler :: $targetDirectory . $this->language . $filename, "w");
 		fwrite($fpread, $this->content);
 		fclose($fpread);
 		$this->content = null;
@@ -93,7 +91,7 @@ class Page {
 	 * Rewrites all links occuring in the content, to ensure they match in the crawled page.
 	 */
 	private function rewriteLinks() {
-		$this->content = preg_replace_callback("~href=\"(.+?)\"~", "Page::rewriteLink", $this->content);
+		$this->content = preg_replace_callback("~(href|src)=\"(.+?)\"~", "Page::rewriteLink", $this->content);
 	}
 	
 	/**
@@ -103,13 +101,13 @@ class Page {
 	 * @return string The rewritten link.
 	 */
 	private static function rewriteLink($matches) {
-		$link = $matches[1];
+		$link = $matches[2];
 		$link = str_replace(Crawler::$server, '', $link);
 		if (substr($link, 0, 4) == 'http') {
 			// external link			
 		} else if (Page::isLinkResource($link)) {
-			//resources
-			$link = "resources/file.jpg";
+			//resources			
+			$link = Page::saveResource($link);
 		} else if (strpos($link, "language=") != false) {
 			// link to switch language
 			preg_match("~[\?|&]language=([^&|.]+)~", $link, $lang);
@@ -123,14 +121,16 @@ class Page {
 			$link = Page::createFilename($link);
 		}
 		
-		return 'href="' . $link . '"';
+		return $matches[1] . '="' . $link . '"';
 	}
 	
 	/**
-	 * Saves resources like CSS and images to access them in the static page.
+	 * Saves the given resource to access them in the static page.
+	 * @param string $url The url of the resource.
+	 * @return string The local path of the resource.
 	 */
-	private function saveResources() {
-		
+	private static function saveResource($url) {
+		return "TODO";
 	}	
 	
 	/**
