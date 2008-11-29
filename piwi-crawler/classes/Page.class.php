@@ -15,6 +15,8 @@ class Page {
 	/** If one of these strings appears in a link it is not handled as internal. */
 	private static $resourcesFormats = array(".jpg", ".png", ".gif", ".js", ".css");
 	
+	private static $savedResources = array();
+	
 	/**
 	 * Constructor.
 	 * @param string $url The url of the page.
@@ -135,6 +137,10 @@ class Page {
 	 * @return string The local path of the resource.
 	 */
 	private static function saveResource($url) {
+		if (isset(Page::$savedResources[$url])) {
+			return Page::$savedResources[$url];
+		} 		
+		
 		$file = fopen(Crawler::$server . $url, "r");		
 		if (!$file) {
 			echo "  Failed to open resource '" . $url . "'\n";
@@ -171,8 +177,9 @@ class Page {
 				Page::saveResource($relativePath . $resource);
 			}
 		}
-		
-		return "resources/". $url;
+		$result = "resources/". $url;
+		Page::$savedResources[$url] = $result;
+		return $result;
 	}	
 	
 	/**
