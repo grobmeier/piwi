@@ -137,7 +137,7 @@ class Page {
 	private static function saveResource($url) {
 		$file = fopen(Crawler::$server . $url, "r");		
 		if (!$file) {
-			echo "  Failed to open resource '" . $this->url . "'\n";
+			echo "  Failed to open resource '" . $url . "'\n";
 			return $url;
 		}
 		while (!feof($file)) {
@@ -147,10 +147,10 @@ class Page {
 		
 		$directory = Crawler :: $targetDirectory . "resources/";
 		if (($filename = strrchr($url, "/")) != false) {
-			$directory .= str_replace($filename, "", $url);
+			$relativePath = str_replace($filename, "", $url);
 		}
 
-		if (!is_dir($directory) && !mkdir($directory, 0777, true)) {
+		if (!is_dir($directory . $relativePath) && !mkdir($directory . $relativePath, 0777, true)) {
 			echo "  Failed to save resource '" . $url . "'\n";
 			return $url;
 		}
@@ -162,6 +162,15 @@ class Page {
 		}
 		fwrite($fpread, $content);
 		fclose($fpread);
+
+		// Also save resources from CSS
+		if (strpos($url, ".css") != false) {		
+			preg_match_all("~url\(\"*'*(.+)'*\"*\)~", $content, $matches);
+
+			foreach ($matches[1] as $resource) {
+				Page::saveResource($relativePath . '/' . $resource);
+			}
+		}
 		
 		return "resources/". $url;
 	}	
