@@ -82,6 +82,11 @@ class Page {
 		}
 		
 		$fpread = fopen(Crawler :: $targetDirectory . $this->language . $filename, "w");
+		if (!$fpread) {
+			echo "  Failed to save '" . $this->url . "'\n";
+			$this->content = null;
+			return;
+		}
 		fwrite($fpread, $this->content);
 		fclose($fpread);
 		$this->content = null;
@@ -130,7 +135,35 @@ class Page {
 	 * @return string The local path of the resource.
 	 */
 	private static function saveResource($url) {
-		return "TODO";
+		$file = fopen(Crawler::$server . $url, "r");		
+		if (!$file) {
+			echo "  Failed to open resource '" . $this->url . "'\n";
+			return $url;
+		}
+		while (!feof($file)) {
+			$content .= fgets($file, 1024);
+		}
+		fclose($file);		
+		
+		$directory = Crawler :: $targetDirectory . "resources/";
+		if (($filename = strrchr($url, "/")) != false) {
+			$directory .= str_replace($filename, "", $url);
+		}
+
+		if (!is_dir($directory) && !mkdir($directory, 0777, true)) {
+			echo "  Failed to save resource '" . $url . "'\n";
+			return $url;
+		}
+		
+		$fpread = fopen(Crawler :: $targetDirectory . "resources/". $url, "w");
+		if (!$fpread) {
+			echo "  Failed to save resource '" . $url . "'\n";
+			return $url;
+		}
+		fwrite($fpread, $content);
+		fclose($fpread);
+		
+		return "resources/". $url;
 	}	
 	
 	/**
