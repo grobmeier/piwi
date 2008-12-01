@@ -15,6 +15,7 @@ class Page {
 	/** If one of these strings appears in a link it is not handled as internal. */
 	private static $resourcesFormats = array(".jpg", ".png", ".gif", ".js", ".css");
 	
+	/** The urls of already resources that have already been saved. */
 	private static $savedResources = array();
 	
 	/**
@@ -36,24 +37,22 @@ class Page {
 	}
 	
 	/**
+	 * Changes the current format to the given one and reloads the content.
+	 * @param string $format The format to set.
+	 */
+	public function setFormat($format) {
+		preg_match("~(\.[^\?|.]+)~", $this->url, $matches);
+		$this->url = str_replace($matches[1], '.' . $format , $this->url);
+		
+		$this->loadContent();
+	}	
+	
+	/**
 	 * Returns an array containing all internal links appearing in the current page.
 	 * @return array An array containing all internal links appearing in the current page.
 	 */
 	public function getInternalLinks() {
-		$language = '?language=' . $this->language;
-		if (strpos($this->url, "?") != false) {
-			$language = '&language=' . $this->language;
-		}
-		$file = fopen(Crawler::$server . $this->url . $language, "r");
-		
-		if (!$file) {
-			echo "  Failed to open '" . $this->url . "'\n";
-			return array();
-		}
-		while (!feof($file)) {
-			$this->content .= fgets($file, 1024);
-		}
-		fclose($file);
+		$this->loadContent();
 		
 		preg_match_all("~<a .*?href=\"(.+?)\"~", $this->content, $matches);
 		
@@ -113,16 +112,17 @@ class Page {
 		if (substr($link, 0, 4) == 'http') {
 			// external link			
 		} else if (Page::isLinkResource($link)) {
-			//resources			
-			$link = Page::saveResource($link);
+			//resources
+			if (substr($link, 0, 4) != 'http') {
+				$link = Page::saveResource($link);
+			}
 		} else if (strpos($link, "language=") != false) {
 			// link to switch language
 			preg_match("~[\?|&]language=([^&|.]+)~", $link, $lang);
 			$link = str_replace($lang[0], '', $link);
 			$link = Page::createFilename($link);
 
-			$link = ($lang[1] == 'default' ? '' : $lang[1]) . $link;
-		
+			$link = ($lang[1] == 'default' ? '' : $lang[1]) . $link;		
 		} else if (strpos($link, "?") != false) {
 			// link with arguments
 			$link = Page::createFilename($link);
@@ -174,13 +174,36 @@ class Page {
 			preg_match_all("~url\(\"*'*(.+?)'*\"*\)~", $content, $matches);
 
 			foreach ($matches[1] as $resource) {
-				Page::saveResource($relativePath . $resource);
+				if (substr($resource, 0, 4) != 'http') {				
+					Page::saveResource($relativePath . $resource);
+				}
 			}
 		}
 		$result = "resources/". $url;
 		Page::$savedResources[$url] = $result;
 		return $result;
 	}	
+	
+	/**
+	 * Loads the content located at the currently set url.
+	 */
+	private function loadContent() {
+		$language = '?language=' . $this->language;
+		if (strpos($this->url, "?") != false) {
+			$language = '&language=' . $this->language;
+		}		
+		
+		$file = fopen(Crawler::$server . $this->url . $language, "r");
+		
+		if (!$file) {
+			echo "  Failed to open '" . $this->url . "'\n";
+			return array();
+		}
+		while (!feof($file)) {
+			$this->content .= fgets($file, 1024);
+		}
+		fclose($file);		
+	}
 	
 	/**
 	 * Moves the extension at the end of the filename and replaces special characters.

@@ -2,14 +2,14 @@ Test must be not be invoked from this directory.
 You have to run the tests from the parent directory, to ensure that dependencies are resolved correctly.
 
 To run all tests invoke:
-php test/TestRunner.php $SERVER
+php test/TestRunner.php SERVER
 
 To run all tests with covering report invoke:
-php test/TestRunner.php $SERVER $REPORT_DIRECTORY PHPCOVERAGE_HOME=test/spikephpcoverage-0.8.2/src
+php test/TestRunner.php SERVER REPORT_DIRECTORY PHPCOVERAGE_HOME=test/spikephpcoverage-0.8.2/src
 
 
-$REPORT_DIRECTORY is the directory where the reports will be placed
-$SERVER is the host where the PIWI demo page is located
+REPORT_DIRECTORY: Is the directory where the reports will be placed
+SERVER:           Is the host where the PIWI demo page is located
 
 
 
