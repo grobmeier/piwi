@@ -292,6 +292,14 @@ ol
    margin-bottom: 5px;
 }
 
+.slideshow_container
+{
+   padding: 			5px; 
+   margin: 				10px 0px 10px 20px; 
+   float: 				right; 
+   border: 				1px solid #dcdcdc;
+}
+
 .right
 {  
    float:               right;

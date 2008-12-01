@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Welcome</header>
+		<div class="slideshow_container">
+			<div id="slideshow">
+			</div>
+			<div id="loadingDiv">
+			</div>
+		</div>
+		<script type="text/javascript" src="custom/files/js/en/feature_slideshow.js">
+		</script>
+		<header>PIWI - PHP Transformation Framework</header>
 		<section>
-			To the Piwi Websites
+			<span class="bold">
+				PIWI is a web centric framework written in PHP. It is designed to
+				easily
+				create websites
+				that can be rendered in various formats.
+				<br />
+				Its main
+				goals are:
+			</span>
+			<br />
+			<ul>
+				<li>Fast development of complete webpages</li>
+				<li>Easy integration of different datasources: databases, XML, 
+					files</li>
+				<li>Various output formats: HTML, PDF, XML, DOC, XLS</li>
+				<li>Separation of contents and logic from rendering</li>
+			</ul>
 		</section>
-		<separator />
 		<section>
-			<title>Description</title>
-			PIWI is an XML/XSLT Transformation Framework written in
-			PHP. It's basic concepts and ideas have been stolen from
-			the great Java-Applications
+			The basic concepts and ideas have been stolen from
+			the great
+			Java-Applications
 			<a href="http://cocoon.apache.org" rel="nofollow">
 				Apache Cocoon
 			</a>
 			and
 			<a href="http://forrest.apache.org" rel="nofollow">
-				Apache Forrest</a>. 
-		    Cocoon is still great, but very complex and of course
+				Apache Forrest</a>.<br />
+			Cocoon is still great, but very complex and of course
 			in Java, which makes it not useful for people who want
 			the power for their small project, but not the pain.
 			<br />
@@ -30,5 +52,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xs
 		<separator />
 		<title>Piwi Features</title>
 		<generator id="featuresSiteMap" />
+		<div style="clear: both">
+		</div>
 	</content>
 </document>
