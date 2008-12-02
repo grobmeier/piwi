@@ -7,7 +7,7 @@ class Page {
 	private $url = null;
 	
 	/** The language to use. Set to null for the default language. */ 
-	private $language = null;
+	private static $language = null;
 	
 	/** The content of the page */
 	private $content = null;
@@ -25,7 +25,7 @@ class Page {
 	 */
 	public function __construct($url, $language = '') {
 		$this->url = $url;
-		$this->language = $language;
+		self :: $language = $language;
 	}
 	
 	/**
@@ -82,7 +82,7 @@ class Page {
 			$filename = self :: createFilename($filename);
 		}
 		
-		$fpread = fopen(Crawler :: $targetDirectory . $this->language . $filename, "w");
+		$fpread = fopen(Crawler :: $targetDirectory . self :: $language . $filename, "w");
 		if (!$fpread) {
 			echo "  Failed to save '" . $this->url . "'\n";
 			$this->content = null;
@@ -110,7 +110,7 @@ class Page {
 		$link = $matches[2];
 		$link = str_replace(Crawler::$server, '', $link);
 		if (substr($link, 0, 4) == 'http') {
-			// external link			
+			// external link, do nothing		
 		} else if (Page::isLinkResource($link)) {
 			//resources
 			if (substr($link, 0, 4) != 'http') {
@@ -125,7 +125,9 @@ class Page {
 			$link = ($lang[1] == 'default' ? '' : $lang[1]) . $link;		
 		} else if (strpos($link, "?") != false) {
 			// link with arguments
-			$link = Page::createFilename($link);
+			$link = Page :: $language . Page::createFilename($link);
+		} else {
+			$link = Page :: $language . $link;
 		}
 		
 		return $matches[1] . '="' . $link . '"';
@@ -188,9 +190,9 @@ class Page {
 	 * Loads the content located at the currently set url.
 	 */
 	private function loadContent() {
-		$language = '?language=' . $this->language;
+		$language = '?language=' . self :: $language;
 		if (strpos($this->url, "?") != false) {
-			$language = '&language=' . $this->language;
+			$language = '&language=' . self :: $language;
 		}		
 		
 		$file = fopen(Crawler::$server . $this->url . $language, "r");

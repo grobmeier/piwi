@@ -5,7 +5,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resour
 	<content position="article">
 		<header>Galerie</header>
 		<section>
-		    Um eine Bildergalerie anzuzueigen, kann die integrierte Klasse 'SimpleGalleryGenerator' verwendet werden.
+		    Um eine Bildergalerie anzuzeigen, kann die integrierte Klasse 'SimpleGalleryGenerator' verwendet werden.
 		</section>
 		<separator />
 		<generator id="gallery" />
