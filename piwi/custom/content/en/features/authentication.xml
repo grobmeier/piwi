@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Authentication</header>
+		<header>User Authentication</header>
       <section>
          Piwi allows you to protect your pages against unauthorized access.<br />
          You could limit access for every page to certain user roles.<br />

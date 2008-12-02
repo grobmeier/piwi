@@ -3,7 +3,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
    <content position="article">
-      <header>Other Template</header>
+      <header>Various Templates</header>
       <section>
          This site uses an other template, which can be defined in the 'site.xml'.
          <br /><br />

@@ -6,23 +6,17 @@
 		<header>Datenbank Zugriff</header>
 		<section>
 			Diese Seite bezieht ihr Inhalte aus einer SQLite 2 bzw. SQLite 3
-			Datenbank und werden über einen selbst erstellten 'Generator'
+			Datenbank und werden über einen selbst erstellten <a href="generators.html">'Generator'</a>
 			dargestellt.
 			<br />
 			Konnektoren für MySQL und MSSQL Datenbanken stehen ebenfalls zur
 			Verfügung.
+			<br />
+			Wenn Sie Ihre Daten tabellarisch darstellen wollen, können Sie auch das <a href="datagrid.html">'DataGrid'</a> verwenden.
 		</section>
 		<separator />
 		<generator id="sqlite2" />
 		<separator />
-		<generator id="sqlite3" />
-		<separator />
-		<section>
-			<header>DataGridGenerator</header>
-			Um tabellarische Daten anzuzeigen, kann die integrierte Klasse 'DataGridGenerator' verwendet werden.
-		</section>
-		<br />
-		<br />
-		<generator id="datagrid" />
+		<generator id="sqlite3" />		
 	</content>
 </document>

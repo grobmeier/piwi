@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
 	<content position="article">
-		<header>Verschiedene Formate</header>
+		<header>Ausgabeformate</header>
 		<section>
 			PiwiXML kann in verschiedenen Formaten ausgegeben werden. Momentan
 			werden HTML, PDF, Word, Excel und XML unterstützt.

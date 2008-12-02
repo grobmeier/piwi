@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>SiteMap</header>
+		<section>
+		   Um die hierarchische Struktur der Website anzuzeigen, kann die integrierte Klasse 'SiteMapGenerator' verwendet werden.<br />
+		   Je nach Konfiguration können auch nur Teile der Gesamtstruktur angezeigt werden.<br />
+			Diese Seite zeigt die komplette Struktur dieser Website.
+		</section>
+		<separator />
+		<generator id="fullSiteMap" />
+	</content>
+</document>

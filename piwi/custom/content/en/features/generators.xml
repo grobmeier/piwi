@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
+	<content position="article">
+		<header>
+		Generators
+	</header>
+	Generators are PHP classes implementing the interface '<code>Generator</code>'.
+	They can execute arbitrary code (e.g. quering a database) and generate HTML or XML dynamically, which is embedded in the webpage.<br />
+		<generator id="generatorsSiteMap" />
+	</content>
+</document>
