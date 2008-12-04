@@ -74,6 +74,10 @@ It is also possible to handle multiple forms on one page.
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#processor">$processor</a></p><p class="description">The XSLTProcessor. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#validate">$validate</a></p><p class="description">True if validation has to be performed, otherwise false. </p></td>
 </tr>
 <tr>
@@ -126,6 +130,11 @@ Returns an array containing all results of the currently processed form.
 </p></td>
 </tr>
 <tr>
+<td class="type">private static  string</td>
+<td class="description"><p class="name"><a href="#getStepXML()">getStepXML</a>(DOMXPath domXPath)</p><p class="description">
+Processes the current step of the form and returns it as XML.</p></td>
+</tr>
+<tr>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
@@ -158,6 +167,13 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <code class="signature">private static  mixed <strong>$numberOfSteps</strong></code>
 <div class="details">
 <p>The total number of steps of the currently processed form. */</p></div>
+
+<hr>
+
+<h3 id="processor">processor</h3>
+<code class="signature">private static  mixed <strong>$processor</strong> = null</code>
+<div class="details">
+<p>The XSLTProcessor. */</p></div>
 
 <hr>
 
@@ -279,6 +295,20 @@ These values are used in StepProcessors to display the results.
 The array also contains the current step and the total number of steps in the form.</p><dl>
 <dt>Returns:</dt>
 <dd>Array containing all results of the currently processed form.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getStepXML()">getStepXML</h3>
+<code class="signature">private static  string <strong>getStepXML</strong>(DOMXPath domXPath)</code>
+<div class="details">
+<p>
+Processes the current step of the form and returns it as XML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domXPath - The form where the step should be retrieved from.</dd>
+<dt>Returns:</dt>
+<dd>The current Step as XML.</dd>
 </dl>
 </div>
 

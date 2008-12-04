@@ -24,6 +24,9 @@ class FormProcessor {
 	/** Array of the names of all fields in the current form that should be rejected from hidden fields. */
 	private static $ignoredFields;
 	
+	/** The XSLTProcessor. */
+	private static $processor = null;
+	
 	/**
 	 * Loads the form from the given file and generates the the content as PiwiXML.
 	 * @param string $id The id of the form.
@@ -57,31 +60,17 @@ class FormProcessor {
 				PiwiException :: FORMS_ERROR);
 		}
 		
-		$stepXML = '';
-		
-		// Configure the transformer
-		$processor = new XSLTProcessor;
-		$processor->registerPHPFunctions();
-		$processor->importStyleSheet(DOMDocument::load("resources/xslt/FormTransformation.xsl"));		
-		
 		// Validate formdata of last step
 		if (self::$currentStep > 0) {
-			$lastStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
-			$template = DOMDocument::loadXML($lastStepXML->ownerDocument->saveXML($lastStepXML));
-			
-			$stepXML = $processor->transformToXML($template);
+			$stepXML = self::getStepXML($domXPath);
 		}
 		
 		// If validation was successful show next step
 		if (!self::$validationFailed) {
 			self::$currentStep++;
 			self::$validate = false;
-			
-			$stepXML = '';
-			$currentStepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
-			$template = DOMDocument::loadXML($currentStepXML->ownerDocument->saveXML($currentStepXML));
-			
-			$stepXML = $processor->transformToXML($template);
+
+			$stepXML = self::getStepXML($domXPath);
 		}
 
 		// Build xml
@@ -104,13 +93,29 @@ class FormProcessor {
 		}
 		
 		// add step
-		$piwixml .= $stepXML;
-		
-		$piwixml .= '</form>';
+		$piwixml .= $stepXML . '</form>';
 
 		$doc = new DOMDocument;
 		$doc->loadXml($piwixml);
 		return $doc;
+	}
+	
+	/**
+	 * Processes the current step of the form and returns it as XML.
+	 * @param DOMXPath $domXPath The form where the step should be retrieved from.
+	 * @return string The current Step as XML.
+	 */
+	private static function getStepXML(DOMXPath $domXPath) {
+		if (self::$processor == null) {
+			self::$processor = new XSLTProcessor;
+			self::$processor->registerPHPFunctions();
+			self::$processor->importStyleSheet(DOMDocument::load("resources/xslt/FormTransformation.xsl"));
+		}
+		
+		$stepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
+		$template = DOMDocument::loadXML($stepXML->ownerDocument->saveXML($stepXML));
+			
+		return self::$processor->transformToXML($template);
 	}
 	
 	/**
