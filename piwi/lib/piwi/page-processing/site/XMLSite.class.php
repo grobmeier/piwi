@@ -126,7 +126,7 @@ class XMLSite extends Site {
 		// Determinate all nodes that lead to the current page
     	$openpath = array();
     	
-        $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . SessionManager::getUserLanguage() . "']//site:page[@id='". Request::getPageId() ."']");
+        $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']//site:page[@id='". Request::getPageId() ."']");
 		
         $index = 0;
         foreach ($domNodeList as $element) {
@@ -137,7 +137,7 @@ class XMLSite extends Site {
         }
         
         // Build array containing all sites and subsites
-        $xpath = "/site:site/site:language[@region='" . SessionManager::getUserLanguage() . "']/site:page";
+        $xpath = "/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']/site:page";
         $nodelist = $this->domXPath->query($xpath);
         $result = $this->generateSubnavigation(array(), $nodelist, $xpath, $openpath);
 
@@ -196,7 +196,7 @@ class XMLSite extends Site {
     	}
     	
     	// Lookup pageId
-        $result = $this->domXPath->query("/site:site/site:language[@region='" . SessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
+        $result = $this->domXPath->query("/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
 
         if($result->length == 1) {
         	return $result->item(0);

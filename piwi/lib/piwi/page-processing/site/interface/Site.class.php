@@ -40,10 +40,10 @@ abstract class Site {
 			$roleProvider = ConfigurationManager :: getInstance()->getRoleProvider();
 
 			// Check if user is already logged in
-			if (SessionManager :: isUserAuthenticated(true)) {
+			if (UserSessionManager :: isUserAuthenticated(true)) {
 
 				// Check whether user has required role
-				if (!in_array('*', $allowedRoles) && !$roleProvider->isUserInRole(SessionManager :: getUserName(), $allowedRoles)) {
+				if (!in_array('*', $allowedRoles) && !$roleProvider->isUserInRole(UserSessionManager :: getUserName(), $allowedRoles)) {
 					throw new PiwiException("Permission denied.", PiwiException :: PERMISSION_DENIED);
 				}
 			} else {

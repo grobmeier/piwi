@@ -23,7 +23,9 @@
   $this->addFile('test/web/FormsTest.php');  
   $this->addFile('test/web/AuthenticationTest.php');
   $this->addFile('test/web/DatabaseTest.php');
+  $this->addFile('test/web/DataGridTest.php');
   $this->addFile('test/web/FormsTest.php');
   $this->addFile('test/web/LocalizationTest.php');
   $this->addFile('test/web/ErrorPageTest.php');
+  
 ?>

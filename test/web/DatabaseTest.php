@@ -16,13 +16,6 @@ class DatabaseTest extends PiwiWebTestCase {
 		$this->assertWantedText('Second SQLite3 Content', 'Database access failed.');
 		$this->assertWantedText('This text comes from a SQLite3 database.', 'Database access failed.');
 		$this->assertWantedText('This text comes from a SQLite3 database, too.', 'Database access failed.');
-		
-		for ($i = 1; $i <= 10; $i++) {
-			$this->assertWantedText('Name' . $i, 'Database access failed.');
-			$this->assertWantedText('Adress' . $i, 'Database access failed.');
-			$this->assertWantedText('City' . $i, 'Database access failed.');
-			$this->assertWantedText('Phone' . $i, 'Database access failed.');
-		}
 	}
 }
 ?>

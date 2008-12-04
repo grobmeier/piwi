@@ -9,7 +9,7 @@
 	<property name="crawldir" value="crawled/" />	
 	<property name="testdir" value="test/" />
 
-	<property name="server" value="http://127.0.0.1:80/" />
+	<property name="server" value="http://127.0.0.1:81/" />
 	<property name="crawlerLanguages" value="default, de" />
 	<property name="crawlerFormats" value="pdf,xml,doc,xls" />
 	

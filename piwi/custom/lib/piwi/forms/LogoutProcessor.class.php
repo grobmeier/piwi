@@ -13,7 +13,7 @@ class LogoutProcessor  implements StepProcessor{
 		// Logout the user
 		$result = '';
 		if ($values["CURRENT_STEPS"] == $values["NUMBER_OF_STEPS"]) {
-			SessionManager::logoutUser();
+			UserSessionManager::logoutUser();
 			$result .= '<label key="LOGOUT_SUCCESS" />';	
 		}
 		return '<div>' . $result . '</div>';

@@ -18,7 +18,7 @@ class ResourcesManager {
 		}
 		
 		foreach (self::$resources as $domXPath) {			
-       		$result = $domXPath->query("/labels:labels/labels:language[@region='" . SessionManager::getUserLanguage() . "']/labels:label[@key='" . $key . "']");
+       		$result = $domXPath->query("/labels:labels/labels:language[@region='" . UserSessionManager::getUserLanguage() . "']/labels:label[@key='" . $key . "']");
 
        		if($result->length >= 1) {
     			return $result->item(0)->getAttribute('value');

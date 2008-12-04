@@ -4,7 +4,7 @@ require_once ('test/PiwiWebTestCase.php');
 class LocalizationTest extends PiwiWebTestCase {
 	
 	function testHeadersTranslatedInDataGrid() {
-		$this->get(self :: $HOST . 'database.html');
+		$this->get(self :: $HOST . 'datagrid.html');
 		
 		// check if headers are translated
 		$this->assertWantedText('Name', 'Header invalid.');

@@ -90,8 +90,7 @@ function __autoload($class) {
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
  */ 
-// Start Session
-SessionManager::startSession();
+session_start();
 
 // Initialize the singleton factories for managing Generators and Connectors
 GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');

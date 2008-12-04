@@ -35,7 +35,7 @@ class Cache {
 		}
 		
 		// Hash the parameters, to avoid long filenames
-		$filePath = 'cache/' . Request::getPageId() . '_' . SessionManager::getUserLanguage() . '_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
+		$filePath = 'cache/' . Request::getPageId() . '_' . UserSessionManager::getUserLanguage() . '_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
 
 		// Set filePath in instance so a file can later be created with this filename		
 		$this->filePath = $GLOBALS['PIWI_ROOT'] . $filePath;

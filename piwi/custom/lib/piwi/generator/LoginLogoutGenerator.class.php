@@ -19,7 +19,7 @@ class LoginLogoutGenerator implements Generator {
 		// generate xml
 		$piwixml = '<piwiform id="loginform" />';
 		
-		if(SessionManager::isUserAuthenticated()) {
+		if(UserSessionManager::isUserAuthenticated()) {
 			$piwixml = '<piwiform id="logoutform" />';
 		}
 		
