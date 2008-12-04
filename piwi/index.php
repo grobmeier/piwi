@@ -26,7 +26,7 @@
 
 error_reporting(0); // hidde all errors
 //error_reporting(E_ERROR); // show only errors
-error_reporting(E_ALL); // show all errors
+//error_reporting(E_ALL); // show all errors
 
 /**
  * -------------------------------------------------------------------------

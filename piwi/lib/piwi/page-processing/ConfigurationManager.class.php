@@ -88,13 +88,13 @@ class ConfigurationManager {
 						$serializer = null;
 						// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 						if (error_reporting() > E_ERROR) {							
-							echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
+							echo "The Class with name '" . $serializerClass . "' is not an instance of Serializer.";
 						}
 					}
 				} catch (ReflectionException $exception) {
 					// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 					if (error_reporting() > E_ERROR) {
-						echo("Serializer not found: " . $serializerClass);
+						echo 'Serializer not found: ' . $serializerClass;
 					}
 				}
 	    	}
@@ -102,7 +102,7 @@ class ConfigurationManager {
         } else if ($result->length > 1) {
         	// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 			if (error_reporting() > E_ERROR) {
-				echo("Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').");
+				echo "Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').";
 			}
         } else {
             return null;
@@ -129,7 +129,7 @@ class ConfigurationManager {
 			    
 			    if (!$navigationGenerator instanceof NavigationGenerator) {
 		    		if (error_reporting() > E_ERROR) {
-						echo("The Class with name '" . $generator->getAttribute('class') . "' is not an instance of NavigationGenerator.");
+						echo "The Class with name '" . $generator->getAttribute('class') . "' is not an instance of NavigationGenerator.";
 					}
 					continue;
 			    }
@@ -148,7 +148,7 @@ class ConfigurationManager {
 			} catch( ReflectionException $exception ) {
 				// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 				if (error_reporting() > E_ERROR) {
-					echo("Custom Navigation Generator not found: " . $generator->getAttribute('class'));
+					echo "Custom Navigation Generator not found: " . $generator->getAttribute('class');
 				}
 			}			
 		}

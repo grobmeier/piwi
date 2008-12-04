@@ -75,7 +75,7 @@ class Crawler {
 		while (sizeof($this->pagesToBeCrawled) > 0) {
 			$page = array_pop($this->pagesToBeCrawled);
 			
-			echo ($language == '' ? "default" : $language) . ": " . $page->getURL() . "\n";			
+			echo $language == '' ? "default" : $language . ": " . $page->getURL() . "\n";			
 			
 			foreach ($page->getInternalLinks() as $url) {
 				// Only add pages that are not crawled yet
@@ -93,7 +93,7 @@ class Crawler {
 			echo " " . strtoupper($format) . ":\n";
 			foreach ($this->pagesAlreadyCrawled as $page) {
        			$page->setFormat($format);
-       			echo ($language == '' ? "default" : $language) . ": " . $page->getURL() . "\n";	
+       			echo $language == '' ? "default" : $language . ": " . $page->getURL() . "\n";	
        			$page->save();
 			}
 		}

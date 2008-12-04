@@ -128,10 +128,9 @@ class XMLSite extends Site {
     	
         $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']//site:page[@id='". Request::getPageId() ."']");
 		
-        $index = 0;
         foreach ($domNodeList as $element) {
             while($element->nodeName != "language") {
-                    $openpath[$index++] = $element->getAttribute("id");
+                    $openpath[] = $element->getAttribute("id");
                     $element = $element->parentNode;
             }
         }
@@ -154,7 +153,6 @@ class XMLSite extends Site {
      * @return array Array containing the submenus of the given nodes.
      */
     private function generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, SiteElement $parentSiteElement = null) {
-        $index = 0;
         foreach ($nodelist as $element) {
         	$id = $element->getAttribute("id");
         	
@@ -170,14 +168,14 @@ class XMLSite extends Site {
            	if ($parentSiteElement != null) {
            		$siteElement->setParent($parentSiteElement);
            	}
-			
-			$result[$index] = $siteElement;
-
+           	
 	        if($element->hasChildNodes()) {
             	$children = $this->domXPath->query($xpath."[@id='".$id."']/*");
-               	$result[$index]->setChildren($this->generateSubnavigation(array(), $children, $xpath . '/site:page', $openpath, $siteElement));
+               	$siteElement->setChildren($this->generateSubnavigation(array(), $children, $xpath . '/site:page', $openpath, $siteElement));
             }
-    		$index++;
+            			
+			$result[] = $siteElement;
+            
       	}
       	return $result;
     } 

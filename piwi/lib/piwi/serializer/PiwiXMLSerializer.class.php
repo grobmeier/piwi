@@ -9,7 +9,7 @@ class PiwiXMLSerializer implements Serializer {
 	 */
 	public function serialize(DOMDocument $domDocument) {
 		header("Content-type: application/xml");		
-		echo($domDocument->saveXML());		
+		echo $domDocument->saveXML();		
 	}
 }
 ?>

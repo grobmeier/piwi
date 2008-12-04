@@ -26,9 +26,8 @@ class SiteMapHelper {
 			if ($element != null && $includeParent) {
 				$siteElements[0] = $element;
 			} else if ($element != null && $element->getChildren() != null) {
-					$index = 0;
 					foreach ($element->getChildren() as $element) {
-						$siteElements[$index++] = $element;
+						$siteElements[] = $element;
 					}
 			}
 		} else {
