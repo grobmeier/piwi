@@ -54,7 +54,7 @@ DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
 $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
  
 /** ClassLoader which makes other includes dispensable. */
-require ("lib/piwi/classloader/ClassLoader.class.php");
+require_once ("lib/piwi/classloader/ClassLoader.class.php");
 
 /** Instance of the Classloader. */
 $classloader = null;

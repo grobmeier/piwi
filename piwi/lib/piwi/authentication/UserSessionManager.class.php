@@ -63,16 +63,18 @@ class UserSessionManager {
 				setcookie("password", gzdeflate($password), time() + $sessionTime);
 			}
 
-			// Redirect to the desired page
-			if (isset ($_SESSION['ReturnUrl'])) {
-				header('Location: ' . $_SESSION['ReturnUrl']);
-			}
-
 			// Update session
 			$_SESSION['authenticated'] = true;
 			$_SESSION['username'] = $username;
-			unset ($_SESSION['ReturnUrl']);
-
+			
+			// Redirect to the desired page
+			if (isset ($_SESSION['ReturnUrl'])) {				
+				$returnUrl = $_SESSION['ReturnUrl'];
+				unset ($_SESSION['ReturnUrl']);
+				
+				header('Location: ' . $returnUrl);
+				die; // after a redirect processing should be stopped
+			}
 			return true;
 		} else {
 			return false;
