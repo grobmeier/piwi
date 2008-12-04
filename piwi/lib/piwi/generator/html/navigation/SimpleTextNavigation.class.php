@@ -11,25 +11,25 @@ class SimpleTextNavigation implements NavigationGenerator {
 	
 	/**
 	 * Builds the navigation.
-	 * @param array $navigationElements The NavigationElements of the website.
+	 * @param array $siteElements The SiteElements of the website.
 	 * @return string The navigation as HTML.
 	 */
-	public function generate(array $navigationElements) {
-		return $this->getNavigation($navigationElements);
+	public function generate(array $siteElements) {
+		return $this->getNavigation($siteElements);
 	}
 	
 	/**
      * Returns the recursivly built navigation.
-     * @param array $navigationElements The navigation which is an array of NavigationElements representing the website structure.
+     * @param array $siteElements The navigation which is an array of SiteElements representing the website structure.
      * @return string The recursivly built navigation.
      */
-    private function getNavigation($navigationElements) {
-    	if ($navigationElements == null) {
+    private function getNavigation($siteElements) {
+    	if ($siteElements == null) {
     		return '';
     	} else {
     		$result = '<ul>';
     		
-    		foreach ($navigationElements as $element) {
+    		foreach ($siteElements as $element) {
     			// If the page is selected set another css class to highlight the item
 				$cssClass = "";
 				if ($element->isOpen()) {

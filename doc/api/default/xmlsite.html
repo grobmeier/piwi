@@ -81,7 +81,7 @@ Constructor.</p></td>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  array</td>
-<td class="description"><p class="name"><a href="#generateSubnavigation()">generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, mixed parentNavigationElement)</p><p class="description">
+<td class="description"><p class="name"><a href="#generateSubnavigation()">generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</p><p class="description">
 Generates the submenus of the given nodes.</p></td>
 </tr>
 <tr>
@@ -107,7 +107,7 @@ Returns the path of the xml file containing the content of the requested page.</
 <tr>
 <td class="type">protected  array</td>
 <td class="description"><p class="name"><a href="#getFullSiteMap()">getFullSiteMap</a>()</p><p class="description">
-Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</p></td>
+Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p></td>
 </tr>
 <tr>
 <td class="type">protected  string</td>
@@ -162,15 +162,16 @@ Constructor.</p><dl>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="generateSubnavigation()">generateSubnavigation</h3>
-<code class="signature">private  array <strong>generateSubnavigation</strong>(array result, DOMNodeList nodelist, string xpath, array openpath, mixed parentNavigationElement)</code>
+<code class="signature">private  array <strong>generateSubnavigation</strong>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</code>
 <div class="details">
 <p>
 Generates the submenus of the given nodes.</p><dl>
 <dt>Parameters:</dt>
-<dd>result - Array of NavigationElements.</dd>
+<dd>result - Array of SiteElements.</dd>
 <dd>nodelist - List of nodes in the current layer.</dd>
 <dd>xpath - The xpathquerystring of the current layer.</dd>
 <dd>openpath - The ids nodes that lead to the current pageId.</dd>
+<dd>parentSiteElement - The parent SiteElement</dd>
 <dt>Returns:</dt>
 <dd>Array containing the submenus of the given nodes.</dd>
 </dl>
@@ -233,9 +234,9 @@ Returns the path of the xml file containing the content of the requested page.</
 <code class="signature">protected  array <strong>getFullSiteMap</strong>()</code>
 <div class="details">
 <p>
-Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</p><dl>
+Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p><dl>
 <dt>Returns:</dt>
-<dd>Array of NavigationElements representing the whole website structure.</dd>
+<dd>Array of SiteElements representing the whole website structure.</dd>
 </dl>
 </div>
 

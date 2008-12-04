@@ -1,6 +1,6 @@
 <?php
 /**
- * Creates a SiteMapPath which consists of the NavigationElements leading to the requested page.
+ * Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
  */
 class SiteMapPathNavigation implements NavigationGenerator {
 	/**
@@ -11,24 +11,32 @@ class SiteMapPathNavigation implements NavigationGenerator {
 	
 	/**
 	 * Builds the navigation.
-	 * @param array $navigationElements The NavigationElements of the website.
+	 * @param array $siteElements The SiteElements of the website.
 	 * @return string The navigation as HTML.
 	 */
-	public function generate(array $navigationElements) {
+	public function generate(array $siteElements) {
 		$siteMapPathHTML = "";
-		if (sizeof($navigationElements) > 0){
-			$navigationElement = $navigationElements[0];
+		if (sizeof($siteElements) > 0){
+			$siteElement = $siteElements[0];
 			
 			do {
 				if ($siteMapPathHTML != "") {
 					$siteMapPathHTML = " / " . $siteMapPathHTML;
 				}
-				$siteMapPathHTML = '<a href="' . $navigationElement-> getId() . '.html">' . $navigationElement->getLabel() . '</a>' . $siteMapPathHTML;
-				$navigationElement = $navigationElement->getParent();
-			} while ($navigationElement != null);
+				$siteMapPathHTML = '<a href="' . $siteElement-> getId() . '.html">' . $siteElement->getLabel() . '</a>' . $siteMapPathHTML;
+				$siteElement = $siteElement->getParent();
+			} while ($siteElement != null);
 		}
 		
 		return $siteMapPathHTML;
 	}
+	
+    /**
+	 * Used to pass parameters to the Generator.
+	 * @param string $key The name of the parameter.
+	 * @param string $value The value of the parameter.
+	 */
+    public function setProperty($key, $value) {    	
+    }
 }
 ?>

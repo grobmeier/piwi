@@ -64,12 +64,12 @@ Constructor.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#generate()">generate</a>(array navigationElements)</p><p class="description">
+<td class="description"><p class="name"><a href="#generate()">generate</a>(array siteElements)</p><p class="description">
 Builds the navigation.</p></td>
 </tr>
 <tr>
 <td class="type">private  string</td>
-<td class="description"><p class="name"><a href="#getNavigation()">getNavigation</a>(array navigationElements)</p><p class="description">
+<td class="description"><p class="name"><a href="#getNavigation()">getNavigation</a>(array siteElements)</p><p class="description">
 Returns the recursivly built navigation.</p></td>
 </tr>
 <tr>
@@ -91,12 +91,12 @@ Constructor.
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="generate()">generate</h3>
-<code class="signature">public  string <strong>generate</strong>(array navigationElements)</code>
+<code class="signature">public  string <strong>generate</strong>(array siteElements)</code>
 <div class="details">
 <p>
 Builds the navigation.</p><dl>
 <dt>Parameters:</dt>
-<dd>navigationElements - The NavigationElements of the website.</dd>
+<dd>siteElements - The SiteElements of the website.</dd>
 <dt>Returns:</dt>
 <dd>The navigation as HTML.</dd>
 </dl>
@@ -105,12 +105,12 @@ Builds the navigation.</p><dl>
 <hr>
 
 <h3 id="getNavigation()">getNavigation</h3>
-<code class="signature">private  string <strong>getNavigation</strong>(array navigationElements)</code>
+<code class="signature">private  string <strong>getNavigation</strong>(array siteElements)</code>
 <div class="details">
 <p>
 Returns the recursivly built navigation.</p><dl>
 <dt>Parameters:</dt>
-<dd>navigationElements - The navigation which is an array of NavigationElements representing the website structure.</dd>
+<dd>siteElements - The navigation which is an array of SiteElements representing the website structure.</dd>
 <dt>Returns:</dt>
 <dd>The recursivly built navigation.</dd>
 </dl>

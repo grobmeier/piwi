@@ -127,7 +127,7 @@ Returns the total number of pages.</dd>
 Creates the folder with the given permission.</dd>
 <dt><a href="default/site.html#cutOffSiteMap()">cutOffSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
-Removes all subitems in the given NavigationElement that exceed the given depth.</dd>
+Removes all subitems in the given SitenElement that exceed the given depth.</dd>
 </dl>
 <h1 id="letterD">D</h1>
 <dl>
@@ -222,9 +222,9 @@ Returns the possible roles a user needs to access the currently requested page.
 <dt><a href="default/xmlsite.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
 Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</dd>
-<dt><a href="default/navigationelement.html#getChildren()">getChildren()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#getChildren()">getChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Returns the children of the NavigationElement.</dd>
+Returns the children of the SiteElement.</dd>
 <dt><a href="default/classloadercache.html#getClassById()">getClassById()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Lookup a class by the given id in the cache. </dd>
@@ -246,7 +246,7 @@ Returns the DOMNode representing the current page.</dd>
 Returns the path of the a custom labels file or null if none is specified.</dd>
 <dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
-Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
+Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 </dd>
 <dt><a href="default/configurationmanager.html#getCustomXSLTStylesheetPath()">getCustomXSLTStylesheetPath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
@@ -267,7 +267,7 @@ Returns the Form with the given id as DOMXPath.
 </dd>
 <dt><a href="default/xmlsite.html#getFullSiteMap()">getFullSiteMap()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
-Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</dd>
+Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</dd>
 <dt><a href="default/generatorfactory.html#getGeneratorById()">getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Returns the Generator with the given id.
@@ -279,7 +279,7 @@ Returns an array containing all Navigations.
 <dt><a href="default/xmlsite.html#getHTMLTemplatePath()">getHTMLTemplatePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
 Returns the template of the requested page or null if not specified.</dd>
-<dt><a href="default/navigationelement.html#getId()">getId()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#getId()">getId()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the id of the page.</dd>
 <dt><a href="default/album.html#getImages()">getImages()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
@@ -288,7 +288,7 @@ Returns the images in the album.</dd>
 <dt><a href="default/site.html#getInstance()">getInstance()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the singleton instance of the Site.</dd>
-<dt><a href="default/navigationelement.html#getLabel()">getLabel()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#getLabel()">getLabel()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the label of the page.</dd>
 <dt><a href="default/resourcesmanager.html#getLabelText()">getLabelText()</a> - Method in class <a href="default/resourcesmanager.html">default.ResourcesManager</a></dt>
@@ -319,9 +319,9 @@ Returns the id of the requested page.</dd>
 <dt><a href="default/request.html#getParameters()">getParameters()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Returns all parameters that are not PIWI internal contained in $_GET.</dd>
-<dt><a href="default/navigationelement.html#getParent()">getParent()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#getParent()">getParent()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Returns the parent NavigationElement.</dd>
+Returns the parent SiteElement.</dd>
 <dt><a href="default/folder.html#getPath()">getPath()</a> - Method in class <a href="default/folder.html">default.Folder</a></dt>
 <dd>
 Returns the path to the folder.</dd>
@@ -343,7 +343,7 @@ Returns the Serializer for the given format or null if none is found.</dd>
 Returns the given 'SiteMap' as xml.</dd>
 <dt><a href="default/site.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
-Returns the NavigationElement with the given in id or null if no item is found.</dd>
+Returns the SiteElement with the given in id or null if no item is found.</dd>
 <dt><a href="default/xmlsite.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
 Returns a list of supported languages.</dd>
@@ -389,22 +389,22 @@ in the filesystem.
 <dt><a href="default/configurationmanager.html#isAuthenticationEnabled()">isAuthenticationEnabled()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns true if authentication is enabled otherwise false.</dd>
-<dt><a href="default/navigationelement.html#isHiddenInNavigation()">isHiddenInNavigation()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#isHiddenInNavigation()">isHiddenInNavigation()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the Navigation.</dd>
-<dt><a href="default/navigationelement.html#isHiddenInSiteMap()">isHiddenInSiteMap()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#isHiddenInSiteMap()">isHiddenInSiteMap()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the SiteMap.</dd>
-<dt><a href="default/navigationelement.html#isOpen()">isOpen()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#isOpen()">isOpen()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the children are currently visible.</dd>
 <dt><a href="default/roleprovider.html#isPasswordValid()">isPasswordValid()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
 <dd>
 Checks whether the given user exists and validates its password.
 </dd>
-<dt><a href="default/navigationelement.html#isSelected()">isSelected()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#isSelected()">isSelected()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Indicates whether the NavigationElement is currently selected.</dd>
+Indicates whether the SiteElement is currently selected.</dd>
 <dt><a href="default/usersessionmanager.html#isUserAuthenticated()">isUserAuthenticated()</a> - Method in class <a href="default/usersessionmanager.html">default.UserSessionManager</a></dt>
 <dd>
 Returns true if the current user is authenticated.</dd>
@@ -460,10 +460,6 @@ Establishes connections to MySQL databases.
 </dl>
 <h1 id="letterN">N</h1>
 <dl>
-<dt><a href="default/navigationelement.html">NavigationElement()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
-<dd>
-Creates a simple navigation.
-</dd>
 <dt><a href="default/navigationgenerator.html">NavigationGenerator()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Interface that navigation generators have to implement.
@@ -532,7 +528,7 @@ Transform the given xml to the output format.</dd>
 <dd>
 Interface that serializers have to implement.
 </dd>
-<dt><a href="default/navigationelement.html#setChildren()">setChildren()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#setChildren()">setChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>Sets the children</dd>
 <dt><a href="default/site.html#setContent()">setContent()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
@@ -540,29 +536,30 @@ Sets the content of the page.</dd>
 <dt><a href="default/album.html#setCreatedAt()">setCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Sets the date when the album has been created.</dd>
-<dt><a href="default/navigationelement.html#setHiddenInNavigation()">setHiddenInNavigation()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#setHiddenInNavigation()">setHiddenInNavigation()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the Navigation.</dd>
-<dt><a href="default/navigationelement.html#setHiddenInSiteMap()">setHiddenInSiteMap()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#setHiddenInSiteMap()">setHiddenInSiteMap()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the SiteMap.</dd>
 <dt><a href="default/site.html#setInstance()">setInstance()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Sets the singleton instance of the Site.</dd>
-<dt><a href="default/navigationelement.html#setOpen()">setOpen()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#setOpen()">setOpen()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Sets the NavigationElement to open.</dd>
+Sets the SiteElement to open.</dd>
 <dt><a href="default/request.html#setPageId()">setPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Sets the id of the requested page.</dd>
-<dt><a href="default/navigationelement.html#setParent()">setParent()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+<dt><a href="default/siteelement.html#setParent()">setParent()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Sets the parent NavigationElement.</dd>
-<dt><a href="default/sitemapgenerator.html#setProperty()">setProperty()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
-<dd>Used to pass parameters to the Generator.</dd>
-<dt><a href="default/navigationelement.html#setSelected()">setSelected()</a> - Method in class <a href="default/navigationelement.html">default.NavigationElement</a></dt>
+Sets the parent SiteElement.</dd>
+<dt><a href="default/sitemappathnavigation.html#setProperty()">setProperty()</a> - Method in class <a href="default/sitemappathnavigation.html">default.SiteMapPathNavigation</a></dt>
 <dd>
-Sets the NavigationElement to selected.</dd>
+Used to pass parameters to the Generator.</dd>
+<dt><a href="default/siteelement.html#setSelected()">setSelected()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
+<dd>
+Sets the SiteElement to selected.</dd>
 <dt><a href="default/simplegallerygenerator.html">SimpleGalleryGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates a picture gallery.
@@ -575,6 +572,10 @@ Creates a simple navigation.
 <dd>
 Renders the requested page and creates the navigation.
 </dd>
+<dt><a href="default/siteelement.html">SiteElement()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Represents a page item.
+</dd>
 <dt><a href="default/sitegenerator.html">SiteGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates a complete page.
@@ -585,7 +586,7 @@ Generates a sitemap of the website.
 </dd>
 <dt><a href="default/sitemappathnavigation.html">SiteMapPathNavigation()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
-Creates a SiteMapPath which consists of the NavigationElements leading to the requested page.
+Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
 </dd>
 <dt><a href="default/sqlite2connector.html">SQLite2Connector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>

@@ -110,7 +110,7 @@ class XMLSiteTest extends PiwiTestCase {
 	
 	private function validateSiteMap($siteMap) {
 		foreach ($siteMap as $siteMapItem) {
-       		$this->assertIsA($siteMapItem, NavigationElement, 'Type does not match.');
+          $this->assertIsA($siteMapItem, SiteElement, 'Type does not match.');
 		}
 	}
 }

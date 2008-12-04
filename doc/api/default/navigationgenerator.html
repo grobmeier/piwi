@@ -55,21 +55,39 @@ Interface that navigation generators have to implement.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#generate()">generate</a>(array navigationElements)</p><p class="description">
+<td class="description"><p class="name"><a href="#generate()">generate</a>(array siteElements)</p><p class="description">
 Builds the navigation.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setProperty()">setProperty</a>(string key, string value)</p><p class="description">
+Used to pass parameters to the Generator.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="generate()">generate</h3>
-<code class="signature">public  string <strong>generate</strong>(array navigationElements)</code>
+<code class="signature">public  string <strong>generate</strong>(array siteElements)</code>
 <div class="details">
 <p>
 Builds the navigation.</p><dl>
 <dt>Parameters:</dt>
-<dd>navigationElements - The NavigationElements of the website.</dd>
+<dd>siteElements - The SiteElements of the website.</dd>
 <dt>Returns:</dt>
 <dd>The navigation as HTML.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setProperty()">setProperty</h3>
+<code class="signature">public  void <strong>setProperty</strong>(string key, string value)</code>
+<div class="details">
+<p>
+Used to pass parameters to the Generator.</p><dl>
+<dt>Parameters:</dt>
+<dd>key - The name of the parameter.</dd>
+<dd>value - The value of the parameter.</dd>
 </dl>
 </div>
 

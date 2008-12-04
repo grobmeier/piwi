@@ -1,8 +1,8 @@
 <?php
 /**
- * Creates a simple navigation.
+ * Represents a page item.
  */
-class NavigationElement {
+class SiteElement {
 	/** The id of the page. */
 	private $id = null;
 	
@@ -21,13 +21,13 @@ class NavigationElement {
 	/** The children. */
 	private $children = null;
 	
-	/** The parent NavigationElement. */
+	/** The parent SiteElement. */
 	private $parent = null;
 	
 	/** Indicates whether the children are currently visible. */
 	private $open = false;
 	
-	/** Indicates whether the NavigationElement is currently selected. */
+	/** Indicates whether the SiteElement is currently selected. */
 	private $selected = false;
 	
 	/**
@@ -99,7 +99,7 @@ class NavigationElement {
 	}
 	
 	/**
-	 * Returns the children of the NavigationElement.
+	 * Returns the children of the SiteElement.
 	 * @return array The children.
 	 */
 	public function getChildren(){
@@ -109,7 +109,7 @@ class NavigationElement {
 	/** Sets the children
 	 * @param array $children The children to add.
 	 */
-	public function setChildren($children) {
+	public function setChildren(array $children = null) {
 		$this->children = $children;
 	}
 	
@@ -122,7 +122,7 @@ class NavigationElement {
 	}
 	
 	/**
-	 * Sets the NavigationElement to open.
+	 * Sets the SiteElement to open.
 	 * @param boolean $open Indicates whether the children are currently visible.
 	 */
 	public function setOpen($open) {
@@ -130,7 +130,7 @@ class NavigationElement {
 	}
 	
 	/**
-	 * Indicates whether the NavigationElement is currently selected.
+	 * Indicates whether the SiteElement is currently selected.
 	 * @return boolean True if selected.
 	 */
 	public function isSelected() {
@@ -138,26 +138,26 @@ class NavigationElement {
 	}
 	
 	/**
-	 * Sets the NavigationElement to selected.
-	 * @param boolean $selected Indicates whether the NavigationElement is currently selected.
+	 * Sets the SiteElement to selected.
+	 * @param boolean $selected Indicates whether the SiteElement is currently selected.
 	 */
 	public function setSelected($selected) {
 		return $this->selected = $selected;
 	}
 	
 	/**
-	 * Returns the parent NavigationElement.
-	 * @return NavigationElement The parent NavigationElement.
+	 * Returns the parent SiteElement.
+	 * @return SiteElement The parent SiteElement.
 	 */
 	public function getParent() {
 		return $this->parent;
 	}
 	
 	/**
-	 * Sets the parent NavigationElement.
-	 * @param NavigationElement $selected the parent NavigationElement.
+	 * Sets the parent SiteElement.
+	 * @param SiteElement $selected the parent SiteElement.
 	 */
-	public function setParent(NavigationElement $parent) {
+	public function setParent(SiteElement $parent) {
 		return $this->parent = $parent;
 	}
 }

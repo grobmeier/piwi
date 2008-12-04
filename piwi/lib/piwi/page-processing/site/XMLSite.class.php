@@ -115,8 +115,8 @@ class XMLSite extends Site {
 	 * -------------------------------------------------------------------------
 	 */  
     /**
-     * Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.
-     * @return array Array of NavigationElements representing the whole website structure.
+     * Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.
+     * @return array Array of SiteElements representing the whole website structure.
      */
     protected function getFullSiteMap() {
     	if ($this->domXPath == null) {
@@ -146,35 +146,36 @@ class XMLSite extends Site {
     
     /**
      * Generates the submenus of the given nodes.
-     * @param array $result Array of NavigationElements.
+     * @param array $result Array of SiteElements.
      * @param DOMNodeList $nodelist List of nodes in the current layer.
      * @param string $xpath The xpathquerystring of the current layer.
      * @param array $openpath The ids nodes that lead to the current pageId.
+     * @param SiteElement $parentSiteElement The parent SiteElement
      * @return array Array containing the submenus of the given nodes.
      */
-    private function generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, NavigationElement $parentNavigationElement = null) {
+    private function generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, SiteElement $parentSiteElement = null) {
         $index = 0;
         foreach ($nodelist as $element) {
         	$id = $element->getAttribute("id");
         	
-        	$navigationElement = new NavigationElement($id, $element->getAttribute("label"), $element->getAttribute("href"));
-           	$navigationElement->setSelected($id == Request::getPageId());
-           	$navigationElement->setOpen(in_array($id, $openpath));
+        	$siteElement = new SiteElement($id, $element->getAttribute("label"), $element->getAttribute("href"));
+           	$siteElement->setSelected($id == Request::getPageId());
+           	$siteElement->setOpen(in_array($id, $openpath));
            	if ($element->getAttribute("hideInNavigation")) {
-           		$navigationElement->setHiddenInNavigation(true);
+           		$siteElement->setHiddenInNavigation(true);
            	}
            	if ($element->getAttribute("hideInSiteMap")) {
-           		$navigationElement->setHiddenInSiteMap(true);
+           		$siteElement->setHiddenInSiteMap(true);
            	}
-           	if ($parentNavigationElement != null) {
-           		$navigationElement->setParent($parentNavigationElement);
+           	if ($parentSiteElement != null) {
+           		$siteElement->setParent($parentSiteElement);
            	}
 			
-			$result[$index] = $navigationElement;
+			$result[$index] = $siteElement;
 
 	        if($element->hasChildNodes()) {
             	$children = $this->domXPath->query($xpath."[@id='".$id."']/*");
-               	$result[$index]->setChildren($this->generateSubnavigation(array(), $children, $xpath . '/site:page', $openpath, $navigationElement));
+               	$result[$index]->setChildren($this->generateSubnavigation(array(), $children, $xpath . '/site:page', $openpath, $siteElement));
             }
     		$index++;
       	}

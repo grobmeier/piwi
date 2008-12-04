@@ -3,7 +3,7 @@
  * Generates a sitemap of the website.
  */
 final class SiteMapGenerator implements SectionGenerator {
-	/** Shows only the NavigationElement with this id and its subitems. Set to 'null' if all NavigationElements should be shown. */
+	/** Shows only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be shown. */
 	private $pageId = null;
 	
 	/** Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items. */
@@ -56,7 +56,7 @@ final class SiteMapGenerator implements SectionGenerator {
     
     /**
      * Returns the given 'SiteMap' as xml.
-     * @param array $siteMap The 'SiteMap' which is an array of NavigationElements representing the website structure.
+     * @param array $siteMap The 'SiteMap' which is an array of SiteElements representing the website structure.
      * @return string The given 'SiteMap' as xml.
      */
     private function getSiteMapAsXml($siteMap) {

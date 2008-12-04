@@ -87,8 +87,8 @@ Constructor.</p></td>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#cutOffSiteMap()">cutOffSiteMap</a>(integer currentDepth, integer depth, <a href="../default/navigationelement.html">NavigationElement</a> navigationElement)</p><p class="description">
-Removes all subitems in the given NavigationElement that exceed the given depth.</p></td>
+<td class="description"><p class="name"><a href="#cutOffSiteMap()">cutOffSiteMap</a>(integer currentDepth, integer depth, <a href="../default/siteelement.html">SiteElement</a> siteElement)</p><p class="description">
+Removes all subitems in the given SitenElement that exceed the given depth.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -110,7 +110,7 @@ Returns the page specific cachetime (the time that may pass until the content of
 <tr>
 <td class="type"> The</td>
 <td class="description"><p class="name"><a href="#getCustomSiteMap()">getCustomSiteMap</a>(string id, integer depth, boolean includeParent)</p><p class="description">
-Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
+Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 </p></td>
 </tr>
 <tr>
@@ -121,7 +121,7 @@ Returns the path of the xml file containing the content of the requested page.</
 <tr>
 <td class="type">protected abstract  array</td>
 <td class="description"><p class="name"><a href="#getFullSiteMap()">getFullSiteMap</a>()</p><p class="description">
-Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</p></td>
+Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p></td>
 </tr>
 <tr>
 <td class="type">protected abstract  string</td>
@@ -134,9 +134,9 @@ Returns the template of the requested page or null if not specified.</p></td>
 Returns the singleton instance of the Site.</p></td>
 </tr>
 <tr>
-<td class="type">private  <a href="../default/navigationelement.html">NavigationElement</a></td>
-<td class="description"><p class="name"><a href="#getSiteMapItemsById()">getSiteMapItemsById</a>(array siteMap, string id, <a href="../default/navigationelement.html">NavigationElement</a> foundElement)</p><p class="description">
-Returns the NavigationElement with the given in id or null if no item is found.</p></td>
+<td class="type">private  <a href="../default/siteelement.html">SiteElement</a></td>
+<td class="description"><p class="name"><a href="#getSiteMapItemsById()">getSiteMapItemsById</a>(array siteMap, string id, <a href="../default/siteelement.html">SiteElement</a> foundElement)</p><p class="description">
+Returns the SiteElement with the given in id or null if no item is found.</p></td>
 </tr>
 <tr>
 <td class="type">abstract  array</td>
@@ -219,14 +219,14 @@ Constructor.</p><dl>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="cutOffSiteMap()">cutOffSiteMap</h3>
-<code class="signature">private  void <strong>cutOffSiteMap</strong>(integer currentDepth, integer depth, <a href="../default/navigationelement.html">NavigationElement</a> navigationElement)</code>
+<code class="signature">private  void <strong>cutOffSiteMap</strong>(integer currentDepth, integer depth, <a href="../default/siteelement.html">SiteElement</a> siteElement)</code>
 <div class="details">
 <p>
-Removes all subitems in the given NavigationElement that exceed the given depth.</p><dl>
+Removes all subitems in the given SitenElement that exceed the given depth.</p><dl>
 <dt>Parameters:</dt>
 <dd>currentDepth - The current depth.</dd>
 <dd>depth - description The desired depth.</dd>
-<dd>navigationElement - The NavigationElement whose children should be cut off.</dd>
+<dd>siteElement - The SiteElement whose children should be cut off.</dd>
 </dl>
 </div>
 
@@ -272,14 +272,14 @@ Returns the page specific cachetime (the time that may pass until the content of
 <code class="signature">public  The <strong>getCustomSiteMap</strong>(string id, integer depth, boolean includeParent)</code>
 <div class="details">
 <p>
-Returns the 'SiteMap' which is an array of NavigationElements representing the website structure.
+Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 It is possible to retrieve only certain parts of the 'SiteMap'.</p><dl>
 <dt>Parameters:</dt>
-<dd>id - Returns only the NavigationElement with this id and its subitems. Set to 'null' if all NavigationElements should be returned.</dd>
+<dd>id - Returns only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be returned.</dd>
 <dd>depth - Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items.</dd>
 <dd>includeParent - If false only the children of the parent will be returned. This can only be used if $id is not 'null'.</dd>
 <dt>Returns:</dt>
-<dd>'SiteMap' which is an array of NavigationElements representing the website structure.</dd>
+<dd>'SiteMap' which is an array of SiteElements representing the website structure.</dd>
 </dl>
 </div>
 
@@ -301,9 +301,9 @@ Returns the path of the xml file containing the content of the requested page.</
 <code class="signature">protected abstract  array <strong>getFullSiteMap</strong>()</code>
 <div class="details">
 <p>
-Returns the 'SiteMap' which is an array of NavigationElements representing the whole website structure.</p><dl>
+Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p><dl>
 <dt>Returns:</dt>
-<dd>Array of NavigationElements representing the whole website structure.</dd>
+<dd>Array of SiteElements representing the whole website structure.</dd>
 </dl>
 </div>
 
@@ -334,16 +334,16 @@ Returns the singleton instance of the Site.</p><dl>
 <hr>
 
 <h3 id="getSiteMapItemsById()">getSiteMapItemsById</h3>
-<code class="signature">private  <a href="../default/navigationelement.html">NavigationElement</a> <strong>getSiteMapItemsById</strong>(array siteMap, string id, <a href="../default/navigationelement.html">NavigationElement</a> foundElement)</code>
+<code class="signature">private  <a href="../default/siteelement.html">SiteElement</a> <strong>getSiteMapItemsById</strong>(array siteMap, string id, <a href="../default/siteelement.html">SiteElement</a> foundElement)</code>
 <div class="details">
 <p>
-Returns the NavigationElement with the given in id or null if no item is found.</p><dl>
+Returns the SiteElement with the given in id or null if no item is found.</p><dl>
 <dt>Parameters:</dt>
-<dd>siteMap - The array of NavigationElements to search in.</dd>
-<dd>id - The id of the NavigationElement.</dd>
-<dd>foundElement - The NavigationElement with the given in id or null if no item has been found yet.</dd>
+<dd>siteMap - The array of SiteElements to search in.</dd>
+<dd>id - The id of the SiteElement.</dd>
+<dd>foundElement - The SiteElement with the given in id or null if no item has been found yet.</dd>
 <dt>Returns:</dt>
-<dd>The NavigationElement with the given in id or null if no item is found.</dd>
+<dd>The SiteElement with the given in id or null if no item is found.</dd>
 </dl>
 </div>
 
