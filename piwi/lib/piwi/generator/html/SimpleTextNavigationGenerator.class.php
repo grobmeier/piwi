@@ -2,7 +2,7 @@
 /**
  * Creates a simple navigation.
  */
-class SimpleTextNavigation implements NavigationGenerator {
+class SimpleTextNavigationGenerator implements NavigationGenerator {
 	/**
 	 * Constructor.
 	 */

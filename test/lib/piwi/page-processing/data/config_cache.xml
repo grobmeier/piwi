@@ -13,8 +13,8 @@
       They will be instantiated with the given name, so you could easily embed them in your templates.
     -->
    <navigationGenerators>
-      <navigationGenerator name="HTML_NAVIGATION" class="SimpleTextNavigation" depth="1" includeParent="1" />
-      <navigationGenerator name="SITE_MAP_PATH" class="SiteMapPathNavigation" pageId="CURRENT_PAGE" depth="0" includeParent="1" />
+      <navigationGenerator name="HTML_NAVIGATION" class="SimpleTextNavigationGenerator" depth="1" includeParent="1" />
+      <navigationGenerator name="SITE_MAP_PATH" class="SiteMapPathNavigationGenerator" pageId="CURRENT_PAGE" depth="0" includeParent="1" />
       <navigationGenerator name="666_1" class="TestRoleProvider" />
       <navigationGenerator name="666_2" class="666" />
    </navigationGenerators>

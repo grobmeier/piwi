@@ -16,9 +16,7 @@ abstract class SiteGenerator implements Generator {
 	 * @return string The xml output as string.
 	 */
     public function generate() {
-		$piwixml = '<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/piwixml.xsd">';
+		$piwixml = '<document xmlns="http://piwi.googlecode.com/xsd/piwixml">';
 		$piwixml .= "<content position='article'>";
 		
 		$piwixml .= $this->generateSections();

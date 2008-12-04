@@ -54,16 +54,16 @@ Used to initiate and retrieve Connectors.
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#connectorFactoryInstance">$connectorFactoryInstance</a></p><p class="description">Singleton instance of the ConnectorFactory. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#connectors">$connectors</a></p><p class="description">Map of the connectors that have already been initialized. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#connectorsXMLPath">$connectorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the connectors that can be used. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the ConnectorFactory. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -102,13 +102,6 @@ Constructs an instance of the Connector with the given id.
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
-<h3 id="connectorFactoryInstance">connectorFactoryInstance</h3>
-<code class="signature">private static  mixed <strong>$connectorFactoryInstance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the ConnectorFactory. */</p></div>
-
-<hr>
-
 <h3 id="connectors">connectors</h3>
 <code class="signature">private  mixed <strong>$connectors</strong> = array ()</code>
 <div class="details">
@@ -120,6 +113,13 @@ Constructs an instance of the Connector with the given id.
 <code class="signature">private  mixed <strong>$connectorsXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the connectors that can be used. */</p></div>
+
+<hr>
+
+<h3 id="instance">instance</h3>
+<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
+<div class="details">
+<p>Singleton instance of the ConnectorFactory. */</p></div>
 
 <hr>
 

@@ -4,7 +4,7 @@
  */
 class ConnectorFactory {
 	/** Singleton instance of the ConnectorFactory. */
-	private static $connectorFactoryInstance = null;
+	private static $instance = null;
 
 	/** Map of the connectors that have already been initialized. */
 	private $connectors = array ();
@@ -29,7 +29,7 @@ class ConnectorFactory {
 	 * @param string $connectorsXMLPath Path of the file containing the xml-definition of the connectors that can be used.
 	 */
 	public static function initialize($connectorsXMLPath) {
-		self :: $connectorFactoryInstance = new ConnectorFactory($connectorsXMLPath);
+		self :: $instance = new ConnectorFactory($connectorsXMLPath);
 	}
 
 	/**
@@ -40,15 +40,15 @@ class ConnectorFactory {
 	 * @return Connector An instance of type Connector.
 	 */
 	public static function getConnectorById($connectorId) {
-		if (self :: $connectorFactoryInstance == null) {
+		if (self :: $instance == null) {
 			throw new PiwiException(
 				"Illegal State: Invoke static method 'initialize' on '" . __CLASS__ . "' before accessing a Connector.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		self :: $connectorFactoryInstance->initializeConnector($connectorId);
+		self :: $instance->initializeConnector($connectorId);
 		
-		return self :: $connectorFactoryInstance->connectors[$connectorId];
+		return self :: $instance->connectors[$connectorId];
 	}
 	
 	/**

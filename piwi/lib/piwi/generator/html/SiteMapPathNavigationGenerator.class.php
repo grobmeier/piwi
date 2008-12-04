@@ -2,7 +2,7 @@
 /**
  * Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
  */
-class SiteMapPathNavigation implements NavigationGenerator {
+class SiteMapPathNavigationGenerator implements NavigationGenerator {
 	/**
 	 * Constructor.
 	 */
