@@ -48,7 +48,10 @@
 		<attribute name="serializer" type="string" use="required"></attribute>
 	</complexType>
 	<complexType name="navigationGeneratorType">
-		<attribute name="name" type="string" use="required"></attribute>
+        <sequence>
+        	<any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"></any>
+        </sequence>
+        <attribute name="name" type="string" use="required"></attribute>
 		<attribute name="class" type="string" use="required"></attribute>
 		<attribute name="pageId" type="string" use="optional"></attribute>
 		<attribute name="depth" type="int" use="optional"></attribute>

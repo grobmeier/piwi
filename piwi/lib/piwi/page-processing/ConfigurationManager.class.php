@@ -126,7 +126,11 @@ class ConfigurationManager {
 			try {
 				$class = new ReflectionClass($generator->getAttribute('class'));
 			    $navigationGenerator = $class->newInstance();			    
-			    
+
+				foreach ($generator->getElementsByTagName('*') as $attribute) {
+					$navigationGenerator->setProperty((string) $attribute->tagName, (string) $attribute->nodeValue);
+				}
+			
 			    if (!$navigationGenerator instanceof NavigationGenerator) {
 		    		if (error_reporting() > E_ERROR) {
 						echo "The Class with name '" . $generator->getAttribute('class') . "' is not an instance of NavigationGenerator.";
