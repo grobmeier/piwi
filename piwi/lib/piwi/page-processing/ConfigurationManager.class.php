@@ -86,11 +86,13 @@ class ConfigurationManager {
 					
 					if (!$serializer instanceof Serializer) {
 						$serializer = null;
+						// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 						if (error_reporting() > E_ERROR) {							
 							echo("The Class with name '" . $serializerClass . "' is not an instance of Serializer.");
 						}
 					}
-				} catch (ReflectionException $exception) {		
+				} catch (ReflectionException $exception) {
+					// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 					if (error_reporting() > E_ERROR) {
 						echo("Serializer not found: " . $serializerClass);
 					}
@@ -98,9 +100,10 @@ class ConfigurationManager {
 	    	}
 	    	return $serializer;
         } else if ($result->length > 1) {
-       		throw new PiwiException(
-				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
-				PiwiException :: INVALID_XML_DEFINITION);
+        	// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
+			if (error_reporting() > E_ERROR) {
+				echo("Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').");
+			}
         } else {
             return null;
         } 
@@ -143,6 +146,7 @@ class ConfigurationManager {
 			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($customSiteMap);
 
 			} catch( ReflectionException $exception ) {
+				// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
 				if (error_reporting() > E_ERROR) {
 					echo("Custom Navigation Generator not found: " . $generator->getAttribute('class'));
 				}

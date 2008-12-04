@@ -9,10 +9,7 @@
 	</element>
 	<complexType name="formType">
 
-		<sequence>
-			<element name="configuration" type="tns:configurationType"
-				minOccurs="1" maxOccurs="1">
-			</element>
+		<sequence>
 			<element name="step" type="tns:stepType" minOccurs="2" maxOccurs="unbounded"></element>
 		</sequence>
 	</complexType>
@@ -27,9 +24,5 @@
 		<anyAttribute namespace="##any" processContents="skip"></anyAttribute>
 	</complexType>
 
-	<complexType name="configurationType">
-    	<attribute name="submitText" type="string" use="required"></attribute>
-    	<attribute name="resetText" type="string" use="optional"></attribute>
-    </complexType>
 
 </schema>

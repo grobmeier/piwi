@@ -54,16 +54,16 @@ Used to initiate and retrieve Generators.
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#generatorFactoryInstance">$generatorFactoryInstance</a></p><p class="description">Singleton instance of the GeneratorFactory. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#generators">$generators</a></p><p class="description">Map of the generators that have already been initialized. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#generatorsXMLPath">$generatorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the GeneratorFactory. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -107,13 +107,6 @@ Constructs an instance of the Generator with the given id.
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
-<h3 id="generatorFactoryInstance">generatorFactoryInstance</h3>
-<code class="signature">private static  mixed <strong>$generatorFactoryInstance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the GeneratorFactory. */</p></div>
-
-<hr>
-
 <h3 id="generators">generators</h3>
 <code class="signature">private  mixed <strong>$generators</strong> = array()</code>
 <div class="details">
@@ -125,6 +118,13 @@ Constructs an instance of the Generator with the given id.
 <code class="signature">private  mixed <strong>$generatorsXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the generators that can be used. */</p></div>
+
+<hr>
+
+<h3 id="instance">instance</h3>
+<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
+<div class="details">
+<p>Singleton instance of the GeneratorFactory. */</p></div>
 
 <hr>
 

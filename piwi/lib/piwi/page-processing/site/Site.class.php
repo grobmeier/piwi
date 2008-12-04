@@ -5,7 +5,7 @@
  */
 abstract class Site {
 	/** Singleton instance of the Site. */
-	private static $siteInstance = null;
+	private static $instance = null;
 
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
@@ -142,7 +142,7 @@ abstract class Site {
 	 * @return Site The singleton instance of the Site.
 	 */
 	public static function getInstance() {
-		return self :: $siteInstance;
+		return self :: $instance;
 	}
 
 	/**
@@ -150,7 +150,7 @@ abstract class Site {
 	 * @param Site $site The singleton instance of the Site.
 	 */
 	public static function setInstance(Site $site) {
-		Site :: $siteInstance = $site;
+		Site :: $instance = $site;
 	}
 
 	/**

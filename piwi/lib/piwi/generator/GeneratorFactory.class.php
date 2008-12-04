@@ -4,7 +4,7 @@
  */
 class GeneratorFactory {
 	/** Singleton instance of the GeneratorFactory. */
-	private static $generatorFactoryInstance = null;
+	private static $instance = null;
 
 	/** Map of the generators that have already been initialized. */
 	private $generators = array();
@@ -29,7 +29,7 @@ class GeneratorFactory {
 	 * @param string $generatorsXMLPath Path of the file containing the xml-definition of the generators that can be used.
 	 */
 	public static function initialize($generatorsXMLPath) {
-		self :: $generatorFactoryInstance = new GeneratorFactory($generatorsXMLPath);
+		self :: $instance = new GeneratorFactory($generatorsXMLPath);
 	}
 
 	/**
@@ -91,13 +91,13 @@ class GeneratorFactory {
 	 * @return Generator The Generator with the given id.
 	 */
 	public static function callGenerator($generatorId) {
-		if (self :: $generatorFactoryInstance == null) {
+		if (self :: $instance == null) {
 			throw new PiwiException(
 				"Illegal State: Invoke static method 'initialize' on '" . __CLASS__ . "' before accessing a Generator.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		$xml = self :: $generatorFactoryInstance->getGeneratorById($generatorId)->generate();
+		$xml = self :: $instance->getGeneratorById($generatorId)->generate();
 		$doc = new DOMDocument();
 		$doc->loadXml('<section xmlns="http://piwi.googlecode.com/xsd/piwixml">' . $xml . '</section>');
 		return $doc;

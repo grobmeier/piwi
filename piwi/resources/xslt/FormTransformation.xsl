@@ -17,39 +17,31 @@
    </xsl:template>
    
    <xsl:template match="input">
-      <xsl:for-each
-         select="php:function('FormProcessor::generateInput', .)">
+   <xsl:choose>   
+      <xsl:when test="@type = 'submit' or @type = 'reset'">
          <xsl:copy-of select="." />
-      </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+         <xsl:copy-of select="php:function('FormProcessor::generateInput', .)"/>
+      </xsl:otherwise>
+      </xsl:choose>      
    </xsl:template>
 
    <xsl:template match="select">
-      <xsl:for-each
-         select="php:function('FormProcessor::generateSelect', .)">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:copy-of select="php:function('FormProcessor::generateSelect', .)"/>
    </xsl:template>
    
    <xsl:template match="textarea">
-      <xsl:for-each
-         select="php:function('FormProcessor::generateTextArea', .)">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:copy-of select="php:function('FormProcessor::generateTextArea', .)"/>
    </xsl:template>
    
    <!-- Executes a Validator -->
    <xsl:template match="validator">
-      <xsl:for-each
-         select="php:function('FormProcessor::executeValidator', .)">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:copy-of select="php:function('FormProcessor::executeValidator', .)"/>
    </xsl:template>
    
    <!-- Executes a StepProcessor -->
    <xsl:template match="stepprocessor">
-      <xsl:for-each
-         select="php:function('FormProcessor::executeStepProcessor', .)">
-         <xsl:copy-of select="." />
-      </xsl:for-each>
+      <xsl:copy-of select="php:function('FormProcessor::executeStepProcessor', .)"/>
    </xsl:template>
 </xsl:stylesheet>

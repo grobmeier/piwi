@@ -2,13 +2,14 @@
 <form xmlns="http://piwi.googlecode.com/xsd/piwiform" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resources/xsd/piwiform.xsd">
-   <configuration submitText="Einloggen" />
 	 <step>
 	   Name: <input name="Name" type="text" size="30" maxlength="30" />
 	   <br /><br />
 	   Passwort: <input name="Password" type="password" size="30" maxlength="30" />
 	   <br /><br />
 	   <input name="Cookies" type="checkbox" value="Cookies" /> Dauerhaft einloggen
+	   <br /><br />
+      <input type="submit" value="Einloggen" />
 	 </step>
 	 <step>
 	  <stepprocessor class="LoginProcessor"/>

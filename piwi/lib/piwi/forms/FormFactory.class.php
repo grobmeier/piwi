@@ -4,7 +4,7 @@
  */
 class FormFactory {
 	/** Singleton instance of the FormsFactory. */
-	private static $formsFactoryInstance = null;
+	private static $instance = null;
 
 	/** Map of the forms that have already been initialized. */
 	private $forms = array ();
@@ -29,7 +29,7 @@ class FormFactory {
 	 * @param string $formsXMLPath Path of the file containing the xml-definition of the forms that can be used.
 	 */
 	public static function initialize($formsXMLPath) {
-		self :: $formsFactoryInstance = new FormFactory($formsXMLPath);
+		self :: $instance = new FormFactory($formsXMLPath);
 	}
 
 	/**
@@ -40,15 +40,15 @@ class FormFactory {
 	 * @return DOMXPath The Form with the given id as DOMXPath.
 	 */
 	public static function getFormById($formId) {
-		if (self :: $formsFactoryInstance == null) {
+		if (self :: $instance == null) {
 			throw new PiwiException(
 				"Illegal State: Invoke static method 'initialize' on '" . __CLASS__ . "' before accessing a Form.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		self :: $formsFactoryInstance->initializeForm($formId);
+		self :: $instance->initializeForm($formId);
 		
-		return self :: $formsFactoryInstance->forms[$formId];
+		return self :: $instance->forms[$formId];
 	}
 	
 	/**

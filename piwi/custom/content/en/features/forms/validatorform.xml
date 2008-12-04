@@ -2,8 +2,6 @@
 <form xmlns="http://piwi.googlecode.com/xsd/piwiform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../../resources/xsd/piwiform.xsd">
-	<configuration submitText="Send Data"
-		resetText="Reset" />
 	<step>
 	   Gender:
 	   <input name="Gender" type="radio" value="Male" /> Male
@@ -50,6 +48,10 @@
       </select>
 		<validator class="RequiredFieldValidator"
 		         fieldToValidate="Interests[]" message="Please select at least one interest." />
+		<br />
+      <br />
+      <input type="submit" value="Send Data" />
+      <input type="reset" value="Reset" />
 	</step>
 	<step>
 		<stepprocessor class="ValidationProcessor" />

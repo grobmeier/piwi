@@ -58,12 +58,12 @@ Used to retrieve Forms.
 <td class="description"><p class="name"><a href="#forms">$forms</a></p><p class="description">Map of the forms that have already been initialized. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#formsFactoryInstance">$formsFactoryInstance</a></p><p class="description">Singleton instance of the FormsFactory. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#formsXMLPath">$formsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the forms that can be used. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the FormsFactory. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -108,17 +108,17 @@ Constructs an DOMXPath of the From with the given id.</p></td>
 
 <hr>
 
-<h3 id="formsFactoryInstance">formsFactoryInstance</h3>
-<code class="signature">private static  mixed <strong>$formsFactoryInstance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the FormsFactory. */</p></div>
-
-<hr>
-
 <h3 id="formsXMLPath">formsXMLPath</h3>
 <code class="signature">private  mixed <strong>$formsXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the forms that can be used. */</p></div>
+
+<hr>
+
+<h3 id="instance">instance</h3>
+<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
+<div class="details">
+<p>Singleton instance of the FormsFactory. */</p></div>
 
 <hr>
 

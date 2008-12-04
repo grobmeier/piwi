@@ -106,17 +106,6 @@ class FormProcessor {
 		// add step
 		$piwixml .= $stepXML;
 		
-		// Show buttons	if not in last step
-		if (self::$currentStep < self::$numberOfSteps) {
-			// Send button
-			$configuration = $domXPath->query('/piwiform:form/piwiform:configuration')->item(0);
-			$piwixml .= '<br /><br /><input type="submit" value="' . $configuration->getAttribute("submitText") . '" />';
-			
-			// Reset button
-			if ($configuration->hasAttribute("resetText")) {
-				$piwixml .= ' <input type="reset" value="' . $configuration->getAttribute("resetText") . '" />';
-			}
-		}		
 		$piwixml .= '</form>';
 
 		$doc = new DOMDocument;
