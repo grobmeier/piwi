@@ -8,7 +8,7 @@ interface NavigationGenerator {
 	 * @param array $siteElements The SiteElements of the website.
 	 * @return string The navigation as HTML.
 	 */
-	public function generate(array $siteElements);
+	public function generate(array $siteElements = null);
 	
 	/**
 	 * Used to pass parameters to the Generator.

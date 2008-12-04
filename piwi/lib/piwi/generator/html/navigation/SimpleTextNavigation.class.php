@@ -14,16 +14,7 @@ class SimpleTextNavigation implements NavigationGenerator {
 	 * @param array $siteElements The SiteElements of the website.
 	 * @return string The navigation as HTML.
 	 */
-	public function generate(array $siteElements) {
-		return $this->getNavigation($siteElements);
-	}
-	
-	/**
-     * Returns the recursivly built navigation.
-     * @param array $siteElements The navigation which is an array of SiteElements representing the website structure.
-     * @return string The recursivly built navigation.
-     */
-    private function getNavigation($siteElements) {
+	public function generate(array $siteElements = null) {
     	if ($siteElements == null) {
     		return '';
     	} else {
@@ -40,14 +31,14 @@ class SimpleTextNavigation implements NavigationGenerator {
 					if (substr($element->getFilePath(), 0, 4) == 'http') {
 						$filepath = $element->getFilePath();
 					}
-    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->getNavigation($element->getChildren()) . '</li>';
+    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->generate($element->getChildren()) . '</li>';
 				}
     		}
     		
     		$result .= '</ul>';
     		return $result;
     	}
-    }
+	}
     
     /**
 	 * Used to pass parameters to the Generator.

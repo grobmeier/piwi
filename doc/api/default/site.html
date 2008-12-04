@@ -86,11 +86,6 @@ Constructor.</p></td>
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#cutOffSiteMap()">cutOffSiteMap</a>(integer currentDepth, integer depth, <a href="../default/siteelement.html">SiteElement</a> siteElement)</p><p class="description">
-Removes all subitems in the given SitenElement that exceed the given depth.</p></td>
-</tr>
-<tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.
@@ -108,18 +103,12 @@ Returns the possible roles a user needs to access the currently requested page.
 Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p></td>
 </tr>
 <tr>
-<td class="type"> The</td>
-<td class="description"><p class="name"><a href="#getCustomSiteMap()">getCustomSiteMap</a>(string id, integer depth, boolean includeParent)</p><p class="description">
-Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
-</p></td>
-</tr>
-<tr>
 <td class="type">protected abstract  string</td>
 <td class="description"><p class="name"><a href="#getFilePath()">getFilePath</a>()</p><p class="description">
 Returns the path of the xml file containing the content of the requested page.</p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  array</td>
+<td class="type">abstract  array</td>
 <td class="description"><p class="name"><a href="#getFullSiteMap()">getFullSiteMap</a>()</p><p class="description">
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p></td>
 </tr>
@@ -132,11 +121,6 @@ Returns the template of the requested page or null if not specified.</p></td>
 <td class="type">static  <a href="../default/site.html">Site</a></td>
 <td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
 Returns the singleton instance of the Site.</p></td>
-</tr>
-<tr>
-<td class="type">private  <a href="../default/siteelement.html">SiteElement</a></td>
-<td class="description"><p class="name"><a href="#getSiteMapItemsById()">getSiteMapItemsById</a>(array siteMap, string id, <a href="../default/siteelement.html">SiteElement</a> foundElement)</p><p class="description">
-Returns the SiteElement with the given in id or null if no item is found.</p></td>
 </tr>
 <tr>
 <td class="type">abstract  array</td>
@@ -218,20 +202,6 @@ Constructor.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="cutOffSiteMap()">cutOffSiteMap</h3>
-<code class="signature">private  void <strong>cutOffSiteMap</strong>(integer currentDepth, integer depth, <a href="../default/siteelement.html">SiteElement</a> siteElement)</code>
-<div class="details">
-<p>
-Removes all subitems in the given SitenElement that exceed the given depth.</p><dl>
-<dt>Parameters:</dt>
-<dd>currentDepth - The current depth.</dd>
-<dd>depth - description The desired depth.</dd>
-<dd>siteElement - The SiteElement whose children should be cut off.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="generateContent()">generateContent</h3>
 <code class="signature">public  void <strong>generateContent</strong>()</code>
 <div class="details">
@@ -268,23 +238,6 @@ Returns the page specific cachetime (the time that may pass until the content of
 
 <hr>
 
-<h3 id="getCustomSiteMap()">getCustomSiteMap</h3>
-<code class="signature">public  The <strong>getCustomSiteMap</strong>(string id, integer depth, boolean includeParent)</code>
-<div class="details">
-<p>
-Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
-It is possible to retrieve only certain parts of the 'SiteMap'.</p><dl>
-<dt>Parameters:</dt>
-<dd>id - Returns only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be returned.</dd>
-<dd>depth - Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items.</dd>
-<dd>includeParent - If false only the children of the parent will be returned. This can only be used if $id is not 'null'.</dd>
-<dt>Returns:</dt>
-<dd>'SiteMap' which is an array of SiteElements representing the website structure.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getFilePath()">getFilePath</h3>
 <code class="signature">protected abstract  string <strong>getFilePath</strong>()</code>
 <div class="details">
@@ -298,7 +251,7 @@ Returns the path of the xml file containing the content of the requested page.</
 <hr>
 
 <h3 id="getFullSiteMap()">getFullSiteMap</h3>
-<code class="signature">protected abstract  array <strong>getFullSiteMap</strong>()</code>
+<code class="signature">public abstract  array <strong>getFullSiteMap</strong>()</code>
 <div class="details">
 <p>
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p><dl>
@@ -328,22 +281,6 @@ Returns the template of the requested page or null if not specified.</p><dl>
 Returns the singleton instance of the Site.</p><dl>
 <dt>Returns:</dt>
 <dd>The singleton instance of the Site.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getSiteMapItemsById()">getSiteMapItemsById</h3>
-<code class="signature">private  <a href="../default/siteelement.html">SiteElement</a> <strong>getSiteMapItemsById</strong>(array siteMap, string id, <a href="../default/siteelement.html">SiteElement</a> foundElement)</code>
-<div class="details">
-<p>
-Returns the SiteElement with the given in id or null if no item is found.</p><dl>
-<dt>Parameters:</dt>
-<dd>siteMap - The array of SiteElements to search in.</dd>
-<dd>id - The id of the SiteElement.</dd>
-<dd>foundElement - The SiteElement with the given in id or null if no item has been found yet.</dd>
-<dt>Returns:</dt>
-<dd>The SiteElement with the given in id or null if no item is found.</dd>
 </dl>
 </div>
 

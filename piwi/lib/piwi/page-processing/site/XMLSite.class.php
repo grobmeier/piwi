@@ -118,7 +118,7 @@ class XMLSite extends Site {
      * Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.
      * @return array Array of SiteElements representing the whole website structure.
      */
-    protected function getFullSiteMap() {
+    public function getFullSiteMap() {
     	if ($this->domXPath == null) {
 	    	$this->loadSite();  		
     	}

@@ -14,7 +14,7 @@ class SiteMapPathNavigation implements NavigationGenerator {
 	 * @param array $siteElements The SiteElements of the website.
 	 * @return string The navigation as HTML.
 	 */
-	public function generate(array $siteElements) {
+	public function generate(array $siteElements = null) {
 		$siteMapPathHTML = "";
 		if (sizeof($siteElements) > 0){
 			$siteElement = $siteElements[0];

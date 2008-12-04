@@ -125,7 +125,7 @@ Returns the total number of pages.</dd>
 <dt><a href="default/folder.html#create()">create()</a> - Method in class <a href="default/folder.html">default.Folder</a></dt>
 <dd>
 Creates the folder with the given permission.</dd>
-<dt><a href="default/site.html#cutOffSiteMap()">cutOffSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/sitemaphelper.html#cutOffSiteMap()">cutOffSiteMap()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Removes all subitems in the given SitenElement that exceed the given depth.</dd>
 </dl>
@@ -244,7 +244,7 @@ Returns the DOMNode representing the current page.</dd>
 <dt><a href="default/configurationmanager.html#getCustomLabelsPath()">getCustomLabelsPath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the path of the a custom labels file or null if none is specified.</dd>
-<dt><a href="default/site.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/sitemaphelper.html#getCustomSiteMap()">getCustomSiteMap()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 </dd>
@@ -304,9 +304,6 @@ Returns the id of the login page.</dd>
 <dt><a href="default/folder.html#getName()">getName()</a> - Method in class <a href="default/folder.html">default.Folder</a></dt>
 <dd>
 Returns the name of the folder.</dd>
-<dt><a href="default/simpletextnavigation.html#getNavigation()">getNavigation()</a> - Method in class <a href="default/simpletextnavigation.html">default.SimpleTextNavigation</a></dt>
-<dd>
-Returns the recursivly built navigation.</dd>
 <dt><a href="default/pager.html#getNextPage()">getNextPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the next page.</dd>
@@ -341,7 +338,7 @@ Returns the Serializer for the given format or null if none is found.</dd>
 <dt><a href="default/sitemapgenerator.html#getSiteMapAsXml()">getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
 <dd>
 Returns the given 'SiteMap' as xml.</dd>
-<dt><a href="default/site.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/sitemaphelper.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the SiteElement with the given in id or null if no item is found.</dd>
 <dt><a href="default/xmlsite.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
@@ -583,6 +580,10 @@ Generates a complete page.
 <dt><a href="default/sitemapgenerator.html">SiteMapGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates a sitemap of the website.
+</dd>
+<dt><a href="default/sitemaphelper.html">SiteMapHelper()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Provides helper functions to generate SiteMaps.
 </dd>
 <dt><a href="default/sitemappathnavigation.html">SiteMapPathNavigation()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>

@@ -98,7 +98,7 @@ ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors
 FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');
 ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config.xml');
 
-// Init site
+// Init site (manual dependency injection)
 Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, $GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
 
 try {

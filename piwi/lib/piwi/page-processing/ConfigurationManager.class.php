@@ -139,9 +139,8 @@ class ConfigurationManager {
 			    $depth = $generator->getAttribute('depth') == "" ? -1 : $generator->getAttribute('depth');
 			    $includeParent = $generator->getAttribute('includeParent') == "" ? true : $generator->getAttribute('includeParent');
 
-			    $siteMap = Site::getInstance()->getCustomSiteMap($pageId, $depth, $includeParent);
-
-			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($siteMap);
+				$customSiteMap = SiteMapHelper::getCustomSiteMap($pageId, $depth, $includeParent);
+			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($customSiteMap);
 
 			} catch( ReflectionException $exception ) {
 				if (error_reporting() > E_ERROR) {
