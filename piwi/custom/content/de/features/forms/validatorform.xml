@@ -47,7 +47,7 @@
 	      <option value="Computer">Computer</option>
       </select>
 		<validator class="RequiredFieldValidator"
-		         fieldToValidate="Interests[]" message="Bitte wählen Sie mindestens ein Hobby:" />
+		         fieldToValidate="Interests[]" message="Bitte wählen Sie mindestens ein Hobby." />
 		<br />
       <br />
 		<input type="submit" value="Senden" />

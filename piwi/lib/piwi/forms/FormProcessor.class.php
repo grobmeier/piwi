@@ -47,8 +47,8 @@ class FormProcessor {
 		// if request is a postback increase number of steps otherwise begin with step 1
 		self::$currentStep = 0;
 		
-		if (isset($_POST[self::$formId . 'currentstep'])) {
-			self::$currentStep = $_POST[self::$formId . 'currentstep'];
+		if (isset($_POST[self::$formId . '_currentstep'])) {
+			self::$currentStep = $_POST[self::$formId . '_currentstep'];
 		}
 		
 		// Determinate number of total steps in form
@@ -75,12 +75,12 @@ class FormProcessor {
 
 		// Build xml
 		$piwixml = '<form xmlns="http://piwi.googlecode.com/xsd/piwixml" action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
-		$piwixml .= '<input name="' . self::$formId . 'currentstep" type="hidden" value="' . self::$currentStep . '" />';
+		$piwixml .= '<input name="' . self::$formId . '_currentstep" type="hidden" value="' . self::$currentStep . '" />';
 		
 		if (self::$currentStep < self::$numberOfSteps) {
 			// Add current values as hidden field (but no checkboxes), to save their state
 			foreach ($_POST as $key => $value) {
-				if ($key != self::$formId . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
+				if ($key != self::$formId . '_' . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
 					if (is_array($value)) {
 						foreach ($value as $var) {
 	       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
@@ -125,7 +125,7 @@ class FormProcessor {
 	 */
 	public static function generateInput($domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
-		$name = str_replace("[]", "", self::$formId . $domElement[0]->getAttribute("name"));
+		$name = str_replace("[]", "", self::$formId . '_' . $domElement[0]->getAttribute("name"));
 		
 		$value = $domElement[0]->getAttribute("value");
 		$checked = $domElement[0]->getAttribute("checked");
@@ -161,7 +161,7 @@ class FormProcessor {
 			$value = $_POST[$name];
 		} 
 
-		$xml = ' <input name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <input name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
 		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ')
 		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . $domElement[0]->getAttribute("maxlength") . '" ' : '')
 		. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
@@ -182,9 +182,9 @@ class FormProcessor {
 	 */
 	public static function generateSelect($domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
-		$name = str_replace("[]", "", self::$formId . $domElement[0]->getAttribute("name"));
+		$name = str_replace("[]", "", self::$formId . '_' . $domElement[0]->getAttribute("name"));
 		
-		$xml = ' <select name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <select name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
 			. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
 			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . $domElement[0]->getAttribute("multiple") . '" ' : '')
 			. '>';
@@ -243,11 +243,11 @@ class FormProcessor {
 	public static function generateTextArea($domElement) {
 		$value = $domElement[0]->textContent;
 
-		if (isset($_POST[self::$formId . $domElement[0]->getAttribute("name")])) {
-			$value = $_POST[self::$formId . $domElement[0]->getAttribute("name")];
+		if (isset($_POST[self::$formId . '_' . $domElement[0]->getAttribute("name")])) {
+			$value = $_POST[self::$formId . '_' . $domElement[0]->getAttribute("name")];
 		} 
 
-		$xml = ' <textarea name="' . self::$formId . $domElement[0]->getAttribute("name") . '"'
+		$xml = ' <textarea name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
 					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . $domElement[0]->getAttribute("cols") . '" ' : '')
 					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . $domElement[0]->getAttribute("rows") . '" ' : '')
 					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
@@ -326,8 +326,8 @@ class FormProcessor {
 		$results = array();		
 		
 		foreach ($_POST as $key => $value) {
-			if ($key{0} == self::$formId && $key != self::$formId . 'currentstep') {				
-				$results[substr($key, 1)] = $value;
+			if (substr($key, 0, strpos($key, '_')) == self::$formId && $key != self::$formId . '_currentstep') {	
+				$results[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
 		}
 		$results["CURRENT_STEPS"] = self::$currentStep;
@@ -345,8 +345,8 @@ class FormProcessor {
 		$files = array();		
 		
 		foreach ($_FILES as $key => $value) {
-			if ($key{0} == self::$formId && $value['name'] != "") {				
-				$files[substr($key, 1)] = $value;
+			if (substr($key, 0, strpos($key, '_')) == self::$formId && $value['name'] != "") {				
+				$files[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
 		}
 		
@@ -357,7 +357,7 @@ class FormProcessor {
 	 * @return integer The id of the currently processed form.
 	 */
 	public static function getId() {
-		return self::$formId;
+		return self::$formId . '_';
 	}
 }
 ?>
