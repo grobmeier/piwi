@@ -8,10 +8,13 @@
 =                                                                     =
 =======================================================================
 
+0.0.7 - Crawler Release
 
+    * New: Wrote crawler to generate static pages
+    * Fix: Refactored package structure
+    
 0.0.6 - Authentication Release
 
-    * Fix: Extract configuration from 'site.xml'
     * New: Add authentication features (via session and cookies)
     * New: Added support for custom XSLT-Transformation
     * New: Added support for internationalization in generators
@@ -19,6 +22,7 @@
     * New: Dynamic configuration of Navigation(s) and SiteMapPath in 'config.xml'
     * New: Wrote Unit tests
     * New: Added Ant file
+    * Fix: Extract configuration from 'site.xml'
     
 0.0.5 - Forms Framework Release
 
@@ -29,8 +33,6 @@
 
 0.0.4 - Documented Release
 
-    * Fix: Refactored and documented all classes, generated HTML-Documentation
-    * Fix: Improved mod_rewrite rule for mapping complete request
     * New: Added exception handling and error page
     * New: Added new features: SiteMap?, SiteMapPath?
     * New: Now differing between Page-, Section-, Navigation and HTML-Generators
@@ -38,15 +40,17 @@
     * New: Added connectors for MySQL and MSSQL
     * New: Added XSD-Schemas for all XML-Files (Cache, Generators, Connectors, Site, PiwiXML)
     * New: Added new sample page demonstrating the features of Piwi 
-
+    * Fix: Refactored and documented all classes, generated HTML-Documentation
+    * Fix: Improved mod_rewrite rule for mapping complete request
+    
 0.0.3 - Classloading and Structur Release
 
-    * Fix: Improved webapp structure for easier updates
     * New: Implemented Classloader and Classloader Cache mechanism
     * New: Started documentation
     * New: Wrote new examples (gallery)
     * New: Added some new useful framework classes which are not necessary for the core 
-
+    * Fix: Improved webapp structure for easier updates
+    
 0.0.2 - Generator and Connector Release
 
     * New: Implemented Generators (Components for generating dynamic PIWI-XML)

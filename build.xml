@@ -2,7 +2,7 @@
 <project basedir="." default="package" name="Piwi">
 	<!-- Properties. -->
 	<property name="name" value="piwi" />
-	<property name="version" value="0.0.7-SNAPSHOT" />
+	<property name="version" value="0.0.8-SNAPSHOT" />
 
 	<property name="target" value="target/" />
 	<property name="reportdir" value="report/" />
