@@ -9,7 +9,7 @@
  *	<pathToImages>custom/templates/images</pathToImages>
  * </navigationGenerator>
  */
-class ImageNavigation implements NavigationGenerator {
+class ImageNavigationGenerator implements NavigationGenerator {
 	var $pathToImages = "";
 	
 	/**
