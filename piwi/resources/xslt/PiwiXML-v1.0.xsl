@@ -46,7 +46,7 @@
             <!-- that point in the HTML                                -->
             <br />
             <!-- repeat for the remainder of the original string -->
-            <xsl:call-template name="lf2br">
+            <xsl:call-template name="linefeedToBr">
                <xsl:with-param name="StringToTransform">
                   <xsl:value-of select="substring-after($StringToTransform,'&#xA;')" />
                </xsl:with-param>
