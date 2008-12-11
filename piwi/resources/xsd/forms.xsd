@@ -4,7 +4,7 @@
 	xmlns:tns="http://piwi.googlecode.com/xsd/forms">
 	<complexType name="formType">
 		<attribute name="id" type="string" use="required"></attribute>
-		<attribute name="path" type="string" use="required"></attribute>
+		<attribute name="href" type="string" use="required"></attribute>
 	</complexType>
 	<element name="forms" type="tns:formsType">
       <unique name="UniqueLanguageRegion">
