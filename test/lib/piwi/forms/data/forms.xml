@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <forms xmlns="http://piwi.googlecode.com/xsd/forms" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<language region="default">
-		<form id="testForm" path="piwi/custom/content/en/features/forms/wizardform.xml" />
+		<form id="testForm" href="piwi/custom/content/en/features/forms/wizardform.xml" />
 	</language>
 </forms>

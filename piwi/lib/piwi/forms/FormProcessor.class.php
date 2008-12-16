@@ -309,7 +309,7 @@ class FormProcessor {
 				PiwiException :: ERR_WRONG_TYPE);
 		}
 		
-		$xml = $stepProcessor->process(self::getResults(), self::getFiles());
+		$xml = $stepProcessor->process(self::getResults(), self::getFiles(), self::$currentStep, self::$numberOfSteps);
 		
 		$doc = new DOMDocument;
 		$doc->loadXml($xml);
@@ -330,8 +330,6 @@ class FormProcessor {
 				$results[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
 		}
-		$results["CURRENT_STEPS"] = self::$currentStep;
-		$results["NUMBER_OF_STEPS"] = self::$numberOfSteps;
 		
 		return $results;
 	}

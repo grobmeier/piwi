@@ -56,20 +56,22 @@ A Step Processor can be executed within a step in a form.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#process()">process</a>(array values, array files)</p><p class="description">
+<td class="description"><p class="name"><a href="#process()">process</a>(array values, array files, integer currentStep, integer numberOfSteps)</p><p class="description">
 Performs a custom action within a form using the results of the form.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="process()">process</h3>
-<code class="signature">public  string <strong>process</strong>(array values, array files)</code>
+<code class="signature">public  string <strong>process</strong>(array values, array files, integer currentStep, integer numberOfSteps)</code>
 <div class="details">
 <p>
 Performs a custom action within a form using the results of the form.</p><dl>
 <dt>Parameters:</dt>
 <dd>values - The values of the form.</dd>
 <dd>files - The files that have been posted.</dd>
+<dd>currentStep - The current step within the form.</dd>
+<dd>numberOfSteps - The total number of steps within the form.</dd>
 <dt>Returns:</dt>
 <dd>The desired result as PiwiXML</dd>
 </dl>
