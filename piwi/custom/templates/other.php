@@ -27,7 +27,7 @@
 			<?=$SITE_MAP_PATH?>
 		</div>
 		
-		<?=$CONTENT['article']?>
+		<?=$CONTENT['main']?>
 	</div>
 	<div id="footer">
 		<div class="right">

@@ -2,7 +2,7 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/piwixml.xsd">
-   <content position="article">
+   <content position="main">
       <header>Login</header>
       <section>         
          <generator id="login_logout" />
