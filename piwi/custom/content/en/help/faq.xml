@@ -63,7 +63,7 @@
 				<li>
 					<div class="question">How do I get started with Piwi?</div>
 					<div class="answer">
-				     Have a look at the <a href="documentation.html">documentation</a>.
+				     Have a look at the <a href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6">documentation</a>.
 				     <br />
 				     The API can be found in '/doc/api' in Piwi package.
 					</div>

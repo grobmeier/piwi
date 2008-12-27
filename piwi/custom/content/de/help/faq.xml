@@ -68,7 +68,7 @@
 					<div class="question">Wie beginne ich bei der Entwicklung einer Piwi-Seite?</div>
 					<div class="answer">
 						Schauen Sie in unsere
-						<a href="documentation.html">Dokumentation</a>.
+						<a href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6">Dokumentation</a>.
 						<br />
 						Die API befindet sich im Verzeichnis '/doc/api' Ihres Piwi-Pakets.
 					</div>
