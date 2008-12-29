@@ -12,7 +12,7 @@ interface RoleProvider {
 	 * @param array $role The roles that are allowed.
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
-	public function isUserInRole($username, $roles);
+	public function isUserInRole($username, array $roles);
 
 	/**
 	 * Checks whether the given user exists and validates its password.
