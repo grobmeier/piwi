@@ -48,7 +48,15 @@
 				maxOccurs="unbounded">
 			</element>
 		</sequence>
-		<attribute name="region" type="string" use="required"></attribute>
+		<attribute name="region" use="required">
+			<simpleType>
+				<restriction base="string">
+
+					<maxLength value="7"></maxLength>
+					<minLength value="2"></minLength>
+				</restriction>
+			</simpleType>
+		</attribute>
 
 	</complexType>
 
