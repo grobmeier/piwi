@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
 	<language region="default">
 		<page id="default" label="Home" href="en/default.xml" template="default_slideshow.php" />
-		<page id="features" label="Piwi Features" href="en/features.xml">
+		<page id="features" label="PIWI Features" href="en/features.xml">
 			<page id="forms" label="Forms" href="en/features/forms.xml" />
 			<page id="generators" label="Generators" href="en/features/generators.xml">
 				<page id="sitemap" label="SiteMap" href="en/features/generators/sitemap.xml" />
@@ -34,7 +34,7 @@
 	</language>
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" template="default_slideshow.php" />
-		<page id="features" label="Piwi Features" href="de/features.xml">
+		<page id="features" label="PIWI Features" href="de/features.xml">
 			<page id="forms" label="Formulare" href="de/features/forms.xml" />
 			<page id="generators" label="Generatoren" href="de/features/generators.xml">
 				<page id="sitemap" label="SiteMap" href="de/features/generators/sitemap.xml" />

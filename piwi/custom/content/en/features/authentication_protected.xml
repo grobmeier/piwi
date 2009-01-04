@@ -2,6 +2,10 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Protected page</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>Protected page</header>
 		<section>

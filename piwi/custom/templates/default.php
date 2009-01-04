@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title>PIWI - PHP Transformation Framework</title>
+	<title>PIWI - PHP Transformation Framework - <?=$TITLE?></title>
 	<link href="custom/templates/default.css" rel="stylesheet" type="text/css" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="robots" content="index, follow" />

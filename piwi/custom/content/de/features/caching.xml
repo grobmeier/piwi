@@ -2,14 +2,18 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Caching</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>Caching</header>
 		<section>
-			Piwi unterstützt Caching. Das heißt Sie können eine Zeitspanne
+			PIWI unterstützt Caching. Das heißt Sie können eine Zeitspanne
 			angeben, nach der die Seiteninhalte neu erzeugt werden und nicht aus
 			dem Cache gelesen werden.
 			<br />
-			Piwi unterscheidet dabei anhand übergebener Parameter, d.h. wenn die
+			PIWI unterscheidet dabei anhand übergebener Parameter, d.h. wenn die
 			gleiche Seite mit unterschiedlichen Parameter aufgerufen wird, so
 			werden diese auch separat im Cache hinterlegt.
 			<br />

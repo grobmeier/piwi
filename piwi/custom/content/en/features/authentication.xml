@@ -2,10 +2,14 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>User Authentication</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>User Authentication</header>
       <section>
-         Piwi allows you to protect your pages against unauthorized access.<br />
+         PIWI allows you to protect your pages against unauthorized access.<br />
          You could limit access for every page to certain user roles.<br />
          The allowed roles are specified within the file 'site.xml' in the following way:<br />
          <ul>

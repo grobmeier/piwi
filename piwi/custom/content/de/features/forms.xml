@@ -2,9 +2,13 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Formulare</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>Formulare</header>
-		<p>Piwi kann mit Formularen umgehen. Formulare können aus mehreren Schritten bestehen (Wizard).<br />
+		<p>PIWI kann mit Formularen umgehen. Formulare können aus mehreren Schritten bestehen (Wizard).<br />
 		Die eingegebenen Werte können mit Validatoren überprüft werden.		
 		<br />
 		Ebenso ist es möglich mehrer Formulare auf einer Seite zu verwenden.

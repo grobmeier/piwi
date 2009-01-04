@@ -2,10 +2,14 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Output Formats</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>Output Formats</header>
 		<section>
-			PiwiXML can be serialized to several different formats. Currently
+			PIWI-XML can be serialized to several different formats. Currently
 			HTML, PDF, Word, Excel and XML are supported.
 			<br />
 			<br />

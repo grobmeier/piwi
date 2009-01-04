@@ -2,10 +2,14 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Internationalization</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>Internationalization</header>
 		<section>
-			Piwi supports internationalization.
+			PIWI supports internationalization.
 			<br /><br />
 			The website is by default displayed in the preferred language of the browser.
 			<br />

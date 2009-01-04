@@ -21,9 +21,18 @@
 	</element>
 	<complexType name="documentType">
 		<sequence>
-			<element name="content" type="tns:contentType" minOccurs="0" maxOccurs="unbounded">
-			</element>
-		</sequence>		
+            <element name="head" type="tns:headType" minOccurs="0" maxOccurs="1"></element>
+            <element name="content" type="tns:contentType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
 	</complexType>
 
+
+	<complexType name="headType">
+		<sequence>
+			<element name="title" type="string" minOccurs="0" maxOccurs="1"></element>
+			<element name="keywords" type="string" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
 </schema>

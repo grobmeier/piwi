@@ -50,7 +50,7 @@ DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
  * -------------------------------------------------------------------------
  */ 
  
-/** The root path of Piwi */
+/** The root path of PIWI */
 $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
  
 /** ClassLoader which makes other includes dispensable. */

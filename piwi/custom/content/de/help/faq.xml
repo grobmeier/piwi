@@ -2,12 +2,16 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>FAQ</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>FAQ</header>
 		<section>
 			<ol>
 				<li>
-					<div class="question">Welche Voraussetzungen benötigt Piwi?</div>
+					<div class="question">Welche Voraussetzungen benötigt PIWI?</div>
 					<div class="answer">
 						PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
 						<br />
@@ -15,9 +19,9 @@
 					</div>
 				</li>
 				<li>
-					<div class="question">Wie installiere ich Piwi?</div>
+					<div class="question">Wie installiere ich PIWI?</div>
 					<div class="answer">
-						Piwi können Sie hier herunterladen:
+						PIWI können Sie hier herunterladen:
 						<a href="http://code.google.com/p/piwi">http://code.google.com/p/piwi 
 						</a>
 						<br />
@@ -27,7 +31,7 @@
 						<br />
 						<div class="bold">XAMPP:</div>
 						Wenn Sie XAMPP als Webserver einsetzen, müssen Sie folgende
-						Einstellungen vornehmen, damit Piwi läuft:
+						Einstellungen vornehmen, damit PIWI läuft:
 						<ul>
 							<li>
 								<span class="bold">'\apache\conf\httpd.conf'</span>:
@@ -65,12 +69,12 @@
 					</div>
 				</li>
 				<li>
-					<div class="question">Wie beginne ich bei der Entwicklung einer Piwi-Seite?</div>
+					<div class="question">Wie beginne ich bei der Entwicklung einer PIWI-Seite?</div>
 					<div class="answer">
 						Schauen Sie in unsere
 						<a href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6">Dokumentation</a>.
 						<br />
-						Die API befindet sich im Verzeichnis '/doc/api' Ihres Piwi-Pakets.
+						Die API befindet sich im Verzeichnis '/doc/api' Ihres PIWI-Pakets.
 					</div>
 				</li>
 			</ol>

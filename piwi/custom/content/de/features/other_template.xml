@@ -2,7 +2,11 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
-   <content position="main">
+   <head>
+		<title>Verschiedene Templates</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
       <header>Verschiedene Templates</header>
       <section>
          Diese Seite verwendet ein anderes Template, dieses kann in der Datei 'site.xml' festgelegt werden.

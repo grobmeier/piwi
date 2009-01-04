@@ -2,9 +2,13 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>XSLT Transformationen</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<header>XSLT Transformationen</header>
-		<p>Piwi unterstützt benutzerdefinierte XSLT-Transformationen. So
+		<p>PIWI unterstützt benutzerdefinierte XSLT-Transformationen. So
 			ist es möglich beliebige XSLT-Transformationen einzubinden. </p>
 		<separator />
 		<section>

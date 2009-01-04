@@ -2,6 +2,10 @@
 <document xmlns="http://piwi.googlecode.com/xsd/piwixml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/content.xsd">
+	<head>
+		<title>Home</title>
+		<keywords></keywords>
+	</head>
 	<content position="main">
 		<div class="slideshow_container">
 			<div id="slideshow">
@@ -46,7 +50,7 @@
 			PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
 		</section>
 		<separator />
-		<title>Piwi Features</title>
+		<title>PIWI Features</title>
 		<generator id="featuresSiteMap" />
 		<div style="clear: both">
 		</div>
