@@ -83,6 +83,11 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializeForm()">_initializeForm</a>(string formId)</p><p class="description">
+Constructs an DOMXPath of the From with the given id.</p></td>
+</tr>
+<tr>
 <td class="type">static  DOMXPath</td>
 <td class="description"><p class="name"><a href="#getFormById()">getFormById</a>(string formId)</p><p class="description">
 Returns the Form with the given id as DOMXPath.
@@ -92,11 +97,6 @@ Returns the Form with the given id as DOMXPath.
 <td class="type">static  void</td>
 <td class="description"><p class="name"><a href="#initialize()">initialize</a>(string formsXMLPath)</p><p class="description">
 Initializes the singleton instance of this Class.</p></td>
-</tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#initializeForm()">initializeForm</a>(string formId)</p><p class="description">
-Constructs an DOMXPath of the From with the given id.</p></td>
 </tr>
 </table>
 
@@ -144,6 +144,18 @@ Private constructor since only used by 'initialize'.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_initializeForm()">_initializeForm</h3>
+<code class="signature">private  void <strong>_initializeForm</strong>(string formId)</code>
+<div class="details">
+<p>
+Constructs an DOMXPath of the From with the given id.</p><dl>
+<dt>Parameters:</dt>
+<dd>formId - The id of the From.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getFormById()">getFormById</h3>
 <code class="signature">public static  DOMXPath <strong>getFormById</strong>(string formId)</code>
 <div class="details">
@@ -167,18 +179,6 @@ Otherwise a the form will be loaded and stored in a map.</p><dl>
 Initializes the singleton instance of this Class.</p><dl>
 <dt>Parameters:</dt>
 <dd>formsXMLPath - Path of the file containing the xml-definition of the forms that can be used.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="initializeForm()">initializeForm</h3>
-<code class="signature">private  void <strong>initializeForm</strong>(string formId)</code>
-<div class="details">
-<p>
-Constructs an DOMXPath of the From with the given id.</p><dl>
-<dt>Parameters:</dt>
-<dd>formId - The id of the From.</dd>
 </dl>
 </div>
 

@@ -25,7 +25,7 @@ class ImageNavigationGenerator implements NavigationGenerator {
 	 * @return string The navigation as HTML.
 	 */
 	public function generate(array $siteElements = null) {
-		return $this->getNavigation($siteElements);		
+		return $this->_getNavigation($siteElements);		
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class ImageNavigationGenerator implements NavigationGenerator {
      * of NavigationElements representing the website structure.
      * @return string The recursivly built navigation.
      */
-    private function getNavigation($navigationElements) {
+    private function _getNavigation($navigationElements) {
     	if ($navigationElements == null) {
     		return '';
     	} else {

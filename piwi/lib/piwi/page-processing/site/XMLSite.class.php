@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Renders the requested page and creates the navigation based on 'site.xml'.
  */
@@ -31,10 +31,10 @@ class XMLSite extends Site {
      */
     protected function getFilePath() {
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
 
-		return $this->getCurrentPageDOMNode()->getAttribute("href");
+		return $this->_getCurrentPageDOMNode()->getAttribute("href");
     }
     
     /**
@@ -43,10 +43,10 @@ class XMLSite extends Site {
      */
     protected function getHTMLTemplatePath() {
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
 
-		$template = $this->getCurrentPageDOMNode()->getAttribute("template");
+		$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
  
  		return $template == "" ? null : $template;
     }
@@ -60,10 +60,10 @@ class XMLSite extends Site {
      */
     protected function getAllowedRoles(){
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
 
-		$result = $this->getCurrentPageDOMNode()->getAttribute("roles");
+		$result = $this->_getCurrentPageDOMNode()->getAttribute("roles");
 		if ($result == "") {
     		return array('?');
     	} else {
@@ -77,7 +77,7 @@ class XMLSite extends Site {
      */
     public function getSupportedLanguages() {
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
     	
     	$xpath = "/site:site/site:language/@region";
@@ -93,15 +93,16 @@ class XMLSite extends Site {
     }   
     
 	/**
-	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.
+	 * Returns the page specific cachetime (the time that may pass until the content 
+	 * of the page is regenerated) or null if none is specified.
      * @return integer The page specific cachetime or null if none is specified.
 	 */
 	protected function getCacheTime() {
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
 
-		$result = $this->getCurrentPageDOMNode()->getAttribute("cachetime");
+		$result = $this->_getCurrentPageDOMNode()->getAttribute("cachetime");
 		if ($result == "") {
     		return null;
     	} else {
@@ -120,25 +121,27 @@ class XMLSite extends Site {
      */
     public function getFullSiteMap() {
     	if ($this->domXPath == null) {
-	    	$this->loadSite();  		
+	    	$this->_loadSite();  		
     	}
 
 		// Determinate all nodes that lead to the current page
     	$openpath = array();
     	
-        $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']//site:page[@id='". Request::getPageId() ."']");
+        $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . 
+        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
 		
         foreach ($domNodeList as $element) {
-            while($element->nodeName != "language") {
+            while ($element->nodeName != "language") {
                     $openpath[] = $element->getAttribute("id");
                     $element = $element->parentNode;
             }
         }
         
         // Build array containing all sites and subsites
-        $xpath = "/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']/site:page";
+        $xpath = "/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . 
+			"']/site:page";
         $nodelist = $this->domXPath->query($xpath);
-        $result = $this->generateSubnavigation(array(), $nodelist, $xpath, $openpath);
+        $result = $this->_generateSubnavigation(array(), $nodelist, $xpath, $openpath);
 
         return $result;
     }
@@ -152,11 +155,13 @@ class XMLSite extends Site {
      * @param SiteElement $parentSiteElement The parent SiteElement
      * @return array Array containing the submenus of the given nodes.
      */
-    private function generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, SiteElement $parentSiteElement = null) {
+    private function _generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, 
+    	SiteElement $parentSiteElement = null) {
         foreach ($nodelist as $element) {
         	$id = $element->getAttribute("id");
         	
-        	$siteElement = new SiteElement($id, $element->getAttribute("label"), $element->getAttribute("href"));
+        	$siteElement = new SiteElement($id, $element->getAttribute('label'), 
+        		$element->getAttribute('href'));
            	$siteElement->setSelected($id == Request::getPageId());
            	$siteElement->setOpen(in_array($id, $openpath));
            	if ($element->getAttribute("hideInNavigation")) {
@@ -169,9 +174,10 @@ class XMLSite extends Site {
            		$siteElement->setParent($parentSiteElement);
            	}
            	
-	        if($element->hasChildNodes()) {
-            	$children = $this->domXPath->query($xpath."[@id='".$id."']/*");
-               	$siteElement->setChildren($this->generateSubnavigation(array(), $children, $xpath . '/site:page', $openpath, $siteElement));
+	        if ($element->hasChildNodes()) {
+            	$children = $this->domXPath->query($xpath . "[@id='" . $id . "']/*");
+               	$siteElement->setChildren($this->_generateSubnavigation(array(), $children, 
+               		$xpath . '/site:page', $openpath, $siteElement));
             }
             			
 			$result[] = $siteElement;
@@ -189,23 +195,24 @@ class XMLSite extends Site {
 	 * Returns the DOMNode representing the current page.
 	 * @return DOMNode The DOMNode representing the current page.
 	 */	 
-    private function getCurrentPageDOMNode() {
+    private function _getCurrentPageDOMNode() {
     	if ($this->domXPath == null) {
-    		$this->loadSite();
+    		$this->_loadSite();
     	}
     	
     	// Lookup pageId
-        $result = $this->domXPath->query("/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
+        $result = $this->domXPath->query("/site:site/site:language[@region='" . 
+        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
 
-        if($result->length == 1) {
+        if ($result->length == 1) {
         	return $result->item(0);
         } else if ($result->length > 1) {
-       		throw new PiwiException(
-				"The id of the requested page is not unique (Page: '" . Request::getPageId() . "').", 
+       		throw new PiwiException("The id of the requested page is not unique (Page: '" . 
+       				Request::getPageId() . "').", 
 				PiwiException :: ERR_404);
         } else {
-            throw new PiwiException(
-				"Could not find the requested page (Page: '" . Request::getPageId() . "').", 
+            throw new PiwiException("Could not find the requested page (Page: '" . 
+            		Request::getPageId() . "').", 
 				PiwiException :: ERR_404);
         }  	
     }
@@ -213,11 +220,10 @@ class XMLSite extends Site {
     /**
      * Loads the 'site.xml'.
      */
-    private function loadSite() {
+    private function _loadSite() {
     	$path = $this->contentPath . '/' . $this->siteFilename;
        	if (!file_exists($path)) {
-			throw new PiwiException(
-				"Could not find the site definition file (Path: '" . $path . "').", 
+			throw new PiwiException("Could not find the site definition file (Path: '" . $path . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
     	}
     	

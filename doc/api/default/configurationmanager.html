@@ -83,6 +83,12 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_loadConfig()">_loadConfig</a>()</p><p class="description">
+Loads the 'config.xml'.
+</p></td>
+</tr>
+<tr>
 <td class="type"> integer</td>
 <td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
 Returns the cachetime (the time that may pass until the content of the page is regenerated).</p></td>
@@ -133,12 +139,6 @@ Initializes the singleton instance of this Class.</p></td>
 <td class="description"><p class="name"><a href="#isAuthenticationEnabled()">isAuthenticationEnabled</a>()</p><p class="description">
 Returns true if authentication is enabled otherwise false.</p></td>
 </tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#loadConfig()">loadConfig</a>()</p><p class="description">
-Loads the 'config.xml'.
-</p></td>
-</tr>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
@@ -185,6 +185,15 @@ Private constructor since only used by 'initialize'.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_loadConfig()">_loadConfig</h3>
+<code class="signature">private  void <strong>_loadConfig</strong>()</code>
+<div class="details">
+<p>
+Loads the 'config.xml'.
+/</p></div>
+
+<hr>
+
 <h3 id="getCacheTime()">getCacheTime</h3>
 <code class="signature">public  integer <strong>getCacheTime</strong>()</code>
 <div class="details">
@@ -304,15 +313,6 @@ Returns true if authentication is enabled otherwise false.</p><dl>
 <dd>True if authentication is enabled otherwise false.</dd>
 </dl>
 </div>
-
-<hr>
-
-<h3 id="loadConfig()">loadConfig</h3>
-<code class="signature">private  void <strong>loadConfig</strong>()</code>
-<div class="details">
-<p>
-Loads the 'config.xml'.
-/</p></div>
 
 <hr>
 

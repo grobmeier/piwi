@@ -93,9 +93,12 @@ Removes all subitems in the given SitenElement that exceed the given depth.</p><
 Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 It is possible to retrieve only certain parts of the 'SiteMap'.</p><dl>
 <dt>Parameters:</dt>
-<dd>id - Returns only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be returned.</dd>
-<dd>depth - Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items.</dd>
-<dd>includeParent - If false only the children of the parent will be returned. This can only be used if $id is not 'null'.</dd>
+<dd>id - Returns only the SiteElement with this id and its subitems. 
+ * Set to 'null' if all SiteElements should be returned.</dd>
+<dd>depth - Determinates the maximum number of subitems that will be returned. 
+ * Set to '-1' for full depth, to '0' only for parent items.</dd>
+<dd>includeParent - If false only the children of the parent will be returned. 
+ * This can only be used if $id is not 'null'.</dd>
 <dt>Returns:</dt>
 <dd>'SiteMap' which is an array of SiteElements representing the website structure.</dd>
 </dl>
@@ -111,7 +114,8 @@ Returns the SiteElement with the given in id or null if no item is found.</p><dl
 <dt>Parameters:</dt>
 <dd>siteMap - The array of SiteElements to search in.</dd>
 <dd>id - The id of the SiteElement.</dd>
-<dd>foundElement - The SiteElement with the given in id or null if no item has been found yet.</dd>
+<dd>foundElement - The SiteElement with the given in id or null 
+ * if no item has been found yet.</dd>
 <dt>Returns:</dt>
 <dd>The SiteElement with the given in id or null if no item is found.</dd>
 </dl>

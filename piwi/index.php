@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements. See the NOTICE file
@@ -72,10 +72,7 @@ function __autoload($class) {
 		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . '/cache/classloader.cache.xml');
 	}
 
-	$directorys = array (		
-		'lib', 
-		CUSTOM_CLASSES_PATH
-	);
+	$directorys = array ('lib', CUSTOM_CLASSES_PATH);
 
 	foreach ($directorys as $directory) {
 		$result = $classloader->loadClass($directory, $class);
@@ -99,12 +96,13 @@ FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');
 ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config.xml');
 
 // Init site (manual dependency injection)
-Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, $GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
+Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, 
+	$GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
 
 try {
 	// Generate page
 	Site::getInstance()->generateContent();
-} catch( Exception $exception ) {
+} catch(Exception $exception) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	Site::getInstance()->setContent($exceptionPageGenerator->generate());

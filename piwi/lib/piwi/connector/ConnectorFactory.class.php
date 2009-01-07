@@ -48,7 +48,7 @@ class ConnectorFactory {
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		self :: $instance->initializeConnector($connectorId);
+		self :: $instance->_initializeConnector($connectorId);
 		
 		return self :: $instance->connectors[$connectorId];
 	}
@@ -58,7 +58,7 @@ class ConnectorFactory {
 	 * Arguments from the connector xml file will be passed to the Connector.
 	 * @param string $connectorId The id of the Connector.
 	 */
-	private function initializeConnector($connectorId) {
+	private function _initializeConnector($connectorId) {
 		if (isset($this->connectors[$connectorId])) {
 			return;
 		}

@@ -12,7 +12,7 @@ class SampleRoleProvider implements RoleProvider {
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
 	public function isUserInRole($username, array $roles) {
-		foreach ($this->getUserRoles($username) as $role) {
+		foreach ($this->_getUserRoles($username) as $role) {
        		if (in_array($role, $roles)) {
        			return true;
        		}
@@ -35,7 +35,7 @@ class SampleRoleProvider implements RoleProvider {
 	 * This method is just a dummy, normally you will query a database here.
 	 * @return array All roles of a user.
 	 */
-	private function getUserRoles($username) {
+	private function _getUserRoles($username) {
 		return array('admin');
 	}
 }

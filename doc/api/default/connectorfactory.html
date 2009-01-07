@@ -83,6 +83,12 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializeConnector()">_initializeConnector</a>(string connectorId)</p><p class="description">
+Constructs an instance of the Connector with the given id.
+</p></td>
+</tr>
+<tr>
 <td class="type">static  <a href="../default/connector.html">Connector</a></td>
 <td class="description"><p class="name"><a href="#getConnectorById()">getConnectorById</a>(string connectorId)</p><p class="description">
 Returns the Connector with the given id.
@@ -92,12 +98,6 @@ Returns the Connector with the given id.
 <td class="type">static  void</td>
 <td class="description"><p class="name"><a href="#initialize()">initialize</a>(string connectorsXMLPath)</p><p class="description">
 Initializes the singleton instance of this Class.</p></td>
-</tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#initializeConnector()">initializeConnector</a>(string connectorId)</p><p class="description">
-Constructs an instance of the Connector with the given id.
-</p></td>
 </tr>
 </table>
 
@@ -138,13 +138,27 @@ Constructs an instance of the Connector with the given id.
 Constructor.
 Private constructor since only used by 'initialize'.</p><dl>
 <dt>Parameters:</dt>
-<dd>connectorsXMLPath - Path of the file containing the xml-definition of the connectors that can be used.</dd>
+<dd>connectorsXMLPath - Path of the file containing the xml-definition
+ * of the connectors that can be used.</dd>
 </dl>
 </div>
 
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_initializeConnector()">_initializeConnector</h3>
+<code class="signature">private  void <strong>_initializeConnector</strong>(string connectorId)</code>
+<div class="details">
+<p>
+Constructs an instance of the Connector with the given id.
+Arguments from the connector xml file will be passed to the Connector.</p><dl>
+<dt>Parameters:</dt>
+<dd>connectorId - The id of the Connector.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="getConnectorById()">getConnectorById</h3>
 <code class="signature">public static  <a href="../default/connector.html">Connector</a> <strong>getConnectorById</strong>(string connectorId)</code>
 <div class="details">
@@ -167,20 +181,8 @@ Otherwise a new instance will be created and stored in a map.</p><dl>
 <p>
 Initializes the singleton instance of this Class.</p><dl>
 <dt>Parameters:</dt>
-<dd>connectorsXMLPath - Path of the file containing the xml-definition of the connectors that can be used.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="initializeConnector()">initializeConnector</h3>
-<code class="signature">private  void <strong>initializeConnector</strong>(string connectorId)</code>
-<div class="details">
-<p>
-Constructs an instance of the Connector with the given id.
-Arguments from the connector xml file will be passed to the Connector.</p><dl>
-<dt>Parameters:</dt>
-<dd>connectorId - The id of the Connector.</dd>
+<dd>connectorsXMLPath - Path of the file containing the xml-definition 
+ * of the connectors that can be used.</dd>
 </dl>
 </div>
 

@@ -83,26 +83,26 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  <a href="../default/generator.html">Generator</a></td>
+<td class="description"><p class="name"><a href="#_getGeneratorById()">_getGeneratorById</a>(string generatorId)</p><p class="description">
+Returns the Generator with the given id.
+</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializeGenerator()">_initializeGenerator</a>(string generatorId)</p><p class="description">
+Constructs an instance of the Generator with the given id.
+</p></td>
+</tr>
+<tr>
 <td class="type">static  <a href="../default/generator.html">Generator</a></td>
 <td class="description"><p class="name"><a href="#callGenerator()">callGenerator</a>(string generatorId)</p><p class="description">
 Used within the XSLT-Stylesheets to interpret the  tag. </p></td>
 </tr>
 <tr>
-<td class="type">private  <a href="../default/generator.html">Generator</a></td>
-<td class="description"><p class="name"><a href="#getGeneratorById()">getGeneratorById</a>(string generatorId)</p><p class="description">
-Returns the Generator with the given id.
-</p></td>
-</tr>
-<tr>
 <td class="type">static  void</td>
 <td class="description"><p class="name"><a href="#initialize()">initialize</a>(string generatorsXMLPath)</p><p class="description">
 Initializes the singleton instance of this Class.</p></td>
-</tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#initializeGenerator()">initializeGenerator</a>(string generatorId)</p><p class="description">
-Constructs an instance of the Generator with the given id.
-</p></td>
 </tr>
 </table>
 
@@ -143,29 +143,16 @@ Constructs an instance of the Generator with the given id.
 Constructor.
 Private constructor since only used by 'initialize'.</p><dl>
 <dt>Parameters:</dt>
-<dd>generatorsXMLPath - Path of the file containing the xml-definition of the generators that can be used.</dd>
+<dd>generatorsXMLPath - Path of the file containing the xml-definition 
+ * of the generators that can be used.</dd>
 </dl>
 </div>
 
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="callGenerator()">callGenerator</h3>
-<code class="signature">public static  <a href="../default/generator.html">Generator</a> <strong>callGenerator</strong>(string generatorId)</code>
-<div class="details">
-<p>
-Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
-<dt>Parameters:</dt>
-<dd>generatorId - The id of the Generator.</dd>
-<dt>Returns:</dt>
-<dd>The Generator with the given id.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getGeneratorById()">getGeneratorById</h3>
-<code class="signature">private  <a href="../default/generator.html">Generator</a> <strong>getGeneratorById</strong>(string generatorId)</code>
+<h3 id="_getGeneratorById()">_getGeneratorById</h3>
+<code class="signature">private  <a href="../default/generator.html">Generator</a> <strong>_getGeneratorById</strong>(string generatorId)</code>
 <div class="details">
 <p>
 Returns the Generator with the given id.
@@ -180,26 +167,41 @@ Otherwise a new instance will be created and stored in a map.</p><dl>
 
 <hr>
 
-<h3 id="initialize()">initialize</h3>
-<code class="signature">public static  void <strong>initialize</strong>(string generatorsXMLPath)</code>
-<div class="details">
-<p>
-Initializes the singleton instance of this Class.</p><dl>
-<dt>Parameters:</dt>
-<dd>generatorsXMLPath - Path of the file containing the xml-definition of the generators that can be used.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="initializeGenerator()">initializeGenerator</h3>
-<code class="signature">private  void <strong>initializeGenerator</strong>(string generatorId)</code>
+<h3 id="_initializeGenerator()">_initializeGenerator</h3>
+<code class="signature">private  void <strong>_initializeGenerator</strong>(string generatorId)</code>
 <div class="details">
 <p>
 Constructs an instance of the Generator with the given id.
 Arguments from the generator xml file will be passed to the Generator.</p><dl>
 <dt>Parameters:</dt>
 <dd>generatorId - The id of the Generator.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="callGenerator()">callGenerator</h3>
+<code class="signature">public static  <a href="../default/generator.html">Generator</a> <strong>callGenerator</strong>(string generatorId)</code>
+<div class="details">
+<p>
+Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
+<dt>Parameters:</dt>
+<dd>generatorId - The id of the Generator.</dd>
+<dt>Returns:</dt>
+<dd>The Generator with the given id.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="initialize()">initialize</h3>
+<code class="signature">public static  void <strong>initialize</strong>(string generatorsXMLPath)</code>
+<div class="details">
+<p>
+Initializes the singleton instance of this Class.</p><dl>
+<dt>Parameters:</dt>
+<dd>generatorsXMLPath - Path of the file containing the xml-definition 
+ * of the generators that can be used.</dd>
 </dl>
 </div>
 

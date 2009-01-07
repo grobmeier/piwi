@@ -34,16 +34,11 @@ abstract class SiteGenerator implements Generator {
     public function setProperty($key, $value){    	
     }
     
-	/**
-	 * ---------------------------------------------------------------------
-	 * >>>>>>>>>>>>>>>>>>>>>>>>>> Abstract Methods <<<<<<<<<<<<<<<<<<<<<<<<<
-	 * ---------------------------------------------------------------------
-	 */ 
-	 
+ 
 	/**
 	 * Generates the sections that will be placed as content.
 	 * @return string The xml output as string.
 	 */
-	abstract protected function generateSections();
+	protected abstract function generateSections();
 }
 ?>

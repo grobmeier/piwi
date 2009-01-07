@@ -61,6 +61,46 @@ Destructor.
 <dt><a href="default/piwiexception.html#__toString()">__toString()</a> - Method in class <a href="default/piwiexception.html">default.PiwiException</a></dt>
 <dd>
 Returns the exception as string.</dd>
+<dt><a href="default/mediacenter.html#_addImagesToAlbum()">_addImagesToAlbum()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
+<dd>
+Retrieves all images of the given folder and adds them to the album.</dd>
+<dt><a href="default/xmlsite.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>
+Generates the submenus of the given nodes.</dd>
+<dt><a href="default/xmlsite.html#_getCurrentPageDOMNode()">_getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>
+Returns the DOMNode representing the current page.</dd>
+<dt><a href="default/generatorfactory.html#_getGeneratorById()">_getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
+<dd>
+Returns the Generator with the given id.
+</dd>
+<dt><a href="default/imagenavigationgenerator.html#_getNavigation()">_getNavigation()</a> - Method in class <a href="default/imagenavigationgenerator.html">default.ImageNavigationGenerator</a></dt>
+<dd>
+Returns the recursivly built navigation.</dd>
+<dt><a href="default/sitemapgenerator.html#_getSiteMapAsXml()">_getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
+<dd>
+Returns the given 'SiteMap' as xml.</dd>
+<dt><a href="default/connectorfactory.html#_initializeConnector()">_initializeConnector()</a> - Method in class <a href="default/connectorfactory.html">default.ConnectorFactory</a></dt>
+<dd>
+Constructs an instance of the Connector with the given id.
+</dd>
+<dt><a href="default/formfactory.html#_initializeForm()">_initializeForm()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
+<dd>
+Constructs an DOMXPath of the From with the given id.</dd>
+<dt><a href="default/generatorfactory.html#_initializeGenerator()">_initializeGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
+<dd>
+Constructs an instance of the Generator with the given id.
+</dd>
+<dt><a href="default/classloadercache.html#_loadCache()">_loadCache()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
+<dd>
+Loads the cache file. </dd>
+<dt><a href="default/configurationmanager.html#_loadConfig()">_loadConfig()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Loads the 'config.xml'.
+</dd>
+<dt><a href="default/xmlsite.html#_loadSite()">_loadSite()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dd>
+Loads the 'site.xml'.</dd>
 </dl>
 <h1 id="letterA">A</h1>
 <dl>
@@ -71,9 +111,6 @@ Adds a class to the cache.
 <dt><a href="default/album.html#addImage()">addImage()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Adds an image to the album.</dd>
-<dt><a href="default/mediacenter.html#addImagesToAlbum()">addImagesToAlbum()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
-<dd>
-Retrieves all images of the given folder and adds them to the album.</dd>
 <dt><a href="default/album.html">Album()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Represents an photoalbum (a set of images).
@@ -199,9 +236,6 @@ Generates the sections that will be placed as content.</dd>
 <dt><a href="default/formprocessor.html#generateSelect()">generateSelect()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Converts the given SELECT element to PiwiXML.</dd>
-<dt><a href="default/xmlsite.html#generateSubnavigation()">generateSubnavigation()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>
-Generates the submenus of the given nodes.</dd>
 <dt><a href="default/formprocessor.html#generateTextArea()">generateTextArea()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Converts the given TEXTAREA element to PiwiXML.</dd>
@@ -221,7 +255,8 @@ Returns the albums sorted by date.</dd>
 Returns the possible roles a user needs to access the currently requested page.</dd>
 <dt><a href="default/xmlsite.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
-Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</dd>
+Returns the page specific cachetime (the time that may pass until the content 
+of the page is regenerated) or null if none is specified.</dd>
 <dt><a href="default/siteelement.html#getChildren()">getChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the children of the SiteElement.</dd>
@@ -238,9 +273,6 @@ Returns the date when the album has been created.</dd>
 <dt><a href="default/pager.html#getCurrentPage()">getCurrentPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the current page.</dd>
-<dt><a href="default/xmlsite.html#getCurrentPageDOMNode()">getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>
-Returns the DOMNode representing the current page.</dd>
 <dt><a href="default/configurationmanager.html#getCustomLabelsPath()">getCustomLabelsPath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the path of the a custom labels file or null if none is specified.</dd>
@@ -268,10 +300,6 @@ Returns the Form with the given id as DOMXPath.
 <dt><a href="default/xmlsite.html#getFullSiteMap()">getFullSiteMap()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
 <dd>
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</dd>
-<dt><a href="default/generatorfactory.html#getGeneratorById()">getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
-<dd>
-Returns the Generator with the given id.
-</dd>
 <dt><a href="default/configurationmanager.html#getHTMLNavigations()">getHTMLNavigations()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns an array containing all Navigations.
@@ -304,9 +332,6 @@ Returns the id of the login page.</dd>
 <dt><a href="default/folder.html#getName()">getName()</a> - Method in class <a href="default/folder.html">default.Folder</a></dt>
 <dd>
 Returns the name of the folder.</dd>
-<dt><a href="default/imagenavigationgenerator.html#getNavigation()">getNavigation()</a> - Method in class <a href="default/imagenavigationgenerator.html">default.ImageNavigationGenerator</a></dt>
-<dd>
-Returns the recursivly built navigation.</dd>
 <dt><a href="default/pager.html#getNextPage()">getNextPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the next page.</dd>
@@ -338,9 +363,6 @@ Returns the RoleProvider which manages the authentication of users.</dd>
 <dt><a href="default/configurationmanager.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the Serializer for the given format or null if none is found.</dd>
-<dt><a href="default/sitemapgenerator.html#getSiteMapAsXml()">getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
-<dd>
-Returns the given 'SiteMap' as xml.</dd>
 <dt><a href="default/sitemaphelper.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the SiteElement with the given in id or null if no item is found.</dd>
@@ -375,17 +397,6 @@ Creates a image based navigation. </dd>
 <dt><a href="default/generatorfactory.html#initialize()">initialize()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
-<dt><a href="default/connectorfactory.html#initializeConnector()">initializeConnector()</a> - Method in class <a href="default/connectorfactory.html">default.ConnectorFactory</a></dt>
-<dd>
-Constructs an instance of the Connector with the given id.
-</dd>
-<dt><a href="default/formfactory.html#initializeForm()">initializeForm()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
-<dd>
-Constructs an DOMXPath of the From with the given id.</dd>
-<dt><a href="default/generatorfactory.html#initializeGenerator()">initializeGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
-<dd>
-Constructs an instance of the Generator with the given id.
-</dd>
 <dt><a href="default/classloadercache.html#invalidate()">invalidate()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Resets the cache, should be called if a class 
@@ -423,23 +434,13 @@ Executes the Validator.</dd>
 </dl>
 <h1 id="letterL">L</h1>
 <dl>
-<dt><a href="default/classloadercache.html#loadCache()">loadCache()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
-<dd>
-Loads the cache file. </dd>
 <dt><a href="default/classloader.html#loadClass()">loadClass()</a> - Method in class <a href="default/classloader.html">default.ClassLoader</a></dt>
 <dd>
 Trys to load a class from the given directory. </dd>
-<dt><a href="default/configurationmanager.html#loadConfig()">loadConfig()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
-<dd>
-Loads the 'config.xml'.
-</dd>
 <dt><a href="default/resourcesmanager.html#loadResources()">loadResources()</a> - Method in class <a href="default/resourcesmanager.html">default.ResourcesManager</a></dt>
 <dd>
 Initializes the resources array.
 </dd>
-<dt><a href="default/xmlsite.html#loadSite()">loadSite()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>
-Loads the 'site.xml'.</dd>
 <dt><a href="default/usersessionmanager.html#loginUser()">loginUser()</a> - Method in class <a href="default/usersessionmanager.html">default.UserSessionManager</a></dt>
 <dd>
 Logs in the given user if its password is valid.

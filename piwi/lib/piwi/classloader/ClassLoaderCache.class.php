@@ -45,7 +45,7 @@ class ClassLoaderCache {
 	 */
 	public function addClassToCache($classname, $path) {
 		if ($this->cachexml == null) {
-			$this->loadCache();
+			$this->_loadCache();
 		}	
 		$class = $this->cachexml->addChild('class');
 		$class->addAttribute('id', $classname);
@@ -74,7 +74,7 @@ class ClassLoaderCache {
 	 */
 	public function getClassById($classId) {
 		if ($this->cachexml == null) {
-			$this->loadCache();
+			$this->_loadCache();
 		}	
 		$result = $this->cachexml->xpath("//cache:class[@id='" . $classId . "']");
 		if (empty($result)) {
@@ -87,7 +87,7 @@ class ClassLoaderCache {
 	/**
 	 * Loads the cache file. If it doesn't exist, it will be created.
 	 */
-	private function loadCache() {
+	private function _loadCache() {
 		if (!file_exists($this->pathToCacheFile)) {
 			$cachefile = '<?xml version="1.0" encoding="UTF-8"?>';
 			$cachefile .= '<classloadercache xmlns="http://piwi.googlecode.com/xsd/cache" 

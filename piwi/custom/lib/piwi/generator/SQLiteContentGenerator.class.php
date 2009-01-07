@@ -41,7 +41,7 @@ class SQLiteContentGenerator implements Generator {
 		// generate xml
 		$piwixml = '';
 		if ($dbresult != null) {
-			foreach($dbresult as $row) {
+			foreach ($dbresult as $row) {
 				$piwixml .= '<section>';
 				$piwixml .= '<title>';
 				$piwixml .= $row['subject'];
@@ -60,7 +60,7 @@ class SQLiteContentGenerator implements Generator {
 	 * @param string $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-		if($key == "connector") {
+		if ($key == "connector") {
     		$this->connector = $value;
     	}
     }

@@ -128,24 +128,22 @@ class UserSessionManager {
 		if ((isset ($_SESSION['authenticated']) && $_SESSION['authenticated'])) {
 			// In this case the user is already logged in
 			return true;
-		} else {
-			if (isset ($_COOKIE["username"]) && isset ($_COOKIE["password"])) {
-				// In this case the user has a cookie. Validate the password and login the user if it is correct.
-				$userValid = ConfigurationManager :: getInstance()
-					->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
-				if ($userValid) {
-					// Password is valid
-					$_SESSION['authenticated'] = true;
-					$_SESSION['username'] = $_COOKIE["username"];
-					unset ($_SESSION['ReturnUrl']);
-					return true;
-				} else {
-					// In this case the cookie is invalid
-					return false;
-				}
+		} else if (isset ($_COOKIE["username"]) && isset ($_COOKIE["password"])) {
+			// In this case the user has a cookie. Validate the password and login the user if it is correct.
+			$userValid = ConfigurationManager :: getInstance()
+				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
+			if ($userValid) {
+				// Password is valid
+				$_SESSION['authenticated'] = true;
+				$_SESSION['username'] = $_COOKIE["username"];
+				unset ($_SESSION['ReturnUrl']);
+				return true;
 			} else {
-				return false;				
+				// In this case the cookie is invalid
+				return false;
 			}
+		} else {
+			return false;				
 		}
 	}
 }

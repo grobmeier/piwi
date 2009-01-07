@@ -35,7 +35,7 @@ class SiteMapGenerator implements SectionGenerator {
 			$piwixml .= '<label key="' . $this->header . '" />';
 			$piwixml .= '</title>';
 		}
-		$piwixml .= $this->getSiteMapAsXml(SiteMapHelper::getCustomSiteMap($this->pageId, 
+		$piwixml .= $this->_getSiteMapAsXml(SiteMapHelper::getCustomSiteMap($this->pageId, 
 			$this->depth, $this->includeParent));
 		$piwixml .= '</section>';
 		
@@ -64,7 +64,7 @@ class SiteMapGenerator implements SectionGenerator {
      * website structure.
      * @return string The given 'SiteMap' as xml.
      */
-    private function getSiteMapAsXml($siteMap) {
+    private function _getSiteMapAsXml($siteMap) {
     	if ($siteMap == null) {
     		return '';
     	} else {
@@ -77,7 +77,7 @@ class SiteMapGenerator implements SectionGenerator {
 						$filepath = $element->getFilePath();
 					}
     				$result .= '<li><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . 
-    					$this->getSiteMapAsXml($element->getChildren()) . '</li>';
+    					$this->_getSiteMapAsXml($element->getChildren()) . '</li>';
     			}
     		}
     		

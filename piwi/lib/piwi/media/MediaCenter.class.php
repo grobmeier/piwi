@@ -32,7 +32,7 @@ class MediaCenter {
 					if ($albumName == null || $albumName == $folder) {
 						$album = new Album($folder);
 						$album->setCreatedAt(filectime($this->pathToAlbums . "/" . $folder));
-						$albums[$album->getCreatedAt() . ($count++)] = $this->addImagesToAlbum($album, 
+						$albums[$album->getCreatedAt() . ($count++)] = $this->_addImagesToAlbum($album, 
 							$this->pathToAlbums . "/" . $folder . "/thumbs/");
 					}
 			}
@@ -50,7 +50,7 @@ class MediaCenter {
 	 * @param Album $album The album to which the images should be added.
 	 * @param string $folder The folder whose images should be added to the album.
 	 */
-	private function addImagesToAlbum(Album $album, $folder) {		
+	private function _addImagesToAlbum(Album $album, $folder) {		
 		$imageFolder = opendir($folder);
 		while ($file = readdir($imageFolder)) {  
 			if ($file != "." && 

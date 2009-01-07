@@ -85,6 +85,11 @@ Destructor.
 </p></td>
 </tr>
 <tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_loadCache()">_loadCache</a>()</p><p class="description">
+Loads the cache file. </p></td>
+</tr>
+<tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#addClassToCache()">addClassToCache</a>(mixed classname, string path, string id)</p><p class="description">
 Adds a class to the cache.
@@ -102,11 +107,6 @@ Resets the cache, should be called if a class
 retrieved from the cache does no more exist 
 in the filesystem.
 </p></td>
-</tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#loadCache()">loadCache</a>()</p><p class="description">
-Loads the cache file. </p></td>
 </tr>
 </table>
 
@@ -158,6 +158,15 @@ Destructor.
 
 <hr>
 
+<h3 id="_loadCache()">_loadCache</h3>
+<code class="signature">private  void <strong>_loadCache</strong>()</code>
+<div class="details">
+<p>
+Loads the cache file. If it doesn't exist, it will be created.
+/</p></div>
+
+<hr>
+
 <h3 id="addClassToCache()">addClassToCache</h3>
 <code class="signature">public  void <strong>addClassToCache</strong>(mixed classname, string path, string id)</code>
 <div class="details">
@@ -194,15 +203,6 @@ Lookup a class by the given id in the cache. </p><dl>
 Resets the cache, should be called if a class 
 retrieved from the cache does no more exist 
 in the filesystem.
-/</p></div>
-
-<hr>
-
-<h3 id="loadCache()">loadCache</h3>
-<code class="signature">private  void <strong>loadCache</strong>()</code>
-<div class="details">
-<p>
-Loads the cache file. If it doesn't exist, it will be created.
 /</p></div>
 
 <hr>

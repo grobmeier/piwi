@@ -46,7 +46,7 @@ class FormFactory {
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		self :: $instance->initializeForm($formId);
+		self :: $instance->_initializeForm($formId);
 		
 		return self :: $instance->forms[$formId];
 	}
@@ -55,7 +55,7 @@ class FormFactory {
 	 * Constructs an DOMXPath of the From with the given id.
 	 * @param string $formId The id of the From.
 	 */
-	private function initializeForm($formId) {
+	private function _initializeForm($formId) {
 		if (isset($this->forms[$formId])) {
 			return;
 		}

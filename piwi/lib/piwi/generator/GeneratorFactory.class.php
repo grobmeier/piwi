@@ -41,8 +41,8 @@ class GeneratorFactory {
 	 * @param string $generatorId The id of the Generator.
 	 * @return Generator An instance of type Generator.
 	 */
-	private function getGeneratorById($generatorId) {
-		$this->initializeGenerator($generatorId);
+	private function _getGeneratorById($generatorId) {
+		$this->_initializeGenerator($generatorId);
 		return $this->generators[$generatorId];
 	}
 
@@ -51,7 +51,7 @@ class GeneratorFactory {
 	 * Arguments from the generator xml file will be passed to the Generator.
 	 * @param string $generatorId The id of the Generator.
 	 */
-	private function initializeGenerator($generatorId) {
+	private function _initializeGenerator($generatorId) {
 		if (isset($this->generators[$generatorId])) {
 			return;
 		}
@@ -99,7 +99,7 @@ class GeneratorFactory {
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
-		$xml = self :: $instance->getGeneratorById($generatorId)->generate();
+		$xml = self :: $instance->_getGeneratorById($generatorId)->generate();
 		$doc = new DOMDocument();
 		$doc->loadXml('<section xmlns="http://piwi.googlecode.com/xsd/piwixml">' . $xml . '</section>');
 		return $doc;

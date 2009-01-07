@@ -49,6 +49,7 @@
 				<exclude name="piwi/cache/*.xml" />
 				<!-- Exclude sources -->
 				<exclude name="doc-generator/" />
+				<exclude name="spikephpcheckstyle-0.6.1/" />
 				<exclude name="test/" />
 				<exclude name="*/.project" />
 				<exclude name="build.xml" />
@@ -70,12 +71,24 @@
 	<!-- Executes all tests and generates a coverage report. -->
 	<target name="report">
 		<delete dir="${target}${reportdir}" />
-		<mkdir dir="${target}${reportdir}" />
+		
+		<!-- Create coverage report -->
+		<mkdir dir="${target}${reportdir}coverage/" />
 		<exec executable="php" dir="." failonerror="true">
 			<arg value="${testdir}TestRunner.php" />
 			<arg value="${server}" />
-			<arg value="${target}${reportdir}" />
+			<arg value="${target}${reportdir}coverage/" />
 			<arg value="PHPCOVERAGE_HOME=${testdir}spikephpcoverage-0.8.2/src" />
+		</exec>
+		
+		<!-- Create codestyle report -->
+		<mkdir dir="${target}${reportdir}codestyle/" />
+		<exec executable="php" dir="spikephpcheckstyle-0.6.1" failonerror="true">
+			<arg value="run.php" />
+			<arg value="--src" />
+			<arg value="../piwi/lib/piwi" />
+			<arg value="--outdir" />
+			<arg value="../${target}${reportdir}codestyle/" />
 		</exec>
 	</target>
 

@@ -18,8 +18,12 @@
 	<div id="menu">
 		<?=$HTML_NAVIGATION?>
 		<span style="float: right">
-			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=de' ?>"><img src="custom/templates/images/bw/flag_de_bw.gif" alt="Deutsch" /></a>
-			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=default' ?>"><img src="custom/templates/images/bw/flag_en_bw.gif" alt="English" /></a>
+			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=de' ?>">
+			<img src="custom/templates/images/bw/flag_de_bw.gif" alt="Deutsch" />
+			</a>
+			<a href="<?=Request::getPageId() . '.' . Request::getExtension() . '?language=default' ?>">
+			<img src="custom/templates/images/bw/flag_en_bw.gif" alt="English" />
+			</a>
 		</span>
 	</div>
 	<div id="content">

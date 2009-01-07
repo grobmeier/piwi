@@ -81,8 +81,18 @@ Constructor.</p></td>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  array</td>
-<td class="description"><p class="name"><a href="#generateSubnavigation()">generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</p><p class="description">
+<td class="description"><p class="name"><a href="#_generateSubnavigation()">_generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</p><p class="description">
 Generates the submenus of the given nodes.</p></td>
+</tr>
+<tr>
+<td class="type">private  DOMNode</td>
+<td class="description"><p class="name"><a href="#_getCurrentPageDOMNode()">_getCurrentPageDOMNode</a>()</p><p class="description">
+Returns the DOMNode representing the current page.</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_loadSite()">_loadSite</a>()</p><p class="description">
+Loads the 'site.xml'.</p></td>
 </tr>
 <tr>
 <td class="type">protected  array</td>
@@ -92,12 +102,8 @@ Returns the possible roles a user needs to access the currently requested page.
 <tr>
 <td class="type">protected  integer</td>
 <td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
-Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p></td>
-</tr>
-<tr>
-<td class="type">private  DOMNode</td>
-<td class="description"><p class="name"><a href="#getCurrentPageDOMNode()">getCurrentPageDOMNode</a>()</p><p class="description">
-Returns the DOMNode representing the current page.</p></td>
+Returns the page specific cachetime (the time that may pass until the content 
+of the page is regenerated) or null if none is specified.</p></td>
 </tr>
 <tr>
 <td class="type">protected  string</td>
@@ -118,11 +124,6 @@ Returns the template of the requested page or null if not specified.</p></td>
 <td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getSupportedLanguages()">getSupportedLanguages</a>()</p><p class="description">
 Returns a list of supported languages.</p></td>
-</tr>
-<tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#loadSite()">loadSite</a>()</p><p class="description">
-Loads the 'site.xml'.</p></td>
 </tr>
 </table>
 
@@ -161,8 +162,8 @@ Constructor.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="generateSubnavigation()">generateSubnavigation</h3>
-<code class="signature">private  array <strong>generateSubnavigation</strong>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</code>
+<h3 id="_generateSubnavigation()">_generateSubnavigation</h3>
+<code class="signature">private  array <strong>_generateSubnavigation</strong>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</code>
 <div class="details">
 <p>
 Generates the submenus of the given nodes.</p><dl>
@@ -176,6 +177,27 @@ Generates the submenus of the given nodes.</p><dl>
 <dd>Array containing the submenus of the given nodes.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="_getCurrentPageDOMNode()">_getCurrentPageDOMNode</h3>
+<code class="signature">private  DOMNode <strong>_getCurrentPageDOMNode</strong>()</code>
+<div class="details">
+<p>
+Returns the DOMNode representing the current page.</p><dl>
+<dt>Returns:</dt>
+<dd>The DOMNode representing the current page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_loadSite()">_loadSite</h3>
+<code class="signature">private  void <strong>_loadSite</strong>()</code>
+<div class="details">
+<p>
+Loads the 'site.xml'.
+/</p></div>
 
 <hr>
 
@@ -198,21 +220,10 @@ The array contains only '*' if any authenticated user allowed to access the page
 <code class="signature">protected  integer <strong>getCacheTime</strong>()</code>
 <div class="details">
 <p>
-Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.</p><dl>
+Returns the page specific cachetime (the time that may pass until the content 
+of the page is regenerated) or null if none is specified.</p><dl>
 <dt>Returns:</dt>
 <dd>The page specific cachetime or null if none is specified.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getCurrentPageDOMNode()">getCurrentPageDOMNode</h3>
-<code class="signature">private  DOMNode <strong>getCurrentPageDOMNode</strong>()</code>
-<div class="details">
-<p>
-Returns the DOMNode representing the current page.</p><dl>
-<dt>Returns:</dt>
-<dd>The DOMNode representing the current page.</dd>
 </dl>
 </div>
 
@@ -263,15 +274,6 @@ Returns a list of supported languages.</p><dl>
 <dd>List of supported languages.</dd>
 </dl>
 </div>
-
-<hr>
-
-<h3 id="loadSite()">loadSite</h3>
-<code class="signature">private  void <strong>loadSite</strong>()</code>
-<div class="details">
-<p>
-Loads the 'site.xml'.
-/</p></div>
 
 <hr>
 

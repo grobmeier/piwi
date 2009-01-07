@@ -19,14 +19,14 @@ class SiteMapPathNavigationGenerator implements NavigationGenerator {
 		if (sizeof($siteElements) > 0) {
 			$siteElement = $siteElements[0];
 			
-			do {
+			while ($siteElement != null) {
 				if ($siteMapPathHTML != "") {
 					$siteMapPathHTML = " / " . $siteMapPathHTML;
 				}
 				$siteMapPathHTML = '<a href="' . $siteElement-> getId() . '.html">' . 
 					$siteElement->getLabel() . '</a>' . $siteMapPathHTML;
 				$siteElement = $siteElement->getParent();
-			} while ($siteElement != null);
+			}
 		}
 		
 		return $siteMapPathHTML;

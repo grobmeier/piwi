@@ -48,7 +48,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<p class="signature">public final  class <strong>SiteMapGenerator</strong></p>
+<p class="signature">public  class <strong>SiteMapGenerator</strong></p>
 
 <div class="comment" id="overview_description"><p>
 Generates a sitemap of the website.
@@ -60,7 +60,8 @@ Generates a sitemap of the website.
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#depth">$depth</a></p><p class="description">Determinates the maximum number of subitems that will be returned. </p></td>
+<td class="description"><p class="name"><a href="#depth">$depth</a></p><p class="description">Determinates the maximum number of subitems that will be returned.
+</p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -88,14 +89,14 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getSiteMapAsXml()">_getSiteMapAsXml</a>(array siteMap)</p><p class="description">
+Returns the given 'SiteMap' as xml.</p></td>
+</tr>
+<tr>
 <td class="type"> string</td>
 <td class="description"><p class="name"><a href="#generate()">generate</a>()</p><p class="description">
 Generates the sections that will be placed as content.</p></td>
-</tr>
-<tr>
-<td class="type">private  string</td>
-<td class="description"><p class="name"><a href="#getSiteMapAsXml()">getSiteMapAsXml</a>(array siteMap)</p><p class="description">
-Returns the given 'SiteMap' as xml.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -107,7 +108,8 @@ Returns the given 'SiteMap' as xml.</p></td>
 <h3 id="depth">depth</h3>
 <code class="signature">private  mixed <strong>$depth</strong> = -1</code>
 <div class="details">
-<p>Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items. */</p></div>
+<p>Determinates the maximum number of subitems that will be returned.
+Set to '-1' for full depth, to '0' only for parent items. */</p></div>
 
 <hr>
 
@@ -121,14 +123,16 @@ Returns the given 'SiteMap' as xml.</p></td>
 <h3 id="includeParent">includeParent</h3>
 <code class="signature">private  mixed <strong>$includeParent</strong> = true</code>
 <div class="details">
-<p>If false only the children of the parent will be shown. This can only be used if $pageId is not 'null'. */</p></div>
+<p>If false only the children of the parent will be shown. 
+This can only be used if $pageId is not 'null'. */</p></div>
 
 <hr>
 
 <h3 id="pageId">pageId</h3>
 <code class="signature">private  mixed <strong>$pageId</strong> = null</code>
 <div class="details">
-<p>Shows only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be shown. */</p></div>
+<p>Shows only the SiteElement with this id and its subitems. 
+Set to 'null' if all SiteElements should be shown. */</p></div>
 
 <hr>
 
@@ -143,6 +147,21 @@ Constructor.
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_getSiteMapAsXml()">_getSiteMapAsXml</h3>
+<code class="signature">private  string <strong>_getSiteMapAsXml</strong>(array siteMap)</code>
+<div class="details">
+<p>
+Returns the given 'SiteMap' as xml.</p><dl>
+<dt>Parameters:</dt>
+<dd>siteMap - The 'SiteMap' which is an array of SiteElements representing the 
+ * website structure.</dd>
+<dt>Returns:</dt>
+<dd>The given 'SiteMap' as xml.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="generate()">generate</h3>
 <code class="signature">public  string <strong>generate</strong>()</code>
 <div class="details">
@@ -150,20 +169,6 @@ Constructor.
 Generates the sections that will be placed as content.</p><dl>
 <dt>Returns:</dt>
 <dd>The xml output as string.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getSiteMapAsXml()">getSiteMapAsXml</h3>
-<code class="signature">private  string <strong>getSiteMapAsXml</strong>(array siteMap)</code>
-<div class="details">
-<p>
-Returns the given 'SiteMap' as xml.</p><dl>
-<dt>Parameters:</dt>
-<dd>siteMap - The 'SiteMap' which is an array of SiteElements representing the website structure.</dd>
-<dt>Returns:</dt>
-<dd>The given 'SiteMap' as xml.</dd>
 </dl>
 </div>
 

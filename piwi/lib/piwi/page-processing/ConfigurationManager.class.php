@@ -51,7 +51,7 @@ class ConfigurationManager {
      */
     public function getCacheTime() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query('/config:configuration/config:cachetime');
@@ -72,7 +72,7 @@ class ConfigurationManager {
      */
     public function getSerializer($extension) {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query('/config:configuration/' .
@@ -122,7 +122,7 @@ class ConfigurationManager {
      */
     public function getHTMLNavigations() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$navigations = array();
@@ -174,7 +174,7 @@ class ConfigurationManager {
      */
     public function getCustomLabelsPath() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query('/config:configuration/config:customLabels');
@@ -191,7 +191,7 @@ class ConfigurationManager {
      */
     public function getCustomXSLTStylesheetPath() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query('/config:configuration/config:customXSLTStylesheet');
@@ -208,7 +208,7 @@ class ConfigurationManager {
 	 */
 	public function isAuthenticationEnabled() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query('/config:configuration/config:authentication');
@@ -230,7 +230,7 @@ class ConfigurationManager {
 	public function getRoleProvider() {
 		if ($this->roleProvider == null) {
 			if ($this->domXPath == null) {
-    			$this->loadConfig();
+    			$this->_loadConfig();
     		}
     		
     		$className = null;
@@ -259,7 +259,7 @@ class ConfigurationManager {
      */
     public function getLoginPageId() {
     	if ($this->domXPath == null) {
-    		$this->loadConfig();
+    		$this->_loadConfig();
     	}
     	
     	$result = $this->domXPath->query("/config:configuration/config:authentication");
@@ -278,7 +278,7 @@ class ConfigurationManager {
     /**
      * Loads the 'config.xml'.
      */
-    private function loadConfig() {
+    private function _loadConfig() {
        	if (!file_exists($this->configFilePath)) {
 			throw new PiwiException("Could not find the config file (Path: '" . 
 					$this->configFilePath . "').", 
