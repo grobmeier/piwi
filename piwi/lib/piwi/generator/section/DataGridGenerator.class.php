@@ -49,9 +49,9 @@ class DataGridGenerator implements Generator {
 		}
 		
 		if ($dbresult != null) {
-			foreach($dbresult as $row) {
+			foreach ($dbresult as $row) {
 				$piwixml .= '<tr>';
-				for ( $index = 0, $max_count = sizeof( $row ) / 2; $index < $max_count; $index++ ) {
+				for ($index = 0, $max_count = sizeof($row) / 2; $index < $max_count; $index++) {
 					$piwixml .= '<td>' . $row[$index] . '</td>';
 				}
 				$piwixml .= '</tr>';
@@ -67,11 +67,11 @@ class DataGridGenerator implements Generator {
 	 * @param string $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-		if($key == "connector") {
+		if ($key == "connector") {
     		$this->connector = $value;
-    	} else if($key == "sql") {
+    	} else if ($key == "sql") {
     		$this->sql = $value;
-    	} else if($key == "headers") {
+    	} else if ($key == "headers") {
     		$this->headers = explode(',', str_replace(", ", ",", $value));
     	}
     }

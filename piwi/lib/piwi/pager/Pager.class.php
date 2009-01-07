@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Helper class to page contents of a database query.
  */
@@ -20,7 +20,7 @@ class Pager {
 	 * 
 	 */
 	public function __construct($currentPage, $rows, $rowsPerPage = 20) {
-		if($currentPage == "" || $currentPage == 0) {
+		if ($currentPage == "" || $currentPage == 0) {
 			$currentPage = 1;
 		}
 		$this->currentPage = $currentPage;
@@ -54,7 +54,7 @@ class Pager {
 	 * @return integer The number of the next page.
 	 */	
 	public function getNextPage() {
-		if(($this->currentPage + 1) > $this->countPages()) {
+		if (($this->currentPage + 1) > $this->countPages()) {
 			$this->currentPage = 1;
 			return $this->currentPage;
 		} else {
@@ -67,7 +67,7 @@ class Pager {
 	 * @return integer The number of the previous page.
 	 */		
 	public function getPreviousPage() {
-		if(($this->currentPage - 1) <= 0) {
+		if (($this->currentPage - 1) <= 0) {
 			$this->currentPage = $this->countPages();
 			return $this->currentPage;
 		} else {

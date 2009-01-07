@@ -18,7 +18,8 @@ class GeneratorFactory {
 	/**
 	 * Constructor.
 	 * Private constructor since only used by 'initialize'.
-	 * @param string $generatorsXMLPath Path of the file containing the xml-definition of the generators that can be used.
+	 * @param string $generatorsXMLPath Path of the file containing the xml-definition 
+	 * of the generators that can be used.
 	 */
 	private function __construct($generatorsXMLPath) {
 		$this->generatorsXMLPath = $generatorsXMLPath;
@@ -26,7 +27,8 @@ class GeneratorFactory {
 
 	/**
 	 * Initializes the singleton instance of this Class.
-	 * @param string $generatorsXMLPath Path of the file containing the xml-definition of the generators that can be used.
+	 * @param string $generatorsXMLPath Path of the file containing the xml-definition 
+	 * of the generators that can be used.
 	 */
 	public static function initialize($generatorsXMLPath) {
 		self :: $instance = new GeneratorFactory($generatorsXMLPath);
@@ -55,8 +57,8 @@ class GeneratorFactory {
 		}
 		if ($this->xml == null) {
 			if (!file_exists($this->generatorsXMLPath)) {
-				throw new PiwiException(
-					"Could not find the generators definition file (Path: '" . $this->generatorsXMLPath . "').", 
+				throw new PiwiException("Could not find the generators definition file (Path: '" . 
+						$this->generatorsXMLPath . "').", 
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
 			$this->xml = simplexml_load_file($this->generatorsXMLPath);
@@ -68,9 +70,9 @@ class GeneratorFactory {
 			$class = new ReflectionClass((string)$result[0]->attributes()->class);
 			$generator = $class->newInstance();
 
-			if (!$generator instanceof Generator){
-				throw new PiwiException(
-					"The Class with id '" . $generatorId . "' is not an instance of Generator.", 
+			if (!$generator instanceof Generator) {
+				throw new PiwiException("The Class with id '" . $generatorId .
+						"' is not an instance of Generator.", 
 					PiwiException :: ERR_WRONG_TYPE);
 			}
 
@@ -79,8 +81,8 @@ class GeneratorFactory {
 			}
 			$this->generators[$generatorId] = $generator;
 		} else {
-			throw new PiwiException(
-				"Could not find the generator '" . $generatorId . "' in the generators definition file (Path: '" . $this->generatorsXMLPath . "').", 
+			throw new PiwiException("Could not find the generator '" . $generatorId .
+					"' in the generators definition file (Path: '" . $this->generatorsXMLPath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
 		}
 	}
@@ -92,8 +94,8 @@ class GeneratorFactory {
 	 */
 	public static function callGenerator($generatorId) {
 		if (self :: $instance == null) {
-			throw new PiwiException(
-				"Illegal State: Invoke static method 'initialize' on '" . __CLASS__ . "' before accessing a Generator.", 
+			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '"
+					. __CLASS__ . "' before accessing a Generator.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 

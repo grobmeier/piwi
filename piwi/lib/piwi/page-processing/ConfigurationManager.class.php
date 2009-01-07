@@ -54,12 +54,12 @@ class ConfigurationManager {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:cachetime");
-    	if($result->length == 1) {
+    	$result = $this->domXPath->query('/config:configuration/config:cachetime');
+    	if ($result->length == 1) {
     		return $result->item(0)->nodeValue;
         } else if ($result->length > 1) {
-       		throw new PiwiException(
-				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
+       		throw new PiwiException("Your 'config.xml' is not valid (Path: '" . 
+       				$this->configFilePath . "').", 
 				PiwiException :: INVALID_XML_DEFINITION);
         } else {
             return 0;
@@ -75,8 +75,9 @@ class ConfigurationManager {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:serializers/config:serializer[@extension='" . $extension . "']");
-    	if($result->length == 1) {
+    	$result = $this->domXPath->query('/config:configuration/' .
+    		"config:serializers/config:serializer[@extension='" . $extension . "']");
+    	if ($result->length == 1) {
     		$serializerClass = $result->item(0)->getAttribute("serializer");
     		
 	    	if ($serializerClass != null) {
@@ -86,13 +87,16 @@ class ConfigurationManager {
 					
 					if (!$serializer instanceof Serializer) {
 						$serializer = null;
-						// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
+						/* Do not throw exception, since this can not be handled any more because 
+						 * this method will only be invoked during serialization. */
 						if (error_reporting() > E_ERROR) {							
-							echo "The Class with name '" . $serializerClass . "' is not an instance of Serializer.";
+							echo "The Class with name '" . $serializerClass .
+								"' is not an instance of Serializer.";
 						}
 					}
 				} catch (ReflectionException $exception) {
-					// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
+					/* Do not throw exception, since this can not be handled any more because 
+					 * this method will only be invoked during serialization. */
 					if (error_reporting() > E_ERROR) {
 						echo 'Serializer not found: ' . $serializerClass;
 					}
@@ -100,7 +104,8 @@ class ConfigurationManager {
 	    	}
 	    	return $serializer;
         } else if ($result->length > 1) {
-        	// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
+        	/* Do not throw exception, since this can not be handled any more because 
+			 * this method will only be invoked during serialization. */
 			if (error_reporting() > E_ERROR) {
 				echo "Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').";
 			}
@@ -122,7 +127,8 @@ class ConfigurationManager {
     	
     	$navigations = array();
     	
-    	foreach ($this->domXPath->query("/config:configuration/config:navigationGenerators/config:navigationGenerator") as $generator) {
+    	foreach ($this->domXPath->query('/config:configuration/config:navigationGenerators/' .
+    			'config:navigationGenerator') as $generator) {
 			try {
 				$class = new ReflectionClass($generator->getAttribute('class'));
 			    $navigationGenerator = $class->newInstance();			    
@@ -133,7 +139,8 @@ class ConfigurationManager {
 			
 			    if (!$navigationGenerator instanceof NavigationGenerator) {
 		    		if (error_reporting() > E_ERROR) {
-						echo "The Class with name '" . $generator->getAttribute('class') . "' is not an instance of NavigationGenerator.";
+						echo "The Class with name '" . $generator->getAttribute('class') . 
+							"' is not an instance of NavigationGenerator.";
 					}
 					continue;
 			    }
@@ -144,13 +151,14 @@ class ConfigurationManager {
 			    }	    
 			    
 			    $depth = $generator->getAttribute('depth') == "" ? -1 : $generator->getAttribute('depth');
-			    $includeParent = $generator->getAttribute('includeParent') == "" ? true : $generator->getAttribute('includeParent');
+			    $includeParent = $generator->getAttribute('includeParent') == "" ? 
+			    	true : $generator->getAttribute('includeParent');
 
 				$customSiteMap = SiteMapHelper::getCustomSiteMap($pageId, $depth, $includeParent);
 			    $navigations[$generator->getAttribute('name')] = $navigationGenerator->generate($customSiteMap);
-
-			} catch( ReflectionException $exception ) {
-				// Do not throw exception, since this can not be handled any more because this method will only be invoked during serialization.
+			} catch(ReflectionException $exception) {
+				/* Do not throw exception, since this can not be handled any more because 
+			 	 * this method will only be invoked during serialization. */
 				if (error_reporting() > E_ERROR) {
 					echo "Custom Navigation Generator not found: " . $generator->getAttribute('class');
 				}
@@ -169,7 +177,7 @@ class ConfigurationManager {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:customLabels");
+    	$result = $this->domXPath->query('/config:configuration/config:customLabels');
     	if ($result->length == 1) {
     		return $result->item(0)->nodeValue;
         } else {
@@ -186,7 +194,7 @@ class ConfigurationManager {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:customXSLTStylesheet");
+    	$result = $this->domXPath->query('/config:configuration/config:customXSLTStylesheet');
     	if ($result->length == 1) {
     		return $result->item(0)->nodeValue;
         } else {
@@ -203,12 +211,12 @@ class ConfigurationManager {
     		$this->loadConfig();
     	}
     	
-    	$result = $this->domXPath->query("/config:configuration/config:authentication");
+    	$result = $this->domXPath->query('/config:configuration/config:authentication');
     	if ($result->length == 1) {    		
-    		return $result->item(0)->getAttribute("enabled");
+    		return $result->item(0)->getAttribute('enabled');
         } else if ($result->length > 1) {
-       		throw new PiwiException(
-				"Your 'config.xml' is not valid (Path: '" . $this->configFilePath . "').", 
+       		throw new PiwiException("Your 'config.xml' is not valid (Path: '" . 
+       				$this->configFilePath . "').", 
 				PiwiException :: INVALID_XML_DEFINITION);
         } else {
        		return false;
@@ -227,17 +235,17 @@ class ConfigurationManager {
     		
     		$className = null;
     		
-    		$result = $this->domXPath->query("/config:configuration/config:authentication");
+    		$result = $this->domXPath->query('/config:configuration/config:authentication');
 	    	if ($result->length == 1) {    		
-	    		$className = $result->item(0)->getAttribute("roleProvider");
+	    		$className = $result->item(0)->getAttribute('roleProvider');
 	        }
 	        
 		   	$class = new ReflectionClass($className);
 			$roleProvider = $class->newInstance();
 			
 			if (!$roleProvider instanceof RoleProvider) {
-				throw new PiwiException(
-					"The Class with name '" . $className . "' is not an instance of RoleProvider.", 
+				throw new PiwiException("The Class with name '" . $className . 
+						"' is not an instance of RoleProvider.", 
 					PiwiException :: ERR_WRONG_TYPE);
 			}
 			$this->roleProvider = $roleProvider;
@@ -272,8 +280,8 @@ class ConfigurationManager {
      */
     private function loadConfig() {
        	if (!file_exists($this->configFilePath)) {
-			throw new PiwiException(
-				"Could not find the config file (Path: '" . $this->configFilePath . "').", 
+			throw new PiwiException("Could not find the config file (Path: '" . 
+					$this->configFilePath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
     	}
     	

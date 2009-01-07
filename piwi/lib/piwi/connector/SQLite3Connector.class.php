@@ -19,17 +19,16 @@ class SQLite3Connector implements Connector {
 	 * Establishes a connection to the database.
 	 */
     public function connect() {
-    	if($this->file == null) {
-   			throw new DatabaseException(
-				'No database specified (Correct your "connectors.xml").',
+    	if ($this->file == null) {
+   			throw new DatabaseException('No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
    		
    		try {
 			$this->dbConnection = new PDO('sqlite:' . $this->file);			
-		} catch( PDOException $exception ) {
-			throw new DatabaseException(
-				'Establishing database connection failed ('.$exception->getMessage().').', 
+		} catch(PDOException $exception) {
+			throw new DatabaseException('Establishing database connection failed (' .
+					$exception->getMessage() . ').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
 		}
     }
@@ -40,21 +39,20 @@ class SQLite3Connector implements Connector {
 	 * @return array The result of the query.
 	 */
     public function execute($sql) {
-   		if($this->dbConnection == null) {
+   		if ($this->dbConnection == null) {
    			$this->connect();
    		}
-   		
+
    		// Execute query
    		$result = $this->dbConnection->query($sql);
    		
-   		if (!$result){
-   			throw new DatabaseException(
-				'Querying database failed.', 
+   		if (!$result) {
+   			throw new DatabaseException('Querying database failed.', 
 				DatabaseException::ERR_QUERY_FAILED);
    		}
    		
    		$i = 0;
-   		while($temp = $result->fetch()) {
+   		while ($temp = $result->fetch()) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
@@ -67,7 +65,7 @@ class SQLite3Connector implements Connector {
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "file") {
+    	if ($key == "file") {
     		$this->file = $value;
     	}
     }

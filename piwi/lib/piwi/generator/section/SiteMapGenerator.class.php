@@ -2,14 +2,17 @@
 /**
  * Generates a sitemap of the website.
  */
-final class SiteMapGenerator implements SectionGenerator {
-	/** Shows only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be shown. */
+class SiteMapGenerator implements SectionGenerator {
+	/** Shows only the SiteElement with this id and its subitems. 
+	 * Set to 'null' if all SiteElements should be shown. */
 	private $pageId = null;
 	
-	/** Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items. */
+	/** Determinates the maximum number of subitems that will be returned.
+	 * Set to '-1' for full depth, to '0' only for parent items. */
 	private $depth = -1;
 	
-	/** If false only the children of the parent will be shown. This can only be used if $pageId is not 'null'. */
+	/** If false only the children of the parent will be shown. 
+	 * This can only be used if $pageId is not 'null'. */
 	private $includeParent = true;
 
 	/** The header of the section. */
@@ -32,7 +35,8 @@ final class SiteMapGenerator implements SectionGenerator {
 			$piwixml .= '<label key="' . $this->header . '" />';
 			$piwixml .= '</title>';
 		}
-		$piwixml .= $this->getSiteMapAsXml(SiteMapHelper::getCustomSiteMap($this->pageId, $this->depth, $this->includeParent));
+		$piwixml .= $this->getSiteMapAsXml(SiteMapHelper::getCustomSiteMap($this->pageId, 
+			$this->depth, $this->includeParent));
 		$piwixml .= '</section>';
 		
 		return $piwixml;
@@ -43,20 +47,21 @@ final class SiteMapGenerator implements SectionGenerator {
 	 * @param string $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "pageId") {
+    	if ($key == "pageId") {
     		$this->pageId = $value;
-    	} else if($key == "depth") {
+    	} else if ($key == "depth") {
     		$this->depth = $value;
-    	} else if($key == "includeParent") {
+    	} else if ($key == "includeParent") {
     		$this->includeParent = $value;
-    	} else if($key == "header") {
+    	} else if ($key == "header") {
     		$this->header = $value;
     	} 
     }
     
     /**
      * Returns the given 'SiteMap' as xml.
-     * @param array $siteMap The 'SiteMap' which is an array of SiteElements representing the website structure.
+     * @param array $siteMap The 'SiteMap' which is an array of SiteElements representing the 
+     * website structure.
      * @return string The given 'SiteMap' as xml.
      */
     private function getSiteMapAsXml($siteMap) {
@@ -71,7 +76,8 @@ final class SiteMapGenerator implements SectionGenerator {
 					if (substr($element->getFilePath(), 0, 4) == 'http') {
 						$filepath = $element->getFilePath();
 					}
-    				$result .= '<li><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->getSiteMapAsXml($element->getChildren()) . '</li>';
+    				$result .= '<li><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . 
+    					$this->getSiteMapAsXml($element->getChildren()) . '</li>';
     			}
     		}
     		

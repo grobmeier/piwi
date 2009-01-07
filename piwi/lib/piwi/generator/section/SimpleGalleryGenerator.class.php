@@ -29,7 +29,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 		// Generate the xml output
 		$piwixml = '';
 		
-		foreach($albums as $album) {
+		foreach ($albums as $album) {
 			$folder = $album->getName();
 			$images = $album->getImages();	
 	
@@ -44,26 +44,28 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			// if no album is selected show 5 images of each otherwise show the full album
 			$albumSelected = isset($_GET['album']);
 			
-			if ($albumSelected && $_GET['album'] != $folder){
+			if ($albumSelected && $_GET['album'] != $folder) {
 				// if album is selected show only images of this album
 				continue;
 			}
 				
-			foreach($images as $file) {				
+			foreach ($images as $file) {				
 				if (!$albumSelected && $count == $maxImage) {
 					// stop after the specified number of pictures
 					break;
 				}
-				$piwixml .= '<a href="'.$this->pathToAlbums.'/'.$folder.'/originals/'.$file.'">
-						<img src="'.$this->pathToAlbums.'/'.$folder.'/thumbs/'.$file.'" alt="' . $file . '" />
-						</a>';
+				$piwixml .= '<a href="' . $this->pathToAlbums . '/' . $folder . '/originals/' . $file . '">
+					<img src="' . $this->pathToAlbums . '/' . $folder . '/thumbs/' . $file . 
+					'" alt="' . $file . '" /></a>';
 				$count++;
 			}
 			
-			if ($albumSelected){
-				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . '"><label key="BACK_TO_GALLERIES" /></a></p>';
+			if ($albumSelected) {
+				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . '">' .
+					'<label key="BACK_TO_GALLERIES" /></a></p>';
 			} else {
-				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . '?album='.urlencode($folder).'"><label key="MORE_IN" /> '.$folder.'</a></p>';
+				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . 
+					'?album=' . urlencode($folder) . '"><label key="MORE_IN" /> ' . $folder . '</a></p>';
 			}
 			$piwixml .= '</section>';
 		}
@@ -76,7 +78,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 	 * @param string $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "pathtoalbums") {
+    	if ($key == "pathtoalbums") {
     		$this->pathToAlbums = $value;
     	}
     }

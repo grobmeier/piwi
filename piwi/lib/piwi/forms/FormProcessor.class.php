@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Processes forms specified as PiwiForms.
  * Forms can contain multiple steps (wizards).
@@ -55,8 +55,8 @@ class FormProcessor {
 		self::$numberOfSteps = $domXPath->evaluate('count(/piwiform:form/piwiform:step)');
 		
 		if (self::$currentStep > self::$numberOfSteps || self::$currentStep < 0) {
-			throw new PiwiException(
-				"This form only has " . $numberOfSteps . " steps, you requested number " . self::$currentStep . ".", 
+			throw new PiwiException("This form only has " . $numberOfSteps .
+					" steps, you requested number " . self::$currentStep . ".", 
 				PiwiException :: FORMS_ERROR);
 		}
 		
@@ -74,8 +74,11 @@ class FormProcessor {
 		}
 
 		// Build xml
-		$piwixml = '<form xmlns="http://piwi.googlecode.com/xsd/piwixml" action="' . Request::getPageId() . '.' . Request::getExtension() . '" method="post" enctype="multipart/form-data">';
-		$piwixml .= '<input name="' . self::$formId . '_currentstep" type="hidden" value="' . self::$currentStep . '" />';
+		$piwixml = '<form xmlns="http://piwi.googlecode.com/xsd/piwixml" action="' . 
+			Request::getPageId() . '.' . Request::getExtension() .
+			'" method="post" enctype="multipart/form-data">';
+		$piwixml .= '<input name="' . self::$formId . '_currentstep" type="hidden" value="' .
+			self::$currentStep . '" />';
 		
 		if (self::$currentStep < self::$numberOfSteps) {
 			// Add current values as hidden field (but no checkboxes), to save their state
@@ -130,9 +133,11 @@ class FormProcessor {
 		$value = $domElement[0]->getAttribute("value");
 		$checked = $domElement[0]->getAttribute("checked");
 		
-		$checkable = $domElement[0]->getAttribute("type") == 'radio' || $domElement[0]->getAttribute("type") == 'checkbox';
+		$checkable = $domElement[0]->getAttribute("type") == 'radio' || 
+			$domElement[0]->getAttribute("type") == 'checkbox';
 		
-		// if INPUT is a CheckBox or RadioButton and if request is a postback, then determinate it's checked state to set the same status again
+		/* if INPUT is a CheckBox or RadioButton and if request is a postback, 
+		 * then determinate it's checked state to set the same status again */
 		if ($checkable && sizeof($_POST) > 0) {
 			if (isset($_POST[$name])) {
 				if (is_array($_POST[$name])) {
@@ -162,10 +167,14 @@ class FormProcessor {
 		} 
 
 		$xml = ' <input name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ')
-		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . $domElement[0]->getAttribute("maxlength") . '" ' : '')
-		. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
-		. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
+		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . 
+			'" ' : 'type="text" ')
+		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . 
+			$domElement[0]->getAttribute("maxlength") . '" ' : '')
+		. ($domElement[0]->hasAttribute("size") ? ' size="' . 
+			$domElement[0]->getAttribute("size") . '" ' : '')
+		. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . 
+			$domElement[0]->getAttribute("readonly") . '" ' : '')
 		. (($checked != '') ? ' checked="' . $checked . '" ' : '')
 		. 'value="' . $value . '"'		
 		. ' />';
@@ -185,8 +194,10 @@ class FormProcessor {
 		$name = str_replace("[]", "", self::$formId . '_' . $domElement[0]->getAttribute("name"));
 		
 		$xml = ' <select name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-			. ($domElement[0]->hasAttribute("size") ? ' size="' . $domElement[0]->getAttribute("size") . '" ' : '')
-			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . $domElement[0]->getAttribute("multiple") . '" ' : '')
+			. ($domElement[0]->hasAttribute("size") ? ' size="' . 
+				$domElement[0]->getAttribute("size") . '" ' : '')
+			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . 
+				$domElement[0]->getAttribute("multiple") . '" ' : '')
 			. '>';
 
 		self::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
@@ -248,9 +259,12 @@ class FormProcessor {
 		} 
 
 		$xml = ' <textarea name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . $domElement[0]->getAttribute("cols") . '" ' : '')
-					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . $domElement[0]->getAttribute("rows") . '" ' : '')
-					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . $domElement[0]->getAttribute("readonly") . '" ' : '')
+					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . 
+						$domElement[0]->getAttribute("cols") . '" ' : '')
+					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . 
+						$domElement[0]->getAttribute("rows") . '" ' : '')
+					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . 
+						$domElement[0]->getAttribute("readonly") . '" ' : '')
 					. '>'
 					. ($value == "" ? ' ' : $value)
 					. '</textarea>';
@@ -274,9 +288,9 @@ class FormProcessor {
 		$class = new ReflectionClass($domElement[0]->getAttribute("class"));
 		$validator = $class->newInstance($domElement[0]);
 
-		if (!$validator instanceof Validator){
-			throw new PiwiException(
-				"The Class with id '" . $domElement[0]->getAttribute("class") . "' is not an instance of Validator.", 
+		if (!$validator instanceof Validator) {
+			throw new PiwiException("The Class with id '" . $domElement[0]->getAttribute("class") .
+					"' is not an instance of Validator.", 
 				PiwiException :: ERR_WRONG_TYPE);
 		}
 		
@@ -303,13 +317,14 @@ class FormProcessor {
 		$class = new ReflectionClass($domElement[0]->getAttribute("class"));
 		$stepProcessor = $class->newInstance();
 
-		if (!$stepProcessor instanceof StepProcessor){
-			throw new PiwiException(
-				"The Class with id '" . $domElement[0]->getAttribute("class") . "' is not an instance of StepProcessor.", 
+		if (!$stepProcessor instanceof StepProcessor) {
+			throw new PiwiException("The Class with id '" . $domElement[0]->getAttribute("class") .
+					"' is not an instance of StepProcessor.", 
 				PiwiException :: ERR_WRONG_TYPE);
 		}
 		
-		$xml = $stepProcessor->process(self::getResults(), self::getFiles(), self::$currentStep, self::$numberOfSteps);
+		$xml = $stepProcessor->process(self::getResults(), self::getFiles(), 
+			self::$currentStep, self::$numberOfSteps);
 		
 		$doc = new DOMDocument;
 		$doc->loadXml($xml);
@@ -326,7 +341,8 @@ class FormProcessor {
 		$results = array();		
 		
 		foreach ($_POST as $key => $value) {
-			if (substr($key, 0, strpos($key, '_')) == self::$formId && $key != self::$formId . '_currentstep') {	
+			if (substr($key, 0, strpos($key, '_')) == self::$formId &&
+				$key != self::$formId . '_currentstep') {
 				$results[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
 		}

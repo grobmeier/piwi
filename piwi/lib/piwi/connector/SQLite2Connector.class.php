@@ -22,17 +22,15 @@ class SQLite2Connector implements Connector {
 	 * Establishes a connection to the database.
 	 */
     public function connect() {
-    	if($this->file == null) {
-   			throw new DatabaseException(
-				'No database specified (Correct your "connectors.xml").',
+    	if ($this->file == null) {
+   			throw new DatabaseException('No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
    		$sqliteerror = null;
    		$this->dbConnection = sqlite_open($this->file, $this->mode, $sqliteerror);
    		
    		if ($sqliteerror != null) {
-   			throw new DatabaseException(
-				'Establishing database connection failed ('.$sqliteerror.').', 
+   			throw new DatabaseException('Establishing database connection failed (' . $sqliteerror . ').',
 				DatabaseException::ERR_CONNECTION_FAILED);
     	}
     }
@@ -43,21 +41,20 @@ class SQLite2Connector implements Connector {
 	 * @return array The result of the query.
 	 */
     public function execute($sql) {
-   		if($this->dbConnection == null) {
+   		if ($this->dbConnection == null) {
    			$this->connect();
    		}
    		
    		// Execute query
    		$result = sqlite_query($this->dbConnection,$sql);
 		
-   		if (!$result){
-   			throw new DatabaseException(
-				'Querying database failed.', 
+   		if (!$result) {
+   			throw new DatabaseException('Querying database failed.', 
 				DatabaseException::ERR_QUERY_FAILED);
    		}
    		
    		$i = 0;
-   		while($temp = sqlite_fetch_array($result)) {
+   		while ($temp = sqlite_fetch_array($result)) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
@@ -70,9 +67,9 @@ class SQLite2Connector implements Connector {
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "file") {
+    	if ($key == "file") {
     		$this->file = $value;
-    	} else if($key == "mode") {
+    	} else if ($key == "mode") {
     		$this->mode = $value;
     	}
     }

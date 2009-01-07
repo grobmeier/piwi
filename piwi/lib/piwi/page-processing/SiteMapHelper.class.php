@@ -6,9 +6,12 @@ class SiteMapHelper {
 	/**
 	 * Returns the 'SiteMap' which is an array of SiteElements representing the website structure.
 	 * It is possible to retrieve only certain parts of the 'SiteMap'.
-	 * @param string $id Returns only the SiteElement with this id and its subitems. Set to 'null' if all SiteElements should be returned.
-	 * @param integer $depth Determinates the maximum number of subitems that will be returned. Set to '-1' for full depth, to '0' only for parent items. 
-	 * @param boolean $includeParent If false only the children of the parent will be returned. This can only be used if $id is not 'null'.
+	 * @param string $id Returns only the SiteElement with this id and its subitems. 
+	 * Set to 'null' if all SiteElements should be returned.
+	 * @param integer $depth Determinates the maximum number of subitems that will be returned. 
+	 * Set to '-1' for full depth, to '0' only for parent items. 
+	 * @param boolean $includeParent If false only the children of the parent will be returned. 
+	 * This can only be used if $id is not 'null'.
 	 * @return The 'SiteMap' which is an array of SiteElements representing the website structure.
 	 */
 	public static function getCustomSiteMap($id, $depth, $includeParent = true) {
@@ -47,7 +50,8 @@ class SiteMapHelper {
 	 * Returns the SiteElement with the given in id or null if no item is found.
 	 * @param array $siteMap The array of SiteElements to search in.
 	 * @param string $id The id of the SiteElement.
-	 * @param SiteElement $foundElement The SiteElement with the given in id or null if no item has been found yet.
+	 * @param SiteElement $foundElement The SiteElement with the given in id or null 
+	 * if no item has been found yet.
 	 * @return SiteElement The SiteElement with the given in id or null if no item is found.
 	 */
 	private static function getSiteMapItemsById($siteMap, $id, SiteElement $foundElement = null) {

@@ -31,7 +31,8 @@ class SimpleTextNavigationGenerator implements NavigationGenerator {
 					if (substr($element->getFilePath(), 0, 4) == 'http') {
 						$filepath = $element->getFilePath();
 					}
-    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . $this->generate($element->getChildren()) . '</li>';
+    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() 
+    					. '</a>' . $this->generate($element->getChildren()) . '</li>';
 				}
     		}
     		

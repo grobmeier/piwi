@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Represents a folder.
  */
@@ -68,17 +68,16 @@ class Folder {
 				// Recurse
 				$tempFolder = new Folder($path, $entry);
 				$tempFolder->delete();
-			} else
-				if (is_file($path . '/' . $entry) || is_link($path . '/' . $entry)) {
-					$result = unlink($path . '/' . $entry);
-					if (!$result) {
-						closedir($dir);
-						return false;
-					}
-				} else {
+			} else if (is_file($path . '/' . $entry) || is_link($path . '/' . $entry)) {
+				$result = unlink($path . '/' . $entry);
+				if (!$result) {
 					closedir($dir);
 					return false;
 				}
+			} else {
+				closedir($dir);
+				return false;
+			}
 		}
 
 		closedir($dir);

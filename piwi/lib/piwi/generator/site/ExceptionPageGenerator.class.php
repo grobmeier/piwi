@@ -3,7 +3,7 @@
  * Generates an errorpage.
  * Can be used to display a well formated message when an error occurs.
  */
-final class ExceptionPageGenerator extends SiteGenerator {
+class ExceptionPageGenerator extends SiteGenerator {
 	/** The exception that should be displayed. */
    	private $exception = null;
    	

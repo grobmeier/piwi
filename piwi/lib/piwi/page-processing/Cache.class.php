@@ -11,7 +11,8 @@ class Cache {
 	
     /**
      * Constructor.
-     * @param integer $cachetime The cachetime (the time that may pass until the content of the page is regenerated).
+     * @param integer $cachetime The cachetime (the time that may pass until 
+     * the content of the page is regenerated).
      */
     public function __construct($cachetime) {
     	$this->cachetime = $cachetime;
@@ -19,7 +20,8 @@ class Cache {
 
 	/**
 	 * Returns a DOMDocument containing the cached page or null if page has not been found in cache.
-	 * @return DOMDocument The DOMDocument containing the cached page or null if page has not been found in cache.
+	 * @return DOMDocument The DOMDocument containing the cached page or null 
+	 * if page has not been found in cache.
 	 */
     public function getPage() {   
     	// Check if cache is enabled and if post data is send
@@ -30,12 +32,13 @@ class Cache {
     	// Generate unique pagename
     	$filePath = "";
     	
-		foreach(Request::getParameters() as $key => $value) {				
+		foreach (Request::getParameters() as $key => $value) {				
 			$filePath .=  '_' . $key . '_' . $value;
 		}
 		
 		// Hash the parameters, to avoid long filenames
-		$filePath = 'cache/' . Request::getPageId() . '_' . UserSessionManager::getUserLanguage() . '_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
+		$filePath = 'cache/' . Request::getPageId() . '_' . UserSessionManager::getUserLanguage() .
+			'_' . Request::getExtension() . ($filePath != '' ? sha1($filePath) : '') . '.xml';
 
 		// Set filePath in instance so a file can later be created with this filename		
 		$this->filePath = $GLOBALS['PIWI_ROOT'] . $filePath;
@@ -62,8 +65,7 @@ class Cache {
     	}
     	
     	if ($this->filePath == null) {
-			throw new PiwiException(
-				"Illegal State: Invoke method 'getPage' on '" . __CLASS__ . "' before.", 
+			throw new PiwiException("Illegal State: Invoke method 'getPage' on '" . __CLASS__ . "' before.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
     	}
     	

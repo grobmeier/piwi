@@ -28,9 +28,8 @@ class MSSQLConnector implements Connector {
 	 * Establishes a connection to the database.
 	 */
     public function connect() {
-    	if($this->server == null || $this->database == null) {
-   			throw new DatabaseException(
-				'No database specified (Correct your "connectors.xml").',
+    	if ($this->server == null || $this->database == null) {
+   			throw new DatabaseException('No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
    		
@@ -41,8 +40,8 @@ class MSSQLConnector implements Connector {
 		}
 
 		if (!$this->dbConnection) {
-			throw new DatabaseException(
-				'Establishing database connection failed ('. mssql_get_last_message() .').', 
+			throw new DatabaseException('Establishing database connection failed ('
+					. mssql_get_last_message() . ').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
 		}
 		
@@ -50,8 +49,7 @@ class MSSQLConnector implements Connector {
 		$db_selected = mssql_select_db($this->database, $this->dbConnection);		
 		
 		if (!$db_selected) {
-			throw new DatabaseException(
-				'Could not select database ('. mssql_get_last_message() .').', 
+			throw new DatabaseException('Could not select database (' . mssql_get_last_message() . ').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
 		}		
     }
@@ -62,21 +60,20 @@ class MSSQLConnector implements Connector {
 	 * @return array The result of the query.
 	 */
     public function execute($sql) {
-   		if($this->dbConnection == null) {
+   		if ($this->dbConnection == null) {
    			$this->connect();
    		}
 		
 		// Execute query
    		$result = mssql_query($sql, $this->dbConnection);
    		
-   		if (!$result){
-   			throw new DatabaseException(
-				'Querying database failed ('. mssql_get_last_message() .').', 
+   		if (!$result) {
+   			throw new DatabaseException('Querying database failed (' . mssql_get_last_message() . ').', 
 				DatabaseException::ERR_QUERY_FAILED);
    		}
    		
    		$i = 0;
-   		while($temp = mssql_fetch_array($result, MSSQL_BOTH)) {
+   		while ($temp = mssql_fetch_array($result, MSSQL_BOTH)) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
@@ -89,13 +86,13 @@ class MSSQLConnector implements Connector {
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "server") {
+    	if ($key == "server") {
     		$this->server = $value;
-    	} else if($key == "database") {
+    	} else if ($key == "database") {
     		$this->database = $value;
-    	} else if($key == "username") {
+    	} else if ($key == "username") {
     		$this->username = $value;
-    	} else if($key == "password") {
+    	} else if ($key == "password") {
     		$this->password = $value;
     	}
     }

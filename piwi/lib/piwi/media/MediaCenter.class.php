@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Used to handle Albums.
  */
@@ -15,15 +15,16 @@ class MediaCenter {
 	
 	/**
 	 * Returns the albums sorted by date.
-	 * @param string $albumName If only one specific album should be displayed specify its name, otherwise all albums will be returned.
+	 * @param string $albumName If only one specific album should be displayed specify its name, 
+	 * otherwise all albums will be returned.
 	 * @return array The albums sorted by date as an array of Albums.
 	 */
 	public function getAlbums($albumName = null) {
 		$albumFolder = opendir($this->pathToAlbums);
 		$albums = array();
 		$count = 0;
-		while($folder = readdir($albumFolder)) {  
-			if(	$folder != "." && 
+		while ($folder = readdir($albumFolder)) {  
+			if ($folder != "." && 
 				$folder != ".." && 
 				!is_dir($folder) &&
 				substr($folder, 0, 1) != ".") {
@@ -31,7 +32,8 @@ class MediaCenter {
 					if ($albumName == null || $albumName == $folder) {
 						$album = new Album($folder);
 						$album->setCreatedAt(filectime($this->pathToAlbums . "/" . $folder));
-						$albums[$album->getCreatedAt() . ($count++)] = $this->addImagesToAlbum($album, $this->pathToAlbums . "/" . $folder . "/thumbs/");
+						$albums[$album->getCreatedAt() . ($count++)] = $this->addImagesToAlbum($album, 
+							$this->pathToAlbums . "/" . $folder . "/thumbs/");
 					}
 			}
 		}
@@ -51,7 +53,7 @@ class MediaCenter {
 	private function addImagesToAlbum(Album $album, $folder) {		
 		$imageFolder = opendir($folder);
 		while ($file = readdir($imageFolder)) {  
-			if(	$file != "." && 
+			if ($file != "." && 
 				$file != ".." && 
 				!is_dir($file) &&
 				substr($file, 0, 1) != ".") {

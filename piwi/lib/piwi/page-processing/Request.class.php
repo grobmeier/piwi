@@ -11,7 +11,7 @@ class Request {
 		if (isset($_GET['page'])) {
 			return $_GET['page'];
 		} else {
-			return "default";
+			return 'default';
 		}
 	}	
 
@@ -31,7 +31,7 @@ class Request {
 		if (isset($_GET['extension'])) {
 			return $_GET['extension'];
 		} else {
-			return "html";
+			return 'html';
 		}
 	}
 	
@@ -42,8 +42,8 @@ class Request {
 	public static function getParameters() {
 		$result = array();
 		
-		foreach($_GET as $key => $value) {
-			if ($key != "page" && $key != "extension" && $key != "language"){
+		foreach ($_GET as $key => $value) {
+			if ($key != 'page' && $key != 'extension' && $key != 'language') {
 				$result[$key] = $value;
 			}
 		}

@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Represents a file.
  */
@@ -41,7 +41,7 @@ class File {
 	 */
 	public function delete() {
 		$path = $this->path . "/" . $this->name;
-		if (is_file ($path) || is_link ($path)) {
+		if (is_file($path) || is_link($path)) {
 			return unlink($path);
 	    }
 	    return false;	}	

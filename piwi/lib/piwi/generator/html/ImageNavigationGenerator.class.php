@@ -30,7 +30,8 @@ class ImageNavigationGenerator implements NavigationGenerator {
 	
 	/**
      * Returns the recursivly built navigation.
-     * @param array $navigationElements The navigation which is an array of NavigationElements representing the website structure.
+     * @param array $navigationElements The navigation which is an array 
+     * of NavigationElements representing the website structure.
      * @return string The recursivly built navigation.
      */
     private function getNavigation($navigationElements) {
@@ -52,10 +53,13 @@ class ImageNavigationGenerator implements NavigationGenerator {
 					}
 					
     				$result .= '<li>';
-    				$result .= '<a onmouseover="document.images[\''. $element->getId() .'\'].src=\''.$this->pathToImages.'/' . $element->getId() . '-hover.jpg\';" ';
-    				$result .= 'onmouseout="document.images[\''. $element->getId() .'\'].src=\''.$this->pathToImages.'/' . $element->getId() .$open.'.jpg\';" ';
+    				$result .= '<a onmouseover="document.images[\'' . $element->getId() . '\'].src=\'' 
+    					. $this->pathToImages . '/' . $element->getId() . '-hover.jpg\';" ';
+    				$result .= 'onmouseout="document.images[\'' . $element->getId() . '\'].src=\'' 
+    					. $this->pathToImages . '/' . $element->getId() . $open . '.jpg\';" ';
 					$result .= 'href="' . $filepath . '">';
-    				$result .= '<img name="'. $element->getId() .'" src="'.$this->pathToImages.'/' . $element->getId() . $open.'.jpg" />';
+    				$result .= '<img name="' . $element->getId() . '" src="' . $this->pathToImages 
+    					. '/' . $element->getId() . $open . '.jpg" />';
 					$result .= '</a></li>';
 				}
     		}
@@ -71,7 +75,7 @@ class ImageNavigationGenerator implements NavigationGenerator {
 	 * @param string $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "pathToImages") {    	
+    	if ($key == "pathToImages") {    	
     		$this->pathToImages = $value;
     	}
     }

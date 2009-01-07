@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Represents an photoalbum (a set of images).
  */

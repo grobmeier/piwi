@@ -54,7 +54,8 @@ class UserSessionManager {
 	 */
 	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
 		// Validate the password
-		$userValid = ConfigurationManager :: getInstance()->getRoleProvider()->isPasswordValid($username, $password);
+		$userValid = ConfigurationManager :: getInstance()
+			->getRoleProvider()->isPasswordValid($username, $password);
 
 		if ($userValid) {
 			// Store cookie
@@ -106,7 +107,8 @@ class UserSessionManager {
 
 	/**
 	 * Returns true if the current user is authenticated.
-	 * @param boolean $storeRequestedURL Set to true if the current URL should be stored, to perform a redirect after login.
+	 * @param boolean $storeRequestedURL Set to true if the current URL should be stored,
+	 * to perform a redirect after login.
 	 * @return boolean True if the current user is authenticated.
 	 */
 	public static function isUserAuthenticated($storeRequestedURL = false) {
@@ -126,10 +128,11 @@ class UserSessionManager {
 		if ((isset ($_SESSION['authenticated']) && $_SESSION['authenticated'])) {
 			// In this case the user is already logged in
 			return true;
-		} else
+		} else {
 			if (isset ($_COOKIE["username"]) && isset ($_COOKIE["password"])) {
 				// In this case the user has a cookie. Validate the password and login the user if it is correct.
-				$userValid = ConfigurationManager :: getInstance()->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
+				$userValid = ConfigurationManager :: getInstance()
+					->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
 				if ($userValid) {
 					// Password is valid
 					$_SESSION['authenticated'] = true;
@@ -140,7 +143,10 @@ class UserSessionManager {
 					// In this case the cookie is invalid
 					return false;
 				}
+			} else {
+				return false;				
 			}
+		}
 	}
 }
 ?>

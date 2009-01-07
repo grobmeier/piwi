@@ -41,8 +41,8 @@ class FormFactory {
 	 */
 	public static function getFormById($formId) {
 		if (self :: $instance == null) {
-			throw new PiwiException(
-				"Illegal State: Invoke static method 'initialize' on '" . __CLASS__ . "' before accessing a Form.", 
+			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '"
+					. __CLASS__ . "' before accessing a Form.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 
@@ -61,15 +61,16 @@ class FormFactory {
 		}
 		if ($this->xml == null) {
 			if (!file_exists($this->formsXMLPath)) {
-				throw new PiwiException(
-					"Could not find the forms definition file (Path: '" . $this->formsXMLPath . "').", 
+				throw new PiwiException("Could not find the forms definition file (Path: '"
+						. $this->formsXMLPath . "').", 
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
 			$this->xml = simplexml_load_file($this->formsXMLPath);
 			$this->xml->registerXPathNamespace('forms', 'http://piwi.googlecode.com/xsd/forms');
 		}
 
-		$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . UserSessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
+		$result = $this->xml->xpath("/forms:forms/forms:language[@region='" . 
+			UserSessionManager::getUserLanguage() . "']//forms:form[@id='" . $formId . "']");
 		
 		if ($result != null) {			
 			$domXPath = new DOMXPath(DOMDocument::load((string)$result[0]->attributes()->href));
@@ -77,8 +78,8 @@ class FormFactory {
 			
 			$this->forms[$formId] = $domXPath;
 		} else {
-			throw new PiwiException(
-				"Could not find the form '" . $formId . "' in the forms definition file (Path: '" . $this->formsXMLPath . "').", 
+			throw new PiwiException("Could not find the form '" . $formId .
+					"' in the forms definition file (Path: '" . $this->formsXMLPath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
 		}
 	}

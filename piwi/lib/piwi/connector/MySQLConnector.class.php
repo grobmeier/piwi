@@ -28,9 +28,8 @@ class MySQLConnector implements Connector {
 	 * Establishes a connection to the database.
 	 */
     public function connect() {
-    	if($this->server == null || $this->database == null) {
-   			throw new DatabaseException(
-				'No database specified (Correct your "connectors.xml").',
+    	if ($this->server == null || $this->database == null) {
+   			throw new DatabaseException('No database specified (Correct your "connectors.xml").',
 				DatabaseException::ERR_NO_DATABASE_SPECIFIED);
    		}
    		
@@ -41,8 +40,7 @@ class MySQLConnector implements Connector {
 		}
 
 		if (!$this->dbConnection) {
-			throw new DatabaseException(
-				'Establishing database connection failed ('. mysql_error() .').', 
+			throw new DatabaseException('Establishing database connection failed (' . mysql_error() . ').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
 		}
 		
@@ -50,8 +48,7 @@ class MySQLConnector implements Connector {
 		$db_selected = mysql_select_db($this->database, $this->dbConnection);		
 		
 		if (!$db_selected) {
-			throw new DatabaseException(
-				'Could not select database ('. mysql_error() .').', 
+			throw new DatabaseException('Could not select database (' . mysql_error() . ').', 
 				DatabaseException::ERR_CONNECTION_FAILED);
 		}		
     }
@@ -62,21 +59,20 @@ class MySQLConnector implements Connector {
 	 * @return array The result of the query.
 	 */
     public function execute($sql) {
-   		if($this->dbConnection == null) {
+   		if ($this->dbConnection == null) {
    			$this->connect();
    		}
 		
 		// Execute query
    		$result = mysql_query($sql, $this->dbConnection);
    		
-   		if (!$result){
-   			throw new DatabaseException(
-				'Querying database failed ('. mysql_error() .').', 
+   		if (!$result) {
+   			throw new DatabaseException('Querying database failed (' . mysql_error() . ').', 
 				DatabaseException::ERR_QUERY_FAILED);
    		}
    		
    		$i = 0;
-   		while($temp = mysql_fetch_array($result, MYSQL_BOTH)) {
+   		while ($temp = mysql_fetch_array($result, MYSQL_BOTH)) {
    			$resultArray[$i] = $temp;
    			$i++;
    		}
@@ -89,13 +85,13 @@ class MySQLConnector implements Connector {
 	 * @param object $value The value of the parameter.
 	 */
     public function setProperty($key, $value) {
-    	if($key == "server") {
+    	if ($key == "server") {
     		$this->server = $value;
-    	} else if($key == "database") {
+    	} else if ($key == "database") {
     		$this->database = $value;
-    	} else if($key == "username") {
+    	} else if ($key == "username") {
     		$this->username = $value;
-    	} else if($key == "password") {
+    	} else if ($key == "password") {
     		$this->password = $value;
     	}
     }

@@ -29,7 +29,7 @@ class ClassLoader {
 	 * @param string $pathtocachefile Path to the cache file.
 	 */
 	public function __construct($pathToCacheFile = null) {
-		if($pathToCacheFile != null) {
+		if ($pathToCacheFile != null) {
 			$this->cache = new ClassLoaderCache($pathToCacheFile);
 		}	
 	}
@@ -43,14 +43,14 @@ class ClassLoader {
 	 */
 	public function loadClass($directory, $class, $cache = true) {
 		// Check if this class is in the cache
-		if($this->cache != null && $cache == true) {
+		if ($this->cache != null && $cache == true) {
 			$path = $this->cache->getClassById($class);
-			if($path != null) {
-				if(file_exists($path.'/'.$class.'.class.php')) {
-					require_once($path.'/'.$class.'.class.php');
+			if ($path != null) {
+				if (file_exists($path . '/' . $class . '.class.php')) {
+					require_once($path . '/' . $class . '.class.php');
 			        return true;
-				} else if(file_exists($path.'/'.$class.'.if.php')) {
-					require_once($path.'/'.$class.'.if.php');
+				} else if (file_exists($path . '/' . $class . '.if.php')) {
+					require_once($path . '/' . $class . '.if.php');
 			        return true;
 				} else {
 					$this->cache->invalidate();
@@ -62,23 +62,23 @@ class ClassLoader {
 		if ($handle = opendir($directory)) {
 		    while (false !== ($file = readdir($handle))) {
 		    	if ($file != "." && $file != "..") {
-		        	if(is_dir($directory.'/'.$file)) {
-		        		if(substr($file, 0, 1) != ".") {
-		        			$result = $this->loadClass($directory.'/'.$file, $class, false);
-			        		if($result == true) {
+		        	if (is_dir($directory . '/' . $file)) {
+		        		if (substr($file, 0, 1) != ".") {
+		        			$result = $this->loadClass($directory . '/' . $file, $class, false);
+			        		if ($result == true) {
 			        			return true;
 			        		}
 		        		} 
 		        	} else {
-		            	if($file == $class.'.class.php') {
-		            		require_once($directory.'/'.$class.'.class.php');
-		            		if($this->cache != null) {
+		            	if ($file == $class . '.class.php') {
+		            		require_once($directory . '/' . $class . '.class.php');
+		            		if ($this->cache != null) {
 		            			$this->cache->addClassToCache($class, $directory);
 		            		}
 		            		return true;
-		            	} else if($file == $class.'.if.php') {
-		            		require_once($directory.'/'.$class.'.if.php');
-		            		if($this->cache != null) {
+		            	} else if ($file == $class . '.if.php') {
+		            		require_once($directory . '/' . $class . '.if.php');
+		            		if ($this->cache != null) {
 		            			$this->cache->addClassToCache($class, $directory);
 		            		}
 		            		return true;

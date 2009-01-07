@@ -28,7 +28,7 @@ class ClassLoaderCache {
 	 */
 	public function __destruct() {
 		// Writes the cache if is has changed
-		if($this->changed) {
+		if ($this->changed) {
 			$fpread = fopen($this->pathToCacheFile, "w");
 			fwrite($fpread, $this->cachexml->asXML());
 			fclose($fpread);
@@ -44,7 +44,7 @@ class ClassLoaderCache {
 	 * @param string $path The path to this class (without classname).
 	 */
 	public function addClassToCache($classname, $path) {
-		if($this->cachexml == null) {
+		if ($this->cachexml == null) {
 			$this->loadCache();
 		}	
 		$class = $this->cachexml->addChild('class');
@@ -60,7 +60,7 @@ class ClassLoaderCache {
 	 * in the filesystem.
 	 */
 	public function invalidate() {
-		if(file_exists($this->pathToCacheFile)) {
+		if (file_exists($this->pathToCacheFile)) {
 			$this->cachexml = null;
 			unlink($this->pathToCacheFile);
 			$this->changed = false;
@@ -73,11 +73,11 @@ class ClassLoaderCache {
 	 * @return string The path to this class (without class name), or null, if it couldn't be found.
 	 */
 	public function getClassById($classId) {
-		if($this->cachexml == null) {
+		if ($this->cachexml == null) {
 			$this->loadCache();
 		}	
-		$result = $this->cachexml->xpath("//cache:class[@id='".$classId."']");
-		if(empty($result)) {
+		$result = $this->cachexml->xpath("//cache:class[@id='" . $classId . "']");
+		if (empty($result)) {
 			return null;
 		} else {
 			return $result[0]['path'];

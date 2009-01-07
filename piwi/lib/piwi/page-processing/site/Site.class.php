@@ -42,7 +42,8 @@ abstract class Site {
 			// Check if user is already logged in
 			if (UserSessionManager :: isUserAuthenticated(true)) {
 				// Check whether user has required role
-				if (!in_array('*', $allowedRoles) && !$roleProvider->isUserInRole(UserSessionManager :: getUserName(), $allowedRoles)) {
+				if (!in_array('*', $allowedRoles) && !$roleProvider->
+						isUserInRole(UserSessionManager :: getUserName(), $allowedRoles)) {
 					throw new PiwiException("Permission denied.", PiwiException :: PERMISSION_DENIED);
 				}
 			} else {
@@ -69,7 +70,8 @@ abstract class Site {
 			$filePath = $this->contentPath . '/' . $this->getFilePath();
 
 			if (!file_exists($filePath)) {
-				throw new PiwiException("Could not find the the requested page (Path: '" . $filePath . "').", PiwiException :: ERR_404);
+				throw new PiwiException("Could not find the the requested page (Path: '" . $filePath . "').", 
+					PiwiException :: ERR_404);
 			}
 
 			$this->content = new DOMDocument;
@@ -78,7 +80,8 @@ abstract class Site {
 			// Configure the transformer
 			$processor = new XSLTProcessor;
 			$processor->registerPHPFunctions();
-			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . "resources/xslt/GeneratorTransformation.xsl"));
+			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
+				"resources/xslt/GeneratorTransformation.xsl"));
 
 			// Transform the Generators
 			$this->content = $processor->transformToDoc($this->content);
@@ -193,7 +196,8 @@ abstract class Site {
 	public abstract function getSupportedLanguages();
 	
 	/**
-	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) or null if none is specified.
+	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) 
+	 * or null if none is specified.
      * @return integer The page specific cachetime or null if none is specified.
 	 */
 	protected abstract function getCacheTime();

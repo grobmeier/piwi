@@ -73,7 +73,8 @@ class XSLTStylesheetStream {
 	 * Returns an array containing as many elements in common with the system function as possible.
 	 * @param string $path The path to open.
 	 * @param integer $flags Holds additional flags set by the streams API.
-	 * @return array description An array containing as many elements in common with the system function as possible
+	 * @return array description An array containing as many elements in common with 
+	 * the system function as possible
 	 */
 	public function url_stat($path, $flags) {
 		return array ();
