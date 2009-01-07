@@ -17,7 +17,7 @@ abstract class SiteGenerator implements Generator {
 	 */
     public function generate() {
 		$piwixml = '<document xmlns="http://piwi.googlecode.com/xsd/piwixml">';
-		$piwixml .= "<content position='article'>";
+		$piwixml .= "<content position='main'>";
 		
 		$piwixml .= $this->generateSections();
 

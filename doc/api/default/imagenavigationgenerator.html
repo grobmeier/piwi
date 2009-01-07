@@ -59,8 +59,8 @@ and normal images. Please use the nested tag:
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
-<td class="type"> mixed</td>
-<td class="description"><p class="name"><a href="#pathToImages">$pathToImages</a></p></td>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#pathToImages">$pathToImages</a></p><p class="description">The folder where the images are located. </p></td>
 </tr>
 </table>
 
@@ -76,8 +76,9 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#generate()">generate</a>(mixed siteElements)</p></td>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#generate()">generate</a>(array siteElements)</p><p class="description">
+Builds the navigation.</p></td>
 </tr>
 <tr>
 <td class="type">private  string</td>
@@ -93,9 +94,9 @@ Used to pass parameters to the Generator.</p></td>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="pathToImages">pathToImages</h3>
-<code class="signature">public  mixed <strong>$pathToImages</strong> = ""</code>
+<code class="signature">private  mixed <strong>$pathToImages</strong> = ""</code>
 <div class="details">
-</div>
+<p>The folder where the images are located. */</p></div>
 
 <hr>
 
@@ -111,8 +112,15 @@ Constructor.
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="generate()">generate</h3>
-<code class="signature">public  void <strong>generate</strong>(mixed siteElements)</code>
+<code class="signature">public  string <strong>generate</strong>(array siteElements)</code>
 <div class="details">
+<p>
+Builds the navigation.</p><dl>
+<dt>Parameters:</dt>
+<dd>siteElements - The SiteElements of the website.</dd>
+<dt>Returns:</dt>
+<dd>The navigation as HTML.</dd>
+</dl>
 </div>
 
 <hr>

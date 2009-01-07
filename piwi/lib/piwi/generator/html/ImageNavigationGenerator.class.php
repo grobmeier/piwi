@@ -10,16 +10,22 @@
  * </navigationGenerator>
  */
 class ImageNavigationGenerator implements NavigationGenerator {
-	var $pathToImages = "";
+	/** The folder where the images are located. */
+	private $pathToImages = "";
 	
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 	}
+	
+	/**
+	 * Builds the navigation.
+	 * @param array $siteElements The SiteElements of the website.
+	 * @return string The navigation as HTML.
+	 */
 	public function generate(array $siteElements = null) {
-		return $this->getNavigation($siteElements);
-		
+		return $this->getNavigation($siteElements);		
 	}
 	
 	/**
@@ -59,8 +65,6 @@ class ImageNavigationGenerator implements NavigationGenerator {
     	}
     }
     
-    
-	   
     /**
 	 * Used to pass parameters to the Generator.
 	 * @param string $key The name of the parameter.
