@@ -47,9 +47,7 @@
 				<exclude name="piwi/.metadata/" />
 				<exclude name="piwi/.settings/" />
 				<exclude name="piwi/cache/*.xml" />
-				<!-- Exclude sources -->
-				<exclude name="doc-generator/" />
-				<exclude name="spikephpcheckstyle-0.6.1/" />
+				<exclude name="third-party/" />
 				<exclude name="test/" />
 				<exclude name="*/.project" />
 				<exclude name="build.xml" />
@@ -78,7 +76,7 @@
 			<arg value="${testdir}TestRunner.php" />
 			<arg value="${server}" />
 			<arg value="${target}${reportdir}coverage/" />
-			<arg value="PHPCOVERAGE_HOME=${testdir}spikephpcoverage-0.8.2/src" />
+			<arg value="PHPCOVERAGE_HOME=third-party/spikephpcoverage-0.8.2/src" />
 		</exec>
 		
 		<!-- Create codestyle report -->

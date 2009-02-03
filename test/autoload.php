@@ -11,7 +11,7 @@ function __autoload($class) {
 	}
 
 	$directorys = array (		
-		'test/lib', 
+		'test/unit/lib', 
 		PIWI_LIB
 	);
 

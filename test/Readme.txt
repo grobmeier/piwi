@@ -5,7 +5,7 @@ To run all tests invoke:
 php test/TestRunner.php SERVER
 
 To run all tests with covering report invoke:
-php test/TestRunner.php SERVER REPORT_DIRECTORY PHPCOVERAGE_HOME=test/spikephpcoverage-0.8.2/src
+php test/TestRunner.php SERVER REPORT_DIRECTORY PHPCOVERAGE_HOME=third-party/spikephpcoverage-0.8.2/src
 
 
 REPORT_DIRECTORY: Is the directory where the reports will be placed

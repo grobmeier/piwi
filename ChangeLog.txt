@@ -8,6 +8,12 @@
 =                                                                     =
 =======================================================================
 
+0.0.8 - Refactored Release
+
+    * New: Added ImageNavigationGenerator
+    * Fix: Changed some interfaces
+    * Fix: Refactored folder structure
+    
 0.0.7 - Crawler Release
 
     * New: Wrote crawler to generate static pages
@@ -15,7 +21,7 @@
     
 0.0.6 - Authentication Release
 
-    * New: Add authentication features (via session and cookies)
+    * New: Added authentication features (via session and cookies)
     * New: Added support for custom XSLT-Transformation
     * New: Added support for internationalization in generators
     * New: Added serializer for Word and Excel

@@ -21,7 +21,7 @@
     }
     
     // TEST CASES   
-    require_once('test/simpletest/autorun.php');
+    require_once('third-party/simpletest/autorun.php');
 
     class AllTests extends TestSuite {
         function AllTests() {
