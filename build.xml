@@ -22,9 +22,9 @@
 	<!-- Generates documentation. -->
 	<target name="documentation">
 		<delete>
-			<fileset dir="doc/api/default" includes="*.html" />
+			<fileset dir="docs/api/default" includes="*.html" />
 		</delete>
-		<exec executable="php" dir="doc-generator" failonerror="true">
+		<exec executable="php" dir="third-party/doc-generator" failonerror="true">
 			<arg value="phpdoc.php" />
 		</exec>
 	</target>
@@ -83,12 +83,12 @@
 		
 		<!-- Create codestyle report -->
 		<mkdir dir="${target}${reportdir}codestyle/" />
-		<exec executable="php" dir="spikephpcheckstyle-0.6.1" failonerror="true">
+		<exec executable="php" dir="third-party/spikephpcheckstyle-0.6.1" failonerror="true">
 			<arg value="run.php" />
 			<arg value="--src" />
-			<arg value="../piwi/lib/piwi" />
+			<arg value="../../piwi/lib/piwi" />
 			<arg value="--outdir" />
-			<arg value="../${target}${reportdir}codestyle/" />
+			<arg value="../../${target}${reportdir}codestyle/" />
 		</exec>
 	</target>
 
