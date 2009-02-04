@@ -2,11 +2,11 @@
 <project basedir="." default="package" name="Piwi">
 	<!-- Properties. -->
 	<property name="name" value="piwi" />
-	<property name="version" value="0.0.8-SNAPSHOT" />
+	<property name="version" value="0.0.8-SNAPSHOT" /> <!-- Change before deploying to Google Code. -->
 
-	<property name="googleusername" value="YOUR_USERNAME" />
-	<property name="googlepassword" value="YOUR_PASSWORD" />
-	<property name="releaseName" value="Refactored Release" />
+	<property name="googleusername" value="YOUR_USERNAME" /> <!-- Change before deploying to Google Code. -->
+	<property name="googlepassword" value="YOUR_PASSWORD" /> <!-- Change before deploying to Google Code. -->
+	<property name="releaseName" value="Refactored Release" /> <!-- Change before deploying to Google Code. -->
 			
 	<property name="target" value="target/" />
 	<property name="reportdir" value="report/" />
@@ -108,7 +108,7 @@
 		</exec>
 	</target>
 	
-	<!-- Deploys the packaged files to GoogleCode (uses Ant-Googlecode; see http://code.google.com/p/ant-googlecode/). -->
+	<!-- Deploys the packaged files to Google Code (uses Ant-Googlecode; see http://code.google.com/p/ant-googlecode/). -->
 	<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="third-party/ant-googlecode-0.0.1.jar" name="gcupload"/>
 	<target name="deploy" depends="package">
 		<!-- Source Release -->
