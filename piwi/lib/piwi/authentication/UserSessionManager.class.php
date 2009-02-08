@@ -55,13 +55,13 @@ class UserSessionManager {
 	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
 		// Validate the password
 		$userValid = ConfigurationManager :: getInstance()
-			->getRoleProvider()->isPasswordValid($username, $password);
+			->getRoleProvider()->isPasswordValid($username, sha1($password));
 
 		if ($userValid) {
 			// Store cookie
 			if ($useCookies) {
 				setcookie("username", gzdeflate($username), time() + $sessionTime);
-				setcookie("password", gzdeflate($password), time() + $sessionTime);
+				setcookie("password", gzdeflate(sha1($password)), time() + $sessionTime);
 			}
 
 			// Update session

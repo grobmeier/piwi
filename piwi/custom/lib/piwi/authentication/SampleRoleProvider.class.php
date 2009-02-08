@@ -24,10 +24,12 @@ class SampleRoleProvider implements RoleProvider {
 	 * Checks whether the given user exists and validates its password.
 	 * Returns true if user exists and password is valid, otherwise false.
 	 * This method is just a dummy, normally you will query a database here.
+	 * @param string $username The username.
+	 * @param string $password The SHA1-encrypted password.
 	 * @return boolean True if user existspassword is valid, otherwise false.
 	 */
 	public function isPasswordValid($username, $password) {
-		return ($username == 'test' && $password == 'test');
+		return ($username == 'test' && $password == sha1('test'));
 	}
 	
 	/**

@@ -17,6 +17,8 @@ interface RoleProvider {
 	/**
 	 * Checks whether the given user exists and validates its password.
 	 * Returns true if user exists and password is valid, otherwise false.
+	 * @param string $username The username.
+	 * @param string $password The SHA1-encrypted password.
 	 * @return boolean True if user existspassword is valid, otherwise false.
 	 */
 	public function isPasswordValid($username, $password);

@@ -56,7 +56,7 @@ Role providers are used to for user authentication.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#isPasswordValid()">isPasswordValid</a>(mixed username, mixed password)</p><p class="description">
+<td class="description"><p class="name"><a href="#isPasswordValid()">isPasswordValid</a>(string username, string password)</p><p class="description">
 Checks whether the given user exists and validates its password.
 </p></td>
 </tr>
@@ -69,11 +69,14 @@ Checks if a user has one of the given roles. </p></td>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="isPasswordValid()">isPasswordValid</h3>
-<code class="signature">public  boolean <strong>isPasswordValid</strong>(mixed username, mixed password)</code>
+<code class="signature">public  boolean <strong>isPasswordValid</strong>(string username, string password)</code>
 <div class="details">
 <p>
 Checks whether the given user exists and validates its password.
 Returns true if user exists and password is valid, otherwise false.</p><dl>
+<dt>Parameters:</dt>
+<dd>username - The username.</dd>
+<dd>password - The SHA1-encrypted password.</dd>
 <dt>Returns:</dt>
 <dd>True if user existspassword is valid, otherwise false.</dd>
 </dl>
