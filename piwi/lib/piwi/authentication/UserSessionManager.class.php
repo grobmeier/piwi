@@ -61,7 +61,7 @@ class UserSessionManager {
 			// Store cookie
 			if ($useCookies) {
 				setcookie("username", gzdeflate($username), time() + $sessionTime);
-				setcookie("password", gzdeflate(sha1($password)), time() + $sessionTime);
+				setcookie("password", sha1($password), time() + $sessionTime);
 			}
 
 			// Update session
@@ -131,11 +131,11 @@ class UserSessionManager {
 		} else if (isset ($_COOKIE["username"]) && isset ($_COOKIE["password"])) {
 			// In this case the user has a cookie. Validate the password and login the user if it is correct.
 			$userValid = ConfigurationManager :: getInstance()
-				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), gzinflate($_COOKIE["password"]));
-			if ($userValid) {
+				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), $_COOKIE["password"]);
+			if ($userValid) {				
 				// Password is valid
 				$_SESSION['authenticated'] = true;
-				$_SESSION['username'] = $_COOKIE["username"];
+				$_SESSION['username'] = gzinflate($_COOKIE["username"]);
 				unset ($_SESSION['ReturnUrl']);
 				return true;
 			} else {

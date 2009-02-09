@@ -9,7 +9,7 @@ class AuthenticationTest extends PiwiWebTestCase {
 	
 	private $excryptedUsername = '%2BI-.%01%00';
 	
-	private $excryptedPassword = '%2BI-.%01%00';
+	private $excryptedPassword = 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3';
 	
 	function testAuthenticationWithoutCookies() {
 		$this->get(self :: $HOST . 'authentication_protected.html');
