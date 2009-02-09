@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Database Access</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Database Access</header>
+		<section>
+			This site retrieves its contents from both, a SQLite 2 and a SQLite 3
+			database. The contents are rendered by a custom <a href="generators.html">'Generator'</a>.
+			<br />
+			Connectors for MySQL and MSSQL databases are also available.
+			<br />
+         If you just want to display your data in a table, you can use the <a href="datagrid.html">'DataGrid'</a>.
+		</section>
+		<separator />
+		<generator id="sqlite2" />
+		<separator />
+		<generator id="sqlite3" />
+	</content>
+</document>

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>GeneratorFactory (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/generatorfactory.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">default.GeneratorFactory</div>
+
+<h1>Class GeneratorFactory</h1>
+
+<pre class="tree"><strong>GeneratorFactory</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>GeneratorFactory</strong></p>
+
+<div class="comment" id="overview_description"><p>
+Used to initiate and retrieve Generators.
+/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#generators">$generators</a></p><p class="description">Map of the generators that have already been initialized. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#generatorsXMLPath">$generatorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the GeneratorFactory. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#xml">$xml</a></p><p class="description">The generators definition as xml. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#GeneratorFactory()">GeneratorFactory</a>(string generatorsXMLPath)</p><p class="description">
+Constructor.
+</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">private  <a href="../default/generator.html">Generator</a></td>
+<td class="description"><p class="name"><a href="#_getGeneratorById()">_getGeneratorById</a>(string generatorId)</p><p class="description">
+Returns the Generator with the given id.
+</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializeGenerator()">_initializeGenerator</a>(string generatorId)</p><p class="description">
+Constructs an instance of the Generator with the given id.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  <a href="../default/generator.html">Generator</a></td>
+<td class="description"><p class="name"><a href="#callGenerator()">callGenerator</a>(string generatorId)</p><p class="description">
+Used within the XSLT-Stylesheets to interpret the  tag. </p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string generatorsXMLPath)</p><p class="description">
+Initializes the singleton instance of this Class.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="generators">generators</h3>
+<code class="signature">private  mixed <strong>$generators</strong> = array()</code>
+<div class="details">
+<p>Map of the generators that have already been initialized. */</p></div>
+
+<hr>
+
+<h3 id="generatorsXMLPath">generatorsXMLPath</h3>
+<code class="signature">private  mixed <strong>$generatorsXMLPath</strong> = null</code>
+<div class="details">
+<p>Path of the file containing the xml-definition of the generators that can be used. */</p></div>
+
+<hr>
+
+<h3 id="instance">instance</h3>
+<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
+<div class="details">
+<p>Singleton instance of the GeneratorFactory. */</p></div>
+
+<hr>
+
+<h3 id="xml">xml</h3>
+<code class="signature">private  mixed <strong>$xml</strong> = null</code>
+<div class="details">
+<p>The generators definition as xml. */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="GeneratorFactory()">GeneratorFactory</h3>
+<code class="signature">public <strong>GeneratorFactory</strong>(string generatorsXMLPath)</code>
+<div class="details">
+<p>
+Constructor.
+Private constructor since only used by 'initialize'.</p><dl>
+<dt>Parameters:</dt>
+<dd>generatorsXMLPath - Path of the file containing the xml-definition 
+ * of the generators that can be used.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="_getGeneratorById()">_getGeneratorById</h3>
+<code class="signature">private  <a href="../default/generator.html">Generator</a> <strong>_getGeneratorById</strong>(string generatorId)</code>
+<div class="details">
+<p>
+Returns the Generator with the given id.
+If the Generator is already instanciated, the instance will be returned.
+Otherwise a new instance will be created and stored in a map.</p><dl>
+<dt>Parameters:</dt>
+<dd>generatorId - The id of the Generator.</dd>
+<dt>Returns:</dt>
+<dd>An instance of type Generator.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_initializeGenerator()">_initializeGenerator</h3>
+<code class="signature">private  void <strong>_initializeGenerator</strong>(string generatorId)</code>
+<div class="details">
+<p>
+Constructs an instance of the Generator with the given id.
+Arguments from the generator xml file will be passed to the Generator.</p><dl>
+<dt>Parameters:</dt>
+<dd>generatorId - The id of the Generator.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="callGenerator()">callGenerator</h3>
+<code class="signature">public static  <a href="../default/generator.html">Generator</a> <strong>callGenerator</strong>(string generatorId)</code>
+<div class="details">
+<p>
+Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
+<dt>Parameters:</dt>
+<dd>generatorId - The id of the Generator.</dd>
+<dt>Returns:</dt>
+<dd>The Generator with the given id.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="initialize()">initialize</h3>
+<code class="signature">public static  void <strong>initialize</strong>(string generatorsXMLPath)</code>
+<div class="details">
+<p>
+Initializes the singleton instance of this Class.</p><dl>
+<dt>Parameters:</dt>
+<dd>generatorsXMLPath - Path of the file containing the xml-definition 
+ * of the generators that can be used.</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/generatorfactory.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

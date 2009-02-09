@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Lokalisierbarkeit</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Lokalisierbarkeit</header>
+		<section>
+			PIWI unterstützt lokalisierte Webseiten.
+			<br /><br />
+			Die Webseite wird standardmäßig in der vom Browser bevorzugten Sprache angezeigt.
+			<br />
+			Wenn Ihre Webseite diese Sprache nicht unterstützt, wird sie in der Standardsprache angezeigt.
+			<br />
+			Besucher können die Sprache zudem manuell umschalten.
+		</section>
+	</content>
+</document>

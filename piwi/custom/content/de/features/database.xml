@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Datenbank Zugriff</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Datenbank Zugriff</header>
+		<section>
+			Diese Seite bezieht ihr Inhalte aus einer SQLite 2 bzw. SQLite 3
+			Datenbank und werden über einen selbst erstellten <a href="generators.html">'Generator'</a>
+			dargestellt.
+			<br />
+			Konnektoren für MySQL und MSSQL Datenbanken stehen ebenfalls zur
+			Verfügung.
+			<br />
+			Wenn Sie Ihre Daten tabellarisch darstellen wollen, können Sie auch das <a href="datagrid.html">'DataGrid'</a> verwenden.
+		</section>
+		<separator />
+		<generator id="sqlite2" />
+		<separator />
+		<generator id="sqlite3" />		
+	</content>
+</document>

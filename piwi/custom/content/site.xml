@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns="http://piwi.googlecode.com/xsd/site" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/site ../../resources/xsd/site.xsd">
+	<language region="default">
+		<page id="default" label="Home" href="en/default.xml" template="default_slideshow.php" />
+		<page id="features" label="PIWI Features" href="en/features.xml">
+			<page id="forms" label="Forms" href="en/features/forms.xml" />
+			<page id="generators" label="Generators" href="en/features/generators.xml">
+				<page id="sitemap" label="SiteMap" href="en/features/generators/sitemap.xml" />
+				<page id="gallery" label="Gallery" href="en/features/generators/gallery.xml" />
+				<page id="datagrid" label="DataGrid" href="en/features/generators/datagrid.xml" />
+			</page>
+			<page id="output_formats" label="Output Formats" href="en/features/output_formats.xml" />
+			<page id="authentication" label="Authentication" href="en/features/authentication.xml">
+				<page id="authentication_protected" label="Protected page"
+					href="en/features/authentication_protected.xml" roles="admin" />
+			</page>
+			<page id="database" label="Database Access" href="en/features/database.xml" />
+			<page id="transformation" label="XSLT Transformation" href="en/features/transformation.xml" />
+			<page id="internationalization" label="Internationalization"
+				href="en/features/internationalization.xml" />
+			<page id="caching" label="Caching" href="en/features/caching.xml" />
+			<page id="other_template" label="Various Templates" href="en/features/other_template.xml"
+				template="other.php" />
+		</page>
+		<page id="help" label="Help" href="en/help.xml">
+			<page id="documentation" label="Documentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
+			<page id="faq" label="FAQ" href="en/help/faq.xml" />
+		</page>
+		<page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
+		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
+		<page id="login" label="Login" href="en/features/login.xml"
+			hideInNavigation="1" hideInSiteMap="1" cachetime="0" />
+	</language>
+	<language region="de">
+		<page id="default" label="Start" href="de/default.xml" template="default_slideshow.php" />
+		<page id="features" label="PIWI Features" href="de/features.xml">
+			<page id="forms" label="Formulare" href="de/features/forms.xml" />
+			<page id="generators" label="Generatoren" href="de/features/generators.xml">
+				<page id="sitemap" label="SiteMap" href="de/features/generators/sitemap.xml" />
+				<page id="gallery" label="Galerie" href="de/features/generators/gallery.xml" />
+				<page id="datagrid" label="DataGrid" href="de/features/generators/datagrid.xml" />
+			</page>
+			<page id="output_formats" label="Ausgabeformate" href="de/features/output_formats.xml" />
+			<page id="authentication" label="Authentifizierung" href="de/features/authentication.xml">
+				<page id="authentication_protected" label="Geschützte Seite"
+					href="de/features/authentication_protected.xml" roles="admin" />
+			</page>
+			<page id="database" label="Datenbank Zugriff" href="de/features/database.xml" />
+			<page id="transformation" label="XSLT Transformationen" href="de/features/transformation.xml" />
+			<page id="internationalization" label="Lokalisierbarkeit"
+				href="de/features/internationalization.xml" />
+			<page id="caching" label="Caching" href="de/features/caching.xml" />
+			<page id="other_template" label="Verschiedene Templates" href="de/features/other_template.xml"
+				template="other.php" />
+		</page>
+		<page id="help" label="Hilfe" href="de/help.xml">
+			<page id="documentation" label="Dokumentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
+			<page id="faq" label="FAQ" href="de/help/faq.xml" />
+		</page>
+		<page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
+		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
+		<page id="login" label="Login" href="de/features/login.xml"
+			hideInNavigation="1" hideInSiteMap="1" cachetime="0" />
+	</language>
+</site>

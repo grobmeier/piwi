@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../resources/xsd/content.xsd">
+	<head>
+		<title>Home</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<div class="slideshow_container">
+			<div id="slideshow">
+			</div>
+			<div id="loadingDiv">
+			</div>
+		</div>
+		<script type="text/javascript" src="custom/files/js/de/feature_slideshow.js">
+		</script>
+		<header>PIWI - PHP Transformation Framework</header>
+		<section>
+			<span class="bold">
+			PIWI ist ein in PHP geschriebenes Framework, das auf das Web ausgerichtet ist.
+			Es wurde entwickelt um auf einfache Art und Weise Webseiten zu erstellen, die in verschiedenen Formaten angezeigt werden können.
+				<br />
+				Die Hauptziele sind:
+			</span>
+			<br />
+			<ul>
+				<li>Schnelle Erstellung kompletter Webseiten</li>
+				<li>Einbindung verschiedener Datenquellen: Datenbanken, XML, Dateien</li>
+				<li>Verschiedene Ausgabeformate: HTML, PDF, XML, DOC, XLS</li>
+				<li>Trennung von: Inhalt, Programmierlogik und Layout</li>
+			</ul>
+		</section>
+		<section>
+			Einige Konzepte und Ideen wurden von den
+			großartigen Java-Applikation
+			<a href="http://cocoon.apache.org" rel="nofollow">
+				Apache Cocoon
+			</a>
+			und
+			<a href="http://forrest.apache.org" rel="nofollow">
+				Apache Forrest</a>
+			übernommen.<br />
+			Cocoon ist nach wie vor gut, aber sehr komplex und
+			natürlich in Java, was
+			Leuten mit kleinen Projekten den Einstieg
+			erschwert.
+			<br />
+			<br />
+			PIWI läuft ab PHP Version 5 bei jedem PHP-Webhoster.
+		</section>
+		<separator />
+		<title>PIWI Features</title>
+		<generator id="featuresSiteMap" />
+		<div style="clear: both">
+		</div>
+	</content>
+</document>

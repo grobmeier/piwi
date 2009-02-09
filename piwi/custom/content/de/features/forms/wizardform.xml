@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://piwi.googlecode.com/xsd/piwiform" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../../resources/xsd/piwiform.xsd">
+	 <step>
+	   <stepprocessor class="WizardProcessor"/>
+	   Name: <input name="Name" type="text" size="30" maxlength="30" />
+	   <br /><br />
+	   Geburtstag: <input name="Birthday" type="text" size="30" maxlength="10" />
+	   <br /><br />
+	   <input type="submit" value="weiter" />
+	 </step>
+	 <step>
+	   <stepprocessor class="WizardProcessor"/>
+      Kommentar: <textarea name="Comment" type="text" maxlength="100" cols="50" rows="3" />
+      <br /><br />
+      <input type="submit" value="weiter" />
+    </step>
+	 <step>
+	  <stepprocessor class="WizardProcessor"/>
+	 </step>
+</form>

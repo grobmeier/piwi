@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labels xmlns="http://piwi.googlecode.com/xsd/labels" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../xsd/labels.xsd">
+	<language region="default">
+	   <!-- SimpleGalleryGenerator -->
+      <label key="BACK_TO_GALLERIES" value="Get me back to galleries" />
+      <label key="MORE_IN" value="More in" />
+	</language>
+	<language region="de">
+	   <!-- SimpleGalleryGenerator -->
+	   <label key="BACK_TO_GALLERIES" value="Zurück zur Übersicht" />
+	   <label key="MORE_IN" value="Mehr in" />
+	</language>
+</labels>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="package" name="Piwi">
+	<!-- Properties. -->
+	<property name="name" value="piwi" />
+	<property name="version" value="0.0.8" /> <!-- Change before deploying to Google Code. -->
+
+	<property name="googleusername" value="YOUR_USERNAME" /> <!-- Change before deploying to Google Code. -->
+	<property name="googlepassword" value="YOUR_PASSWORD" /> <!-- Change before deploying to Google Code. -->
+	<property name="releaseName" value="RELEASE_NAME" /> <!-- Change before deploying to Google Code. -->
+			
+	<property name="target" value="target/" />
+	<property name="reportdir" value="report/" />
+	<property name="crawldir" value="crawled/" />	
+	<property name="testdir" value="test/" />
+
+	<property name="server" value="http://127.0.0.1:80/" />
+	<property name="crawlerLanguages" value="default, de" />
+	<property name="crawlerFormats" value="pdf,xml,doc,xls" />
+	
+	<!-- Clean the output folder. -->
+	<target name="clean">
+		<delete dir="${target}" />
+		<mkdir dir="${target}" />
+	</target>
+
+	<!-- Generates documentation. -->
+	<target name="documentation">
+		<delete>
+			<fileset dir="docs/api/default" includes="*.html" />
+		</delete>
+		<exec executable="php" dir="third-party/doc-generator" failonerror="true">
+			<arg value="phpdoc.php" />
+		</exec>
+	</target>
+
+	<!-- Executes all tests. -->
+	<target name="test">
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="${testdir}/TestRunner.php" />
+			<arg value="${server}" />
+		</exec>
+	</target>
+
+	<!-- Build packages for distribution. -->
+	<target name="package" depends="clean, documentation, test">
+		<!-- Binary Release -->
+		<zip destfile="${target}/${name}-${version}.zip">
+			<fileset dir=".">
+				<include name="**/**" />
+				<exclude name="${target}" />
+				<exclude name="piwi/.metadata/" />
+				<exclude name="piwi/.settings/" />
+				<exclude name="piwi/cache/*.xml" />
+				<exclude name="third-party/" />
+				<exclude name="test/" />
+				<exclude name="*/.project" />
+				<exclude name="build.xml" />
+			</fileset>
+		</zip>
+
+		<!-- Source Release -->
+		<zip destfile="${target}/${name}-${version}-sources.zip">
+			<fileset dir=".">
+				<include name="**/**" />
+				<exclude name="${target}" />
+				<exclude name="piwi/.metadata/" />
+				<exclude name="piwi/.settings/" />
+				<exclude name="piwi/cache/*.xml" />
+			</fileset>
+		</zip>
+	</target>
+
+	<!-- Executes all tests and generates a coverage report. -->
+	<target name="report">
+		<delete dir="${target}${reportdir}" />
+		
+		<!-- Create coverage report -->
+		<mkdir dir="${target}${reportdir}coverage/" />
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="${testdir}TestRunner.php" />
+			<arg value="${server}" />
+			<arg value="${target}${reportdir}coverage/" />
+			<arg value="PHPCOVERAGE_HOME=third-party/spikephpcoverage-0.8.2/src" />
+		</exec>
+		
+		<!-- Create codestyle report -->
+		<mkdir dir="${target}${reportdir}codestyle/" />
+		<exec executable="php" dir="third-party/spikephpcheckstyle-0.6.1" failonerror="true">
+			<arg value="run.php" />
+			<arg value="--src" />
+			<arg value="../../piwi/lib/piwi" />
+			<arg value="--outdir" />
+			<arg value="../../${target}${reportdir}codestyle/" />
+		</exec>
+	</target>
+
+	<!-- Crawls a PIWI-Webpage, to make it static. -->
+	<target name="crawl">
+		<delete dir="${target}${crawldir}" />
+		<mkdir dir="${target}${crawldir}" />
+		<exec executable="php" dir="." failonerror="true">
+			<arg value="piwi-crawler/Crawler.php" />
+			<arg value="${server}" />
+			<arg value="default.html" />
+			<arg value="${crawlerLanguages}" />
+			<arg value="${target}${crawldir}" />			
+			<arg value="${crawlerFormats}" />
+		</exec>
+	</target>
+	
+	<!-- Deploys the packaged files to Google Code (uses Ant-Googlecode; see http://code.google.com/p/ant-googlecode/). -->
+	<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="third-party/ant-googlecode-0.0.1.jar" name="gcupload"/>
+	<target name="deploy">
+		<!-- Source Release -->
+		<gcupload 
+			username="${googleusername}" 
+			password="${googlepassword}" 
+			projectname="${name}" 
+			filename="${target}/${name}-${version}-sources.zip" 
+			targetfilename="${name}-${version}-sources.zip" 
+			summary="Piwi ${version} - ${releaseName} (Including unit tests)" 
+			labels="Featured,Type-Archive,OpSys-All" />
+
+		<!-- Binary Release -->
+		<gcupload 
+			username="${googleusername}" 
+			password="${googlepassword}" 
+			projectname="${name}" 
+			filename="${target}/${name}-${version}.zip" 
+			targetfilename="${name}-${version}.zip" 
+			summary="Piwi ${version} - ${releaseName}" 
+			labels="Featured,Type-Archive,OpSys-All" />
+	</target>
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>XSLT Transformation</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>XSLT Transformation</header>
+		<p>PIWI supports custom XSLT-Transformations. That means that it is possible to embed arbitrary XSLT-Transformations.</p>
+		<separator />
+		<section>
+			<title>Example</title>
+			<span class="bold">Using the following XSLT-Stylesheet:</span>
+			<br /><br />
+			<code>
+			   &lt;xsl:template match="release"&gt;<br />
+               &#160;&#160;&lt;div style="border: 1px solid #dcdcdc"&gt;<br />
+                  &#160;&#160;&#160;&#160;&lt;xsl:apply-templates /&gt;<br />
+               &#160;&#160;&lt;/div&gt;<br />
+            &lt;/xsl:template&gt;
+            <br /><br />
+            &lt;xsl:template match="artist"&gt;<br />
+               &#160;&#160;&lt;span style="font-size: 1.1em; color: #cc0000"&gt;<br />
+                  &#160;&#160;&#160;&#160;&lt;xsl:apply-templates /&gt;<br />
+               &#160;&#160;&lt;/span&gt;<br />
+            &lt;/xsl:template&gt;
+            <br /><br />
+            &lt;xsl:template match="album"&gt;<br />
+               &#160;&#160;&lt;span style="color: #0000cc"&gt;<br />
+                  &#160;&#160;&#160;&#160;&lt;xsl:apply-templates /&gt;<br />
+               &#160;&#160;&lt;/span&gt;<br />
+            &lt;/xsl:template&gt;
+		   </code>
+		   <br /><br />
+		   <span class="bold">Applied to the following XML-Document:</span>
+		   <br /><br />
+		   <code>
+				&lt;release&gt;<br />
+				   &#160;&#160;&lt;artist&gt;Artist&lt;/artist&gt;<br />
+				   &#160;&#160;&lt;album&gt;Album&lt;/album&gt;<br />
+				&lt;/release&gt;
+			</code>
+			<br /><br />
+			<span class="bold">Will result in the following output:</span>
+         <br /><br />         
+         <release>
+            <artist>Artist</artist> <album>Album</album>
+         </release>
+         
+      </section>
+	</content>
+</document>

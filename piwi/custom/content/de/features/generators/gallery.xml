@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Galerie</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Galerie</header>
+		<section>
+		    Um eine Bildergalerie anzuzeigen, kann die integrierte Klasse 'SimpleGalleryGenerator' verwendet werden.
+		</section>
+		<separator />
+		<generator id="gallery" />
+	</content>
+</document>

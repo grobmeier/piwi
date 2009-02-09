@@ -1,0 +1,70 @@
+=======================================================================
+=                                                                     =
+=                                                                     =
+=                 PIWI - PHP Transformation Framework                 =
+=                                                                     =
+=                     http://www.piwiframework.de                     =
+=                                                                     =
+=                                                                     =
+=======================================================================
+
+0.0.8 - Refactored Release
+
+    * New: Added ImageNavigationGenerator
+    * Fix: Changed some interfaces
+    * Fix: Refactored folder structure
+    * Fix: Improved user authentication
+
+0.0.7 - Crawler Release
+
+    * New: Wrote crawler to generate static pages
+    * Fix: Refactored package structure
+
+0.0.6 - Authentication Release
+
+    * New: Added authentication features (via session and cookies)
+    * New: Added support for custom XSLT-Transformation
+    * New: Added support for internationalization in generators
+    * New: Added serializer for Word and Excel
+    * New: Dynamic configuration of Navigation(s) and SiteMapPath in 'config.xml'
+    * New: Wrote Unit tests
+    * New: Added Ant file
+    * Fix: Extract configuration from 'site.xml'
+
+0.0.5 - Forms Framework Release
+
+    * New: Added form framework with validators
+    * New: Included html2fpdf as PDF-Serializer
+    * New: Implemented Cache-mechanism
+    * New: Internationalization: Websites can now have multiple languages
+
+0.0.4 - Documented Release
+
+    * New: Added exception handling and error page
+    * New: Added new features: SiteMap?, SiteMapPath?
+    * New: Now differing between Page-, Section-, Navigation and HTML-Generators
+    * New: Extracted serializer component out of index.php and added XML-Serializer
+    * New: Added connectors for MySQL and MSSQL
+    * New: Added XSD-Schemas for all XML-Files (Cache, Generators, Connectors, Site, PiwiXML)
+    * New: Added new sample page demonstrating the features of Piwi 
+    * Fix: Refactored and documented all classes, generated HTML-Documentation
+    * Fix: Improved mod_rewrite rule for mapping complete request
+
+0.0.3 - Classloading and Structur Release
+
+    * New: Implemented Classloader and Classloader Cache mechanism
+    * New: Started documentation
+    * New: Wrote new examples (gallery)
+    * New: Added some new useful framework classes which are not necessary for the core 
+    * Fix: Improved webapp structure for easier updates
+
+0.0.2 - Generator and Connector Release
+
+    * New: Implemented Generators (Components for generating dynamic PIWI-XML)
+    * New: Implemented Connectors (Components for connecting to databases and other) 
+
+0.0.1 - Proof of Concept Release
+
+    * New: Implemented PIWI-XML and transformation
+    * New: Navigation generation from site.xml
+    * New: Template mechanism

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>FAQ</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>FAQ</header>
+		<section>
+			<ol>
+				<li>
+					<div class="question">What are the requirements for PIWI?</div>
+					<div class="answer">
+						PIWI runs on every standard PHP-Webhost with PHP > 5 installed.
+						<br />
+						You server must have 'mod_rewrite' enabled.
+					</div>
+				</li>
+				<li>
+					<div class="question">How do I install PIWI?</div>
+					<div class="answer">
+						You can download PIWI from:
+						<a href="http://code.google.com/p/piwi">http://code.google.com/p/piwi
+						</a>
+						<br />
+						After downloading place the 'piwi' folder containing the
+						'index.php' in your favorite webserver.
+						<br />
+						<br />
+						<div class="bold">XAMPP:</div>
+						When you are using XAMPP you have to do the following to use PIWI:
+						<ul>
+							<li>
+								<span class="bold">'\apache\conf\httpd.conf'</span>:
+								<ul>
+									<li>
+									<span class="bold">Comment in</span> the following line:<br />
+									<code>LoadModule rewrite_module modules/mod_rewrite.so</code>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span class="bold">'\apache\bin\php.ini'</span>: 
+								<ul>
+									<li><span class="bold">Uncomment</span> the following line:<br />
+									<code>extension=php_domxml.dll</code></li>
+									<li><span class="bold">Comment in</span> the following line:<br />
+									<code>extension=php_pdo_sqlite.dll</code>
+										(only when you want to use SQLite 3 databases)</li>
+								</ul>
+							</li>
+						</ul>
+						<br />
+						<div class="bold">Other hosting providers:</div>
+						Depending on your hosting provider you maybe have to <span
+		class="bold">comment in</span> some settings in the main <span class="bold">'.htaccess'</span> file:
+                  <ul>
+                     <li>Use this line to <span class="bold">enable PHP 5</span>. This is only required if PHP 4 is the default PHP engine.<br />
+                     <code>AddType x-mapp-php5 .php</code></li>
+                     <li>Use this line if you get <span class="bold">404-errors</span>.<br />
+                     <code>RewriteBase /</code></li>
+                  </ul>
+					</div>
+				</li>
+				<li>
+					<div class="question">How do I get started with PIWI?</div>
+					<div class="answer">
+				     Have a look at the <a href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6">documentation</a>.
+				     <br />
+				     The API can be found in '/doc/api' in PIWI package.
+					</div>
+				</li>
+			</ol>
+		</section>
+	</content>
+</document>

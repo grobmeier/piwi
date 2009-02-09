@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>DataGridGenerator (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/datagridgenerator.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">default.DataGridGenerator</div>
+
+<h1>Class DataGridGenerator</h1>
+
+<pre class="tree"><strong>DataGridGenerator</strong><br /></pre>
+
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd>Generator </dt>
+</dl>
+
+<hr>
+
+<p class="signature">public  class <strong>DataGridGenerator</strong></p>
+
+<div class="comment" id="overview_description"><p>
+Creates a table containing whose data comes from a database.
+/</p></div>
+
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#connection">$connection</a></p><p class="description">The connection established by the connector on demand. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#connector">$connector</a></p><p class="description">The name of the Connector that will be used to access the database. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#headers">$headers</a></p><p class="description">The headers of the table. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#sql">$sql</a></p><p class="description">The SQL-Query to perform. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#DataGridGenerator()">DataGridGenerator</a>()</p><p class="description">
+Constructor.
+</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#generate()">generate</a>()</p><p class="description">
+Returns the xml output of the Generator.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setProperty()">setProperty</a>(string key, string value)</p><p class="description">
+Used to pass parameters to the Generator.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="connection">connection</h3>
+<code class="signature">private  mixed <strong>$connection</strong> = null</code>
+<div class="details">
+<p>The connection established by the connector on demand. */</p></div>
+
+<hr>
+
+<h3 id="connector">connector</h3>
+<code class="signature">private  mixed <strong>$connector</strong> = null</code>
+<div class="details">
+<p>The name of the Connector that will be used to access the database. */</p></div>
+
+<hr>
+
+<h3 id="headers">headers</h3>
+<code class="signature">private  mixed <strong>$headers</strong> = null</code>
+<div class="details">
+<p>The headers of the table. */</p></div>
+
+<hr>
+
+<h3 id="sql">sql</h3>
+<code class="signature">private  mixed <strong>$sql</strong> = null</code>
+<div class="details">
+<p>The SQL-Query to perform. */</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="DataGridGenerator()">DataGridGenerator</h3>
+<code class="signature">public <strong>DataGridGenerator</strong>()</code>
+<div class="details">
+<p>
+Constructor.
+/</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="generate()">generate</h3>
+<code class="signature">public  string <strong>generate</strong>()</code>
+<div class="details">
+<p>
+Returns the xml output of the Generator.</p><dl>
+<dt>Returns:</dt>
+<dd>The xml output as string.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setProperty()">setProperty</h3>
+<code class="signature">public  void <strong>setProperty</strong>(string key, string value)</code>
+<div class="details">
+<p>
+Used to pass parameters to the Generator.</p><dl>
+<dt>Parameters:</dt>
+<dd>key - The name of the parameter.</dd>
+<dd>value - The value of the parameter.</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../default/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../default/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../default/datagridgenerator.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

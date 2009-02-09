@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/site"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/site">
+	<complexType name="pageType">
+		<sequence>
+			<element name="page" type="tns:pageType"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="label" type="string" use="required"></attribute>
+		<attribute name="href" type="string" use="required"></attribute>
+		<attribute name="roles" type="string" use="optional"></attribute>
+		<attribute name="template" type="string" use="optional"></attribute>
+
+		<attribute name="hideInNavigation" type="boolean"
+			use="optional">
+		</attribute>
+		<attribute name="hideInSiteMap" type="boolean" use="optional"></attribute>
+		<attribute name="cachetime" type="int" use="optional"></attribute>
+	</complexType>
+	<element name="site" type="tns:siteType">
+		<unique name="UniqueLanguageRegion">
+			<selector xpath=".//tns:language" />
+			<field xpath="@region" />
+		</unique>
+	</element>
+	<complexType name="siteType">
+		<sequence>
+
+			<element name="language" type="tns:languageType" minOccurs="1"
+				maxOccurs="unbounded">
+				<unique name="UniquePageId">
+					<selector xpath=".//tns:page" />
+					<field xpath="@id" />
+				</unique>
+			</element>
+		</sequence>
+
+	</complexType>
+
+
+
+	<complexType name="languageType">
+		<sequence>
+			<element name="page" type="tns:pageType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+		<attribute name="region" use="required">
+			<simpleType>
+				<restriction base="string">
+
+					<maxLength value="7"></maxLength>
+					<minLength value="2"></minLength>
+				</restriction>
+			</simpleType>
+		</attribute>
+
+	</complexType>
+
+
+
+</schema>

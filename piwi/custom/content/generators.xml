@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generators xmlns="http://piwi.googlecode.com/xsd/generators" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xsd/generators.xsd">
+   <!-- DATABASE -->
+	<generator id="sqlite2" class="SQLiteContentGenerator">
+		<connector>sqlite2Connector</connector>
+	</generator>
+	<generator id="sqlite3" class="SQLiteContentGenerator">
+		<connector>sqlite3Connector</connector>
+	</generator>
+	<generator id="datagrid" class="DataGridGenerator">
+      <connector>sqlite3Connector</connector>
+      <headers>NAME, ADRESS, CITY, PHONE</headers>
+      <sql>SELECT * FROM adresses</sql>
+   </generator>
+   
+   <!-- LOGIN -->
+   <generator id="login_logout" class="LoginLogoutGenerator" />
+   
+	<!-- GALLERY -->
+	<generator id="gallery" class="SimpleGalleryGenerator">
+		<pathtoalbums>custom/files/gallery</pathtoalbums>
+	</generator>
+	
+	<!-- SITEMAP -->
+	<generator id="fullSiteMap" class="SiteMapGenerator">
+      <header>CONTENTS_OF_THIS_WEBSITE</header>
+   </generator>
+	<generator id="featuresSiteMap" class="SiteMapGenerator">
+		<pageId>features</pageId>
+		<depth>1</depth>
+		<includeParent>0</includeParent>
+	</generator>
+	<generator id="generatorsSiteMap" class="SiteMapGenerator">
+      <pageId>generators</pageId>
+      <depth>1</depth>
+      <includeParent>0</includeParent>
+   </generator>
+   <generator id="helpSiteMap" class="SiteMapGenerator">
+      <pageId>help</pageId>
+      <depth>0</depth>
+      <includeParent>0</includeParent>
+   </generator>
+   <generator id="documentationSiteMap" class="SiteMapGenerator">
+      <pageId>documentation</pageId>
+      <depth>0</depth>
+      <includeParent>0</includeParent>
+   </generator>
+   <generator id="usageSiteMap" class="SiteMapGenerator">
+      <pageId>usage</pageId>
+      <depth>0</depth>
+      <includeParent>0</includeParent>
+   </generator>
+</generators>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>User Authentication</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>User Authentication</header>
+      <section>
+         PIWI allows you to protect your pages against unauthorized access.<br />
+         You could limit access for every page to certain user roles.<br />
+         The allowed roles are specified within the file 'site.xml' in the following way:<br />
+         <ul>
+          <li><code>roles="?"</code> or no attribute <code>roles</code>:<br /> Every user may see this page.</li>
+          <li><code>roles="*"</code>:<br /> The page may be visited only by authenticated users, regardless of which role he has.</li>
+          <li><code>roles="Role1, Role2"</code>:<br /> The page may be visited only by authenticated users, if they are at least in one of the given roles.</li>
+         </ul>
+         If a protected page is visited, the user will be redirected to a login page, if he is not logged in.<br />
+         If the login is successful, he will be redirected to the protected page afterwards.
+      </section>
+      <separator />
+      <section>
+       <title>Sample</title>
+       The following page can only be accessed, if you login successfully.<br />
+       Please use 'test' as username and password.<br /><br />
+       <a href="authentication_protected.html">Protected page</a>
+      </section>
+	</content>
+</document>

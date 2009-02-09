@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/config"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/config">
+	<element name="configuration" type="tns:configurationType">
+	</element>
+	<complexType name="configurationType">
+		<sequence>
+			<element name="cachetime" type="int" minOccurs="0"
+				maxOccurs="1">
+			</element>
+			<element name="navigationGenerators"
+				type="tns:navigationGeneratorsType" minOccurs="0" maxOccurs="1">
+				<unique name="UniqueNavigationName">
+					<selector xpath=".//tns:navigationGenerator" />
+					<field xpath="@name" />
+				</unique>
+			</element>
+            <element name="customLabels" type="string" minOccurs="0" maxOccurs="1"></element>
+            <element name="customXSLTStylesheet" type="string"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="authentication" type="tns:authenticationType"
+				minOccurs="0" maxOccurs="1">
+			</element>
+			<element name="serializers" type="tns:serializersType"
+				minOccurs="0" maxOccurs="1">
+				<unique name="UniqueExtension">
+					<selector xpath=".//tns:serializer" />
+					<field xpath="@extension" />
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="authenticationType">
+		<attribute name="enabled" type="boolean" use="required"></attribute>
+		<attribute name="roleProvider" type="string" use="required"></attribute>
+		<attribute name="loginPageId" type="string" use="required"></attribute>
+	</complexType>
+	<complexType name="serializersType">
+		<sequence>
+			<element name="serializer" type="tns:serializerType"
+				minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+	</complexType>
+	<complexType name="serializerType">
+		<attribute name="extension" type="string" use="required"></attribute>
+		<attribute name="serializer" type="string" use="required"></attribute>
+	</complexType>
+	<complexType name="navigationGeneratorType">
+        <sequence>
+        	<any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"></any>
+        </sequence>
+        <attribute name="name" type="string" use="required"></attribute>
+		<attribute name="class" type="string" use="required"></attribute>
+		<attribute name="pageId" type="string" use="optional"></attribute>
+		<attribute name="depth" type="int" use="optional"></attribute>
+		<attribute name="includeParent" type="boolean" use="optional"></attribute>
+	</complexType>
+	<complexType name="navigationGeneratorsType">
+		<sequence>
+			<element name="navigationGenerator" type="tns:navigationGeneratorType"
+				minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+</schema>

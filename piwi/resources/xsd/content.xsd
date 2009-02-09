@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/piwixml"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/piwixml">
+	<complexType name="contentType" mixed="true">
+		<sequence>
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any"
+				processContents="skip">
+			</any>
+
+		</sequence>
+		<attribute name="position" type="string" use="required"></attribute>
+
+
+	</complexType>
+	<element name="document" type="tns:documentType">
+		<unique name="UniqueContentPosition">
+			<selector xpath=".//tns:content" />
+			<field xpath="@position" />
+		</unique>
+	</element>
+	<complexType name="documentType">
+		<sequence>
+            <element name="head" type="tns:headType" minOccurs="0" maxOccurs="1"></element>
+            <element name="content" type="tns:contentType" minOccurs="0"
+				maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="headType">
+		<sequence>
+			<element name="title" type="string" minOccurs="0" maxOccurs="1"></element>
+			<element name="keywords" type="string" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+</schema>

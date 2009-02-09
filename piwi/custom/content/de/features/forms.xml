@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Formulare</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Formulare</header>
+		<p>PIWI kann mit Formularen umgehen. Formulare können aus mehreren Schritten bestehen (Wizard).<br />
+		Die eingegebenen Werte können mit Validatoren überprüft werden.		
+		<br />
+		Ebenso ist es möglich mehrer Formulare auf einer Seite zu verwenden.
+      </p>
+		<separator />
+		<section>
+			<title>Wizard</title>
+			Dieses Formular besteht aus mehreren Schritten:
+         <br /><br />
+         <piwiform id="wizardform" />
+		</section>
+		<separator />
+		<section>
+         <title>Validatoren</title>
+         Dieses Formular verwendet Validatoren um die eingegebenen Werte zu überprüfen:
+         <br /><br />   
+         <piwiform id="validatorform" />
+      </section>
+	</content>
+</document>

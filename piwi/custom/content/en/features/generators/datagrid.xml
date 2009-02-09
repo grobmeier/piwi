@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../../resources/xsd/content.xsd">
+	<head>
+		<title>DataGrid</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>DataGrid</header>
+		<section>
+			To show data in a table, you can use the integrated class
+			'DataGridGenerator'.
+		</section>
+		<separator />
+		<generator id="datagrid" />
+	</content>
+</document>

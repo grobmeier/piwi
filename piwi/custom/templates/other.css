@@ -1,0 +1,317 @@
+﻿/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BODY<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+body 
+{
+   background-color:    #ffffff;
+   color:               #000000;
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   margin:              10px 0px 10px 0px;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>HEADER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+#header
+{
+   background-image:    url(images/bw/piwi-logo_bw.png);
+   background-repeat:   no-repeat;
+   margin-bottom:       10px;  
+   text-align:          center;
+   height:              150px;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+#menu
+{
+   background-image:    url(images/bw/menu_bw.png);
+   background-repeat:   no-repeat;
+   line-height:         1.9em;
+   padding:             8px 0px 0px 0px;
+   height:              30px;
+   padding-right:       30px;
+}
+
+#menu ul
+{
+   background-color:      #eeeeee;
+   margin:                0px; 
+   padding:              0px;
+}
+
+#menu ul li
+{ 
+   list-style:             none;
+   float:                    left;
+   font-weight:          bold;
+   position:               relative;
+   margin:                0px 10px 0px 35px;
+}
+
+#menu ul li ul 
+{
+    position:            absolute;
+    top:                     1.9em;
+    left:                  -0.5em;
+    display:               none;
+    border:                1px solid #eeeeee;
+    line-height:         1.0em;
+    width:                 230px;
+}
+
+#menu ul li:hover ul
+{
+    display: block;
+}
+  
+#menu ul li ul li
+{
+   background-color:    #bbbbbb;
+   margin:                1px;
+   float:                    none;
+   display:                block;   
+   font-weight:        normal;
+}
+
+#menu ul li ul li.selected
+{
+   background-color:     #888888;
+}
+
+#menu ul li a
+{
+   color:               #ffffff;
+   text-decoration:     none;
+   display:                block;
+   width:               100%;
+}
+
+#menu ul li a:hover
+{
+   color:               #444444;   
+   text-decoration:     none;
+}
+
+#menu ul li.selected a
+{
+   color:               #444444;
+}
+
+#menu ul li ul li a
+{
+   padding:                5px 15px 5px 15px;
+   
+}
+
+#menu ul li.selected ul li a
+{
+   color:               #ffffff;
+}
+
+#menu ul li.selected ul li a:hover
+{
+   color:               #444444;
+}
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOOTER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+#footer
+{     
+   background-image:    url(images/bw/footer_bw.png);
+   background-repeat:   no-repeat;
+   font-size:           0.7em;
+   height:              23px;
+   line-height:         1.2em;
+   padding:             4px 20px 6px 20px;
+}
+
+#footer a
+{  
+   color:               #ffffff;
+   text-decoration:     none;
+}
+
+#footer a:hover
+{
+   color:               #444444;
+   text-decoration:     none;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>CONTENT PLACEHOLDERS<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+#container
+{
+   margin:              auto; 
+   width:               960px;         
+}
+
+#content
+{     
+   background-color:    #ffffff;
+   border:              1px solid #dcdcdc;     
+   font-size:           0.9em;
+   line-height:         1.4em;   
+   padding:             30px;
+   text-align:          justify;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>HTML-ELEMENTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+a
+{
+   color:               #444444;
+   text-decoration:     none;
+}
+
+a:hover
+{
+   color:               #ffffff;
+   text-decoration:     none;
+}
+
+hr
+{
+   border:              solid #dcdcdc 1px;
+   height:              1px;
+   margin-top:          10px;
+   margin-bottom:       15px;
+}
+
+img
+{
+   border:              0px;
+}
+
+h1
+{
+   color:               #444444;
+   font-size:           1.2em;
+   font-weight:         bold;
+   margin:              0px 0px 20px 0px;
+   padding:             0px;
+}
+
+h2
+{
+   color:               #000000;
+   font-size:           1.1em;
+   font-weight:         bold;
+   margin:              0px 0px 15px 0px;
+   padding:             0px;
+}
+
+form
+{
+   padding:             8px;
+   background-color:    #e5e5e5;
+}
+
+textarea, input
+{
+   background-color:    #ffffff;
+   border:              1px solid  #dcdcdc;  
+   font-family:         "Verdana", "Arial", "Sans-Serif";
+   font-size:           0.9em;   
+}
+
+table, tr
+{
+   padding:             0px;
+   border-collapse:     collapse;   
+}
+
+th, td
+{
+   background-color:    #449c52;
+   border:              1px solid  #dcdcdc; 
+   padding:             3px 10px 3px 10px;
+   margin:              0px;
+}
+
+td
+{
+   background-color:    #c5dc08;
+}
+
+ol
+{
+   font-weight: bold;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>CUSTOM-ELEMENTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */
+.sitemappath
+{
+   margin-bottom:      15px;
+   font-size:          0.7em;
+}
+
+.sitemappath a
+{
+   color:              #222222;
+}
+
+.sitemappath a:hover
+{
+   color:              #cc0000;
+}
+
+.question
+{
+   color:               #449c52;
+   margin-bottom:       8px;
+}
+
+.answer
+{
+   font-weight:         normal;
+   margin-bottom:       12px;
+   margin-left:         10px;
+}
+
+.answer li
+{
+   margin-bottom: 5px;
+}
+
+.slideshow_container
+{
+   padding: 			5px; 
+   margin: 				10px 0px 10px 20px; 
+   float: 				right; 
+   border: 				1px solid #dcdcdc;
+}
+
+.right
+{  
+   float:               right;
+}
+
+.bold
+{
+   font-weight:         bold;
+}
+
+.error
+{
+   color:               #cc0000;
+}
