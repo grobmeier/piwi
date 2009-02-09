@@ -2,7 +2,7 @@
 <project basedir="." default="package" name="Piwi">
 	<!-- Properties. -->
 	<property name="name" value="piwi" />
-	<property name="version" value="0.0.8-SNAPSHOT" /> <!-- Change before deploying to Google Code. -->
+	<property name="version" value="0.0.9-SNAPSHOT" /> <!-- Change before deploying to Google Code. -->
 
 	<property name="googleusername" value="YOUR_USERNAME" /> <!-- Change before deploying to Google Code. -->
 	<property name="googlepassword" value="YOUR_PASSWORD" /> <!-- Change before deploying to Google Code. -->
