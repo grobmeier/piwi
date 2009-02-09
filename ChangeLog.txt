@@ -13,12 +13,13 @@
     * New: Added ImageNavigationGenerator
     * Fix: Changed some interfaces
     * Fix: Refactored folder structure
-    
+    * Fix: Improved user authentication
+
 0.0.7 - Crawler Release
 
     * New: Wrote crawler to generate static pages
     * Fix: Refactored package structure
-    
+
 0.0.6 - Authentication Release
 
     * New: Added authentication features (via session and cookies)
@@ -29,7 +30,7 @@
     * New: Wrote Unit tests
     * New: Added Ant file
     * Fix: Extract configuration from 'site.xml'
-    
+
 0.0.5 - Forms Framework Release
 
     * New: Added form framework with validators
@@ -48,7 +49,7 @@
     * New: Added new sample page demonstrating the features of Piwi 
     * Fix: Refactored and documented all classes, generated HTML-Documentation
     * Fix: Improved mod_rewrite rule for mapping complete request
-    
+
 0.0.3 - Classloading and Structur Release
 
     * New: Implemented Classloader and Classloader Cache mechanism
@@ -56,7 +57,7 @@
     * New: Wrote new examples (gallery)
     * New: Added some new useful framework classes which are not necessary for the core 
     * Fix: Improved webapp structure for easier updates
-    
+
 0.0.2 - Generator and Connector Release
 
     * New: Implemented Generators (Components for generating dynamic PIWI-XML)

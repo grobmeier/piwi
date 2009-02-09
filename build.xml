@@ -6,7 +6,7 @@
 
 	<property name="googleusername" value="YOUR_USERNAME" /> <!-- Change before deploying to Google Code. -->
 	<property name="googlepassword" value="YOUR_PASSWORD" /> <!-- Change before deploying to Google Code. -->
-	<property name="releaseName" value="Refactored Release" /> <!-- Change before deploying to Google Code. -->
+	<property name="releaseName" value="RELEASE_NAME" /> <!-- Change before deploying to Google Code. -->
 			
 	<property name="target" value="target/" />
 	<property name="reportdir" value="report/" />
@@ -110,7 +110,7 @@
 	
 	<!-- Deploys the packaged files to Google Code (uses Ant-Googlecode; see http://code.google.com/p/ant-googlecode/). -->
 	<taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="third-party/ant-googlecode-0.0.1.jar" name="gcupload"/>
-	<target name="deploy" depends="package">
+	<target name="deploy">
 		<!-- Source Release -->
 		<gcupload 
 			username="${googleusername}" 
