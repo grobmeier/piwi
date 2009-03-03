@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="package" name="Piwi">
-	<!-- Properties. -->
-	<property name="name" value="piwi" />
-	<property name="version" value="0.0.9-SNAPSHOT" /> <!-- Change before deploying to Google Code. -->
-
-	<property name="googleusername" value="YOUR_USERNAME" /> <!-- Change before deploying to Google Code. -->
-	<property name="googlepassword" value="YOUR_PASSWORD" /> <!-- Change before deploying to Google Code. -->
-	<property name="releaseName" value="RELEASE_NAME" /> <!-- Change before deploying to Google Code. -->
-			
-	<property name="target" value="target/" />
-	<property name="reportdir" value="report/" />
-	<property name="crawldir" value="crawled/" />	
-	<property name="testdir" value="test/" />
-
-	<property name="server" value="http://127.0.0.1:80/" />
-	<property name="crawlerLanguages" value="default, de" />
-	<property name="crawlerFormats" value="pdf,xml,doc,xls" />
+	<!-- Properties. -->	
+	<property file="ant.properties"/>
 	
 	<!-- Clean the output folder. -->
 	<target name="clean">
@@ -55,6 +41,7 @@
 				<exclude name="test/" />
 				<exclude name="*/.project" />
 				<exclude name="build.xml" />
+				<exclude name="ant.properties" />
 			</fileset>
 		</zip>
 
