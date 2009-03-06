@@ -83,31 +83,63 @@ function __autoload($class) {
 }
 
 /**
- * -------------------------------------------------------------------------
- * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
- * -------------------------------------------------------------------------
- */ 
-session_start();
-
-// Initialize the singleton factories for managing Generators and Connectors
+ * Initialize the singleton factories for managing Generators and Connectors
+ */
 GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml');
 FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');
 ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config.xml');
 
+/**
+ * Configure Logging and Exception Handler
+ */
+$logConfig = ConfigurationManager::getInstance()->getLoggingConfiguration();
+if($logConfig != null) {
+	define('LOG4PHP_CONFIGURATION', $logConfig);	
+} else {
+	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
+}
+
+$logger =& LoggerManager::getLogger('Index.php');
+
+function exception_handler($exception) {
+	GLOBAL $logger;
+  	$logger->error('A uncatched runtime exception occured: '.$exception->getMessage());
+  	echo "An uncatched error occurd: ".$exception->getMessage();
+}
+
+set_exception_handler('exception_handler');
+
+/**
+ * -------------------------------------------------------------------------
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
+ * -------------------------------------------------------------------------
+ */ 
+$logger->info('Starting page processing');
+
+session_start();
+
 // Init site (manual dependency injection)
 Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, 
 	$GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
+$logger->debug('XML Site initialized successfully');
 
 try {
 	// Generate page
+	$logger->debug('Site generating content');
 	Site::getInstance()->generateContent();
 } catch(Exception $exception) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	Site::getInstance()->setContent($exceptionPageGenerator->generate());
+	$logger->error('Site generation failed with exception: '.$exception->getMessage());
 }
 
 // Call Serializer
+$logger->debug("Beginning serialization");
 Site::getInstance()->serialize();
+
+// Close down all appenders - safely
+$logger->debug("Page processing ended - Logger shutdown, end of request.");
+LoggerManager::shutdown();
 ?>

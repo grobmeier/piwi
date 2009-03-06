@@ -202,6 +202,23 @@ class ConfigurationManager {
         }    	
     }
 
+ 	/**
+     * Returns the path to the logging configuration file or null if none is specified.
+     * @return string The path or null, if none is specified.
+     */
+    public function getLoggingConfiguration() {
+    	if ($this->domXPath == null) {
+    		$this->_loadConfig();
+    	}
+    	
+    	$result = $this->domXPath->query('/config:configuration/config:logConfiguration');
+    	if ($result->length == 1) {
+    		return $result->item(0)->nodeValue;
+        } else {
+       		return null;
+        }    	
+    }
+
 	/**
 	 * Returns true if authentication is enabled otherwise false.
 	 * @return boolean True if authentication is enabled otherwise false.

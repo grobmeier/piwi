@@ -52,6 +52,9 @@ class ClassLoader {
 				} else if (file_exists($path . '/' . $class . '.if.php')) {
 					require_once($path . '/' . $class . '.if.php');
 			        return true;
+				} else if (file_exists($path . '/' . $class . '.php')) {
+					require_once($path . '/' . $class . '.php');
+			        return true;
 				} else {
 					$this->cache->invalidate();
 				}
@@ -72,6 +75,12 @@ class ClassLoader {
 		        	} else {
 		            	if ($file == $class . '.class.php') {
 		            		require_once($directory . '/' . $class . '.class.php');
+		            		if ($this->cache != null) {
+		            			$this->cache->addClassToCache($class, $directory);
+		            		}
+		            		return true;
+		            	} else if ($file == $class . '.php') {
+		            		require_once($directory . '/' . $class . '.php');
 		            		if ($this->cache != null) {
 		            			$this->cache->addClassToCache($class, $directory);
 		            		}

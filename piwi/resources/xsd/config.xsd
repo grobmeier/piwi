@@ -17,9 +17,8 @@
 				</unique>
 			</element>
             <element name="customLabels" type="string" minOccurs="0" maxOccurs="1"></element>
-            <element name="customXSLTStylesheet" type="string"
-				minOccurs="0" maxOccurs="1">
-			</element>
+            <element name="customXSLTStylesheet" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="logConfiguration" type="string" minOccurs="0" maxOccurs="1" />
 			<element name="authentication" type="tns:authenticationType"
 				minOccurs="0" maxOccurs="1">
 			</element>
