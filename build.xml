@@ -37,6 +37,7 @@
 				<exclude name="piwi/.metadata/" />
 				<exclude name="piwi/.settings/" />
 				<exclude name="piwi/cache/*.xml" />
+				<exclude name="piwi/logs/*.log" />
 				<exclude name="third-party/" />
 				<exclude name="test/" />
 				<exclude name="*/.project" />
@@ -53,6 +54,7 @@
 				<exclude name="piwi/.metadata/" />
 				<exclude name="piwi/.settings/" />
 				<exclude name="piwi/cache/*.xml" />
+				<exclude name="piwi/logs/*.log" />
 			</fileset>
 		</zip>
 	</target>
