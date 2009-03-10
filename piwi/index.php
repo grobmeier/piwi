@@ -69,7 +69,7 @@ $classloader = null;
 function __autoload($class) {
 	global $classloader;
 	if ($classloader == null) {
-		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . '/cache/classloader.cache.xml');
+		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . 'cache/classloader.cache.xml');
 	}
 
 	$directorys = array ('lib', CUSTOM_CLASSES_PATH);

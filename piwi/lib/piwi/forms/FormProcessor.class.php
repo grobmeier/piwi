@@ -33,8 +33,8 @@ class FormProcessor {
 	 * Since we are in a static context and PHP5 can only use literals and strings
 	 * for intializing static members, we need to do some lazy initilizing here.
 	 */
-	private function getLogger() {
-		if(self::$logger == null) {
+	private function _getLogger() {
+		if (self::$logger == null) {
 			self::$logger =& LoggerManager::getLogger('FormProcessor.class.php');
 		}
 		return self::$logger;
@@ -59,6 +59,13 @@ class FormProcessor {
 		// Determinate the current step in the formular
 		// if request is a postback increase number of steps otherwise begin with step 1
 		self::$currentStep = 0;
+		
+		// Replace all '<' and '>' within the $_POST
+		foreach ($_POST as $key => $value) {
+			$value = str_replace('<', '&lt;', $value);
+			$value = str_replace('>', '&gt;', $value);
+			$_POST[$key] = $value;
+		}
 		
 		if (isset($_POST[self::$formId . '_currentstep'])) {
 			self::$currentStep = $_POST[self::$formId . '_currentstep'];
@@ -151,9 +158,9 @@ class FormProcessor {
 		// XPath isn't 0 based, first node is node number 1.
 		$formnumber = self::$currentStep + 1;
 		$form = $domXPath->query('/piwiform:form/piwiform:step[' . $formnumber . ']');
-		$result = $form->item(0)->attributes->getNamedItem('preprocessor')->value;
+		$result = $form->item(0)->getAttribute('preprocessor');
 		
-		self::getLogger()->debug("Found Preprocessor: ".$result);
+		self::_getLogger()->debug("Found Preprocessor: " . $result);
 		
 		if ($result != null) {
 			$class = new ReflectionClass((string)$result);
@@ -165,10 +172,10 @@ class FormProcessor {
 					PiwiException :: ERR_WRONG_TYPE);
 			}
 			$preprocessor->process();
-			self::getLogger()->debug("Preprocessor: ".$result." has been called.");
+			self::_getLogger()->debug("Preprocessor: " . $result . " has been called.");
 			
 		}
-		self::getLogger()->debug("Preprocessor actions finished.");
+		self::_getLogger()->debug("Preprocessor actions finished.");
 	}
 	
 	/**

@@ -70,6 +70,10 @@ It is also possible to handle multiple forms on one page.
 </tr>
 <tr>
 <td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#logger">$logger</a></p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#numberOfSteps">$numberOfSteps</a></p><p class="description">The total number of steps of the currently processed form. </p></td>
 </tr>
 <tr>
@@ -88,6 +92,19 @@ It is also possible to handle multiple forms on one page.
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_getLogger()">_getLogger</a>()</p><p class="description">
+Since we are in a static context and PHP5 can only use literals and strings
+for intializing static members, we need to do some lazy initilizing here.
+</p></td>
+</tr>
+<tr>
+<td class="type">private static  void</td>
+<td class="description"><p class="name"><a href="#callPreProcessor()">callPreProcessor</a>(mixed domXPath)</p><p class="description">
+Calls a preprocessor defined as an attribute in the step tag
+/</p></td>
+</tr>
 <tr>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#executeStepProcessor()">executeStepProcessor</a>(array domElement)</p><p class="description">
@@ -135,6 +152,12 @@ Returns an array containing all results of the currently processed form.
 Processes the current step of the form and returns it as XML.</p></td>
 </tr>
 <tr>
+<td class="type">private static  void</td>
+<td class="description"><p class="name"><a href="#initXSLTProcessor()">initXSLTProcessor</a>()</p><p class="description">
+Initalizes the XSLTProcessor, if this hasn't happened before'
+/</p></td>
+</tr>
+<tr>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
@@ -160,6 +183,13 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <code class="signature">private static  mixed <strong>$ignoredFields</strong></code>
 <div class="details">
 <p>Array of the names of all fields in the current form that should be rejected from hidden fields. */</p></div>
+
+<hr>
+
+<h3 id="logger">logger</h3>
+<code class="signature">private static  mixed <strong>$logger</strong> = null</code>
+<div class="details">
+</div>
 
 <hr>
 
@@ -192,6 +222,25 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_getLogger()">_getLogger</h3>
+<code class="signature">private  void <strong>_getLogger</strong>()</code>
+<div class="details">
+<p>
+Since we are in a static context and PHP5 can only use literals and strings
+for intializing static members, we need to do some lazy initilizing here.
+/</p></div>
+
+<hr>
+
+<h3 id="callPreProcessor()">callPreProcessor</h3>
+<code class="signature">private static  void <strong>callPreProcessor</strong>(mixed domXPath)</code>
+<div class="details">
+<p>
+Calls a preprocessor defined as an attribute in the step tag
+/</p></div>
+
+<hr>
+
 <h3 id="executeStepProcessor()">executeStepProcessor</h3>
 <code class="signature">public static  DOMDocument <strong>executeStepProcessor</strong>(array domElement)</code>
 <div class="details">
@@ -311,6 +360,15 @@ Processes the current step of the form and returns it as XML.</p><dl>
 <dd>The current Step as XML.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="initXSLTProcessor()">initXSLTProcessor</h3>
+<code class="signature">private static  void <strong>initXSLTProcessor</strong>()</code>
+<div class="details">
+<p>
+Initalizes the XSLTProcessor, if this hasn't happened before'
+/</p></div>
 
 <hr>
 

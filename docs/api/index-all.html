@@ -74,6 +74,11 @@ Returns the DOMNode representing the current page.</dd>
 <dd>
 Returns the Generator with the given id.
 </dd>
+<dt><a href="default/formprocessor.html#_getLogger()">_getLogger()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Since we are in a static context and PHP5 can only use literals and strings
+for intializing static members, we need to do some lazy initilizing here.
+</dd>
 <dt><a href="default/imagenavigationgenerator.html#_getNavigation()">_getNavigation()</a> - Method in class <a href="default/imagenavigationgenerator.html">default.ImageNavigationGenerator</a></dt>
 <dd>
 Returns the recursivly built navigation.</dd>
@@ -128,6 +133,10 @@ Caches the given page so that it can be reused within further requests.</dd>
 <dt><a href="default/generatorfactory.html#callGenerator()">callGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Used within the XSLT-Stylesheets to interpret the <generator /> tag. </dd>
+<dt><a href="default/formprocessor.html#callPreProcessor()">callPreProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Calls a preprocessor defined as an attribute in the step tag
+/</dd>
 <dt><a href="default/classloader.html">ClassLoader()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 ClassLoader loads classes necessary for PIWI.
@@ -186,6 +195,7 @@ Deletes the folder recursivly.</dd>
 <dd>
 Serializes the given XML to Excel (XSL).
 </dd>
+<dt><a href="default/package-functions.html#exception_handler()">exception_handler()</a> - Function in package <a href="default/package-summary.html">default</a></dt>
 <dt><a href="default/exceptionpagegenerator.html">ExceptionPageGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates an errorpage.
@@ -326,6 +336,9 @@ Looks up the localized text for the given key.
 <dt><a href="default/pager.html#getLimits()">getLimits()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns an array containing the limits which can be used for querying a database.</dd>
+<dt><a href="default/configurationmanager.html#getLoggingConfiguration()">getLoggingConfiguration()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the path to the logging configuration file or null if none is specified.</dd>
 <dt><a href="default/configurationmanager.html#getLoginPageId()">getLoginPageId()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the id of the login page.</dd>
@@ -397,6 +410,10 @@ Creates a image based navigation. </dd>
 <dt><a href="default/generatorfactory.html#initialize()">initialize()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
+<dt><a href="default/formprocessor.html#initXSLTProcessor()">initXSLTProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Initalizes the XSLTProcessor, if this hasn't happened before'
+/</dd>
 <dt><a href="default/classloadercache.html#invalidate()">invalidate()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Resets the cache, should be called if a class 
@@ -490,6 +507,10 @@ processing the requested page.
 <dt><a href="default/piwixmlserializer.html">PiwiXMLSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to PiwiXML.
+</dd>
+<dt><a href="default/preprocessor.html">Preprocessor()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Interface that Preprocessors have to implement.
 </dd>
 <dt><a href="default/stepprocessor.html#process()">process()</a> - Method in class <a href="default/stepprocessor.html">default.StepProcessor</a></dt>
 <dd>
