@@ -94,7 +94,7 @@ ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config
  * Configure Logging and Exception Handler
  */
 $logConfig = ConfigurationManager::getInstance()->getLoggingConfiguration();
-if($logConfig != null) {
+if ($logConfig != null) {
 	define('LOG4PHP_CONFIGURATION', $logConfig);	
 } else {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
