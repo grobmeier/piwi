@@ -6,6 +6,8 @@
  * It is also possible to handle multiple forms on one page.
  */
 class FormProcessor {
+	private static $logger = null;
+	
 	/** The id of the currently processed form. */
 	private static $formId = 0;
 	
@@ -26,6 +28,17 @@ class FormProcessor {
 	
 	/** The XSLTProcessor. */
 	private static $processor = null;
+	
+	/**
+	 * Since we are in a static context and PHP5 can only use literals and strings
+	 * for intializing static members, we need to do some lazy initilizing here.
+	 */
+	private function getLogger() {
+		if(self::$logger == null) {
+			self::$logger =& LoggerManager::getLogger('FormProcessor.class.php');
+		}
+		return self::$logger;
+	}
 	
 	/**
 	 * Loads the form from the given file and generates the the content as PiwiXML.
@@ -64,6 +77,8 @@ class FormProcessor {
 		if (self::$currentStep > 0) {
 			$stepXML = self::getStepXML($domXPath);
 		}
+		
+		self::callPreProcessor($domXPath);
 		
 		// If validation was successful show next step
 		if (!self::$validationFailed) {
@@ -104,21 +119,56 @@ class FormProcessor {
 	}
 	
 	/**
-	 * Processes the current step of the form and returns it as XML.
-	 * @param DOMXPath $domXPath The form where the step should be retrieved from.
-	 * @return string The current Step as XML.
+	 * Initalizes the XSLTProcessor, if this hasn't happened before'
 	 */
-	private static function getStepXML(DOMXPath $domXPath) {
+	private static function initXSLTProcessor() {
 		if (self::$processor == null) {
 			self::$processor = new XSLTProcessor;
 			self::$processor->registerPHPFunctions();
 			self::$processor->importStyleSheet(DOMDocument::load("resources/xslt/FormTransformation.xsl"));
 		}
+	}
+	
+	/**
+	 * Processes the current step of the form and returns it as XML.
+	 * @param DOMXPath $domXPath The form where the step should be retrieved from.
+	 * @return string The current Step as XML.
+	 */
+	private static function getStepXML(DOMXPath $domXPath) {
+		self::initXSLTProcessor();
 		
 		$stepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
 		$template = DOMDocument::loadXML($stepXML->ownerDocument->saveXML($stepXML));
 			
 		return self::$processor->transformToXML($template);
+	}
+	
+	/**
+	 * Calls a preprocessor defined as an attribute in the step tag
+	 */
+	private static function callPreProcessor(DOMXPath $domXPath) {
+		self::initXSLTProcessor();
+		// XPath isn't 0 based, first node is node number 1.
+		$formnumber = self::$currentStep + 1;
+		$form = $domXPath->query('/piwiform:form/piwiform:step[' . $formnumber . ']');
+		$result = $form->item(0)->attributes->getNamedItem('preprocessor')->value;
+		
+		self::getLogger()->debug("Found Preprocessor: ".$result);
+		
+		if ($result != null) {
+			$class = new ReflectionClass((string)$result);
+			$preprocessor = $class->newInstance();
+			
+			if (!$preprocessor instanceof Preprocessor) {
+				throw new PiwiException("The Class with id '" . $result .
+						"' is not an instance of Preprocessor.", 
+					PiwiException :: ERR_WRONG_TYPE);
+			}
+			$preprocessor->process();
+			self::getLogger()->debug("Preprocessor: ".$result." has been called.");
+			
+		}
+		self::getLogger()->debug("Preprocessor actions finished.");
 	}
 	
 	/**

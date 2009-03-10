@@ -2,7 +2,7 @@
 <form xmlns="http://piwi.googlecode.com/xsd/piwiform" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../resources/xsd/piwiform.xsd">
-	 <step>
+	 <step preprocessor="PrefillingPreprocessorLoginForm">
 	   Name: <input name="Name" type="text" size="30" maxlength="30" />
 	   <br /><br />
 	   Password: <input name="Password" type="password" size="30" maxlength="30" />

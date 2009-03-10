@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://piwi.googlecode.com/xsd/piwiform"
-	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/piwiform">
+		elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:tns="http://piwi.googlecode.com/xsd/piwiform">
 	<element name="form" type="tns:formType">
 		<unique name="UniqueInputName">
 			<selector xpath=".//tns:input" />
 			<field xpath="@name" />
 		</unique>
 	</element>
-	<complexType name="formType">
 
-		<sequence>
-			<element name="step" type="tns:stepType" minOccurs="2" maxOccurs="unbounded"></element>
+	<complexType name="formType">
+		<sequence>			<element name="step" type="tns:stepType" minOccurs="2" maxOccurs="unbounded"></element>
 		</sequence>
 	</complexType>
 
 	<complexType name="stepType" mixed="true">
-        <sequence>
-
-			<any processContents="skip" minOccurs="0" maxOccurs="unbounded" namespace="##any">
-			</any>
+        <sequence>			<any processContents="skip" minOccurs="0" maxOccurs="unbounded" namespace="##any" />
 		</sequence>
-
-		<anyAttribute namespace="##any" processContents="skip"></anyAttribute>
+		<attribute name="preprocessor" type="string" use="optional"></attribute>
 	</complexType>
-
-
 </schema>
