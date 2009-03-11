@@ -60,11 +60,9 @@ class FormProcessor {
 		// if request is a postback increase number of steps otherwise begin with step 1
 		self::$currentStep = 0;
 		
-		// Replace all '<' and '>' within the $_POST
+		// Replace special characters within the $_POST
 		foreach ($_POST as $key => $value) {
-			$value = str_replace('<', '&lt;', $value);
-			$value = str_replace('>', '&gt;', $value);
-			$_POST[$key] = $value;
+			$_POST[$key] = htmlspecialchars($value);
 		}
 		
 		if (isset($_POST[self::$formId . '_currentstep'])) {
