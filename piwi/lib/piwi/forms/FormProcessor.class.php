@@ -60,6 +60,13 @@ class FormProcessor {
 		// if request is a postback increase number of steps otherwise begin with step 1
 		self::$currentStep = 0;
 		
+		// Replace \ within the $_POST if the magic_qutes_gpc is set
+		if (ini_get('magic_quotes_gpc')){
+		    foreach ($_POST as $key => $value) {
+		        $_POST[$key] = stripslashes($value);
+		    }
+		}
+
 		// Replace special characters within the $_POST
 		foreach ($_POST as $key => $value) {
 			$_POST[$key] = htmlspecialchars($value);
