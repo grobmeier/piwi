@@ -9,7 +9,7 @@ class FormProcessor {
 	private static $logger = null;
 	
 	/** The id of the currently processed form. */
-	private static $formId = 0;
+	private static $formId = null;
 	
 	/** Indicates that a validator of the current form failed. */
 	private static $validationFailed = false;
@@ -47,7 +47,7 @@ class FormProcessor {
 	 */
 	public static function process($id) {
 		// Increase id of form to give every form an unique id
-		self::$formId++;
+		self::$formId = $id;
 		
 		// Reset variables
 		self::$validationFailed = false;
@@ -63,13 +63,17 @@ class FormProcessor {
 		// Replace \ within the $_POST if the magic_qutes_gpc is set
 		if (ini_get('magic_quotes_gpc')){
 		    foreach ($_POST as $key => $value) {
-		        $_POST[$key] = stripslashes($value);
-		    }
+		 		if (!is_array($value)) {
+					$_POST[$key] = stripslashes($value);
+				}
+		 	}
 		}
 
 		// Replace special characters within the $_POST
 		foreach ($_POST as $key => $value) {
-			$_POST[$key] = htmlspecialchars($value);
+			if (!is_array($value)) {
+				$_POST[$key] = htmlspecialchars($value);
+			}
 		}
 		
 		if (isset($_POST[self::$formId . '_currentstep'])) {

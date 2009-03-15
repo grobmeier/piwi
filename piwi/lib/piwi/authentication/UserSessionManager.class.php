@@ -60,8 +60,8 @@ class UserSessionManager {
 		if ($userValid) {
 			// Store cookie
 			if ($useCookies) {
-				setcookie("username", gzdeflate($username), time() + $sessionTime);
-				setcookie("password", sha1($password), time() + $sessionTime);
+				setcookie('username', gzdeflate($username), time() + $sessionTime);
+				setcookie('password', sha1($password), time() + $sessionTime);
 			}
 
 			// Update session
@@ -91,9 +91,9 @@ class UserSessionManager {
 		unset ($_SESSION['ReturnUrl']);
 		
 		// Delete cookie if it exists
-		if (isset ($_COOKIE["username"]) || isset ($_COOKIE["password"])) {
-			setcookie("username", "", time() - 3600);
-			setcookie("password", "", time() - 3600);
+		if (isset ($_COOKIE['username']) || isset ($_COOKIE['password'])) {
+			setcookie('username', '', time() - 3600);
+			setcookie('password', '', time() - 3600);
 		}
 	}
 
@@ -128,14 +128,15 @@ class UserSessionManager {
 		if ((isset ($_SESSION['authenticated']) && $_SESSION['authenticated'])) {
 			// In this case the user is already logged in
 			return true;
-		} else if (isset ($_COOKIE["username"]) && isset ($_COOKIE["password"])) {
+		} else if (isset ($_COOKIE['username']) && $_COOKIE['username'] != 'deleted' 
+			&& isset ($_COOKIE['password']) && $_COOKIE['password'] != 'deleted') {
 			// In this case the user has a cookie. Validate the password and login the user if it is correct.
 			$userValid = ConfigurationManager :: getInstance()
-				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE["username"]), $_COOKIE["password"]);
+				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE['username']), $_COOKIE['password']);
 			if ($userValid) {				
 				// Password is valid
 				$_SESSION['authenticated'] = true;
-				$_SESSION['username'] = gzinflate($_COOKIE["username"]);
+				$_SESSION['username'] = gzinflate($_COOKIE['username']);
 				unset ($_SESSION['ReturnUrl']);
 				return true;
 			} else {
