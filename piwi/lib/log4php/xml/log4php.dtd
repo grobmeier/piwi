@@ -24,9 +24,12 @@
 <!-- A configuration element consists of optional renderer
 elements,appender elements, categories and an optional root
 element. -->
-
-<!ELEMENT configuration (renderer*, appender*,(category|logger)*,root?,
-                         categoryFactory?)>
+<!-- [loh4php] -->
+<!--
+    category instead of logger cannot be used. categoryFactory is not implemented in log4php.
+-->
+<!-- [/log4php] -->
+<!ELEMENT configuration (renderer*, appender*,(logger)*,root?)>
 
 <!-- The "threshold" attribute takes a level value such that all -->
 <!-- logging statements with a level equal or below this value are -->
@@ -63,9 +66,9 @@ element. -->
 <!-- Appenders may contain an error handler, a layout, optional parameters -->
 <!-- and filters. They may also reference (or include) other appenders. -->
 <!-- [log4php] -->
-<!-- error handler tag has no effects since log4php does not handle errors. -->
+<!-- error handler tag has no effects since log4php does not handle errors. Defintion deleted. -->
 <!-- [/log4php] -->
-<!ELEMENT appender (errorHandler?, param*, layout?, filter*, appender-ref*)>
+<!ELEMENT appender (param*, layout?, filter*, appender-ref*)>
 <!ATTLIST appender
   name 		ID 	#REQUIRED
   class 	CDATA	#REQUIRED
@@ -80,6 +83,7 @@ element. -->
 <!ATTLIST filter
   class		CDATA	#REQUIRED
 >
+
 
 <!ELEMENT param EMPTY>
 <!ATTLIST param
