@@ -11,10 +11,11 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
       <label key="LOGOUT_SUCCESS" value="Logged out successfully." />
       
       <!-- ValidationProcessor -->
-      <label key="GENDER" value="Geschlecht" />
+      <label key="GENDER" value="Gender" />
       <label key="EMAIL" value="Email" />
       <label key="NUMBER" value="Nummer" />
       <label key="NEWSLETTER" value="Newsletter" />
+      <label key="INTERESTS" value="Interests" />
       
       <!-- WizardProcessor -->
       <label key="BIRTHDAY" value="Birthday" />
@@ -42,6 +43,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
       <label key="EMAIL" value="Email" />
       <label key="NUMBER" value="Nummer" />
       <label key="NEWSLETTER" value="Newsletter" />
+      <label key="INTERESTS" value="Interessen" />
       
       <!-- WizardProcessor -->
       <label key="BIRTHDAY" value="Geburtstag" />

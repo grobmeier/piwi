@@ -16,7 +16,11 @@ class ValidationProcessor implements StepProcessor{
 		$result .= '<label key="NAME" />: ' . $values['Name'] . '<br />';
 		$result .= '<label key="EMAIL" />: ' . $values['Email'] . '<br />';
 		$result .= '<label key="NUMBER" />: ' . $values['Number'] . '<br />';
-		$result .= '<label key="NEWSLETTER" />: ' . ((isset($values['Newsletter'])) ? $values['Newsletter'] : '-');
+		$result .= '<label key="NEWSLETTER" />: ' . ((isset($values['Newsletter'])) ? $values['Newsletter'] : '-') . '<br />';
+		$result .= '<label key="INTERESTS" />: ';
+		foreach ($values['Interests'] as $value ) {
+       		$result .= $value . ' ';
+		}
 		return '<div>' . $result . '</div>';
 	}
 }
