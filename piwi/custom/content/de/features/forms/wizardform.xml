@@ -12,7 +12,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../../resou
 	 </step>
 	 <step>
 	   <stepprocessor class="WizardProcessor"/>
-      Kommentar: <textarea name="Comment" type="text" maxlength="100" cols="50" rows="3" />
+      Kommentar: <textarea name="Comment" cols="50" rows="3" />
       <br /><br />
       <input type="submit" value="weiter" />
     </step>

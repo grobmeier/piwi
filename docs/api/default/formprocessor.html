@@ -137,6 +137,11 @@ Returns an array containing all files of the currently processed form.
 </p></td>
 </tr>
 <tr>
+<td class="type">private static  string</td>
+<td class="description"><p class="name"><a href="#getFilteredAttributesAsString()">getFilteredAttributesAsString</a>(string domElement, array filterAttributes)</p><p class="description">
+Returns all attribute/value-pairs of a DOMElement as a string. </p></td>
+</tr>
+<tr>
 <td class="type">static  integer</td>
 <td class="description"><p class="name"><a href="#getId()">getId</a>()</p><p class="description">Returns the id of the currently processed form. </p></td>
 </tr>
@@ -173,7 +178,7 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <hr>
 
 <h3 id="formId">formId</h3>
-<code class="signature">private static  mixed <strong>$formId</strong></code>
+<code class="signature">private static  mixed <strong>$formId</strong> = null</code>
 <div class="details">
 <p>The id of the currently processed form. */</p></div>
 
@@ -319,6 +324,21 @@ Returns an array containing all files of the currently processed form.
 These values are used in StepProcessors to handle posted files.</p><dl>
 <dt>Returns:</dt>
 <dd>Array containing all files of the currently processed form.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getFilteredAttributesAsString()">getFilteredAttributesAsString</h3>
+<code class="signature">private static  string <strong>getFilteredAttributesAsString</strong>(string domElement, array filterAttributes)</code>
+<div class="details">
+<p>
+Returns all attribute/value-pairs of a DOMElement as a string. Attributes can be filtered.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - The DOMElement whose attributes should be processed.</dd>
+<dd>filterAttributes - The names of the attributes which should be filtered.</dd>
+<dt>Returns:</dt>
+<dd>All attribute/value-pairs of a DOMElement as a string.</dd>
 </dl>
 </div>
 

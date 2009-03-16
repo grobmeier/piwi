@@ -61,7 +61,7 @@ class FormProcessor {
 		self::$currentStep = 0;
 		
 		// Replace \ within the $_POST if the magic_qutes_gpc is set
-		if (ini_get('magic_quotes_gpc')){
+		if (ini_get('magic_quotes_gpc')) {
 		    foreach ($_POST as $key => $value) {
 		 		if (!is_array($value)) {
 					$_POST[$key] = stripslashes($value);
@@ -192,7 +192,7 @@ class FormProcessor {
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	public static function generateInput($domElement) {
+	public static function generateInput(array $domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
 		$name = str_replace("[]", "", self::$formId . '_' . $domElement[0]->getAttribute("name"));
 		
@@ -233,17 +233,12 @@ class FormProcessor {
 		} 
 
 		$xml = ' <input name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-		. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . 
-			'" ' : 'type="text" ')
-		. ($domElement[0]->hasAttribute("maxlength") ? ' maxlength="' . 
-			$domElement[0]->getAttribute("maxlength") . '" ' : '')
-		. ($domElement[0]->hasAttribute("size") ? ' size="' . 
-			$domElement[0]->getAttribute("size") . '" ' : '')
-		. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . 
-			$domElement[0]->getAttribute("readonly") . '" ' : '')
-		. (($checked != '') ? ' checked="' . $checked . '" ' : '')
-		. 'value="' . $value . '"'		
-		. ' />';
+			. ($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . 
+				'" ' : 'type="text" ')
+			. self::getFilteredAttributesAsString($domElement[0], array ('name', 'type', 'checked', 'value'))
+			. (($checked != '') ? ' checked="' . $checked . '" ' : '')
+			. ' value="' . $value . '"'		
+			. ' />';
 					
 		$doc = new DOMDocument;
 		$doc->loadXml($xml);
@@ -255,15 +250,12 @@ class FormProcessor {
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	public static function generateSelect($domElement) {
+	public static function generateSelect(array $domElement) {
 		// Remove '[]' from field name, to handle arrays correctly
 		$name = str_replace("[]", "", self::$formId . '_' . $domElement[0]->getAttribute("name"));
 		
 		$xml = ' <select name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-			. ($domElement[0]->hasAttribute("size") ? ' size="' . 
-				$domElement[0]->getAttribute("size") . '" ' : '')
-			. ($domElement[0]->hasAttribute("multiple") ? ' multiple="' . 
-				$domElement[0]->getAttribute("multiple") . '" ' : '')
+			. self::getFilteredAttributesAsString($domElement[0], array ('name'))
 			. '>';
 
 		self::$ignoredFields[$name] = $domElement[0]->getAttribute("name");
@@ -297,11 +289,11 @@ class FormProcessor {
 				}
 				
        			$xml .= "<option"
-       			. (($selected != '') ? ' selected="' . $selected . '" ' : '')
-       			. ($option->hasAttribute("value") ? ' value="' . $option->getAttribute("value") . '" ' : '')
-       			. '>'
-       			. $option->textContent
-				. '</option>';
+	       			. (($selected != '') ? ' selected="' . $selected . '" ' : '')
+					. self::getFilteredAttributesAsString($option, array ('selected'))
+	       			. '>'
+	       			. $option->textContent
+					. '</option>';
        		}
 		}
 	
@@ -317,7 +309,7 @@ class FormProcessor {
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	public static function generateTextArea($domElement) {
+	public static function generateTextArea(array $domElement) {
 		$value = $domElement[0]->textContent;
 
 		if (isset($_POST[self::$formId . '_' . $domElement[0]->getAttribute("name")])) {
@@ -325,12 +317,7 @@ class FormProcessor {
 		} 
 
 		$xml = ' <textarea name="' . self::$formId . '_' . $domElement[0]->getAttribute("name") . '"'
-					. ($domElement[0]->hasAttribute("cols") ? ' cols="' . 
-						$domElement[0]->getAttribute("cols") . '" ' : '')
-					. ($domElement[0]->hasAttribute("rows") ? ' rows="' . 
-						$domElement[0]->getAttribute("rows") . '" ' : '')
-					. ($domElement[0]->hasAttribute("readonly") ? ' readonly="' . 
-						$domElement[0]->getAttribute("readonly") . '" ' : '')
+					. self::getFilteredAttributesAsString($domElement[0], array ('name', 'value'))
 					. '>'
 					. ($value == "" ? ' ' : $value)
 					. '</textarea>';
@@ -345,7 +332,7 @@ class FormProcessor {
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	public static function executeValidator($domElement) {		
+	public static function executeValidator(array $domElement) {		
 		if (!self::$validate) {
 			return new DOMDocument();
 		}
@@ -378,7 +365,7 @@ class FormProcessor {
 	 * @param array $domElement An array containing the DOMElement to convert.
 	 * @return DOMDocument The PiwiXML of the given DOMElement as DOMDocument.
 	 */
-	public static function executeStepProcessor($domElement) {
+	public static function executeStepProcessor(array $domElement) {
 		// Create instance of StepProcessor
 		$class = new ReflectionClass($domElement[0]->getAttribute("class"));
 		$stepProcessor = $class->newInstance();
@@ -431,6 +418,23 @@ class FormProcessor {
 		}
 		
 		return $files;
+	}
+	
+	/**
+	 * Returns all attribute/value-pairs of a DOMElement as a string. Attributes can be filtered.
+	 * @param string $domElement The DOMElement whose attributes should be processed.
+	 * @param array $filterAttributes The names of the attributes which should be filtered.
+	 * @return string All attribute/value-pairs of a DOMElement as a string.
+	 */
+	private static function getFilteredAttributesAsString(DOMElement $domElement, array $filterAttributes) {
+		$result = '';
+		
+		foreach ($domElement->attributes as $attribute) {
+			if (!in_array($attribute->name, $filterAttributes)) {
+				$result .= ' ' . $attribute->name . '="' . $attribute->value . '"';
+			}
+		}
+		return $result;
 	}
 	
 	/** Returns the id of the currently processed form. 
