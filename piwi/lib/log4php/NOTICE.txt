@@ -9,3 +9,7 @@ http://incubator.apache.org/projects/log4php.html
 
 Official project website:
 http://incubator.apache.org/log4php/
+
+DIFFERENCES FROM ORIGINAL CODE:
+
+- Fixes: Issue 7: log4php.dtd is invalid. category, categoryLogger and errorHandler dropped out. They cannot be implemented with PHP4. Patch is supplied to log4php team.
