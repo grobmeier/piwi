@@ -60,6 +60,7 @@
 		<serializer extension="xml" serializer="PiwiXMLSerializer" />
 		<serializer extension="doc" serializer="WordSerializer" />
 		<serializer extension="xls" serializer="ExcelSerializer" />
-		<serializer extension="json" serializer="JsonSerializer" />		
+		<serializer extension="json" serializer="JsonSerializer" />
+		<serializer extension="txt" serializer="TextSerializer" />		
 	</serializers>
 </configuration>
