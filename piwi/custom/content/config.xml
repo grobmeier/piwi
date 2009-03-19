@@ -59,6 +59,7 @@
 		<serializer extension="pdf" serializer="PDFSerializer" />
 		<serializer extension="xml" serializer="PiwiXMLSerializer" />
 		<serializer extension="doc" serializer="WordSerializer" />
-		<serializer extension="xls" serializer="ExcelSerializer" />		
+		<serializer extension="xls" serializer="ExcelSerializer" />
+		<serializer extension="json" serializer="JsonSerializer" />		
 	</serializers>
 </configuration>
