@@ -14,6 +14,8 @@
   $this->addFile('test/unit/lib/piwi/media/AlbumTest.php');
   $this->addFile('test/unit/lib/piwi/media/MediaCenterTest.php');  
   
+  $this->addFile('test/unit/lib/piwi/objectfactory/ObjectFactoryTest.php');
+  
   $this->addFile('test/unit/lib/piwi/pager/PagerTest.php');
   
   $this->addFile('test/unit/lib/piwi/page-processing/XMLSiteTest.php');

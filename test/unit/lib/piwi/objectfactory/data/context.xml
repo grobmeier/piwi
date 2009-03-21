@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../resources/xsd/context.xsd">
+	<object id="testObject1" class="TestObject1" singleton="0" />
+
+	<object id="testObject2" class="TestObject2" singleton="1">
+		<arg>test_string</arg>
+		<arg>1</arg>
+		<arg>0666</arg>
+		<arg>12.3</arg>
+	</object>
+	
+	<object id="testObject3" class="TestObject3" singleton="0">
+		<arg>test_string</arg>
+		<object>testObject2</object>
+	</object>
+</context>

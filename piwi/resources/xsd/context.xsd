@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/context"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/context">
+	<complexType name="objectType">
+
+        <choice minOccurs="0" maxOccurs="unbounded">
+			<element name="arg" type="tns:argType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+			<element name="object" type="tns:innerObjectType" minOccurs="0" maxOccurs="unbounded"></element>
+		</choice>
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="class" type="string" use="required"></attribute>
+
+		<attribute name="singleton" type="boolean"></attribute>
+
+	</complexType>
+	<element name="context" type="tns:contextType">
+		<unique name="UniqueObjectId">
+			<selector xpath=".//tns:object" />
+			<field xpath="@id" />
+		</unique>
+	</element>
+	<complexType name="contextType">
+		<sequence>
+			<element name="object" type="tns:objectType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>		
+	</complexType>
+
+	<simpleType name="argType">
+		<restriction base="string"></restriction>
+	</simpleType>
+
+	<simpleType name="innerObjectType">
+		<restriction base="string"></restriction>
+	</simpleType>
+</schema>
