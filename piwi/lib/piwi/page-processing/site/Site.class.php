@@ -98,8 +98,7 @@ abstract class Site {
 	}
 
 	/**
-	 * Excecutes the Serializer
-	 * Returns the Serializer for the given extension.
+	 * Excecutes the Serializer.
 	 */
 	public function serialize() {
 		$extension = Request :: getExtension();
@@ -107,17 +106,7 @@ abstract class Site {
 		$serializer = ConfigurationManager :: getInstance()->getSerializer($extension);
 
 		if ($serializer == null) {
-			if ($extension == "xml") {
-				$serializer = new PiwiXMLSerializer();
-			} else if ($extension == "pdf") {
-				$serializer = new PDFSerializer();
-			} else if ($extension == "xls") {
-				$serializer = new ExcelSerializer();
-			} else if ($extension == "doc") {
-				$serializer = new WordSerializer();
-			} else {
-				$serializer = new HTMLSerializer();
-			}
+			$serializer = new HTMLSerializer();
 		}
 
 		$serializer->serialize($this->content);

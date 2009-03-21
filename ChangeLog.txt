@@ -8,6 +8,14 @@
 =                                                                     =
 =======================================================================
 
+0.0.9 - Logger Release
+
+    * New: Included log4php
+    * New: Added simple text serializer
+    * New: Added simple json serializer
+    * Fix: Improved form processing
+    * Fix: Enhanced exceptionhandling
+
 0.0.8 - Refactored Release
 
     * New: Added ImageNavigationGenerator

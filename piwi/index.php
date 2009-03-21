@@ -104,8 +104,8 @@ $logger =& LoggerManager::getLogger('Index.php');
 
 function exception_handler($exception) {
 	GLOBAL $logger;
-  	$logger->error('A uncatched runtime exception occured: '.$exception->getMessage());
-  	echo "An uncatched error occurd: ".$exception->getMessage();
+  	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
+  	echo "An uncatched error occurd: " . $exception->getMessage();
 }
 
 set_exception_handler('exception_handler');
@@ -132,7 +132,7 @@ try {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	Site::getInstance()->setContent($exceptionPageGenerator->generate());
-	$logger->error('Site generation failed with exception: '.$exception->getMessage());
+	$logger->error('Site generation failed with exception: ' . $exception->getMessage());
 }
 
 // Call Serializer
