@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://piwi.googlecode.com/xsd/context"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/context">
-	<complexType name="objectType">
+	<complexType name="beanType">
 
         <choice minOccurs="0" maxOccurs="unbounded">
-			<element name="arg" type="tns:argType" minOccurs="0" maxOccurs="unbounded">
-			</element>
-			<element name="object" type="tns:innerObjectType" minOccurs="0" maxOccurs="unbounded"></element>
+			<element name="constructor-args" type="tns:contructorArgsType" minOccurs="0" maxOccurs="1">
+			</element>
 		</choice>
 		<attribute name="id" type="string" use="required"></attribute>
 		<attribute name="class" type="string" use="required"></attribute>
@@ -15,23 +14,28 @@
 
 	</complexType>
 	<element name="context" type="tns:contextType">
-		<unique name="UniqueObjectId">
-			<selector xpath=".//tns:object" />
+		<unique name="UniqueBeanId">
+			<selector xpath=".//tns:bean" />
 			<field xpath="@id" />
 		</unique>
 	</element>
 	<complexType name="contextType">
 		<sequence>
-			<element name="object" type="tns:objectType" minOccurs="0" maxOccurs="unbounded">
+			<element name="bean" type="tns:beanType" minOccurs="0" maxOccurs="unbounded">
 			</element>
 		</sequence>		
 	</complexType>
 
-	<simpleType name="argType">
-		<restriction base="string"></restriction>
-	</simpleType>
 
-	<simpleType name="innerObjectType">
-		<restriction base="string"></restriction>
-	</simpleType>
+
+	<complexType name="beanRefType">
+		<attribute name="ref" type="string" use="required"></attribute>
+	</complexType>
+
+	<complexType name="contructorArgsType">
+        <choice minOccurs="0" maxOccurs="unbounded">
+			<element name="arg" type="string"></element>
+			<element name="bean" type="tns:beanRefType"></element>
+		</choice>
+	</complexType>
 </schema>

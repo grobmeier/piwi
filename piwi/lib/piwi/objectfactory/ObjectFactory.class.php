@@ -65,20 +65,24 @@ class ObjectFactory {
     		$this->_loadContextXML();
     	}
     	
-    	$domNodeList = $this->domXPath->query("/context:context/context:object[@id='" . $objectId . "']");
+    	$domNodeList = $this->domXPath->query("/context:context/context:bean[@id='" . $objectId . "']");
 
         if ($domNodeList->length == 1) {
-        	$class = new ReflectionClass($domNodeList->item(0)->getAttribute("class"));
+        	$class = new ReflectionClass($domNodeList->item(0)->getAttribute('class'));
         	$params = array();
         	
-        	foreach ($domNodeList->item(0)->childNodes as $childNode) {
-        		if ($childNode->nodeType == XML_ELEMENT_NODE) {
-	        		if ($childNode->nodeName == 'object') {        			
-	        			$params[] = self :: getObjectById($childNode->nodeValue);
-	        		} else {
-	        			$params[] = $childNode->nodeValue;
-	        		}
-        		}      			
+        	$contructorArgs = $this->domXPath->query("/context:context/context:bean[@id='" . $objectId . "']" . 
+				"/context:constructor-args");
+			if ($contructorArgs->length == 1) {					
+	        	foreach ($contructorArgs->item(0)->childNodes as $childNode) {
+	        		if ($childNode->nodeType == XML_ELEMENT_NODE) {
+		        		if ($childNode->nodeName == 'bean') {        			
+		        			$params[] = self :: getObjectById($childNode->getAttribute('ref'));
+		        		} else {
+		        			$params[] = $childNode->nodeValue;
+		        		}
+	        		}      			
+				}
 			}
 			$instance = $class->newInstanceArgs($params);
 			
