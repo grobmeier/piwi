@@ -85,7 +85,7 @@ function __autoload($class) {
 /**
  * Initialize the singleton factories
  */
-//ObjectFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/context.xml');
+//BeanFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/context.xml');
 GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml');
 FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');

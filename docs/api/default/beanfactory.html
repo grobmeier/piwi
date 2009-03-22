@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
 
-<title>ObjectFactory (Piwi - XML Transformation Framework)</title>
+<title>BeanFactory (Piwi - XML Transformation Framework)</title>
 
 </head>
 <body id="definition" onload="parent.document.title=document.title;">
@@ -27,7 +27,7 @@
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/objectfactory.html" target="_top">No frames</a>
+<a href="../default/beanfactory.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
@@ -35,15 +35,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </div>
 <hr>
 
-<div class="qualifiedName">default.ObjectFactory</div>
+<div class="qualifiedName">default.BeanFactory</div>
 
-<h1>Class ObjectFactory</h1>
+<h1>Class BeanFactory</h1>
 
-<pre class="tree"><strong>ObjectFactory</strong><br /></pre>
+<pre class="tree"><strong>BeanFactory</strong><br /></pre>
 
 <hr>
 
-<p class="signature">public  class <strong>ObjectFactory</strong></p>
+<p class="signature">public  class <strong>BeanFactory</strong></p>
 
 <div class="comment" id="overview_description"><p>
 Used to initiate and retrieve Objects for Dependency Injection.
@@ -53,6 +53,10 @@ Used to initiate and retrieve Objects for Dependency Injection.
 
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#beans">$beans</a></p><p class="description">Map of the objects that have already been initialized. </p></td>
+</tr>
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#contextXMLPath">$contextXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
@@ -65,16 +69,12 @@ Used to initiate and retrieve Objects for Dependency Injection.
 <td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the ObjectFactory. </p></td>
 </tr>
-<tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#objects">$objects</a></p><p class="description">Map of the objects that have already been initialized. </p></td>
-</tr>
 </table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#ObjectFactory()">ObjectFactory</a>(string contextXMLPath)</p><p class="description">
+<td class="description"><p class="name"><a href="#BeanFactory()">BeanFactory</a>(string contextXMLPath)</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -84,7 +84,7 @@ Constructor.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  stdclass</td>
-<td class="description"><p class="name"><a href="#_initializeObject()">_initializeObject</a>(string objectId)</p><p class="description">
+<td class="description"><p class="name"><a href="#_initializeBean()">_initializeBean</a>(string beanId)</p><p class="description">
 Constructs an instance of the Object with the given id.
 </p></td>
 </tr>
@@ -96,7 +96,7 @@ Loads the 'context.xml'.
 </tr>
 <tr>
 <td class="type">static  stdclass</td>
-<td class="description"><p class="name"><a href="#getObjectById()">getObjectById</a>(string objectId)</p><p class="description">
+<td class="description"><p class="name"><a href="#getBeanById()">getBeanById</a>(string beanId)</p><p class="description">
 Returns the Object with the given id.</p></td>
 </tr>
 <tr>
@@ -107,6 +107,13 @@ Initializes the singleton instance of this Class.</p></td>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
+<h3 id="beans">beans</h3>
+<code class="signature">private  mixed <strong>$beans</strong> = array()</code>
+<div class="details">
+<p>Map of the objects that have already been initialized. */</p></div>
+
+<hr>
+
 <h3 id="contextXMLPath">contextXMLPath</h3>
 <code class="signature">private  mixed <strong>$contextXMLPath</strong> = null</code>
 <div class="details">
@@ -128,16 +135,9 @@ Initializes the singleton instance of this Class.</p></td>
 
 <hr>
 
-<h3 id="objects">objects</h3>
-<code class="signature">private  mixed <strong>$objects</strong> = array()</code>
-<div class="details">
-<p>Map of the objects that have already been initialized. */</p></div>
-
-<hr>
-
 <h2 id="detail_constr">Constructor Detail</h2>
-<h3 id="ObjectFactory()">ObjectFactory</h3>
-<code class="signature">public <strong>ObjectFactory</strong>(string contextXMLPath)</code>
+<h3 id="BeanFactory()">BeanFactory</h3>
+<code class="signature">public <strong>BeanFactory</strong>(string contextXMLPath)</code>
 <div class="details">
 <p>
 Constructor.
@@ -151,14 +151,14 @@ Private constructor since only used by 'initialize'.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="_initializeObject()">_initializeObject</h3>
-<code class="signature">private  stdclass <strong>_initializeObject</strong>(string objectId)</code>
+<h3 id="_initializeBean()">_initializeBean</h3>
+<code class="signature">private  stdclass <strong>_initializeBean</strong>(string beanId)</code>
 <div class="details">
 <p>
 Constructs an instance of the Object with the given id.
 Arguments from the context xml file will be passed to the Object.</p><dl>
 <dt>Parameters:</dt>
-<dd>objectId - The id of the Object.</dd>
+<dd>beanId - The id of the Object.</dd>
 <dt>Returns:</dt>
 <dd>The requested Object.</dd>
 </dl>
@@ -175,13 +175,13 @@ Loads the 'context.xml'.
 
 <hr>
 
-<h3 id="getObjectById()">getObjectById</h3>
-<code class="signature">public static  stdclass <strong>getObjectById</strong>(string objectId)</code>
+<h3 id="getBeanById()">getBeanById</h3>
+<code class="signature">public static  stdclass <strong>getBeanById</strong>(string beanId)</code>
 <div class="details">
 <p>
 Returns the Object with the given id.</p><dl>
 <dt>Parameters:</dt>
-<dd>objectId - The id of the Object.</dd>
+<dd>beanId - The id of the Object.</dd>
 <dt>Returns:</dt>
 <dd>The requested Object.</dd>
 </dl>
@@ -216,7 +216,7 @@ Initializes the singleton instance of this Class.</p><dl>
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/objectfactory.html" target="_top">No frames</a>
+<a href="../default/beanfactory.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>

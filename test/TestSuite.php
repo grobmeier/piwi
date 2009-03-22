@@ -1,5 +1,7 @@
 <?php
   // Classes
+  $this->addFile('test/unit/lib/piwi/beanfactory/BeanFactoryTest.php');
+  
   $this->addFile('test/unit/lib/piwi/connector/ConnectorFactoryTest.php');
   $this->addFile('test/unit/lib/piwi/connector/SQLite2ConnectorTest.php');  
   $this->addFile('test/unit/lib/piwi/connector/SQLite3ConnectorTest.php');
@@ -13,8 +15,6 @@
   
   $this->addFile('test/unit/lib/piwi/media/AlbumTest.php');
   $this->addFile('test/unit/lib/piwi/media/MediaCenterTest.php');  
-  
-  $this->addFile('test/unit/lib/piwi/objectfactory/ObjectFactoryTest.php');
   
   $this->addFile('test/unit/lib/piwi/pager/PagerTest.php');
   

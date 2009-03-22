@@ -2,12 +2,12 @@
 /**
  * Used to initiate and retrieve Objects for Dependency Injection.
  */
-class ObjectFactory {
+class BeanFactory {
 	/** Singleton instance of the ObjectFactory. */
 	private static $instance = null;
 
 	/** Map of the objects that have already been initialized. */
-	private $objects = array();
+	private $beans = array();
 
 	/** Path of the file containing the xml-definition of the generators that can be used. */
 	private $contextXMLPath = null;
@@ -31,15 +31,15 @@ class ObjectFactory {
 	 * of the generators that can be used.
 	 */
 	public static function initialize($contextXMLPath) {
-		self :: $instance = new ObjectFactory($contextXMLPath);
+		self :: $instance = new BeanFactory($contextXMLPath);
 	}
 
 	/**
 	 * Returns the Object with the given id.
-	 * @param string $objectId The id of the Object.
+	 * @param string $beanId The id of the Object.
 	 * @return stdclass The requested Object.
 	 */
-	public static function getObjectById($objectId) {		
+	public static function getBeanById($beanId) {		
 		if (self :: $instance == null) {
 			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '"
 					. __CLASS__ . "' before accessing an Object.", 
@@ -47,37 +47,37 @@ class ObjectFactory {
 		}
 		
 		// Check if object is a singleton and has been cached already
-		if (isset(self :: $instance->objects[$objectId])) {
-			return self :: $instance->objects[$objectId];
+		if (isset(self :: $instance->beans[$beanId])) {
+			return self :: $instance->beans[$beanId];
 		}
 		
-		return self :: $instance->_initializeObject($objectId);
+		return self :: $instance->_initializeBean($beanId);
 	}
 
 	/**
 	 * Constructs an instance of the Object with the given id.
 	 * Arguments from the context xml file will be passed to the Object.
-	 * @param string $objectId The id of the Object.
+	 * @param string $beanId The id of the Object.
 	 * @return stdclass The requested Object.
 	 */
-	private function _initializeObject($objectId) {
+	private function _initializeBean($beanId) {
 		if ($this->domXPath == null) {
     		$this->_loadContextXML();
     	}
     	
-    	$domNodeList = $this->domXPath->query("/context:context/context:bean[@id='" . $objectId . "']");
+    	$domNodeList = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']");
 
         if ($domNodeList->length == 1) {
         	$class = new ReflectionClass($domNodeList->item(0)->getAttribute('class'));
         	$params = array();
         	
-        	$contructorArgs = $this->domXPath->query("/context:context/context:bean[@id='" . $objectId . "']" . 
+        	$contructorArgs = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
 				"/context:constructor-args");
 			if ($contructorArgs->length == 1) {					
 	        	foreach ($contructorArgs->item(0)->childNodes as $childNode) {
 	        		if ($childNode->nodeType == XML_ELEMENT_NODE) {
 		        		if ($childNode->nodeName == 'bean') {        			
-		        			$params[] = self :: getObjectById($childNode->getAttribute('ref'));
+		        			$params[] = self :: getBeanById($childNode->getAttribute('ref'));
 		        		} else {
 		        			$params[] = $childNode->nodeValue;
 		        		}
@@ -88,15 +88,15 @@ class ObjectFactory {
 			
 			// If instance should be used as a singleton cache the instance
 			if ($domNodeList->item(0)->getAttribute("singleton")) {
-				$this->objects[$objectId] = $instance;
+				$this->beans[$beanId] = $instance;
 			}
         	return $instance;
         } else if ($domNodeList->length > 1) {
        		throw new PiwiException("The id of the requested object is not unique (Object: '" . 
-       				$objectId . "').", 
+       				$beanId . "').", 
 				PiwiException :: INVALID_XML_DEFINITION);
         } else {
-			throw new PiwiException("Could not find the requested object '" . $objectId .
+			throw new PiwiException("Could not find the requested object '" . $beanId .
 					"' in the context definition file (Path: '" . $this->contextXMLPath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
         }
