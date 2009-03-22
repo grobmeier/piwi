@@ -4,12 +4,14 @@
 	<language region="default">
 		<form id="wizardform" href="custom/content/en/features/forms/wizardform.xml" />
 		<form id="validatorform" href="custom/content/en/features/forms/validatorform.xml" />
+		<form id="postbackform" href="custom/content/en/features/forms/postbackform.xml" />
 		<form id="loginform" href="custom/content/en/forms/loginform.xml" />
 		<form id="logoutform" href="custom/content/en/forms/logoutform.xml" />
 	</language>
 	<language region="de">
 		<form id="wizardform" href="custom/content/de/features/forms/wizardform.xml" />
 		<form id="validatorform" href="custom/content/de/features/forms/validatorform.xml" />
+		<form id="postbackform" href="custom/content/de/features/forms/postbackform.xml" />
 		<form id="loginform" href="custom/content/de/forms/loginform.xml" />
 		<form id="logoutform" href="custom/content/de/forms/logoutform.xml" />
 	</language>

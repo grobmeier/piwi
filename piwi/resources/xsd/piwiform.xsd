@@ -17,6 +17,7 @@
 	<complexType name="stepType" mixed="true">
         <sequence>			<any processContents="skip" minOccurs="0" maxOccurs="unbounded" namespace="##any" />
 		</sequence>
-		<attribute name="preprocessor" type="string" use="optional"></attribute>
+		<attribute name="preprocessor" type="string" use="optional" />
+		<attribute name="postback" type="string" use="optional" />
 	</complexType>
 </schema>

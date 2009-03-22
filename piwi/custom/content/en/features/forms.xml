@@ -26,5 +26,12 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources
          <br /><br />   
          <piwiform id="validatorform" />
       </section>
+      <separator />
+      <section>
+         <title>Postbackform</title>
+         This form posts back to the original form. This is good for search forms.
+         <br /><br />   
+         <piwiform id="postbackform" />
+      </section>
 	</content>
 </document>
