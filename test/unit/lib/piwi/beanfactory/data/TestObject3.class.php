@@ -8,6 +8,7 @@ class TestObject3 {
 	
 	public $blubberParam;
 	public $blubber2Param;
+	private $bla;
 	
 	public function __construct($paramString, TestObject2 $testObject2) {
 		$this->paramString = $paramString;
@@ -20,6 +21,14 @@ class TestObject3 {
 	
 	public function setBlubber2($p) {
 		$this->blubber2Param = $p;
+	}
+	
+	public function setBla($p) {
+		$this->bla = $p;
+	}
+	
+	public function getBla() {
+		return $this->bla;
 	}
 }
 ?>

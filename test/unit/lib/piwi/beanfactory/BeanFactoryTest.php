@@ -59,6 +59,8 @@ class BeanFactoryTest extends PiwiTestCase {
 		$this->assertIsA($object->blub, TestObject2, 'Object has invalid parameter.');
 		$this->assertIsA($object->blubberParam, TestObject1, 'Object has invalid parameter.');
 		$this->assertIsA($object->blubber2Param, TestObject2, 'Object has invalid parameter.');
+		$this->assertIsA($object->blubber2Param, TestObject2, 'Object has invalid parameter.');
+		$this->assertIsA($object->getBla(), TestObject2, 'Object has invalid parameter.');
 		
 	}
 	

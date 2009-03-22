@@ -20,5 +20,6 @@
         <property name="blub" ref="testObject2" />
         <property name="blubber" ref="testObject1" />
         <property name="blubber2" ref="testObject2" />
+        <property name="bla" ref="testObject2" />
     </bean>
 </context>

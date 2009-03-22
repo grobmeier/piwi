@@ -136,7 +136,7 @@ class BeanFactory {
 			
 			$clazz = new ReflectionClass($instance);
 			
-			if($clazz->hasProperty($name)) {
+			if($clazz->hasProperty($name) && $clazz->getProperty($name)->isPublic()) {
 				$prop = $clazz->getProperty($name);
 				$prop->setValue($instance, self::getBeanById($ref));
 			} else if($clazz->hasMethod($name)) {
