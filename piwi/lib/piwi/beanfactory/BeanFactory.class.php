@@ -69,23 +69,13 @@ class BeanFactory {
 
         if ($domNodeList->length == 1) {
         	$class = new ReflectionClass($domNodeList->item(0)->getAttribute('class'));
-        	$params = array();
         	
-        	$contructorArgs = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
-				"/context:constructor-args");
-			if ($contructorArgs->length == 1) {					
-	        	foreach ($contructorArgs->item(0)->childNodes as $childNode) {
-	        		if ($childNode->nodeType == XML_ELEMENT_NODE) {
-		        		if ($childNode->nodeName == 'bean') {        			
-		        			$params[] = self :: getBeanById($childNode->getAttribute('ref'));
-		        		} else {
-		        			$params[] = $childNode->nodeValue;
-		        		}
-	        		}      			
-				}
-			}
-			$instance = $class->newInstanceArgs($params);
+        	$params = self::_initializeConstructorArgs($beanId);
+        	
+        	$instance = $class->newInstanceArgs($params);
 			
+			$properties = self::_initializeProperties($beanId, $instance);
+        	
 			// If instance should be used as a singleton cache the instance
 			if ($domNodeList->item(0)->getAttribute("singleton")) {
 				$this->beans[$beanId] = $instance;
@@ -100,6 +90,65 @@ class BeanFactory {
 					"' in the context definition file (Path: '" . $this->contextXMLPath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
         }
+	}
+	
+	/**
+	 * Initializes the constructor arguments for the bean with the referenced id.
+	 * Constructor arguments are noted as 
+	 * 
+	 * <code>
+	 * <constructor-args>
+	 * 		<arg>value</arg>
+	 * 		<arg>...</arg>
+	 * </constructor-args>
+	 * </code>
+	 * 
+	 * @param beanId - the id of the bean
+	 */
+	private function _initializeConstructorArgs($beanId) {
+		$params = array();
+        	
+    	$contructorArgs = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
+			"/context:constructor-args");
+		if ($contructorArgs->length == 1) {					
+        	foreach ($contructorArgs->item(0)->childNodes as $childNode) {
+        		if ($childNode->nodeType == XML_ELEMENT_NODE) {
+	        		if ($childNode->nodeName == 'bean') {        			
+	        			$params[] = self :: getBeanById($childNode->getAttribute('ref'));
+	        		} else {
+	        			$params[] = $childNode->nodeValue;
+	        		}
+        		}      			
+			}
+		}
+		return $params;
+	}
+	
+	private function _initializeProperties($beanId, $instance) {
+		$params = array();
+        	
+    	$properties = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
+			"/context:property");
+			
+		foreach ($properties as $childNode) {
+        	$name = $childNode->getAttribute('name');
+			$ref  = $childNode->getAttribute('ref');
+			
+			$clazz = new ReflectionClass($instance);
+			
+			if($clazz->hasProperty($name)) {
+				$prop = $clazz->getProperty($name);
+				$prop->setValue($instance, self::getBeanById($ref));
+			} else if($clazz->hasMethod($name)) {
+				$method = $clazz->getMethod($name);
+				$method->invoke($instance, self::getBeanById($ref));
+			} else if($clazz->hasMethod('set'.ucfirst($name))) {
+				$method = $clazz->getMethod('set'.ucfirst($name));
+				$method->invoke($instance, self::getBeanById($ref));
+			}
+		}
+		
+		return $params;
 	}
 	
 	/**

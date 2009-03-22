@@ -55,6 +55,11 @@ class BeanFactoryTest extends PiwiTestCase {
 		$this->assertTrue($object->testObject2->paramBoolean, 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramInteger, 666, 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramFloat, 12.3, 'Object has invalid parameter.');
+		
+		$this->assertIsA($object->blub, TestObject2, 'Object has invalid parameter.');
+		$this->assertIsA($object->blubberParam, TestObject1, 'Object has invalid parameter.');
+		$this->assertIsA($object->blubber2Param, TestObject2, 'Object has invalid parameter.');
+		
 	}
 	
 	function testInitializeBeanFactoryWithNonExistingFile() {

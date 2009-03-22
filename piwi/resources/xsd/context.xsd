@@ -2,40 +2,42 @@
 <schema targetNamespace="http://piwi.googlecode.com/xsd/context"
 	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://piwi.googlecode.com/xsd/context">
 	<complexType name="beanType">
-
         <choice minOccurs="0" maxOccurs="unbounded">
-			<element name="constructor-args" type="tns:contructorArgsType" minOccurs="0" maxOccurs="1">
-			</element>
+			<element name="constructor-args" type="tns:contructorArgsType" minOccurs="0" maxOccurs="1" />
+			<element name="property" type="tns:propertyType" minOccurs="0" maxOccurs="unbounded" />
 		</choice>
-		<attribute name="id" type="string" use="required"></attribute>
-		<attribute name="class" type="string" use="required"></attribute>
-
-		<attribute name="singleton" type="boolean"></attribute>
-
+		<attribute name="id" type="string" use="required" />
+		<attribute name="class" type="string" use="required" />
+		<attribute name="singleton" type="boolean" />
 	</complexType>
+
 	<element name="context" type="tns:contextType">
 		<unique name="UniqueBeanId">
 			<selector xpath=".//tns:bean" />
 			<field xpath="@id" />
 		</unique>
 	</element>
+	
 	<complexType name="contextType">
 		<sequence>
-			<element name="bean" type="tns:beanType" minOccurs="0" maxOccurs="unbounded">
-			</element>
+			<element name="bean" type="tns:beanType" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>		
 	</complexType>
 
-
-
 	<complexType name="beanRefType">
-		<attribute name="ref" type="string" use="required"></attribute>
+		<attribute name="ref" type="string" use="required" />
 	</complexType>
 
 	<complexType name="contructorArgsType">
         <choice minOccurs="0" maxOccurs="unbounded">
-			<element name="arg" type="string"></element>
-			<element name="bean" type="tns:beanRefType"></element>
+			<element name="arg" type="string" />
+			<element name="bean" type="tns:beanRefType" />
 		</choice>
 	</complexType>
+	
+	<complexType name="propertyType">
+        <attribute name="name" type="string" use="required" />
+        <attribute name="ref" type="string" use="required" />
+    </complexType>
+    
 </schema>

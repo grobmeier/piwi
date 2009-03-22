@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../resources/xsd/context.xsd">
-	<bean id="testObject1" class="TestObject1" singleton="0" />
+    xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../../../../../piwi/resources/xsd/context.xsd">
+    <bean id="testObject1" class="TestObject1" singleton="0" />
 
-	<bean id="testObject2" class="TestObject2" singleton="1">
-		<constructor-args>
-			<arg>test_string</arg>
-			<arg>1</arg>
-			<arg>0666</arg>
-			<arg>12.3</arg>
-		</constructor-args>
-	</bean>
-	
-	<bean id="testObject3" class="TestObject3" singleton="0">
-		<constructor-args>
-			<arg>test_string</arg>
-			<bean ref="testObject2" />
-		</constructor-args>
-	</bean>
+    <bean id="testObject2" class="TestObject2" singleton="1">
+        <constructor-args>
+            <arg>test_string</arg>
+            <arg>1</arg>
+            <arg>0666</arg>
+            <arg>12.3</arg>
+        </constructor-args>
+    </bean>
+    
+    <bean id="testObject3" class="TestObject3" singleton="0">
+        <constructor-args>
+            <arg>test_string</arg>
+            <bean ref="testObject2" />
+        </constructor-args>
+        <property name="blub" ref="testObject2" />
+        <property name="blubber" ref="testObject1" />
+        <property name="blubber2" ref="testObject2" />
+    </bean>
 </context>
