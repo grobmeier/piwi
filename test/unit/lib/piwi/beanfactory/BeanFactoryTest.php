@@ -50,6 +50,9 @@ class BeanFactoryTest extends PiwiTestCase {
 		$this->assertIsA($object, TestObject3, 'Object has invalid type.');
 		
 		// Check parameters
+		$this->assertEqual($object->paramString, 'test_string', 'Object has invalid parameter.');
+		$this->assertEqual($object->paramString2, 'test_string2', 'Object has invalid parameter.');
+		
 		$this->assertIsA($object->testObject2, TestObject2, 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramString, 'test_string', 'Object has invalid parameter.');
 		$this->assertTrue($object->testObject2->paramBoolean, 'Object has invalid parameter.');

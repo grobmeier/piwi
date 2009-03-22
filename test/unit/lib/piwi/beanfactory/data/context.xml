@@ -21,5 +21,6 @@
         <property name="blubber" ref="testObject1" />
         <property name="blubber2" ref="testObject2" />
         <property name="bla" ref="testObject2" />
+        <property name="paramString2" value="test_string2" />
     </bean>
 </context>

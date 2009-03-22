@@ -36,8 +36,9 @@
 	</complexType>
 	
 	<complexType name="propertyType">
-        <attribute name="name" type="string" use="required" />
-        <attribute name="ref" type="string" use="required" />
-    </complexType>
-    
+		<attribute name="name" type="string" use="required" />
+		<attribute name="ref" type="string" use="optional" />
+		<attribute name="value" type="string" use="optional"></attribute>
+	</complexType>
+
 </schema>
