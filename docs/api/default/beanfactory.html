@@ -89,6 +89,17 @@ Constructs an instance of the Object with the given id.
 </p></td>
 </tr>
 <tr>
+<td class="type">private  array</td>
+<td class="description"><p class="name"><a href="#_initializeConstructorArgs()">_initializeConstructorArgs</a>(string beanId)</p><p class="description">
+Initializes the constructor arguments for the bean with the referenced id.
+</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializeProperties()">_initializeProperties</a>(string beanId, stdclass instance)</p><p class="description">
+Initializes the properties for the bean with the referenced id.</p></td>
+</tr>
+<tr>
 <td class="type">private  void</td>
 <td class="description"><p class="name"><a href="#_loadContextXML()">_loadContextXML</a>()</p><p class="description">
 Loads the 'context.xml'.
@@ -161,6 +172,40 @@ Arguments from the context xml file will be passed to the Object.</p><dl>
 <dd>beanId - The id of the Object.</dd>
 <dt>Returns:</dt>
 <dd>The requested Object.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_initializeConstructorArgs()">_initializeConstructorArgs</h3>
+<code class="signature">private  array <strong>_initializeConstructorArgs</strong>(string beanId)</code>
+<div class="details">
+<p>
+Initializes the constructor arguments for the bean with the referenced id.
+Constructor arguments are noted as </p><p><code>
+<constructor-args>
+		<arg>value</arg>
+		<arg>...</arg>
+</constructor-args>
+</code>
+</p><dl>
+<dt>Parameters:</dt>
+<dd>beanId - The id of the bean.</dd>
+<dt>Returns:</dt>
+<dd>The arguments as array.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_initializeProperties()">_initializeProperties</h3>
+<code class="signature">private  void <strong>_initializeProperties</strong>(string beanId, stdclass instance)</code>
+<div class="details">
+<p>
+Initializes the properties for the bean with the referenced id.</p><dl>
+<dt>Parameters:</dt>
+<dd>beanId - The id of the bean.</dd>
+<dd>instance - The bean whose properties should be initialized.</dd>
 </dl>
 </div>
 

@@ -103,7 +103,8 @@ class BeanFactory {
 	 * </constructor-args>
 	 * </code>
 	 * 
-	 * @param beanId - the id of the bean
+	 * @param string beanId The id of the bean.
+	 * @return array The arguments as array.
 	 */
 	private function _initializeConstructorArgs($beanId) {
 		$params = array();
@@ -124,9 +125,12 @@ class BeanFactory {
 		return $params;
 	}
 	
+	/**
+	 * Initializes the properties for the bean with the referenced id.
+	 * @param string $beanId The id of the bean.
+	 * @param stdclass $instance The bean whose properties should be initialized.
+	 */
 	private function _initializeProperties($beanId, $instance) {
-		$params = array();
-        	
     	$properties = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
 			"/context:property");
 			
@@ -134,21 +138,25 @@ class BeanFactory {
         	$name = $childNode->getAttribute('name');
 			$ref  = $childNode->getAttribute('ref');
 			
+			if ($childNode->hasAttribute('ref')) {
+				$parameter = self :: getBeanById($childNode->getAttribute('ref'));
+			} else {
+				$parameter = $childNode->getAttribute('value');
+			}
+			
 			$clazz = new ReflectionClass($instance);
 			
-			if($clazz->hasProperty($name) && $clazz->getProperty($name)->isPublic()) {
+			if ($clazz->hasProperty($name) && $clazz->getProperty($name)->isPublic()) {
 				$prop = $clazz->getProperty($name);
-				$prop->setValue($instance, self::getBeanById($ref));
-			} else if($clazz->hasMethod($name)) {
+				$prop->setValue($instance, $parameter);
+			} else if ($clazz->hasMethod($name)) {
 				$method = $clazz->getMethod($name);
-				$method->invoke($instance, self::getBeanById($ref));
-			} else if($clazz->hasMethod('set'.ucfirst($name))) {
-				$method = $clazz->getMethod('set'.ucfirst($name));
-				$method->invoke($instance, self::getBeanById($ref));
+				$method->invoke($instance, $parameter);
+			} else if ($clazz->hasMethod('set' . ucfirst($name))) {
+				$method = $clazz->getMethod('set' . ucfirst($name));
+				$method->invoke($instance, $parameter);
 			}
 		}
-		
-		return $params;
 	}
 	
 	/**

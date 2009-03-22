@@ -99,9 +99,9 @@ class FormProcessor {
 		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
 		
         // If validation was successful show next step
-        if($postbackNode != null) {
+        if ($postbackNode != null) {
         	$temp = $postbackNode->item(0)->nodeValue;
-            if($temp == null) {
+            if ($temp == null) {
             	$postback = 0;
             } else {
             	$postback = 1;
@@ -110,7 +110,7 @@ class FormProcessor {
 		
 		// If validation was successful show next step
 		if (!self::$validationFailed) {
-			if($postback == 0) {
+			if ($postback == 0) {
             	self::$currentStep++;   
             } else {
             	self::$currentStep = 1;
@@ -249,10 +249,8 @@ class FormProcessor {
 		} 
 
 		$xml = ' <input name="' . self::$formId . '_' . 
-				$domElement[0]->getAttribute("name") . '"'. 
-				($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" '). 
-				($domElement[0]->hasAttribute("id") ? ' id="'.$domElement[0]->getAttribute("id") . '" ' : '').
-				($domElement[0]->hasAttribute("onclick") ? ' onklick="'.$domElement[0]->getAttribute("onclick") . '" ' : '').
+				$domElement[0]->getAttribute("name") . '"' . 
+				($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ') . 
 				self::getFilteredAttributesAsString($domElement[0], array ('name', 'type', 'checked', 'value'))
 			. (($checked != '') ? ' checked="' . $checked . '" ' : '')
 			. ' value="' . $value . '"'		
