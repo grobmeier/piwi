@@ -97,7 +97,8 @@ Initializes the constructor arguments for the bean with the referenced id.
 <tr>
 <td class="type">private  void</td>
 <td class="description"><p class="name"><a href="#_initializeProperties()">_initializeProperties</a>(string beanId, stdclass instance)</p><p class="description">
-Initializes the properties for the bean with the referenced id.</p></td>
+Initializes the properties for the bean with the referenced id.
+</p></td>
 </tr>
 <tr>
 <td class="type">private  void</td>
@@ -186,6 +187,7 @@ Constructor arguments are noted as </p><p><code>
 <constructor-args>
 		<arg>value</arg>
 		<arg>...</arg>
+		<bean ref="beanID" />
 </constructor-args>
 </code>
 </p><dl>
@@ -202,7 +204,13 @@ Constructor arguments are noted as </p><p><code>
 <code class="signature">private  void <strong>_initializeProperties</strong>(string beanId, stdclass instance)</code>
 <div class="details">
 <p>
-Initializes the properties for the bean with the referenced id.</p><dl>
+Initializes the properties for the bean with the referenced id.
+Properties are noted as </p><p><code>
+<constructor-args>
+		<property name="bla" ref="beanID" />
+		<property name="paramString2" value="..." />
+</constructor-args>
+</code></p><dl>
 <dt>Parameters:</dt>
 <dd>beanId - The id of the bean.</dd>
 <dd>instance - The bean whose properties should be initialized.</dd>

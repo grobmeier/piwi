@@ -100,6 +100,7 @@ class BeanFactory {
 	 * <constructor-args>
 	 * 		<arg>value</arg>
 	 * 		<arg>...</arg>
+	 * 		<bean ref="beanID" />
 	 * </constructor-args>
 	 * </code>
 	 * 
@@ -127,6 +128,14 @@ class BeanFactory {
 	
 	/**
 	 * Initializes the properties for the bean with the referenced id.
+	 * Properties are noted as 
+	 * 
+	 * <code>
+	 * <constructor-args>
+	 * 		<property name="bla" ref="beanID" />
+	 * 		<property name="paramString2" value="..." />
+	 * </constructor-args>
+	 * </code>
 	 * @param string $beanId The id of the bean.
 	 * @param stdclass $instance The bean whose properties should be initialized.
 	 */
