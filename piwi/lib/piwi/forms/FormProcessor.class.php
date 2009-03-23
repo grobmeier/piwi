@@ -151,6 +151,15 @@ class FormProcessor {
 	}
 	
 	/**
+	 * Returns if a validation has failed while processing.
+	 * @return true, if a validation has failed, 
+	 * 			false if everything has been processed succesfully
+	 */
+	public static function isValidationFailed() {
+		return self::$validationFailed;
+	}
+	
+	/**
 	 * Initalizes the XSLTProcessor, if this hasn't happened before'
 	 */
 	private static function initXSLTProcessor() {
