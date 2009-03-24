@@ -163,6 +163,11 @@ Initalizes the XSLTProcessor, if this hasn't happened before'
 /</p></td>
 </tr>
 <tr>
+<td class="type">static  boolean</td>
+<td class="description"><p class="name"><a href="#isValidationFailed()">isValidationFailed</a>()</p><p class="description">
+Returns if a validation has failed while processing.</p></td>
+</tr>
+<tr>
 <td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
@@ -389,6 +394,19 @@ Processes the current step of the form and returns it as XML.</p><dl>
 <p>
 Initalizes the XSLTProcessor, if this hasn't happened before'
 /</p></div>
+
+<hr>
+
+<h3 id="isValidationFailed()">isValidationFailed</h3>
+<code class="signature">public static  boolean <strong>isValidationFailed</strong>()</code>
+<div class="details">
+<p>
+Returns if a validation has failed while processing.</p><dl>
+<dt>Returns:</dt>
+<dd>True, if a validation has failed, 
+ * false if everything has been processed succesfully.</dd>
+</dl>
+</div>
 
 <hr>
 

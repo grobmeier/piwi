@@ -97,16 +97,17 @@ class FormProcessor {
 		self::callPreProcessor($domXPath);
 		
 		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
-		
-        // If validation was successful show next step
-        if ($postbackNode != null) {
-        	$temp = $postbackNode->item(0)->nodeValue;
-            if ($temp == null) {
-            	$postback = 0;
-            } else {
-            	$postback = 1;
-            }
-        }
+
+		if ($postbackNode != null && $postbackNode->item(0) != null) {
+			$temp = $postbackNode->item(0)->nodeValue;
+			if ($temp == null) {
+             	$postback = 0;
+			} else {
+				$postback = 1;
+			}
+		} else {
+			$postback = 0;
+		}
 		
 		// If validation was successful show next step
 		if (!self::$validationFailed) {
@@ -148,15 +149,6 @@ class FormProcessor {
 		$doc = new DOMDocument;
 		$doc->loadXml($piwixml);
 		return $doc;
-	}
-	
-	/**
-	 * Returns if a validation has failed while processing.
-	 * @return true, if a validation has failed, 
-	 * 			false if everything has been processed succesfully
-	 */
-	public static function isValidationFailed() {
-		return self::$validationFailed;
 	}
 	
 	/**
@@ -258,9 +250,10 @@ class FormProcessor {
 		} 
 
 		$xml = ' <input name="' . self::$formId . '_' . 
-				$domElement[0]->getAttribute("name") . '"' . 
-				($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") . '" ' : 'type="text" ') . 
-				self::getFilteredAttributesAsString($domElement[0], array ('name', 'type', 'checked', 'value'))
+			$domElement[0]->getAttribute("name") . '"' . 
+			($domElement[0]->hasAttribute("type") ? ' type="' . $domElement[0]->getAttribute("type") 
+				. '" ' : 'type="text" ') 
+			. self::getFilteredAttributesAsString($domElement[0], array ('name', 'type', 'checked', 'value'))
 			. (($checked != '') ? ' checked="' . $checked . '" ' : '')
 			. ' value="' . $value . '"'		
 			. ' />';
@@ -419,7 +412,7 @@ class FormProcessor {
 		$results = array();		
 		
 		foreach ($_POST as $key => $value) {
-			if (substr($key, 0, strpos($key, '_')) == self::$formId &&
+			if (substr($key, 0, strlen(self::$formId)) == self::$formId &&
 				$key != self::$formId . '_currentstep') {
 				$results[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
@@ -437,7 +430,7 @@ class FormProcessor {
 		$files = array();		
 		
 		foreach ($_FILES as $key => $value) {
-			if (substr($key, 0, strpos($key, '_')) == self::$formId && $value['name'] != "") {				
+			if (substr($key, 0, strlen(self::$formId)) == self::$formId && $value['name'] != "") {				
 				$files[substr($key, strlen(self::$formId) + 1)] = $value;
 			}
 		}
@@ -460,6 +453,15 @@ class FormProcessor {
 			}
 		}
 		return $result;
+	}	
+		
+	/**
+	 * Returns if a validation has failed while processing.
+	 * @return boolean True, if a validation has failed, 
+	 * 			false if everything has been processed succesfully.
+	 */
+	public static function isValidationFailed() {
+		return self::$validationFailed;
 	}
 	
 	/** Returns the id of the currently processed form. 
