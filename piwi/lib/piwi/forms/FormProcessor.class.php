@@ -398,6 +398,9 @@ class FormProcessor {
 			self::$currentStep, self::$numberOfSteps);
 		
 		$doc = new DOMDocument;
+		if($xml == null || $xml == '') {
+			return $doc;
+		}
 		$doc->loadXml($xml);
 		return $doc;
 	}
