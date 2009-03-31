@@ -8,7 +8,29 @@
 		</choice>
 		<attribute name="id" type="string" use="required" />
 		<attribute name="class" type="string" use="required" />
-		<attribute name="singleton" type="boolean" />
+		<attribute name="scope" use="optional">
+            <simpleType>
+                <restriction base="NMTOKEN">
+                <!-- Scopes a single bean definition to any number of object instances. -->
+                <enumeration value="prototype"/>
+                <!-- 
+                    Scopes a single bean definition to the lifecycle of a single HTTP request; 
+                    that is each and every HTTP request will have its own instance of a bean 
+                    created off the back of a single bean definition.
+                -->
+                <enumeration value="request"/>
+                <!-- 
+                Not implemented yet.
+                Bean, valid in the user session
+                <enumeration value="session"/>
+                 -->
+                <!--
+                Not implemented yet. Singleton is a bean valid within the complete container 
+                <enumeration value="singleton"/>
+                 -->
+                </restriction>
+            </simpleType>
+		</attribute>
 	</complexType>
 
 	<element name="context" type="tns:contextType">

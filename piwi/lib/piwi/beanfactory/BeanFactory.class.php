@@ -1,6 +1,19 @@
 <?php
 /**
  * Used to initiate and retrieve Objects for Dependency Injection.
+ * 
+ * Several scopes can be set:
+ * <ul>
+ * <li>request: an object is available for the whole request (singleton in PHP manner)</li>
+ * <li>session: an object is available for the whole session</li>
+ * <li>prototype: an object is always newly created by each context request</li>
+ * </ul>
+ * 
+ * Spring Framework supports the singleton scope too. This means a bean is available for the
+ * the whole container for the whole runtime. This is not (easily) possible for PHP applications
+ * and should only be used under special cirstumances. The bean must be serialized to harddisk
+ * for an interchange between sessions and request. However, this could be done with a BeanSerializer,
+ * which is in the scope for a latter Piwi release.
  */
 class BeanFactory {
 	/** Singleton instance of the ObjectFactory. */
@@ -76,8 +89,8 @@ class BeanFactory {
 			
 			$properties = self::_initializeProperties($beanId, $instance);
         	
-			// If instance should be used as a singleton cache the instance
-			if ($domNodeList->item(0)->getAttribute("singleton")) {
+			// If instance should be used as a request singleton cache the instance
+			if ($domNodeList->item(0)->getAttribute("scope") == "request") {
 				$this->beans[$beanId] = $instance;
 			}
         	return $instance;
