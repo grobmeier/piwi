@@ -8,20 +8,20 @@ class BeanFactoryTest extends PiwiTestCase {
 	}
 	
 	function testGetBeanByCorrectIdButNonInitializedBeanFactory() {
-		$this->expectException(PiwiException, 'BeanFactory should not be initialized.');
+		$this->expectException('PiwiException', 'BeanFactory should not be initialized.');
 		$object = BeanFactory :: getBeanById('testObject1');
 	}	
 	
 	function testGetBeanByWrongId() {		
 		$this->init();
-		$this->expectException(PiwiException, 'Object should not exist.');
+		$this->expectException('PiwiException', 'Object should not exist.');
 		$connector = BeanFactory :: getBeanById('666');
 	}
 
 	function testGetBeanByCorrectId() {
 		$this->init();
 		$object1 = BeanFactory :: getBeanById('testObject1');
-		$this->assertIsA($object1, TestObject1, 'Object has invalid type.');
+		$this->assertIsA($object1, 'TestObject1', 'Object has invalid type.');
 		
 		// get it again to test if a new instance has been created (no singleton)
 		$object2 = BeanFactory :: getBeanById('testObject1');
@@ -31,7 +31,7 @@ class BeanFactoryTest extends PiwiTestCase {
 	function testGetBeanSingletonByCorrectId() {
 		$this->init();
 		$object1 = BeanFactory :: getBeanById('testObject2');
-		$this->assertIsA($object1, TestObject2, 'Object has invalid type.');
+		$this->assertIsA($object1, 'TestObject2', 'Object has invalid type.');
 		
 		// Check parameters
 		$this->assertEqual($object1->paramString, 'test_string', 'Object has invalid parameter.');
@@ -47,23 +47,23 @@ class BeanFactoryTest extends PiwiTestCase {
 	function testGetBeanWithObjectReferenceByCorrectId() {
 		$this->init();
 		$object = BeanFactory :: getBeanById('testObject3');
-		$this->assertIsA($object, TestObject3, 'Object has invalid type.');
+		$this->assertIsA($object, 'TestObject3', 'Object has invalid type.');
 		
 		// Check parameters
 		$this->assertEqual($object->paramString, 'test_string', 'Object has invalid parameter.');
 		$this->assertEqual($object->paramString2, 'test_string2', 'Object has invalid parameter.');
 		
-		$this->assertIsA($object->testObject2, TestObject2, 'Object has invalid parameter.');
+		$this->assertIsA($object->testObject2, 'TestObject2', 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramString, 'test_string', 'Object has invalid parameter.');
 		$this->assertTrue($object->testObject2->paramBoolean, 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramInteger, 666, 'Object has invalid parameter.');
 		$this->assertEqual($object->testObject2->paramFloat, 12.3, 'Object has invalid parameter.');
 		
-		$this->assertIsA($object->blub, TestObject2, 'Object has invalid parameter.');
-		$this->assertIsA($object->blubberParam, TestObject1, 'Object has invalid parameter.');
-		$this->assertIsA($object->blubber2Param, TestObject2, 'Object has invalid parameter.');
-		$this->assertIsA($object->blubber2Param, TestObject2, 'Object has invalid parameter.');
-		$this->assertIsA($object->getBla(), TestObject2, 'Object has invalid parameter.');
+		$this->assertIsA($object->blub, 'TestObject2', 'Object has invalid parameter.');
+		$this->assertIsA($object->blubberParam, 'TestObject1', 'Object has invalid parameter.');
+		$this->assertIsA($object->blubber2Param, 'TestObject2', 'Object has invalid parameter.');
+		$this->assertIsA($object->blubber2Param, 'TestObject2', 'Object has invalid parameter.');
+		$this->assertIsA($object->getBla(), 'TestObject2', 'Object has invalid parameter.');
 		
 	}
 	
