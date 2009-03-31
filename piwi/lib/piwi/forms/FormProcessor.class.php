@@ -60,21 +60,7 @@ class FormProcessor {
 		// if request is a postback increase number of steps otherwise begin with step 1
 		self::$currentStep = 0;
 		
-		// Replace \ within the $_POST if the magic_qutes_gpc is set
-		if (ini_get('magic_quotes_gpc')) {
-		    foreach ($_POST as $key => $value) {
-		 		if (!is_array($value)) {
-					$_POST[$key] = stripslashes($value);
-				}
-		 	}
-		}
-
-		// Replace special characters within the $_POST
-		foreach ($_POST as $key => $value) {
-			if (!is_array($value)) {
-				$_POST[$key] = htmlspecialchars($value);
-			}
-		}
+		self::initRequestParams();
 		
 		if (isset($_POST[self::$formId . '_currentstep'])) {
 			self::$currentStep = $_POST[self::$formId . '_currentstep'];
@@ -149,6 +135,47 @@ class FormProcessor {
 		$doc = new DOMDocument;
 		$doc->loadXml($piwixml);
 		return $doc;
+	}
+	
+	/**
+	 * Initalizes the request parameters.
+	 * This should be moved to the Request.class.php. The result should
+	 * be cached. Since Request.class.php is a static construct
+	 * this isn't possible such easy. We'll have to refactor
+	 * it with the introduction of the BeanFactory
+	 * 
+	 * Additonally, there is an issue with htmlspecialchars.
+	 * Not each serializer does expect htmlspecialchars
+	 */
+	private static function initRequestParams() {
+		// Replace \ within the $_POST if the magic_qutes_gpc is set
+		if (ini_get('magic_quotes_gpc')) {
+		    foreach ($_POST as $key => $value) {
+		 		if (!is_array($value)) {
+					$_POST[$key] = stripslashes($value);
+				}
+		 	}
+		 	
+		 	foreach ($_GET as $key => $value) {
+		 		if (!is_array($value)) {
+					$_GET[$key] = stripslashes($value);
+				}
+		 	}
+		}
+
+		// Replace special characters within the $_GET
+		foreach ($_GET as $key => $value) {
+			if (!is_array($value)) {
+				$_GET[$key] = htmlspecialchars($value);
+			}
+		}
+		
+		// Replace special characters within the $_POST
+		foreach ($_POST as $key => $value) {
+			if (!is_array($value)) {
+				$_POST[$key] = htmlspecialchars($value);
+			}
+		}
 	}
 	
 	/**
