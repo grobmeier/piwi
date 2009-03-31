@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../../../../../piwi/resources/xsd/context.xsd">
-    <bean id="testObject1" class="TestObject1" singleton="0" />
+    <bean id="testObject1" class="TestObject1" scope="prototype" />
 
-    <bean id="testObject2" class="TestObject2" singleton="1">
+    <bean id="testObject2" class="TestObject2" scope="request">
         <constructor-args>
             <arg>test_string</arg>
             <arg>1</arg>
@@ -12,7 +12,7 @@
         </constructor-args>
     </bean>
     
-    <bean id="testObject3" class="TestObject3" singleton="0">
+    <bean id="testObject3" class="TestObject3" scope="prototype">
         <constructor-args>
             <arg>test_string</arg>
             <bean ref="testObject2" />

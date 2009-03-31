@@ -8,7 +8,7 @@
 =                                                                     =
 =======================================================================
 
-0.0.9 - Logger Release
+0.1.0 - Logger Release
 
     * New: Included log4php
     * New: Added simple text serializer
