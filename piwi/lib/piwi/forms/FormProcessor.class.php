@@ -155,21 +155,8 @@ class FormProcessor {
 					$_POST[$key] = stripslashes($value);
 				}
 		 	}
-		 	
-		 	foreach ($_GET as $key => $value) {
-		 		if (!is_array($value)) {
-					$_GET[$key] = stripslashes($value);
-				}
-		 	}
 		}
 
-		// Replace special characters within the $_GET
-		foreach ($_GET as $key => $value) {
-			if (!is_array($value)) {
-				$_GET[$key] = htmlspecialchars($value);
-			}
-		}
-		
 		// Replace special characters within the $_POST
 		foreach ($_POST as $key => $value) {
 			if (!is_array($value)) {
