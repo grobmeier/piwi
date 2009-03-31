@@ -42,11 +42,19 @@ class Request {
 	public static function getParameters() {
 		$result = array();
 		
-		foreach ($_GET as $key => $value) {
-			if ($key != 'page' && $key != 'extension' && $key != 'language') {
-				$result[$key] = $value;
+		if (ini_get('magic_quotes_gpc')) {
+			foreach ($_GET as $key => $value) {
+				if ($key != 'page' && $key != 'extension' && $key != 'language') {
+					$result[$key] = htmlspecialchars(stripslashes($value));
+				}
+ 			}
+		} else {
+			foreach ($_GET as $key => $value) {
+				if ($key != 'page' && $key != 'extension' && $key != 'language') {
+					$result[$key] = htmlspecialchars($value);
+				}
 			}
-		}
+ 		}
 		return $result;
 	}
 }
