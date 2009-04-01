@@ -20,6 +20,12 @@ class FormsTest extends PiwiWebTestCase {
 		$this->clickSubmit("Send Data");
 		$this->assertNoText('You must enter a valid email.', 'Validator failed.');
 		$this->assertWantedText('Email must be the same.', 'Validator failed.');
+		
+		// check if postbackform works
+		$this->assertFieldByName('postbackform_Name', 'Name', 'Field contains wrong value.');
+		$this->clickSubmit("Send Data");
+		$this->setFieldByName('postbackform_Name', 'test');
+		$this->assertFieldByName('postbackform_Name', 'test', 'Field contains wrong value.');
 	}
 }
 ?>

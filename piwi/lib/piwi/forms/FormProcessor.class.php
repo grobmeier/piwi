@@ -139,13 +139,9 @@ class FormProcessor {
 	
 	/**
 	 * Initalizes the request parameters.
-	 * This should be moved to the Request.class.php. The result should
-	 * be cached. Since Request.class.php is a static construct
-	 * this isn't possible such easy. We'll have to refactor
-	 * it with the introduction of the BeanFactory
 	 * 
-	 * Additonally, there is an issue with htmlspecialchars.
-	 * Not each serializer does expect htmlspecialchars
+	 * There is an issue with htmlspecialchars.
+	 * Not each serializer does expect htmlspecialchars.
 	 */
 	private static function initRequestParams() {
 		// Replace \ within the $_POST if the magic_qutes_gpc is set
@@ -412,7 +408,7 @@ class FormProcessor {
 			self::$currentStep, self::$numberOfSteps);
 		
 		$doc = new DOMDocument;
-		if($xml == null || $xml == '') {
+		if ($xml == null || $xml == '') {
 			return $doc;
 		}
 		$doc->loadXml($xml);
