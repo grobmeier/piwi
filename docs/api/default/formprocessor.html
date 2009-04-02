@@ -158,6 +158,12 @@ Processes the current step of the form and returns it as XML.</p></td>
 </tr>
 <tr>
 <td class="type">private static  void</td>
+<td class="description"><p class="name"><a href="#initRequestParams()">initRequestParams</a>()</p><p class="description">
+Initalizes the request parameters.
+</p></td>
+</tr>
+<tr>
+<td class="type">private static  void</td>
 <td class="description"><p class="name"><a href="#initXSLTProcessor()">initXSLTProcessor</a>()</p><p class="description">
 Initalizes the XSLTProcessor, if this hasn't happened before'
 /</p></td>
@@ -385,6 +391,16 @@ Processes the current step of the form and returns it as XML.</p><dl>
 <dd>The current Step as XML.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="initRequestParams()">initRequestParams</h3>
+<code class="signature">private static  void <strong>initRequestParams</strong>()</code>
+<div class="details">
+<p>
+Initalizes the request parameters.</p><p>There is an issue with htmlspecialchars.
+Not each serializer does expect htmlspecialchars.
+/</p></div>
 
 <hr>
 

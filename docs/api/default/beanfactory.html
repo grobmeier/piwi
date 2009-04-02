@@ -46,7 +46,16 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <p class="signature">public  class <strong>BeanFactory</strong></p>
 
 <div class="comment" id="overview_description"><p>
-Used to initiate and retrieve Objects for Dependency Injection.
+Used to initiate and retrieve Objects for Dependency Injection.</p><p>Several scopes can be set:
+<ul>
+<li>request: an object is available for the whole request (singleton in PHP manner)</li>
+<li>session: an object is available for the whole session</li>
+<li>prototype: an object is always newly created by each context request</li>
+</ul></p><p>Spring Framework supports the singleton scope too. This means a bean is available for the
+the whole container for the whole runtime. This is not (easily) possible for PHP applications
+and should only be used under special cirstumances. The bean must be serialized to harddisk
+for an interchange between sessions and request. However, this could be done with a BeanSerializer,
+which is in the scope for a latter Piwi release.
 /</p></div>
 
 <hr>
