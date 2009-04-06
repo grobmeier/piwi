@@ -35,7 +35,7 @@ class FormProcessor {
 	 */
 	private function _getLogger() {
 		if (self::$logger == null) {
-			self::$logger =& LoggerManager::getLogger('FormProcessor.class.php');
+			self::$logger = & LoggerManager::getLogger('FormProcessor.class.php');
 		}
 		return self::$logger;
 	}
@@ -46,7 +46,7 @@ class FormProcessor {
 	 * @return DOMDocument The rendered form as PiwiXML.
 	 */
 	public static function process($id) {
-		self::_getLogger()->debug('Processing form with ID: '.$id);
+		self::_getLogger()->debug('Processing form with ID: ' . $id);
 		// Increase id of form to give every form an unique id
 		self::$formId = $id;
 		
@@ -81,7 +81,7 @@ class FormProcessor {
 			$stepXML = self::getStepXML($domXPath);
 		}
 		
-		self::_getLogger()->debug('Calling Preprocessors'.$id);
+		self::_getLogger()->debug('Calling Preprocessors' . $id);
 		self::callPreProcessor($domXPath);
 		
 		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
@@ -91,7 +91,7 @@ class FormProcessor {
 			if ($temp == null) {
              	$postback = 0;
 			} else {
-				self::_getLogger()->debug('Form with ID: '.$id.' is a postback form.');
+				self::_getLogger()->debug('Form with ID: ' . $id . ' is a postback form.');
 				$postback = 1;
 			}
 		} else {
@@ -107,7 +107,9 @@ class FormProcessor {
             }
 			self::$validate = false;
 
-			$stepXML = self::getStepXML($domXPath);
+			if ($postback == 0 || self::$currentStep == 0) {
+				$stepXML = self::getStepXML($domXPath);	
+			}
 		}
 
 		// Build xml
@@ -137,7 +139,7 @@ class FormProcessor {
 
 		$doc = new DOMDocument;
 		$doc->loadXml($piwixml);
-		self::_getLogger()->debug('Form with ID: '.$id.' has sucessfully processed.');
+		self::_getLogger()->debug('Form with ID: ' . $id . ' has sucessfully processed.');
 		return $doc;
 	}
 	
@@ -178,9 +180,6 @@ class FormProcessor {
 	
 	/**
 	 * Processes the current step of the form and returns it as XML.
-	 * 
-	 * TODO: Issue 27: this method executes StepProcessors - it is called twice in the process method.
-	 * 
 	 * @param DOMXPath $domXPath The form where the step should be retrieved from.
 	 * @return string The current Step as XML.
 	 */
