@@ -64,7 +64,12 @@ class ImageNavigationGenerator implements NavigationGenerator {
 				}
     		}
     		
-    		$result .= '<ul>';
+    		$result .= '</ul>';
+    		
+    		if ($result == '<ul></ul>') {
+    			return '';
+    		}
+    		
     		return $result;
     	}
     }

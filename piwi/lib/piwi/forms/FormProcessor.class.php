@@ -81,7 +81,7 @@ class FormProcessor {
 			$stepXML = self::getStepXML($domXPath);
 		}
 		
-		self::_getLogger()->debug('Calling Preprocessors' . $id);
+		self::_getLogger()->debug('Calling Preprocessors ' . $id);
 		self::callPreProcessor($domXPath);
 		
 		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
@@ -89,25 +89,25 @@ class FormProcessor {
 		if ($postbackNode != null && $postbackNode->item(0) != null) {
 			$temp = $postbackNode->item(0)->nodeValue;
 			if ($temp == null) {
-             	$postback = 0;
+             	$postback = false;
 			} else {
 				self::_getLogger()->debug('Form with ID: ' . $id . ' is a postback form.');
-				$postback = 1;
+				$postback = true;
 			}
 		} else {
-			$postback = 0;
+			$postback = false;
 		}
 		
 		// If validation was successful show next step
 		if (!self::$validationFailed) {
-			if ($postback == 0) {
+			if (!$postback) {
             	self::$currentStep++;   
             } else {
             	self::$currentStep = 1;
             }
 			self::$validate = false;
 
-			if ($postback == 0 || self::$currentStep == 0) {
+			if (($postback && self::$currentStep == 1) || !$postback) {
 				$stepXML = self::getStepXML($domXPath);	
 			}
 		}

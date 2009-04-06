@@ -37,6 +37,10 @@ class SimpleTextNavigationGenerator implements NavigationGenerator {
     		}
     		
     		$result .= '</ul>';
+    		
+    		if ($result == '<ul></ul>') {
+    			return '';
+    		}
     		return $result;
     	}
 	}

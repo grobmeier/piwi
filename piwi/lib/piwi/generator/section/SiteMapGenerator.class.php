@@ -79,9 +79,14 @@ class SiteMapGenerator implements SectionGenerator {
     				$result .= '<li><a href="' . $filepath . '">' . $element->getLabel() . '</a>' . 
     					$this->_getSiteMapAsXml($element->getChildren()) . '</li>';
     			}
+    		}    		
+
+    		$result .= '</ul>';
+    		
+    		if ($result == '<ul></ul>') {
+    			return '';
     		}
     		
-    		$result .= '</ul>';
     		return $result;
     	}
     }
