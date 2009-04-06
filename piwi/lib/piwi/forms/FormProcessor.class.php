@@ -46,6 +46,7 @@ class FormProcessor {
 	 * @return DOMDocument The rendered form as PiwiXML.
 	 */
 	public static function process($id) {
+		self::_getLogger()->debug('Processing form with ID: '.$id);
 		// Increase id of form to give every form an unique id
 		self::$formId = $id;
 		
@@ -80,6 +81,7 @@ class FormProcessor {
 			$stepXML = self::getStepXML($domXPath);
 		}
 		
+		self::_getLogger()->debug('Calling Preprocessors'.$id);
 		self::callPreProcessor($domXPath);
 		
 		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
@@ -89,6 +91,7 @@ class FormProcessor {
 			if ($temp == null) {
              	$postback = 0;
 			} else {
+				self::_getLogger()->debug('Form with ID: '.$id.' is a postback form.');
 				$postback = 1;
 			}
 		} else {
@@ -134,6 +137,7 @@ class FormProcessor {
 
 		$doc = new DOMDocument;
 		$doc->loadXml($piwixml);
+		self::_getLogger()->debug('Form with ID: '.$id.' has sucessfully processed.');
 		return $doc;
 	}
 	
@@ -174,10 +178,14 @@ class FormProcessor {
 	
 	/**
 	 * Processes the current step of the form and returns it as XML.
+	 * 
+	 * TODO: Issue 27: this method executes StepProcessors - it is called twice in the process method.
+	 * 
 	 * @param DOMXPath $domXPath The form where the step should be retrieved from.
 	 * @return string The current Step as XML.
 	 */
 	private static function getStepXML(DOMXPath $domXPath) {
+		self::_getLogger()->debug('Processing step and returning result as XML');
 		self::initXSLTProcessor();
 		
 		$stepXML = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']')->item(0);
@@ -403,7 +411,7 @@ class FormProcessor {
 					"' is not an instance of StepProcessor.", 
 				PiwiException :: ERR_WRONG_TYPE);
 		}
-		
+		self::_getLogger()->debug('Executing StepProcessor: ' . $domElement[0]->getAttribute("class"));
 		$xml = $stepProcessor->process(self::getResults(), self::getFiles(), 
 			self::$currentStep, self::$numberOfSteps);
 		
