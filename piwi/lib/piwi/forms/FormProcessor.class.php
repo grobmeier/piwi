@@ -107,7 +107,7 @@ class FormProcessor {
             }
 			self::$validate = false;
 
-			if (($postback && self::$currentStep == 1) || !$postback) {
+			if (!$postback || self::$currentStep == 1) {
 				$stepXML = self::getStepXML($domXPath);	
 			}
 		}
