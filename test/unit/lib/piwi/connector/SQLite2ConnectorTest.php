@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class SQLite2ConnectorTest extends PiwiTestCase {
+class SQLite2ConnectorTest extends UnitTestCase {
 	
 	private $connector = null;
 	

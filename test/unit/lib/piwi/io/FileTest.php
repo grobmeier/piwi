@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class FileTest extends PiwiTestCase {
+class FileTest extends UnitTestCase {
 
 	private $dir = null;
 	private	$name = 'test.txt';

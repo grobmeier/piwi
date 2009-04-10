@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class ConnectorFactoryTest extends PiwiTestCase {
+class ConnectorFactoryTest extends UnitTestCase {
 
 	function init() {
 		ConnectorFactory :: initialize(dirname(__FILE__) . '/data/connectors.xml');

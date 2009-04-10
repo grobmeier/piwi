@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class PagerTest extends PiwiTestCase {
+class PagerTest extends UnitTestCase {
 
 	private $currentPage = 0;
 	private $rows = 30;

@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class AlbumTest extends PiwiTestCase {
+class AlbumTest extends UnitTestCase {
 
 	private	$name = 'test';
 	private $time = null;

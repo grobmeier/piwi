@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class ConfigurationManagerTest extends PiwiTestCase {
+class ConfigurationManagerTest extends UnitTestCase {
 	private $site = null;
 	
 	function before($message) {

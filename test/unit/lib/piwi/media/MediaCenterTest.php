@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class MediaCenterTest extends PiwiTestCase {
+class MediaCenterTest extends UnitTestCase {
 
 	private $dir = null;
 	

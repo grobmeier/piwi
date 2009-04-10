@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class SiteMapHelperTest extends PiwiTestCase {
+class SiteMapHelperTest extends UnitTestCase {
 
 	function setUp() {
     Site::setInstance(new XMLSite(dirname(__FILE__) . '/data', 'templates', 'site.xml'));

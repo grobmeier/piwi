@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class XMLSiteTest extends PiwiTestCase {
+class XMLSiteTest extends UnitTestCase {
 	
 	private $site = null;
 	

@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class BeanFactoryTest extends PiwiTestCase {
+class BeanFactoryTest extends UnitTestCase {
 
 	function init() {
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');

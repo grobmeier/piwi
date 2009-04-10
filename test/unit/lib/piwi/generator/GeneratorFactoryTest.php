@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class GeneratorFactoryTest extends PiwiTestCase {
+class GeneratorFactoryTest extends UnitTestCase {
 	
 	function init() {
 		GeneratorFactory :: initialize(dirname(__FILE__) . '/data/generators.xml');

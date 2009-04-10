@@ -1,4 +1,12 @@
 <?php
+require_once ('test/autoload.php');
+require_once ('third-party/simpletest/autorun.php');
+require_once ('third-party/simpletest/unit_tester.php');
+
+// if error reporting has another level, test build fails due to a php bug in xmllib
+// TODO: discuss if another reporting level is necessary
+error_reporting(0);
+
     // Local server 
     if (isset($argv[1])) {
       require_once "test/PiwiWebTestCase.php";

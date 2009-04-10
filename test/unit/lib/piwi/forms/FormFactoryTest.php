@@ -1,7 +1,5 @@
 <?php
-require_once ('test/PiwiTestCase.php');
-
-class FormFactoryTest extends PiwiTestCase {
+class FormFactoryTest extends UnitTestCase {
 
 	function init() {
 		FormFactory :: initialize(dirname(__FILE__) . '/data/forms.xml');
