@@ -36,6 +36,14 @@ class Request {
 	}
 	
 	/** 
+	 * Sets the extension/format of the requested page (e.g. 'html', 'xml' or 'pdf').
+	 * @param string $extension The extension/format of the requested page.
+	 */
+	public static function setExtension($extension) {
+		$_GET['extension'] = $extension;
+	}
+	
+	/** 
 	 * Returns all parameters that are not PIWI internal contained in $_GET.
 	 * @return array Array containing the parameters.
 	 */
