@@ -47,7 +47,7 @@ class FormProcessor {
 	 */
 	public static function process($id) {
 		self::_getLogger()->debug('Processing form with ID: ' . $id);
-		// Increase id of form to give every form an unique id
+		// Give every form an unique id
 		self::$formId = $id;
 		
 		// Reset variables
@@ -67,6 +67,17 @@ class FormProcessor {
 			self::$currentStep = $_POST[self::$formId . '_currentstep'];
 		}
 		
+		// Check if last step was already a postbackstep
+		$isPostbackStep = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']' .
+					'[@postback="1"]')->length == 1;
+
+		if ($isPostbackStep) {
+			self::_getLogger()->debug('Form with ID: ' . $id . ' is a postbackform.');
+			
+			self::_getLogger()->debug('Calling Preprocessor ' . $id);
+			self::callPreProcessor($domXPath);
+		}
+			
 		// Determinate number of total steps in form
 		self::$numberOfSteps = $domXPath->evaluate('count(/piwiform:form/piwiform:step)');
 		
@@ -81,35 +92,16 @@ class FormProcessor {
 			$stepXML = self::getStepXML($domXPath);
 		}
 		
-		self::_getLogger()->debug('Calling Preprocessors ' . $id);
-		self::callPreProcessor($domXPath);
-		
-		$postbackNode = $domXPath->evaluate('//piwiform:form/piwiform:step/@postback');
-
-		if ($postbackNode != null && $postbackNode->item(0) != null) {
-			$temp = $postbackNode->item(0)->nodeValue;
-			if ($temp == null) {
-             	$postback = false;
-			} else {
-				self::_getLogger()->debug('Form with ID: ' . $id . ' is a postback form.');
-				$postback = true;
-			}
-		} else {
-			$postback = false;
-		}
-		
-		// If validation was successful show next step
-		if (!self::$validationFailed) {
-			if (!$postback) {
-            	self::$currentStep++;   
-            } else {
-            	self::$currentStep = 1;
-            }
+		// If validation was successful and step is not a postback show next step
+		if (!self::$validationFailed && !$isPostbackStep) {
+			// evaluate next step if it is not a postbackstep
+			self::$currentStep++;
+			
+			self::_getLogger()->debug('Calling Preprocessor ' . $id);
+			self::callPreProcessor($domXPath);
+			
 			self::$validate = false;
-
-			if (self::$currentStep == 1 || !$postback) {
-				$stepXML = self::getStepXML($domXPath);	
-			}
+			$stepXML = self::getStepXML($domXPath);
 		}
 
 		// Build xml
@@ -194,13 +186,12 @@ class FormProcessor {
 	}
 	
 	/**
-	 * Calls a preprocessor defined as an attribute in the step tag
+	 * Calls a preprocessor defined as an attribute in the step tag.
+	 * 
 	 */
 	private static function callPreProcessor(DOMXPath $domXPath) {
 		self::initXSLTProcessor();
-		// XPath isn't 0 based, first node is node number 1.
-		$formnumber = self::$currentStep + 1;
-		$form = $domXPath->query('/piwiform:form/piwiform:step[' . $formnumber . ']');
+		$form = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']');
 		$result = $form->item(0)->getAttribute('preprocessor');
 		
 		self::_getLogger()->debug("Found Preprocessor: " . $result);

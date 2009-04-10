@@ -2,12 +2,13 @@
 <form xmlns="http://piwi.googlecode.com/xsd/piwiform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../../resources/xsd/piwiform.xsd">
-	<step postback="true">
+	<step postback="1">
 	    Name:
 		<input name="Name" type="text" size="30" maxlength="30" value="Name" />
+		<validator class="RequiredFieldValidator" fieldToValidate="Name"
+			message="You must enter a name." initialValue="Name" />
 		<br /><br />
 		<input type="submit" value="Senden" />
 		<input type="reset" value="Löschen" />
 	</step>
-	<step />
 </form>

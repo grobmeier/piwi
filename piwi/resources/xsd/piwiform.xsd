@@ -10,7 +10,7 @@
 	</element>
 
 	<complexType name="formType">
-		<sequence>			<element name="step" type="tns:stepType" minOccurs="2" maxOccurs="unbounded"></element>
+		<sequence>			<element name="step" type="tns:stepType" minOccurs="0" maxOccurs="unbounded"></element>
 		</sequence>
 	</complexType>
 
@@ -18,6 +18,6 @@
         <sequence>			<any processContents="skip" minOccurs="0" maxOccurs="unbounded" namespace="##any" />
 		</sequence>
 		<attribute name="preprocessor" type="string" use="optional" />
-		<attribute name="postback" type="string" use="optional" />
+		<attribute name="postback" type="boolean" use="optional" />
 	</complexType>
 </schema>
