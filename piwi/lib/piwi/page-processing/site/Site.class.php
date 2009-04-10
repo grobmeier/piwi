@@ -33,7 +33,7 @@ abstract class Site {
 	 * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 	 */
 	public function generateContent() {
-		$allowedRoles = $this->getAllowedRoles();
+		$allowedRoles = $this->getAllowedRolesByPageId(Request::getPageId());
 
 		// If authorization is required check if user has authorization
 		if (ConfigurationManager :: getInstance()->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
@@ -174,9 +174,10 @@ abstract class Site {
 	 * The possible roles are returned as array.
 	 * The array contains only '?' if no authentication is required.
 	 * The array contains only '*' if any authenticated user allowed to access the page.
+	 * @param string $pageId The id of the page.
 	 * @return array The possible roles a user needs to access the currently requested page.
 	 */
-	protected abstract function getAllowedRoles();
+	public abstract function getAllowedRolesByPageId($pageId);
 
 	/**
 	 * Returns a list of supported languages.

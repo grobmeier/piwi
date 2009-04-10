@@ -92,8 +92,8 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 </p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  array</td>
-<td class="description"><p class="name"><a href="#getAllowedRoles()">getAllowedRoles</a>()</p><p class="description">
+<td class="type">abstract  array</td>
+<td class="description"><p class="name"><a href="#getAllowedRolesByPageId()">getAllowedRolesByPageId</a>(string pageId)</p><p class="description">
 Returns the possible roles a user needs to access the currently requested page.
 </p></td>
 </tr>
@@ -211,14 +211,16 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 
 <hr>
 
-<h3 id="getAllowedRoles()">getAllowedRoles</h3>
-<code class="signature">protected abstract  array <strong>getAllowedRoles</strong>()</code>
+<h3 id="getAllowedRolesByPageId()">getAllowedRolesByPageId</h3>
+<code class="signature">public abstract  array <strong>getAllowedRolesByPageId</strong>(string pageId)</code>
 <div class="details">
 <p>
 Returns the possible roles a user needs to access the currently requested page.
 The possible roles are returned as array.
 The array contains only '?' if no authentication is required.
 The array contains only '*' if any authenticated user allowed to access the page.</p><dl>
+<dt>Parameters:</dt>
+<dd>pageId - The id of the page.</dd>
 <dt>Returns:</dt>
 <dd>The possible roles a user needs to access the currently requested page.</dd>
 </dl>

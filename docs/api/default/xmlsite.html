@@ -90,13 +90,18 @@ Generates the submenus of the given nodes.</p></td>
 Returns the DOMNode representing the current page.</p></td>
 </tr>
 <tr>
+<td class="type">private  DOMNode</td>
+<td class="description"><p class="name"><a href="#_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId</a>(string pageId)</p><p class="description">
+Returns the DOMNode representing the the page with the given Id.</p></td>
+</tr>
+<tr>
 <td class="type">private  void</td>
 <td class="description"><p class="name"><a href="#_loadSite()">_loadSite</a>()</p><p class="description">
 Loads the 'site.xml'.</p></td>
 </tr>
 <tr>
-<td class="type">protected  array</td>
-<td class="description"><p class="name"><a href="#getAllowedRoles()">getAllowedRoles</a>()</p><p class="description">
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getAllowedRolesByPageId()">getAllowedRolesByPageId</a>(string pageId)</p><p class="description">
 Returns the possible roles a user needs to access the currently requested page.</p></td>
 </tr>
 <tr>
@@ -129,7 +134,7 @@ Returns a list of supported languages.</p></td>
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Site</th></tr>
-<tr><td><a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRoles()">getAllowedRoles</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getHTMLTemplatePath()">getHTMLTemplatePath</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#serialize()">serialize</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
+<tr><td><a href="../default/site.html#generateContent()">generateContent</a>, <a href="../default/site.html#getAllowedRolesByPageId()">getAllowedRolesByPageId</a>, <a href="../default/site.html#getCacheTime()">getCacheTime</a>, <a href="../default/site.html#getFilePath()">getFilePath</a>, <a href="../default/site.html#getFullSiteMap()">getFullSiteMap</a>, <a href="../default/site.html#getHTMLTemplatePath()">getHTMLTemplatePath</a>, <a href="../default/site.html#getInstance()">getInstance</a>, <a href="../default/site.html#getSupportedLanguages()">getSupportedLanguages</a>, <a href="../default/site.html#getTemplate()">getTemplate</a>, <a href="../default/site.html#serialize()">serialize</a>, <a href="../default/site.html#setContent()">setContent</a>, <a href="../default/site.html#setInstance()">setInstance</a></td></tr></table>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="domXPath">domXPath</h3>
@@ -192,6 +197,20 @@ Returns the DOMNode representing the current page.</p><dl>
 
 <hr>
 
+<h3 id="_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId</h3>
+<code class="signature">private  DOMNode <strong>_getPageDOMNodeByPageId</strong>(string pageId)</code>
+<div class="details">
+<p>
+Returns the DOMNode representing the the page with the given Id.</p><dl>
+<dt>Parameters:</dt>
+<dd>pageId - The id of the page.</dd>
+<dt>Returns:</dt>
+<dd>The DOMNode representing the page with the given Id.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="_loadSite()">_loadSite</h3>
 <code class="signature">private  void <strong>_loadSite</strong>()</code>
 <div class="details">
@@ -201,14 +220,16 @@ Loads the 'site.xml'.
 
 <hr>
 
-<h3 id="getAllowedRoles()">getAllowedRoles</h3>
-<code class="signature">protected  array <strong>getAllowedRoles</strong>()</code>
+<h3 id="getAllowedRolesByPageId()">getAllowedRolesByPageId</h3>
+<code class="signature">public  array <strong>getAllowedRolesByPageId</strong>(string pageId)</code>
 <div class="details">
 <p>
 Returns the possible roles a user needs to access the currently requested page.
 The possible roles are returned as array.
 The array contains only '?' if no authentication is required.
 The array contains only '*' if any authenticated user allowed to access the page.</p><dl>
+<dt>Parameters:</dt>
+<dd>pageId - The id of the page.</dd>
 <dt>Returns:</dt>
 <dd>The possible roles a user needs to access the currently requested page.</dd>
 </dl>

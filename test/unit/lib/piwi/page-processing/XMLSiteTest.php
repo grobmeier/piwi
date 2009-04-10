@@ -74,5 +74,15 @@ class XMLSiteTest extends PiwiTestCase {
 		$this->expectException(PiwiException, 'Path should be illegal.');
 		$site->getSupportedLanguages();
 	}
+	
+	function testGetAllowedRolesByPageId() {
+		$roles = $this->site->getAllowedRolesByPageId('hidden');
+		$this->assertEqual(1, sizeof($roles), 'Roles do not match.');
+		$this->assertTrue(in_array('admin', $roles), 'Roles do not match.');
+		
+		$roles = $this->site->getAllowedRolesByPageId('default');
+		$this->assertEqual(1, sizeof($roles), 'Roles do not match.');
+		$this->assertTrue(in_array('?', $roles), 'Roles do not match.');
+	}
 }
 ?>

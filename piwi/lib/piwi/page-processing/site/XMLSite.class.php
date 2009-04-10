@@ -56,14 +56,11 @@ class XMLSite extends Site {
      * The possible roles are returned as array.
      * The array contains only '?' if no authentication is required.
      * The array contains only '*' if any authenticated user allowed to access the page.
+     * @param string $pageId The id of the page.
      * @return array The possible roles a user needs to access the currently requested page.
      */
-    protected function getAllowedRoles(){
-    	if ($this->domXPath == null) {
-    		$this->_loadSite();
-    	}
-
-		$result = $this->_getCurrentPageDOMNode()->getAttribute("roles");
+    public function getAllowedRolesByPageId($pageId) {
+		$result = $this->_getPageDOMNodeByPageId($pageId)->getAttribute("roles");
 		if ($result == "") {
     		return array('?');
     	} else {
@@ -196,23 +193,32 @@ class XMLSite extends Site {
 	 * @return DOMNode The DOMNode representing the current page.
 	 */	 
     private function _getCurrentPageDOMNode() {
+    	return $this->_getPageDOMNodeByPageId(Request::getPageId());
+    }
+  
+	/**
+	 * Returns the DOMNode representing the the page with the given Id.
+	 * @param string $pageId The id of the page.
+	 * @return DOMNode The DOMNode representing the page with the given Id.
+	 */	 
+    private function _getPageDOMNodeByPageId($pageId) {
     	if ($this->domXPath == null) {
     		$this->_loadSite();
     	}
     	
     	// Lookup pageId
         $result = $this->domXPath->query("/site:site/site:language[@region='" . 
-        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
+        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . $pageId . "']");
 
         if ($result->length == 1) {
         	return $result->item(0);
         } else if ($result->length > 1) {
        		throw new PiwiException("The id of the requested page is not unique (Page: '" . 
-       				Request::getPageId() . "').", 
+       				$pageId . "').", 
 				PiwiException :: ERR_404);
         } else {
             throw new PiwiException("Could not find the requested page (Page: '" . 
-            		Request::getPageId() . "').", 
+            		$pageId . "').", 
 				PiwiException :: ERR_404);
         }  	
     }
