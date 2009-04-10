@@ -4,7 +4,8 @@ require_once('third-party/simpletest/autorun.php');
 require_once('third-party/simpletest/web_tester.php');
 
 class PiwiWebTestCase extends WebTestCase {
-  public static $HOST = "http://127.0.0.1:80/";
+	/** This is injected by ant.properties */
+	public static $HOST = "";
 }
 
 ?>
