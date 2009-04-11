@@ -60,7 +60,8 @@
 	<complexType name="propertyType">
 		<attribute name="name" type="string" use="required" />
 		<attribute name="ref" type="string" use="optional" />
-		<attribute name="value" type="string" use="optional"></attribute>
+		<attribute name="value" type="string" use="optional" />
+		<attribute name="php" type="string" use="optional" />
 	</complexType>
 
 </schema>
