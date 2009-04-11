@@ -162,6 +162,8 @@ class BeanFactory {
 			
 			if ($childNode->hasAttribute('ref')) {
 				$parameter = self :: getBeanById($childNode->getAttribute('ref'));
+			} else if($childNode->hasAttribute('php')) {
+				eval('\$parameter = '.$childNode->getAttribute('php') . ';');
 			} else {
 				$parameter = $childNode->getAttribute('value');
 			}

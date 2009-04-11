@@ -2,6 +2,9 @@
 class BeanFactoryTest extends UnitTestCase {
 
 	function init() {
+		$GLOBALS['TEST'] = "folder/";
+		DEFINE('CONTENT_TEST',"subfolder/");
+		
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
 	}
 	
@@ -20,7 +23,7 @@ class BeanFactoryTest extends UnitTestCase {
 		$this->init();
 		$object1 = BeanFactory :: getBeanById('testObject1');
 		$this->assertIsA($object1, 'TestObject1', 'Object has invalid type.');
-		
+		$this->assertEqual($object1->getFasel(), 'folder/subfolder/');
 		// get it again to test if a new instance has been created (no singleton)
 		$object2 = BeanFactory :: getBeanById('testObject1');
 		$this->assertClone($object1, $object2, 'Objects shoud not be singleton, two instances expected.');

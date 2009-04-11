@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../../../../../piwi/resources/xsd/context.xsd">
-    <bean id="testObject1" class="TestObject1" scope="prototype" />
+    <bean id="testObject1" class="TestObject1" scope="prototype">
+        <property name="fasel" php="$GLOBALS['TEST'].CONTENT_TEST" />
+    </bean>
 
     <bean id="testObject2" class="TestObject2" scope="request">
         <constructor-args>
