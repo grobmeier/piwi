@@ -8,6 +8,10 @@
 =                                                                     =
 =======================================================================
 
+0.1.0 - Beanfactory Release
+
+    * New: Included Beanfactory for dependency injection
+
 0.0.9 - Logger Release
 
     * New: Included log4php
