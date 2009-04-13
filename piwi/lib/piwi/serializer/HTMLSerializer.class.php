@@ -43,7 +43,7 @@ class HTMLSerializer implements Serializer {
 		}
 		
 		// Show generated page
-		include (Site::getInstance()->getTemplate());
+		include (BeanFactory :: getBeanById('site')->getTemplate());
 	}
 }
 ?>

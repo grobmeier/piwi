@@ -85,6 +85,7 @@ function __autoload($class) {
 /**
  * Initialize the singleton factories
  */
+BeanFactory :: initialize($GLOBALS['PIWI_ROOT']. '/resources/beans/context.xml');
 //BeanFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/context.xml');
 GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');
 ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml');
@@ -121,24 +122,23 @@ $logger->info('Starting page processing');
 session_start();
 
 // Init site (manual dependency injection)
-Site::setInstance(new XMLSite($GLOBALS['PIWI_ROOT'] . CONTENT_PATH, 
-	$GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH, 'site.xml'));
+$selector = BeanFactory :: getBeanById('siteSelector');
 $logger->debug('XML Site initialized successfully');
 
 try {
 	// Generate page
 	$logger->debug('Site generating content');
-	Site::getInstance()->generateContent();
+	$selector->generateContent();
 } catch(Exception $exception) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
-	Site::getInstance()->setContent($exceptionPageGenerator->generate());
+	$selector->setContent($exceptionPageGenerator->generate());
 	$logger->error('Site generation failed with exception: ' . $exception->getMessage());
 }
 
 // Call Serializer
 $logger->debug("Beginning serialization");
-Site::getInstance()->serialize();
+$selector->serialize();
 
 // Close down all appenders - safely
 $logger->debug("Page processing ended - Logger shutdown, end of request.");

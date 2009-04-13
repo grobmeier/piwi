@@ -1,116 +1,23 @@
 <?php
-
-/**
- * Renders the requested page and creates the navigation.
- */
-abstract class Site {
-	/** Singleton instance of the Site. */
-	private static $instance = null;
-
+class Site {
+	/** The template of the requested page. */
+	private $template = "default.php";
+	
+	/** The DOMXPath of the 'site.xml'. */
+    private $domXPath = null;
+    
+    /** The name of the file containing the site information. */
+	private $siteFilename = null;
+	
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
 
 	/** Name of the folder where your templates are placed. */
 	protected $templatesPath = null;
-
-	/** The template of the requested page. */
-	private $template = "default.php";
-
-	/** The content of the requested page as DOMDocument. */
-	private $content = null;
-
-	/**
-	 * Constructor.
-	 * @param string $contentPath Name of the folder where the content is placed.
-	 * @param string $templatesPath Name of the folder where your templates are placed.
-	 */
-	public function __construct($contentPath, $templatesPath) {
-		$this->contentPath = $contentPath;
-		$this->templatesPath = $templatesPath;
-	}
-
-	/**
-	 * Reads the xml of the requested page and transforms the Generators to Piwi-XML.
-	 */
-	public function generateContent() {
-		$allowedRoles = $this->getAllowedRolesByPageId(Request::getPageId());
-
-		// If authorization is required check if user has authorization
-		if (ConfigurationManager :: getInstance()->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
-			$roleProvider = ConfigurationManager :: getInstance()->getRoleProvider();
-
-			// Check if user is already logged in
-			if (UserSessionManager :: isUserAuthenticated(true)) {
-				// Check whether user has required role
-				if (!in_array('*', $allowedRoles) && !$roleProvider->
-						isUserInRole(UserSessionManager :: getUserName(), $allowedRoles)) {
-					throw new PiwiException("Permission denied.", PiwiException :: PERMISSION_DENIED);
-				}
-			} else {
-				// Since user is not logged in, show login page				
-				Request :: setPageId(ConfigurationManager :: getInstance()->getLoginPageId());
-			}
-		}
-
-		// Determinate global cachetime, if page specific cachetime exists use this
-		$cachetime = ConfigurationManager :: getInstance()->getCacheTime();
-		$specificCacheTime = $this->getCacheTime();
-		if ($specificCacheTime != null) {
-			$cachetime = $specificCacheTime;
-		}
-
-		// Try to get contents from cache
-		$cache = new Cache($cachetime);
-		$content = $cache->getPage();
-		if ($content != null) {
-			// Page has been found in cache
-			$this->content = $content;
-		} else {
-			// Page has not been found in cache, so load it and save it in the cache
-			$filePath = $this->contentPath . '/' . $this->getFilePath();
-
-			if (!file_exists($filePath)) {
-				throw new PiwiException("Could not find the the requested page (Path: '" . $filePath . "').", 
-					PiwiException :: ERR_404);
-			}
-
-			$this->content = new DOMDocument;
-			$this->content->load($filePath);
-
-			// Configure the transformer
-			$processor = new XSLTProcessor;
-			$processor->registerPHPFunctions();
-			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
-				"resources/xslt/GeneratorTransformation.xsl"));
-
-			// Transform the Generators
-			$this->content = $processor->transformToDoc($this->content);
-
-			// Save page in cache
-			$cache->cachePage($this->content);
-		}
-
-		// Set template if specified
-		$template = $this->getHTMLTemplatePath();
-		if ($template != null) {
-			$this->template = $template;
-		}
-	}
-
-	/**
-	 * Excecutes the Serializer.
-	 */
-	public function serialize() {
-		$extension = Request :: getExtension();
-
-		$serializer = ConfigurationManager :: getInstance()->getSerializer($extension);
-
-		if ($serializer == null) {
-			$serializer = new HTMLSerializer();
-		}
-
-		$serializer->serialize($this->content);
-	}
+	
+	public function __construct() {
+    }
+	
 
 	/**
 	 * Returns the template of the requested page.
@@ -121,75 +28,247 @@ abstract class Site {
 	}
 
 	/**
-	 * Sets the content of the page.
-	 * @param string $content The content as xml.
+	 * @param string $templatesPath Name of the folder where your templates are placed.
 	 */
-	public function setContent($content) {
-		$this->content = new DOMDocument;
-		$this->content->loadXML($content);
+	public function setTemplatesPath($path) {
+		$this->templatesPath = $path;
 	}
-
 	/**
-	 * Returns the singleton instance of the Site.
-	 * @return Site The singleton instance of the Site.
+	 * @param string $contentPath Name of the folder where the content is placed.
 	 */
-	public static function getInstance() {
-		return self :: $instance;
+	public function setContentPath($path) {
+		$this->contentPath = $path;
 	}
-
-	/**
-	 * Sets the singleton instance of the Site.
-	 * @param Site $site The singleton instance of the Site.
-	 */
-	public static function setInstance(Site $site) {
-		Site :: $instance = $site;
-	}
-
-	/**
-	 * ---------------------------------------------------------------------
-	 * >>>>>>>>>>>>>>>>>>>>>>>>>> Abstract Methods <<<<<<<<<<<<<<<<<<<<<<<<<
-	 * ---------------------------------------------------------------------
-	 */
-
-	/**
-	 * Returns the path of the xml file containing the content of the requested page.
-	 * @return string The path of the xml file containing the content of the requested page.
-	 */
-	protected abstract function getFilePath();
-
-	/**
-	 * Returns the template of the requested page or null if not specified.
-	 * @return string The template of the requested page.
-	 */
-	protected abstract function getHTMLTemplatePath();
-
-	/**
-	 * Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.
-	 * @return array Array of SiteElements representing the whole website structure.
-	 */
-	public abstract function getFullSiteMap();
-
-	/**
-	 * Returns the possible roles a user needs to access the currently requested page.
-	 * The possible roles are returned as array.
-	 * The array contains only '?' if no authentication is required.
-	 * The array contains only '*' if any authenticated user allowed to access the page.
-	 * @param string $pageId The id of the page.
-	 * @return array The possible roles a user needs to access the currently requested page.
-	 */
-	public abstract function getAllowedRolesByPageId($pageId);
-
-	/**
-	 * Returns a list of supported languages.
-	 * @return array List of supported languages.
-	 */
-	public abstract function getSupportedLanguages();
 	
+	
+    public function setSiteFilename($siteFilename) {
+    	$this->siteFilename = $siteFilename;
+    }
+    
 	/**
-	 * Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) 
-	 * or null if none is specified.
+	 * -------------------------------------------------------------------------
+	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Page attributes<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	 * -------------------------------------------------------------------------
+	 */
+    /**
+     * Returns the path of the xml file containing the content of the requested page.
+     * @return string The path of the xml file containing the content of the requested page.
+     */
+    public function getFilePath() {
+    	if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+
+		return $this->_getCurrentPageDOMNode()->getAttribute("href");
+    }
+    
+    /**
+     * Returns the template of the requested page or null if not specified.
+     * @return string The template of the requested page.
+     */
+    public function getHTMLTemplatePath() {
+    	if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+
+		$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
+ 
+ 		return $template == "" ? null : $template;
+    }
+
+    /**
+     * Returns the possible roles a user needs to access the currently requested page.
+     * The possible roles are returned as array.
+     * The array contains only '?' if no authentication is required.
+     * The array contains only '*' if any authenticated user allowed to access the page.
+     * @param string $pageId The id of the page.
+     * @return array The possible roles a user needs to access the currently requested page.
+     */
+    public function getAllowedRolesByPageId($pageId) {
+		$result = $this->_getPageDOMNodeByPageId($pageId)->getAttribute("roles");
+		if ($result == "") {
+    		return array('?');
+    	} else {
+    		return explode(',', str_replace(' ', '', $result));
+    	}
+    }
+       
+    /**
+     * Returns a list of supported languages.
+     * @return array List of supported languages.
+     */
+    public function getSupportedLanguages() {
+    	if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+    	
+    	$xpath = "/site:site/site:language/@region";
+    	$languages = $this->domXPath->query($xpath);
+    	
+    	$result = array();
+    	$count = 0;
+    	foreach ($languages as $value) {
+       		$result[$count++] = $value->value;
+		}
+		
+		return $result;
+    }   
+    
+	/**
+	 * Returns the page specific cachetime (the time that may pass until the content 
+	 * of the page is regenerated) or null if none is specified.
      * @return integer The page specific cachetime or null if none is specified.
 	 */
-	protected abstract function getCacheTime();
+	public function getCacheTime() {
+    	if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+
+		$result = $this->_getCurrentPageDOMNode()->getAttribute("cachetime");
+		if ($result == "") {
+    		return null;
+    	} else {
+    		return $result;
+    	}
+	}
+      
+    /**
+	 * -------------------------------------------------------------------------
+	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SiteMap<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	 * -------------------------------------------------------------------------
+	 */  
+    /**
+     * Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.
+     * @return array Array of SiteElements representing the whole website structure.
+     */
+    public function getFullSiteMap() {
+    	if ($this->domXPath == null) {
+	    	$this->_loadSite();  		
+    	}
+
+		// Determinate all nodes that lead to the current page
+    	$openpath = array();
+    	
+        $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . 
+        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . Request::getPageId() . "']");
+		
+        foreach ($domNodeList as $element) {
+            while ($element->nodeName != "language") {
+                    $openpath[] = $element->getAttribute("id");
+                    $element = $element->parentNode;
+            }
+        }
+        
+        // Build array containing all sites and subsites
+        $xpath = "/site:site/site:language[@region='" . UserSessionManager::getUserLanguage() . 
+			"']/site:page";
+        $nodelist = $this->domXPath->query($xpath);
+        $result = $this->_generateSubnavigation(array(), $nodelist, $xpath, $openpath);
+
+        return $result;
+    }
+    
+    /**
+     * Generates the submenus of the given nodes.
+     * @param array $result Array of SiteElements.
+     * @param DOMNodeList $nodelist List of nodes in the current layer.
+     * @param string $xpath The xpathquerystring of the current layer.
+     * @param array $openpath The ids nodes that lead to the current pageId.
+     * @param SiteElement $parentSiteElement The parent SiteElement
+     * @return array Array containing the submenus of the given nodes.
+     */
+    public function _generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, 
+    	SiteElement $parentSiteElement = null) {
+        foreach ($nodelist as $element) {
+        	$id = $element->getAttribute("id");
+        	
+        	$siteElement = new SiteElement($id, $element->getAttribute('label'), 
+        		$element->getAttribute('href'));
+           	$siteElement->setSelected($id == Request::getPageId());
+           	$siteElement->setOpen(in_array($id, $openpath));
+           	if ($element->getAttribute("hideInNavigation")) {
+           		$siteElement->setHiddenInNavigation(true);
+           	}
+           	if ($element->getAttribute("hideInSiteMap")) {
+           		$siteElement->setHiddenInSiteMap(true);
+           	}
+           	if ($parentSiteElement != null) {
+           		$siteElement->setParent($parentSiteElement);
+           	}
+           	
+	        if ($element->hasChildNodes()) {
+            	$children = $this->domXPath->query($xpath . "[@id='" . $id . "']/*");
+               	$siteElement->setChildren($this->_generateSubnavigation(array(), $children, 
+               		$xpath . '/site:page', $openpath, $siteElement));
+            }
+            			
+			$result[] = $siteElement;
+            
+      	}
+      	return $result;
+    } 
+	
+    /**
+	 * -------------------------------------------------------------------------
+	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>Private Helper Methods<<<<<<<<<<<<<<<<<<<<<<<
+	 * -------------------------------------------------------------------------
+	 */   
+	/**
+	 * Returns the DOMNode representing the current page.
+	 * @return DOMNode The DOMNode representing the current page.
+	 */	 
+    public function _getCurrentPageDOMNode() {
+    	return $this->_getPageDOMNodeByPageId(Request::getPageId());
+    }
+  
+	/**
+	 * Returns the DOMNode representing the the page with the given Id.
+	 * @param string $pageId The id of the page.
+	 * @return DOMNode The DOMNode representing the page with the given Id.
+	 */	 
+    public function _getPageDOMNodeByPageId($pageId) {
+    	if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+    	
+    	// Lookup pageId
+        $result = $this->domXPath->query("/site:site/site:language[@region='" . 
+        	UserSessionManager::getUserLanguage() . "']//site:page[@id='" . $pageId . "']");
+
+        if ($result->length == 1) {
+        	return $result->item(0);
+        } else if ($result->length > 1) {
+       		throw new PiwiException("The id of the requested page is not unique (Page: '" . 
+       				$pageId . "').", 
+				PiwiException :: ERR_404);
+        } else {
+            throw new PiwiException("Could not find the requested page (Page: '" . 
+            		$pageId . "').", 
+				PiwiException :: ERR_404);
+        }  	
+    }
+    
+    /**
+     * Loads the 'site.xml'.
+     */
+    private function _loadSite() {
+    	$path = $this->contentPath . '/' . $this->siteFilename;
+       	if (!file_exists($path)) {
+			throw new PiwiException("Could not find the site definition file (Path: '" . $path . "').", 
+				PiwiException :: ERR_NO_XML_DEFINITION);
+    	}
+    	
+    	// Load 'site.xml'
+    	$siteXml = DOMDocument::load($path);
+		
+		// validate xml only if error level is high enough to display warnings
+		if (error_reporting() > E_ERROR) {
+			$siteXml->schemaValidate($GLOBALS['PIWI_ROOT'] . "resources/xsd/site.xsd");
+		}
+		
+		// Init DOMXPath which will be used for querying the site
+		$this->domXPath = new DOMXPath($siteXml);
+		$this->domXPath->registerNamespace('site', 'http://piwi.googlecode.com/xsd/site');
+    }
 }
 ?>

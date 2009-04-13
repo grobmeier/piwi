@@ -4,7 +4,6 @@ require_once ('third-party/simpletest/autorun.php');
 require_once ('third-party/simpletest/unit_tester.php');
 
 // if error reporting has another level, test build fails due to a php bug in xmllib
-// TODO: discuss if another reporting level is necessary
 error_reporting(0);
 
     // Local server 

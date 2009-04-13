@@ -15,7 +15,7 @@ class SiteMapHelper {
 	 * @return The 'SiteMap' which is an array of SiteElements representing the website structure.
 	 */
 	public static function getCustomSiteMap($id, $depth, $includeParent = true) {
-		$siteMap = Site :: getInstance()->getFullSiteMap();
+		$siteMap = BeanFactory :: getBeanById('site')->getFullSiteMap();
 
 		// Build menu
 		// If id is specified show only this item and its subitems

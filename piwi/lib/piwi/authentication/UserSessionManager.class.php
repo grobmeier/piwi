@@ -16,7 +16,7 @@ class UserSessionManager {
 	public static function getUserLanguage() {
 		// Check if user has changed its prefered language
 		if (isset ($_GET['language'])) {
-			if (in_array($_GET['language'], Site :: getInstance()->getSupportedLanguages())) {
+			if (in_array($_GET['language'], BeanFactory :: getBeanById('site')->getSupportedLanguages())) {
 				$_SESSION['language'] = $_GET['language'];
 			}
 		}
@@ -25,7 +25,7 @@ class UserSessionManager {
 			if (isset ($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 				// Language has not been set by user, so get prefered language from browser
 				$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-				if (in_array($language, Site :: getInstance()->getSupportedLanguages())) {
+				if (in_array($language, BeanFactory :: getBeanById('site')->getSupportedLanguages())) {
 					$_SESSION['language'] = $language;
 				}
 			}

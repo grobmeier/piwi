@@ -44,6 +44,10 @@ class BeanFactory {
 	 * of the generators that can be used.
 	 */
 	public static function initialize($contextXMLPath) {
+//TODO:		if (!file_exists($contextXMLPath)) {
+//				throw new PiwiException("Could not find the the context (Path: '" . $contextXMLPath . "').", 
+//					PiwiException :: ERR_404);
+//		}
 		self :: $instance = new BeanFactory($contextXMLPath);
 	}
 
@@ -162,8 +166,8 @@ class BeanFactory {
 			
 			if ($childNode->hasAttribute('ref')) {
 				$parameter = self :: getBeanById($childNode->getAttribute('ref'));
-			} else if($childNode->hasAttribute('php')) {
-				eval('\$parameter = '.$childNode->getAttribute('php') . ';');
+			} else if ($childNode->hasAttribute('php')) {
+				eval('$parameter = ' . $childNode->getAttribute('php') . ';');
 			} else {
 				$parameter = $childNode->getAttribute('value');
 			}
