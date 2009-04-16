@@ -102,6 +102,10 @@ class FormProcessor {
 			
 			self::$validate = false;
 			$stepXML = self::getStepXML($domXPath);
+			
+			// Check if current step is a postbackstep
+			$isPostbackStep = $domXPath->query('/piwiform:form/piwiform:step[' . self::$currentStep . ']' .
+					'[@postback="1"]')->length == 1;
 		}
 
 		// Build xml
@@ -111,16 +115,18 @@ class FormProcessor {
 		$piwixml .= '<input name="' . self::$formId . '_currentstep" type="hidden" value="' .
 			self::$currentStep . '" />';
 		
-		if (self::$currentStep < self::$numberOfSteps) {
-			// Add current values as hidden field (but no checkboxes), to save their state
-			foreach ($_POST as $key => $value) {
-				if ($key != self::$formId . '_' . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
-					if (is_array($value)) {
-						foreach ($value as $var) {
-	       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
-						}					
-					} else { 
-						$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
+		if (!$isPostbackStep) {
+			if (self::$currentStep < self::$numberOfSteps) {
+				// Add current values as hidden field (but no checkboxes), to save their state
+				foreach ($_POST as $key => $value) {
+					if ($key != self::$formId . '_' . 'currentstep' && !(isset(self::$ignoredFields[$key]))) {
+						if (is_array($value)) {
+							foreach ($value as $var) {
+		       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
+							}					
+						} else { 
+							$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
+						}
 					}
 				}
 			}
