@@ -17,6 +17,8 @@ class TextSerializer implements Serializer {
 
 		$elements = $domDocument->getElementsByTagName('content');
 		
+		$html = "";
+		
 		foreach ($elements as $item) {
 			$position = DOMDocument::loadXML($domDocument->saveXML($item));
 			$html .=  $processor->transformToXML($position);
