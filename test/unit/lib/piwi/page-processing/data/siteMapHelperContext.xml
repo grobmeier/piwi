@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../xsd/context.xsd">
+
+    <bean id="site" class="Site" scope="request">
+        <property name="contentPath" value="test/unit/lib/piwi/page-processing/data" />
+        <property name="templatesPath" value="templates" />
+        <property name="siteFilename" value="site.xml" />
+    </bean>
+</context>

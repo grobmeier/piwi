@@ -19,7 +19,7 @@
   $this->addFile('test/unit/lib/piwi/pager/PagerTest.php');
 
 //  $this->addFile('test/unit/lib/piwi/page-processing/XMLPageTest.php');
-//  $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');    
+  $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');    
 //  $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
 
   // Webtest
@@ -29,6 +29,5 @@
   $this->addFile('test/web/DataGridTest.php');
   $this->addFile('test/web/FormsTest.php');
   $this->addFile('test/web/LocalizationTest.php');
-  $this->addFile('test/web/ErrorPageTest.php');
-  
+  $this->addFile('test/web/ErrorPageTest.php');  
 ?>
