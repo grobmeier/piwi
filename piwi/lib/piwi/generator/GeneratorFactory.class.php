@@ -53,7 +53,7 @@ class GeneratorFactory {
 		if ($this->xml == null) {
 			if (!file_exists(self :: $generatorsXMLPath)) {
 				throw new PiwiException("Could not find the generators definition file (Path: '" . 
-						self :: $generatorsXMLPathh . "').", 
+						self :: $generatorsXMLPath . "').", 
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
 			$this->xml = simplexml_load_file(self :: $generatorsXMLPath);

@@ -9,7 +9,7 @@
   $this->addFile('test/unit/lib/piwi/generator/GeneratorFactoryTest.php');
   
   $this->addFile('test/unit/lib/piwi/forms/FormFactoryTest.php');
-  
+
   $this->addFile('test/unit/lib/piwi/io/FileTest.php');
   $this->addFile('test/unit/lib/piwi/io/FolderTest.php');  
   
@@ -17,12 +17,11 @@
   $this->addFile('test/unit/lib/piwi/media/MediaCenterTest.php');  
   
   $this->addFile('test/unit/lib/piwi/pager/PagerTest.php');
-  
-  // TODO
-//  $this->addFile('test/unit/lib/piwi/page-processing/XMLSiteTest.php');
+
+//  $this->addFile('test/unit/lib/piwi/page-processing/XMLPageTest.php');
 //  $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');    
 //  $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
-  
+
   // Webtest
   $this->addFile('test/web/FormsTest.php');  
   $this->addFile('test/web/AuthenticationTest.php');

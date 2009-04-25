@@ -1,41 +1,46 @@
 <?php
 class ConnectorFactoryTest extends UnitTestCase {
 
+	private $connectorFactory;
+	
 	function init() {
-		ConnectorFactory :: initialize(dirname(__FILE__) . '/data/connectors.xml');
+		$this->connectorFactory = new ConnectorFactory();
+		$this->connectorFactory->setConnectorsXMLPath(dirname(__FILE__) . '/data/connectors.xml');
 	}
 	
 	function testGetConnectorByCorrectIdButNonInitializedConnectorFactory() {
+		$this->connectorFactory = new ConnectorFactory();
 		$this->expectException(PiwiException, 'ConnectorFactory should not be initialized.');
-		$connector = ConnectorFactory :: getConnectorById('testConnector');
+		$connector = $this->connectorFactory->getConnectorById('testConnector');
 	}	
 	
 	function testGetConnectorByWrongId() {
 		$this->init();
 		$this->expectException(PiwiException, 'Connector should not exist.');
-		$connector = ConnectorFactory :: getConnectorById('666');
+		$connector = $this->connectorFactory->getConnectorById('666');
 	}
 
 	function testGetConnectorByCorrectId() {
 		$this->init();
-		$connector = ConnectorFactory :: getConnectorById('testConnector');
+		$connector = $this->connectorFactory->getConnectorById('testConnector');
 		$this->assertIsA($connector, Connector, 'Connector has invalid type.');
 		
 		// get it again to test caching
-		$connector = ConnectorFactory :: getConnectorById('testConnector');
+		$connector = $this->connectorFactory->getConnectorById('testConnector');
 		$this->assertIsA($connector, Connector, 'Connector has invalid type.');
 	}
 
 	function testGetConnectorByCorrectIdButWrongInterface() {
 		$this->init();
 		$this->expectException(PiwiException, 'Connector has correct type, but wrong type was expected.');
-		$connector = ConnectorFactory :: getConnectorById('wrongInterface');
+		$connector = $this->connectorFactory->getConnectorById('wrongInterface');
 	}
 	
 	function testInitializeConnectorFactoryWithNonExistingFile() {
-		ConnectorFactory :: initialize(dirname(__FILE__) . '/data/666.xml');
+		$this->connectorFactory = new ConnectorFactory();
+		$this->connectorFactory->setConnectorsXMLPath(dirname(__FILE__) . '/data/666.xml');
 		$this->expectException(PiwiException, 'Connectors definition file should not exist.');
-		$connector = ConnectorFactory :: getConnectorById('testConnector');
+		$connector = $this->connectorFactory->getConnectorById('testConnector');
 	}
 }
 ?>

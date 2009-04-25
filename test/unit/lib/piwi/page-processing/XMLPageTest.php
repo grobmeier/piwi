@@ -1,33 +1,32 @@
 <?php
 class XMLPageTest extends UnitTestCase {
 	
-	private $site = null;
+	private $page = null;
 	
-	function before($message) {
-		
+	function before($message) {		
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
 		Request::setPageId('default');
-		$this->site = BeanFactory :: getBeanById('xmlPage');
+		$this->page = BeanFactory :: getBeanById('xmlPage');
 		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config.xml');			
 	}
 	
-//	function testGenerateContent() {
-//		Request::setPageId('hidden');
-//		$this->site->generateContent();
-//		$this->assertEqual('templates/other.php', $this->site->getTemplate(), 'Template does not match.');
-//		$this->assertEqual('test1', Request::getPageId(), 'PageId does not match.');
-//	}
-//	
-//	function testGenerateContentFromCache() {
-//		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config_cache.xml');
-//		$this->site->generateContent();
-//		$this->site->generateContent();
-//	}
-//	
+	function testGenerateContent() {
+		Request::setPageId('hidden');
+		$this->page->generateContent();
+		$this->assertEqual('test1', Request::getPageId(), 'PageId does not match.');
+	}
+
+	function testGenerateContentFromCache() {
+		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
+		ConfigurationManager::initialize(dirname(__FILE__) . '/data/config_cache.xml');
+		$this->page->generateContent();
+		$this->page->generateContent();
+	}
+	
 //	function testGenerateContentWithIllegalPageId() {
 //		Request::setPageId('666');
 //		$this->expectException(PiwiException, 'PageId should be illegal.');
-//		$this->site->generateContent();
+//		$this->page->generateContent();
 //	}
 //	
 //	function testGenerateContentWithNonExistingContentFile() {
@@ -52,16 +51,16 @@ class XMLPageTest extends UnitTestCase {
 //	}
 //	
 //	function testGetTemplate() {
-//		$this->site->generateContent();
-//		$this->assertEqual('templates/default.php', $this->site->getTemplate(), 'Template does not match.');
+//		$this->page->generateContent();
+//		$this->assertEqual('templates/default.php', $this->page->getTemplate(), 'Template does not match.');
 //		
 //		Request::setPageId('test1');
-//		$this->site->generateContent();
-//		$this->assertEqual('templates/other.php', $this->site->getTemplate(), 'Template does not match.');		
+//		$this->page->generateContent();
+//		$this->assertEqual('templates/other.php', $this->page->getTemplate(), 'Template does not match.');		
 //	}
 //	
 //	function testGetSupportedLanguages() {
-//		$languages = $this->site->getSupportedLanguages();
+//		$languages = $this->page->getSupportedLanguages();
 //		
 //		$this->assertEqual(2, sizeof($languages), 'Languages do not match.');
 //		$this->assertTrue(in_array('default', $languages), 'Language is missing.');
@@ -76,11 +75,11 @@ class XMLPageTest extends UnitTestCase {
 //	}
 //	
 //	function testGetAllowedRolesByPageId() {
-//		$roles = $this->site->getAllowedRolesByPageId('hidden');
+//		$roles = $this->page->getAllowedRolesByPageId('hidden');
 //		$this->assertEqual(1, sizeof($roles), 'Roles do not match.');
 //		$this->assertTrue(in_array('admin', $roles), 'Roles do not match.');
 //		
-//		$roles = $this->site->getAllowedRolesByPageId('default');
+//		$roles = $this->page->getAllowedRolesByPageId('default');
 //		$this->assertEqual(1, sizeof($roles), 'Roles do not match.');
 //		$this->assertTrue(in_array('?', $roles), 'Roles do not match.');
 //	}

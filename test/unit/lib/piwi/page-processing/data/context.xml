@@ -8,14 +8,13 @@
     </bean>
     
     <bean id="site" class="Site" scope="request">
-        <property name="contentPath" php="/Applications/MAMP/htdocs/piwi-trunk/piwi-trunk/test/unit/lib/piwi/page-processing/data" />
-        <property name="templatesPath" php="templates" />
-        <property name="siteFilename" value="/Applications/MAMP/htdocs/piwi-trunk/piwi-trunk/test/unit/lib/piwi/page-processing/data/site.xml" />
+        <property name="contentPath" value="test/unit/lib/piwi/page-processing/data" />
+        <property name="templatesPath" value="templates" />
+        <property name="siteFilename" value="site.xml" />
     </bean>
     
     <bean id="xmlPage" class="XMLPage" scope="request">
-        <property name="contentPath" php="/Applications/MAMP/htdocs/piwi-trunk/piwi-trunk/test/unit/lib/piwi/page-processing/data" />
-        <property name="siteFilename" value="/Applications/MAMP/htdocs/piwi-trunk/piwi-trunk/test/unit/lib/piwi/page-processing/data/site.xml" />
+        <property name="contentPath" value="test/unit/lib/piwi/page-processing/data" />
         <property name="site" ref="site" />
     </bean>
 </context>
