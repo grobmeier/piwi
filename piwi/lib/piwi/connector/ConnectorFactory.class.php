@@ -3,9 +3,6 @@
  * Used to initiate and retrieve Connectors.
  */
 class ConnectorFactory {
-	/** Singleton instance of the ConnectorFactory. */
-	private static $instance = null;
-
 	/** Map of the connectors that have already been initialized. */
 	private $connectors = array ();
 
@@ -17,21 +14,8 @@ class ConnectorFactory {
 
 	/**
 	 * Constructor.
-	 * Private constructor since only used by 'initialize'.
-	 * @param string $connectorsXMLPath Path of the file containing the xml-definition
-	 * of the connectors that can be used.
 	 */
-	private function __construct($connectorsXMLPath) {
-		$this->connectorsXMLPath = $connectorsXMLPath;
-	}
-
-	/**
-	 * Initializes the singleton instance of this Class.
-	 * @param string $connectorsXMLPath Path of the file containing the xml-definition 
-	 * of the connectors that can be used.
-	 */
-	public static function initialize($connectorsXMLPath) {
-		self :: $instance = new ConnectorFactory($connectorsXMLPath);
+	public function __construct() {
 	}
 
 	/**
@@ -41,17 +25,19 @@ class ConnectorFactory {
 	 * @param string $connectorId The id of the Connector.
 	 * @return Connector An instance of type Connector.
 	 */
-	public static function getConnectorById($connectorId) {
-		if (self :: $instance == null) {
-			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '" .
-					__CLASS__ . "' before accessing a Connector.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
-		}
-
-		self :: $instance->_initializeConnector($connectorId);
+	public function getConnectorById($connectorId) {
+		$this->_initializeConnector($connectorId);
 		
-		return self :: $instance->connectors[$connectorId];
+		return $this->connectors[$connectorId];
 	}
+	
+	/**
+	 * Set the path of the file containing the xml-definition
+	 * @param string $connectorsXMLPath Path of the file containing the xml-definition
+	 */
+	public function setConnectorsXMLPath($connectorsXMLPath) {
+		$this->connectorsXMLPath = $connectorsXMLPath;
+	}	
 	
 	/**
 	 * Constructs an instance of the Connector with the given id.

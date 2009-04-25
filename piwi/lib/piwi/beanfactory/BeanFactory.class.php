@@ -43,7 +43,7 @@ class BeanFactory {
 	 * @param string $contextXMLPath Path of the file containing the xml-definition 
 	 * of the generators that can be used.
 	 */
-	public static function initialize($contextXMLPath) {
+	public static function initialize($contextXMLPath = 'generatorFactory') {
 //TODO:		if (!file_exists($contextXMLPath)) {
 //				throw new PiwiException("Could not find the the context (Path: '" . $contextXMLPath . "').", 
 //					PiwiException :: ERR_404);

@@ -54,7 +54,7 @@ class UserSessionManager {
 	 */
 	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
 		// Validate the password
-		$userValid = ConfigurationManager :: getInstance()
+		$userValid = BeanFactory :: getBeanById('configurationManager')
 			->getRoleProvider()->isPasswordValid($username, sha1($password));
 
 		if ($userValid) {
@@ -131,7 +131,7 @@ class UserSessionManager {
 		} else if (isset ($_COOKIE['username']) && $_COOKIE['username'] != 'deleted' 
 			&& isset ($_COOKIE['password']) && $_COOKIE['password'] != 'deleted') {
 			// In this case the user has a cookie. Validate the password and login the user if it is correct.
-			$userValid = ConfigurationManager :: getInstance()
+			$userValid = BeanFactory :: getBeanById('configurationManager')
 				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE['username']), $_COOKIE['password']);
 			if ($userValid) {				
 				// Password is valid

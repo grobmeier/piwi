@@ -1,8 +1,5 @@
 <?php
 class Site {
-	/** The template of the requested page. */
-	private $template = "default.php";
-	
 	/** The DOMXPath of the 'site.xml'. */
     private $domXPath = null;
     
@@ -15,16 +12,28 @@ class Site {
 	/** Name of the folder where your templates are placed. */
 	protected $templatesPath = null;
 	
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
-    }
-	
+    }	
 
 	/**
 	 * Returns the template of the requested page.
 	 * @return string The template of the requested page.
 	 */
 	public function getTemplate() {
-		return $this->templatesPath . '/' . $this->template;
+		if ($this->domXPath == null) {
+    		$this->_loadSite();
+    	}
+    	
+		$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
+		
+		if ($template == null) {
+			
+			$template = 'default.php';
+		}
+		return $this->templatesPath . '/' . $template;
 	}
 
 	/**
@@ -38,8 +47,7 @@ class Site {
 	 */
 	public function setContentPath($path) {
 		$this->contentPath = $path;
-	}
-	
+	}	
 	
     public function setSiteFilename($siteFilename) {
     	$this->siteFilename = $siteFilename;
@@ -60,20 +68,6 @@ class Site {
     	}
 
 		return $this->_getCurrentPageDOMNode()->getAttribute("href");
-    }
-    
-    /**
-     * Returns the template of the requested page or null if not specified.
-     * @return string The template of the requested page.
-     */
-    public function getHTMLTemplatePath() {
-    	if ($this->domXPath == null) {
-    		$this->_loadSite();
-    	}
-
-		$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
- 
- 		return $template == "" ? null : $template;
     }
 
     /**

@@ -33,7 +33,7 @@ error_reporting(0); // hidde all errors
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Directories  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
  */
- 
+
 // ATTENTION: Changing the directory structure is not recommended.
 /** Name of the folder where your content is placed. */
 DEFINE('CONTENT_PATH', 'custom/content');
@@ -48,11 +48,11 @@ DEFINE('CUSTOM_CLASSES_PATH', 'custom/lib/piwi');
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Class Loading <<<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
- */ 
- 
+ */
+
 /** The root path of PIWI */
 $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
- 
+
 /** ClassLoader which makes other includes dispensable. */
 require_once ("lib/piwi/classloader/ClassLoader.class.php");
 
@@ -72,7 +72,10 @@ function __autoload($class) {
 		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . 'cache/classloader.cache.xml');
 	}
 
-	$directorys = array ('lib', CUSTOM_CLASSES_PATH);
+	$directorys = array (
+		'lib',
+		CUSTOM_CLASSES_PATH
+	);
 
 	foreach ($directorys as $directory) {
 		$result = $classloader->loadClass($directory, $class);
@@ -83,31 +86,26 @@ function __autoload($class) {
 }
 
 /**
- * Initialize the singleton factories
+ * Initialize the BeanFactory
  */
-BeanFactory :: initialize($GLOBALS['PIWI_ROOT']. '/resources/beans/context.xml');
-//BeanFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/context.xml');
-GeneratorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/generators.xml');
-ConnectorFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml');
-FormFactory::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml');
-ConfigurationManager::initialize($GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/config.xml');
+BeanFactory :: initialize($GLOBALS['PIWI_ROOT'] . '/resources/beans/context.xml');
 
 /**
  * Configure Logging and Exception Handler
  */
-$logConfig = ConfigurationManager::getInstance()->getLoggingConfiguration();
+$logConfig = BeanFactory :: getBeanById('configurationManager')->getLoggingConfiguration();
 if ($logConfig != null) {
-	define('LOG4PHP_CONFIGURATION', $logConfig);	
+	define('LOG4PHP_CONFIGURATION', $logConfig);
 } else {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
 }
 
-$logger =& LoggerManager::getLogger('Index.php');
+$logger = & LoggerManager :: getLogger('index.php');
 
 function exception_handler($exception) {
 	GLOBAL $logger;
-  	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
-  	echo "An uncatched error occurd: " . $exception->getMessage();
+	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
+	echo "An uncatched error occurd: " . $exception->getMessage();
 }
 
 set_exception_handler('exception_handler');
@@ -116,12 +114,12 @@ set_exception_handler('exception_handler');
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
- */ 
+ */
 $logger->info('Starting page processing');
 
 session_start();
 
-// Init site (manual dependency injection)
+// Init site
 $selector = BeanFactory :: getBeanById('siteSelector');
 $logger->debug('XML Site initialized successfully');
 
@@ -129,7 +127,7 @@ try {
 	// Generate page
 	$logger->debug('Site generating content');
 	$selector->generateContent();
-} catch(Exception $exception) {
+} catch (Exception $exception) {
 	// Show a page displaying the error
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	$selector->setContent($exceptionPageGenerator->generate());
@@ -142,5 +140,5 @@ $selector->serialize();
 
 // Close down all appenders - safely
 $logger->debug("Page processing ended - Logger shutdown, end of request.");
-LoggerManager::shutdown();
+LoggerManager :: shutdown();
 ?>

@@ -50,12 +50,6 @@ class XMLPage extends Page {
 			// Save page in cache
 			$cache->cachePage($this->content);
 		}
-
-		// Set template if specified
-		$template = $this->site->getHTMLTemplatePath();
-		if ($template != null) {
-			$this->template = $template;
-		}
 	}
 }
 ?>

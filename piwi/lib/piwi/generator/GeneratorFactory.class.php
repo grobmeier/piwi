@@ -10,28 +10,23 @@ class GeneratorFactory {
 	private $generators = array();
 
 	/** Path of the file containing the xml-definition of the generators that can be used. */
-	private $generatorsXMLPath = null;
+	private static $generatorsXMLPath = null;
 
 	/** The generators definition as xml. */
 	private $xml = null;
 
 	/**
 	 * Constructor.
-	 * Private constructor since only used by 'initialize'.
-	 * @param string $generatorsXMLPath Path of the file containing the xml-definition 
-	 * of the generators that can be used.
 	 */
-	private function __construct($generatorsXMLPath) {
-		$this->generatorsXMLPath = $generatorsXMLPath;
+	public function __construct() {
 	}
-
+	
 	/**
-	 * Initializes the singleton instance of this Class.
+	 * Set the path of the file containing the xml-definition 
 	 * @param string $generatorsXMLPath Path of the file containing the xml-definition 
-	 * of the generators that can be used.
 	 */
-	public static function initialize($generatorsXMLPath) {
-		self :: $instance = new GeneratorFactory($generatorsXMLPath);
+	public function setGeneratorsXMLPath($generatorsXMLPath) {
+		self :: $generatorsXMLPath = $generatorsXMLPath;
 	}
 
 	/**
@@ -56,12 +51,12 @@ class GeneratorFactory {
 			return;
 		}
 		if ($this->xml == null) {
-			if (!file_exists($this->generatorsXMLPath)) {
+			if (!file_exists(self :: $generatorsXMLPath)) {
 				throw new PiwiException("Could not find the generators definition file (Path: '" . 
-						$this->generatorsXMLPath . "').", 
+						self :: $generatorsXMLPathh . "').", 
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
-			$this->xml = simplexml_load_file($this->generatorsXMLPath);
+			$this->xml = simplexml_load_file(self :: $generatorsXMLPath);
 			$this->xml->registerXPathNamespace('generators', 'http://piwi.googlecode.com/xsd/generators');
 		}
 
@@ -94,9 +89,7 @@ class GeneratorFactory {
 	 */
 	public static function callGenerator($generatorId) {
 		if (self :: $instance == null) {
-			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '"
-					. __CLASS__ . "' before accessing a Generator.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
+			self :: $instance = BeanFactory :: getBeanById('generatorFactory');
 		}
 
 		$xml = self :: $instance->_getGeneratorById($generatorId)->generate();

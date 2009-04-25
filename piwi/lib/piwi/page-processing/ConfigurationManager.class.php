@@ -3,9 +3,6 @@
  * Manages the settings configured in 'config.xml'.
  */
 class ConfigurationManager {
-	/** Singleton instance of the ConfigurationManager. */
-	private static $configurationManagerInstance = null;
-
 	/** The DOMXPath of the 'config.xml'. */
     private $domXPath = null;
     
@@ -17,27 +14,8 @@ class ConfigurationManager {
 	
 	/**
 	 * Constructor.
-	 * Private constructor since only used by 'initialize'.
-	 * @param string $configFilePath Path of the file containing the configuration.
 	 */
-	private function __construct($configFilePath) {
-		$this->configFilePath = $configFilePath;
-	}
-
-	/**
-	 * Initializes the singleton instance of this Class.
-	 * @param string $configFilePath Path of the file containing the configuration.
-	 */
-	public static function initialize($configFilePath) {
-		self :: $configurationManagerInstance = new ConfigurationManager($configFilePath);
-	}
-
-	/**
-	 * Returns the singleton instance of the ConfigurationManager.
-	 * @return ConfigurationManager The singleton instance of the ConfigurationManager.
-	 */
-	public static function getInstance() {
-		return self::$configurationManagerInstance;
+	public function __construct() {		
 	}
 	
     /**
@@ -285,6 +263,14 @@ class ConfigurationManager {
         } else {        	
             return null;
         }
+    }
+    
+    /**
+     * Sets the path of the file containing the configuration
+     * @param string $configFilePath Path of the file containing the configuration.
+     */
+    public function setConfigFilePath($configFilePath) {
+		$this->configFilePath = $configFilePath;
     }
     
     /**

@@ -3,9 +3,6 @@
  * Used to retrieve Forms.
  */
 class FormFactory {
-	/** Singleton instance of the FormsFactory. */
-	private static $instance = null;
-
 	/** Map of the forms that have already been initialized. */
 	private $forms = array ();
 
@@ -17,19 +14,8 @@ class FormFactory {
 
 	/**
 	 * Constructor.
-	 * Private constructor since only used by 'initialize'.
-	 * @param string $formsXMLPath Path of the file containing the xml-definition of the forms that can be used.
 	 */
-	private function __construct($formsXMLPath) {
-		$this->formsXMLPath = $formsXMLPath;
-	}
-
-	/**
-	 * Initializes the singleton instance of this Class.
-	 * @param string $formsXMLPath Path of the file containing the xml-definition of the forms that can be used.
-	 */
-	public static function initialize($formsXMLPath) {
-		self :: $instance = new FormFactory($formsXMLPath);
+	public function __construct() {
 	}
 
 	/**
@@ -39,16 +25,18 @@ class FormFactory {
 	 * @param string $formId The id of the Form.
 	 * @return DOMXPath The Form with the given id as DOMXPath.
 	 */
-	public static function getFormById($formId) {
-		if (self :: $instance == null) {
-			throw new PiwiException("Illegal State: Invoke static method 'initialize' on '"
-					. __CLASS__ . "' before accessing a Form.", 
-				PiwiException :: ERR_ILLEGAL_STATE);
-		}
-
-		self :: $instance->_initializeForm($formId);
+	public function getFormById($formId) {
+		$this->_initializeForm($formId);
 		
-		return self :: $instance->forms[$formId];
+		return $this->forms[$formId];
+	}
+	
+	/**
+	 * Sets the path of the file containing the xml-definition of the forms that can be used.
+	 * @param string $formsXMLPath Path of the file containing the xml-definition of the forms that can be used.
+	 */
+	public function setFormsXMLPath($formsXMLPath) {
+		$this->formsXMLPath = $formsXMLPath;
 	}
 	
 	/**

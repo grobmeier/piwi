@@ -55,7 +55,7 @@ class FormProcessor {
 		self::$validate = true;
 		self::$ignoredFields = array();
 		
-		$domXPath = FormFactory::getFormById($id);
+		$domXPath = BeanFactory :: getBeanById('formFactory')->getFormById($id);
 	
 		// Determinate the current step in the formular
 		// if request is a postback increase number of steps otherwise begin with step 1

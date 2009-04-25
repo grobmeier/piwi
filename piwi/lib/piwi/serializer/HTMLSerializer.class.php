@@ -38,7 +38,7 @@ class HTMLSerializer implements Serializer {
 		}
 		
 		// Include navigation and siteMapPath
-		foreach (ConfigurationManager::getInstance()->getHTMLNavigations() as $name => $navigation) {
+		foreach (BeanFactory :: getBeanById('configurationManager')->getHTMLNavigations() as $name => $navigation) {
 			$$name = $navigation;
 		}
 		

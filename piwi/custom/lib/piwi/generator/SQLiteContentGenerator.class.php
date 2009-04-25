@@ -31,7 +31,7 @@ class SQLiteContentGenerator implements Generator {
 		 * which is a singleton, caching the connectors. 
 		 */
 		if ($this->connection == null) {
-			$this->connection = ConnectorFactory::getConnectorById($this->connector);
+			$this->connection = BeanFactory :: getBeanById('connectorFactory')->getConnectorById($this->connector);
 		}
 
 		// execute query

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Renders the requested page and creates the navigation.
  */
@@ -23,8 +22,8 @@ abstract class Page {
 		$allowedRoles = $this->site->getAllowedRolesByPageId(Request::getPageId());
 
 		// If authorization is required check if user has authorization
-		if (ConfigurationManager :: getInstance()->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
-			$roleProvider = ConfigurationManager :: getInstance()->getRoleProvider();
+		if (BeanFactory :: getBeanById('configurationManager')->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
+			$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
 
 			// Check if user is already logged in
 			if (UserSessionManager :: isUserAuthenticated(true)) {
@@ -35,14 +34,14 @@ abstract class Page {
 				}
 			} else {
 				// Since user is not logged in, show login page				
-				Request :: setPageId(ConfigurationManager :: getInstance()->getLoginPageId());
+				Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
 			}
 		}
 	}
 	
 	protected function loadPageFromCache() {
 		// Determinate global cachetime, if page specific cachetime exists use this
-		$cachetime = ConfigurationManager :: getInstance()->getCacheTime();
+		$cachetime = BeanFactory :: getBeanById('configurationManager')->getCacheTime();
 		$specificCacheTime = $this->site->getCacheTime();
 		if ($specificCacheTime != null) {
 			$cachetime = $specificCacheTime;
@@ -59,7 +58,7 @@ abstract class Page {
 	public function serialize() {
 		$extension = Request :: getExtension();
 
-		$serializer = ConfigurationManager :: getInstance()->getSerializer($extension);
+		$serializer = BeanFactory :: getBeanById('configurationManager')->getSerializer($extension);
 
 		if ($serializer == null) {
 			$serializer = new HTMLSerializer();
