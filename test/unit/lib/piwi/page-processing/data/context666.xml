@@ -5,7 +5,7 @@
     <bean id="site" class="Site" scope="request">
         <property name="contentPath" value="test/unit/lib/piwi/page-processing/data" />
         <property name="templatesPath" value="templates" />
-        <property name="siteFilename" value="site.xml" />
+        <property name="siteFilename" value="666.xml" />
     </bean>
     
     <bean id="xmlPage" class="XMLPage" scope="request">

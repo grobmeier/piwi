@@ -82,14 +82,14 @@ abstract class Page {
 	 */
 	public function setContentPath($path) {
 		$this->contentPath = $path;
+	}	
+		
+	public function getSite() {
+		return $this->site;
 	}
 	
 	public function setSite($site) {
 		$this->site = $site;
-	}
-	
-	public function getSite() {
-		return $this->site;
 	}
 }
 ?>

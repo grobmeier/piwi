@@ -14,6 +14,6 @@
     </bean>
     
     <bean id="configurationManager" class="ConfigurationManager" scope="request">
-        <property name="configFilePath" value="test/unit/lib/piwi/page-processing/data/config.xml" />
+        <property name="configFilePath" value="test/unit/lib/piwi/page-processing/data/config_cache.xml" />
     </bean>
 </context>
