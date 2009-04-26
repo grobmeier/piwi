@@ -20,7 +20,7 @@
 
 //  $this->addFile('test/unit/lib/piwi/page-processing/XMLPageTest.php');
   $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');    
-//  $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
+  $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
 
   // Webtest
   $this->addFile('test/web/FormsTest.php');  
