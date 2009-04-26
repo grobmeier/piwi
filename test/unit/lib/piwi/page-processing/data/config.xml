@@ -30,6 +30,13 @@
 	<customXSLTStylesheet>test</customXSLTStylesheet>
 	
 	<!-- 
+	   If this configuration is set, log4php will be enabled with this configuration.
+	   Otherwise the standard configuration will be used. This one is optimized for 
+	   the use with a standard website and normal production: Daily file rolling and error level.
+	 -->
+	<logConfiguration>logging-config.xml</logConfiguration>
+
+	<!-- 
 	   Here you can enable/disable AUTHENTICATION.
 	   The 'roleProvider' is the class used for the authentication.
 	   The 'loginPageId' is the ID of the page being displayed when authentication is required.

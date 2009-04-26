@@ -55,6 +55,14 @@ class ConfigurationManagerTest extends UnitTestCase {
 		$this->assertNull($this->configurationManager->getCustomXSLTStylesheetPath(), 'XSLTStylesheetPath is not null.');
 	}
 	
+	function testGetLoggingConfiguration() {
+		$this->assertEqual('logging-config.xml', $this->configurationManager->getLoggingConfiguration(), 'LoggingConfiguration does not match.');
+		
+		$this->configurationManager = new ConfigurationManager();
+		$this->configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_empty.xml');
+		$this->assertNull($this->configurationManager->getLoggingConfiguration(), 'LoggingConfiguration is not null.');
+	}
+	
 	function testIsAuthenticationEnabled() {
 		$this->assertTrue($this->configurationManager->isAuthenticationEnabled(), 'Authentication is not enabled.');
 		
