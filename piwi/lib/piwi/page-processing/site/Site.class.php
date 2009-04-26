@@ -1,4 +1,7 @@
 <?php
+/**
+ * TODO: Add comment
+ */
 class Site {
 	/** The DOMXPath of the 'site.xml'. */
     private $domXPath = null;
@@ -49,6 +52,10 @@ class Site {
 		$this->contentPath = $path;
 	}	
 	
+	/**
+	 * Set the name of the file containing the site information.
+	 * @param string $siteFilename The name of the file containing the site information.
+	 */
     public function setSiteFilename($siteFilename) {
     	$this->siteFilename = $siteFilename;
     }
@@ -131,6 +138,7 @@ class Site {
 	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SiteMap<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	 * -------------------------------------------------------------------------
 	 */  
+
     /**
      * Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.
      * @return array Array of SiteElements representing the whole website structure.
@@ -161,7 +169,13 @@ class Site {
 
         return $result;
     }
-    
+	
+    /**
+	 * -------------------------------------------------------------------------
+	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>Private Helper Methods<<<<<<<<<<<<<<<<<<<<<<<
+	 * -------------------------------------------------------------------------
+	 */   
+	     
     /**
      * Generates the submenus of the given nodes.
      * @param array $result Array of SiteElements.
@@ -171,7 +185,7 @@ class Site {
      * @param SiteElement $parentSiteElement The parent SiteElement
      * @return array Array containing the submenus of the given nodes.
      */
-    public function _generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, 
+    private function _generateSubnavigation($result, DOMNodeList $nodelist, $xpath, array $openpath, 
     	SiteElement $parentSiteElement = null) {
         foreach ($nodelist as $element) {
         	$id = $element->getAttribute("id");
@@ -201,17 +215,12 @@ class Site {
       	}
       	return $result;
     } 
-	
-    /**
-	 * -------------------------------------------------------------------------
-	 * >>>>>>>>>>>>>>>>>>>>>>>>>>>>Private Helper Methods<<<<<<<<<<<<<<<<<<<<<<<
-	 * -------------------------------------------------------------------------
-	 */   
+    
 	/**
 	 * Returns the DOMNode representing the current page.
 	 * @return DOMNode The DOMNode representing the current page.
 	 */	 
-    public function _getCurrentPageDOMNode() {
+    private function _getCurrentPageDOMNode() {
     	return $this->_getPageDOMNodeByPageId(Request::getPageId());
     }
   
@@ -220,7 +229,7 @@ class Site {
 	 * @param string $pageId The id of the page.
 	 * @return DOMNode The DOMNode representing the page with the given Id.
 	 */	 
-    public function _getPageDOMNodeByPageId($pageId) {
+    private function _getPageDOMNodeByPageId($pageId) {
     	if ($this->domXPath == null) {
     		$this->_loadSite();
     	}

@@ -10,6 +10,7 @@ abstract class Page {
 	/** Name of the folder where the content is placed. */
 	protected $contentPath = null;
 
+	/** Reference to the Site. */
 	protected $site = null;
 	
 	/**
@@ -18,11 +19,15 @@ abstract class Page {
 	public function __construct() {
 	}
 	
+	/**
+	 * Check if user authentication is activated and whether the requested page has restrictions.
+	 */
 	protected function checkPermissions() {
 		$allowedRoles = $this->site->getAllowedRolesByPageId(Request::getPageId());
 
 		// If authorization is required check if user has authorization
-		if (BeanFactory :: getBeanById('configurationManager')->isAuthenticationEnabled() && !in_array('?', $allowedRoles)) {
+		if (BeanFactory :: getBeanById('configurationManager')->isAuthenticationEnabled() 
+			&& !in_array('?', $allowedRoles)) {
 			$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
 
 			// Check if user is already logged in
@@ -39,7 +44,11 @@ abstract class Page {
 		}
 	}
 	
-	protected function loadPageFromCache() {
+	/**
+	 * Returns cache instance.
+	 * @return Cache The cache instance.
+	 */
+	protected function getCache() {
 		// Determinate global cachetime, if page specific cachetime exists use this
 		$cachetime = BeanFactory :: getBeanById('configurationManager')->getCacheTime();
 		$specificCacheTime = $this->site->getCacheTime();
@@ -47,9 +56,7 @@ abstract class Page {
 			$cachetime = $specificCacheTime;
 		}
 
-		// Try to get contents from cache
-		$cache = new Cache($cachetime);
-		return $cache;
+		return new Cache($cachetime);
 	}
 	
 	/**
@@ -74,8 +81,6 @@ abstract class Page {
 		$this->content = new DOMDocument;
 		$this->content->loadXML($content);
 	}
-
-	public abstract function generateContent();
 	
 	/**
 	 * @param string $contentPath Name of the folder where the content is placed.
@@ -83,13 +88,26 @@ abstract class Page {
 	public function setContentPath($path) {
 		$this->contentPath = $path;
 	}	
-		
+	
+	/**
+	 * Returns the reference to the Site.
+	 * @return Site The reference to the Site.
+	 */
 	public function getSite() {
 		return $this->site;
 	}
-	
-	public function setSite($site) {
+
+	/**
+	 * Sets the reference to the Site.
+	 * @param Site $site The reference to the Site.
+	 */
+	public function setSite(Site $site) {
 		$this->site = $site;
 	}
+	
+	/**
+	 * Processes the contents of the page.
+	 */
+	public abstract function generateContent();
 }
 ?>

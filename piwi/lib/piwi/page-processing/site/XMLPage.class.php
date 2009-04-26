@@ -20,7 +20,7 @@ class XMLPage extends Page {
 	public function generateContent() {
 		$this->checkPermissions();
 
-		$cache = $this->loadPageFromCache();
+		$cache = $this->getCache();
 		$content = $cache->getPage();
 		
 		if ($content != null) {

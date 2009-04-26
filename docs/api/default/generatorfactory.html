@@ -58,7 +58,7 @@ Used to initiate and retrieve Generators.
 <td class="description"><p class="name"><a href="#generators">$generators</a></p><p class="description">Map of the generators that have already been initialized. </p></td>
 </tr>
 <tr>
-<td class="type">private  mixed</td>
+<td class="type">private static  mixed</td>
 <td class="description"><p class="name"><a href="#generatorsXMLPath">$generatorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
 </tr>
 <tr>
@@ -74,7 +74,7 @@ Used to initiate and retrieve Generators.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#GeneratorFactory()">GeneratorFactory</a>(string generatorsXMLPath)</p><p class="description">
+<td class="description"><p class="name"><a href="#GeneratorFactory()">GeneratorFactory</a>()</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -100,9 +100,9 @@ Constructs an instance of the Generator with the given id.
 Used within the XSLT-Stylesheets to interpret the  tag. </p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string generatorsXMLPath)</p><p class="description">
-Initializes the singleton instance of this Class.</p></td>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setGeneratorsXMLPath()">setGeneratorsXMLPath</a>(string generatorsXMLPath)</p><p class="description">
+Set the path of the file containing the xml-definition </p></td>
 </tr>
 </table>
 
@@ -115,7 +115,7 @@ Initializes the singleton instance of this Class.</p></td>
 <hr>
 
 <h3 id="generatorsXMLPath">generatorsXMLPath</h3>
-<code class="signature">private  mixed <strong>$generatorsXMLPath</strong> = null</code>
+<code class="signature">private static  mixed <strong>$generatorsXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the generators that can be used. */</p></div>
 
@@ -137,16 +137,11 @@ Initializes the singleton instance of this Class.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="GeneratorFactory()">GeneratorFactory</h3>
-<code class="signature">public <strong>GeneratorFactory</strong>(string generatorsXMLPath)</code>
+<code class="signature">public <strong>GeneratorFactory</strong>()</code>
 <div class="details">
 <p>
 Constructor.
-Private constructor since only used by 'initialize'.</p><dl>
-<dt>Parameters:</dt>
-<dd>generatorsXMLPath - Path of the file containing the xml-definition 
- * of the generators that can be used.</dd>
-</dl>
-</div>
+/</p></div>
 
 <hr>
 
@@ -194,14 +189,13 @@ Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
 
 <hr>
 
-<h3 id="initialize()">initialize</h3>
-<code class="signature">public static  void <strong>initialize</strong>(string generatorsXMLPath)</code>
+<h3 id="setGeneratorsXMLPath()">setGeneratorsXMLPath</h3>
+<code class="signature">public  void <strong>setGeneratorsXMLPath</strong>(string generatorsXMLPath)</code>
 <div class="details">
 <p>
-Initializes the singleton instance of this Class.</p><dl>
+Set the path of the file containing the xml-definition </p><dl>
 <dt>Parameters:</dt>
-<dd>generatorsXMLPath - Path of the file containing the xml-definition 
- * of the generators that can be used.</dd>
+<dd>generatorsXMLPath - Path of the file containing the xml-definition</dd>
 </dl>
 </div>
 

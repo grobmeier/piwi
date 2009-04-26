@@ -43,10 +43,10 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<p class="signature">public abstract  class <strong>Site</strong></p>
+<p class="signature">public  class <strong>Site</strong></p>
 
 <div class="comment" id="overview_description"><p>
-Renders the requested page and creates the navigation.
+TODO: Add comment
 /</p></div>
 
 <hr>
@@ -54,20 +54,16 @@ Renders the requested page and creates the navigation.
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#content">$content</a></p><p class="description">The content of the requested page as DOMDocument. </p></td>
-</tr>
-<tr>
 <td class="type">protected  mixed</td>
 <td class="description"><p class="name"><a href="#contentPath">$contentPath</a></p><p class="description">Name of the folder where the content is placed. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the Site. </p></td>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#domXPath">$domXPath</a></p><p class="description">The DOMXPath of the 'site.xml'. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#template">$template</a></p><p class="description">The template of the requested page. </p></td>
+<td class="description"><p class="name"><a href="#siteFilename">$siteFilename</a></p><p class="description">The name of the file containing the site information. </p></td>
 </tr>
 <tr>
 <td class="type">protected  mixed</td>
@@ -78,53 +74,59 @@ Renders the requested page and creates the navigation.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#Site()">Site</a>(string contentPath, string templatesPath)</p><p class="description">
-Constructor.</p></td>
+<td class="description"><p class="name"><a href="#Site()">Site</a>()</p><p class="description">
+Constructor.
+</p></td>
 </tr>
 </table>
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
-Reads the xml of the requested page and transforms the Generators to Piwi-XML.
+<td class="type">private  array</td>
+<td class="description"><p class="name"><a href="#_generateSubnavigation()">_generateSubnavigation</a>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</p><p class="description">
+Generates the submenus of the given nodes.</p></td>
+</tr>
+<tr>
+<td class="type">private  DOMNode</td>
+<td class="description"><p class="name"><a href="#_getCurrentPageDOMNode()">_getCurrentPageDOMNode</a>()</p><p class="description">
+Returns the DOMNode representing the current page.</p></td>
+</tr>
+<tr>
+<td class="type">private  DOMNode</td>
+<td class="description"><p class="name"><a href="#_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId</a>(string pageId)</p><p class="description">
+Returns the DOMNode representing the the page with the given Id.</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_loadSite()">_loadSite</a>()</p><p class="description">
+Loads the 'site.xml'.
 </p></td>
 </tr>
 <tr>
-<td class="type">abstract  array</td>
+<td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getAllowedRolesByPageId()">getAllowedRolesByPageId</a>(string pageId)</p><p class="description">
 Returns the possible roles a user needs to access the currently requested page.
 </p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  integer</td>
+<td class="type"> integer</td>
 <td class="description"><p class="name"><a href="#getCacheTime()">getCacheTime</a>()</p><p class="description">
-Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) 
-or null if none is specified.</p></td>
+Returns the page specific cachetime (the time that may pass until the content 
+of the page is regenerated) or null if none is specified.</p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  string</td>
+<td class="type"> string</td>
 <td class="description"><p class="name"><a href="#getFilePath()">getFilePath</a>()</p><p class="description">
 Returns the path of the xml file containing the content of the requested page.</p></td>
 </tr>
 <tr>
-<td class="type">abstract  array</td>
+<td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getFullSiteMap()">getFullSiteMap</a>()</p><p class="description">
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p></td>
 </tr>
 <tr>
-<td class="type">protected abstract  string</td>
-<td class="description"><p class="name"><a href="#getHTMLTemplatePath()">getHTMLTemplatePath</a>()</p><p class="description">
-Returns the template of the requested page or null if not specified.</p></td>
-</tr>
-<tr>
-<td class="type">static  <a href="../default/site.html">Site</a></td>
-<td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
-Returns the singleton instance of the Site.</p></td>
-</tr>
-<tr>
-<td class="type">abstract  array</td>
+<td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getSupportedLanguages()">getSupportedLanguages</a>()</p><p class="description">
 Returns a list of supported languages.</p></td>
 </tr>
@@ -135,30 +137,20 @@ Returns the template of the requested page.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#serialize()">serialize</a>()</p><p class="description">
-Excecutes the Serializer.
-</p></td>
+<td class="description"><p class="name"><a href="#setContentPath()">setContentPath</a>(mixed path, string contentPath)</p><p class="description"></p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setContent()">setContent</a>(string content)</p><p class="description">
-Sets the content of the page.</p></td>
+<td class="description"><p class="name"><a href="#setSiteFilename()">setSiteFilename</a>(string siteFilename)</p><p class="description">
+Set the name of the file containing the site information.</p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#setInstance()">setInstance</a>(<a href="../default/site.html">Site</a> site)</p><p class="description">
-Sets the singleton instance of the Site.</p></td>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setTemplatesPath()">setTemplatesPath</a>(mixed path, string templatesPath)</p><p class="description"></p></td>
 </tr>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
-<h3 id="content">content</h3>
-<code class="signature">private  mixed <strong>$content</strong> = null</code>
-<div class="details">
-<p>The content of the requested page as DOMDocument. */</p></div>
-
-<hr>
-
 <h3 id="contentPath">contentPath</h3>
 <code class="signature">protected  mixed <strong>$contentPath</strong> = null</code>
 <div class="details">
@@ -166,17 +158,17 @@ Sets the singleton instance of the Site.</p></td>
 
 <hr>
 
-<h3 id="instance">instance</h3>
-<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
+<h3 id="domXPath">domXPath</h3>
+<code class="signature">private  mixed <strong>$domXPath</strong> = null</code>
 <div class="details">
-<p>Singleton instance of the Site. */</p></div>
+<p>The DOMXPath of the 'site.xml'. */</p></div>
 
 <hr>
 
-<h3 id="template">template</h3>
-<code class="signature">private  mixed <strong>$template</strong> = "default.php"</code>
+<h3 id="siteFilename">siteFilename</h3>
+<code class="signature">private  mixed <strong>$siteFilename</strong> = null</code>
 <div class="details">
-<p>The template of the requested page. */</p></div>
+<p>The name of the file containing the site information. */</p></div>
 
 <hr>
 
@@ -189,30 +181,70 @@ Sets the singleton instance of the Site.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="Site()">Site</h3>
-<code class="signature">public <strong>Site</strong>(string contentPath, string templatesPath)</code>
+<code class="signature">public <strong>Site</strong>()</code>
 <div class="details">
 <p>
-Constructor.</p><dl>
+Constructor.
+/</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="_generateSubnavigation()">_generateSubnavigation</h3>
+<code class="signature">private  array <strong>_generateSubnavigation</strong>(array result, DOMNodeList nodelist, string xpath, array openpath, <a href="../default/siteelement.html">SiteElement</a> parentSiteElement)</code>
+<div class="details">
+<p>
+Generates the submenus of the given nodes.</p><dl>
 <dt>Parameters:</dt>
-<dd>contentPath - Name of the folder where the content is placed.</dd>
-<dd>templatesPath - Name of the folder where your templates are placed.</dd>
+<dd>result - Array of SiteElements.</dd>
+<dd>nodelist - List of nodes in the current layer.</dd>
+<dd>xpath - The xpathquerystring of the current layer.</dd>
+<dd>openpath - The ids nodes that lead to the current pageId.</dd>
+<dd>parentSiteElement - The parent SiteElement</dd>
+<dt>Returns:</dt>
+<dd>Array containing the submenus of the given nodes.</dd>
 </dl>
 </div>
 
 <hr>
 
-<h2 id="detail_method">Method Detail</h2>
-<h3 id="generateContent()">generateContent</h3>
-<code class="signature">public  void <strong>generateContent</strong>()</code>
+<h3 id="_getCurrentPageDOMNode()">_getCurrentPageDOMNode</h3>
+<code class="signature">private  DOMNode <strong>_getCurrentPageDOMNode</strong>()</code>
 <div class="details">
 <p>
-Reads the xml of the requested page and transforms the Generators to Piwi-XML.
+Returns the DOMNode representing the current page.</p><dl>
+<dt>Returns:</dt>
+<dd>The DOMNode representing the current page.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId</h3>
+<code class="signature">private  DOMNode <strong>_getPageDOMNodeByPageId</strong>(string pageId)</code>
+<div class="details">
+<p>
+Returns the DOMNode representing the the page with the given Id.</p><dl>
+<dt>Parameters:</dt>
+<dd>pageId - The id of the page.</dd>
+<dt>Returns:</dt>
+<dd>The DOMNode representing the page with the given Id.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_loadSite()">_loadSite</h3>
+<code class="signature">private  void <strong>_loadSite</strong>()</code>
+<div class="details">
+<p>
+Loads the 'site.xml'.
 /</p></div>
 
 <hr>
 
 <h3 id="getAllowedRolesByPageId()">getAllowedRolesByPageId</h3>
-<code class="signature">public abstract  array <strong>getAllowedRolesByPageId</strong>(string pageId)</code>
+<code class="signature">public  array <strong>getAllowedRolesByPageId</strong>(string pageId)</code>
 <div class="details">
 <p>
 Returns the possible roles a user needs to access the currently requested page.
@@ -229,11 +261,11 @@ The array contains only '*' if any authenticated user allowed to access the page
 <hr>
 
 <h3 id="getCacheTime()">getCacheTime</h3>
-<code class="signature">protected abstract  integer <strong>getCacheTime</strong>()</code>
+<code class="signature">public  integer <strong>getCacheTime</strong>()</code>
 <div class="details">
 <p>
-Returns the page specific cachetime (the time that may pass until the content of the page is regenerated) 
-or null if none is specified.</p><dl>
+Returns the page specific cachetime (the time that may pass until the content 
+of the page is regenerated) or null if none is specified.</p><dl>
 <dt>Returns:</dt>
 <dd>The page specific cachetime or null if none is specified.</dd>
 </dl>
@@ -242,7 +274,7 @@ or null if none is specified.</p><dl>
 <hr>
 
 <h3 id="getFilePath()">getFilePath</h3>
-<code class="signature">protected abstract  string <strong>getFilePath</strong>()</code>
+<code class="signature">public  string <strong>getFilePath</strong>()</code>
 <div class="details">
 <p>
 Returns the path of the xml file containing the content of the requested page.</p><dl>
@@ -254,7 +286,7 @@ Returns the path of the xml file containing the content of the requested page.</
 <hr>
 
 <h3 id="getFullSiteMap()">getFullSiteMap</h3>
-<code class="signature">public abstract  array <strong>getFullSiteMap</strong>()</code>
+<code class="signature">public  array <strong>getFullSiteMap</strong>()</code>
 <div class="details">
 <p>
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</p><dl>
@@ -265,32 +297,8 @@ Returns the 'SiteMap' which is an array of SiteElements representing the whole w
 
 <hr>
 
-<h3 id="getHTMLTemplatePath()">getHTMLTemplatePath</h3>
-<code class="signature">protected abstract  string <strong>getHTMLTemplatePath</strong>()</code>
-<div class="details">
-<p>
-Returns the template of the requested page or null if not specified.</p><dl>
-<dt>Returns:</dt>
-<dd>The template of the requested page.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getInstance()">getInstance</h3>
-<code class="signature">public static  <a href="../default/site.html">Site</a> <strong>getInstance</strong>()</code>
-<div class="details">
-<p>
-Returns the singleton instance of the Site.</p><dl>
-<dt>Returns:</dt>
-<dd>The singleton instance of the Site.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getSupportedLanguages()">getSupportedLanguages</h3>
-<code class="signature">public abstract  array <strong>getSupportedLanguages</strong>()</code>
+<code class="signature">public  array <strong>getSupportedLanguages</strong>()</code>
 <div class="details">
 <p>
 Returns a list of supported languages.</p><dl>
@@ -313,34 +321,35 @@ Returns the template of the requested page.</p><dl>
 
 <hr>
 
-<h3 id="serialize()">serialize</h3>
-<code class="signature">public  void <strong>serialize</strong>()</code>
+<h3 id="setContentPath()">setContentPath</h3>
+<code class="signature">public  void <strong>setContentPath</strong>(mixed path, string contentPath)</code>
 <div class="details">
-<p>
-Excecutes the Serializer.
-/</p></div>
-
-<hr>
-
-<h3 id="setContent()">setContent</h3>
-<code class="signature">public  void <strong>setContent</strong>(string content)</code>
-<div class="details">
-<p>
-Sets the content of the page.</p><dl>
+<p></p><dl>
 <dt>Parameters:</dt>
-<dd>content - The content as xml.</dd>
+<dd>contentPath - Name of the folder where the content is placed.</dd>
 </dl>
 </div>
 
 <hr>
 
-<h3 id="setInstance()">setInstance</h3>
-<code class="signature">public static  void <strong>setInstance</strong>(<a href="../default/site.html">Site</a> site)</code>
+<h3 id="setSiteFilename()">setSiteFilename</h3>
+<code class="signature">public  void <strong>setSiteFilename</strong>(string siteFilename)</code>
 <div class="details">
 <p>
-Sets the singleton instance of the Site.</p><dl>
+Set the name of the file containing the site information.</p><dl>
 <dt>Parameters:</dt>
-<dd>site - The singleton instance of the Site.</dd>
+<dd>siteFilename - The name of the file containing the site information.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setTemplatesPath()">setTemplatesPath</h3>
+<code class="signature">public  void <strong>setTemplatesPath</strong>(mixed path, string templatesPath)</code>
+<div class="details">
+<p></p><dl>
+<dt>Parameters:</dt>
+<dd>templatesPath - Name of the folder where your templates are placed.</dd>
 </dl>
 </div>
 

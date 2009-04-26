@@ -58,10 +58,6 @@ Manages the settings configured in 'config.xml'.
 <td class="description"><p class="name"><a href="#configFilePath">$configFilePath</a></p><p class="description">Path of the file containing the configuration. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#configurationManagerInstance">$configurationManagerInstance</a></p><p class="description">Singleton instance of the ConfigurationManager. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#domXPath">$domXPath</a></p><p class="description">The DOMXPath of the 'config.xml'. </p></td>
 </tr>
@@ -74,7 +70,7 @@ Manages the settings configured in 'config.xml'.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#ConfigurationManager()">ConfigurationManager</a>(string configFilePath)</p><p class="description">
+<td class="description"><p class="name"><a href="#ConfigurationManager()">ConfigurationManager</a>()</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -110,11 +106,6 @@ Returns an array containing all Navigations.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  <a href="../default/configurationmanager.html">ConfigurationManager</a></td>
-<td class="description"><p class="name"><a href="#getInstance()">getInstance</a>()</p><p class="description">
-Returns the singleton instance of the ConfigurationManager.</p></td>
-</tr>
-<tr>
 <td class="type"> string</td>
 <td class="description"><p class="name"><a href="#getLoggingConfiguration()">getLoggingConfiguration</a>()</p><p class="description">
 Returns the path to the logging configuration file or null if none is specified.</p></td>
@@ -135,14 +126,14 @@ Returns the RoleProvider which manages the authentication of users.</p></td>
 Returns the Serializer for the given format or null if none is found.</p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string configFilePath)</p><p class="description">
-Initializes the singleton instance of this Class.</p></td>
-</tr>
-<tr>
 <td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isAuthenticationEnabled()">isAuthenticationEnabled</a>()</p><p class="description">
 Returns true if authentication is enabled otherwise false.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setConfigFilePath()">setConfigFilePath</a>(string configFilePath)</p><p class="description">
+Sets the path of the file containing the configuration</p></td>
 </tr>
 </table>
 
@@ -151,13 +142,6 @@ Returns true if authentication is enabled otherwise false.</p></td>
 <code class="signature">private  mixed <strong>$configFilePath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the configuration. */</p></div>
-
-<hr>
-
-<h3 id="configurationManagerInstance">configurationManagerInstance</h3>
-<code class="signature">private static  mixed <strong>$configurationManagerInstance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the ConfigurationManager. */</p></div>
 
 <hr>
 
@@ -177,15 +161,11 @@ Returns true if authentication is enabled otherwise false.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="ConfigurationManager()">ConfigurationManager</h3>
-<code class="signature">public <strong>ConfigurationManager</strong>(string configFilePath)</code>
+<code class="signature">public <strong>ConfigurationManager</strong>()</code>
 <div class="details">
 <p>
 Constructor.
-Private constructor since only used by 'initialize'.</p><dl>
-<dt>Parameters:</dt>
-<dd>configFilePath - Path of the file containing the configuration.</dd>
-</dl>
-</div>
+/</p></div>
 
 <hr>
 
@@ -249,18 +229,6 @@ The values are the the generated menus as XHTML.</p><dl>
 
 <hr>
 
-<h3 id="getInstance()">getInstance</h3>
-<code class="signature">public static  <a href="../default/configurationmanager.html">ConfigurationManager</a> <strong>getInstance</strong>()</code>
-<div class="details">
-<p>
-Returns the singleton instance of the ConfigurationManager.</p><dl>
-<dt>Returns:</dt>
-<dd>The singleton instance of the ConfigurationManager.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="getLoggingConfiguration()">getLoggingConfiguration</h3>
 <code class="signature">public  string <strong>getLoggingConfiguration</strong>()</code>
 <div class="details">
@@ -309,18 +277,6 @@ Returns the Serializer for the given format or null if none is found.</p><dl>
 
 <hr>
 
-<h3 id="initialize()">initialize</h3>
-<code class="signature">public static  void <strong>initialize</strong>(string configFilePath)</code>
-<div class="details">
-<p>
-Initializes the singleton instance of this Class.</p><dl>
-<dt>Parameters:</dt>
-<dd>configFilePath - Path of the file containing the configuration.</dd>
-</dl>
-</div>
-
-<hr>
-
 <h3 id="isAuthenticationEnabled()">isAuthenticationEnabled</h3>
 <code class="signature">public  boolean <strong>isAuthenticationEnabled</strong>()</code>
 <div class="details">
@@ -328,6 +284,18 @@ Initializes the singleton instance of this Class.</p><dl>
 Returns true if authentication is enabled otherwise false.</p><dl>
 <dt>Returns:</dt>
 <dd>True if authentication is enabled otherwise false.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setConfigFilePath()">setConfigFilePath</h3>
+<code class="signature">public  void <strong>setConfigFilePath</strong>(string configFilePath)</code>
+<div class="details">
+<p>
+Sets the path of the file containing the configuration</p><dl>
+<dt>Parameters:</dt>
+<dd>configFilePath - Path of the file containing the configuration.</dd>
 </dl>
 </div>
 

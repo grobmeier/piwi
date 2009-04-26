@@ -62,10 +62,6 @@ Used to retrieve Forms.
 <td class="description"><p class="name"><a href="#formsXMLPath">$formsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the forms that can be used. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the FormsFactory. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#xml">$xml</a></p><p class="description">The forms definition as xml. </p></td>
 </tr>
@@ -74,7 +70,7 @@ Used to retrieve Forms.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#FormFactory()">FormFactory</a>(string formsXMLPath)</p><p class="description">
+<td class="description"><p class="name"><a href="#FormFactory()">FormFactory</a>()</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -88,15 +84,15 @@ Constructor.
 Constructs an DOMXPath of the From with the given id.</p></td>
 </tr>
 <tr>
-<td class="type">static  DOMXPath</td>
+<td class="type"> DOMXPath</td>
 <td class="description"><p class="name"><a href="#getFormById()">getFormById</a>(string formId)</p><p class="description">
 Returns the Form with the given id as DOMXPath.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string formsXMLPath)</p><p class="description">
-Initializes the singleton instance of this Class.</p></td>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setFormsXMLPath()">setFormsXMLPath</a>(string formsXMLPath)</p><p class="description">
+Sets the path of the file containing the xml-definition of the forms that can be used.</p></td>
 </tr>
 </table>
 
@@ -115,13 +111,6 @@ Initializes the singleton instance of this Class.</p></td>
 
 <hr>
 
-<h3 id="instance">instance</h3>
-<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the FormsFactory. */</p></div>
-
-<hr>
-
 <h3 id="xml">xml</h3>
 <code class="signature">private  mixed <strong>$xml</strong> = null</code>
 <div class="details">
@@ -131,15 +120,11 @@ Initializes the singleton instance of this Class.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="FormFactory()">FormFactory</h3>
-<code class="signature">public <strong>FormFactory</strong>(string formsXMLPath)</code>
+<code class="signature">public <strong>FormFactory</strong>()</code>
 <div class="details">
 <p>
 Constructor.
-Private constructor since only used by 'initialize'.</p><dl>
-<dt>Parameters:</dt>
-<dd>formsXMLPath - Path of the file containing the xml-definition of the forms that can be used.</dd>
-</dl>
-</div>
+/</p></div>
 
 <hr>
 
@@ -157,7 +142,7 @@ Constructs an DOMXPath of the From with the given id.</p><dl>
 <hr>
 
 <h3 id="getFormById()">getFormById</h3>
-<code class="signature">public static  DOMXPath <strong>getFormById</strong>(string formId)</code>
+<code class="signature">public  DOMXPath <strong>getFormById</strong>(string formId)</code>
 <div class="details">
 <p>
 Returns the Form with the given id as DOMXPath.
@@ -172,11 +157,11 @@ Otherwise a the form will be loaded and stored in a map.</p><dl>
 
 <hr>
 
-<h3 id="initialize()">initialize</h3>
-<code class="signature">public static  void <strong>initialize</strong>(string formsXMLPath)</code>
+<h3 id="setFormsXMLPath()">setFormsXMLPath</h3>
+<code class="signature">public  void <strong>setFormsXMLPath</strong>(string formsXMLPath)</code>
 <div class="details">
 <p>
-Initializes the singleton instance of this Class.</p><dl>
+Sets the path of the file containing the xml-definition of the forms that can be used.</p><dl>
 <dt>Parameters:</dt>
 <dd>formsXMLPath - Path of the file containing the xml-definition of the forms that can be used.</dd>
 </dl>

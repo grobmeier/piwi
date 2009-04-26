@@ -62,10 +62,6 @@ Used to initiate and retrieve Connectors.
 <td class="description"><p class="name"><a href="#connectorsXMLPath">$connectorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the connectors that can be used. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the ConnectorFactory. </p></td>
-</tr>
-<tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#xml">$xml</a></p><p class="description">The connectors definition as xml. </p></td>
 </tr>
@@ -74,7 +70,7 @@ Used to initiate and retrieve Connectors.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#ConnectorFactory()">ConnectorFactory</a>(string connectorsXMLPath)</p><p class="description">
+<td class="description"><p class="name"><a href="#ConnectorFactory()">ConnectorFactory</a>()</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -89,15 +85,15 @@ Constructs an instance of the Connector with the given id.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  <a href="../default/connector.html">Connector</a></td>
+<td class="type"> <a href="../default/connector.html">Connector</a></td>
 <td class="description"><p class="name"><a href="#getConnectorById()">getConnectorById</a>(string connectorId)</p><p class="description">
 Returns the Connector with the given id.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  void</td>
-<td class="description"><p class="name"><a href="#initialize()">initialize</a>(string connectorsXMLPath)</p><p class="description">
-Initializes the singleton instance of this Class.</p></td>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setConnectorsXMLPath()">setConnectorsXMLPath</a>(string connectorsXMLPath)</p><p class="description">
+Set the path of the file containing the xml-definition</p></td>
 </tr>
 </table>
 
@@ -116,13 +112,6 @@ Initializes the singleton instance of this Class.</p></td>
 
 <hr>
 
-<h3 id="instance">instance</h3>
-<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the ConnectorFactory. */</p></div>
-
-<hr>
-
 <h3 id="xml">xml</h3>
 <code class="signature">private  mixed <strong>$xml</strong> = null</code>
 <div class="details">
@@ -132,16 +121,11 @@ Initializes the singleton instance of this Class.</p></td>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="ConnectorFactory()">ConnectorFactory</h3>
-<code class="signature">public <strong>ConnectorFactory</strong>(string connectorsXMLPath)</code>
+<code class="signature">public <strong>ConnectorFactory</strong>()</code>
 <div class="details">
 <p>
 Constructor.
-Private constructor since only used by 'initialize'.</p><dl>
-<dt>Parameters:</dt>
-<dd>connectorsXMLPath - Path of the file containing the xml-definition
- * of the connectors that can be used.</dd>
-</dl>
-</div>
+/</p></div>
 
 <hr>
 
@@ -160,7 +144,7 @@ Arguments from the connector xml file will be passed to the Connector.</p><dl>
 <hr>
 
 <h3 id="getConnectorById()">getConnectorById</h3>
-<code class="signature">public static  <a href="../default/connector.html">Connector</a> <strong>getConnectorById</strong>(string connectorId)</code>
+<code class="signature">public  <a href="../default/connector.html">Connector</a> <strong>getConnectorById</strong>(string connectorId)</code>
 <div class="details">
 <p>
 Returns the Connector with the given id.
@@ -175,14 +159,13 @@ Otherwise a new instance will be created and stored in a map.</p><dl>
 
 <hr>
 
-<h3 id="initialize()">initialize</h3>
-<code class="signature">public static  void <strong>initialize</strong>(string connectorsXMLPath)</code>
+<h3 id="setConnectorsXMLPath()">setConnectorsXMLPath</h3>
+<code class="signature">public  void <strong>setConnectorsXMLPath</strong>(string connectorsXMLPath)</code>
 <div class="details">
 <p>
-Initializes the singleton instance of this Class.</p><dl>
+Set the path of the file containing the xml-definition</p><dl>
 <dt>Parameters:</dt>
-<dd>connectorsXMLPath - Path of the file containing the xml-definition 
- * of the connectors that can be used.</dd>
+<dd>connectorsXMLPath - Path of the file containing the xml-definition</dd>
 </dl>
 </div>
 

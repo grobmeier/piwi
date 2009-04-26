@@ -67,10 +67,10 @@ Returns the exception as string.</dd>
 <dt><a href="default/mediacenter.html#_addImagesToAlbum()">_addImagesToAlbum()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
 <dd>
 Retrieves all images of the given folder and adds them to the album.</dd>
-<dt><a href="default/xmlsite.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Generates the submenus of the given nodes.</dd>
-<dt><a href="default/xmlsite.html#_getCurrentPageDOMNode()">_getCurrentPageDOMNode()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#_getCurrentPageDOMNode()">_getCurrentPageDOMNode()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the DOMNode representing the current page.</dd>
 <dt><a href="default/generatorfactory.html#_getGeneratorById()">_getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
@@ -85,7 +85,7 @@ for intializing static members, we need to do some lazy initilizing here.
 <dt><a href="default/imagenavigationgenerator.html#_getNavigation()">_getNavigation()</a> - Method in class <a href="default/imagenavigationgenerator.html">default.ImageNavigationGenerator</a></dt>
 <dd>
 Returns the recursivly built navigation.</dd>
-<dt><a href="default/xmlsite.html#_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the DOMNode representing the the page with the given Id.</dd>
 <dt><a href="default/sitemapgenerator.html#_getSiteMapAsXml()">_getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
@@ -125,9 +125,10 @@ Loads the 'config.xml'.
 <dd>
 Loads the 'context.xml'.
 </dd>
-<dt><a href="default/xmlsite.html#_loadSite()">_loadSite()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#_loadSite()">_loadSite()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
-Loads the 'site.xml'.</dd>
+Loads the 'site.xml'.
+</dd>
 </dl>
 <h1 id="letterA">A</h1>
 <dl>
@@ -165,6 +166,10 @@ Used within the XSLT-Stylesheets to interpret the <generator /> tag. </dd>
 <dt><a href="default/formprocessor.html#callPreProcessor()">callPreProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Calls a preprocessor defined as an attribute in the step tag.
+</dd>
+<dt><a href="default/page.html#checkPermissions()">checkPermissions()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dd>
+Check if user authentication is activated and whether the requested page has restrictions.
 </dd>
 <dt><a href="default/classloader.html">ClassLoader()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
@@ -262,10 +267,9 @@ Processes forms specified as PiwiForms.
 <dt><a href="default/sitemappathnavigationgenerator.html#generate()">generate()</a> - Method in class <a href="default/sitemappathnavigationgenerator.html">default.SiteMapPathNavigationGenerator</a></dt>
 <dd>
 Builds the navigation.</dd>
-<dt><a href="default/site.html#generateContent()">generateContent()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/xmlpage.html#generateContent()">generateContent()</a> - Method in class <a href="default/xmlpage.html">default.XMLPage</a></dt>
 <dd>
-Reads the xml of the requested page and transforms the Generators to Piwi-XML.
-</dd>
+Reads the xml of the requested page and transforms the Generators to Piwi-XML.</dd>
 <dt><a href="default/formprocessor.html#generateInput()">generateInput()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Converts the given INPUT element to PiwiXML.</dd>
@@ -289,13 +293,17 @@ Used to initiate and retrieve Generators.
 <dt><a href="default/mediacenter.html#getAlbums()">getAlbums()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
 <dd>
 Returns the albums sorted by date.</dd>
-<dt><a href="default/xmlsite.html#getAllowedRolesByPageId()">getAllowedRolesByPageId()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#getAllowedRolesByPageId()">getAllowedRolesByPageId()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
-Returns the possible roles a user needs to access the currently requested page.</dd>
+Returns the possible roles a user needs to access the currently requested page.
+</dd>
 <dt><a href="default/beanfactory.html#getBeanById()">getBeanById()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Returns the Object with the given id.</dd>
-<dt><a href="default/xmlsite.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/page.html#getCache()">getCache()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dd>
+Returns cache instance.</dd>
+<dt><a href="default/site.html#getCacheTime()">getCacheTime()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the page specific cachetime (the time that may pass until the content 
 of the page is regenerated) or null if none is specified.</dd>
@@ -328,9 +336,9 @@ Returns the path of the a custom XSLT stylesheet or null if none is specified.</
 <dt><a href="default/request.html#getExtension()">getExtension()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Returns the extension/format of the requested page (e.g. </dd>
-<dt><a href="default/xmlsite.html#getFilePath()">getFilePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/siteelement.html#getFilePath()">getFilePath()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
-Returns the path of the xml file containing the content of the requested page.</dd>
+Returns the url of the content.</dd>
 <dt><a href="default/formprocessor.html#getFiles()">getFiles()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Returns an array containing all files of the currently processed form.
@@ -342,25 +350,19 @@ Returns all attribute/value-pairs of a DOMElement as a string. </dd>
 <dd>
 Returns the Form with the given id as DOMXPath.
 </dd>
-<dt><a href="default/xmlsite.html#getFullSiteMap()">getFullSiteMap()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#getFullSiteMap()">getFullSiteMap()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the 'SiteMap' which is an array of SiteElements representing the whole website structure.</dd>
 <dt><a href="default/configurationmanager.html#getHTMLNavigations()">getHTMLNavigations()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns an array containing all Navigations.
 </dd>
-<dt><a href="default/xmlsite.html#getHTMLTemplatePath()">getHTMLTemplatePath()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
-<dd>
-Returns the template of the requested page or null if not specified.</dd>
 <dt><a href="default/siteelement.html#getId()">getId()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the id of the page.</dd>
 <dt><a href="default/album.html#getImages()">getImages()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Returns the images in the album.</dd>
-<dt><a href="default/site.html#getInstance()">getInstance()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
-<dd>
-Returns the singleton instance of the Site.</dd>
 <dt><a href="default/siteelement.html#getLabel()">getLabel()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the label of the page.</dd>
@@ -383,9 +385,9 @@ Returns the name of the folder.</dd>
 <dt><a href="default/pager.html#getNextPage()">getNextPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the next page.</dd>
-<dt><a href="default/cache.html#getPage()">getPage()</a> - Method in class <a href="default/cache.html">default.Cache</a></dt>
+<dt><a href="default/siteselector.html#getPage()">getPage()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
 <dd>
-Returns a DOMDocument containing the cached page or null if page has not been found in cache.</dd>
+Returns the reference to the processed page.</dd>
 <dt><a href="default/request.html#getPageId()">getPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Returns the id of the requested page.</dd>
@@ -411,13 +413,16 @@ Returns the RoleProvider which manages the authentication of users.</dd>
 <dt><a href="default/configurationmanager.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the Serializer for the given format or null if none is found.</dd>
+<dt><a href="default/page.html#getSite()">getSite()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dd>
+Returns the reference to the Site.</dd>
 <dt><a href="default/sitemaphelper.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the SiteElement with the given in id or null if no item is found.</dd>
 <dt><a href="default/formprocessor.html#getStepXML()">getStepXML()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Processes the current step of the form and returns it as XML.</dd>
-<dt><a href="default/xmlsite.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/xmlsite.html">default.XMLSite</a></dt>
+<dt><a href="default/site.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns a list of supported languages.</dd>
 <dt><a href="default/site.html#getTemplate()">getTemplate()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
@@ -442,7 +447,7 @@ Serializes the given XML to HTML.
 <dt><a href="default/imagenavigationgenerator.html">ImageNavigationGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Creates a image based navigation. </dd>
-<dt><a href="default/generatorfactory.html#initialize()">initialize()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
+<dt><a href="default/beanfactory.html#initialize()">initialize()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
 <dt><a href="default/formprocessor.html#initRequestParams()">initRequestParams()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
@@ -540,6 +545,10 @@ Interface that navigation generators have to implement.
 </dl>
 <h1 id="letterP">P</h1>
 <dl>
+<dt><a href="default/page.html">Page()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Renders the requested page and creates the navigation.
+</dd>
 <dt><a href="default/pager.html">Pager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Helper class to page contents of a database query.
@@ -607,27 +616,41 @@ Interface that serializers have to implement.
 </dd>
 <dt><a href="default/siteelement.html#setChildren()">setChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>Sets the children</dd>
-<dt><a href="default/site.html#setContent()">setContent()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dt><a href="default/configurationmanager.html#setConfigFilePath()">setConfigFilePath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Sets the path of the file containing the configuration</dd>
+<dt><a href="default/connectorfactory.html#setConnectorsXMLPath()">setConnectorsXMLPath()</a> - Method in class <a href="default/connectorfactory.html">default.ConnectorFactory</a></dt>
+<dd>
+Set the path of the file containing the xml-definition</dd>
+<dt><a href="default/siteselector.html#setContent()">setContent()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
 <dd>
 Sets the content of the page.</dd>
+<dt><a href="default/site.html#setContentPath()">setContentPath()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dd></dd>
 <dt><a href="default/album.html#setCreatedAt()">setCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Sets the date when the album has been created.</dd>
 <dt><a href="default/request.html#setExtension()">setExtension()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Sets the extension/format of the requested page (e.g. </dd>
+<dt><a href="default/formfactory.html#setFormsXMLPath()">setFormsXMLPath()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
+<dd>
+Sets the path of the file containing the xml-definition of the forms that can be used.</dd>
+<dt><a href="default/generatorfactory.html#setGeneratorsXMLPath()">setGeneratorsXMLPath()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
+<dd>
+Set the path of the file containing the xml-definition </dd>
 <dt><a href="default/siteelement.html#setHiddenInNavigation()">setHiddenInNavigation()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the Navigation.</dd>
 <dt><a href="default/siteelement.html#setHiddenInSiteMap()">setHiddenInSiteMap()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the SiteMap.</dd>
-<dt><a href="default/site.html#setInstance()">setInstance()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
-<dd>
-Sets the singleton instance of the Site.</dd>
 <dt><a href="default/siteelement.html#setOpen()">setOpen()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the SiteElement to open.</dd>
+<dt><a href="default/siteselector.html#setPage()">setPage()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dd>
+Sets the reference to the processed page.</dd>
 <dt><a href="default/request.html#setPageId()">setPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Sets the id of the requested page.</dd>
@@ -640,6 +663,14 @@ Used to pass parameters to the Generator.</dd>
 <dt><a href="default/siteelement.html#setSelected()">setSelected()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the SiteElement to selected.</dd>
+<dt><a href="default/page.html#setSite()">setSite()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dd>
+Sets the reference to the Site.</dd>
+<dt><a href="default/site.html#setSiteFilename()">setSiteFilename()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dd>
+Set the name of the file containing the site information.</dd>
+<dt><a href="default/site.html#setTemplatesPath()">setTemplatesPath()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
+<dd></dd>
 <dt><a href="default/simplegallerygenerator.html">SimpleGalleryGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates a picture gallery.
@@ -650,8 +681,8 @@ Creates a simple navigation.
 </dd>
 <dt><a href="default/site.html">Site()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
-Renders the requested page and creates the navigation.
-</dd>
+TODO: Add comment
+/</dd>
 <dt><a href="default/siteelement.html">SiteElement()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Represents a page item.
@@ -672,6 +703,10 @@ Provides helper functions to generate SiteMaps.
 <dd>
 Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
 </dd>
+<dt><a href="default/siteselector.html">SiteSelector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+TODO: Write comment
+/</dd>
 <dt><a href="default/sqlite2connector.html">SQLite2Connector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Establishes connections to SQLite 2 databases.
@@ -736,7 +771,7 @@ Serializes the given XML to Word (DOC).
 </dl>
 <h1 id="letterX">X</h1>
 <dl>
-<dt><a href="default/xmlsite.html">XMLSite()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dt><a href="default/xmlpage.html">XMLPage()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Renders the requested page and creates the navigation based on 'site.xml'.</dd>
 <dt><a href="default/xsltstylesheetstream.html">XSLTStylesheetStream()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
