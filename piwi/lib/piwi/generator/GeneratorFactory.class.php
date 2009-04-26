@@ -19,6 +19,7 @@ class GeneratorFactory {
 	 * Constructor.
 	 */
 	public function __construct() {
+		self :: $instance = null;
 	}
 	
 	/**

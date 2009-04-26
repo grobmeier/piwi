@@ -3,7 +3,7 @@ class GeneratorFactoryTest extends UnitTestCase {
 
 	function init() {
 		$generatorFactory = new GeneratorFactory();
-		$generatorFactory->setGeneratorsXMLPath(dirname(__FILE__) . '/data/generators.xml');
+		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
 	}
 	
 	function testCallGeneratorByCorrectIdButButNonInitializedGeneratorFactory() {
@@ -12,13 +12,13 @@ class GeneratorFactoryTest extends UnitTestCase {
 	}
 	
 	function testCallGeneratorByCorrectId() {
-//		$this->init();
-//		$content = $content = GeneratorFactory :: callGenerator('testGenerator');
-//		$this->assertIsA($content, DOMDocument, 'Generator has invalid type.');
+		$this->init();
+		$content = $content = GeneratorFactory :: callGenerator('testGenerator');
+		$this->assertIsA($content, DOMDocument, 'Generator has invalid type.');
 		
-//		// get it again to test caching
-//		$content = $content = GeneratorFactory :: callGenerator('testGenerator');
-//		$this->assertIsA($content, DOMDocument, 'Generator has invalid type.');		
+		// get it again to test caching
+		$content = $content = GeneratorFactory :: callGenerator('testGenerator');
+		$this->assertIsA($content, DOMDocument, 'Generator has invalid type.');		
 	}
 	
 	function testCallGeneratorByWrongId() {
@@ -33,10 +33,12 @@ class GeneratorFactoryTest extends UnitTestCase {
 		$content = $content = GeneratorFactory :: callGenerator('wrongInterface');
 	}
 	
-	// TODO: fix this
-//	function testInitializeGeneratorFactoryWithNonExistingFile() {
-//		$this->expectException(PiwiException, 'Generators definition file should not exist.');
-//		$content = GeneratorFactory :: callGenerator('testGenerator');
-//	}
+	function testInitializeGeneratorFactoryWithNonExistingFile() {
+		$generatorFactory = new GeneratorFactory();
+		BeanFactory :: initialize(dirname(__FILE__) . '/data/contextIllegalPath.xml');
+		
+		$this->expectException(PiwiException, 'Generators definition file should not exist.');
+		$content = GeneratorFactory :: callGenerator('testGenerator');
+	}
 }
 ?>
