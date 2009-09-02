@@ -34,6 +34,7 @@
 	</language>
 	<language region="de">
 		<page id="default" label="Start" href="de/default.xml" template="default_slideshow.php" />
+		<!-- <page id="stream" label="Stream" href="de/stream.xml" /> -->
 		<page id="features" label="PIWI Features" href="de/features.xml">
 			<page id="forms" label="Formulare" href="de/features/forms.xml" />
 			<page id="generators" label="Generatoren" href="de/features/generators.xml">

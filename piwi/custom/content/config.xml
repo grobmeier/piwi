@@ -35,7 +35,7 @@
 		Otherwise the standard configuration will be used. This one is optimized for 
 		the use with a standard website and normal production: Daily file rolling and error level.
 	 -->
-	 <!--  
+	<!--   
 		<logConfiguration>custom/content/logging-config.xml</logConfiguration>
 	   -->
 	  
@@ -61,6 +61,7 @@
 		<serializer extension="doc" serializer="WordSerializer" />
 		<serializer extension="xls" serializer="ExcelSerializer" />
 		<serializer extension="json" serializer="JsonSerializer" />
-		<serializer extension="txt" serializer="TextSerializer" />		
+		<serializer extension="txt" serializer="TextSerializer" />
+		<serializer extension="stream" serializer="StreamSerializer" />		
 	</serializers>
 </configuration>
