@@ -69,7 +69,7 @@ class MySQLConnector implements Connector {
    		if (!$result) {
    			throw new DatabaseException('Querying database failed (' . mysql_error() . ').', 
 				DatabaseException::ERR_QUERY_FAILED);
-   		} else if(is_bool($result)) {
+   		} else if (is_bool($result)) {
    			return $result;
 		}
    		

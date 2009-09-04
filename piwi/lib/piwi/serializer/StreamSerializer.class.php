@@ -1,6 +1,6 @@
 <?php
 /**
- * Serializes the given XML to Excel (XSL).
+ * Serializes a file as octet-stream.
  */
 class StreamSerializer implements Serializer {
 	/**
@@ -13,7 +13,7 @@ class StreamSerializer implements Serializer {
 		$stream = null;
 		$name = null;
 		foreach ($elements as $item) {
-			if($item->hasAttributes()) {
+			if ($item->hasAttributes()) {
 				$stream = $item->getAttribute('file');
 				$name = $item->getAttribute('name');
 				break;
@@ -22,11 +22,13 @@ class StreamSerializer implements Serializer {
 		
 		header("Content-type: application/octet-stream"); 
 		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-		if($name !== null) {
- 			header('Content-Disposition: attachment; filename="'.$name.'"');
+		
+		if ($name !== null) {
+ 			header('Content-Disposition: attachment; filename="' . $name . '"');
 		} else {
- 			header('Content-Disposition: attachment; filename="'.$stream.'"');
+ 			header('Content-Disposition: attachment; filename="' . $stream . '"');
 		}
+		
 		echo $stream;
 	}
 }

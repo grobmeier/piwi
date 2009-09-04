@@ -11,6 +11,7 @@
 0.1.0 - Beanfactory Release
 
     * New: Included Beanfactory for dependency injection
+    * Fixed issues: 29, 30
 
 0.0.9 - Logger Release
 
@@ -19,7 +20,7 @@
     * New: Added simple json serializer
     * Fix: Improved form processing
     * Fix: Enhanced exceptionhandling
-    * Fixed issues: 5, 7, 8, 11-19, 22, 26, 27  
+    * Fixed issues: 5, 7, 8, 11-19, 22, 26, 27
 
 0.0.8 - Refactored Release
 

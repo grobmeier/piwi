@@ -40,6 +40,7 @@ abstract class Page {
 			} else {
 				// Since user is not logged in, show login page				
 				Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
+				Request :: setExtension('html');
 			}
 		}
 	}

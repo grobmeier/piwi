@@ -102,6 +102,15 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Protected page', 'Login failed.');
 	}
 	
+	function testAuthenticationWhenNonHTMLIsRequested() {
+		$this->get(self :: $HOST . 'authentication_protected.pdf');
+		
+		// check if login screen appears
+		$this->assertWantedText('Login', 'Login not displayed.');
+		$this->assertWantedText('Name', 'Login not displayed.');
+		$this->assertWantedText('Password', 'Login not displayed.');
+	}
+	
 	function testAuthenticationWithExistingInvalidCookie() {
 		$this->setCookie('username', '666');
 		$this->setCookie('password', '666');
