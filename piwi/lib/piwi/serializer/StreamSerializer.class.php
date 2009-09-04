@@ -11,18 +11,22 @@ class StreamSerializer implements Serializer {
 		$elements = $domDocument->getElementsByTagName('stream');
 		
 		$stream = null;
+		$name = null;
 		foreach ($elements as $item) {
 			if($item->hasAttributes()) {
 				$stream = $item->getAttribute('file');
+				$name = $item->getAttribute('name');
 				break;
 			}
 		}
 		
-		
 		header("Content-type: application/octet-stream"); 
 		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
- 		header('Content-Disposition: attachment; filename="'.$stream.'"');
- 		
+		if($name !== null) {
+ 			header('Content-Disposition: attachment; filename="'.$name.'"');
+		} else {
+ 			header('Content-Disposition: attachment; filename="'.$stream.'"');
+		}
 		echo $stream;
 	}
 }

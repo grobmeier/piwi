@@ -7,6 +7,9 @@
 		<keywords></keywords>
 	</head>
 	<content position="main">
-		<stream file="custom/files/gallery/Nature/originals/1.jpg" >test</stream>
+		<img src="custom/files/gallery/Nature/thumbs/1.jpg" />
+		<stream file="custom/files/gallery/Nature/originals/1.jpg" name="myimage.jpg">
+			<a href="stream.stream">Click here to stream the image file.</a>
+		</stream>
 	</content>
 </document>
