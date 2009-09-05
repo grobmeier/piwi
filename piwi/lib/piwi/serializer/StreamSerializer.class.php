@@ -8,29 +8,37 @@ class StreamSerializer implements Serializer {
 	 * @param DOMDocument $domDocument The content as DOMDocument.
 	 */
 	public function serialize(DOMDocument $domDocument) {
-		$elements = $domDocument->getElementsByTagName('stream');
-		
-		$file = null;
-		$name = null;
+		$parameters = Request :: getParameters();
+		$fileId = $parameters['fileId'];
 
-		foreach ($elements as $item) {			
-			if ($item->hasAttributes()) {
-				$file = $item->getAttribute('file');
-				$name = $item->getAttribute('name');
-				break;
+		if ($fileId != null) {			
+			foreach ($domDocument->getElementsByTagName('stream') as $element) {
+       			if ($element->hasAttribute('id') && $element->getAttribute('id') == $fileId) {
+       								$file = $element->getAttribute('file');
+					$name = $fileId;
+				
+					if ($element->hasAttribute('name')) {
+						$name =  $element->getAttribute('name');
+					}
+				
+					$this->_streamFile($file, $name);
+       			}
 			}
 		}
-
+	}
+	
+	/**
+	 * Streams the given file.
+	 * @param string $filepath The path of the file.
+	 * @param string $name The name of the file.
+	 */
+	private function _streamFile($filepath, $name) {
 		header("Content-type: application/octet-stream"); 
 		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 		
-		if ($name !== null) {
- 			header('Content-Disposition: attachment; filename="' . $name . '"');
-		} else {
- 			header('Content-Disposition: attachment; filename="' . $file . '"');
-		}
-		
-		readfile($file);
+ 		header('Content-Disposition: attachment; filename="' . $name . '"');
+ 		
+ 		readfile($filepath);
 	}
 }
 ?>

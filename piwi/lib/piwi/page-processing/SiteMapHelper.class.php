@@ -60,7 +60,7 @@ class SiteMapHelper {
 				$foundElement = $element;
 				break;
 			} else if ($element->getChildren() != null) {
-					$foundElement = self :: getSiteMapItemsById($element->getChildren(), $id, $foundElement);
+				$foundElement = self :: getSiteMapItemsById($element->getChildren(), $id, $foundElement);
 			}
 		}
 		return $foundElement;
