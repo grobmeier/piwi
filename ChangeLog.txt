@@ -11,6 +11,7 @@
 0.1.0 - Beanfactory Release
 
     * New: Included Beanfactory for dependency injection
+    * New: Ádded support for streaming files
     * Fixed issues: 29, 30
 
 0.0.9 - Logger Release

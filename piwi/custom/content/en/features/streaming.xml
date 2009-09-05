@@ -3,10 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
 	<head>
-		<title>Home</title>
+		<title>Streaming</title>
 		<keywords></keywords>
 	</head>
 	<content position="main">
+		<header>Streaming</header>
+		<section>
+			Piwi supports streaming of files. That makes it possible for example, to provide files for registered users only.
+		</section>
+		<separator />
 		<img src="custom/files/gallery/Nature/thumbs/1.jpg" />
 		<stream id="image1" file="custom/files/gallery/Nature/originals/1.jpg" name="myimage.jpg">
 			<a href="streaming.stream?fileId=image1">Click here to stream the image file.</a>

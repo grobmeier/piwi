@@ -22,7 +22,7 @@
 			<page id="caching" label="Caching" href="en/features/caching.xml" />
 			<page id="other_template" label="Various Templates" href="en/features/other_template.xml"
 				template="other.php" />
-			<page id="streaming" label="Stream" href="en/features/streaming.xml" />	
+			<page id="streaming" label="Streaming" href="en/features/streaming.xml" />	
 		</page>
 		<page id="help" label="Help" href="en/help.xml">
 			<page id="documentation" label="Documentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
