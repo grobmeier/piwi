@@ -231,7 +231,7 @@ class Page {
 	 */
 	private function isLinkInternal(&$link) {
 		$link = str_replace(Crawler::$server, '', $link);
-		if (substr($link, 0, 4) == 'http') {
+		if (substr($link, 0, 4) == 'http' || substr($link, 0, 7) == 'mailto:') {
 			return false;			
 		} else {
 			if (self :: isLinkResource($link)) {

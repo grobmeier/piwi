@@ -38,7 +38,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 			
 			$piwixml .= "<section>";
 			$piwixml .= "<title>";
-			$piwixml .= $folder;
+			$piwixml .= str_replace('_', ' ', $folder);
 			$piwixml .= "</title>";
 			
 			// if no album is selected show 5 images of each otherwise show the full album
@@ -65,7 +65,7 @@ class SimpleGalleryGenerator implements SectionGenerator {
 					'<label key="BACK_TO_GALLERIES" /></a></p>';
 			} else {
 				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . 
-					'?album=' . urlencode($folder) . '"><label key="MORE_IN" /> ' . $folder . '</a></p>';
+					'?album=' . urlencode($folder) . '"><label key="MORE_IN" /> ' . str_replace('_', ' ', $folder) . '</a></p>';
 			}
 			$piwixml .= '</section>';
 		}
