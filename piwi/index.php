@@ -105,7 +105,7 @@ $logger = & LoggerManager :: getLogger('index.php');
 function exception_handler($exception) {
 	GLOBAL $logger;
 	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
-	echo "An uncatched error occurd: " . $exception->getMessage();
+	echo "An uncatched error occured: " . $exception->getMessage();
 }
 
 set_exception_handler('exception_handler');
