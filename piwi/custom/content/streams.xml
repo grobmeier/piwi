@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<streams xmlns="http://piwi.googlecode.com/xsd/strems" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/streams ../../resources/xsd/streams.xsd">
+	<!-- Uri could be: file:// or phar:// etc. -->
+	<stream id="" uri="" />
+</stream>
