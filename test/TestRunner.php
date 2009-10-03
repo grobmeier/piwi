@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Europe/Berlin');
+
 require_once ('test/autoload.php');
 require_once ('third-party/simpletest/autorun.php');
 require_once ('third-party/simpletest/unit_tester.php');
