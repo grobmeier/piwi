@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/streams"
+        elementFormDefault="qualified" 
+        xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:tns="http://piwi.googlecode.com/xsd/streams">
+       <complexType name="streamType">
+               <attribute name="id" type="string" use="required" />
+               <attribute name="uri" type="string" use="required" />
+       </complexType>
+
+       <element name="streams" type="tns:streamTypesType">
+	       <unique name="UniqueStreamId">
+    	       <selector xpath=".//tns:stream" />
+        	       <field xpath="@id" />
+           </unique>
+       </element>
+       
+       <complexType name="streamTypesType">
+       		<sequence>
+            	<element name="stream" type="tns:streamType" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+       </complexType>
+</schema>
