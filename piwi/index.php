@@ -18,6 +18,11 @@
  * under the License.
  */
 
+/** since 5.1 php genrates a warning if no default timeszone has been set */
+if(ini_get('date.timezone') == '') {
+	date_default_timezone_set('Europe/Berlin');
+}
+
 /**
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>> Error reporting  <<<<<<<<<<<<<<<<<<<<<<<<<<<<
