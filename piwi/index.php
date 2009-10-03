@@ -105,7 +105,7 @@ if ($logConfig != null) {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
 }
 
-$logger = & LoggerManager :: getLogger('index.php');
+$logger = LoggerManager :: getLogger('index.php');
 
 function exception_handler($exception) {
 	GLOBAL $logger;
