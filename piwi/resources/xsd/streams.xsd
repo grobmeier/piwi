@@ -6,6 +6,7 @@
        <complexType name="streamType">
                <attribute name="id" type="string" use="required" />
                <attribute name="uri" type="string" use="required" />
+               <attribute name="name" type="string" use="required" />
        </complexType>
 
        <element name="streams" type="tns:streamTypesType">

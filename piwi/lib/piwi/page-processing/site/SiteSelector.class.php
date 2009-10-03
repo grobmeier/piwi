@@ -7,6 +7,7 @@ class SiteSelector {
 	/** Reference to the processed page. */
 	private $page = null;
 	
+	private $errormode = false;
 	/**
 	 * Constructor.
 	 */
@@ -17,9 +18,31 @@ class SiteSelector {
 	 * Processes the contents of the page.
 	 */
 	public function generateContent() {
+		$this->choosePipeline();
 		$this->page->generateContent();
+		
 	}
 
+	private function choosePipeline() {
+		if($this->errormode) {
+			$this->setPage(BeanFactory :: getBeanById('xmlPage'));
+			return;
+		}
+	
+		$path = $this->getSite()->getFilePath();
+		$pos = strrpos($path, ".");
+		$extension = substr($path, $pos + 1);
+		
+		// TODO: Pipelines should be configurable
+		if($extension == 'stream') {
+			// Streaming input definition file
+			$this->setPage(BeanFactory :: getBeanById('streamingPage'));
+		} else {
+			// Standard pipeline
+			$this->setPage(BeanFactory :: getBeanById('xmlPage'));
+		}
+	}
+	
 	/**
 	 * Sets the content of the page.
 	 * @param string $content The content as xml.
@@ -50,5 +73,38 @@ class SiteSelector {
 	public function setPage(Page $page) {
 		$this->page = $page;
 	}
+	
+	/**
+	 * Returns the reference to the Site.
+	 * @return Site The reference to the Site.
+	 */
+	public function getSite() {
+		return $this->site;
+	}
+
+	/**
+	 * Sets the reference to the Site.
+	 * @param Site $site The reference to the Site.
+	 */
+	public function setSite(Site $site) {
+		$this->site = $site;
+	}
+	
+		/**
+	 * Returns the reference to the Site.
+	 * @return Site The reference to the Site.
+	 */
+	public function getErrorMode() {
+		return $this->errormode;
+	}
+
+	/**
+	 * Sets the reference to the Site.
+	 * @param Site $site The reference to the Site.
+	 */
+	public function setErrorMode($errormode) {
+		$this->errormode = $errormode;
+	}
+	
 }
 ?>

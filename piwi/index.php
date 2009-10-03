@@ -134,6 +134,8 @@ try {
 	$selector->generateContent();
 } catch (Exception $exception) {
 	// Show a page displaying the error
+	$selector->setErrorMode(true);
+	$selector->setPage(BeanFactory :: getBeanById('xmlPage'));
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	$selector->setContent($exceptionPageGenerator->generate());
 	$logger->error('Site generation failed with exception: ' . $exception->getMessage());

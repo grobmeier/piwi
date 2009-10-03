@@ -2,15 +2,20 @@
 <context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../xsd/context.xsd">
 
-	<!-- TODO SiteSelector should take lists, for example: wiki = WikiSite, xml = xmlPage and so on -->
-    <bean id="siteSelector" class="SiteSelector" scope="request">
-        <property name="page" ref="xmlPage" />
-    </bean>
-    
-    <bean id="site" class="Site" scope="request">
+	<bean id="site" class="Site" scope="request">
         <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
         <property name="templatesPath" php="$GLOBALS['PIWI_ROOT'] . TEMPLATES_PATH" />
         <property name="siteFilename" value="site.xml" />
+    </bean>
+    
+    <!-- TODO SiteSelector should take lists, for example: wiki = WikiSite, xml = xmlPage and so on -->
+    <bean id="siteSelector" class="SiteSelector" scope="request">
+    	<property name="site" ref="site" />
+    </bean>
+    
+    <bean id="streamingPage" class="StreamingPage" scope="request">
+    	<property name="streamingFilePath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/streams.xml'" />
+    	<property name="site" ref="site" />
     </bean>
     
     <bean id="xmlPage" class="XMLPage" scope="request">

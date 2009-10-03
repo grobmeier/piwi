@@ -23,6 +23,8 @@
   $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');    
   $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
 
+  $this->addFile('test/unit/lib/piwi/inputprovider/streams/StreamManagerTest.php');
+  
   // Webtest
   $this->addFile('test/web/FormsTest.php');  
   $this->addFile('test/web/AuthenticationTest.php');

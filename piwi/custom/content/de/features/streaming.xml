@@ -13,13 +13,10 @@
 		</section>
 		<separator />
 		<img src="custom/files/gallery/Nature/thumbs/1.jpg" />
-		<stream id="image1" file="custom/files/gallery/Nature/originals/1.jpg" name="image1.jpg">
-			<a href="streaming.stream?fileId=image1">Klicken Sie hier um das nebenstehende Bild zu streamen.</a>
-		</stream>
+		<a href="streamimage1.html">Klicken Sie hier um das nebenstehende Bild zu streamen.</a>
 		<br /><br />
 		<img src="custom/files/gallery/Nature/thumbs/2.jpg" />
-		<stream id="image2" file="custom/files/gallery/Nature/originals/2.jpg">
-			<a href="streaming.stream?fileId=image2">Klicken Sie hier um das nebenstehende Bild zu streamen.</a>
-		</stream>
+		<a href="streamimage2.html">Klicken Sie hier um das nebenstehende Bild zu streamen.</a>
+		
 	</content>
 </document>
