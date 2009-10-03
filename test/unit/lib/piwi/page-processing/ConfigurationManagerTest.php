@@ -73,11 +73,15 @@ class ConfigurationManagerTest extends UnitTestCase {
 	
 	function testGetRoleProvider() {
 		$this->assertIsA($this->configurationManager->getRoleProvider(), TestRoleProvider, 'Type does not match.');
-		
 		$this->configurationManager = new ConfigurationManager();
 		$this->configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_empty.xml');
-		$this->expectException(ReflectionException, 'RoleProvider should not be specified.');
-		$this->configurationManager->getRoleProvider();
+
+		try {
+			$this->configurationManager->getRoleProvider();
+			$this->assertFalse(true, 'RoleProvider should not be specified.');
+		} catch(ReflectionException $e) {
+			$this->assertIsA($e, ReflectionException, 'Exception of wrong type raised');
+		}
 	}
 	
 	function testGetLoginPageId() {
