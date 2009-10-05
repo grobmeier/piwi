@@ -21,6 +21,7 @@ abstract class Page {
 	
 	/**
 	 * Check if user authentication is activated and whether the requested page has restrictions.
+	 * @return true, if the user is allowed to access, false otherwise
 	 */
 	protected function checkPermissions() {
 		$allowedRoles = $this->site->getAllowedRolesByPageId(Request::getPageId());
@@ -41,8 +42,10 @@ abstract class Page {
 				// Since user is not logged in, show login page				
 				Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
 				Request :: setExtension('html');
+				return false;
 			}
 		}
+		return true;
 	}
 	
 	/**
@@ -81,6 +84,10 @@ abstract class Page {
 	public function setContent($content) {
 		$this->content = new DOMDocument;
 		$this->content->loadXML($content);
+	}
+	
+	public function getContent() {
+	    return $this->content;
 	}
 	
 	/**

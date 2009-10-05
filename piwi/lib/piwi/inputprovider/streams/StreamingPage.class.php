@@ -14,7 +14,14 @@ class StreamingPage extends Page {
 	 * TODO
 	 */
 	public function generateContent() {
-		$this->checkPermissions();
+		if(!$this->checkPermissions()) {
+			Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
+			Request :: setExtension('html');
+			$xmlpage = BeanFactory :: getBeanById('xmlPage');
+			$xmlpage->generateContent();
+			$this->content = $xmlpage->getContent();
+			return false;
+		}
 		
 		$filePath = $this->site->getFilePath();
 
