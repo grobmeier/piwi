@@ -129,21 +129,19 @@ $selector = BeanFactory :: getBeanById('siteSelector');
 $logger->debug('XML Site initialized successfully');
 
 try {
-	// Generate page
 	$logger->debug('Site generating content');
 	$selector->generateContent();
+	$logger->debug("Beginning serialization");
+	$selector->serialize();
 } catch (Exception $exception) {
 	// Show a page displaying the error
-	$selector->setErrorMode(true);
-	$selector->setPage(BeanFactory :: getBeanById('xmlPage'));
+	Request :: setPageId('default');
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
-	$selector->setContent($exceptionPageGenerator->generate());
+	$xmlpage = BeanFactory :: getBeanById('xmlPage');
+	$xmlpage->setContent($exceptionPageGenerator->generate());
+	$xmlpage->serialize();
 	$logger->error('Site generation failed with exception: ' . $exception->getMessage());
 }
-
-// Call Serializer
-$logger->debug("Beginning serialization");
-$selector->serialize();
 
 // Close down all appenders - safely
 $logger->debug("Page processing ended - Logger shutdown, end of request.");

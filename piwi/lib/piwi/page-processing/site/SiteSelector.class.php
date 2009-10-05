@@ -24,11 +24,6 @@ class SiteSelector {
 	}
 
 	private function choosePipeline() {
-		if($this->errormode) {
-			$this->setPage(BeanFactory :: getBeanById('xmlPage'));
-			return;
-		}
-	
 		$path = $this->getSite()->getFilePath();
 		$pos = strrpos($path, ".");
 		$extension = substr($path, $pos + 1);
@@ -89,22 +84,5 @@ class SiteSelector {
 	public function setSite(Site $site) {
 		$this->site = $site;
 	}
-	
-		/**
-	 * Returns the reference to the Site.
-	 * @return Site The reference to the Site.
-	 */
-	public function getErrorMode() {
-		return $this->errormode;
-	}
-
-	/**
-	 * Sets the reference to the Site.
-	 * @param Site $site The reference to the Site.
-	 */
-	public function setErrorMode($errormode) {
-		$this->errormode = $errormode;
-	}
-	
 }
 ?>
