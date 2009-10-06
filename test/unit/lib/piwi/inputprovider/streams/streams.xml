@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <streams xmlns="http://piwi.googlecode.com/xsd/streams" 
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://piwi.googlecode.com/xsd/streams ../../resources/xsd/streams.xsd">
+		 xsi:schemaLocation="http://piwi.googlecode.com/xsd/streams ../../../../../../piwi/resources/xsd/streams.xsd">
+
 	<!-- Uri could be: file:// or phar:// etc. -->
 	<!-- currently no scheme is supported - defaults to file:// -->
-	<stream id="image1" uri="custom/files/gallery/Nature/originals/1.jpg" name="1.jpg" />
+	<stream id="image1" uri="custom/files/gallery/Nature/originals/1.jpg" name="1.jpg">
+		<action processor="MyProcessor" />
+		<action processor="MySecondProcessor" />
+	</stream>
+	
 	<stream id="image2" uri="custom/files/gallery/Nature/originals/2.jpg" name="2.jpg" />
 </streams>

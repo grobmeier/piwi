@@ -34,6 +34,26 @@ class StreamManager {
 				PiwiException :: INVALID_XML_DEFINITION);
     } 
     
+    /** 
+     * Returns the path of an stream for a given ID
+     * @return The path of a stream
+     */
+    public function getStreamActions($id) {
+    	if ($this->xml == null) {
+    		$this->_loadConfig();
+    	}
+    	
+    	$streams = $this->xml->xpath("//streams:stream[@id='".$id."']");
+    	
+    	$r = array();
+    	$i = 0;
+    	foreach ($streams[0]->action as $action) {
+    	    $r[$i++] = (string)$action->attributes()->processor;
+    	}
+    	return $r;
+    } 
+    
+    
     /**
      * Sets the path of the file containing the configuration
      * @param string $configFilePath Path of the file containing the configuration.

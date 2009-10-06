@@ -33,6 +33,10 @@ class StreamingPage extends Page {
 		$sm->setStreamConfiguration($this->getStreamingFilePath());
 		$info = $sm->getStreamInfo($id);
 		
+		
+		$actions = $sm->getStreamActions($id);
+		$this->callActions($actions);
+		
 		// TODO: currently only file:// can be used
 		// handle all other urischemes here
 		
@@ -64,6 +68,23 @@ EOF;
 		$dom = new DOMDocument();
 		$dom->loadXml($piwixml);
 		$this->content = $dom;
+	}
+	
+	
+	private function callActions($actions) {
+		if ($actions != null) {
+			foreach($actions as $action) {
+				$class = new ReflectionClass((string)$action);
+				$preprocessor = $class->newInstance();
+				
+				if (!$preprocessor instanceof Preprocessor) {
+					throw new PiwiException("The Class with id '" . $result .
+							"' is not an instance of Preprocessor.", 
+						PiwiException :: ERR_WRONG_TYPE);
+				}
+				$preprocessor->process();
+			}
+		}
 	}
 	
 	/**

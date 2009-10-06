@@ -4,9 +4,12 @@
         xmlns="http://www.w3.org/2001/XMLSchema" 
         xmlns:tns="http://piwi.googlecode.com/xsd/streams">
        <complexType name="streamType">
-               <attribute name="id" type="string" use="required" />
-               <attribute name="uri" type="string" use="required" />
-               <attribute name="name" type="string" use="required" />
+       		<sequence>
+				<element name="action" type="tns:actionType" minOccurs="0" maxOccurs="unbounded" />
+			</sequence> 
+            <attribute name="id" type="string" use="required" />
+            <attribute name="uri" type="string" use="required" />
+            <attribute name="name" type="string" use="required" />
        </complexType>
 
        <element name="streams" type="tns:streamTypesType">
@@ -21,4 +24,16 @@
             	<element name="stream" type="tns:streamType" minOccurs="0" maxOccurs="unbounded" />
             </sequence>
        </complexType>
+       
+       <complexType name="actionType">
+			<attribute name="processor" type="string" use="required" />
+	   </complexType>
+	   
+	  <!--
+	  
+	<complexType name="serializerType">
+		<attribute name="extension" type="string" use="required"></attribute>
+		<attribute name="serializer" type="string" use="required"></attribute>
+	</complexType>
+	 -->
 </schema>
