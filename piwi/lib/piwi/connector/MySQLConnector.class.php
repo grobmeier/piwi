@@ -74,6 +74,7 @@ class MySQLConnector implements Connector {
 		}
    		
    		$i = 0;
+   		$resultArray = array();
    		while ($temp = mysql_fetch_array($result, MYSQL_BOTH)) {
    			$resultArray[$i] = $temp;
    			$i++;
