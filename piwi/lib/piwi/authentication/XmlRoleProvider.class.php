@@ -48,8 +48,8 @@ class XmlRoleProvider implements RoleProvider {
 	 * @return boolean True if user existspassword is valid, otherwise false.
 	 */
 	public function isPasswordValid($username, $password) {
-		foreach($this->auth as $user) {
-		    if( $username == $user->attributes()->name && 
+		foreach ($this->auth as $user) {
+		    if ($username == $user->attributes()->name && 
 		    	$password == sha1($user->attributes()->password)) {
 		    	return true;
 		    } 
@@ -63,8 +63,8 @@ class XmlRoleProvider implements RoleProvider {
 	 * @return array All roles of a user.
 	 */
 	private function _getUserRoles($username) {
-		foreach($this->auth as $user) {
-		    if($username == $user->attributes()->name) {
+		foreach ($this->auth as $user) {
+		    if ($username == $user->attributes()->name) {
 				$rolesString = $user->attributes()->roles;
 				return explode(',',$rolesString);
 		    } 
