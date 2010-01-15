@@ -14,7 +14,7 @@ class StreamingPage extends Page {
 	 * TODO
 	 */
 	public function generateContent() {
-		if(!$this->checkPermissions()) {
+		if (!$this->checkPermissions()) {
 			Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
 			Request :: setExtension('html');
 			$xmlpage = BeanFactory :: getBeanById('xmlPage');
@@ -35,7 +35,7 @@ class StreamingPage extends Page {
 		
 		
 		$actions = $sm->getStreamActions($id);
-		$this->callActions($actions);
+		$this->_callActions($actions);
 		
 		// TODO: currently only file:// can be used
 		// handle all other urischemes here
@@ -70,10 +70,12 @@ EOF;
 		$this->content = $dom;
 	}
 	
-	
-	private function callActions($actions) {
+	/**
+	 * Calls actions configured for this stream
+	 */
+	private function _callActions($actions) {
 		if ($actions != null) {
-			foreach($actions as $action) {
+			foreach ($actions as $action) {
 				$class = new ReflectionClass((string)$action);
 				$preprocessor = $class->newInstance();
 				
