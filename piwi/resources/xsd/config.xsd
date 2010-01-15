@@ -32,6 +32,9 @@
 		</sequence>
 	</complexType>
 	<complexType name="authenticationType">
+		<sequence>
+        	<any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"></any>
+        </sequence>
 		<attribute name="enabled" type="boolean" use="required"></attribute>
 		<attribute name="roleProvider" type="string" use="required"></attribute>
 		<attribute name="loginPageId" type="string" use="required"></attribute>

@@ -243,6 +243,31 @@ class ConfigurationManager {
 						"' is not an instance of RoleProvider.", 
 					PiwiException :: ERR_WRONG_TYPE);
 			}
+			
+			$node = $result->item(0);
+			
+			foreach ($node->childNodes as $attribute) {
+				if($attribute instanceof DOMText) {
+				    continue;
+				}
+				$name = (string)$attribute->nodeName;
+				
+				if ($class->hasProperty($name) && $class->getProperty($name)->isPublic()) {
+					$prop = $class->getProperty($name);
+					$prop->setValue($roleProvider, (string) $attribute->nodeValue);
+				} else if ($class->hasMethod($name)) {
+					$method = $class->getMethod($name);
+					$method->invoke($roleProvider, (string) $attribute->nodeValue);
+				} else if ($class->hasMethod('set' . ucfirst($name))) {
+					$method = $class->getMethod('set' . ucfirst($name));
+					$method->invoke($roleProvider, (string) $attribute->nodeValue);
+				} else {
+					throw new PiwiException(
+						"Your configuration defines authentification properties which cannot be set on the roleprovider object", 
+						PiwiException :: INVALID_XML_DEFINITION);
+				}
+			}
+			
 			$this->roleProvider = $roleProvider;
 		}
 		return $this->roleProvider;		
