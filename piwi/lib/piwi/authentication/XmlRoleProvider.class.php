@@ -11,7 +11,7 @@
  * The XML file for authentification must follow the auth.xsd structure:
  * 
  * <?xml version="1.0" encoding="UTF-8"?>
- * <piwi-users xmlns="http://piwi.googlecode.com/xsd/config"
+ * <piwi-users xmlns="http://piwi.googlecode.com/xsd/auth"
  * 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  * 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/auth ../../resources/xsd/auth.xsd">
  *   <user name="piwi" password="piwi1" roles="admin" />
