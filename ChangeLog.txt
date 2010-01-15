@@ -11,8 +11,10 @@
 0.1.0 - Beanfactory Release
 
     * New: Included Beanfactory for dependency injection
-    * New: Ádded support for streaming files
+    * New: Added support for streaming files
     * Fixed issues: 29, 30
+    * Included Log4PHP 2.0.0 (fixes issue 28)
+    * Included a XmlRoleProvider
 
 0.0.9 - Logger Release
 
