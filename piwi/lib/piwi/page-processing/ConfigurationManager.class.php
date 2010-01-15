@@ -247,7 +247,7 @@ class ConfigurationManager {
 			$node = $result->item(0);
 			
 			foreach ($node->childNodes as $attribute) {
-				if($attribute instanceof DOMText) {
+				if ($attribute instanceof DOMText) {
 				    continue;
 				}
 				$name = (string)$attribute->nodeName;
@@ -262,8 +262,8 @@ class ConfigurationManager {
 					$method = $class->getMethod('set' . ucfirst($name));
 					$method->invoke($roleProvider, (string) $attribute->nodeValue);
 				} else {
-					throw new PiwiException(
-						"Your configuration defines authentification properties which cannot be set on the roleprovider object", 
+					throw new PiwiException("Your configuration defines authentification properties" .
+						" which cannot be set on the roleprovider object", 
 						PiwiException :: INVALID_XML_DEFINITION);
 				}
 			}
