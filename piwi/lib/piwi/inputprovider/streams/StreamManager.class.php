@@ -22,15 +22,14 @@ class StreamManager {
     		$this->_loadConfig();
     	}
     	
-    	$streams = $this->xml->xpath("//streams:stream[@id='".$id."']");
+    	$streams = $this->xml->xpath("//streams:stream[@id='" . $id . "']");
     	
     	$uri = $streams[0]->attributes()->uri;
     	$name = $streams[0]->attributes()->name;
-    	if($uri !== '' && $name != '') {
+    	if ($uri !== '' && $name != '') {
     		return $streams[0]->attributes();
     	}
-    	throw new PiwiException(
-				"Error while processing stream definition file.", 
+    	throw new PiwiException("Error while processing stream definition file.", 
 				PiwiException :: INVALID_XML_DEFINITION);
     } 
     
@@ -43,7 +42,7 @@ class StreamManager {
     		$this->_loadConfig();
     	}
     	
-    	$streams = $this->xml->xpath("//streams:stream[@id='".$id."']");
+    	$streams = $this->xml->xpath("//streams:stream[@id='" . $id . "']");
     	
     	$r = array();
     	$i = 0;
@@ -67,8 +66,8 @@ class StreamManager {
      */
     private function _loadConfig() {
     	if (!file_exists($this->streamConfiguration)) {
-			throw new PiwiException(
-				"Could not find the stream definition file with path: ".$this->streamConfiguration, 
+			throw new PiwiException("Could not find the stream definition file with path: " . 
+				$this->streamConfiguration, 
 				PiwiException :: ERR_NO_XML_DEFINITION);
     	}
     	
