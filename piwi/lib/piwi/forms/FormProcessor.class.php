@@ -35,7 +35,7 @@ class FormProcessor {
 	 */
 	private function _getLogger() {
 		if (self::$logger == null) {
-			self::$logger = & LoggerManager::getLogger('FormProcessor.class.php');
+			self::$logger = Logger::getLogger('FormProcessor.class.php');
 		}
 		return self::$logger;
 	}

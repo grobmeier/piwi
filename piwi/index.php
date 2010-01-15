@@ -105,7 +105,7 @@ if ($logConfig != null) {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
 }
 
-$logger = LoggerManager :: getLogger('index.php');
+$logger = Logger :: getLogger('index.php');
 
 function exception_handler($exception) {
 	GLOBAL $logger;
@@ -145,5 +145,5 @@ try {
 
 // Close down all appenders - safely
 $logger->debug("Page processing ended - Logger shutdown, end of request.");
-LoggerManager :: shutdown();
+Logger :: shutdown();
 ?>
