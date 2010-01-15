@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://piwi.googlecode.com/xsd/auth"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://piwi.googlecode.com/xsd/auth">
+	<complexType name="userType">
+        <sequence>
+			<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"></any>
+		</sequence>
+		<attribute name="name" type="string" use="required"></attribute>
+		<attribute name="password" type="string" use="required"></attribute>
+		<attribute name="roles" type="string" use="required"></attribute>
+	</complexType>
+	<element name="piwi-users" type="tns:userTypesType">
+		<unique name="UniqueGeneratorId">
+			<selector xpath=".//tns:piwi-users" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+	<complexType name="userTypesType">
+		<sequence>
+			<element name="user" type="tns:userType" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>		
+	</complexType>
+</schema>
