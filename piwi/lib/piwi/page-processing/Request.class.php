@@ -53,13 +53,27 @@ class Request {
 		if (ini_get('magic_quotes_gpc')) {
 			foreach ($_GET as $key => $value) {
 				if ($key != 'page' && $key != 'extension' && $key != 'language') {
-					$result[$key] = htmlspecialchars(stripslashes($value));
+					if(is_array($value)) {
+						$subkeys = array_keys($value); 
+						foreach($subkeys as $subkey) {
+						    $result[$key][$subkey] = htmlspecialchars(stripslashes($value[$subkey]));
+						}				    
+					} else {
+						$result[$key] = htmlspecialchars(stripslashes($value));
+					}
 				}
  			}
 		} else {
 			foreach ($_GET as $key => $value) {
 				if ($key != 'page' && $key != 'extension' && $key != 'language') {
-					$result[$key] = htmlspecialchars($value);
+					if(is_array($value)) {
+						$subkeys = array_keys($value); 
+						foreach($subkeys as $subkey) {
+						    $result[$key][$subkey] = htmlspecialchars($value[$subkey]);
+						}				    
+					} else {
+						$result[$key] = htmlspecialchars($value);
+					}
 				}
 			}
  		}
