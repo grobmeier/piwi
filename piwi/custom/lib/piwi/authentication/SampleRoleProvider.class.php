@@ -12,6 +12,9 @@ class SampleRoleProvider implements RoleProvider {
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
 	public function isUserInRole($username, array $roles) {
+		if(!UserSessionManager::isUserAuthenticated($username)) {
+		    return false;
+		}
 		foreach ($this->_getUserRoles($username) as $role) {
        		if (in_array($role, $roles)) {
        			return true;

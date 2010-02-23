@@ -30,6 +30,9 @@ class SiteElement {
 	/** Indicates whether the SiteElement is currently selected. */
 	private $selected = false;
 	
+	/** array of roles configured for this SiteElement */
+	private $roles = array();
+	
 	/**
 	 * Constructor.
 	 * @param string $id The id of the page.
@@ -65,7 +68,30 @@ class SiteElement {
 	public function getFilePath(){
 		return $this->filePath;
 	}
+	
+	/**
+	 * Returns the roles of this site element as array
+	 * @return array A array with roles for this site element
+	 */
+	public function getRoles() {
+	    return $this->roles;
+	}
 			
+	/**
+	 * Sets roles for this site element. An array is expected.
+	 * If a string is give, the string will be splitted on "," 
+	 * and the resulting array is used as roles array.
+	 * @param mixed $roles either an array with roles or a string
+	 * 				with comma separated roles
+	 */
+	public function setRoles($roles) {
+	    if(is_array($roles)) {
+	        $this->roles = $roles;
+	    } else {
+	    	$this->roles = explode(',',$roles); 
+	    }
+	}
+	
 	/**
 	 * Indicates whether the item is shown in the Navigation.
 	 * @return boolean True if Element should be hidden in Navigation.

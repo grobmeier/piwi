@@ -21,19 +21,24 @@ class SimpleTextNavigationGenerator implements NavigationGenerator {
     		$result = '<ul>';
     		
     		foreach ($siteElements as $element) {
-    			// If the page is selected set another css class to highlight the item
-				$cssClass = "";
-				if ($element->isOpen()) {
-					$cssClass = ' class="selected"';
-				}
-				if (!$element->isHiddenInNavigation()) {
-					$filepath = $element-> getId() . ".html";
-					if (substr($element->getFilePath(), 0, 4) == 'http') {
-						$filepath = $element->getFilePath();
+    			$roles = $element->getRoles();
+    			$provider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
+    			$username = UserSessionManager::getUserName();
+    			if(empty($roles) || $provider->isUserInRole($username, $roles)) {
+	    			// If the page is selected set another css class to highlight the item
+					$cssClass = "";
+					if ($element->isOpen()) {
+						$cssClass = ' class="selected"';
 					}
-    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() 
-    					. '</a>' . $this->generate($element->getChildren()) . '</li>';
-				}
+					if (!$element->isHiddenInNavigation()) {
+						$filepath = $element-> getId() . ".html";
+						if (substr($element->getFilePath(), 0, 4) == 'http') {
+							$filepath = $element->getFilePath();
+						}
+	    				$result .= '<li' . $cssClass . '><a href="' . $filepath . '">' . $element->getLabel() 
+	    					. '</a>' . $this->generate($element->getChildren()) . '</li>';
+					}
+    			}
     		}
     		
     		$result .= '</ul>';

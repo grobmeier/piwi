@@ -41,27 +41,32 @@ class ImageNavigationGenerator implements NavigationGenerator {
     		$result = '<ul>';
     		
     		foreach ($navigationElements as $element) {
-				if (!$element->isHiddenInNavigation()) {
-					$filepath = $element-> getId() . ".html";
-					if (substr($element->getFilePath(), 0, 4) == 'http') {
-						$filepath = $element->getFilePath();
+    			$roles = $element->getRoles();
+    			$provider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
+    			$username = UserSessionManager::getUserName();
+    			if(empty($roles) || $provider->isUserInRole($username, $roles)) {
+					if (!$element->isHiddenInNavigation()) {
+						$filepath = $element-> getId() . ".html";
+						if (substr($element->getFilePath(), 0, 4) == 'http') {
+							$filepath = $element->getFilePath();
+						}
+						
+						$open = "";
+						if ($element->isOpen()) {
+							$open = "-selected";
+						}
+						
+	    				$result .= '<li>';
+	    				$result .= '<a onmouseover="document.images[\'' . $element->getId() . '\'].src=\'' 
+	    					. $this->pathToImages . '/' . $element->getId() . '-hover.jpg\';" ';
+	    				$result .= 'onmouseout="document.images[\'' . $element->getId() . '\'].src=\'' 
+	    					. $this->pathToImages . '/' . $element->getId() . $open . '.jpg\';" ';
+						$result .= 'href="' . $filepath . '">';
+	    				$result .= '<img name="' . $element->getId() . '" src="' . $this->pathToImages 
+	    					. '/' . $element->getId() . $open . '.jpg" />';
+						$result .= '</a></li>';
 					}
-					
-					$open = "";
-					if ($element->isOpen()) {
-						$open = "-selected";
-					}
-					
-    				$result .= '<li>';
-    				$result .= '<a onmouseover="document.images[\'' . $element->getId() . '\'].src=\'' 
-    					. $this->pathToImages . '/' . $element->getId() . '-hover.jpg\';" ';
-    				$result .= 'onmouseout="document.images[\'' . $element->getId() . '\'].src=\'' 
-    					. $this->pathToImages . '/' . $element->getId() . $open . '.jpg\';" ';
-					$result .= 'href="' . $filepath . '">';
-    				$result .= '<img name="' . $element->getId() . '" src="' . $this->pathToImages 
-    					. '/' . $element->getId() . $open . '.jpg" />';
-					$result .= '</a></li>';
-				}
+    			}
     		}
     		
     		$result .= '</ul>';

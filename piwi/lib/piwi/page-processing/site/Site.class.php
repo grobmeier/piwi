@@ -197,6 +197,12 @@ class Site {
            	if ($element->getAttribute("hideInNavigation")) {
            		$siteElement->setHiddenInNavigation(true);
            	}
+           	
+           	$roles = $element->getAttribute("roles");
+           	if ($roles) {
+           		$siteElement->setRoles($roles);
+           	}
+           	
            	if ($element->getAttribute("hideInSiteMap")) {
            		$siteElement->setHiddenInSiteMap(true);
            	}
