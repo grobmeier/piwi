@@ -12,9 +12,10 @@
 
     * New: Included Beanfactory for dependency injection
     * New: Added support for streaming files
-    * Fixed issues: 29, 30
-    * Included Log4PHP 2.0.0 (fixes issue 28)
-    * Included a XmlRoleProvider
+    * Fix: Fixed issues: 29, 30
+    * Update: Included Log4PHP 2.0.0 (fixes issue 28)
+    * New: Included a XmlRoleProvider
+    * New: Included role sensitive menu bar generation
 
 0.0.9 - Logger Release
 
