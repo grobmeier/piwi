@@ -26,12 +26,19 @@ class XmlRoleProvider implements RoleProvider {
 	/**
 	 * Checks if a user has one of the given roles. 
 	 * If the user has at least one of the given roles, true is returned, otherwise false.
+	 * 
+	 * If a user is not authentificated and the roles array contains the
+	 * role "anonymous", the user is in role.
+	 * 
 	 * @param string $username The name of the user.
 	 * @param array $role The roles that are allowed.
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
 	public function isUserInRole($username, array $roles) {
 		if(!UserSessionManager::isUserAuthenticated($username)) {
+		    if(in_array('anonymous', $roles)) {
+		        return true;
+		    }
 		    return false;
 		}
 		foreach ($this->_getUserRoles($username) as $role) {
