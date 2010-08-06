@@ -18,10 +18,10 @@
 	<div id="menu">
 		<?php echo $HTML_NAVIGATION ?>		
 		<span style="float: right">
-			<a href="<?php echo Request::getPageId() . '.' . Request::getExtension() . '?language=de' ?>">
+			<a href="?language=de">
 			<img src="custom/templates/images/flag_de.gif" alt="Deutsch" />
 			</a>
-			<a href="<?php echo Request::getPageId() . '.' . Request::getExtension() . '?language=default' ?>">
+			<a href="?language=default">
 			<img src="custom/templates/images/flag_en.gif" alt="English" />
 			</a>
 		</span>
