@@ -22,19 +22,17 @@ class HTMLSerializer implements Serializer {
 			$CONTENT[$item->getAttribute("position")] = $processor->transformToXML($position);
 		}
 
-		// Include header (title and keywords)
-		$TITLE = '';
-		$KEYWORDS = '';
-		$headers = $domDocument->getElementsByTagName('head');
-		if ($headers->length > 0) {
-			$titles = $headers->item(0)->getElementsByTagName('title');			
-			if ($titles->length > 0) {
-				$TITLE = $titles->item(0)->nodeValue;
-			}
-			$keywords = $headers->item(0)->getElementsByTagName('keywords');			
-			if ($keywords->length > 0) {
-				$KEYWORDS = $keywords->item(0)->nodeValue;
-			}
+		// Include header (title, keywords and description)
+		$headVars = array('title', 'keywords', 'description');
+		$headVars = array_combine(array_map('strtoupper', $headVars),$headVars);
+		$headers  = $domDocument->getElementsByTagName('head');
+		foreach($headVars as $VARNAME => $tagname) {
+			$$VARNAME = '';
+			if ($headers->length < 1)
+				continue;
+			($element = $headers->item(0)->getElementsByTagName($tagname))
+				&& ($element->length > 0)
+				&& ($$VARNAME = $element->item(0)->nodeValue);
 		}
 		
 		// Include navigation and siteMapPath
