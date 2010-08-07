@@ -24,6 +24,16 @@
    
    <!-- Translate the labels -->
    <xsl:template match="piwixml:label">
-      <xsl:value-of select="php:function('ResourcesManager::getLabelText', string(@key))"/>
+      <xsl:choose>   
+      <xsl:when test="@key != ''">
+         <xsl:value-of select="php:function('ResourcesManager::getLabelText', string(@key))"/>
+      </xsl:when>
+      <xsl:otherwise>
+      <xsl:copy>
+         <xsl:copy-of select="@*"/>
+         <xsl:apply-templates/>
+      </xsl:copy>
+      </xsl:otherwise>
+      </xsl:choose>      
    </xsl:template>
 </xsl:stylesheet>
