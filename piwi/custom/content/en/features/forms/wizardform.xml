@@ -8,6 +8,8 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwiform ../../../../../resou
 	   <br /><br />
 	   Birthday: <input name="Birthday" type="text" size="30" maxlength="10" />
 	   <br /><br />
+	   <input name="Newsletter" type="checkbox" value="Yes" /> Yes / No
+	   <br /><br />
       <input type="submit" value="Next Step" />
 	 </step>
 	 <step>

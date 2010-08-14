@@ -19,7 +19,8 @@ class WizardProcessor implements StepProcessor{
 		if ($currentStep == $numberOfSteps) {
 			$result .= '<label key="NAME" />: ' . $values['Name'] . '<br />';
 			$result .= '<label key="BIRTHDAY" />: ' . $values['Birthday'] . '<br />';
-			$result .= '<label key="COMMENT" />: ' . $values['Comment'];
+			$result .= '<label key="COMMENT" />: ' . $values['Comment'] . '<br />';
+			$result .= '<label key="NEWSLETTER" />: ' . ((isset($values['Newsletter'])) ? $values['Newsletter'] : '-');
 		}
 		return '<div>' . $result . '</div>';
 	}

@@ -111,19 +111,14 @@ class FormProcessor {
 		$piwixml .= '<input name="' . $this->formId . '_currentstep" type="hidden" value="' .
 			$this->currentStep . '" />';
 		
-		if (!$isPostbackStep) {
-			if ($this->currentStep < $this->numberOfSteps) {
-				// Add current values as hidden field (but no checkboxes), to save their state
-				foreach ($_POST as $key => $value) {
-					if ($key != $this->formId . '_' . 'currentstep' && !(isset($this->ignoredFields[$key]))) {
-						if (is_array($value)) {
-							foreach ($value as $var) {
-		       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
-							}					
-						} else { 
-							$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
-						}
-					}
+		foreach ($_POST as $key => $value) {
+			if ($this->_isKeyAllowedAsHiddenField($key)) {
+				if (is_array($value)) {
+					foreach ($value as $var) {
+       					$piwixml .= '<input name="' . $key . '[]" type="hidden" value="' . $var . '" />';
+					}					
+				} else { 
+					$piwixml .= '<input name="' . $key . '" type="hidden" value="' . $value . '" />';
 				}
 			}
 		}
@@ -135,6 +130,23 @@ class FormProcessor {
 		$doc->loadXml($piwixml);
 		$this->logger->debug('Form with ID: ' . $id . ' has sucessfully processed.');
 		return $doc;
+	}
+	
+	/**
+	 * Determines whether the given POST parameter should be included as a hidden field.
+	 * @param string $key The key of the POST parameter.
+	 * @return boolean True if key should be added as hidden field otherwise false.
+	 */
+	private function _isKeyAllowedAsHiddenField($key) {
+		if ($key == $this->formId . '_' . 'currentstep') {
+			return false;
+		}
+		
+		if (!isset($this->ignoredFields[$key])) {
+			return true;
+		} else {
+			return !$this->validationFailed;
+		}
 	}
 	
 	/**

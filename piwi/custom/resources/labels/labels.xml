@@ -32,7 +32,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/labels ../../../resources/xsd
 	</language>
 	<language region="de">
 	   <!-- LoginProcessor -->
-	   <label key="LOGIN_SUCCESS" value="Login erfolgreich." />
+	  <label key="LOGIN_SUCCESS" value="Login erfolgreich." />
       <label key="LOGIN_FAILED" value="Login fehlgeschlagen." />
 
       <!-- LogoutProcessor -->
