@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
 
-<title>RoleProvider (Piwi - XML Transformation Framework)</title>
+<title>XmlRoleProvider (Piwi - XML Transformation Framework)</title>
 
 </head>
 <body id="definition" onload="parent.document.title=document.title;">
@@ -27,7 +27,7 @@
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/roleprovider.html" target="_top">No frames</a>
+<a href="../default/xmlroleprovider.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
@@ -35,25 +35,54 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </div>
 <hr>
 
-<div class="qualifiedName">default.RoleProvider</div>
+<div class="qualifiedName">default.XmlRoleProvider</div>
 
-<h1>Interface RoleProvider</h1>
+<h1>Class XmlRoleProvider</h1>
 
-<pre class="tree"><strong>RoleProvider</strong><br /></pre>
+<pre class="tree"><strong>XmlRoleProvider</strong><br /></pre>
+
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd>RoleProvider </dt>
+</dl>
 
 <hr>
 
-<p class="signature">public  interface <strong>RoleProvider</strong></p>
+<p class="signature">public  class <strong>XmlRoleProvider</strong></p>
 
 <div class="comment" id="overview_description"><p>
-Interface that role providers have to implement.
-Role providers are used to for user authentication.
+XML RoleProvider.
+Uses an xml file for a simple authentification.
+Can be enabled in configuration xml with:</p><p><authentication enabled="1" roleProvider="XmlRoleProvider" loginPageId="login">
+		<authFile>custom/resources/auth.xml</authFile>
+</authentication></p><p>The XML file for authentification must follow the auth.xsd structure:</p><p><?xml version="1.0" encoding="UTF-8"?>
+<piwi-users xmlns="http://piwi.googlecode.com/xsd/auth"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/auth ../../resources/xsd/auth.xsd">
+  <user name="piwi" password="piwi1" roles="admin" />
+  <user name="test" password="test1" roles="admin"  />
+  <user name="both" password="both1" roles="admin,role1" />
+</piwi-users>
 /</p></div>
 
 <hr>
 
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#auth">$auth</a></p><p class="description">reference to the authentification xml file */</p></td>
+</tr>
+</table>
+
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">private  array</td>
+<td class="description"><p class="name"><a href="#_getUserRoles()">_getUserRoles</a>(mixed username)</p><p class="description">
+Returns all roles of a user.
+</p></td>
+</tr>
 <tr>
 <td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isPasswordValid()">isPasswordValid</a>(string username, string password)</p><p class="description">
@@ -62,18 +91,46 @@ Checks whether the given user exists and validates its password.
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#isUserInRole()">isUserInRole</a>(string username, mixed roles, array role)</p><p class="description">
+<td class="description"><p class="name"><a href="#isUserInRole()">isUserInRole</a>(string username, array roles)</p><p class="description">
 Checks if a user has one of the given roles. </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setAuthFile()">setAuthFile</a>(mixed authFile)</p><p class="description">
+Set the auth file as defined in the config.xml
+/</p></td>
 </tr>
 </table>
 
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="auth">auth</h3>
+<code class="signature">private  mixed <strong>$auth</strong> = null</code>
+<div class="details">
+<p>reference to the authentification xml file */</p></div>
+
+<hr>
+
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="_getUserRoles()">_getUserRoles</h3>
+<code class="signature">private  array <strong>_getUserRoles</strong>(mixed username)</code>
+<div class="details">
+<p>
+Returns all roles of a user.
+This method is just a dummy, normally you will query a database here.</p><dl>
+<dt>Returns:</dt>
+<dd>All roles of a user.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="isPasswordValid()">isPasswordValid</h3>
 <code class="signature">public  boolean <strong>isPasswordValid</strong>(string username, string password)</code>
 <div class="details">
 <p>
 Checks whether the given user exists and validates its password.
-Returns true if user exists and password is valid, otherwise false.</p><dl>
+Returns true if user exists and password is valid, otherwise false.
+This method is just a dummy, normally you will query a database here.</p><dl>
 <dt>Parameters:</dt>
 <dd>username - The username.</dd>
 <dd>password - The SHA1-encrypted password.</dd>
@@ -85,7 +142,7 @@ Returns true if user exists and password is valid, otherwise false.</p><dl>
 <hr>
 
 <h3 id="isUserInRole()">isUserInRole</h3>
-<code class="signature">public  boolean <strong>isUserInRole</strong>(string username, mixed roles, array role)</code>
+<code class="signature">public  boolean <strong>isUserInRole</strong>(string username, array roles)</code>
 <div class="details">
 <p>
 Checks if a user has one of the given roles. 
@@ -94,11 +151,20 @@ role "anonymous", the user is in role.
 </p><dl>
 <dt>Parameters:</dt>
 <dd>username - The name of the user.</dd>
-<dd>role - The roles that are allowed.</dd>
+<dd>roles - The roles that are allowed.</dd>
 <dt>Returns:</dt>
 <dd>True if user has at least one of the given roles, otherwise false.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="setAuthFile()">setAuthFile</h3>
+<code class="signature">public  void <strong>setAuthFile</strong>(mixed authFile)</code>
+<div class="details">
+<p>
+Set the auth file as defined in the config.xml
+/</p></div>
 
 <hr>
 
@@ -116,7 +182,7 @@ role "anonymous", the user is in role.
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/roleprovider.html" target="_top">No frames</a>
+<a href="../default/xmlroleprovider.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>

@@ -163,11 +163,10 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertCookie('password', '', 'Cookie invalid.');
 		
 		// try to access protected page again
-		$this->get(self :: $HOST . 'authentication_protected.html');		
+		$this->get(self :: $HOST . 'authentication_protected.html');
 		$this->assertWantedText('Login', 'Login not displayed.');
 		$this->assertWantedText('Name', 'Login not displayed.');
 		$this->assertWantedText('Password', 'Login not displayed.');
-		
 	}
 }
 ?>

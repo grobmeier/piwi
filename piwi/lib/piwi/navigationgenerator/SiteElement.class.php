@@ -85,7 +85,7 @@ class SiteElement {
 	 * 				with comma separated roles
 	 */
 	public function setRoles($roles) {
-	    if(is_array($roles)) {
+	    if (is_array($roles)) {
 	        $this->roles = $roles;
 	    } else {
 	    	$this->roles = explode(',',$roles); 

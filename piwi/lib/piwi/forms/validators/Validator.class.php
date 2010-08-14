@@ -19,7 +19,7 @@ abstract class Validator {
 	 * @return string Returns an errormessage if validation fails otherwise true.
 	 */
 	public function validate() {
-		$fieldToValidate = FormProcessor::getId() . $this->validatorXML->getAttribute("fieldToValidate");
+		$fieldToValidate = BeanFactory :: getBeanById('formProcessor')->getId() . $this->validatorXML->getAttribute("fieldToValidate");
 		
 		if ($this->isValid($fieldToValidate)) {
 			return null;

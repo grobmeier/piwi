@@ -53,9 +53,9 @@ class Request {
 		if (ini_get('magic_quotes_gpc')) {
 			foreach ($_GET as $key => $value) {
 				if ($key != 'page' && $key != 'extension' && $key != 'language') {
-					if(is_array($value)) {
+					if (is_array($value)) {
 						$subkeys = array_keys($value); 
-						foreach($subkeys as $subkey) {
+						foreach ($subkeys as $subkey) {
 						    $result[$key][$subkey] = htmlspecialchars(stripslashes($value[$subkey]));
 						}				    
 					} else {
@@ -66,9 +66,9 @@ class Request {
 		} else {
 			foreach ($_GET as $key => $value) {
 				if ($key != 'page' && $key != 'extension' && $key != 'language') {
-					if(is_array($value)) {
+					if (is_array($value)) {
 						$subkeys = array_keys($value); 
-						foreach($subkeys as $subkey) {
+						foreach ($subkeys as $subkey) {
 						    $result[$key][$subkey] = htmlspecialchars($value[$subkey]);
 						}				    
 					} else {

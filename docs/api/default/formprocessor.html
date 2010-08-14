@@ -57,36 +57,45 @@ It is also possible to handle multiple forms on one page.
 <table id="summary_field">
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#currentStep">$currentStep</a></p><p class="description">The current step of the currently processed form. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#formId">$formId</a></p><p class="description">The id of the currently processed form. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#ignoredFields">$ignoredFields</a></p><p class="description">Array of the names of all fields in the current form that should be rejected from hidden fields. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#logger">$logger</a></p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#numberOfSteps">$numberOfSteps</a></p><p class="description">The total number of steps of the currently processed form. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#processor">$processor</a></p><p class="description">The XSLTProcessor. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#validate">$validate</a></p><p class="description">True if validation has to be performed, otherwise false. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#validationFailed">$validationFailed</a></p><p class="description">Indicates that a validator of the current form failed. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#FormProcessor()">FormProcessor</a>()</p><p class="description">
+Constructor.
+</p></td>
 </tr>
 </table>
 
@@ -94,87 +103,80 @@ It is also possible to handle multiple forms on one page.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#_getLogger()">_getLogger</a>()</p><p class="description">
-Since we are in a static context and PHP5 can only use literals and strings
-for intializing static members, we need to do some lazy initilizing here.
-</p></td>
-</tr>
-<tr>
-<td class="type">private static  void</td>
-<td class="description"><p class="name"><a href="#callPreProcessor()">callPreProcessor</a>(mixed domXPath)</p><p class="description">
+<td class="description"><p class="name"><a href="#_callPreProcessor()">_callPreProcessor</a>(mixed domXPath)</p><p class="description">
 Calls a preprocessor defined as an attribute in the step tag.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#executeStepProcessor()">executeStepProcessor</a>(array domElement)</p><p class="description">
-Executes the given StepProcessor.</p></td>
-</tr>
-<tr>
-<td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#executeValidator()">executeValidator</a>(array domElement)</p><p class="description">
-Executes the given Validator.</p></td>
-</tr>
-<tr>
-<td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#generateInput()">generateInput</a>(array domElement)</p><p class="description">
-Converts the given INPUT element to PiwiXML.</p></td>
-</tr>
-<tr>
-<td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#generateSelect()">generateSelect</a>(array domElement)</p><p class="description">
-Converts the given SELECT element to PiwiXML.</p></td>
-</tr>
-<tr>
-<td class="type">static  DOMDocument</td>
-<td class="description"><p class="name"><a href="#generateTextArea()">generateTextArea</a>(array domElement)</p><p class="description">
-Converts the given TEXTAREA element to PiwiXML.</p></td>
-</tr>
-<tr>
-<td class="type">private static  array</td>
-<td class="description"><p class="name"><a href="#getFiles()">getFiles</a>()</p><p class="description">
+<td class="type">private  array</td>
+<td class="description"><p class="name"><a href="#_getFiles()">_getFiles</a>()</p><p class="description">
 Returns an array containing all files of the currently processed form.
 </p></td>
 </tr>
 <tr>
-<td class="type">private static  string</td>
-<td class="description"><p class="name"><a href="#getFilteredAttributesAsString()">getFilteredAttributesAsString</a>(string domElement, array filterAttributes)</p><p class="description">
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getFilteredAttributesAsString()">_getFilteredAttributesAsString</a>(string domElement, array filterAttributes)</p><p class="description">
 Returns all attribute/value-pairs of a DOMElement as a string. </p></td>
 </tr>
 <tr>
-<td class="type">static  integer</td>
-<td class="description"><p class="name"><a href="#getId()">getId</a>()</p><p class="description">Returns the id of the currently processed form. </p></td>
-</tr>
-<tr>
-<td class="type">private static  array</td>
-<td class="description"><p class="name"><a href="#getResults()">getResults</a>()</p><p class="description">
+<td class="type">private  array</td>
+<td class="description"><p class="name"><a href="#_getResults()">_getResults</a>()</p><p class="description">
 Returns an array containing all results of the currently processed form.
 </p></td>
 </tr>
 <tr>
-<td class="type">private static  string</td>
-<td class="description"><p class="name"><a href="#getStepXML()">getStepXML</a>(DOMXPath domXPath)</p><p class="description">
+<td class="type">private  string</td>
+<td class="description"><p class="name"><a href="#_getStepXML()">_getStepXML</a>(DOMXPath domXPath)</p><p class="description">
 Processes the current step of the form and returns it as XML.</p></td>
 </tr>
 <tr>
-<td class="type">private static  void</td>
-<td class="description"><p class="name"><a href="#initRequestParams()">initRequestParams</a>()</p><p class="description">
-Initalizes the request parameters.
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initRequestParams()">_initRequestParams</a>()</p><p class="description">
+Initializes the request parameters.
 </p></td>
 </tr>
 <tr>
-<td class="type">private static  void</td>
-<td class="description"><p class="name"><a href="#initXSLTProcessor()">initXSLTProcessor</a>()</p><p class="description">
-Initalizes the XSLTProcessor, if this hasn't happened before'
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initXSLTProcessor()">_initXSLTProcessor</a>()</p><p class="description">
+Initializes the XSLTProcessor, if this hasn't happened before'
 /</p></td>
 </tr>
 <tr>
-<td class="type">static  boolean</td>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#executeStepProcessor()">executeStepProcessor</a>(array domElement)</p><p class="description">
+Executes the given StepProcessor.</p></td>
+</tr>
+<tr>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#executeValidator()">executeValidator</a>(array domElement)</p><p class="description">
+Executes the given Validator.</p></td>
+</tr>
+<tr>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateInput()">generateInput</a>(array domElement)</p><p class="description">
+Converts the given INPUT element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateSelect()">generateSelect</a>(array domElement)</p><p class="description">
+Converts the given SELECT element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type"> DOMDocument</td>
+<td class="description"><p class="name"><a href="#generateTextArea()">generateTextArea</a>(array domElement)</p><p class="description">
+Converts the given TEXTAREA element to PiwiXML.</p></td>
+</tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getId()">getId</a>()</p><p class="description">Returns the id of the currently processed form. </p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isValidationFailed()">isValidationFailed</a>()</p><p class="description">
 Returns if a validation has failed while processing.</p></td>
 </tr>
 <tr>
-<td class="type">static  DOMDocument</td>
+<td class="type"> DOMDocument</td>
 <td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
 </tr>
@@ -182,152 +184,82 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="currentStep">currentStep</h3>
-<code class="signature">private static  mixed <strong>$currentStep</strong></code>
+<code class="signature">private  mixed <strong>$currentStep</strong></code>
 <div class="details">
 <p>The current step of the currently processed form. */</p></div>
 
 <hr>
 
 <h3 id="formId">formId</h3>
-<code class="signature">private static  mixed <strong>$formId</strong> = null</code>
+<code class="signature">private  mixed <strong>$formId</strong> = null</code>
 <div class="details">
 <p>The id of the currently processed form. */</p></div>
 
 <hr>
 
 <h3 id="ignoredFields">ignoredFields</h3>
-<code class="signature">private static  mixed <strong>$ignoredFields</strong></code>
+<code class="signature">private  mixed <strong>$ignoredFields</strong></code>
 <div class="details">
 <p>Array of the names of all fields in the current form that should be rejected from hidden fields. */</p></div>
 
 <hr>
 
 <h3 id="logger">logger</h3>
-<code class="signature">private static  mixed <strong>$logger</strong> = null</code>
+<code class="signature">private  mixed <strong>$logger</strong> = null</code>
 <div class="details">
 </div>
 
 <hr>
 
 <h3 id="numberOfSteps">numberOfSteps</h3>
-<code class="signature">private static  mixed <strong>$numberOfSteps</strong></code>
+<code class="signature">private  mixed <strong>$numberOfSteps</strong></code>
 <div class="details">
 <p>The total number of steps of the currently processed form. */</p></div>
 
 <hr>
 
 <h3 id="processor">processor</h3>
-<code class="signature">private static  mixed <strong>$processor</strong> = null</code>
+<code class="signature">private  mixed <strong>$processor</strong> = null</code>
 <div class="details">
 <p>The XSLTProcessor. */</p></div>
 
 <hr>
 
 <h3 id="validate">validate</h3>
-<code class="signature">private static  mixed <strong>$validate</strong> = true</code>
+<code class="signature">private  mixed <strong>$validate</strong> = true</code>
 <div class="details">
 <p>True if validation has to be performed, otherwise false. */</p></div>
 
 <hr>
 
 <h3 id="validationFailed">validationFailed</h3>
-<code class="signature">private static  mixed <strong>$validationFailed</strong> = false</code>
+<code class="signature">private  mixed <strong>$validationFailed</strong> = false</code>
 <div class="details">
 <p>Indicates that a validator of the current form failed. */</p></div>
 
 <hr>
 
-<h2 id="detail_method">Method Detail</h2>
-<h3 id="_getLogger()">_getLogger</h3>
-<code class="signature">private  void <strong>_getLogger</strong>()</code>
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="FormProcessor()">FormProcessor</h3>
+<code class="signature">public <strong>FormProcessor</strong>()</code>
 <div class="details">
 <p>
-Since we are in a static context and PHP5 can only use literals and strings
-for intializing static members, we need to do some lazy initilizing here.
+Constructor.
 /</p></div>
 
 <hr>
 
-<h3 id="callPreProcessor()">callPreProcessor</h3>
-<code class="signature">private static  void <strong>callPreProcessor</strong>(mixed domXPath)</code>
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="_callPreProcessor()">_callPreProcessor</h3>
+<code class="signature">private  void <strong>_callPreProcessor</strong>(mixed domXPath)</code>
 <div class="details">
 <p>
 Calls a preprocessor defined as an attribute in the step tag.</p><p>/</p></div>
 
 <hr>
 
-<h3 id="executeStepProcessor()">executeStepProcessor</h3>
-<code class="signature">public static  DOMDocument <strong>executeStepProcessor</strong>(array domElement)</code>
-<div class="details">
-<p>
-Executes the given StepProcessor.</p><dl>
-<dt>Parameters:</dt>
-<dd>domElement - An array containing the DOMElement to convert.</dd>
-<dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="executeValidator()">executeValidator</h3>
-<code class="signature">public static  DOMDocument <strong>executeValidator</strong>(array domElement)</code>
-<div class="details">
-<p>
-Executes the given Validator.</p><dl>
-<dt>Parameters:</dt>
-<dd>domElement - An array containing the DOMElement to convert.</dd>
-<dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="generateInput()">generateInput</h3>
-<code class="signature">public static  DOMDocument <strong>generateInput</strong>(array domElement)</code>
-<div class="details">
-<p>
-Converts the given INPUT element to PiwiXML.</p><dl>
-<dt>Parameters:</dt>
-<dd>domElement - An array containing the DOMElement to convert.</dd>
-<dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="generateSelect()">generateSelect</h3>
-<code class="signature">public static  DOMDocument <strong>generateSelect</strong>(array domElement)</code>
-<div class="details">
-<p>
-Converts the given SELECT element to PiwiXML.</p><dl>
-<dt>Parameters:</dt>
-<dd>domElement - An array containing the DOMElement to convert.</dd>
-<dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="generateTextArea()">generateTextArea</h3>
-<code class="signature">public static  DOMDocument <strong>generateTextArea</strong>(array domElement)</code>
-<div class="details">
-<p>
-Converts the given TEXTAREA element to PiwiXML.</p><dl>
-<dt>Parameters:</dt>
-<dd>domElement - An array containing the DOMElement to convert.</dd>
-<dt>Returns:</dt>
-<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getFiles()">getFiles</h3>
-<code class="signature">private static  array <strong>getFiles</strong>()</code>
+<h3 id="_getFiles()">_getFiles</h3>
+<code class="signature">private  array <strong>_getFiles</strong>()</code>
 <div class="details">
 <p>
 Returns an array containing all files of the currently processed form.
@@ -339,8 +271,8 @@ These values are used in StepProcessors to handle posted files.</p><dl>
 
 <hr>
 
-<h3 id="getFilteredAttributesAsString()">getFilteredAttributesAsString</h3>
-<code class="signature">private static  string <strong>getFilteredAttributesAsString</strong>(string domElement, array filterAttributes)</code>
+<h3 id="_getFilteredAttributesAsString()">_getFilteredAttributesAsString</h3>
+<code class="signature">private  string <strong>_getFilteredAttributesAsString</strong>(string domElement, array filterAttributes)</code>
 <div class="details">
 <p>
 Returns all attribute/value-pairs of a DOMElement as a string. Attributes can be filtered.</p><dl>
@@ -354,19 +286,8 @@ Returns all attribute/value-pairs of a DOMElement as a string. Attributes can be
 
 <hr>
 
-<h3 id="getId()">getId</h3>
-<code class="signature">public static  integer <strong>getId</strong>()</code>
-<div class="details">
-<p>Returns the id of the currently processed form. </p><dl>
-<dt>Returns:</dt>
-<dd>The id of the currently processed form.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="getResults()">getResults</h3>
-<code class="signature">private static  array <strong>getResults</strong>()</code>
+<h3 id="_getResults()">_getResults</h3>
+<code class="signature">private  array <strong>_getResults</strong>()</code>
 <div class="details">
 <p>
 Returns an array containing all results of the currently processed form.
@@ -379,8 +300,8 @@ The array also contains the current step and the total number of steps in the fo
 
 <hr>
 
-<h3 id="getStepXML()">getStepXML</h3>
-<code class="signature">private static  string <strong>getStepXML</strong>(DOMXPath domXPath)</code>
+<h3 id="_getStepXML()">_getStepXML</h3>
+<code class="signature">private  string <strong>_getStepXML</strong>(DOMXPath domXPath)</code>
 <div class="details">
 <p>
 Processes the current step of the form and returns it as XML.</p><dl>
@@ -393,40 +314,121 @@ Processes the current step of the form and returns it as XML.</p><dl>
 
 <hr>
 
-<h3 id="initRequestParams()">initRequestParams</h3>
-<code class="signature">private static  void <strong>initRequestParams</strong>()</code>
+<h3 id="_initRequestParams()">_initRequestParams</h3>
+<code class="signature">private  void <strong>_initRequestParams</strong>()</code>
 <div class="details">
 <p>
-Initalizes the request parameters.</p><p>There is an issue with htmlspecialchars.
+Initializes the request parameters.</p><p>There is an issue with htmlspecialchars.
 Not each serializer does expect htmlspecialchars.
 /</p></div>
 
 <hr>
 
-<h3 id="initXSLTProcessor()">initXSLTProcessor</h3>
-<code class="signature">private static  void <strong>initXSLTProcessor</strong>()</code>
+<h3 id="_initXSLTProcessor()">_initXSLTProcessor</h3>
+<code class="signature">private  void <strong>_initXSLTProcessor</strong>()</code>
 <div class="details">
 <p>
-Initalizes the XSLTProcessor, if this hasn't happened before'
+Initializes the XSLTProcessor, if this hasn't happened before'
 /</p></div>
 
 <hr>
 
+<h3 id="executeStepProcessor()">executeStepProcessor</h3>
+<code class="signature">public  DOMDocument <strong>executeStepProcessor</strong>(array domElement)</code>
+<div class="details">
+<p>
+Executes the given StepProcessor.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="executeValidator()">executeValidator</h3>
+<code class="signature">public  DOMDocument <strong>executeValidator</strong>(array domElement)</code>
+<div class="details">
+<p>
+Executes the given Validator.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateInput()">generateInput</h3>
+<code class="signature">public  DOMDocument <strong>generateInput</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given INPUT element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateSelect()">generateSelect</h3>
+<code class="signature">public  DOMDocument <strong>generateSelect</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given SELECT element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="generateTextArea()">generateTextArea</h3>
+<code class="signature">public  DOMDocument <strong>generateTextArea</strong>(array domElement)</code>
+<div class="details">
+<p>
+Converts the given TEXTAREA element to PiwiXML.</p><dl>
+<dt>Parameters:</dt>
+<dd>domElement - An array containing the DOMElement to convert.</dd>
+<dt>Returns:</dt>
+<dd>The PiwiXML of the given DOMElement as DOMDocument.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getId()">getId</h3>
+<code class="signature">public  integer <strong>getId</strong>()</code>
+<div class="details">
+<p>Returns the id of the currently processed form. </p><dl>
+<dt>Returns:</dt>
+<dd>The id of the currently processed form.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="isValidationFailed()">isValidationFailed</h3>
-<code class="signature">public static  boolean <strong>isValidationFailed</strong>()</code>
+<code class="signature">public  boolean <strong>isValidationFailed</strong>()</code>
 <div class="details">
 <p>
 Returns if a validation has failed while processing.</p><dl>
 <dt>Returns:</dt>
 <dd>True, if a validation has failed, 
- * false if everything has been processed succesfully.</dd>
+ * false if everything has been processed successfully.</dd>
 </dl>
 </div>
 
 <hr>
 
 <h3 id="process()">process</h3>
-<code class="signature">public static  DOMDocument <strong>process</strong>(string id)</code>
+<code class="signature">public  DOMDocument <strong>process</strong>(string id)</code>
 <div class="details">
 <p>
 Loads the form from the given file and generates the the content as PiwiXML.</p><dl>

@@ -87,6 +87,10 @@ Represents a page item.
 </tr>
 <tr>
 <td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#roles">$roles</a></p><p class="description">array of roles configured for this SiteElement */</p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#selected">$selected</a></p><p class="description">Indicates whether the SiteElement is currently selected. </p></td>
 </tr>
 </table>
@@ -125,6 +129,11 @@ Returns the label of the page.</p></td>
 <td class="type"> <a href="../default/siteelement.html">SiteElement</a></td>
 <td class="description"><p class="name"><a href="#getParent()">getParent</a>()</p><p class="description">
 Returns the parent SiteElement.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getRoles()">getRoles</a>()</p><p class="description">
+Returns the roles of this site element as array</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
@@ -169,6 +178,11 @@ Sets the SiteElement to open.</p></td>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setParent()">setParent</a>(mixed parent, <a href="../default/siteelement.html">SiteElement</a> selected)</p><p class="description">
 Sets the parent SiteElement.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setRoles()">setRoles</a>(mixed roles)</p><p class="description">
+Sets roles for this site element. </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -231,6 +245,13 @@ Sets the SiteElement to selected.</p></td>
 <code class="signature">private  mixed <strong>$parent</strong> = null</code>
 <div class="details">
 <p>The parent SiteElement. */</p></div>
+
+<hr>
+
+<h3 id="roles">roles</h3>
+<code class="signature">private  mixed <strong>$roles</strong> = array()</code>
+<div class="details">
+<p>array of roles configured for this SiteElement */</p></div>
 
 <hr>
 
@@ -312,6 +333,18 @@ Returns the label of the page.</p><dl>
 Returns the parent SiteElement.</p><dl>
 <dt>Returns:</dt>
 <dd>The parent SiteElement.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getRoles()">getRoles</h3>
+<code class="signature">public  array <strong>getRoles</strong>()</code>
+<div class="details">
+<p>
+Returns the roles of this site element as array</p><dl>
+<dt>Returns:</dt>
+<dd>A array with roles for this site element</dd>
 </dl>
 </div>
 
@@ -419,6 +452,21 @@ Sets the SiteElement to open.</p><dl>
 Sets the parent SiteElement.</p><dl>
 <dt>Parameters:</dt>
 <dd>selected - the parent SiteElement.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setRoles()">setRoles</h3>
+<code class="signature">public  void <strong>setRoles</strong>(mixed roles)</code>
+<div class="details">
+<p>
+Sets roles for this site element. An array is expected.
+If a string is give, the string will be splitted on "," 
+and the resulting array is used as roles array.</p><dl>
+<dt>Parameters:</dt>
+<dd>roles - either an array with roles or a string
+ * with comma separated roles</dd>
 </dl>
 </div>
 

@@ -26,10 +26,12 @@ class HTMLSerializer implements Serializer {
 		$headVars = array('title', 'keywords', 'description');
 		$headVars = array_combine(array_map('strtoupper', $headVars),$headVars);
 		$headers  = $domDocument->getElementsByTagName('head');
-		foreach($headVars as $VARNAME => $tagname) {
+		foreach ($headVars as $VARNAME => $tagname) {
 			$$VARNAME = '';
-			if ($headers->length < 1)
+			if ($headers->length < 1)  {
 				continue;
+			}
+			
 			($element = $headers->item(0)->getElementsByTagName($tagname))
 				&& ($element->length > 0)
 				&& ($$VARNAME = $element->item(0)->nodeValue);

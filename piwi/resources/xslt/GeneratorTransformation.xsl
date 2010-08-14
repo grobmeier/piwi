@@ -19,7 +19,7 @@
    
    <!-- Evaluate forms -->
    <xsl:template match="piwixml:piwiform">
-      <xsl:apply-templates select="php:function('FormProcessor::process', string(@id))" />
+      <xsl:apply-templates select="php:function('FormProcessorWrapper::process', string(@id))" />
    </xsl:template>
    
    <!-- Translate the labels -->

@@ -32,7 +32,7 @@ abstract class Page {
 			$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
 
 			// Check if user is already logged in
-			if(!UserSessionManager :: isUserAuthenticated() && in_array('anonymous', $allowedRoles) ) {
+			if (!UserSessionManager :: isUserAuthenticated() && in_array('anonymous', $allowedRoles)) {
 				return true;
 			} else if (UserSessionManager :: isUserAuthenticated(true)) {
 				// Check whether user has required role

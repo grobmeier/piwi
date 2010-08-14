@@ -22,26 +22,26 @@
          <xsl:copy-of select="." />
       </xsl:when>
       <xsl:otherwise>
-         <xsl:copy-of select="php:function('FormProcessor::generateInput', .)"/>
+         <xsl:copy-of select="php:function('FormProcessorWrapper::generateInput', .)"/>
       </xsl:otherwise>
       </xsl:choose>      
    </xsl:template>
 
    <xsl:template match="select">
-      <xsl:copy-of select="php:function('FormProcessor::generateSelect', .)"/>
+      <xsl:copy-of select="php:function('FormProcessorWrapper::generateSelect', .)"/>
    </xsl:template>
    
    <xsl:template match="textarea">
-      <xsl:copy-of select="php:function('FormProcessor::generateTextArea', .)"/>
+      <xsl:copy-of select="php:function('FormProcessorWrapper::generateTextArea', .)"/>
    </xsl:template>
    
    <!-- Executes a Validator -->
    <xsl:template match="validator">
-      <xsl:copy-of select="php:function('FormProcessor::executeValidator', .)"/>
+      <xsl:copy-of select="php:function('FormProcessorWrapper::executeValidator', .)"/>
    </xsl:template>
    
    <!-- Executes a StepProcessor -->
    <xsl:template match="stepprocessor">
-      <xsl:copy-of select="php:function('FormProcessor::executeStepProcessor', .)"/>
+      <xsl:copy-of select="php:function('FormProcessorWrapper::executeStepProcessor', .)"/>
    </xsl:template>
 </xsl:stylesheet>

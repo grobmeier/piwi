@@ -31,7 +31,7 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources
       <section>
          <title>Postbackform</title>
          Diese Form schickt sein Ergebnis einfach wieder an sich selbst - der Schritt wiederholt sich.
-         Das ist sehr praktisch für Suchformulare :-)
+         Das ist sehr praktisch für Suchformulare.
          <br /><br />   
          <piwiform id="postbackform" />
       </section>

@@ -18,18 +18,18 @@ class SiteSelector {
 	 * Processes the contents of the page.
 	 */
 	public function generateContent() {
-		$this->choosePipeline();
+		$this->_choosePipeline();
 		$this->page->generateContent();
 		
 	}
 
-	private function choosePipeline() {
+	private function _choosePipeline() {
 		$path = $this->getSite()->getFilePath();
 		$pos = strrpos($path, ".");
 		$extension = substr($path, $pos + 1);
 		
 		// TODO: Pipelines should be configurable
-		if($extension == 'stream') {
+		if ($extension == 'stream') {
 			// Streaming input definition file
 			$this->setPage(BeanFactory :: getBeanById('streamingPage'));
 		} else {

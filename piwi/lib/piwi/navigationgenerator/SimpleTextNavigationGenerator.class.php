@@ -24,7 +24,8 @@ class SimpleTextNavigationGenerator implements NavigationGenerator {
     			$roles = $element->getRoles();
     			$provider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
     			$username = UserSessionManager::getUserName();
-    			if(empty($roles) || $provider->isUserInRole($username, $roles)) {
+    			
+    			if (empty($roles) || $provider->isUserInRole($username, $roles)) {
 	    			// If the page is selected set another css class to highlight the item
 					$cssClass = "";
 					if ($element->isOpen()) {

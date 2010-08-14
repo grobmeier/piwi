@@ -79,10 +79,9 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type">protected  void</td>
+<td class="type">protected  true,</td>
 <td class="description"><p class="name"><a href="#checkPermissions()">checkPermissions</a>()</p><p class="description">
-Check if user authentication is activated and whether the requested page has restrictions.
-</p></td>
+Check if user authentication is activated and whether the requested page has restrictions.</p></td>
 </tr>
 <tr>
 <td class="type">abstract  void</td>
@@ -94,6 +93,10 @@ Processes the contents of the page.
 <td class="type">protected  <a href="../default/cache.html">Cache</a></td>
 <td class="description"><p class="name"><a href="#getCache()">getCache</a>()</p><p class="description">
 Returns cache instance.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#getContent()">getContent</a>()</p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../default/site.html">Site</a></td>
@@ -156,11 +159,14 @@ Constructor.
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="checkPermissions()">checkPermissions</h3>
-<code class="signature">protected  void <strong>checkPermissions</strong>()</code>
+<code class="signature">protected  true, <strong>checkPermissions</strong>()</code>
 <div class="details">
 <p>
-Check if user authentication is activated and whether the requested page has restrictions.
-/</p></div>
+Check if user authentication is activated and whether the requested page has restrictions.</p><dl>
+<dt>Returns:</dt>
+<dd>if the user is allowed to access, false otherwise</dd>
+</dl>
+</div>
 
 <hr>
 
@@ -181,6 +187,13 @@ Returns cache instance.</p><dl>
 <dt>Returns:</dt>
 <dd>The cache instance.</dd>
 </dl>
+</div>
+
+<hr>
+
+<h3 id="getContent()">getContent</h3>
+<code class="signature">public  void <strong>getContent</strong>()</code>
+<div class="details">
 </div>
 
 <hr>

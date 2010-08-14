@@ -44,7 +44,7 @@ class ImageNavigationGenerator implements NavigationGenerator {
     			$roles = $element->getRoles();
     			$provider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
     			$username = UserSessionManager::getUserName();
-    			if(empty($roles) || $provider->isUserInRole($username, $roles)) {
+    			if (empty($roles) || $provider->isUserInRole($username, $roles)) {
 					if (!$element->isHiddenInNavigation()) {
 						$filepath = $element-> getId() . ".html";
 						if (substr($element->getFilePath(), 0, 4) == 'http') {

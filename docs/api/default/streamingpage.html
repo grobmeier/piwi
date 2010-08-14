@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
 
-<title>XMLPage (Piwi - XML Transformation Framework)</title>
+<title>StreamingPage (Piwi - XML Transformation Framework)</title>
 
 </head>
 <body id="definition" onload="parent.document.title=document.title;">
@@ -27,7 +27,7 @@
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/xmlpage.html" target="_top">No frames</a>
+<a href="../default/streamingpage.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
@@ -35,15 +35,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </div>
 <hr>
 
-<div class="qualifiedName">default.XMLPage</div>
+<div class="qualifiedName">default.StreamingPage</div>
 
-<h1>Class XMLPage</h1>
+<h1>Class StreamingPage</h1>
 
-<pre class="tree"><a href="../default/page.html">Page</a><br>  |<br>  +--<strong>XMLPage</strong><br /></pre>
+<pre class="tree"><a href="../default/page.html">Page</a><br>  |<br>  +--<strong>StreamingPage</strong><br /></pre>
 
 <hr>
 
-<p class="signature">public  class <strong>XMLPage</strong><br>extends <a href="../default/page.html">Page</a>
+<p class="signature">public  class <strong>StreamingPage</strong><br>extends <a href="../default/page.html">Page</a>
 
 </p>
 
@@ -53,6 +53,14 @@ Renders the requested page and creates the navigation based on 'site.xml'.
 
 <hr>
 
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#streamingFilePath">$streamingFilePath</a></p></td>
+</tr>
+</table>
+
 <table class="inherit">
 <tr><th colspan="2">Fields inherited from default.Page</th></tr>
 <tr><td><a href="../default/page.html#content">content</a>, <a href="../default/page.html#contentPath">contentPath</a>, <a href="../default/page.html#site">site</a></td></tr></table>
@@ -60,17 +68,33 @@ Renders the requested page and creates the navigation based on 'site.xml'.
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#XMLPage()">XMLPage</a>(string contentPath, string templatesPath, string siteFilename)</p><p class="description">
-Constructor.</p></td>
+<td class="description"><p class="name"><a href="#StreamingPage()">StreamingPage</a>()</p><p class="description">Constructor. </p></td>
 </tr>
 </table>
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_callActions()">_callActions</a>(mixed actions)</p><p class="description">
+Calls actions configured for this stream
+/</p></td>
+</tr>
+<tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
-Reads the xml of the requested page and transforms the Generators to Piwi-XML.</p></td>
+TODO
+/</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../default/site.html">Site</a></td>
+<td class="description"><p class="name"><a href="#getStreamingFilePath()">getStreamingFilePath</a>()</p><p class="description">
+Returns the reference to the Site.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setStreamingFilePath()">setStreamingFilePath</a>(mixed streamingFilePath, <a href="../default/site.html">Site</a> site)</p><p class="description">
+Sets the reference to the Site.</p></td>
 </tr>
 </table>
 
@@ -78,30 +102,62 @@ Reads the xml of the requested page and transforms the Generators to Piwi-XML.<
 <tr><th colspan="2">Methods inherited from default.Page</th></tr>
 <tr><td><a href="../default/page.html#checkPermissions()">checkPermissions</a>, <a href="../default/page.html#generateContent()">generateContent</a>, <a href="../default/page.html#getCache()">getCache</a>, <a href="../default/page.html#getContent()">getContent</a>, <a href="../default/page.html#getSite()">getSite</a>, <a href="../default/page.html#serialize()">serialize</a>, <a href="../default/page.html#setContent()">setContent</a>, <a href="../default/page.html#setContentPath()">setContentPath</a>, <a href="../default/page.html#setSite()">setSite</a></td></tr></table>
 
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="streamingFilePath">streamingFilePath</h3>
+<code class="signature">private  mixed <strong>$streamingFilePath</strong> = null</code>
+<div class="details">
+</div>
+
+<hr>
+
 <h2 id="detail_constr">Constructor Detail</h2>
-<h3 id="XMLPage()">XMLPage</h3>
-<code class="signature">public <strong>XMLPage</strong>(string contentPath, string templatesPath, string siteFilename)</code>
+<h3 id="StreamingPage()">StreamingPage</h3>
+<code class="signature">public <strong>StreamingPage</strong>()</code>
+<div class="details">
+<p>Constructor. */</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="_callActions()">_callActions</h3>
+<code class="signature">private  void <strong>_callActions</strong>(mixed actions)</code>
 <div class="details">
 <p>
-Constructor.</p><dl>
-<dt>Parameters:</dt>
-<dd>contentPath - Name of the folder where the content is placed.</dd>
-<dd>templatesPath - Name of the folder where your templates are placed.</dd>
-<dd>siteFilename - The name of the file containing the site information.</dd>
+Calls actions configured for this stream
+/</p></div>
+
+<hr>
+
+<h3 id="generateContent()">generateContent</h3>
+<code class="signature">public  void <strong>generateContent</strong>()</code>
+<div class="details">
+<p>
+TODO
+/</p></div>
+
+<hr>
+
+<h3 id="getStreamingFilePath()">getStreamingFilePath</h3>
+<code class="signature">public  <a href="../default/site.html">Site</a> <strong>getStreamingFilePath</strong>()</code>
+<div class="details">
+<p>
+Returns the reference to the Site.</p><dl>
+<dt>Returns:</dt>
+<dd>The reference to the Site.</dd>
 </dl>
 </div>
 
 <hr>
 
-<h2 id="detail_method">Method Detail</h2>
-<h3 id="generateContent()">generateContent</h3>
-<code class="signature">public  void <strong>generateContent</strong>()</code>
+<h3 id="setStreamingFilePath()">setStreamingFilePath</h3>
+<code class="signature">public  void <strong>setStreamingFilePath</strong>(mixed streamingFilePath, <a href="../default/site.html">Site</a> site)</code>
 <div class="details">
 <p>
-Reads the xml of the requested page and transforms the Generators to Piwi-XML.
-TODO refactor: some stuff should go to the parent generate content method
-TODO refactor: this class must be easily able extend
-/</p></div>
+Sets the reference to the Site.</p><dl>
+<dt>Parameters:</dt>
+<dd>site - The reference to the Site.</dd>
+</dl>
+</div>
 
 <hr>
 
@@ -119,7 +175,7 @@ TODO refactor: this class must be easily able extend
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/xmlpage.html" target="_top">No frames</a>
+<a href="../default/streamingpage.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>

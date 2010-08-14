@@ -50,8 +50,7 @@ class StreamManager {
     	    $r[$i++] = (string)$action->attributes()->processor;
     	}
     	return $r;
-    } 
-    
+    }    
     
     /**
      * Sets the path of the file containing the configuration

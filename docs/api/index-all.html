@@ -67,20 +67,30 @@ Returns the exception as string.</dd>
 <dt><a href="default/mediacenter.html#_addImagesToAlbum()">_addImagesToAlbum()</a> - Method in class <a href="default/mediacenter.html">default.MediaCenter</a></dt>
 <dd>
 Retrieves all images of the given folder and adds them to the album.</dd>
+<dt><a href="default/streamingpage.html#_callActions()">_callActions()</a> - Method in class <a href="default/streamingpage.html">default.StreamingPage</a></dt>
+<dd>
+Calls actions configured for this stream
+/</dd>
+<dt><a href="default/formprocessor.html#_callPreProcessor()">_callPreProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Calls a preprocessor defined as an attribute in the step tag.
+</dd>
 <dt><a href="default/site.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Generates the submenus of the given nodes.</dd>
 <dt><a href="default/site.html#_getCurrentPageDOMNode()">_getCurrentPageDOMNode()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the DOMNode representing the current page.</dd>
+<dt><a href="default/formprocessor.html#_getFiles()">_getFiles()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Returns an array containing all files of the currently processed form.
+</dd>
+<dt><a href="default/formprocessor.html#_getFilteredAttributesAsString()">_getFilteredAttributesAsString()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Returns all attribute/value-pairs of a DOMElement as a string. </dd>
 <dt><a href="default/generatorfactory.html#_getGeneratorById()">_getGeneratorById()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Returns the Generator with the given id.
-</dd>
-<dt><a href="default/formprocessor.html#_getLogger()">_getLogger()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Since we are in a static context and PHP5 can only use literals and strings
-for intializing static members, we need to do some lazy initilizing here.
 </dd>
 <dt><a href="default/imagenavigationgenerator.html#_getNavigation()">_getNavigation()</a> - Method in class <a href="default/imagenavigationgenerator.html">default.ImageNavigationGenerator</a></dt>
 <dd>
@@ -88,9 +98,20 @@ Returns the recursivly built navigation.</dd>
 <dt><a href="default/site.html#_getPageDOMNodeByPageId()">_getPageDOMNodeByPageId()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the DOMNode representing the the page with the given Id.</dd>
+<dt><a href="default/formprocessor.html#_getResults()">_getResults()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Returns an array containing all results of the currently processed form.
+</dd>
 <dt><a href="default/sitemapgenerator.html#_getSiteMapAsXml()">_getSiteMapAsXml()</a> - Method in class <a href="default/sitemapgenerator.html">default.SiteMapGenerator</a></dt>
 <dd>
 Returns the given 'SiteMap' as xml.</dd>
+<dt><a href="default/formprocessor.html#_getStepXML()">_getStepXML()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Processes the current step of the form and returns it as XML.</dd>
+<dt><a href="default/xmlroleprovider.html#_getUserRoles()">_getUserRoles()</a> - Method in class <a href="default/xmlroleprovider.html">default.XmlRoleProvider</a></dt>
+<dd>
+Returns all roles of a user.
+</dd>
 <dt><a href="default/beanfactory.html#_initializeBean()">_initializeBean()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Constructs an instance of the Object with the given id.
@@ -114,10 +135,18 @@ Constructs an instance of the Generator with the given id.
 <dd>
 Initializes the properties for the bean with the referenced id.
 </dd>
+<dt><a href="default/formprocessor.html#_initRequestParams()">_initRequestParams()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Initializes the request parameters.
+</dd>
+<dt><a href="default/formprocessor.html#_initXSLTProcessor()">_initXSLTProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Initializes the XSLTProcessor, if this hasn't happened before'
+/</dd>
 <dt><a href="default/classloadercache.html#_loadCache()">_loadCache()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Loads the cache file. </dd>
-<dt><a href="default/configurationmanager.html#_loadConfig()">_loadConfig()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dt><a href="default/streammanager.html#_loadConfig()">_loadConfig()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
 <dd>
 Loads the 'config.xml'.
 </dd>
@@ -166,14 +195,10 @@ Caches the given page so that it can be reused within further requests.</dd>
 <dt><a href="default/generatorfactory.html#callGenerator()">callGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Used within the XSLT-Stylesheets to interpret the <generator /> tag. </dd>
-<dt><a href="default/formprocessor.html#callPreProcessor()">callPreProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Calls a preprocessor defined as an attribute in the step tag.
-</dd>
 <dt><a href="default/page.html#checkPermissions()">checkPermissions()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
 <dd>
-Check if user authentication is activated and whether the requested page has restrictions.
-</dd>
+Check if user authentication is activated and whether the requested page has restrictions.</dd>
+<dt><a href="default/siteselector.html#choosePipeline()">choosePipeline()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
 <dt><a href="default/classloader.html">ClassLoader()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 ClassLoader loads classes necessary for PIWI.
@@ -240,10 +265,10 @@ Generates an errorpage.
 <dt><a href="default/sqlite3connector.html#execute()">execute()</a> - Method in class <a href="default/sqlite3connector.html">default.SQLite3Connector</a></dt>
 <dd>
 Executes the given query.</dd>
-<dt><a href="default/formprocessor.html#executeStepProcessor()">executeStepProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessorwrapper.html#executeStepProcessor()">executeStepProcessor()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Executes the given StepProcessor.</dd>
-<dt><a href="default/formprocessor.html#executeValidator()">executeValidator()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessorwrapper.html#executeValidator()">executeValidator()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Executes the given Validator.</dd>
 </dl>
@@ -264,6 +289,10 @@ Used to retrieve Forms.
 <dd>
 Processes forms specified as PiwiForms.
 </dd>
+<dt><a href="default/formprocessorwrapper.html">FormProcessorWrapper()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Wrappes the FormProcessor to make it accessible as a bean.
+</dd>
 </dl>
 <h1 id="letterG">G</h1>
 <dl>
@@ -273,16 +302,16 @@ Builds the navigation.</dd>
 <dt><a href="default/xmlpage.html#generateContent()">generateContent()</a> - Method in class <a href="default/xmlpage.html">default.XMLPage</a></dt>
 <dd>
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.</dd>
-<dt><a href="default/formprocessor.html#generateInput()">generateInput()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessorwrapper.html#generateInput()">generateInput()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Converts the given INPUT element to PiwiXML.</dd>
 <dt><a href="default/sitegenerator.html#generateSections()">generateSections()</a> - Method in class <a href="default/sitegenerator.html">default.SiteGenerator</a></dt>
 <dd>
 Generates the sections that will be placed as content.</dd>
-<dt><a href="default/formprocessor.html#generateSelect()">generateSelect()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessorwrapper.html#generateSelect()">generateSelect()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Converts the given SELECT element to PiwiXML.</dd>
-<dt><a href="default/formprocessor.html#generateTextArea()">generateTextArea()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/formprocessorwrapper.html#generateTextArea()">generateTextArea()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Converts the given TEXTAREA element to PiwiXML.</dd>
 <dt><a href="default/generator.html">Generator()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
@@ -320,6 +349,7 @@ Lookup a class by the given id in the cache. </dd>
 <dd>
 Returns the Connector with the given id.
 </dd>
+<dt><a href="default/page.html#getContent()">getContent()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
 <dt><a href="default/album.html#getCreatedAt()">getCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Returns the date when the album has been created.</dd>
@@ -342,13 +372,6 @@ Returns the extension/format of the requested page (e.g. </dd>
 <dt><a href="default/siteelement.html#getFilePath()">getFilePath()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the url of the content.</dd>
-<dt><a href="default/formprocessor.html#getFiles()">getFiles()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Returns an array containing all files of the currently processed form.
-</dd>
-<dt><a href="default/formprocessor.html#getFilteredAttributesAsString()">getFilteredAttributesAsString()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Returns all attribute/value-pairs of a DOMElement as a string. </dd>
 <dt><a href="default/formfactory.html#getFormById()">getFormById()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
 <dd>
 Returns the Form with the given id as DOMXPath.
@@ -406,25 +429,30 @@ Returns the path to the folder.</dd>
 <dt><a href="default/pager.html#getPreviousPage()">getPreviousPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the previous page.</dd>
-<dt><a href="default/formprocessor.html#getResults()">getResults()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Returns an array containing all results of the currently processed form.
-</dd>
 <dt><a href="default/configurationmanager.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the RoleProvider which manages the authentication of users.</dd>
+<dt><a href="default/siteelement.html#getRoles()">getRoles()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
+<dd>
+Returns the roles of this site element as array</dd>
 <dt><a href="default/configurationmanager.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the Serializer for the given format or null if none is found.</dd>
-<dt><a href="default/page.html#getSite()">getSite()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dt><a href="default/siteselector.html#getSite()">getSite()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
 <dd>
 Returns the reference to the Site.</dd>
 <dt><a href="default/sitemaphelper.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the SiteElement with the given in id or null if no item is found.</dd>
-<dt><a href="default/formprocessor.html#getStepXML()">getStepXML()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dt><a href="default/streammanager.html#getStreamActions()">getStreamActions()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
 <dd>
-Processes the current step of the form and returns it as XML.</dd>
+Returns the path of an stream for a given ID</dd>
+<dt><a href="default/streammanager.html#getStreamInfo()">getStreamInfo()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
+<dd>
+Returns the path of an stream for a given ID</dd>
+<dt><a href="default/streamingpage.html#getStreamingFilePath()">getStreamingFilePath()</a> - Method in class <a href="default/streamingpage.html">default.StreamingPage</a></dt>
+<dd>
+Returns the reference to the Site.</dd>
 <dt><a href="default/site.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns a list of supported languages.</dd>
@@ -453,14 +481,6 @@ Creates a image based navigation. </dd>
 <dt><a href="default/beanfactory.html#initialize()">initialize()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
-<dt><a href="default/formprocessor.html#initRequestParams()">initRequestParams()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Initalizes the request parameters.
-</dd>
-<dt><a href="default/formprocessor.html#initXSLTProcessor()">initXSLTProcessor()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
-<dd>
-Initalizes the XSLTProcessor, if this hasn't happened before'
-/</dd>
 <dt><a href="default/classloadercache.html#invalidate()">invalidate()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Resets the cache, should be called if a class 
@@ -479,7 +499,7 @@ Indicates whether the item is shown in the SiteMap.</dd>
 <dt><a href="default/siteelement.html#isOpen()">isOpen()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the children are currently visible.</dd>
-<dt><a href="default/roleprovider.html#isPasswordValid()">isPasswordValid()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
+<dt><a href="default/xmlroleprovider.html#isPasswordValid()">isPasswordValid()</a> - Method in class <a href="default/xmlroleprovider.html">default.XmlRoleProvider</a></dt>
 <dd>
 Checks whether the given user exists and validates its password.
 </dd>
@@ -489,7 +509,7 @@ Indicates whether the SiteElement is currently selected.</dd>
 <dt><a href="default/usersessionmanager.html#isUserAuthenticated()">isUserAuthenticated()</a> - Method in class <a href="default/usersessionmanager.html">default.UserSessionManager</a></dt>
 <dd>
 Returns true if the current user is authenticated.</dd>
-<dt><a href="default/roleprovider.html#isUserInRole()">isUserInRole()</a> - Method in class <a href="default/roleprovider.html">default.RoleProvider</a></dt>
+<dt><a href="default/xmlroleprovider.html#isUserInRole()">isUserInRole()</a> - Method in class <a href="default/xmlroleprovider.html">default.XmlRoleProvider</a></dt>
 <dd>
 Checks if a user has one of the given roles. </dd>
 <dt><a href="default/validator.html#isValid()">isValid()</a> - Method in class <a href="default/validator.html">default.Validator</a></dt>
@@ -617,6 +637,10 @@ Transform the given xml to the output format.</dd>
 <dd>
 Interface that serializers have to implement.
 </dd>
+<dt><a href="default/xmlroleprovider.html#setAuthFile()">setAuthFile()</a> - Method in class <a href="default/xmlroleprovider.html">default.XmlRoleProvider</a></dt>
+<dd>
+Set the auth file as defined in the config.xml
+/</dd>
 <dt><a href="default/siteelement.html#setChildren()">setChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>Sets the children</dd>
 <dt><a href="default/configurationmanager.html#setConfigFilePath()">setConfigFilePath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
@@ -663,15 +687,24 @@ Sets the parent SiteElement.</dd>
 <dt><a href="default/sitemappathnavigationgenerator.html#setProperty()">setProperty()</a> - Method in class <a href="default/sitemappathnavigationgenerator.html">default.SiteMapPathNavigationGenerator</a></dt>
 <dd>
 Used to pass parameters to the Generator.</dd>
+<dt><a href="default/siteelement.html#setRoles()">setRoles()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
+<dd>
+Sets roles for this site element. </dd>
 <dt><a href="default/siteelement.html#setSelected()">setSelected()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the SiteElement to selected.</dd>
-<dt><a href="default/page.html#setSite()">setSite()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dt><a href="default/siteselector.html#setSite()">setSite()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
 <dd>
 Sets the reference to the Site.</dd>
 <dt><a href="default/site.html#setSiteFilename()">setSiteFilename()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Set the name of the file containing the site information.</dd>
+<dt><a href="default/streammanager.html#setStreamConfiguration()">setStreamConfiguration()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
+<dd>
+Sets the path of the file containing the configuration</dd>
+<dt><a href="default/streamingpage.html#setStreamingFilePath()">setStreamingFilePath()</a> - Method in class <a href="default/streamingpage.html">default.StreamingPage</a></dt>
+<dd>
+Sets the reference to the Site.</dd>
 <dt><a href="default/site.html#setTemplatesPath()">setTemplatesPath()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd></dd>
 <dt><a href="default/simplegallerygenerator.html">SimpleGalleryGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
@@ -737,6 +770,13 @@ Returns the current position in the stream.</dd>
 <dt><a href="default/xsltstylesheetstream.html#stream_write()">stream_write()</a> - Method in class <a href="default/xsltstylesheetstream.html">default.XSLTStylesheetStream</a></dt>
 <dd>
 Should store the given data, but does nothing, since this functionality is not required here.</dd>
+<dt><a href="default/streamingpage.html">StreamingPage()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Renders the requested page and creates the navigation based on 'site.xml'.</dd>
+<dt><a href="default/streammanager.html">StreamManager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Manages the settings configured in 'streams.xml'.
+</dd>
 <dt><a href="default/streamserializer.html">StreamSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to Excel (XSL).
@@ -781,6 +821,10 @@ Serializes the given XML to Word (DOC).
 <dt><a href="default/xmlpage.html">XMLPage()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Renders the requested page and creates the navigation based on 'site.xml'.</dd>
+<dt><a href="default/xmlroleprovider.html">XmlRoleProvider()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+XML RoleProvider.
+</dd>
 <dt><a href="default/xsltstylesheetstream.html">XSLTStylesheetStream()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 A Stream used to embed custom XSLT-Transformations into PIWI-XML.

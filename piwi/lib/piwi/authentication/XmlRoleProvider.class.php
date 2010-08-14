@@ -31,21 +31,23 @@ class XmlRoleProvider implements RoleProvider {
 	 * role "anonymous", the user is in role.
 	 * 
 	 * @param string $username The name of the user.
-	 * @param array $role The roles that are allowed.
+	 * @param array $roles The roles that are allowed.
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
 	public function isUserInRole($username, array $roles) {
-		if(!UserSessionManager::isUserAuthenticated($username)) {
-		    if(in_array('anonymous', $roles)) {
+		if (!UserSessionManager::isUserAuthenticated($username)) {
+		    if (in_array('anonymous', $roles)) {
 		        return true;
 		    }
 		    return false;
 		}
+		
 		foreach ($this->_getUserRoles($username) as $role) {
        		if (in_array($role, $roles)) {
        			return true;
        		}
 		}	
+		
 		return false;
 	}
 
@@ -64,6 +66,7 @@ class XmlRoleProvider implements RoleProvider {
 		    	return true;
 		    } 
 		}
+		
 		return false;
 	}
 	
@@ -79,6 +82,7 @@ class XmlRoleProvider implements RoleProvider {
 				return explode(',',$rolesString);
 		    } 
 		}
+		
 		return array();
 	}
 	
