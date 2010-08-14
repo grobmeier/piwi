@@ -15,7 +15,7 @@
     * New: Included a XmlRoleProvider
     * New: Included role sensitive menu bar generation
     * Update: Included Log4PHP 2.0.0 (fixes issue 28)
-    * Fixed issues: 28-31, 35, 37, 42, 43
+    * Fixed issues: 9, 28-31, 35, 37, 42, 43
 
 0.0.9 - Logger Release
 

@@ -53,15 +53,17 @@ class UserSessionManager {
 	 * @return boolean True if login was successful otherwise false.
 	 */
 	public static function loginUser($username, $password, $useCookies = false, $sessionTime = 3600) {
+		$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();		
+		$encrpytedPassword = $roleProvider->encryptPassword($password);
+		
 		// Validate the password
-		$userValid = BeanFactory :: getBeanById('configurationManager')
-			->getRoleProvider()->isPasswordValid($username, sha1($password));
+		$userValid = $roleProvider->isPasswordValid($username, $encrpytedPassword);
 
 		if ($userValid) {
 			// Store cookie
 			if ($useCookies) {
 				setcookie('username', gzdeflate($username), time() + $sessionTime);
-				setcookie('password', sha1($password), time() + $sessionTime);
+				setcookie('password', $encrpytedPassword, time() + $sessionTime);
 			}
 
 			// Update session
@@ -134,8 +136,9 @@ class UserSessionManager {
 		} else if (isset ($_COOKIE['username']) && $_COOKIE['username'] != 'deleted' 
 			&& isset ($_COOKIE['password']) && $_COOKIE['password'] != 'deleted') {
 			// In this case the user has a cookie. Validate the password and login the user if it is correct.
-			$userValid = BeanFactory :: getBeanById('configurationManager')
-				->getRoleProvider()->isPasswordValid(gzinflate($_COOKIE['username']), $_COOKIE['password']);
+			$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();		
+			$userValid = $roleProvider->isPasswordValid(gzinflate($_COOKIE['username']), $_COOKIE['password']);
+			
 			if ($userValid) {				
 				// Password is valid
 				$_SESSION['authenticated'] = true;

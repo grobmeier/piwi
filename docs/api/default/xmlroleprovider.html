@@ -71,7 +71,7 @@ Can be enabled in configuration xml with:</p><p><authentication enabled="1" role
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#auth">$auth</a></p><p class="description">reference to the authentification xml file */</p></td>
+<td class="description"><p class="name"><a href="#auth">$auth</a></p><p class="description">The DOMXPath of the authentification xml file */</p></td>
 </tr>
 </table>
 
@@ -80,8 +80,12 @@ Can be enabled in configuration xml with:</p><p><authentication enabled="1" role
 <tr>
 <td class="type">private  array</td>
 <td class="description"><p class="name"><a href="#_getUserRoles()">_getUserRoles</a>(mixed username)</p><p class="description">
-Returns all roles of a user.
-</p></td>
+Returns all roles of a user.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#encryptPassword()">encryptPassword</a>(string password)</p><p class="description">
+Encrypts the password with a custom algorithm.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
@@ -106,7 +110,7 @@ Set the auth file as defined in the config.xml
 <h3 id="auth">auth</h3>
 <code class="signature">private  mixed <strong>$auth</strong> = null</code>
 <div class="details">
-<p>reference to the authentification xml file */</p></div>
+<p>The DOMXPath of the authentification xml file */</p></div>
 
 <hr>
 
@@ -115,10 +119,23 @@ Set the auth file as defined in the config.xml
 <code class="signature">private  array <strong>_getUserRoles</strong>(mixed username)</code>
 <div class="details">
 <p>
-Returns all roles of a user.
-This method is just a dummy, normally you will query a database here.</p><dl>
+Returns all roles of a user.</p><dl>
 <dt>Returns:</dt>
 <dd>All roles of a user.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="encryptPassword()">encryptPassword</h3>
+<code class="signature">public  string <strong>encryptPassword</strong>(string password)</code>
+<div class="details">
+<p>
+Encrypts the password with a custom algorithm.</p><dl>
+<dt>Parameters:</dt>
+<dd>password - The password.</dd>
+<dt>Returns:</dt>
+<dd>The encrypted password.</dd>
 </dl>
 </div>
 
@@ -133,9 +150,9 @@ Returns true if user exists and password is valid, otherwise false.
 This method is just a dummy, normally you will query a database here.</p><dl>
 <dt>Parameters:</dt>
 <dd>username - The username.</dd>
-<dd>password - The SHA1-encrypted password.</dd>
+<dd>password - The encrpyted password.</dd>
 <dt>Returns:</dt>
-<dd>True if user existspassword is valid, otherwise false.</dd>
+<dd>True if user exists and password is valid, otherwise false.</dd>
 </dl>
 </div>
 

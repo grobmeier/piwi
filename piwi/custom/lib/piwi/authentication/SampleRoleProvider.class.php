@@ -35,11 +35,20 @@ class SampleRoleProvider implements RoleProvider {
 	 * Returns true if user exists and password is valid, otherwise false.
 	 * This method is just a dummy, normally you will query a database here.
 	 * @param string $username The username.
-	 * @param string $password The SHA1-encrypted password.
-	 * @return boolean True if user existspassword is valid, otherwise false.
+	 * @param string $password The encrypted password.
+	 * @return boolean True if user exists and password is valid, otherwise false.
 	 */
 	public function isPasswordValid($username, $password) {
-		return ($username == 'test' && $password == sha1('test'));
+		return ($username == 'test' && $password == $this->encryptPassword('test'));
+	}
+	
+	/**
+	 * Encrypts the password with a custom algorithm.
+	 * @param string $password The password.
+	 * @return string The encrypted password.
+	 */
+	public function encryptPassword($password) {
+		return sha1($password);
 	}
 	
 	/**

@@ -20,7 +20,7 @@
  * </piwi-users>
  */
 class XmlRoleProvider implements RoleProvider {
-	/** reference to the authentification xml file */
+	/** The DOMXPath of the authentification xml file */
 	private $auth = null;
 	
 	/**
@@ -56,14 +56,19 @@ class XmlRoleProvider implements RoleProvider {
 	 * Returns true if user exists and password is valid, otherwise false.
 	 * This method is just a dummy, normally you will query a database here.
 	 * @param string $username The username.
-	 * @param string $password The SHA1-encrypted password.
-	 * @return boolean True if user existspassword is valid, otherwise false.
+	 * @param string $password The encrpyted password.
+	 * @return boolean True if user exists and password is valid, otherwise false.
 	 */
 	public function isPasswordValid($username, $password) {
+		if ($this->auth == null) {
+			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . "' before accessing an Object. You have to update your configuration file.", 
+				PiwiException :: ERR_ILLEGAL_STATE);
+		}
+	
 		foreach ($this->auth as $user) {
 		    if ($username == $user->attributes()->name && 
-		    	$password == sha1($user->attributes()->password)) {
-		    	return true;
+		    	$password == $user->attributes()->password) {
+	    		return true;
 		    } 
 		}
 		
@@ -71,11 +76,24 @@ class XmlRoleProvider implements RoleProvider {
 	}
 	
 	/**
+	 * Encrypts the password with a custom algorithm.
+	 * @param string $password The password.
+	 * @return string The encrypted password.
+	 */
+	public function encryptPassword($password) {
+		return sha1($password);
+	}
+	
+	/**
 	 * Returns all roles of a user.
-	 * This method is just a dummy, normally you will query a database here.
 	 * @return array All roles of a user.
 	 */
 	private function _getUserRoles($username) {
+		if ($this->auth == null) {
+			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . "' before accessing an Object. You have to update your configuration file.", 
+				PiwiException :: ERR_ILLEGAL_STATE);
+		}
+	
 		foreach ($this->auth as $user) {
 		    if ($username == $user->attributes()->name) {
 				$rolesString = $user->attributes()->roles;

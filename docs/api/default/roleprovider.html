@@ -55,6 +55,11 @@ Role providers are used to for user authentication.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#encryptPassword()">encryptPassword</a>(string password)</p><p class="description">
+Encrypts the password with a custom algorithm.</p></td>
+</tr>
+<tr>
 <td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#isPasswordValid()">isPasswordValid</a>(string username, string password)</p><p class="description">
 Checks whether the given user exists and validates its password.
@@ -68,6 +73,20 @@ Checks if a user has one of the given roles. </p></td>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="encryptPassword()">encryptPassword</h3>
+<code class="signature">public  string <strong>encryptPassword</strong>(string password)</code>
+<div class="details">
+<p>
+Encrypts the password with a custom algorithm.</p><dl>
+<dt>Parameters:</dt>
+<dd>password - The password.</dd>
+<dt>Returns:</dt>
+<dd>The encrypted password.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="isPasswordValid()">isPasswordValid</h3>
 <code class="signature">public  boolean <strong>isPasswordValid</strong>(string username, string password)</code>
 <div class="details">
@@ -76,9 +95,9 @@ Checks whether the given user exists and validates its password.
 Returns true if user exists and password is valid, otherwise false.</p><dl>
 <dt>Parameters:</dt>
 <dd>username - The username.</dd>
-<dd>password - The SHA1-encrypted password.</dd>
+<dd>password - The encrpyted password.</dd>
 <dt>Returns:</dt>
-<dd>True if user existspassword is valid, otherwise false.</dd>
+<dd>True if user exists and password is valid, otherwise false.</dd>
 </dl>
 </div>
 

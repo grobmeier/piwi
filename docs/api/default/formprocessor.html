@@ -142,6 +142,11 @@ Initializes the XSLTProcessor, if this hasn't happened before'
 /</p></td>
 </tr>
 <tr>
+<td class="type">private  boolean</td>
+<td class="description"><p class="name"><a href="#_isKeyAllowedAsHiddenField()">_isKeyAllowedAsHiddenField</a>(string key)</p><p class="description">
+Determines whether the given POST parameter should be included as a hidden field.</p></td>
+</tr>
+<tr>
 <td class="type"> DOMDocument</td>
 <td class="description"><p class="name"><a href="#executeStepProcessor()">executeStepProcessor</a>(array domElement)</p><p class="description">
 Executes the given StepProcessor.</p></td>
@@ -330,6 +335,20 @@ Not each serializer does expect htmlspecialchars.
 <p>
 Initializes the XSLTProcessor, if this hasn't happened before'
 /</p></div>
+
+<hr>
+
+<h3 id="_isKeyAllowedAsHiddenField()">_isKeyAllowedAsHiddenField</h3>
+<code class="signature">private  boolean <strong>_isKeyAllowedAsHiddenField</strong>(string key)</code>
+<div class="details">
+<p>
+Determines whether the given POST parameter should be included as a hidden field.</p><dl>
+<dt>Parameters:</dt>
+<dd>key - The key of the POST parameter.</dd>
+<dt>Returns:</dt>
+<dd>True if key should be added as hidden field otherwise false.</dd>
+</dl>
+</div>
 
 <hr>
 

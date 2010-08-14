@@ -2,7 +2,8 @@
 <piwi-users xmlns="http://piwi.googlecode.com/xsd/config"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/auth ../../resources/xsd/auth.xsd">
-  <user name="piwi" password="piwi1" roles="admin" />
-  <user name="test" password="test1" roles="admin"  />
-  <user name="both" password="both1" roles="admin,role1" />
+  <!-- Passwords are SHA1 encrypted. In this sample all passwords are 'test'.  -->
+  <user name="piwi" password="a94a8fe5ccb19ba61c4c0873d391e987982fbbd3" roles="admin" />
+  <user name="test" password="a94a8fe5ccb19ba61c4c0873d391e987982fbbd3" roles="admin"  />
+  <user name="both" password="a94a8fe5ccb19ba61c4c0873d391e987982fbbd3" roles="admin,role1" />
 </piwi-users>
