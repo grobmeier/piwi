@@ -77,7 +77,24 @@ class Request {
 				}
 			}
  		}
+ 		
 		return $result;
+	}
+	
+	/** 
+	 * Returns the parameter with the given name.
+	 * @return string The parameter.
+	 */
+	public static function getParameter($name) {
+		$parameters = self :: getParameters();
+		
+		foreach ($parameters as $key => $value) {
+			if ($key == $name) {
+				return $value;
+			}
+		}
+		
+		return null;
 	}
 }
 ?>

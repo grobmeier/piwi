@@ -39,14 +39,14 @@ abstract class Page {
 				if (!in_array('*', $allowedRoles) && !$roleProvider->
 						isUserInRole(UserSessionManager :: getUserName(), $allowedRoles)) {
 					throw new PiwiException("Permission denied.", PiwiException :: PERMISSION_DENIED);
-				}
+				}				
 			} else {
 				// Since user is not logged in, show login page				
 				Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
 				Request :: setExtension('html');
 				return false;
 			}
-		}
+		}		
 		return true;
 	}
 	

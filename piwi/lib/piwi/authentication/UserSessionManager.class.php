@@ -67,7 +67,7 @@ class UserSessionManager {
 			// Update session
 			$_SESSION['authenticated'] = true;
 			$_SESSION['username'] = $username;
-			
+
 			// Redirect to the desired page
 			if (isset ($_SESSION['ReturnUrl'])) {				
 				$returnUrl = $_SESSION['ReturnUrl'];
@@ -92,6 +92,9 @@ class UserSessionManager {
 		
 		// Delete cookie if it exists
 		if (isset ($_COOKIE['username']) || isset ($_COOKIE['password'])) {
+			unset ($_COOKIE['username']);
+			unset ($_COOKIE['password']);
+			
 			setcookie('username', '', time() - 3600);
 			setcookie('password', '', time() - 3600);
 		}

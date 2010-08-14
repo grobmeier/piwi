@@ -18,7 +18,7 @@
  * under the License.
  */
 
-/** since 5.1 php genrates a warning if no default timeszone has been set */
+/** since 5.1 php generates a warning if no default timeszone has been set */
 if(ini_get('date.timezone') == '') {
 	date_default_timezone_set('Europe/Berlin');
 }
@@ -31,7 +31,7 @@ if(ini_get('date.timezone') == '') {
 
 error_reporting(0); // hidde all errors
 //error_reporting(E_ERROR); // show only errors
-error_reporting(E_ALL); // show all errors
+//error_reporting(E_ALL); // show all errors
 
 /**
  * -------------------------------------------------------------------------
