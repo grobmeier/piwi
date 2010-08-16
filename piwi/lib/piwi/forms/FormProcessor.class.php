@@ -305,6 +305,7 @@ class FormProcessor {
        			$selected = $option->getAttribute("selected");
    				$value = $option->getAttribute("value");
 
+
 				if ($value == '') {
 					$value = $option->textContent;
 				}
@@ -332,7 +333,7 @@ class FormProcessor {
 	       			. (($selected != '') ? ' selected="' . $selected . '" ' : '')
 					. $this->_getFilteredAttributesAsString($option, array ('selected'))
 	       			. '>'
-	       			. $option->textContent
+	       			. htmlspecialchars($option->textContent)
 					. '</option>';
        		}
 		}
@@ -359,7 +360,7 @@ class FormProcessor {
 		$xml = ' <textarea name="' . $this->formId . '_' . $domElement[0]->getAttribute("name") . '"'
 					. $this->_getFilteredAttributesAsString($domElement[0], array ('name', 'value'))
 					. '>'
-					. ($value == "" ? ' ' : $value)
+					. ($value == "" ? ' ' : htmlspecialchars($value))
 					. '</textarea>';
 					
 		$doc = new DOMDocument;
@@ -392,9 +393,9 @@ class FormProcessor {
 		if ($errorMessage == null) {
 			return new DOMDocument();
 		} else {
-			$errorMessage = '<span class="error"> ' . $errorMessage . '</span>';
+			$errorMessage = '<span class="error"> ' . htmlspecialchars($errorMessage) . '</span>';
 			$this->validationFailed = true;				
-			$doc = new DOMDocument;		
+			$doc = new DOMDocument;
 			$doc->loadXml($errorMessage);
 			return $doc;
 		}
