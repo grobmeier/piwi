@@ -1,10 +1,10 @@
 <?php
+$GLOBALS['TEST'] = "folder/";
+DEFINE('CONTENT_TEST',"subfolder/");
+
 class BeanFactoryTest extends UnitTestCase {
 
 	function init() {
-		$GLOBALS['TEST'] = "folder/";
-		DEFINE('CONTENT_TEST',"subfolder/");
-		
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
 	}
 	
