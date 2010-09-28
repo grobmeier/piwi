@@ -38,5 +38,14 @@ class TestRoleProvider implements RoleProvider {
 	private function getUserRoles($username) {
 		return array('admin');
 	}
+	
+	/**
+	 * Encrypts the password with a custom algorithm.
+	 * @param string $password The password.
+	 * @return string The encrypted password.
+	 */
+	public function encryptPassword($password) {
+		return sha1($password);
+	}
 }
 ?>
