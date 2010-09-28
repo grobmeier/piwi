@@ -116,6 +116,16 @@ function exception_handler($exception) {
 set_exception_handler('exception_handler');
 
 /**
+ * Security checks on url params
+ */
+$parameterValidator = new ParameterValidator();
+if( !$parameterValidator->check($_GET['page'], ParameterValidator::TYPE_FILENAME) ||
+	!$parameterValidator->check($_GET['extension'], ParameterValidator::TYPE_AZ09_STRING)) {
+	$logger->error('A security problem occured. An invalid URL has been entered. Script execution stopped: '.$_SERVER['QUERY_STRING']);
+	die('A security problem occured. An invalid URL has been entered. Script execution stopped because: '.$_SERVER['QUERY_STRING']);
+}
+
+/**
  * -------------------------------------------------------------------------
  * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Page Processing <<<<<<<<<<<<<<<<<<<<<<<<<<<
  * -------------------------------------------------------------------------
