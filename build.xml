@@ -22,6 +22,10 @@
 	<!-- Executes all tests. -->
 	<target name="test">
 		<exec executable="php" dir="." failonerror="true">
+			<arg value="--version" />
+			<arg value="--ini" />
+		</exec>
+		<exec executable="php" dir="." failonerror="true">
 			<arg value="${testdir}/TestRunner.php" />
 			<arg value="${server}" />
 		</exec>
