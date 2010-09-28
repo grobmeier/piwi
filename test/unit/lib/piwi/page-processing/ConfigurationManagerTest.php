@@ -4,7 +4,11 @@ class ConfigurationManagerTest extends UnitTestCase {
 	
 	private $configurationManager;
 	
+	function setUp() {
+	}
+	
 	function before($message) {
+		BeanFactory :: clean();
 		$this->configurationManager = new ConfigurationManager();
 		$this->configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_cache.xml');
 	}
@@ -17,20 +21,37 @@ class ConfigurationManagerTest extends UnitTestCase {
 		$this->assertEqual(0, $this->configurationManager->getCacheTime(), 'CacheTime does not match.');
 	}
 	
-	function testGetSerializer() {		
-		$this->assertIsA($this->configurationManager->getSerializer('pdf'), Serializer, 'Type does not match.');
-		$this->assertNull($this->configurationManager->getSerializer('doc'), 'Serializer is not null.');
-		$this->assertNull($this->configurationManager->getSerializer('xls'), 'Serializer is not null.');
-			
-		$this->configurationManager = new ConfigurationManager();
-		$this->configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_empty.xml');
-		$this->assertNull($this->configurationManager->getSerializer('html'), 'Serializer is not null.');
+	function testGetSerializer() {
+		$configurationManager = new ConfigurationManager();
+		$configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_cache.xml');
+		$this->assertIsA($configurationManager->getSerializer('pdf'), 'Serializer', 'Type does not match.');
+		$this->assertNull($configurationManager->getSerializer('doesnotexist'), 'Serializer is not null.');
+
+		// Does only write to CLI in error case
+		ob_start();
+		$this->assertNull($configurationManager->getSerializer('xls'), 'Serializer is not null.');
+		$cli = ob_get_contents();
+		ob_end_clean();
+		$this->assertEqual('The Class with name \'TestRoleProvider\' is not an instance of Serializer.', $cli, 'CLI output does not match expected value');
+	}
+	
+	function testGetNullSerializer() {
+		$configurationManager = new ConfigurationManager();
+		$configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_empty.xml');
+		$this->assertNull($configurationManager->getSerializer('html'), 'Serializer is not null.');
 	}
 
 	function testGetHTMLNavigations() {
+		$GLOBALS['testconfig'] = dirname(__FILE__) . '/data/config_cache.xml';
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/contextConfigurationManager.xml');
 		
+		// Does only write to CLI in error case
+		ob_start();
 		$navigation = $this->configurationManager->getHTMLNavigations();
+		$cli = ob_get_contents();
+		ob_end_clean();
+		
+		$this->assertEqual('The Class with name \'TestRoleProvider\' is not an instance of NavigationGenerator.Custom Navigation Generator not found: 666', $cli, 'CLI output does not match expected value');
 		$this->assertEqual(2, sizeof($navigation), 'HTMLNavigations have incorrect size.');
 		
 		$this->configurationManager = new ConfigurationManager();
@@ -72,7 +93,7 @@ class ConfigurationManagerTest extends UnitTestCase {
 	}	
 	
 	function testGetRoleProvider() {
-		$this->assertIsA($this->configurationManager->getRoleProvider(), TestRoleProvider, 'Type does not match.');
+		$this->assertIsA($this->configurationManager->getRoleProvider(), 'TestRoleProvider', 'Type does not match.');
 		$this->configurationManager = new ConfigurationManager();
 		$this->configurationManager->setConfigFilePath(dirname(__FILE__) . '/data/config_empty.xml');
 
@@ -80,7 +101,7 @@ class ConfigurationManagerTest extends UnitTestCase {
 			$this->configurationManager->getRoleProvider();
 			$this->assertFalse(true, 'RoleProvider should not be specified.');
 		} catch(ReflectionException $e) {
-			$this->assertIsA($e, ReflectionException, 'Exception of wrong type raised');
+			$this->assertIsA($e, 'ReflectionException', 'Exception of wrong type raised');
 		}
 	}
 	
