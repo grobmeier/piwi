@@ -7,4 +7,8 @@
         <property name="templatesPath" value="templates" />
         <property name="siteFilename" value="site.xml" />
     </bean>
+    
+     <bean id="configurationManager" class="ConfigurationManager" scope="request">
+        <property name="configFilePath" php="$GLOBALS['testconfig']" />
+    </bean>
 </context>
