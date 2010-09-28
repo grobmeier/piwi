@@ -14,7 +14,7 @@ class MediaCenterTest extends UnitTestCase {
 		$this->assertEqual(2, sizeof($albums), 'Size does not match.');
 			
 		foreach ($albums as $album) {
-       		$this->assertIsA($album, Album, 'Type does not match.');
+       		$this->assertIsA($album, 'Album', 'Type does not match.');
        		$this->assertEqual(3, sizeof($album->getImages()), 'Size does not match.');
 		}
 	}

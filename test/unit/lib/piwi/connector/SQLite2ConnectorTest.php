@@ -8,7 +8,7 @@ class SQLite2ConnectorTest extends UnitTestCase {
 	}
 	
 	function testConnectUninitialized() {
-		$this->expectException(DatabaseException, 'No database file set.');
+		$this->expectException('DatabaseException', 'No database file set.');
 		$this->connector->connect();
 	}
 	
@@ -23,7 +23,7 @@ class SQLite2ConnectorTest extends UnitTestCase {
 		
 		
 		$sql = "SELECT rowid, subject, content FROM 666";
-		$this->expectException(DatabaseException, 'Table should not exist.');
+		$this->expectException('DatabaseException', 'Table should not exist.');
 		$dbresult = $this->connector->execute($sql);		
 	}
 }

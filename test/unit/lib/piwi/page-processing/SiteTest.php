@@ -28,7 +28,7 @@ class SiteTest extends UnitTestCase {
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context666.xml');
 		$this->site = BeanFactory :: getBeanById('site');	
 		
-		$this->expectException(PiwiException, 'Path should be illegal.');
+		$this->expectException('PiwiException', 'Path should be illegal.');
 		$this->site->getSupportedLanguages();
 	}
 	
