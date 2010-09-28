@@ -6,8 +6,10 @@ require_once ('third-party/simpletest/autorun.php');
 require_once ('third-party/simpletest/unit_tester.php');
 
 // if error reporting has another level, test build fails due to a php bug in xmllib
-error_reporting(0);
+//error_reporting(0);
+error_reporting(E_ALL);
 
+$GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/../piwi/';
     // Local server 
     if (isset($argv[1])) {
       require_once "test/PiwiWebTestCase.php";
