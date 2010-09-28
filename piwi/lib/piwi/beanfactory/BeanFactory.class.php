@@ -52,6 +52,13 @@ class BeanFactory {
 	}
 
 	/**
+	 * Removes the singleton
+	 */
+	public static function clean() {
+		self :: $instance = null;
+	}
+	
+	/**
 	 * Returns the Object with the given id.
 	 * @param string $beanId The id of the Object.
 	 * @return stdclass The requested Object.
