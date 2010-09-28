@@ -124,9 +124,11 @@ class UserSessionManager {
 				$uri = 'https://';
 			}
 
-			$uri .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-
-			$_SESSION['ReturnUrl'] = $uri;
+			// If $_SERVER is not set, it's called by CLI
+			if(isset($_SERVER['HTTP_HOST'])) {
+				$uri .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+				$_SESSION['ReturnUrl'] = $uri;
+			}
 		}
 
 		// Check if user is authenticated
