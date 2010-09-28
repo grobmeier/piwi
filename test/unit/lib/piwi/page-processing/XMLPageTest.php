@@ -3,7 +3,8 @@ class XMLPageTest extends UnitTestCase {
 	
 	private $page = null;
 	
-	function before($message) {		
+	function before($message) {
+		BeanFactory :: clean();
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/context.xml');
 		Request::setPageId('default');
 		$this->page = BeanFactory :: getBeanById('xmlPage');			
@@ -25,7 +26,7 @@ class XMLPageTest extends UnitTestCase {
 	
 	function testGenerateContentWithIllegalPageId() {
 		Request::setPageId('666');
-		$this->expectException(PiwiException, 'PageId should be illegal.');
+		$this->expectException('PiwiException', 'PageId should be illegal.');
 		$this->page->generateContent();
 	}
 	
@@ -33,11 +34,11 @@ class XMLPageTest extends UnitTestCase {
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/contextIllegal.xml');
 		$this->page = BeanFactory :: getBeanById('xmlPage');
 
-		$this->expectException(PiwiException, 'Page should not exist.');
-		$errorlevel = error_reporting();
-		error_reporting(0);
+		$this->expectException('PiwiException', 'Page should not exist.');
+		ob_start();
 		$this->page->generateContent();
-		error_reporting($errorlevel);
+		ob_end_clean();
+		
 	}
 	
 	function testGenerateContentWithDoublePageId() {
@@ -45,11 +46,10 @@ class XMLPageTest extends UnitTestCase {
 		$this->page = BeanFactory :: getBeanById('xmlPage');
 		Request::setPageId('test');
 		
-		$this->expectException(PiwiException, 'PageId should exist twice.');
-		$errorlevel = error_reporting();
-		error_reporting(0);
+		$this->expectException('PiwiException', 'PageId should exist twice.');
+		ob_start();
 		$this->page->generateContent();
-		error_reporting($errorlevel);
+		ob_end_clean();
 	}
 }
 ?>
