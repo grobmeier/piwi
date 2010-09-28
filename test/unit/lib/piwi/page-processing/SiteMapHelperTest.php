@@ -2,6 +2,7 @@
 class SiteMapHelperTest extends UnitTestCase {
 
 	function setUp() {
+		BeanFactory :: clean();
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/siteMapHelperContext.xml');
 	}
 	
@@ -40,7 +41,7 @@ class SiteMapHelperTest extends UnitTestCase {
 	
 	private function validateSiteMap($siteMap) {
 		foreach ($siteMap as $siteMapItem) {
-          $this->assertIsA($siteMapItem, SiteElement, 'Type does not match.');
+          $this->assertIsA($siteMapItem, 'SiteElement', 'Type does not match.');
 		}
 	}
 }
