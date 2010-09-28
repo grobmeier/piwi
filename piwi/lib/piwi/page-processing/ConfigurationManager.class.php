@@ -58,7 +58,8 @@ class ConfigurationManager {
     	if ($result->length == 1) {
     		$serializerClass = $result->item(0)->getAttribute("serializer");
     		
-	    	if ($serializerClass != null) {
+    		$serializer = null;
+    		if ($serializerClass != null) {
 		    	try {
 		    		$class = new ReflectionClass($serializerClass);
 					$serializer = $class->newInstance();
