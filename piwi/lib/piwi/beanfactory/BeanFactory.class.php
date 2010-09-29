@@ -229,12 +229,11 @@ class BeanFactory {
 			$propertyList = $childNode->getElementsByTagname('property');
 			$parameter = array();
 			foreach($propertyList as $property) {
-				if ($childNode->hasAttribute('ref')) {
-					$o = self :: getBeanById($childNode->getAttribute('ref'));
+				if ($property->hasAttribute('ref')) {
+					$o = self :: getBeanById($property->getAttribute('ref'));
 					$parameter[$property->getAttribute('name')] = $o;
-				} else if ($childNode->hasAttribute('php')) {
-					$t = null;
-					eval('$t = ' . $childNode->getAttribute('php') . ';');
+				} else if ($property->hasAttribute('php')) {
+					eval('$t = ' . $property->getAttribute('php') . ';');
 					$parameter[$property->getAttribute('name')] = $t;
 				} else {
 					$parameter[$property->getAttribute('name')] = $property->getAttribute('value');

@@ -8,6 +8,9 @@ class SiteSelector {
 	private $page = null;
 	
 	private $errormode = false;
+	
+	private $pagemap = null;
+	
 	/**
 	 * Constructor.
 	 */
@@ -31,14 +34,19 @@ class SiteSelector {
 		$path = $this->getSite()->getFilePath();
 		$pos = strrpos($path, ".");
 		$extension = substr($path, $pos + 1);
-		
-		// TODO: Pipelines should be configurable
-		if ($extension == 'stream') {
-			// Streaming input definition file
-			$this->setPage(BeanFactory :: getBeanById('streamingPage'));
+
+		if(isset($this->pagemap[$extension])) {
+			if(is_object($this->pagemap[$extension])) {
+				$this->setPage($this->pagemap[$extension]);
+			} else {
+				$this->setPage(BeanFactory :: getBeanById($this->pagemap[$extension]));
+			}
 		} else {
-			// Standard pipeline
-			$this->setPage(BeanFactory :: getBeanById('xmlPage'));
+			if(isset($this->pagemap['default']) && is_object($this->pagemap['default'])) {
+				$this->setPage($this->pagemap['default']);
+			} else {
+				$this->setPage(BeanFactory :: getBeanById($this->pagemap['default']));
+			}
 		}
 	}
 	
@@ -87,6 +95,15 @@ class SiteSelector {
 	 */
 	public function setSite(Site $site) {
 		$this->site = $site;
+	}
+	
+	/**
+	 * 
+	 * @param array $pagemap
+	 * @return unknown_type
+	 */
+	public function setPagemap($pagemap) {
+		$this->pagemap = $pagemap;
 	}
 }
 ?>
