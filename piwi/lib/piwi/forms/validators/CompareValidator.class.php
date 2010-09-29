@@ -9,7 +9,8 @@ class CompareValidator extends Validator {
 	 * @return boolean Returns true if validation is successful otherwise false.
 	 */
 	protected function isValid($fieldName) {
-		$fieldNameToCompare = BeanFactory :: getBeanById('formProcessor')->getId() . $this->validatorXML->getAttribute("fieldNameToCompare");
+		$fieldNameToCompare = BeanFactory :: getBeanById('formProcessor')->getId() . 
+								$this->validatorXML->getAttribute("fieldNameToCompare");
 		
 		if (!isset($_POST[$fieldName]) || !isset($_POST[$fieldNameToCompare])) {
 			return false;

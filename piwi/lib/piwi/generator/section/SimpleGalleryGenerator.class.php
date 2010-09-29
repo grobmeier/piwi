@@ -65,7 +65,8 @@ class SimpleGalleryGenerator implements SectionGenerator {
 					'<label key="BACK_TO_GALLERIES" /></a></p>';
 			} else {
 				$piwixml .= '<p><a href="' . Request::getPageId() . '.' . Request::getExtension() . 
-					'?album=' . urlencode($folder) . '"><label key="MORE_IN" /> ' . str_replace('_', ' ', $folder) . '</a></p>';
+					'?album=' . urlencode($folder) . '"><label key="MORE_IN" /> ' . 
+					str_replace('_', ' ', $folder) . '</a></p>';
 			}
 			$piwixml .= '</section>';
 		}

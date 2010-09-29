@@ -86,6 +86,10 @@ abstract class Page {
 		$this->content->loadXML($content);
 	}
 	
+	/**
+	 * Returns the content
+	 * @return string the content
+	 */
 	public function getContent() {
 	    return $this->content;
 	}

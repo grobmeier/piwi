@@ -125,7 +125,7 @@ class UserSessionManager {
 			}
 
 			// If $_SERVER is not set, it's called by CLI
-			if(isset($_SERVER['HTTP_HOST'])) {
+			if (isset($_SERVER['HTTP_HOST'])) {
 				$uri .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 				$_SESSION['ReturnUrl'] = $uri;
 			}

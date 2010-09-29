@@ -23,6 +23,10 @@ class SiteSelector {
 		
 	}
 
+	/**
+	 * select the pipeline
+	 * @return void
+	 */
 	private function _choosePipeline() {
 		$path = $this->getSite()->getFilePath();
 		$pos = strrpos($path, ".");

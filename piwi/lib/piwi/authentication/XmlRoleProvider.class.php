@@ -55,7 +55,8 @@ class XmlRoleProvider implements RoleProvider {
 	 */
 	public function isPasswordValid($username, $password) {
 		if ($this->auth == null) {
-			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . "' before accessing an Object. You have to update your configuration file.", 
+			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . 
+				"' before accessing an Object. You have to update your configuration file.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 	
@@ -84,7 +85,8 @@ class XmlRoleProvider implements RoleProvider {
 	 */
 	private function _getUserRoles($username) {
 		if ($this->auth == null) {
-			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . "' before accessing an Object. You have to update your configuration file.", 
+			throw new PiwiException("Illegal State: Invoke method 'setAuthFile' on '" . __CLASS__ . 
+				"' before accessing an Object. You have to update your configuration file.", 
 				PiwiException :: ERR_ILLEGAL_STATE);
 		}
 	
