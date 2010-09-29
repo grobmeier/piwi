@@ -66,6 +66,9 @@ class BeanFactoryTest extends UnitTestCase {
 		$this->assertIsA($object->blubber2Param, 'TestObject2', 'Object has invalid parameter.');
 		$this->assertIsA($object->getBla(), 'TestObject2', 'Object has invalid parameter.');
 		
+		$r = $object->getMyarray();
+		$this->assertEqual($r['key1'], 'value1', 'Object has invalid parameter.');
+		$this->assertEqual($r['key2'], 'value2', 'Object has invalid parameter.');
 	}
 	
 	function testInitializeBeanFactoryWithNonExistingFile() {

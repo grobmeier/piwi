@@ -12,6 +12,8 @@ class TestObject3 {
 	
 	private $bla;
 	
+	private $myarray;
+	
 	public $paramString2 = null;
 	
 	public function __construct($paramString, TestObject2 $testObject2) {
@@ -37,6 +39,14 @@ class TestObject3 {
 	
 	public function setParamString2($p) {
 		$this->blubber2Param = $p;
+	}
+	
+	public function setMyarray($p) {
+		$this->myarray = $p;
+	}
+	
+	public function getMyarray() {
+		return $this->myarray;
 	}
 }
 ?>

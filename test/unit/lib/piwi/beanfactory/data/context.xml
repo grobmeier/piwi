@@ -24,5 +24,9 @@
         <property name="blubber2" ref="testObject2" />
         <property name="bla" ref="testObject2" />
         <property name="paramString2" value="test_string2" />
+        <properties name="myarray">
+        	<property name="key1" value="value1" />
+        	<property name="key2" value="value2" />
+        </properties>
     </bean>
 </context>
