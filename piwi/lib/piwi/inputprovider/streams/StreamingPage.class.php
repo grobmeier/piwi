@@ -6,6 +6,8 @@ class StreamingPage extends Page {
 	
 	private $streamingFilePath = null;
 	
+	private $xmlPage = null;
+	
 	/** Constructor. */
     public function __construct() {
     }
@@ -15,11 +17,10 @@ class StreamingPage extends Page {
 	 */
 	public function generateContent() {
 		if (!$this->checkPermissions()) {
-			Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
+			Request :: setPageId($this->configuration->getLoginPageId());
 			Request :: setExtension('html');
-			$xmlpage = BeanFactory :: getBeanById('xmlPage');
-			$xmlpage->generateContent();
-			$this->content = $xmlpage->getContent();
+			$this->xmlPage->generateContent();
+			$this->content = $this->xmlPage->getContent();
 			return false;
 		}
 		
@@ -103,6 +104,10 @@ EOF;
 	 */
 	public function setStreamingFilePath($streamingFilePath) {
 		$this->streamingFilePath = $streamingFilePath;
+	}
+	
+	public function setXmlPage($xmlPage) {
+		$this->xmlPage = $xmlPage;
 	}
 }
 ?>

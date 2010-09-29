@@ -13,6 +13,9 @@ abstract class Page {
 	/** Reference to the Site. */
 	protected $site = null;
 	
+	/** The configuration */
+	protected $configuration = null;
+	
 	/**
 	 * Constructor.
 	 */
@@ -27,9 +30,9 @@ abstract class Page {
 		$allowedRoles = $this->site->getAllowedRolesByPageId(Request::getPageId());
 
 		// If authorization is required check if user has authorization
-		if (BeanFactory :: getBeanById('configurationManager')->isAuthenticationEnabled() 
+		if ($this->configuration->isAuthenticationEnabled() 
 			&& !in_array('?', $allowedRoles)) {
-			$roleProvider = BeanFactory :: getBeanById('configurationManager')->getRoleProvider();
+			$roleProvider = $this->configuration->getRoleProvider();
 
 			// Check if user is already logged in
 			if (UserSessionManager :: isUserAuthenticated(true)) {
@@ -40,7 +43,7 @@ abstract class Page {
 				}				
 			} else {
 				// Since user is not logged in, show login page				
-				Request :: setPageId(BeanFactory :: getBeanById('configurationManager')->getLoginPageId());
+				Request :: setPageId($this->configuration->getLoginPageId());
 				Request :: setExtension('html');
 				return false;
 			}
@@ -54,7 +57,7 @@ abstract class Page {
 	 */
 	protected function getCache() {
 		// Determinate global cachetime, if page specific cachetime exists use this
-		$cachetime = BeanFactory :: getBeanById('configurationManager')->getCacheTime();
+		$cachetime = $this->configuration->getCacheTime();
 		$specificCacheTime = $this->site->getCacheTime();
 		if ($specificCacheTime != null) {
 			$cachetime = $specificCacheTime;
@@ -69,7 +72,7 @@ abstract class Page {
 	public function serialize() {
 		$extension = Request :: getExtension();
 
-		$serializer = BeanFactory :: getBeanById('configurationManager')->getSerializer($extension);
+		$serializer = $this->configuration->getSerializer($extension);
 
 		if ($serializer == null) {
 			$serializer = new HTMLSerializer();
@@ -115,6 +118,10 @@ abstract class Page {
 	 */
 	public function setSite(Site $site) {
 		$this->site = $site;
+	}
+	
+	public function setConfiguration(Configuration $configuration) {
+		$this->configuration = $configuration;
 	}
 	
 	/**

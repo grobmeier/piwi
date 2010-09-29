@@ -2,13 +2,13 @@
 /**
  * Manages the settings configured in 'config.xml'.
  */
-class ConfigurationManager {
+class ConfigurationManager implements Configuration {
 	/** The DOMXPath of the 'config.xml'. */
     private $domXPath = null;
     
     /** Path of the file containing the configuration. */
     private $configFilePath = null;
-		
+
 	/** Instance of the RoleProvider. */
 	private $roleProvider = null;
 	
