@@ -98,7 +98,8 @@ class BeanFactory {
         	
         	$instance = $class->newInstanceArgs($params);
 			
-			$properties = self::_initializeProperties($beanId, $instance);
+			self::_initializeProperties($beanId, $instance);
+        	self::_initializePropertyArray($beanId, $instance);
         	
 			// If instance should be used as a request singleton cache the instance
 			if ($domNodeList->item(0)->getAttribute("scope") == "request") {
@@ -155,10 +156,10 @@ class BeanFactory {
 	 * Properties are noted as 
 	 * 
 	 * <code>
-	 * <constructor-args>
+	 * <bean...>
 	 * 		<property name="bla" ref="beanID" />
 	 * 		<property name="paramString2" value="..." />
-	 * </constructor-args>
+	 * </bean>
 	 * </code>
 	 * @param string $beanId The id of the bean.
 	 * @param stdclass $instance The bean whose properties should be initialized.
@@ -177,6 +178,67 @@ class BeanFactory {
 				eval('$parameter = ' . $childNode->getAttribute('php') . ';');
 			} else {
 				$parameter = $childNode->getAttribute('value');
+			}
+			
+			$clazz = new ReflectionClass($instance);
+			
+			if ($clazz->hasProperty($name) && $clazz->getProperty($name)->isPublic()) {
+				$prop = $clazz->getProperty($name);
+				$prop->setValue($instance, $parameter);
+			} else if ($clazz->hasMethod($name)) {
+				$method = $clazz->getMethod($name);
+				$method->invoke($instance, $parameter);
+			} else if ($clazz->hasMethod('set' . ucfirst($name))) {
+				$method = $clazz->getMethod('set' . ucfirst($name));
+				$method->invoke($instance, $parameter);
+			}
+		}
+	}
+	
+	/**
+	 * Initializes an array out of a properties list.
+	 * Properties are noted as 
+	 * 
+	 * <code>
+	 * <bean...>
+	 * 	<properties name="myarray">
+	 * 		<property name="key1" value="value1" />
+	 * 		<property name="key2" value="value2" />
+	 *  </properties>
+	 * </bean>
+	 * </code>
+	 * 
+	 * This will result an array of that kind:
+	 * 
+	 * <code>
+	 * $myarray['key1'] = 'value1';
+	 * $myarray['key2'] = 'value2';
+	 * </code>
+	 * 
+	 * A setter method will be called on the target bean: setMyarray($myarray)
+	 * 
+	 * @param string $beanId The id of the bean.
+	 * @param stdclass $instance The bean whose properties should be initialized.
+	 */
+	private function _initializePropertyArray($beanId, $instance) {
+		$properties = $this->domXPath->query("/context:context/context:bean[@id='" . $beanId . "']" . 
+			"/context:properties");
+			
+		foreach ($properties as $childNode) {
+			$name = $childNode->getAttribute('name');
+			$propertyList = $childNode->getElementsByTagname('property');
+			$parameter = array();
+			foreach($propertyList as $property) {
+				if ($childNode->hasAttribute('ref')) {
+					$o = self :: getBeanById($childNode->getAttribute('ref'));
+					$parameter[$property->getAttribute('name')] = $o;
+				} else if ($childNode->hasAttribute('php')) {
+					$t = null;
+					eval('$t = ' . $childNode->getAttribute('php') . ';');
+					$parameter[$property->getAttribute('name')] = $t;
+				} else {
+					$parameter[$property->getAttribute('name')] = $property->getAttribute('value');
+				}
 			}
 			
 			$clazz = new ReflectionClass($instance);

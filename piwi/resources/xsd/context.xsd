@@ -5,6 +5,7 @@
         <choice minOccurs="0" maxOccurs="unbounded">
 			<element name="constructor-args" type="tns:contructorArgsType" minOccurs="0" maxOccurs="1" />
 			<element name="property" type="tns:propertyType" minOccurs="0" maxOccurs="unbounded" />
+			<element name="properties" type="tns:propertiesType" minOccurs="0" maxOccurs="unbounded" />
 		</choice>
 		<attribute name="id" type="string" use="required" />
 		<attribute name="class" type="string" use="required" />
@@ -64,4 +65,10 @@
 		<attribute name="php" type="string" use="optional" />
 	</complexType>
 
+	<complexType name="propertiesType">
+		<choice minOccurs="1" maxOccurs="unbounded">
+			<element name="property" type="tns:propertyType" />
+		</choice>
+		<attribute name="name" type="string" use="required" />
+	</complexType>
 </schema>
