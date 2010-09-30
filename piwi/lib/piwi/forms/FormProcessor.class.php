@@ -29,6 +29,9 @@ class FormProcessor {
 	/** The XSLTProcessor. */
 	private $processor = null;
 	
+	/** Injected FormFactory */
+	private $formFactory = null;
+	
 	/**
 	 * Constructor.
 	 */
@@ -51,7 +54,7 @@ class FormProcessor {
 		$this->validate = true;
 		$this->ignoredFields = array();
 		
-		$domXPath = BeanFactory :: getBeanById('formFactory')->getFormById($id);
+		$domXPath = $this->formFactory->getFormById($id);
 	
 		// Determine the current step in the formular
 		// if request is a postback increase number of steps otherwise begin with step 1
@@ -495,6 +498,15 @@ class FormProcessor {
 	 */
 	public function getId() {
 		return $this->formId . '_';
+	}
+	
+	/**
+	 * Getter for the form factory injection
+	 * @param $factory
+	 * @return unknown_type
+	 */
+	public function setFormFactory($factory) {
+		$this->formFactory = $factory;
 	}
 }
 ?>

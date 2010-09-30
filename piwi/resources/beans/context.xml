@@ -42,7 +42,9 @@
         <property name="formsXMLPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/forms.xml'" />
     </bean>
     
-   	<bean id="formProcessor" class="FormProcessor" scope="request" />
+   	<bean id="formProcessor" class="FormProcessor" scope="request">
+   		<property name="formFactory" ref="formFactory" />
+   	</bean>
     
     <bean id="connectorFactory" class="ConnectorFactory" scope="request">
         <property name="connectorsXMLPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/connectors.xml'" />
