@@ -1,7 +1,13 @@
 <?php
-// TODO: should differ on the input source between several Page implementations
 /**
- * TODO: Write comment
+ * The SiteSelector clas selects a matching inputprovider implementation based on the
+ * file ending of the requested content. The actual file which is to be read is defined 
+ * in the site.xml. 
+ * 
+ * In other words, the SiteSelector connects the Site implementation to the Page implementation.
+ * 
+ * New inputprovider implementations can be added in the context.xml with adding the 
+ * extension and the preferred Page implementation for it. 
  */
 class SiteSelector {
 	/** Reference to the processed page. */
@@ -27,7 +33,7 @@ class SiteSelector {
 	}
 
 	/**
-	 * select the pipeline
+	 * Selects a Page implementation based on the file extension.
 	 * @return void
 	 */
 	private function _choosePipeline() {
