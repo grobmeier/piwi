@@ -1,6 +1,6 @@
 <?php
 /**
- * TODO: Add comment
+ * The Site class is the php representation of the site.xml 
  */
 class Site {
 	/** The DOMXPath of the 'site.xml'. */
