@@ -11,6 +11,7 @@
     <bean id="xmlPage" class="XMLPage" scope="request">
         <property name="contentPath" value="test/unit/lib/piwi/page-processing/data" />
         <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
     </bean>
     
     <bean id="configurationManager" class="ConfigurationManager" scope="request">
