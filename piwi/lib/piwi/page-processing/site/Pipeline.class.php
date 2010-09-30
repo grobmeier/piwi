@@ -9,7 +9,7 @@
  * New inputprovider implementations can be added in the context.xml with adding the 
  * extension and the preferred Page implementation for it. 
  */
-class SiteSelector {
+class Pipeline {
 	/** Reference to the processed page. */
 	private $page = null;
 	

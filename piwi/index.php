@@ -135,14 +135,14 @@ $logger->info('Starting page processing');
 session_start();
 
 // Init site
-$selector = BeanFactory :: getBeanById('siteSelector');
+$pipeline = BeanFactory :: getBeanById('pipeline');
 $logger->debug('XML Site initialized successfully');
 
 try {
 	$logger->debug('Site generating content');
-	$selector->generateContent();
+	$pipeline->generateContent();
 	$logger->debug("Beginning serialization");
-	$selector->serialize();
+	$pipeline->serialize();
 } catch (Exception $exception) {
 	// Show a page displaying the error
 	Request :: setPageId('default');

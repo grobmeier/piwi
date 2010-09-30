@@ -29,7 +29,7 @@
     </bean>
      
     <!-- Input Reader Selector -->
-    <bean id="siteSelector" class="SiteSelector" scope="request">
+    <bean id="pipeline" class="Pipeline" scope="request">
     	<property name="site" ref="site" />
     	<properties name="pagemap">
     		<property name="stream" ref="streamingPage" />
