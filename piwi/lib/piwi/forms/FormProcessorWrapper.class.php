@@ -1,6 +1,7 @@
 <?php
 /**
  * Wrappes the FormProcessor to make it accessible as a bean.
+ * Used by the XSLT stylesheets which need static function to work
  */
 class FormProcessorWrapper {
 	/**
