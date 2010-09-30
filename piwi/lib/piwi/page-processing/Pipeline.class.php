@@ -17,6 +17,8 @@ class Pipeline {
 	
 	private $pagemap = null;
 	
+	private $configuration = null;
+	
 	/**
 	 * Constructor.
 	 */
@@ -67,8 +69,18 @@ class Pipeline {
 	/**
 	 * Excecutes the Serializer.
 	 */
-	public function serialize() {
-		$this->page->serialize();
+	public function serialize($page = null) {
+		$extension = Request :: getExtension();
+
+		$serializer = $this->configuration->getSerializer($extension);
+
+		if ($serializer == null) {
+			$serializer = new HTMLSerializer();
+		}
+		if($page == null) {
+			$page = $this->page;
+		}
+		$serializer->serialize($page->getContent());
 	}
 	
 	/**
@@ -110,6 +122,16 @@ class Pipeline {
 	 */
 	public function setPagemap($pagemap) {
 		$this->pagemap = $pagemap;
+	}
+	
+/**
+	 * Sets the configuration
+	 * Injected by dependency injection.
+	 * @param Configuration $configuration The reference to the configuration.
+	 */
+	
+	public function setConfiguration(Configuration $configuration) {
+		$this->configuration = $configuration;
 	}
 }
 ?>

@@ -66,38 +66,16 @@ abstract class Page {
 		return new Cache($cachetime);
 	}
 	
-	/**
-	 * Excecutes the Serializer.
-	 */
-	public function serialize() {
-		$extension = Request :: getExtension();
-
-		$serializer = $this->configuration->getSerializer($extension);
-
-		if ($serializer == null) {
-			$serializer = new HTMLSerializer();
-		}
-		$serializer->serialize($this->content);
-	}
-	
-	/**
-	 * Sets the content of the page.
-	 * @param string $content The content as xml.
-	 */
-	public function setContent($content) {
-		$this->content = new DOMDocument;
-		$this->content->loadXML($content);
-	}
-	
-	/**
-	 * Returns the content
-	 * @return string the content
+	/** 
+	 * Returns the content of this page.
+	 * @return the content of this page as piwi xml
 	 */
 	public function getContent() {
-	    return $this->content;
+		return $this->content;
 	}
 	
 	/**
+	 * Sets the name of the folder where the content is placed.
 	 * @param string $contentPath Name of the folder where the content is placed.
 	 */
 	public function setContentPath($path) {
@@ -105,20 +83,19 @@ abstract class Page {
 	}	
 	
 	/**
-	 * Returns the reference to the Site.
-	 * @return Site The reference to the Site.
-	 */
-	public function getSite() {
-		return $this->site;
-	}
-
-	/**
 	 * Sets the reference to the Site.
+	 * Injected by dependency injection.
 	 * @param Site $site The reference to the Site.
 	 */
 	public function setSite(Site $site) {
 		$this->site = $site;
 	}
+	
+	/**
+	 * Sets the configuration
+	 * Injected by dependency injection.
+	 * @param Configuration $configuration The reference to the configuration.
+	 */
 	
 	public function setConfiguration(Configuration $configuration) {
 		$this->configuration = $configuration;
@@ -126,6 +103,7 @@ abstract class Page {
 	
 	/**
 	 * Processes the contents of the page.
+	 * @return the generated content
 	 */
 	public abstract function generateContent();
 }

@@ -19,19 +19,18 @@ class StreamingPage extends Page {
 		if (!$this->checkPermissions()) {
 			Request :: setPageId($this->configuration->getLoginPageId());
 			Request :: setExtension('html');
-			$this->xmlPage->generateContent();
-			$this->content = $this->xmlPage->getContent();
+			$this->content = $this->xmlPage->generateContent();
 			return false;
 		}
 		
 		$filePath = $this->site->getFilePath();
 
-		$path = $this->getSite()->getFilePath();
+		$path = $this->site->getFilePath();
 		$pos = strrpos($path, ".");
 		$id = substr($path, 0, $pos);
 		
 		$sm = new StreamManager();
-		$sm->setStreamConfiguration($this->getStreamingFilePath());
+		$sm->setStreamConfiguration($this->streamingFilePath);
 		$info = $sm->getStreamInfo($id);
 		
 		
@@ -69,6 +68,7 @@ EOF;
 		$dom = new DOMDocument();
 		$dom->loadXml($piwixml);
 		$this->content = $dom;
+		return $this->content;
 	}
 	
 	/**
@@ -90,14 +90,6 @@ EOF;
 		}
 	}
 	
-	/**
-	 * Returns the reference to the Site.
-	 * @return Site The reference to the Site.
-	 */
-	public function getStreamingFilePath() {
-		return $this->streamingFilePath;
-	}
-
 	/**
 	 * Sets the reference to the Site.
 	 * @param Site $site The reference to the Site.

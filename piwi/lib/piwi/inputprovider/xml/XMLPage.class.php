@@ -50,6 +50,16 @@ class XMLPage extends Page {
 			// Save page in cache
 			$cache->cachePage($this->content);
 		}
+		return $this->content;
+	}
+	
+	/**
+	 * Sets the content of the page.
+	 * @param string $content The content as xml.
+	 */
+	public function setContent($content) {
+		$this->content = new DOMDocument;
+		$this->content->loadXML($content);
 	}
 }
 ?>
