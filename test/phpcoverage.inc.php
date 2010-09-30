@@ -8,6 +8,7 @@
     */
 ?>
 <?php
+    $PHPCOVERAGE_APPBASE_PATH = '../piwi/';
     $PHPCOVERAGE_REPORT_DIR = false;
     $PHPCOVERAGE_HOME = false;
     global $PHPCOVERAGE_REPORT_DIR;
