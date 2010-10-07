@@ -10,12 +10,14 @@
 
 0.1.0 - Beanfactory Release
 
+    * New: Added Zeta Components for parameter checking
     * New: Included Beanfactory for dependency injection
     * New: Issue 6:	Refactoring of Site and XMLSite
     * New: Issue 10: PIWI Context. Most important objects are wired by DI
     * New: Added support for streaming files
     * New: Included a XmlRoleProvider
     * New: Included role sensitive menu bar generation
+    * New: Added ! role to show pages only for users who are not authentificated
     * Update: Included Log4PHP 2.0.0 (fixes issue 28)
     * Fixed issues: 9, 28-31, 35, 37, 42-44
 
