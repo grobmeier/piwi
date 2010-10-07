@@ -20,6 +20,9 @@ class ClassLoader {
 	/** ClassLoader Cache - will be initalized lazily. */
 	private $cache = null;
 	
+	/** For singleton usage **/
+	private static $classloader = null;
+	
 	/**
 	 * Constructor.
 	 * This class can be instantiated with an valid
@@ -34,6 +37,31 @@ class ClassLoader {
 		}	
 	}
 
+	/**
+	 * Autoload uses the ClassLoader class tu recursivly look up
+	 * needed classes. Use one file per class/interface and name it: 
+	 * 	- yourclass.class.php
+	 * 	- yourinterface.if.php
+	 * @param string $class Name of the of the class or interface.
+	 */
+	public static function autoload($class) {
+		if (self::$classloader == null) {
+			self::$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . 'cache/classloader.cache.xml');
+		}
+	
+		$directorys = array (
+			'lib',
+			CUSTOM_CLASSES_PATH
+		);
+	
+		foreach ($directorys as $directory) {
+			$result = self::$classloader->loadClass($directory, $class);
+			if ($result == true) {
+				return;
+			}
+		}
+	}
+	
 	/**
 	 * Trys to load a class from the given directory. 
 	 * All subdirectories are used for lookup. 

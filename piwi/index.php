@@ -60,35 +60,21 @@ $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
 
 /** ClassLoader which makes other includes dispensable. */
 require_once ("lib/piwi/classloader/ClassLoader.class.php");
+require_once ("lib/zetacomponents/Base/src/base.php");
 
-/** Instance of the Classloader. */
-$classloader = null;
+spl_autoload_register( array( 'ezcBase', 'autoload' ) );
+spl_autoload_register( array( 'ClassLoader', 'autoload' ) );
 
-/**
- * Autoload uses the ClassLoader class tu recursivly look up
- * needed classes. Use one file per class/interface and name it: 
- * 	- yourclass.class.php
- * 	- yourinterface.if.php
- * @param string $class Name of the of the class or interface.
- */
-function __autoload($class) {
-	global $classloader;
-	if ($classloader == null) {
-		$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . 'cache/classloader.cache.xml');
-	}
+/* Enable logging */
+$logger = Logger :: getLogger('index.php');
 
-	$directorys = array (
-		'lib',
-		CUSTOM_CLASSES_PATH
-	);
-
-	foreach ($directorys as $directory) {
-		$result = $classloader->loadClass($directory, $class);
-		if ($result == true) {
-			return;
-		}
-	}
+function exception_handler($exception) {
+	GLOBAL $logger;
+	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
+	echo "An uncatched error occured: " . $exception->getMessage();
 }
+
+set_exception_handler('exception_handler');
 
 /**
  * Initialize the BeanFactory
@@ -105,24 +91,33 @@ if ($logConfig != null) {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
 }
 
-$logger = Logger :: getLogger('index.php');
 
-function exception_handler($exception) {
-	GLOBAL $logger;
-	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
-	echo "An uncatched error occured: " . $exception->getMessage();
-}
-
-set_exception_handler('exception_handler');
 
 /**
- * Security checks on url params
+ * Standard security checks
  */
-$parameterValidator = new ParameterValidator();
-if( !$parameterValidator->check($_GET['page'], ParameterValidator::TYPE_FILENAME) ||
-	!$parameterValidator->check($_GET['extension'], ParameterValidator::TYPE_AZ09_STRING)) {
-	$logger->error('A security problem occured. An invalid URL has been entered. Script execution stopped: '.$_SERVER['QUERY_STRING']);
-	die('A security problem occured. An invalid URL has been entered. Script execution stopped because: '.$_SERVER['QUERY_STRING']);
+if (ezcInputForm::hasGetData()) {
+	$definition = array(
+	    'page' => new ezcInputFormDefinitionElement(
+	        ezcInputFormDefinitionElement::REQUIRED, 'string'
+	    ),
+	    'extension' => new ezcInputFormDefinitionElement(
+	        ezcInputFormDefinitionElement::REQUIRED, 'string'
+	    )
+	);
+	$form = new ezcInputForm( INPUT_GET, $definition );
+
+    foreach ( $definition as $name => $dummy ) {
+        $propertyName = "property_$name";
+        if ($form->hasValidData($name)) {
+            $$propertyName = $form->$name;
+        } else {
+        	$$propertyName = htmlspecialchars( $form->getUnsafeRawData( $name ) );
+            echo("A security problem occured. Script execution stopped because # $name # contained the invalid data: ".$$propertyName);
+            $logger->fatal("A security problem occured. Script execution stopped because parameter # $name # contained the invalid data: ".$$propertyName);
+            die();
+        }
+    }
 }
 
 /**
@@ -136,7 +131,7 @@ session_start();
 
 // Init site
 $pipeline = BeanFactory :: getBeanById('pipeline');
-$logger->debug('XML Site initialized successfully');
+$logger->debug('Pipeline initialized successfully');
 
 try {
 	$logger->debug('Site generating content');
@@ -149,7 +144,7 @@ try {
 	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
 	$xmlpage = BeanFactory :: getBeanById('xmlPage');
 	$xmlpage->setContent($exceptionPageGenerator->generate());
-	$xmlpage->serialize();
+	$pipeline->serialize($xmlpage);
 	$logger->error('Site generation failed with exception: ' . $exception->getMessage());
 }
 
