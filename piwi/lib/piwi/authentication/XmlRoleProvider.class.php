@@ -45,6 +45,10 @@ class XmlRoleProvider implements RoleProvider {
 		}
 		
 		foreach ($this->_getUserRoles($username) as $role) {
+			if (in_array('*',$roles)) {
+				return true;
+			}
+			
        		if (in_array($role, $roles)) {
        			return true;
        		}
