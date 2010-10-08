@@ -43,14 +43,14 @@ class Pipeline {
 		$pos = strrpos($path, ".");
 		$extension = substr($path, $pos + 1);
 
-		if(isset($this->pagemap[$extension])) {
-			if(is_object($this->pagemap[$extension])) {
+		if (isset($this->pagemap[$extension])) {
+			if (is_object($this->pagemap[$extension])) {
 				$this->setPage($this->pagemap[$extension]);
 			} else {
 				$this->setPage(BeanFactory :: getBeanById($this->pagemap[$extension]));
 			}
 		} else {
-			if(isset($this->pagemap['default']) && is_object($this->pagemap['default'])) {
+			if (isset($this->pagemap['default']) && is_object($this->pagemap['default'])) {
 				$this->setPage($this->pagemap['default']);
 			} else {
 				$this->setPage(BeanFactory :: getBeanById($this->pagemap['default']));
@@ -77,7 +77,7 @@ class Pipeline {
 		if ($serializer == null) {
 			$serializer = new HTMLSerializer();
 		}
-		if($page == null) {
+		if ($page == null) {
 			$page = $this->page;
 		}
 		$serializer->serialize($page->getContent());

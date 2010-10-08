@@ -35,7 +35,7 @@ abstract class Page {
 			$roleProvider = $this->configuration->getRoleProvider();
 
 			// Check if user is already logged in
-			if(!UserSessionManager :: isUserAuthenticated() && in_array('!', $allowedRoles) ) {
+			if (!UserSessionManager :: isUserAuthenticated() && in_array('!', $allowedRoles)) {
 				return true;
 			} else if (UserSessionManager :: isUserAuthenticated(true)) {
 				// Check whether user has required role

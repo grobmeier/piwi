@@ -228,7 +228,7 @@ class BeanFactory {
 			$name = $childNode->getAttribute('name');
 			$propertyList = $childNode->getElementsByTagname('property');
 			$parameter = array();
-			foreach($propertyList as $property) {
+			foreach ($propertyList as $property) {
 				if ($property->hasAttribute('ref')) {
 					$o = self :: getBeanById($property->getAttribute('ref'));
 					$parameter[$property->getAttribute('name')] = $o;

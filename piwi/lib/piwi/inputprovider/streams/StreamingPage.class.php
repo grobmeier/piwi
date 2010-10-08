@@ -98,6 +98,12 @@ EOF;
 		$this->streamingFilePath = $streamingFilePath;
 	}
 	
+	/**
+	 * Sets the xml page which will be shown when authorizations
+	 * are not sufficient.
+	 * @param unknown_type $xmlPage the xml page to show
+	 * @return void
+	 */
 	public function setXmlPage($xmlPage) {
 		$this->xmlPage = $xmlPage;
 	}

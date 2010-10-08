@@ -49,10 +49,7 @@ class ClassLoader {
 			self::$classloader = new ClassLoader($GLOBALS['PIWI_ROOT'] . 'cache/classloader.cache.xml');
 		}
 	
-		$directorys = array (
-			'lib',
-			CUSTOM_CLASSES_PATH
-		);
+		$directorys = array ('lib',CUSTOM_CLASSES_PATH);
 	
 		foreach ($directorys as $directory) {
 			$result = self::$classloader->loadClass($directory, $class);
