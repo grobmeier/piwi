@@ -197,6 +197,33 @@ class ConfigurationManager implements Configuration {
        		return null;
         }    	
     }
+    
+	/**
+     * Returns the definiton for the user context, if set.
+     * 
+     * The defintion is an array with the two fields:
+     * 
+     * * ['overwrite'] which is true, if the user context should overwrite beans with the same name 
+     * from the standard piwi context and false, if beans with the the name should be ignored from the
+     * user context.
+     * 
+     * * ['path'] with the path to the user context
+     * 
+     * @return array with the user context definition
+     */
+    public function getUserContext() {
+    	if ($this->domXPath == null) {
+    		$this->_loadConfig();
+    	}
+    	
+    	$result = $this->domXPath->query('/config:configuration/config:context');
+    	if ($result->length == 1) {
+    		$context['overwrite'] = $result->item(0)->getAttribute('overwrite');
+    		$context['path'] = $result->item(0)->getAttribute('path');
+    		return $context;
+        } 
+        return null;
+    }
 
 	/**
 	 * Returns true if authentication is enabled otherwise false.

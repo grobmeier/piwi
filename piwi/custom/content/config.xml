@@ -40,6 +40,13 @@
 	   -->
 	  
 	<!-- 
+		User defined context which will be added to the standard piwi context
+	 -->
+	<!--
+	<context overwrite="true" path="custom/content/context.xml" />
+	-->
+	
+	<!-- 
 	   Here you can enable/disable AUTHENTICATION.
 	   The 'roleProvider' is the class used for the authentication.
 	   The 'loginPageId' is the ID of the page being displayed when authentication is required.

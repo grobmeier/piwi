@@ -19,6 +19,7 @@
             <element name="customLabels" type="string" minOccurs="0" maxOccurs="1"></element>
             <element name="customXSLTStylesheet" type="string" minOccurs="0" maxOccurs="1" />
 			<element name="logConfiguration" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="context" type="tns:contextType" minOccurs="0" maxOccurs="1" />
 			<element name="authentication" type="tns:authenticationType"
 				minOccurs="0" maxOccurs="1">
 			</element>
@@ -30,6 +31,13 @@
 				</unique>
 			</element>
 		</sequence>
+	</complexType>
+	<complexType name="contextType">
+		<sequence>
+        	<any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"></any>
+        </sequence>
+		<attribute name="overwrite" type="boolean" use="required"></attribute>
+		<attribute name="path" type="string" use="required"></attribute>
 	</complexType>
 	<complexType name="authenticationType">
 		<sequence>

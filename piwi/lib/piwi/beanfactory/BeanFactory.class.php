@@ -25,6 +25,8 @@ class BeanFactory {
 	/** Path of the file containing the xml-definition of the generators that can be used. */
 	private $contextXMLPath = null;
 
+	/** The DOMDocument of the 'context.xml'. May contain user elements later */
+	private $contextXml; 
 	/** The DOMXPath of the 'context.xml'. */
 	private $domXPath = null;
 
@@ -43,14 +45,50 @@ class BeanFactory {
 	 * @param string $contextXMLPath Path of the file containing the xml-definition 
 	 * of the generators that can be used.
 	 */
-	public static function initialize($contextXMLPath = 'generatorFactory') {
-//TODO:		if (!file_exists($contextXMLPath)) {
-//				throw new PiwiException("Could not find the the context (Path: '" . $contextXMLPath . "').", 
-//					PiwiException :: ERR_404);
-//		}
+	public static function initialize($contextXMLPath) {
+		if($contextXMLPath == null) {
+			throw new PiwiException('"Context must not be null.', PiwiException::ERR_NO_XML_DEFINITION);
+		}
+
 		self :: $instance = new BeanFactory($contextXMLPath);
 	}
 
+	public static function addContext($contextXMLPath, $overwrite = false) {
+		if (self :: $instance->domXPath == null) {
+    		self :: $instance->_loadContextXML();
+    	}
+    	
+    	$userContext = DOMDocument::load($contextXMLPath);
+		$userXPath = new DOMXPath($userContext);
+		$userXPath->registerNamespace('context', 'http://piwi.googlecode.com/xsd/context');
+		$xpathQuery = $userXPath->query('/*/*');
+		
+		$elements = self :: $instance->contextXml->getElementsByTagName ( 'bean' );
+		
+		$ignore = false;
+		for ($i = 0; $i < $xpathQuery->length; $i++) {
+				$id = $xpathQuery->item($i)->getAttribute('id');
+				
+				foreach($elements as $element) {
+					if($element->getAttribute('id') == $id) {
+						if($overwrite === true) {
+							$parent = $element->parentNode;
+							$parent->removeChild($element);
+						} else {
+							$ignore = true;
+						}
+						break;
+					} 
+				}
+				if(!$ignore) {
+					$node = self :: $instance->contextXml->importNode($xpathQuery->item($i), true);
+					self :: $instance->contextXml->documentElement->appendChild($node);
+				}
+				$ignore = false;
+		}
+		self :: $instance->_loadContextXML();
+	}
+	
 	/**
 	 * Removes the singleton
 	 */
@@ -259,17 +297,20 @@ class BeanFactory {
      * Loads the 'context.xml'.
      */
     private function _loadContextXML() {
-		if (!file_exists($this->contextXMLPath)) {
-			throw new PiwiException("Could not find the context definition file (Path: '" 
-					. $this->contextXMLPath . "').", 
-				PiwiException :: ERR_NO_XML_DEFINITION);
-    	}
+    	if($this->contextXml == null) {
+			if (!file_exists($this->contextXMLPath)) {
+				throw new PiwiException("Could not find the context definition file (Path: '" 
+						. $this->contextXMLPath . "').", 
+					PiwiException :: ERR_NO_XML_DEFINITION);
+	    	}
+	    	
+	    	// Load 'context.xml'
+	    	$this->contextXml = DOMDocument::load($this->contextXMLPath);
+    	} 
     	
-    	// Load 'context.xml'
-    	$contextXml = DOMDocument::load($this->contextXMLPath);
-
-		// Init DOMXPath which will be used for querying the context
-		$this->domXPath = new DOMXPath($contextXml);
+		$this->contextXml->formatOutput = true;
+    	// Init DOMXPath which will be used for querying the context
+		$this->domXPath = new DOMXPath($this->contextXml);
 		$this->domXPath->registerNamespace('context', 'http://piwi.googlecode.com/xsd/context');
     }
 }

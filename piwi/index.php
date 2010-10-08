@@ -80,6 +80,10 @@ set_exception_handler('exception_handler');
  * Initialize the BeanFactory
  */
 BeanFactory :: initialize($GLOBALS['PIWI_ROOT'] . '/resources/beans/context.xml');
+$userContext = BeanFactory :: getBeanById('configurationManager')->getUserContext();
+if($userContext != null) {
+	BeanFactory :: addContext($userContext['path'],$userContext['overwrite']);
+}
 
 /**
  * Configure Logging and Exception Handler

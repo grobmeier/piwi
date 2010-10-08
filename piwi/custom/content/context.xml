@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../../resources/xsd/context.xsd">
+
+	<!-- Testbean -->
+	<bean id="myBean" class="MyBean" scope="request">
+        <property name="configuration" ref="configuration" />
+    </bean>
+</context>
