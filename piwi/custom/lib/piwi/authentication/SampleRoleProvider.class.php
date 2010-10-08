@@ -25,7 +25,7 @@ class SampleRoleProvider implements RoleProvider {
 		    return false;
 		}
 		foreach ($this->_getUserRoles($username) as $role) {
-			if(in_array('*',$roles)) {
+			if (in_array('*',$roles)) {
 				return true;
 			}
 			
