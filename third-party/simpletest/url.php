@@ -184,7 +184,7 @@ class SimpleUrl {
     function _parseRequest($raw) {
         $this->_raw = $raw;
         $request = new SimpleGetEncoding();
-        foreach (split("&", $raw) as $pair) {
+        foreach (preg_split("/&/", $raw) as $pair) {
             if (preg_match('/(.*?)=(.*)/', $pair, $matches)) {
                 $request->add($matches[1], urldecode($matches[2]));
             } elseif ($pair) {
@@ -379,7 +379,7 @@ class SimpleUrl {
      */
     function clearRequest() {
         $this->_raw = false;
-        $this->_request = &new SimpleGetEncoding();
+        $this->_request = new SimpleGetEncoding();
     }
     
     /**
