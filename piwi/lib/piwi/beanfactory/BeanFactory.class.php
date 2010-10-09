@@ -27,6 +27,7 @@ class BeanFactory {
 
 	/** The DOMDocument of the 'context.xml'. May contain user elements later */
 	private $contextXml; 
+	
 	/** The DOMXPath of the 'context.xml'. */
 	private $domXPath = null;
 

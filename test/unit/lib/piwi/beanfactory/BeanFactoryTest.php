@@ -73,8 +73,46 @@ class BeanFactoryTest extends UnitTestCase {
 	
 	function testInitializeBeanFactoryWithNonExistingFile() {
 		BeanFactory :: initialize(dirname(__FILE__) . '/data/666.xml');
-		$this->expectException(PiwiException, 'Objects definition file should not exist.');
+		$this->expectException('PiwiException', 'Objects definition file should not exist.');
 		$object = BeanFactory :: getBeanById('testObject1');
+	}
+	
+	function testAddCustomContext() {
+		$this->init();
+		BeanFactory :: addContext(dirname(__FILE__) . '/data/additionalContext.xml', false);
+		
+		$object1 = BeanFactory :: getBeanById('testObject2');
+		
+		$this->assertIsA($object1, 'TestObject2', 'Object has invalid type.');
+		
+		// Check parameters
+		$this->assertEqual($object1->paramString, 'test_string', 'Object has invalid parameter.');
+		$this->assertTrue($object1->paramBoolean, 'Object has invalid parameter.');
+		$this->assertEqual($object1->paramInteger, 666, 'Object has invalid parameter.');
+		$this->assertEqual($object1->paramFloat, 12.3, 'Object has invalid parameter.');
+		
+		$object2 = BeanFactory :: getBeanById('testObject4');
+		$this->assertIsA($object2, 'TestObject1', 'Object has invalid type.');
+		$this->assertEqual($object2->getFasel(), 'folder/subfolder/');
+	}
+	
+	function testAddCustomContextWithOverride() {
+		$this->init();
+		BeanFactory :: addContext(dirname(__FILE__) . '/data/additionalContext.xml', true);
+		
+		$object1 = BeanFactory :: getBeanById('testObject2');
+		
+		$this->assertIsA($object1, 'TestObject2', 'Object has invalid type.');
+		
+		// Check parameters
+		$this->assertEqual($object1->paramString, 'test_string2', 'Object has invalid parameter.');
+		$this->assertFalse($object1->paramBoolean, 'Object has invalid parameter.');
+		$this->assertEqual($object1->paramInteger, 777, 'Object has invalid parameter.');
+		$this->assertEqual($object1->paramFloat, 45.6, 'Object has invalid parameter.');
+		
+		$object2 = BeanFactory :: getBeanById('testObject4');
+		$this->assertIsA($object2, 'TestObject1', 'Object has invalid type.');
+		$this->assertEqual($object2->getFasel(), 'folder/subfolder/');
 	}
 }
 ?>
