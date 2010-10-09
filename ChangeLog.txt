@@ -19,7 +19,7 @@
     * New: Included role sensitive menu bar generation
     * New: Issue 32: Added ! role to show pages only for users who are not authentificated
     * Update: Included Log4PHP 2.0.0 (fixes issue 28)
-    * Fixed issues: 9, 28-31, 35, 37, 42-44
+    * Fixed issues: 9, 28-31, 35, 37, 42-45
 
 0.0.9 - Logger Release
 

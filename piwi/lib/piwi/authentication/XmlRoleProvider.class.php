@@ -1,14 +1,14 @@
 <?php
 /**
  * XML RoleProvider.
- * Uses an xml file for a simple authentification.
+ * Uses an xml file for a simple authentication.
  * Can be enabled in configuration xml with:
  * 
  * <authentication enabled="1" roleProvider="XmlRoleProvider" loginPageId="login">
  *		<authFile>custom/resources/auth.xml</authFile>
  * </authentication>
  * 
- * The XML file for authentification must follow the auth.xsd structure:
+ * The XML file for authentication must follow the auth.xsd structure:
  * 
  * <?xml version="1.0" encoding="UTF-8"?>
  * <piwi-users xmlns="http://piwi.googlecode.com/xsd/auth"
@@ -20,28 +20,25 @@
  * </piwi-users>
  */
 class XmlRoleProvider implements RoleProvider {
-	/** The DOMXPath of the authentification xml file */
+	/** The DOMXPath of the authentication xml file */
 	private $auth = null;
 	
 	/**
 	 * Checks if a user has one of the given roles. 
 	 * If the user has at least one of the given roles, true is returned, otherwise false.
 	 * 
-	 * If a user is not authentificated and the roles array contains the
+	 * If a user is not authenticated and the roles array contains the
 	 * role "!", the user is in role.
 	 * 
-	 * In other terms, if a page has the ! role, it can only be viewed by unauthenficated users.
+	 * In other terms, if a page has the ! role, it can only be viewed by unauthenticated users.
 	 * 
 	 * @param string $username The name of the user.
 	 * @param array $roles The roles that are allowed.
 	 * @return boolean True if user has at least one of the given roles, otherwise false.
 	 */
 	public function isUserInRole($username, array $roles) {
-		if (!UserSessionManager::isUserAuthenticated($username)) {
-			if (in_array('!', $roles)) {
-		        return true;
-		    }
-		    return false;
+		if (!UserSessionManager::isUserAuthenticated($username)) {		
+			 return in_array('!', $roles);
 		}
 		
 		foreach ($this->_getUserRoles($username) as $role) {

@@ -13,9 +13,10 @@
 		   Für jede Seite können Sie den Zugriff auf bestimmte Benutzerrollen einschränken.<br />
 		   Die erlaubten Rollen geben Sie in der Datei 'site.xml' folgendermaßen an:<br />
 		   <ul>
-		    <li><code>roles="?"</code> oder kein Attribut <code>roles</code>:<br /> Die Seite darf von jedem Benutzer eingesehen werden</li>
+		    <li><code>roles="?"</code> oder kein Attribut <code>roles</code>:<br /> Die Seite darf von jedem Benutzer eingesehen werden.</li>
 		    <li><code>roles="*"</code>:<br /> Die Seite darf von allen authentifizierten Benutzern eingesehen werden, egal welche Rollen sie haben.</li>
 		    <li><code>roles="Rolle1, Rolle2"</code>:<br /> Die Seite darf von allen authentifizierten Benutzern eingesehen werden, wenn sie mindestens eine der angegebenen Rollen besitzen.</li>
+		   	<li><code>roles="!"</code>:<br /> Nur NICHT authentifizierte Benutzer haben Zugriffsrechte.</li>
 		   </ul>
 		   Wird eine geschützte Seite aufgerufen, so wird der Benutzer, falls er nicht eingeloggt ist, zuerst auf eine Loginseite weitergeleitet.<br />
 		   Ist der Login erfolgreich, so wird er anschließend auf die geschützte Seite weitergeleitet.

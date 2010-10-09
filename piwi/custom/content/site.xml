@@ -22,9 +22,10 @@
 			<page id="caching" label="Caching" href="en/features/caching.xml" />
 			<page id="other_template" label="Various Templates" href="en/features/other_template.xml"
 				template="other.php" />
-			<page id="streaming" label="Streaming" href="en/features/streaming.xml" />
-			<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
-			<page id="streamimage2" label="Stream Image 2" href="image2.stream" roles="admin" />
+			<page id="streaming" label="Streaming" href="en/features/streaming.xml">
+				<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
+				<page id="streamimage2" label="Stream Image 2 (Login required)" href="image2.stream" roles="admin" />
+			</page>
 		</page>
 		<page id="help" label="Help" href="en/help.xml">
 			<page id="documentation" label="Documentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
@@ -57,9 +58,10 @@
 			<page id="caching" label="Caching" href="de/features/caching.xml" />
 			<page id="other_template" label="Verschiedene Templates" href="de/features/other_template.xml"
 				template="other.php" />
-			<page id="streaming" label="Streaming" href="de/features/streaming.xml" />
-			<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
-			<page id="streamimage2" label="Stream Image 2" href="image2.stream" roles="admin" />
+			<page id="streaming" label="Streaming" href="de/features/streaming.xml">
+				<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
+				<page id="streamimage2" label="Stream Image 2 (Login benötigt)" href="image2.stream" roles="admin" />
+			</page>			
 		</page>
 		<page id="help" label="Hilfe" href="de/help.xml">
 			<page id="documentation" label="Dokumentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
@@ -68,6 +70,6 @@
 		<page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
 		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
 		<page id="login" label="Login" href="de/features/login.xml"
-			hideInNavigation="1" hideInSiteMap="1" cachetime="0" />
+			hideInSiteMap="1" cachetime="0" roles="!" />
 	</language>
 </site>

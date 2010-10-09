@@ -16,6 +16,7 @@
           <li><code>roles="?"</code> or no attribute <code>roles</code>:<br /> Every user may see this page.</li>
           <li><code>roles="*"</code>:<br /> The page may be visited only by authenticated users, regardless of which role he has.</li>
           <li><code>roles="Role1, Role2"</code>:<br /> The page may be visited only by authenticated users, if they are at least in one of the given roles.</li>
+          <li><code>roles="!"</code>:<br /> Only users who are NOT authenticated can access this page.</li>
          </ul>
          If a protected page is visited, the user will be redirected to a login page, if he is not logged in.<br />
          If the login is successful, he will be redirected to the protected page afterwards.
