@@ -131,7 +131,7 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertWantedText('Protected page', 'Login failed.');
 		
 		// check if logout works
-		$this->get(self :: $HOST . 'login.html');
+		$this->get(self :: $HOST . 'logout.html');
 		$this->clickSubmit('Logout');
 		$this->assertWantedText('Logged out successfully.', 'Logout not successful.');
 		
@@ -156,7 +156,7 @@ class AuthenticationTest extends PiwiWebTestCase {
 		$this->assertCookie('password', $this->excryptedPassword, 'Cookie invalid.');
 		
 		// check if logout works
-		$this->get(self :: $HOST . 'login.html');
+		$this->get(self :: $HOST . 'logout.html');
 		$this->clickSubmit('Logout');
 		$this->assertWantedText('Logged out successfully.', 'Logout not successful.');
 		$this->assertCookie('username', '', 'Cookie invalid.');

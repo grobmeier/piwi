@@ -69,6 +69,7 @@
 		</page>
 		<page id="forum" label="Forum" href="http://groups.google.com/group/piwi-dev" />
 		<page id="download" label="Download" href="http://code.google.com/p/piwi" />
+		<page id="logout" label="Logout" href="de/features/login.xml" roles="*" hideInSiteMap="1" cachetime="0" />
 		<page id="login" label="Login" href="de/features/login.xml"
 			hideInSiteMap="1" cachetime="0" roles="!" />
 	</language>
