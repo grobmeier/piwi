@@ -59,11 +59,15 @@ Renders the requested page and creates the navigation based on 'site.xml'.
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#streamingFilePath">$streamingFilePath</a></p></td>
 </tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#xmlPage">$xmlPage</a></p></td>
+</tr>
 </table>
 
 <table class="inherit">
 <tr><th colspan="2">Fields inherited from default.Page</th></tr>
-<tr><td><a href="../default/page.html#content">content</a>, <a href="../default/page.html#contentPath">contentPath</a>, <a href="../default/page.html#site">site</a></td></tr></table>
+<tr><td><a href="../default/page.html#configuration">configuration</a>, <a href="../default/page.html#content">content</a>, <a href="../default/page.html#contentPath">contentPath</a>, <a href="../default/page.html#site">site</a></td></tr></table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
@@ -81,30 +85,38 @@ Calls actions configured for this stream
 /</p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
+<td class="type"> the</td>
 <td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
 TODO
 /</p></td>
-</tr>
-<tr>
-<td class="type"> <a href="../default/site.html">Site</a></td>
-<td class="description"><p class="name"><a href="#getStreamingFilePath()">getStreamingFilePath</a>()</p><p class="description">
-Returns the reference to the Site.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setStreamingFilePath()">setStreamingFilePath</a>(mixed streamingFilePath, <a href="../default/site.html">Site</a> site)</p><p class="description">
 Sets the reference to the Site.</p></td>
 </tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setXmlPage()">setXmlPage</a>(unknown_type xmlPage)</p><p class="description">
+Sets the xml page which will be shown when authorizations
+are not sufficient.</p></td>
+</tr>
 </table>
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Page</th></tr>
-<tr><td><a href="../default/page.html#checkPermissions()">checkPermissions</a>, <a href="../default/page.html#generateContent()">generateContent</a>, <a href="../default/page.html#getCache()">getCache</a>, <a href="../default/page.html#getContent()">getContent</a>, <a href="../default/page.html#getSite()">getSite</a>, <a href="../default/page.html#serialize()">serialize</a>, <a href="../default/page.html#setContent()">setContent</a>, <a href="../default/page.html#setContentPath()">setContentPath</a>, <a href="../default/page.html#setSite()">setSite</a></td></tr></table>
+<tr><td><a href="../default/page.html#checkPermissions()">checkPermissions</a>, <a href="../default/page.html#generateContent()">generateContent</a>, <a href="../default/page.html#getCache()">getCache</a>, <a href="../default/page.html#getContent()">getContent</a>, <a href="../default/page.html#setConfiguration()">setConfiguration</a>, <a href="../default/page.html#setContentPath()">setContentPath</a>, <a href="../default/page.html#setSite()">setSite</a></td></tr></table>
 
 <h2 id="detail_field">Field Detail</h2>
 <h3 id="streamingFilePath">streamingFilePath</h3>
 <code class="signature">private  mixed <strong>$streamingFilePath</strong> = null</code>
+<div class="details">
+</div>
+
+<hr>
+
+<h3 id="xmlPage">xmlPage</h3>
+<code class="signature">private  mixed <strong>$xmlPage</strong> = null</code>
 <div class="details">
 </div>
 
@@ -129,21 +141,13 @@ Calls actions configured for this stream
 <hr>
 
 <h3 id="generateContent()">generateContent</h3>
-<code class="signature">public  void <strong>generateContent</strong>()</code>
+<code class="signature">public  the <strong>generateContent</strong>()</code>
 <div class="details">
 <p>
 TODO
-/</p></div>
-
-<hr>
-
-<h3 id="getStreamingFilePath()">getStreamingFilePath</h3>
-<code class="signature">public  <a href="../default/site.html">Site</a> <strong>getStreamingFilePath</strong>()</code>
-<div class="details">
-<p>
-Returns the reference to the Site.</p><dl>
+/</p><dl>
 <dt>Returns:</dt>
-<dd>The reference to the Site.</dd>
+<dd>generated content</dd>
 </dl>
 </div>
 
@@ -156,6 +160,19 @@ Returns the reference to the Site.</p><dl>
 Sets the reference to the Site.</p><dl>
 <dt>Parameters:</dt>
 <dd>site - The reference to the Site.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setXmlPage()">setXmlPage</h3>
+<code class="signature">public  void <strong>setXmlPage</strong>(unknown_type xmlPage)</code>
+<div class="details">
+<p>
+Sets the xml page which will be shown when authorizations
+are not sufficient.</p><dl>
+<dt>Parameters:</dt>
+<dd>xmlPage - the xml page to show</dd>
 </dl>
 </div>
 

@@ -55,6 +55,10 @@ Renders the requested page and creates the navigation.
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">protected  mixed</td>
+<td class="description"><p class="name"><a href="#configuration">$configuration</a></p><p class="description">The configuration */</p></td>
+</tr>
+<tr>
+<td class="type">protected  mixed</td>
 <td class="description"><p class="name"><a href="#content">$content</a></p><p class="description">The content of the requested page as DOMDocument. </p></td>
 </tr>
 <tr>
@@ -84,10 +88,9 @@ Constructor.
 Check if user authentication is activated and whether the requested page has restrictions.</p></td>
 </tr>
 <tr>
-<td class="type">abstract  void</td>
+<td class="type">abstract  the</td>
 <td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
-Processes the contents of the page.
-</p></td>
+Processes the contents of the page.</p></td>
 </tr>
 <tr>
 <td class="type">protected  <a href="../default/cache.html">Cache</a></td>
@@ -95,37 +98,37 @@ Processes the contents of the page.
 Returns cache instance.</p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#getContent()">getContent</a>()</p></td>
-</tr>
-<tr>
-<td class="type"> <a href="../default/site.html">Site</a></td>
-<td class="description"><p class="name"><a href="#getSite()">getSite</a>()</p><p class="description">
-Returns the reference to the Site.</p></td>
+<td class="type"> the</td>
+<td class="description"><p class="name"><a href="#getContent()">getContent</a>()</p><p class="description">
+Returns the content of this page.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#serialize()">serialize</a>()</p><p class="description">
-Excecutes the Serializer.
-</p></td>
+<td class="description"><p class="name"><a href="#setConfiguration()">setConfiguration</a>(<a href="../default/configuration.html">Configuration</a> configuration)</p><p class="description">
+Sets the configuration
+Injected by dependency injection.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setContent()">setContent</a>(string content)</p><p class="description">
-Sets the content of the page.</p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setContentPath()">setContentPath</a>(mixed path, string contentPath)</p><p class="description"></p></td>
+<td class="description"><p class="name"><a href="#setContentPath()">setContentPath</a>(mixed path, string contentPath)</p><p class="description">
+Sets the name of the folder where the content is placed.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setSite()">setSite</a>(<a href="../default/site.html">Site</a> site)</p><p class="description">
-Sets the reference to the Site.</p></td>
+Sets the reference to the Site.
+</p></td>
 </tr>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
+<h3 id="configuration">configuration</h3>
+<code class="signature">protected  mixed <strong>$configuration</strong> = null</code>
+<div class="details">
+<p>The configuration */</p></div>
+
+<hr>
+
 <h3 id="content">content</h3>
 <code class="signature">protected  mixed <strong>$content</strong> = null</code>
 <div class="details">
@@ -171,11 +174,14 @@ Check if user authentication is activated and whether the requested page has res
 <hr>
 
 <h3 id="generateContent()">generateContent</h3>
-<code class="signature">public abstract  void <strong>generateContent</strong>()</code>
+<code class="signature">public abstract  the <strong>generateContent</strong>()</code>
 <div class="details">
 <p>
-Processes the contents of the page.
-/</p></div>
+Processes the contents of the page.</p><dl>
+<dt>Returns:</dt>
+<dd>generated content</dd>
+</dl>
+</div>
 
 <hr>
 
@@ -192,40 +198,25 @@ Returns cache instance.</p><dl>
 <hr>
 
 <h3 id="getContent()">getContent</h3>
-<code class="signature">public  void <strong>getContent</strong>()</code>
-<div class="details">
-</div>
-
-<hr>
-
-<h3 id="getSite()">getSite</h3>
-<code class="signature">public  <a href="../default/site.html">Site</a> <strong>getSite</strong>()</code>
+<code class="signature">public  the <strong>getContent</strong>()</code>
 <div class="details">
 <p>
-Returns the reference to the Site.</p><dl>
+Returns the content of this page.</p><dl>
 <dt>Returns:</dt>
-<dd>The reference to the Site.</dd>
+<dd>content of this page as piwi xml</dd>
 </dl>
 </div>
 
 <hr>
 
-<h3 id="serialize()">serialize</h3>
-<code class="signature">public  void <strong>serialize</strong>()</code>
+<h3 id="setConfiguration()">setConfiguration</h3>
+<code class="signature">public  void <strong>setConfiguration</strong>(<a href="../default/configuration.html">Configuration</a> configuration)</code>
 <div class="details">
 <p>
-Excecutes the Serializer.
-/</p></div>
-
-<hr>
-
-<h3 id="setContent()">setContent</h3>
-<code class="signature">public  void <strong>setContent</strong>(string content)</code>
-<div class="details">
-<p>
-Sets the content of the page.</p><dl>
+Sets the configuration
+Injected by dependency injection.</p><dl>
 <dt>Parameters:</dt>
-<dd>content - The content as xml.</dd>
+<dd>configuration - The reference to the configuration.</dd>
 </dl>
 </div>
 
@@ -234,7 +225,8 @@ Sets the content of the page.</p><dl>
 <h3 id="setContentPath()">setContentPath</h3>
 <code class="signature">public  void <strong>setContentPath</strong>(mixed path, string contentPath)</code>
 <div class="details">
-<p></p><dl>
+<p>
+Sets the name of the folder where the content is placed.</p><dl>
 <dt>Parameters:</dt>
 <dd>contentPath - Name of the folder where the content is placed.</dd>
 </dl>
@@ -246,7 +238,8 @@ Sets the content of the page.</p><dl>
 <code class="signature">public  void <strong>setSite</strong>(<a href="../default/site.html">Site</a> site)</code>
 <div class="details">
 <p>
-Sets the reference to the Site.</p><dl>
+Sets the reference to the Site.
+Injected by dependency injection.</p><dl>
 <dt>Parameters:</dt>
 <dd>site - The reference to the Site.</dd>
 </dl>

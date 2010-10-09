@@ -43,9 +43,9 @@ Detail: <a href="#detail_function">Function</a>
 <tr><th colspan="2" class="title">Function Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#__autoload()">__autoload</a>(string class)</p><p class="description">
-Autoload uses the ClassLoader class tu recursivly look up
-needed classes. </p></td>
+<td class="description"><p class="name"><a href="#__autoload()">__autoload</a>(string className)</p><p class="description">
+Implements the __autoload mechanism for PHP - which can only be done once
+per request.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -55,16 +55,15 @@ needed classes. </p></td>
 
 <h2 id="detail_function">Function Detail</h2>
 <h3 id="__autoload()">__autoload</h3>
-<code class="signature">public  void <strong>__autoload</strong>(string class)</code>
+<code class="signature">public  void <strong>__autoload</strong>(string className)</code>
 <div class="details">
 <p>
-Autoload uses the ClassLoader class tu recursivly look up
-needed classes. Use one file per class/interface and name it: 
-	- yourclass.class.php
-	- yourinterface.if.php</p>
+Implements the __autoload mechanism for PHP - which can only be done once
+per request.
+</p>
 <dl>
 <dt>Parameters:</dt>
-<dd>class - Name of the of the class or interface.</dd>
+<dd>className - The name of the class that should be loaded.</dd>
 </dl>
 </div>
 

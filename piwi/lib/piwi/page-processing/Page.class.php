@@ -58,7 +58,7 @@ abstract class Page {
 	 * @return Cache The cache instance.
 	 */
 	protected function getCache() {
-		// Determinate global cachetime, if page specific cachetime exists use this
+		// Determine global cachetime, if page specific cachetime exists use this
 		$cachetime = $this->configuration->getCacheTime();
 		$specificCacheTime = $this->site->getCacheTime();
 		if ($specificCacheTime != null) {

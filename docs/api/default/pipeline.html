@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
 
-<title>SiteSelector (Piwi - XML Transformation Framework)</title>
+<title>Pipeline (Piwi - XML Transformation Framework)</title>
 
 </head>
 <body id="definition" onload="parent.document.title=document.title;">
@@ -27,7 +27,7 @@
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/siteselector.html" target="_top">No frames</a>
+<a href="../default/pipeline.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
@@ -35,18 +35,21 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </div>
 <hr>
 
-<div class="qualifiedName">default.SiteSelector</div>
+<div class="qualifiedName">default.Pipeline</div>
 
-<h1>Class SiteSelector</h1>
+<h1>Class Pipeline</h1>
 
-<pre class="tree"><strong>SiteSelector</strong><br /></pre>
+<pre class="tree"><strong>Pipeline</strong><br /></pre>
 
 <hr>
 
-<p class="signature">public  class <strong>SiteSelector</strong></p>
+<p class="signature">public  class <strong>Pipeline</strong></p>
 
 <div class="comment" id="overview_description"><p>
-TODO: Write comment
+The SiteSelector class selects a matching inputprovider implementation based on the
+file ending of the requested content. The actual file which is to be read is defined 
+in the site.xml. </p><p>In other words, the SiteSelector connects the Site implementation to the Page implementation.</p><p>New inputprovider implementations can be added in the context.xml with adding the 
+extension and the preferred Page implementation for it. 
 /</p></div>
 
 <hr>
@@ -55,18 +58,26 @@ TODO: Write comment
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#configuration">$configuration</a></p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#errormode">$errormode</a></p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#page">$page</a></p><p class="description">Reference to the processed page. </p></td>
 </tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#pagemap">$pagemap</a></p></td>
+</tr>
 </table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#SiteSelector()">SiteSelector</a>()</p><p class="description">
+<td class="description"><p class="name"><a href="#Pipeline()">Pipeline</a>()</p><p class="description">
 Constructor.
 </p></td>
 </tr>
@@ -76,7 +87,9 @@ Constructor.
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#_choosePipeline()">_choosePipeline</a>()</p></td>
+<td class="description"><p class="name"><a href="#_choosePipeline()">_choosePipeline</a>()</p><p class="description">
+Selects a Page implementation based on the file extension.
+</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -96,9 +109,15 @@ Returns the reference to the Site.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#serialize()">serialize</a>()</p><p class="description">
-Excecutes the Serializer.
+<td class="description"><p class="name"><a href="#serialize()">serialize</a>(mixed page)</p><p class="description">
+Executes the Serializer.
 </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setConfiguration()">setConfiguration</a>(<a href="../default/configuration.html">Configuration</a> configuration)</p><p class="description">
+Sets the configuration
+Injected by dependency injection.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -111,6 +130,11 @@ Sets the content of the page.</p></td>
 Sets the reference to the processed page.</p></td>
 </tr>
 <tr>
+<td class="type"> unknown_type</td>
+<td class="description"><p class="name"><a href="#setPagemap()">setPagemap</a>(array pagemap)</p><p class="description">
+Sets the Pagemap</p></td>
+</tr>
+<tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setSite()">setSite</a>(<a href="../default/site.html">Site</a> site)</p><p class="description">
 Sets the reference to the Site.</p></td>
@@ -118,6 +142,13 @@ Sets the reference to the Site.</p></td>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
+<h3 id="configuration">configuration</h3>
+<code class="signature">private  mixed <strong>$configuration</strong> = null</code>
+<div class="details">
+</div>
+
+<hr>
+
 <h3 id="errormode">errormode</h3>
 <code class="signature">private  mixed <strong>$errormode</strong> = false</code>
 <div class="details">
@@ -132,9 +163,16 @@ Sets the reference to the Site.</p></td>
 
 <hr>
 
+<h3 id="pagemap">pagemap</h3>
+<code class="signature">private  mixed <strong>$pagemap</strong> = null</code>
+<div class="details">
+</div>
+
+<hr>
+
 <h2 id="detail_constr">Constructor Detail</h2>
-<h3 id="SiteSelector()">SiteSelector</h3>
-<code class="signature">public <strong>SiteSelector</strong>()</code>
+<h3 id="Pipeline()">Pipeline</h3>
+<code class="signature">public <strong>Pipeline</strong>()</code>
 <div class="details">
 <p>
 Constructor.
@@ -146,7 +184,9 @@ Constructor.
 <h3 id="_choosePipeline()">_choosePipeline</h3>
 <code class="signature">private  void <strong>_choosePipeline</strong>()</code>
 <div class="details">
-</div>
+<p>
+Selects a Page implementation based on the file extension.
+/</p></div>
 
 <hr>
 
@@ -184,11 +224,24 @@ Returns the reference to the Site.</p><dl>
 <hr>
 
 <h3 id="serialize()">serialize</h3>
-<code class="signature">public  void <strong>serialize</strong>()</code>
+<code class="signature">public  void <strong>serialize</strong>(mixed page)</code>
 <div class="details">
 <p>
-Excecutes the Serializer.
+Executes the Serializer.
 /</p></div>
+
+<hr>
+
+<h3 id="setConfiguration()">setConfiguration</h3>
+<code class="signature">public  void <strong>setConfiguration</strong>(<a href="../default/configuration.html">Configuration</a> configuration)</code>
+<div class="details">
+<p>
+Sets the configuration
+Injected by dependency injection.</p><dl>
+<dt>Parameters:</dt>
+<dd>configuration - The reference to the configuration.</dd>
+</dl>
+</div>
 
 <hr>
 
@@ -213,6 +266,14 @@ Sets the reference to the processed page.</p><dl>
 <dd>page - The reference to the processed page.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="setPagemap()">setPagemap</h3>
+<code class="signature">public  unknown_type <strong>setPagemap</strong>(array pagemap)</code>
+<div class="details">
+<p>
+Sets the Pagemap</p></div>
 
 <hr>
 
@@ -242,7 +303,7 @@ Sets the reference to the Site.</p><dl>
 
 <div class="small_links">
 <a href="../index.html" target="_top">Frames</a>
-<a href="../default/siteselector.html" target="_top">No frames</a>
+<a href="../default/pipeline.html" target="_top">No frames</a>
 </div>
 <div class="small_links">
 Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>

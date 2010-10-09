@@ -9,9 +9,9 @@
  * <li>prototype: an object is always newly created by each context request</li>
  * </ul>
  * 
- * Spring Framework supports the singleton scope too. This means a bean is available for the
+ * Spring Framework supports the singleton scope, too. This means a bean is available for the
  * the whole container for the whole runtime. This is not (easily) possible for PHP applications
- * and should only be used under special cirstumances. The bean must be serialized to harddisk
+ * and should only be used under special circumstances. The bean must be serialized to harddisk
  * for an interchange between sessions and request. However, this could be done with a BeanSerializer,
  * which is in the scope for a latter Piwi release.
  */
@@ -46,13 +46,19 @@ class BeanFactory {
 	 * of the generators that can be used.
 	 */
 	public static function initialize($contextXMLPath) {
-		if($contextXMLPath == null) {
+		if ($contextXMLPath == null) {
 			throw new PiwiException('"Context must not be null.', PiwiException::ERR_NO_XML_DEFINITION);
 		}
 
 		self :: $instance = new BeanFactory($contextXMLPath);
 	}
 
+	/**
+	 * Adds a custom context to the BeanFactory.
+	 * @param string $contextXMLPath Path of the file containing the xml-definition 
+	 * of the generators that can be used.
+	 * @param boolean $overwrite Determines whether the existing beans are overridden.
+	 */
 	public static function addContext($contextXMLPath, $overwrite = false) {
 		if (self :: $instance->domXPath == null) {
     		self :: $instance->_loadContextXML();
@@ -63,15 +69,15 @@ class BeanFactory {
 		$userXPath->registerNamespace('context', 'http://piwi.googlecode.com/xsd/context');
 		$xpathQuery = $userXPath->query('/*/*');
 		
-		$elements = self :: $instance->contextXml->getElementsByTagName ( 'bean' );
+		$elements = self :: $instance->contextXml->getElementsByTagName('bean');
 		
 		$ignore = false;
 		for ($i = 0; $i < $xpathQuery->length; $i++) {
 				$id = $xpathQuery->item($i)->getAttribute('id');
 				
-				foreach($elements as $element) {
-					if($element->getAttribute('id') == $id) {
-						if($overwrite === true) {
+				foreach ($elements as $element) {
+					if ($element->getAttribute('id') == $id) {
+						if ($overwrite) {
 							$parent = $element->parentNode;
 							$parent->removeChild($element);
 						} else {
@@ -80,7 +86,7 @@ class BeanFactory {
 						break;
 					} 
 				}
-				if(!$ignore) {
+				if (!$ignore) {
 					$node = self :: $instance->contextXml->importNode($xpathQuery->item($i), true);
 					self :: $instance->contextXml->documentElement->appendChild($node);
 				}
@@ -297,7 +303,7 @@ class BeanFactory {
      * Loads the 'context.xml'.
      */
     private function _loadContextXML() {
-    	if($this->contextXml == null) {
+    	if ($this->contextXml == null) {
 			if (!file_exists($this->contextXMLPath)) {
 				throw new PiwiException("Could not find the context definition file (Path: '" 
 						. $this->contextXMLPath . "').", 

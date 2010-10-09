@@ -1,6 +1,6 @@
 <?php
 /**
- * The SiteSelector clas selects a matching inputprovider implementation based on the
+ * The SiteSelector class selects a matching inputprovider implementation based on the
  * file ending of the requested content. The actual file which is to be read is defined 
  * in the site.xml. 
  * 
@@ -30,13 +30,11 @@ class Pipeline {
 	 */
 	public function generateContent() {
 		$this->_choosePipeline();
-		$this->page->generateContent();
-		
+		$this->page->generateContent();		
 	}
 
 	/**
 	 * Selects a Page implementation based on the file extension.
-	 * @return void
 	 */
 	private function _choosePipeline() {
 		$path = $this->getSite()->getFilePath();
@@ -67,7 +65,7 @@ class Pipeline {
 	}
 	
 	/**
-	 * Excecutes the Serializer.
+	 * Executes the Serializer.
 	 */
 	public function serialize($page = null) {
 		$extension = Request :: getExtension();
@@ -116,7 +114,7 @@ class Pipeline {
 	}
 	
 	/**
-	 * 
+	 * Sets the Pagemap
 	 * @param array $pagemap
 	 * @return unknown_type
 	 */
@@ -124,12 +122,11 @@ class Pipeline {
 		$this->pagemap = $pagemap;
 	}
 	
-/**
+	/**
 	 * Sets the configuration
 	 * Injected by dependency injection.
 	 * @param Configuration $configuration The reference to the configuration.
-	 */
-	
+	 */	
 	public function setConfiguration(Configuration $configuration) {
 		$this->configuration = $configuration;
 	}

@@ -41,6 +41,11 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <pre class="tree"><strong>ConfigurationManager</strong><br /></pre>
 
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd>Configuration </dt>
+</dl>
+
 <hr>
 
 <p class="signature">public  class <strong>ConfigurationManager</strong></p>
@@ -124,6 +129,12 @@ Returns the RoleProvider which manages the authentication of users.</p></td>
 <td class="type"> <a href="../default/serializer.html">Serializer</a></td>
 <td class="description"><p class="name"><a href="#getSerializer()">getSerializer</a>(mixed extension)</p><p class="description">
 Returns the Serializer for the given format or null if none is found.</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getUserContext()">getUserContext</a>()</p><p class="description">
+Returns the definiton for the user context, if set.
+</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
@@ -272,6 +283,21 @@ Returns the RoleProvider which manages the authentication of users.</p><dl>
 Returns the Serializer for the given format or null if none is found.</p><dl>
 <dt>Returns:</dt>
 <dd>The Serializer for the given format or null if none is found.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="getUserContext()">getUserContext</h3>
+<code class="signature">public  array <strong>getUserContext</strong>()</code>
+<div class="details">
+<p>
+Returns the definiton for the user context, if set.</p><p>The defintion is an array with the two fields:</p><p>['overwrite'] which is true, if the user context should overwrite beans with the same name 
+from the standard piwi context and false, if beans with the the name should be ignored from the
+user context.</p><p>['path'] with the path to the user context
+</p><dl>
+<dt>Returns:</dt>
+<dd>with the user context definition</dd>
 </dl>
 </div>
 

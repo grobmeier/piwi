@@ -8,7 +8,7 @@ class SiteMapHelper {
 	 * It is possible to retrieve only certain parts of the 'SiteMap'.
 	 * @param string $id Returns only the SiteElement with this id and its subitems. 
 	 * Set to 'null' if all SiteElements should be returned.
-	 * @param integer $depth Determinates the maximum number of subitems that will be returned. 
+	 * @param integer $depth Determines the maximum number of subitems that will be returned. 
 	 * Set to '-1' for full depth, to '0' only for parent items. 
 	 * @param boolean $includeParent If false only the children of the parent will be returned. 
 	 * This can only be used if $id is not 'null'.

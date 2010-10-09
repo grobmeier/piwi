@@ -11,7 +11,7 @@
 <title>default (Piwi - XML Transformation Framework)</title>
 
 </head>
-<body id="package" onload="parent.document.title=document.title;">
+<body id="tree" onload="parent.document.title=document.title;">
 
 <div class="header">
 <h1>Piwi - XML Transformation Framework</h1>
@@ -110,6 +110,9 @@ Renders the requested page and creates the navigation.
 <tr><td class="name"><a href="../default/pager.html">Pager</a></td><td class="description">
 Helper class to page contents of a database query.
 </td></tr>
+<tr><td class="name"><a href="../default/pipeline.html">Pipeline</a></td><td class="description">
+The SiteSelector class selects a matching inputprovider implementation based on the
+file ending of the requested content. </td></tr>
 <tr><td class="name"><a href="../default/piwixmlserializer.html">PiwiXMLSerializer</a></td><td class="description">
 Serializes the given XML to PiwiXML.
 </td></tr>
@@ -141,7 +144,7 @@ Generates a picture gallery.
 Creates a simple navigation.
 </td></tr>
 <tr><td class="name"><a href="../default/site.html">Site</a></td><td class="description">
-TODO: Add comment
+The Site class is the php representation of the site.xml 
 /</td></tr>
 <tr><td class="name"><a href="../default/siteelement.html">SiteElement</a></td><td class="description">
 Represents a page item.
@@ -158,9 +161,6 @@ Provides helper functions to generate SiteMaps.
 <tr><td class="name"><a href="../default/sitemappathnavigationgenerator.html">SiteMapPathNavigationGenerator</a></td><td class="description">
 Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
 </td></tr>
-<tr><td class="name"><a href="../default/siteselector.html">SiteSelector</a></td><td class="description">
-TODO: Write comment
-/</td></tr>
 <tr><td class="name"><a href="../default/streammanager.html">StreamManager</a></td><td class="description">
 Manages the settings configured in 'streams.xml'.
 </td></tr>
@@ -193,6 +193,9 @@ XML RoleProvider.
 
 <table class="title">
 <tr><th colspan="2" class="title">Interface Summary</th></tr>
+<tr><td class="name"><a href="../default/configuration.html">Configuration</a></td><td class="description">
+Interface that configurations have to implement.
+</td></tr>
 <tr><td class="name"><a href="../default/connector.html">Connector</a></td><td class="description">
 Interface that database connectors have to implement.
 </td></tr>
@@ -217,6 +220,9 @@ Interface that serializers have to implement.
 <tr><td class="name"><a href="../default/stepprocessor.html">StepProcessor</a></td><td class="description">
 Interface that Step Processors have to implement.
 </td></tr>
+<tr><td class="name"><a href="../default/ezcbaseexportable.html">ezcBaseExportable</a></td><td class="description">
+Interface for class of which instances can be exported using var_export().
+</td></tr>
 </table>
 
 <table class="title">
@@ -233,8 +239,8 @@ processing the requested page.
 <table class="title">
 <tr><th colspan="2" class="title">Function Summary</th></tr>
 <tr><td class="name"><a href="package-functions.html#__autoload">__autoload</a></td><td class="description">
-Autoload uses the ClassLoader class tu recursivly look up
-needed classes. </td></tr>
+Implements the __autoload mechanism for PHP - which can only be done once
+per request.</td></tr>
 <tr><td class="name"><a href="package-functions.html#exception_handler">exception_handler</a></td><td class="description"></td></tr>
 </table>
 

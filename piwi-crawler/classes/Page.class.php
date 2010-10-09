@@ -226,7 +226,7 @@ class Page {
 	}
 	
 	/**
-	 * Determinates if the given link refers to an internal page or not.
+	 * Determines if the given link refers to an internal page or not.
 	 * @return boolean True if link refers to an internal page, otherwise false.
 	 */
 	private function isLinkInternal(&$link) {
@@ -245,7 +245,7 @@ class Page {
 	}
 	
 	/**
-	 * Determinates whether the given link targets a resource.
+	 * Determines whether the given link targets a resource.
 	 * @param string $link The link to test.
 	 * @return boolean True if the link targets a resource, otherwise false.
 	 */

@@ -14,7 +14,7 @@ interface RoleProvider {
 	 * the roles array contains the * role "!"
 	 * then the user is in role.
 	 * 
-	 * In other terms, if a page has the ! role, it can only be viewed by unauthencated users.
+	 * In other terms, if a page has the ! role, it can only be viewed by unauthenticated users.
 	 * 
 	 * @param string $username The name of the user.
 	 * @param array $role The roles that are allowed.

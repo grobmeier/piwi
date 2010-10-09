@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ezcInputFormDefinitionElement (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../userinput/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../userinput/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../userinput/ezcinputformdefinitionelement.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">UserInput.ezcInputFormDefinitionElement</div>
+
+<h1>Class ezcInputFormDefinitionElement</h1>
+
+<pre class="tree"><a href="../base/ezcbasestruct.html">ezcBaseStruct</a><br>  |<br>  +--<strong>ezcInputFormDefinitionElement</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ezcInputFormDefinitionElement</strong><br>extends <a href="../base/ezcbasestruct.html">ezcBaseStruct</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+This struct records information about Input Form definition elements.
+</p></div>
+
+<dl>
+<dt>Version:</dt>
+<dd>//autogentag</dd>
+<dt>Mainclass.</dt>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">final  OPTIONAL marks an input field as "optional". Optional input fields
+     *               do not throw errors if they are not available while
+     *               parsing input variables.</td>
+<td class="description"><p class="name"><a href="#OPTIONAL">$OPTIONAL</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type">final  REQUIRED marks an input field as "required". When a required input
+     *               variable is not available while parsing input variables,
+     *               the __construct will throw the UserInputMissingData
+     *               exception.</td>
+<td class="description"><p class="name"><a href="#REQUIRED">REQUIRED</a></p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#filterName">$filterName</a></p><p class="description">
+The name of the filter to use for this definition element.</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#flags">$flags</a></p><p class="description">
+The extra flags to this filter.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#hint">$hint</a></p><p class="description">
+A short hint to be shown to the user about the constraint of an input element, e.g.</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#options">$options</a></p><p class="description">
+The extra options to this filter.</p></td>
+</tr>
+<tr>
+<td class="type"> int</td>
+<td class="description"><p class="name"><a href="#type">$type</a></p><p class="description">
+Whether the field is optional or required. </p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#ezcInputFormDefinitionElement()">ezcInputFormDefinitionElement</a>(int type, string filterName, mixed options, int flags, string hint)</p><p class="description">
+Constructs a definition item.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">static  <a href="../userinput/ezcinputformdefinitionelement.html">ezcInputFormDefinitionElement</a></td>
+<td class="description"><p class="name"><a href="#__set_state()">__set_state</a>(array(string=>mixed) array)</p><p class="description">
+Returns a new instance of this class with the data specified by $array.</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from Base.ezcBaseStruct</th></tr>
+<tr><td><a href="../base/ezcbasestruct.html#__get()">__get</a>, <a href="../base/ezcbasestruct.html#__set()">__set</a></td></tr></table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="OPTIONAL">OPTIONAL</h3>
+<code class="signature">public final  OPTIONAL marks an input field as "optional". Optional input fields
+     *               do not throw errors if they are not available while
+     *               parsing input variables. <strong>$OPTIONAL</strong></code>
+<div class="details">
+<p></p></div>
+
+<hr>
+
+<h3 id="REQUIRED">REQUIRED</h3>
+<code class="signature">public final  REQUIRED marks an input field as "required". When a required input
+     *               variable is not available while parsing input variables,
+     *               the __construct will throw the UserInputMissingData
+     *               exception. <strong>REQUIRED</strong> = 1</code>
+<div class="details">
+<p></p></div>
+
+<hr>
+
+<h3 id="filterName">filterName</h3>
+<code class="signature">public  string <strong>$filterName</strong> = 'string'</code>
+<div class="details">
+<p>
+The name of the filter to use for this definition element.
+</p></div>
+
+<hr>
+
+<h3 id="flags">flags</h3>
+<code class="signature">public  mixed <strong>$flags</strong> = false</code>
+<div class="details">
+<p>
+The extra flags to this filter.
+</p></div>
+
+<hr>
+
+<h3 id="hint">hint</h3>
+<code class="signature">public  string <strong>$hint</strong> = ''</code>
+<div class="details">
+<p>
+A short hint to be shown to the user about the constraint of an input element, e.g.
+'between 0 and 100', 'valid email' or 'no specialchars'
+</p></div>
+
+<hr>
+
+<h3 id="options">options</h3>
+<code class="signature">public  mixed <strong>$options</strong> = false</code>
+<div class="details">
+<p>
+The extra options to this filter.
+</p></div>
+
+<hr>
+
+<h3 id="type">type</h3>
+<code class="signature">public  int <strong>$type</strong> = self::OPTIONAL</code>
+<div class="details">
+<p>
+Whether the field is optional or required. One of the self::OPTIONAL or
+self::REQUIRED constants.
+</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="ezcInputFormDefinitionElement()">ezcInputFormDefinitionElement</h3>
+<code class="signature">public <strong>ezcInputFormDefinitionElement</strong>(int type, string filterName, mixed options, int flags, string hint)</code>
+<div class="details">
+<p>
+Constructs a definition item.
+
+Constructs the definition item with all its options and flags.
+</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="__set_state()">__set_state</h3>
+<code class="signature">public static  <a href="../userinput/ezcinputformdefinitionelement.html">ezcInputFormDefinitionElement</a> <strong>__set_state</strong>(array(string=>mixed) array)</code>
+<div class="details">
+<p>
+Returns a new instance of this class with the data specified by $array.
+
+$array contains all the data members of this class in the form:
+array('member_name'=>value).
+
+__set_state makes this class exportable with var_export.
+var_export() generates code, that calls this method when it
+is parsed with PHP.
+</p><dl>
+<dt>Ignore.</dt>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../userinput/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../userinput/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../userinput/ezcinputformdefinitionelement.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

@@ -77,7 +77,7 @@ class FormProcessor {
 			$this->_callPreProcessor($domXPath);
 		}
 			
-		// Determinate number of total steps in form
+		// Determine number of total steps in form
 		$this->numberOfSteps = $domXPath->evaluate('count(/piwiform:form/piwiform:step)');
 		
 		if ($this->currentStep > $this->numberOfSteps || $this->currentStep < 0) {
@@ -245,7 +245,7 @@ class FormProcessor {
 			$domElement[0]->getAttribute("type") == 'checkbox';
 		
 		/* if INPUT is a CheckBox or RadioButton and if request is a postback, 
-		 * then determinate it's checked state to set the same status again */
+		 * then determine its checked state to set the same status again */
 		if ($checkable && sizeof($_POST) > 0) {
 			if (isset($_POST[$name])) {
 				if (is_array($_POST[$name])) {
@@ -313,7 +313,7 @@ class FormProcessor {
 					$value = $option->textContent;
 				}
 
-				//If request is a postback, then determinate it's selected state to set the same status again
+				//If request is a postback, then determine it's selected state to set the same status again
 				if (sizeof($_POST) > 0) {
 					if (isset($_POST[$name])) {
 						if (is_array($_POST[$name])) {

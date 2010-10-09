@@ -148,7 +148,7 @@ class Site {
 	    	$this->_loadSite();  		
     	}
 
-		// Determinate all nodes that lead to the current page
+		// Determine all nodes that lead to the current page
     	$openpath = array();
     	
         $domNodeList = $this->domXPath->query("/site:site/site:language[@region='" . 

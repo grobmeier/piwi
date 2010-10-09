@@ -108,8 +108,10 @@ Returns true if user exists and password is valid, otherwise false.</p><dl>
 <div class="details">
 <p>
 Checks if a user has one of the given roles. 
-If the user has at least one of the given roles, true is returned, otherwise false.</p><p>If a user is not authentificated and the roles array contains the
-role "anonymous", the user is in role.
+If the user has at least one of the given roles, true is returned, otherwise false.</p><p>If a user is:
+not authenticated and 
+the roles array contains the * role "!"
+then the user is in role.</p><p>In other terms, if a page has the ! role, it can only be viewed by unauthenticated users.
 </p><dl>
 <dt>Parameters:</dt>
 <dd>username - The name of the user.</dd>

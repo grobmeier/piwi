@@ -38,7 +38,7 @@ class ClassLoader {
 	}
 
 	/**
-	 * Autoload uses the ClassLoader class tu recursivly look up
+	 * Autoload uses the ClassLoader class to recursively look up
 	 * needed classes. Use one file per class/interface and name it: 
 	 * 	- yourclass.class.php
 	 * 	- yourinterface.if.php
@@ -60,7 +60,7 @@ class ClassLoader {
 	}
 	
 	/**
-	 * Trys to load a class from the given directory. 
+	 * Tries to load a class from the given directory. 
 	 * All subdirectories are used for lookup. 
 	 * @param string $directory The path in which the class should be found.
 	 * @param string $class The name of the class.

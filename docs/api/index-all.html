@@ -41,6 +41,7 @@
 <a href="#letterL">L</a>
 <a href="#letterM">M</a>
 <a href="#letterN">N</a>
+<a href="#letterO">O</a>
 <a href="#letterP">P</a>
 <a href="#letterR">R</a>
 <a href="#letterS">S</a>
@@ -55,11 +56,24 @@
 <dl>
 <dt><a href="default/package-functions.html#__autoload()">__autoload()</a> - Function in package <a href="default/package-summary.html">default</a></dt>
 <dd>
-Autoload uses the ClassLoader class tu recursivly look up
-needed classes. </dd>
+Implements the __autoload mechanism for PHP - which can only be done once
+per request.</dd>
 <dt><a href="default/classloadercache.html#__destruct()">__destruct()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Destructor.
+</dd>
+<dt><a href="userinput/ezcinputform.html#__get()">__get()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+This function is called when a variable is assigned to a magic property.</dd>
+<dt><a href="userinput/ezcinputform.html#__isset()">__isset()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns whether a magic property was is used on a magic property.</dd>
+<dt><a href="userinput/ezcinputform.html#__set()">__set()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Sets a new magic property.</dd>
+<dt><a href="default/ezcbaseexportable.html#__set_state()">__set_state()</a> - Method in class <a href="default/ezcbaseexportable.html">default.ezcBaseExportable</a></dt>
+<dd>
+Returns an instance of the desired object, initialized from $state.
 </dd>
 <dt><a href="default/piwiexception.html#__toString()">__toString()</a> - Method in class <a href="default/piwiexception.html">default.PiwiException</a></dt>
 <dd>
@@ -75,7 +89,10 @@ Calls actions configured for this stream
 <dd>
 Calls a preprocessor defined as an attribute in the step tag.
 </dd>
-<dt><a href="default/siteselector.html#_choosePipeline()">_choosePipeline()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="default/pipeline.html#_choosePipeline()">_choosePipeline()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
+<dd>
+Selects a Page implementation based on the file extension.
+</dd>
 <dt><a href="default/site.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Generates the submenus of the given nodes.</dd>
@@ -135,6 +152,10 @@ Constructs an instance of the Generator with the given id.
 <dd>
 Initializes the properties for the bean with the referenced id.
 </dd>
+<dt><a href="default/beanfactory.html#_initializePropertyArray()">_initializePropertyArray()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
+<dd>
+Initializes an array out of a properties list.
+</dd>
 <dt><a href="default/formprocessor.html#_initRequestParams()">_initRequestParams()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
 <dd>
 Initializes the request parameters.
@@ -167,10 +188,16 @@ Streams the given file.</dd>
 </dl>
 <h1 id="letterA">A</h1>
 <dl>
+<dt><a href="base/ezcbase.html#addClassRepository()">addClassRepository()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Adds an additional class repository.</dd>
 <dt><a href="default/classloadercache.html#addClassToCache()">addClassToCache()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Adds a class to the cache.
 </dd>
+<dt><a href="default/beanfactory.html#addContext()">addContext()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
+<dd>
+Adds a custom context to the BeanFactory.</dd>
 <dt><a href="default/album.html#addImage()">addImage()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Adds an image to the album.</dd>
@@ -178,6 +205,10 @@ Adds an image to the album.</dd>
 <dd>
 Represents an photoalbum (a set of images).
 </dd>
+<dt><a href="default/classloader.html#autoload()">autoload()</a> - Method in class <a href="default/classloader.html">default.ClassLoader</a></dt>
+<dd>
+Autoload uses the ClassLoader class to recursively look up
+needed classes. </dd>
 </dl>
 <h1 id="letterB">B</h1>
 <dl>
@@ -195,12 +226,25 @@ Caches pages and loads them from cache again.
 <dt><a href="default/cache.html#cachePage()">cachePage()</a> - Method in class <a href="default/cache.html">default.Cache</a></dt>
 <dd>
 Caches the given page so that it can be reused within further requests.</dd>
+<dt><a href="base/ezcbasefile.html#calculateRelativePath()">calculateRelativePath()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Calculates the relative path of the file/directory '$path' to a given
+$base path.</dd>
 <dt><a href="default/generatorfactory.html#callGenerator()">callGenerator()</a> - Method in class <a href="default/generatorfactory.html">default.GeneratorFactory</a></dt>
 <dd>
 Used within the XSLT-Stylesheets to interpret the <generator /> tag. </dd>
+<dt><a href="base/ezcbase.html#checkDependency()">checkDependency()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Checks for dependencies on PHP versions or extensions
+
+The function as called by the $component component checks for the $type
+dependency. </dd>
 <dt><a href="default/page.html#checkPermissions()">checkPermissions()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
 <dd>
 Check if user authentication is activated and whether the requested page has restrictions.</dd>
+<dt><a href="base/ezcbasefeatures.html#classExists()">classExists()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Returns if a given class exists.</dd>
 <dt><a href="default/classloader.html">ClassLoader()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 ClassLoader loads classes necessary for PIWI.
@@ -209,14 +253,26 @@ ClassLoader loads classes necessary for PIWI.
 <dd>
 SimpleXML based cache implementation for the Classloader.
 </dd>
+<dt><a href="default/beanfactory.html#clean()">clean()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
+<dd>
+Removes the singleton
+/</dd>
 <dt><a href="default/comparevalidator.html">CompareValidator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Checks if the value of a field matches the value of another field.
+</dd>
+<dt><a href="default/configuration.html">Configuration()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Interface that configurations have to implement.
 </dd>
 <dt><a href="default/configurationmanager.html">ConfigurationManager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Manages the settings configured in 'config.xml'.
 </dd>
+<dt><a href="base/ezcbaseconfigurationinitializer.html#configureObject()">configureObject()</a> - Method in class <a href="base/ezcbaseconfigurationinitializer.html">Base.ezcBaseConfigurationInitializer</a></dt>
+<dd>
+Configures the given object, or returns the proper object depending on
+the given identifier.</dd>
 <dt><a href="default/sqlite3connector.html#connect()">connect()</a> - Method in class <a href="default/sqlite3connector.html">default.SQLite3Connector</a></dt>
 <dd>
 Establishes a connection to the database.
@@ -229,6 +285,9 @@ Interface that database connectors have to implement.
 <dd>
 Used to initiate and retrieve Connectors.
 </dd>
+<dt><a href="base/ezcbasefile.html#copyRecursive()">copyRecursive()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Recursively copy a file or directory.</dd>
 <dt><a href="default/pager.html#countPages()">countPages()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the total number of pages.</dd>
@@ -276,13 +335,185 @@ Executes the given StepProcessor.</dd>
 <dt><a href="default/formprocessorwrapper.html#executeValidator()">executeValidator()</a> - Method in class <a href="default/formprocessorwrapper.html">default.FormProcessorWrapper</a></dt>
 <dd>
 Executes the given Validator.</dd>
+<dt><a href="base/ezcbase.html">ezcBase()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base class implements the methods needed to use the eZ components.</dd>
+<dt><a href="base/ezcbaseautoloadexception.html">ezcBaseAutoloadException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseAutoloadException is thrown whenever a class can not be found with
+the autoload mechanism.</dd>
+<dt><a href="base/ezcbaseautoloadoptions.html">ezcBaseAutoloadOptions()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Class containing the basic options for ezcBase' autoload.</dd>
+<dt><a href="base/ezcbaseconfigurationinitializer.html">ezcBaseConfigurationInitializer()</a> - Interface in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+This class provides the interface that classes need to implement to act as
+an callback initializer class to work with the delayed initialization
+mechanism.</dd>
+<dt><a href="base/ezcbasedoubleclassrepositoryprefixexception.html">ezcBaseDoubleClassRepositoryPrefixException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseDoubleClassRepositoryPrefixException is thrown whenever you try to
+register a class repository with a prefix that has already been added
+before.</dd>
+<dt><a href="base/ezcbaseexception.html">ezcBaseException()</a> - Exception in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseException is a container from which all other exceptions in the
+components library descent.</dd>
+<dt><a href="default/ezcbaseexportable.html">ezcBaseExportable()</a> - Interface in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+Interface for class of which instances can be exported using var_export().
+</dd>
+<dt><a href="base/ezcbaseextensionnotfoundexception.html">ezcBaseExtensionNotFoundException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseExtensionNotFoundException is thrown when a requested PHP extension was not found.</dd>
+<dt><a href="base/ezcbasefeatures.html">ezcBaseFeatures()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Provides methods needed to check for features.</dd>
+<dt><a href="base/ezcbasefile.html">ezcBaseFile()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Provides a selection of static independent methods to provide functionality
+for file and file system handling.</dd>
+<dt><a href="base/ezcbasefileexception.html">ezcBaseFileException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseFileException is the exception from which all file related exceptions
+inherit.</dd>
+<dt><a href="base/ezcbasefilefindcontext.html">ezcBaseFileFindContext()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Struct which defines the information collected by the file walker for locating files.</dd>
+<dt><a href="base/ezcbasefileioexception.html">ezcBaseFileIoException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseFileIoException is thrown when a problem occurs while writing
+and reading to/from an open file.</dd>
+<dt><a href="base/ezcbasefilenotfoundexception.html">ezcBaseFileNotFoundException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseFileNotFoundException is thrown when a file or directory was tried to
+be opened, but did not exist.</dd>
+<dt><a href="base/ezcbasefilepermissionexception.html">ezcBaseFilePermissionException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseFilePermissionException is thrown whenever a permission problem with
+a file, directory or stream occurred.</dd>
+<dt><a href="base/ezcbasefunctionalitynotsupportedexception.html">ezcBaseFunctionalityNotSupportedException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+The ezcBaseFunctionalityNotSupportedException is thrown when a requested
+PHP function was not found.</dd>
+<dt><a href="base/ezcbaseinit.html">ezcBaseInit()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Provides a method to implement delayed initialization of objects.</dd>
+<dt><a href="base/ezcbaseinitcallbackconfiguredexception.html">ezcBaseInitCallbackConfiguredException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseInitCallbackConfiguredException is thrown when you try to assign a
+callback clasname to an identifier, while there is already a callback class
+configured for this identifier.</dd>
+<dt><a href="configuration/ezcbaseinitinvalidcallbackclassexception.html">ezcBaseInitInvalidCallbackClassException()</a> - Class in package <a href="configuration/package-summary.html">Configuration</a></dt>
+<dd>
+Exception that is thrown if an invalid class is passed as callback class for
+delayed object configuration.</dd>
+<dt><a href="base/ezcbaseinvalidparentclassexception.html">ezcBaseInvalidParentClassException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Exception that is thrown if an invalid class is passed as custom class.</dd>
+<dt><a href="base/ezcbasemetadata.html">ezcBaseMetaData()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base class implements ways of fetching information about the installed
+eZ Components. </dd>
+<dt><a href="base/ezcbasemetadatapearreader.html">ezcBaseMetaDataPearReader()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base class implements ways of fetching information about the installed
+eZ Components when installed as tarball.</dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html">ezcBaseMetaDataTarballReader()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base class implements ways of fetching information about the installed
+eZ Components when installed as tarball.</dd>
+<dt><a href="base/ezcbaseoptions.html">ezcBaseOptions()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base options class for all eZ components.</dd>
+<dt><a href="base/ezcbasepersistable.html">ezcBasePersistable()</a> - Interface in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+This class provides the interface that classes need to implement to be able
+to be used by the PersistentObject and Search components.</dd>
+<dt><a href="base/ezcbasepropertynotfoundexception.html">ezcBasePropertyNotFoundException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBasePropertyNotFoundException is thrown whenever a non existent property
+is accessed in the Components library.</dd>
+<dt><a href="base/ezcbasepropertypermissionexception.html">ezcBasePropertyPermissionException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBasePropertyPermissionException is thrown whenever a read-only property
+is tried to be changed, or when a write-only property was accessed for reading.</dd>
+<dt><a href="base/ezcbaserepositorydirectory.html">ezcBaseRepositoryDirectory()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Struct which defines a repository directory.</dd>
+<dt><a href="base/ezcbasesettingnotfoundexception.html">ezcBaseSettingNotFoundException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseSettingNotFoundException is thrown whenever there is a name passed as
+part as the options array to setOptions() for an option that doesn't exist.</dd>
+<dt><a href="base/ezcbasesettingvalueexception.html">ezcBaseSettingValueException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseSettingValueExeception is thrown whenever a value to a class'
+configuration option is either of the wrong type, or has a wrong value.</dd>
+<dt><a href="base/ezcbasestruct.html">ezcBaseStruct()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+Base class for all struct classes.</dd>
+<dt><a href="base/ezcbasevalueexception.html">ezcBaseValueException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseValueException is thrown whenever the type or value of the given
+variable is not as expected.</dd>
+<dt><a href="base/ezcbasewhateverexception.html">ezcBaseWhateverException()</a> - Class in package <a href="base/package-summary.html">Base</a></dt>
+<dd>
+ezcBaseWhateverException is thrown whenever something is so seriously wrong.</dd>
+<dt><a href="userinput/ezcinputfilter.html">ezcInputFilter()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Provides a set of standard filters.</dd>
+<dt><a href="userinput/ezcinputform.html">ezcInputForm()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Provides access to form variables.</dd>
+<dt><a href="userinput/ezcinputformdefinitionelement.html">ezcInputFormDefinitionElement()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+This struct records information about Input Form definition elements.</dd>
+<dt><a href="userinput/ezcinputformexception.html">ezcInputFormException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+General exception container for the UserInput component.</dd>
+<dt><a href="userinput/ezcinputformfieldnotfoundexception.html">ezcInputFormFieldNotFoundException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when a specified field is not found
+</dd>
+<dt><a href="userinput/ezcinputforminvaliddefinitionexception.html">ezcInputFormInvalidDefinitionException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when an invalid definition array is used.</dd>
+<dt><a href="userinput/ezcinputformnovaliddataexception.html">ezcInputFormNoValidDataException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when an invalid field name is requested.</dd>
+<dt><a href="userinput/ezcinputformunknownfieldexception.html">ezcInputFormUnknownFieldException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when a fieldname is used that was not defined in a definition array.</dd>
+<dt><a href="userinput/ezcinputformvaliddataavailableexception.html">ezcInputFormValidDataAvailableException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is used when valid data is available and you try to access RAW data.</dd>
+<dt><a href="userinput/ezcinputformvariablemissingexception.html">ezcInputFormVariableMissingException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when a required input field is missing.</dd>
+<dt><a href="userinput/ezcinputformwronginputsourceexception.html">ezcInputFormWrongInputSourceException()</a> - Class in package <a href="userinput/package-summary.html">UserInput</a></dt>
+<dd>
+Exception that is thrown when an invalid input source is used.</dd>
 </dl>
 <h1 id="letterF">F</h1>
 <dl>
+<dt><a href="base/ezcbaseinit.html#fetchConfig()">fetchConfig()</a> - Method in class <a href="base/ezcbaseinit.html">Base.ezcBaseInit</a></dt>
+<dd>
+Uses the configured callback belonging to $identifier to configure the $object.</dd>
 <dt><a href="default/file.html">File()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Represents a file.
 </dd>
+<dt><a href="base/ezcbasefeatures.html#findExecutableInPath()">findExecutableInPath()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Returns the path of the specified executable, if it can be found in the system's path.</dd>
+<dt><a href="base/ezcbasefile.html#findRecursive()">findRecursive()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Finds files recursively on a file system
+
+With this method you can scan the file system for files. </dd>
+<dt><a href="base/ezcbasefile.html#findRecursiveCallback()">findRecursiveCallback()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+This is the callback used by findRecursive to collect data.</dd>
 <dt><a href="default/folder.html">Folder()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Represents a folder.</dd>
@@ -337,6 +568,9 @@ Returns the possible roles a user needs to access the currently requested page.
 <dt><a href="default/beanfactory.html#getBeanById()">getBeanById()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Returns the Object with the given id.</dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html#getBundleVersion()">getBundleVersion()</a> - Method in class <a href="base/ezcbasemetadatatarballreader.html">Base.ezcBaseMetaDataTarballReader</a></dt>
+<dd>
+Returns the version string for the installed eZ Components bundle.</dd>
 <dt><a href="default/page.html#getCache()">getCache()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
 <dd>
 Returns cache instance.</dd>
@@ -350,11 +584,20 @@ Returns the children of the SiteElement.</dd>
 <dt><a href="default/classloadercache.html#getClassById()">getClassById()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Lookup a class by the given id in the cache. </dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html#getComponentDependencies()">getComponentDependencies()</a> - Method in class <a href="base/ezcbasemetadatatarballreader.html">Base.ezcBaseMetaDataTarballReader</a></dt>
+<dd>
+Returns a list of components that $componentName depends on.</dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html#getComponentVersion()">getComponentVersion()</a> - Method in class <a href="base/ezcbasemetadatatarballreader.html">Base.ezcBaseMetaDataTarballReader</a></dt>
+<dd>
+Returns the version string of the available $componentName or false when
+the component is not installed.</dd>
 <dt><a href="default/connectorfactory.html#getConnectorById()">getConnectorById()</a> - Method in class <a href="default/connectorfactory.html">default.ConnectorFactory</a></dt>
 <dd>
 Returns the Connector with the given id.
 </dd>
 <dt><a href="default/page.html#getContent()">getContent()</a> - Method in class <a href="default/page.html">default.Page</a></dt>
+<dd>
+Returns the content of this page.</dd>
 <dt><a href="default/album.html#getCreatedAt()">getCreatedAt()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Returns the date when the album has been created.</dd>
@@ -391,9 +634,29 @@ Returns an array containing all Navigations.
 <dt><a href="default/siteelement.html#getId()">getId()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the id of the page.</dd>
+<dt><a href="base/ezcbasefeatures.html#getImageConvertExecutable()">getImageConvertExecutable()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Returns the path to the ImageMagick convert utility.</dd>
+<dt><a href="base/ezcbasefeatures.html#getImageIdentifyExecutable()">getImageIdentifyExecutable()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Returns the path to the ImageMagick identify utility.</dd>
 <dt><a href="default/album.html#getImages()">getImages()</a> - Method in class <a href="default/album.html">default.Album</a></dt>
 <dd>
 Returns the images in the album.</dd>
+<dt><a href="base/ezcbase.html#getInstallationPath()">getInstallationPath()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Returns the base path of the eZ Components installation
+
+This method returns the base path, including a trailing directory
+separator.</dd>
+<dt><a href="base/ezcbase.html#getInstallMethod()">getInstallMethod()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Returns the installation method
+
+Possible return values are 'custom', 'devel', 'tarball' and 'pear'. </dd>
+<dt><a href="userinput/ezcinputform.html#getInvalidProperties()">getInvalidProperties()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns a list with all properties having invalid data.</dd>
 <dt><a href="default/siteelement.html#getLabel()">getLabel()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the label of the page.</dd>
@@ -416,7 +679,10 @@ Returns the name of the folder.</dd>
 <dt><a href="default/pager.html#getNextPage()">getNextPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the next page.</dd>
-<dt><a href="default/siteselector.html#getPage()">getPage()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="userinput/ezcinputform.html#getOptionalProperties()">getOptionalProperties()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns a list with all optional properties.</dd>
+<dt><a href="default/pipeline.html#getPage()">getPage()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
 <dd>
 Returns the reference to the processed page.</dd>
 <dt><a href="default/request.html#getPageId()">getPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
@@ -437,45 +703,94 @@ Returns the path to the folder.</dd>
 <dt><a href="default/pager.html#getPreviousPage()">getPreviousPage()</a> - Method in class <a href="default/pager.html">default.Pager</a></dt>
 <dd>
 Returns the number of the previous page.</dd>
+<dt><a href="base/ezcbase.html#getRepositoryDirectories()">getRepositoryDirectories()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Return the list of directories that contain class repositories.</dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html#getRequiredPhpVersion()">getRequiredPhpVersion()</a> - Method in class <a href="base/ezcbasemetadatatarballreader.html">Base.ezcBaseMetaDataTarballReader</a></dt>
+<dd>
+Returns a PHP version string that describes the required PHP version for
+this installed eZ Components bundle.</dd>
+<dt><a href="userinput/ezcinputform.html#getRequiredProperties()">getRequiredProperties()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns a list with all required properties.</dd>
 <dt><a href="default/configurationmanager.html#getRoleProvider()">getRoleProvider()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the RoleProvider which manages the authentication of users.</dd>
 <dt><a href="default/siteelement.html#getRoles()">getRoles()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Returns the roles of this site element as array</dd>
+<dt><a href="base/ezcbase.html#getRunMode()">getRunMode()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Returns the current development mode.</dd>
 <dt><a href="default/configurationmanager.html#getSerializer()">getSerializer()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns the Serializer for the given format or null if none is found.</dd>
-<dt><a href="default/siteselector.html#getSite()">getSite()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="default/pipeline.html#getSite()">getSite()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
 <dd>
 Returns the reference to the Site.</dd>
 <dt><a href="default/sitemaphelper.html#getSiteMapItemsById()">getSiteMapItemsById()</a> - Method in class <a href="default/sitemaphelper.html">default.SiteMapHelper</a></dt>
 <dd>
 Returns the SiteElement with the given in id or null if no item is found.</dd>
+<dt><a href="base/ezcbasepersistable.html#getState()">getState()</a> - Method in class <a href="base/ezcbasepersistable.html">Base.ezcBasePersistable</a></dt>
+<dd>
+Returns all the object's properties so that they can be stored or indexed.</dd>
 <dt><a href="default/streammanager.html#getStreamActions()">getStreamActions()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
 <dd>
 Returns the path of an stream for a given ID</dd>
 <dt><a href="default/streammanager.html#getStreamInfo()">getStreamInfo()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
 <dd>
 Returns the path of an stream for a given ID</dd>
-<dt><a href="default/streamingpage.html#getStreamingFilePath()">getStreamingFilePath()</a> - Method in class <a href="default/streamingpage.html">default.StreamingPage</a></dt>
-<dd>
-Returns the reference to the Site.</dd>
 <dt><a href="default/site.html#getSupportedLanguages()">getSupportedLanguages()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns a list of supported languages.</dd>
 <dt><a href="default/site.html#getTemplate()">getTemplate()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Returns the template of the requested page.</dd>
+<dt><a href="userinput/ezcinputform.html#getUnsafeRawData()">getUnsafeRawData()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns RAW input variable values for invalid field $fieldName.</dd>
+<dt><a href="default/configurationmanager.html#getUserContext()">getUserContext()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
+<dd>
+Returns the definiton for the user context, if set.
+</dd>
 <dt><a href="default/usersessionmanager.html#getUserLanguage()">getUserLanguage()</a> - Method in class <a href="default/usersessionmanager.html">default.UserSessionManager</a></dt>
 <dd>
 Returns the preferred language of the user or 'default' if none is set.</dd>
 <dt><a href="default/usersessionmanager.html#getUserName()">getUserName()</a> - Method in class <a href="default/usersessionmanager.html">default.UserSessionManager</a></dt>
 <dd>
 Returns the username if the user is currently logged in, otherwise null.</dd>
+<dt><a href="userinput/ezcinputform.html#getValidProperties()">getValidProperties()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns a list with all properties that have valid data.</dd>
 </dl>
 <h1 id="letterH">H</h1>
 <dl>
+<dt><a href="base/ezcbasefeatures.html#hasExtensionSupport()">hasExtensionSupport()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if the specified extension is loaded.</dd>
+<dt><a href="base/ezcbasefeatures.html#hasFunction()">hasFunction()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if the specified function is available.</dd>
+<dt><a href="userinput/ezcinputform.html#hasGetData()">hasGetData()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns whether there is GET data available
+</dd>
+<dt><a href="base/ezcbasefeatures.html#hasImageConvert()">hasImageConvert()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if the ImageMagick convert utility is installed.</dd>
+<dt><a href="base/ezcbasefeatures.html#hasImageIdentify()">hasImageIdentify()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if the ImageMagick identify utility is installed.</dd>
+<dt><a href="userinput/ezcinputform.html#hasInputField()">hasInputField()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns whether the optional field $fieldName exists.</dd>
+<dt><a href="userinput/ezcinputform.html#hasPostData()">hasPostData()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns whether there is POST data available
+</dd>
+<dt><a href="userinput/ezcinputform.html#hasValidData()">hasValidData()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Returns whether the filters for required field $fieldName returned valid data.</dd>
 <dt><a href="default/htmlserializer.html">HTMLSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to HTML.
@@ -486,6 +801,9 @@ Serializes the given XML to HTML.
 <dt><a href="default/imagenavigationgenerator.html">ImageNavigationGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Creates a image based navigation. </dd>
+<dt><a href="base/ezcbase.html#inDevMode()">inDevMode()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Returns true when we are in development mode.</dd>
 <dt><a href="default/beanfactory.html#initialize()">initialize()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
@@ -495,9 +813,18 @@ Resets the cache, should be called if a class
 retrieved from the cache does no more exist 
 in the filesystem.
 </dd>
+<dt><a href="base/ezcbasefile.html#isAbsolutePath()">isAbsolutePath()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Returns whether the passed $path is an absolute path, giving the current $os.</dd>
 <dt><a href="default/configurationmanager.html#isAuthenticationEnabled()">isAuthenticationEnabled()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Returns true if authentication is enabled otherwise false.</dd>
+<dt><a href="base/ezcbasemetadatatarballreader.html#isComponentInstalled()">isComponentInstalled()</a> - Method in class <a href="base/ezcbasemetadatatarballreader.html">Base.ezcBaseMetaDataTarballReader</a></dt>
+<dd>
+Returns whether $componentName is installed
+
+Returns true for every component that exists (because all of them are
+then available).</dd>
 <dt><a href="default/siteelement.html#isHiddenInNavigation()">isHiddenInNavigation()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Indicates whether the item is shown in the Navigation.</dd>
@@ -538,7 +865,13 @@ Serializes the given XML to Json (json).
 <dl>
 <dt><a href="default/classloader.html#loadClass()">loadClass()</a> - Method in class <a href="default/classloader.html">default.ClassLoader</a></dt>
 <dd>
-Trys to load a class from the given directory. </dd>
+Tries to load a class from the given directory. </dd>
+<dt><a href="base/ezcbase.html#loadExternalFile()">loadExternalFile()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Loads, require(), the given file name from an external package.</dd>
+<dt><a href="base/ezcbase.html#loadFile()">loadFile()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Loads, require(), the given file name. </dd>
 <dt><a href="default/resourcesmanager.html#loadResources()">loadResources()</a> - Method in class <a href="default/resourcesmanager.html">default.ResourcesManager</a></dt>
 <dd>
 Initializes the resources array.
@@ -558,6 +891,9 @@ Logs out the user.
 <dd>
 Used to handle Albums.
 </dd>
+<dt><a href="base/ezcbaseoptions.html#merge()">merge()</a> - Method in class <a href="base/ezcbaseoptions.html">Base.ezcBaseOptions</a></dt>
+<dd>
+Merge an array into the actual options object.</dd>
 <dt><a href="default/mssqlconnector.html">MSSQLConnector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Establishes connections to MSSQL databases.
@@ -574,6 +910,24 @@ Establishes connections to MySQL databases.
 Interface that navigation generators have to implement.
 </dd>
 </dl>
+<h1 id="letterO">O</h1>
+<dl>
+<dt><a href="base/ezcbaseoptions.html#offsetExists()">offsetExists()</a> - Method in class <a href="base/ezcbaseoptions.html">Base.ezcBaseOptions</a></dt>
+<dd>
+Returns if an option exists.</dd>
+<dt><a href="base/ezcbaseoptions.html#offsetGet()">offsetGet()</a> - Method in class <a href="base/ezcbaseoptions.html">Base.ezcBaseOptions</a></dt>
+<dd>
+Returns an option value.</dd>
+<dt><a href="base/ezcbaseoptions.html#offsetSet()">offsetSet()</a> - Method in class <a href="base/ezcbaseoptions.html">Base.ezcBaseOptions</a></dt>
+<dd>
+Set an option.</dd>
+<dt><a href="base/ezcbaseoptions.html#offsetUnset()">offsetUnset()</a> - Method in class <a href="base/ezcbaseoptions.html">Base.ezcBaseOptions</a></dt>
+<dd>
+Unset an option.</dd>
+<dt><a href="base/ezcbasefeatures.html#os()">os()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Returns the operating system on which PHP is running.</dd>
+</dl>
 <h1 id="letterP">P</h1>
 <dl>
 <dt><a href="default/page.html">Page()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
@@ -584,10 +938,17 @@ Renders the requested page and creates the navigation.
 <dd>
 Helper class to page contents of a database query.
 </dd>
+<dt><a href="userinput/ezcinputform.html#parseInput()">parseInput()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Parses the input according to the definition array.</dd>
 <dt><a href="default/pdfserializer.html">PDFSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to PDF.
 </dd>
+<dt><a href="default/pipeline.html">Pipeline()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
+<dd>
+The SiteSelector class selects a matching inputprovider implementation based on the
+file ending of the requested content. </dd>
 <dt><a href="default/piwiexception.html">PiwiException()</a> - Exception in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Exception that is thrown, when something goes wrong during 
@@ -615,6 +976,11 @@ Checks if the value of a field is in a specific range.
 <dd>
 Checks if he value of a field matches the specified regular expression.
 </dd>
+<dt><a href="base/ezcbasefile.html#removeRecursive()">removeRecursive()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Removes files and directories recursively from a file system
+
+This method recursively removes the $directory and all its contents.</dd>
 <dt><a href="default/request.html">Request()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Provides information about the current request that is performed by a user.
@@ -623,6 +989,12 @@ Provides information about the current request that is performed by a user.
 <dd>
 Checks if the value of a field is not empty.
 </dd>
+<dt><a href="base/ezcbase.html#requireFile()">requireFile()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Tries to load the autoload array and, if loaded correctly, includes the class.</dd>
+<dt><a href="base/ezcbasefeatures.html#reset()">reset()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Reset the cached information. </dd>
 <dt><a href="default/resourcesmanager.html">ResourcesManager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Manages the localized labels.
@@ -649,15 +1021,22 @@ Interface that serializers have to implement.
 <dd>
 Set the auth file as defined in the config.xml
 /</dd>
+<dt><a href="base/ezcbaseinit.html#setCallback()">setCallback()</a> - Method in class <a href="base/ezcbaseinit.html">Base.ezcBaseInit</a></dt>
+<dd>
+Adds the classname $callbackClassname as callback for the identifier $identifier.</dd>
 <dt><a href="default/siteelement.html#setChildren()">setChildren()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>Sets the children</dd>
 <dt><a href="default/configurationmanager.html#setConfigFilePath()">setConfigFilePath()</a> - Method in class <a href="default/configurationmanager.html">default.ConfigurationManager</a></dt>
 <dd>
 Sets the path of the file containing the configuration</dd>
+<dt><a href="default/pipeline.html#setConfiguration()">setConfiguration()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
+<dd>
+Sets the configuration
+Injected by dependency injection.</dd>
 <dt><a href="default/connectorfactory.html#setConnectorsXMLPath()">setConnectorsXMLPath()</a> - Method in class <a href="default/connectorfactory.html">default.ConnectorFactory</a></dt>
 <dd>
 Set the path of the file containing the xml-definition</dd>
-<dt><a href="default/siteselector.html#setContent()">setContent()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="default/xmlpage.html#setContent()">setContent()</a> - Method in class <a href="default/xmlpage.html">default.XMLPage</a></dt>
 <dd>
 Sets the content of the page.</dd>
 <dt><a href="default/site.html#setContentPath()">setContentPath()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
@@ -668,6 +1047,9 @@ Sets the date when the album has been created.</dd>
 <dt><a href="default/request.html#setExtension()">setExtension()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Sets the extension/format of the requested page (e.g. </dd>
+<dt><a href="default/formprocessor.html#setFormFactory()">setFormFactory()</a> - Method in class <a href="default/formprocessor.html">default.FormProcessor</a></dt>
+<dd>
+Getter for the form factory injection</dd>
 <dt><a href="default/formfactory.html#setFormsXMLPath()">setFormsXMLPath()</a> - Method in class <a href="default/formfactory.html">default.FormFactory</a></dt>
 <dd>
 Sets the path of the file containing the xml-definition of the forms that can be used.</dd>
@@ -683,12 +1065,21 @@ Indicates whether the item is shown in the SiteMap.</dd>
 <dt><a href="default/siteelement.html#setOpen()">setOpen()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the SiteElement to open.</dd>
-<dt><a href="default/siteselector.html#setPage()">setPage()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="base/ezcbase.html#setOptions()">setOptions()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Associates an option object with this static class.</dd>
+<dt><a href="base/ezcbase.html#setPackageDir()">setPackageDir()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Figures out the base path of the eZ Components installation.</dd>
+<dt><a href="default/pipeline.html#setPage()">setPage()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
 <dd>
 Sets the reference to the processed page.</dd>
 <dt><a href="default/request.html#setPageId()">setPageId()</a> - Method in class <a href="default/request.html">default.Request</a></dt>
 <dd>
 Sets the id of the requested page.</dd>
+<dt><a href="default/pipeline.html#setPagemap()">setPagemap()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
+<dd>
+Sets the Pagemap</dd>
 <dt><a href="default/siteelement.html#setParent()">setParent()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the parent SiteElement.</dd>
@@ -698,15 +1089,21 @@ Used to pass parameters to the Generator.</dd>
 <dt><a href="default/siteelement.html#setRoles()">setRoles()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets roles for this site element. </dd>
+<dt><a href="base/ezcbase.html#setRunMode()">setRunMode()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Sets the development mode to the one specified.</dd>
 <dt><a href="default/siteelement.html#setSelected()">setSelected()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the SiteElement to selected.</dd>
-<dt><a href="default/siteselector.html#setSite()">setSite()</a> - Method in class <a href="default/siteselector.html">default.SiteSelector</a></dt>
+<dt><a href="default/pipeline.html#setSite()">setSite()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
 <dd>
 Sets the reference to the Site.</dd>
 <dt><a href="default/site.html#setSiteFilename()">setSiteFilename()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Set the name of the file containing the site information.</dd>
+<dt><a href="base/ezcbasepersistable.html#setState()">setState()</a> - Method in class <a href="base/ezcbasepersistable.html">Base.ezcBasePersistable</a></dt>
+<dd>
+Accepts an array containing data for one or more of the class' properties.</dd>
 <dt><a href="default/streammanager.html#setStreamConfiguration()">setStreamConfiguration()</a> - Method in class <a href="default/streammanager.html">default.StreamManager</a></dt>
 <dd>
 Sets the path of the file containing the configuration</dd>
@@ -715,6 +1112,13 @@ Sets the path of the file containing the configuration</dd>
 Sets the reference to the Site.</dd>
 <dt><a href="default/site.html#setTemplatesPath()">setTemplatesPath()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd></dd>
+<dt><a href="base/ezcbase.html#setWorkingDirectory()">setWorkingDirectory()</a> - Method in class <a href="base/ezcbase.html">Base.ezcBase</a></dt>
+<dd>
+Sets the current working directory to $directory.</dd>
+<dt><a href="default/streamingpage.html#setXmlPage()">setXmlPage()</a> - Method in class <a href="default/streamingpage.html">default.StreamingPage</a></dt>
+<dd>
+Sets the xml page which will be shown when authorizations
+are not sufficient.</dd>
 <dt><a href="default/simplegallerygenerator.html">SimpleGalleryGenerator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Generates a picture gallery.
@@ -725,7 +1129,7 @@ Creates a simple navigation.
 </dd>
 <dt><a href="default/site.html">Site()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
-TODO: Add comment
+The Site class is the php representation of the site.xml 
 /</dd>
 <dt><a href="default/siteelement.html">SiteElement()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
@@ -747,10 +1151,6 @@ Provides helper functions to generate SiteMaps.
 <dd>
 Creates a SiteMapPath which consists of the SiteElements leading to the requested page.
 </dd>
-<dt><a href="default/siteselector.html">SiteSelector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
-<dd>
-TODO: Write comment
-/</dd>
 <dt><a href="default/sqlite2connector.html">SQLite2Connector()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Establishes connections to SQLite 2 databases.
@@ -789,6 +1189,15 @@ Manages the settings configured in 'streams.xml'.
 <dd>
 Serializes the given XML to Excel (XSL).
 </dd>
+<dt><a href="base/ezcbasefeatures.html#supportsLink()">supportsLink()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if hardlinks are supported.</dd>
+<dt><a href="base/ezcbasefeatures.html#supportsSymLink()">supportsSymLink()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if symlinks are supported.</dd>
+<dt><a href="base/ezcbasefeatures.html#supportsUserId()">supportsUserId()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
+<dd>
+Determines if posix uids are supported.</dd>
 </dl>
 <h1 id="letterT">T</h1>
 <dl>
@@ -802,6 +1211,9 @@ Serializes the given XML to Json (json).
 <dt><a href="default/xsltstylesheetstream.html#url_stat()">url_stat()</a> - Method in class <a href="default/xsltstylesheetstream.html">default.XSLTStylesheetStream</a></dt>
 <dd>
 Returns an array containing as many elements in common with the system function as possible.</dd>
+<dt><a href="userinput/ezcinputfilter.html#urlFilter()">urlFilter()</a> - Method in class <a href="userinput/ezcinputfilter.html">UserInput.ezcInputFilter</a></dt>
+<dd>
+Receives a variable for filtering. </dd>
 <dt><a href="default/usersessionmanager.html">UserSessionManager()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Manages all Session features concerning a user.
@@ -812,6 +1224,9 @@ Manages all Session features concerning a user.
 <dt><a href="default/validator.html#validate()">validate()</a> - Method in class <a href="default/validator.html">default.Validator</a></dt>
 <dd>
 Evaluates the Validator.</dd>
+<dt><a href="userinput/ezcinputform.html#validateDefinition()">validateDefinition()</a> - Method in class <a href="userinput/ezcinputform.html">UserInput.ezcInputForm</a></dt>
+<dd>
+Validates the definition array $definition.</dd>
 <dt><a href="default/validator.html">Validator()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Abstract class that validators have to inherit from.
@@ -819,6 +1234,12 @@ Abstract class that validators have to inherit from.
 </dl>
 <h1 id="letterW">W</h1>
 <dl>
+<dt><a href="base/ezcbasefile.html#walkRecursive()">walkRecursive()</a> - Method in class <a href="base/ezcbasefile.html">Base.ezcBaseFile</a></dt>
+<dd>
+Walks files and directories recursively on a file system
+
+This method walks over a directory and calls a callback from every file
+and directory it finds. </dd>
 <dt><a href="default/wordserializer.html">WordSerializer()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
 Serializes the given XML to Word (DOC).

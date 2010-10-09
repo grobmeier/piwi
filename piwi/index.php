@@ -29,7 +29,7 @@ if(ini_get('date.timezone') == '') {
  * -------------------------------------------------------------------------
  */
 
-error_reporting(0); // hidde all errors
+error_reporting(0); // hide all errors
 //error_reporting(E_ERROR); // show only errors
 //error_reporting(E_ALL); // show all errors
 
@@ -70,8 +70,8 @@ $logger = Logger :: getLogger('index.php');
 
 function exception_handler($exception) {
 	GLOBAL $logger;
-	$logger->error('A uncatched runtime exception occured: ' . $exception->getMessage());
-	echo "An uncatched error occured: " . $exception->getMessage();
+	$logger->error('An unhandled runtime exception occurred: ' . $exception->getMessage());
+	echo "An unhandled error occurred: " . $exception->getMessage();
 }
 
 set_exception_handler('exception_handler');
@@ -82,7 +82,7 @@ set_exception_handler('exception_handler');
 BeanFactory :: initialize($GLOBALS['PIWI_ROOT'] . '/resources/beans/context.xml');
 $userContext = BeanFactory :: getBeanById('configurationManager')->getUserContext();
 if($userContext != null) {
-	BeanFactory :: addContext($userContext['path'],$userContext['overwrite']);
+	BeanFactory :: addContext($userContext['path'], $userContext['overwrite']);
 }
 
 /**
@@ -94,8 +94,6 @@ if ($logConfig != null) {
 } else {
 	define('LOG4PHP_CONFIGURATION', 'resources/logging/default-logging.xml');
 }
-
-
 
 /**
  * Standard security checks
@@ -117,8 +115,8 @@ if (ezcInputForm::hasGetData()) {
             $$propertyName = $form->$name;
         } else {
         	$$propertyName = htmlspecialchars( $form->getUnsafeRawData( $name ) );
-            echo("A security problem occured. Script execution stopped because # $name # contained the invalid data: ".$$propertyName);
-            $logger->fatal("A security problem occured. Script execution stopped because parameter # $name # contained the invalid data: ".$$propertyName);
+            echo("A security problem occurred. Script execution stopped because # $name # contained the invalid data: ".$$propertyName);
+            $logger->fatal("A security problem occurred. Script execution stopped because parameter # $name # contained the invalid data: ".$$propertyName);
             die();
         }
     }

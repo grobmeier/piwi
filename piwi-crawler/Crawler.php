@@ -13,7 +13,7 @@ if (isset($argv[1]) && isset($argv[2]) && isset($argv[3]) && isset($argv[4])) {
 		$argv[1] .= '/';
 	}
 	
-	// Determinate desired languages
+	// Determine desired languages
 	$languages = array();	
 	foreach (explode(',', str_replace(' ', '', $argv[3])) as $language) {
 		if ($language != 'default') {
@@ -21,7 +21,7 @@ if (isset($argv[1]) && isset($argv[2]) && isset($argv[3]) && isset($argv[4])) {
 		}
 	}
 	
-	// Determniate desired formats
+	// Determines desired formats
 	$formats = array();
 	if (isset($argv[5])) {
 		foreach (explode(',', str_replace(' ', '', $argv[5])) as $format) {
@@ -42,7 +42,7 @@ if (isset($argv[1]) && isset($argv[2]) && isset($argv[3]) && isset($argv[4])) {
 }
 
 /**
- * Determinates whether a text ends with a given string or not.
+ * Determines whether a text ends with a given string or not.
  *
  * @param string $haystack The text to check.
  * @param string $needle The text to search.

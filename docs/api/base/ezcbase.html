@@ -1,0 +1,611 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ezcBase (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../base/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../base/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../base/ezcbase.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Base.ezcBase</div>
+
+<h1>Class ezcBase</h1>
+
+<pre class="tree"><strong>ezcBase</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ezcBase</strong></p>
+
+<div class="comment" id="overview_description"><p>
+Base class implements the methods needed to use the eZ components.
+</p></div>
+
+<dl>
+<dt>Version:</dt>
+<dd>//autogentag</dd>
+<dt>Mainclass.</dt>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#DEP_PHP_EXTENSION">DEP_PHP_EXTENSION</a></p><p class="description">
+Used for dependency checking, to check for a PHP extension.</p></td>
+</tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#DEP_PHP_VERSION">DEP_PHP_VERSION</a></p><p class="description">
+Used for dependency checking, to check for a PHP version.</p></td>
+</tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#MODE_DEVELOPMENT">MODE_DEVELOPMENT</a></p><p class="description">
+Denotes the development mode
+/</p></td>
+</tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#MODE_PRODUCTION">$MODE_PRODUCTION</a></p><p class="description">
+Denotes the production mode
+/</p></td>
+</tr>
+<tr>
+<td class="type">protected static  array(string=>string)</td>
+<td class="description"><p class="name"><a href="#autoloadArray">$autoloadArray</a></p><p class="description">
+This variable stores all the elements from the autoload arrays. </p></td>
+</tr>
+<tr>
+<td class="type">private static  string</td>
+<td class="description"><p class="name"><a href="#currentWorkingDirectory">$currentWorkingDirectory</a></p><p class="description">
+Contains the current working directory, which is used when the
+$libraryMode is set to "custom".</p></td>
+</tr>
+<tr>
+<td class="type">protected static  array(string=>string)</td>
+<td class="description"><p class="name"><a href="#externalAutoloadArray">$externalAutoloadArray</a></p><p class="description">
+This variable stores all the elements from the autoload arrays for
+external repositories. </p></td>
+</tr>
+<tr>
+<td class="type">private static  string</td>
+<td class="description"><p class="name"><a href="#libraryMode">$libraryMode</a></p><p class="description">
+Indirectly it determines the path where the autoloads are stored.</p></td>
+</tr>
+<tr>
+<td class="type">private static  <a href="../base/ezcbaseoptions.html">ezcBaseOptions</a></td>
+<td class="description"><p class="name"><a href="#options">$options</a></p><p class="description">
+Options for the ezcBase class.</p></td>
+</tr>
+<tr>
+<td class="type">protected static  string</td>
+<td class="description"><p class="name"><a href="#packageDir">$packageDir</a></p><p class="description">
+The full path to the autoload directory.</p></td>
+</tr>
+<tr>
+<td class="type">protected static  array(string=>array)</td>
+<td class="description"><p class="name"><a href="#repositoryDirs">$repositoryDirs</a></p><p class="description">
+Stores info with additional paths where autoload files and classes for
+autoloading could be found. </p></td>
+</tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#runMode">$runMode</a></p><p class="description">
+Contains which development mode is used. </p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#addClassRepository()">addClassRepository</a>(string basePath, string autoloadDirPath, string prefix)</p><p class="description">
+Adds an additional class repository.</p></td>
+</tr>
+<tr>
+<td class="type">static  bool</td>
+<td class="description"><p class="name"><a href="#autoload()">autoload</a>(string className)</p><p class="description">
+Tries to autoload the given className. </p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#checkDependency()">checkDependency</a>(string component, int type, mixed value)</p><p class="description">
+Checks for dependencies on PHP versions or extensions
+
+The function as called by the $component component checks for the $type
+dependency. </p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#getInstallMethod()">getInstallMethod</a>()</p><p class="description">
+Returns the installation method
+
+Possible return values are 'custom', 'devel', 'tarball' and 'pear'. </p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#getInstallationPath()">getInstallationPath</a>()</p><p class="description">
+Returns the base path of the eZ Components installation
+
+This method returns the base path, including a trailing directory
+separator.</p></td>
+</tr>
+<tr>
+<td class="type">static  array(string=>ezcBaseRepositoryDirectory)</td>
+<td class="description"><p class="name"><a href="#getRepositoryDirectories()">getRepositoryDirectories</a>()</p><p class="description">
+Return the list of directories that contain class repositories.</p></td>
+</tr>
+<tr>
+<td class="type">static  int</td>
+<td class="description"><p class="name"><a href="#getRunMode()">getRunMode</a>()</p><p class="description">
+Returns the current development mode.</p></td>
+</tr>
+<tr>
+<td class="type">static  bool</td>
+<td class="description"><p class="name"><a href="#inDevMode()">inDevMode</a>()</p><p class="description">
+Returns true when we are in development mode.</p></td>
+</tr>
+<tr>
+<td class="type">protected static  void</td>
+<td class="description"><p class="name"><a href="#loadExternalFile()">loadExternalFile</a>(string file)</p><p class="description">
+Loads, require(), the given file name from an external package.</p></td>
+</tr>
+<tr>
+<td class="type">protected static  void</td>
+<td class="description"><p class="name"><a href="#loadFile()">loadFile</a>(string file)</p><p class="description">
+Loads, require(), the given file name. </p></td>
+</tr>
+<tr>
+<td class="type">protected static  bool</td>
+<td class="description"><p class="name"><a href="#requireFile()">requireFile</a>(string fileName, string className, string prefix)</p><p class="description">
+Tries to load the autoload array and, if loaded correctly, includes the class.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#setOptions()">setOptions</a>(<a href="../base/ezcbaseautoloadoptions.html">ezcBaseAutoloadOptions</a> options)</p><p class="description">
+Associates an option object with this static class.</p></td>
+</tr>
+<tr>
+<td class="type">protected static  void</td>
+<td class="description"><p class="name"><a href="#setPackageDir()">setPackageDir</a>()</p><p class="description">
+Figures out the base path of the eZ Components installation.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#setRunMode()">setRunMode</a>(int runMode)</p><p class="description">
+Sets the development mode to the one specified.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#setWorkingDirectory()">setWorkingDirectory</a>(string directory)</p><p class="description">
+Sets the current working directory to $directory.</p></td>
+</tr>
+</table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="DEP_PHP_EXTENSION">DEP_PHP_EXTENSION</h3>
+<code class="signature">public final  mixed <strong>DEP_PHP_EXTENSION</strong> = "extension"</code>
+<div class="details">
+<p>
+Used for dependency checking, to check for a PHP extension.
+/</p></div>
+
+<hr>
+
+<h3 id="DEP_PHP_VERSION">DEP_PHP_VERSION</h3>
+<code class="signature">public final  mixed <strong>DEP_PHP_VERSION</strong> = "version"</code>
+<div class="details">
+<p>
+Used for dependency checking, to check for a PHP version.
+/</p></div>
+
+<hr>
+
+<h3 id="MODE_DEVELOPMENT">MODE_DEVELOPMENT</h3>
+<code class="signature">public final  mixed <strong>MODE_DEVELOPMENT</strong> = 1</code>
+<div class="details">
+<p>
+Denotes the development mode
+/</p></div>
+
+<hr>
+
+<h3 id="MODE_PRODUCTION">MODE_PRODUCTION</h3>
+<code class="signature">public final  mixed <strong>$MODE_PRODUCTION</strong></code>
+<div class="details">
+<p>
+Denotes the production mode
+/</p></div>
+
+<hr>
+
+<h3 id="autoloadArray">autoloadArray</h3>
+<code class="signature">protected static  array(string=>string) <strong>$autoloadArray</strong> = array()</code>
+<div class="details">
+<p>
+This variable stores all the elements from the autoload arrays. When a
+new autoload file is loaded, their files are added to this array.
+</p></div>
+
+<hr>
+
+<h3 id="currentWorkingDirectory">currentWorkingDirectory</h3>
+<code class="signature">private static  string <strong>$currentWorkingDirectory</strong> = null</code>
+<div class="details">
+<p>
+Contains the current working directory, which is used when the
+$libraryMode is set to "custom".
+</p></div>
+
+<hr>
+
+<h3 id="externalAutoloadArray">externalAutoloadArray</h3>
+<code class="signature">protected static  array(string=>string) <strong>$externalAutoloadArray</strong> = array()</code>
+<div class="details">
+<p>
+This variable stores all the elements from the autoload arrays for
+external repositories. When a new autoload file is loaded, their files
+are added to this array.
+</p></div>
+
+<hr>
+
+<h3 id="libraryMode">libraryMode</h3>
+<code class="signature">private static  string <strong>$libraryMode</strong> = "devel"</code>
+<div class="details">
+<p>
+Indirectly it determines the path where the autoloads are stored.
+</p></div>
+
+<hr>
+
+<h3 id="options">options</h3>
+<code class="signature">private static  <a href="../base/ezcbaseoptions.html">ezcBaseOptions</a> <strong>$options</strong></code>
+<div class="details">
+<p>
+Options for the ezcBase class.
+</p></div>
+
+<hr>
+
+<h3 id="packageDir">packageDir</h3>
+<code class="signature">protected static  string <strong>$packageDir</strong> = null</code>
+<div class="details">
+<p>
+The full path to the autoload directory.
+</p></div>
+
+<hr>
+
+<h3 id="repositoryDirs">repositoryDirs</h3>
+<code class="signature">protected static  array(string=>array) <strong>$repositoryDirs</strong> = array()</code>
+<div class="details">
+<p>
+Stores info with additional paths where autoload files and classes for
+autoloading could be found. Each item of $repositoryDirs looks like
+array( autoloadFileDir, baseDir ). The array key is the prefix belonging
+to classes within that repository - if provided when calling
+addClassRepository(), or an autoincrement integer otherwise.
+</p></div>
+
+<hr>
+
+<h3 id="runMode">runMode</h3>
+<code class="signature">private static  mixed <strong>$runMode</strong> = self::MODE_DEVELOPMENT</code>
+<div class="details">
+<p>
+Contains which development mode is used. It's "development" by default,
+because of backwards compatibility reasons.
+/</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="addClassRepository()">addClassRepository</h3>
+<code class="signature">public static  void <strong>addClassRepository</strong>(string basePath, string autoloadDirPath, string prefix)</code>
+<div class="details">
+<p>
+Adds an additional class repository.
+
+Used for adding class repositoryies outside the eZ components to be
+loaded by the autoload system.
+
+This function takes two arguments: $basePath is the base path for the
+whole class repository and $autoloadDirPath the path where autoload
+files for this repository are found. The paths in the autoload files are
+relative to the package directory as specified by the $basePath
+argument. I.e. class definition file will be searched at location
+$basePath + path to the class definition file as stored in the autoload
+file.
+
+addClassRepository() should be called somewhere in code before external classes
+are used.
+
+Example:
+Take the following facts:
+<ul>
+<li>there is a class repository stored in the directory "./repos"</li>
+<li>autoload files for that repository are stored in "./repos/autoloads"</li>
+<li>there are two components in this repository: "Me" and "You"</li>
+<li>the "Me" component has the classes "erMyClass1" and "erMyClass2"</li>
+<li>the "You" component has the classes "erYourClass1" and "erYourClass2"</li>
+</ul>
+
+In this case you would need to create the following files in
+"./repos/autoloads". Please note that the part before _autoload.php in
+the filename is the first part of the <b>classname</b>, not considering
+the all lower-case letter prefix.
+
+"my_autoload.php":
+<code>
+<?php
+    return array (
+      'erMyClass1' => 'Me/myclass1.php',
+      'erMyClass2' => 'Me/myclass2.php',
+    );
+?>
+</code>
+
+"your_autoload.php":
+<code>
+<?php
+    return array (
+      'erYourClass1' => 'You/yourclass1.php',
+      'erYourClass2' => 'You/yourclass2.php',
+    );
+?>
+</code>
+
+The directory structure for the external repository is then:
+<code>
+./repos/autoloads/my_autoload.php
+./repos/autoloads/you_autoload.php
+./repos/Me/myclass1.php
+./repos/Me/myclass2.php
+./repos/You/yourclass1.php
+./repos/You/yourclass2.php
+</code>
+
+To use this repository with the autoload mechanism you have to use the
+following code:
+<code>
+<?php
+ezcBase::addClassRepository( './repos', './repos/autoloads' );
+$myVar = new erMyClass2();
+?>
+</code>
+</p><dl>
+<dt>Throws:</dt>
+<dd><a href="../base/ezcbasefilenotfoundexception.html">if $autoloadDirPath or $basePath do not exist.</a></dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="autoload()">autoload</h3>
+<code class="signature">public static  bool <strong>autoload</strong>(string className)</code>
+<div class="details">
+<p>
+Tries to autoload the given className. If the className could be found
+this method returns true, otherwise false.
+
+This class caches the requested class names (including the ones who
+failed to load).
+</p><dl>
+<dt>Parameters:</dt>
+<dd>className - The name of the class that should be loaded.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="checkDependency()">checkDependency</h3>
+<code class="signature">public static  void <strong>checkDependency</strong>(string component, int type, mixed value)</code>
+<div class="details">
+<p>
+Checks for dependencies on PHP versions or extensions
+
+The function as called by the $component component checks for the $type
+dependency. The dependency $type is compared against the $value. The
+function aborts the script if the dependency is not matched.
+</p></div>
+
+<hr>
+
+<h3 id="getInstallMethod()">getInstallMethod</h3>
+<code class="signature">public static  string <strong>getInstallMethod</strong>()</code>
+<div class="details">
+<p>
+Returns the installation method
+
+Possible return values are 'custom', 'devel', 'tarball' and 'pear'. Only
+'tarball' and 'pear' are returned for user-installed versions.
+</p></div>
+
+<hr>
+
+<h3 id="getInstallationPath()">getInstallationPath</h3>
+<code class="signature">public static  string <strong>getInstallationPath</strong>()</code>
+<div class="details">
+<p>
+Returns the base path of the eZ Components installation
+
+This method returns the base path, including a trailing directory
+separator.
+</p></div>
+
+<hr>
+
+<h3 id="getRepositoryDirectories()">getRepositoryDirectories</h3>
+<code class="signature">public static  array(string=>ezcBaseRepositoryDirectory) <strong>getRepositoryDirectories</strong>()</code>
+<div class="details">
+<p>
+Return the list of directories that contain class repositories.
+
+The path to the eZ components directory is always included in the result
+array. Each element in the returned array has the format of:
+packageDirectory => ezcBaseRepositoryDirectory
+</p></div>
+
+<hr>
+
+<h3 id="getRunMode()">getRunMode</h3>
+<code class="signature">public static  int <strong>getRunMode</strong>()</code>
+<div class="details">
+<p>
+Returns the current development mode.
+</p></div>
+
+<hr>
+
+<h3 id="inDevMode()">inDevMode</h3>
+<code class="signature">public static  bool <strong>inDevMode</strong>()</code>
+<div class="details">
+<p>
+Returns true when we are in development mode.
+</p></div>
+
+<hr>
+
+<h3 id="loadExternalFile()">loadExternalFile</h3>
+<code class="signature">protected static  void <strong>loadExternalFile</strong>(string file)</code>
+<div class="details">
+<p>
+Loads, require(), the given file name from an external package.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>file - The name of the file that should be loaded.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="loadFile()">loadFile</h3>
+<code class="signature">protected static  void <strong>loadFile</strong>(string file)</code>
+<div class="details">
+<p>
+Loads, require(), the given file name. If we are in development mode,
+"/src/" is inserted into the path.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>file - The name of the file that should be loaded.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="requireFile()">requireFile</h3>
+<code class="signature">protected static  bool <strong>requireFile</strong>(string fileName, string className, string prefix)</code>
+<div class="details">
+<p>
+Tries to load the autoload array and, if loaded correctly, includes the class.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>fileName - Name of the autoload file.</dd>
+<dd>className - Name of the class that should be autoloaded.</dd>
+<dd>prefix - The prefix of the class repository.</dd>
+<dt>Returns:</dt>
+<dd>True is returned when the file is correctly loaded.
+ * Otherwise false is returned.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setOptions()">setOptions</h3>
+<code class="signature">public static  void <strong>setOptions</strong>(<a href="../base/ezcbaseautoloadoptions.html">ezcBaseAutoloadOptions</a> options)</code>
+<div class="details">
+<p>
+Associates an option object with this static class.
+</p></div>
+
+<hr>
+
+<h3 id="setPackageDir()">setPackageDir</h3>
+<code class="signature">protected static  void <strong>setPackageDir</strong>()</code>
+<div class="details">
+<p>
+Figures out the base path of the eZ Components installation.
+
+It stores the path that it finds in a static member variable. The path
+depends on the installation method of the eZ Components. The SVN version
+has a different path than the PEAR installed version.
+/</p></div>
+
+<hr>
+
+<h3 id="setRunMode()">setRunMode</h3>
+<code class="signature">public static  void <strong>setRunMode</strong>(int runMode)</code>
+<div class="details">
+<p>
+Sets the development mode to the one specified.
+</p></div>
+
+<hr>
+
+<h3 id="setWorkingDirectory()">setWorkingDirectory</h3>
+<code class="signature">public static  void <strong>setWorkingDirectory</strong>(string directory)</code>
+<div class="details">
+<p>
+Sets the current working directory to $directory.
+</p></div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../base/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../base/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../base/ezcbase.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

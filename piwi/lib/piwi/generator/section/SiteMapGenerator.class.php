@@ -7,7 +7,7 @@ class SiteMapGenerator implements SectionGenerator {
 	 * Set to 'null' if all SiteElements should be shown. */
 	private $pageId = null;
 	
-	/** Determinates the maximum number of subitems that will be returned.
+	/** Determines the maximum number of subitems that will be returned.
 	 * Set to '-1' for full depth, to '0' only for parent items. */
 	private $depth = -1;
 	

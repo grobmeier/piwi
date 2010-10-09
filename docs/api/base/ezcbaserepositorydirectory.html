@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta name="generator" content="PHPDoctor 2RC2 (http://phpdoctor.sourceforge.net/)">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ezcBaseRepositoryDirectory (Piwi - XML Transformation Framework)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../base/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../base/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../base/ezcbaserepositorydirectory.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">Base.ezcBaseRepositoryDirectory</div>
+
+<h1>Class ezcBaseRepositoryDirectory</h1>
+
+<pre class="tree"><a href="../base/ezcbasestruct.html">ezcBaseStruct</a><br>  |<br>  +--<strong>ezcBaseRepositoryDirectory</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ezcBaseRepositoryDirectory</strong><br>extends <a href="../base/ezcbasestruct.html">ezcBaseStruct</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>
+Struct which defines a repository directory.
+</p></div>
+
+<dl>
+<dt>Version:</dt>
+<dd>//autogentag</dd>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Field Summary</th></tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#TYPE_EXTERNAL">TYPE_EXTERNAL</a></p><p class="description">
+Specifies that the entry is for an external (user defined) repository.</p></td>
+</tr>
+<tr>
+<td class="type">final  mixed</td>
+<td class="description"><p class="name"><a href="#TYPE_INTERNAL">$TYPE_INTERNAL</a></p><p class="description">
+Specifies that the entry is for the eZ Components repository.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#autoloadPath">$autoloadPath</a></p><p class="description">
+The path to the autoload files.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#basePath">$basePath</a></p><p class="description">
+The path to the configured repository.</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#type">$type</a></p><p class="description">
+The $type is one of the two TYPE_* constants defined in this class.</p></td>
+</tr>
+</table>
+
+<table id="summary_constr">
+<tr><th colspan="2">Constructor Summary</th></tr>
+<tr>
+<td class="description"><p class="name"><a href="#ezcBaseRepositoryDirectory()">ezcBaseRepositoryDirectory</a>(string type, string basePath, string autoloadPath)</p><p class="description">
+Constructs a new ezcBaseRepositoryDirectory of type $type with base path
+$basePath and autoload path $autoloadPath.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type">static  <a href="../base/ezcbaserepositorydirectory.html">ezcBaseRepositoryDirectory</a></td>
+<td class="description"><p class="name"><a href="#__set_state()">__set_state</a>(array(string=>mixed) array)</p><p class="description">
+Returns a new instance of this class with the data specified by $array.</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from Base.ezcBaseStruct</th></tr>
+<tr><td><a href="../base/ezcbasestruct.html#__get()">__get</a>, <a href="../base/ezcbasestruct.html#__set()">__set</a></td></tr></table>
+
+<h2 id="detail_field">Field Detail</h2>
+<h3 id="TYPE_EXTERNAL">TYPE_EXTERNAL</h3>
+<code class="signature">public final  mixed <strong>TYPE_EXTERNAL</strong> = 1</code>
+<div class="details">
+<p>
+Specifies that the entry is for an external (user defined) repository.
+/</p></div>
+
+<hr>
+
+<h3 id="TYPE_INTERNAL">TYPE_INTERNAL</h3>
+<code class="signature">public final  mixed <strong>$TYPE_INTERNAL</strong></code>
+<div class="details">
+<p>
+Specifies that the entry is for the eZ Components repository.
+/</p></div>
+
+<hr>
+
+<h3 id="autoloadPath">autoloadPath</h3>
+<code class="signature">public  string <strong>$autoloadPath</strong></code>
+<div class="details">
+<p>
+The path to the autoload files.
+</p></div>
+
+<hr>
+
+<h3 id="basePath">basePath</h3>
+<code class="signature">public  string <strong>$basePath</strong></code>
+<div class="details">
+<p>
+The path to the configured repository.
+</p></div>
+
+<hr>
+
+<h3 id="type">type</h3>
+<code class="signature">public  string <strong>$type</strong></code>
+<div class="details">
+<p>
+The $type is one of the two TYPE_* constants defined in this class.
+</p></div>
+
+<hr>
+
+<h2 id="detail_constr">Constructor Detail</h2>
+<h3 id="ezcBaseRepositoryDirectory()">ezcBaseRepositoryDirectory</h3>
+<code class="signature">public <strong>ezcBaseRepositoryDirectory</strong>(string type, string basePath, string autoloadPath)</code>
+<div class="details">
+<p>
+Constructs a new ezcBaseRepositoryDirectory of type $type with base path
+$basePath and autoload path $autoloadPath.
+</p></div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<h3 id="__set_state()">__set_state</h3>
+<code class="signature">public static  <a href="../base/ezcbaserepositorydirectory.html">ezcBaseRepositoryDirectory</a> <strong>__set_state</strong>(array(string=>mixed) array)</code>
+<div class="details">
+<p>
+Returns a new instance of this class with the data specified by $array.
+
+$array contains all the data members of this class in the form:
+array('member_name'=>value).
+
+__set_state makes this class exportable with var_export.
+var_export() generates code, that calls this method when it
+is parsed with PHP.
+</p></div>
+
+<hr>
+
+<div class="header">
+<h1>Piwi - XML Transformation Framework</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../base/package-summary.html">Package</a></li>
+<li class="active">Class</li>
+<li><a href="../base/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../base/ezcbaserepositorydirectory.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href=http://phpdoctor.sourceforge.net/>PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

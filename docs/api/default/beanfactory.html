@@ -51,9 +51,9 @@ Used to initiate and retrieve Objects for Dependency Injection.</p><p>Several sc
 <li>request: an object is available for the whole request (singleton in PHP manner)</li>
 <li>session: an object is available for the whole session</li>
 <li>prototype: an object is always newly created by each context request</li>
-</ul></p><p>Spring Framework supports the singleton scope too. This means a bean is available for the
+</ul></p><p>Spring Framework supports the singleton scope, too. This means a bean is available for the
 the whole container for the whole runtime. This is not (easily) possible for PHP applications
-and should only be used under special cirstumances. The bean must be serialized to harddisk
+and should only be used under special circumstances. The bean must be serialized to harddisk
 for an interchange between sessions and request. However, this could be done with a BeanSerializer,
 which is in the scope for a latter Piwi release.
 /</p></div>
@@ -69,6 +69,10 @@ which is in the scope for a latter Piwi release.
 <tr>
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#contextXMLPath">$contextXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#contextXml">$contextXml</a></p><p class="description">The DOMDocument of the 'context.xml'. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -111,9 +115,26 @@ Initializes the properties for the bean with the referenced id.
 </tr>
 <tr>
 <td class="type">private  void</td>
+<td class="description"><p class="name"><a href="#_initializePropertyArray()">_initializePropertyArray</a>(string beanId, stdclass instance)</p><p class="description">
+Initializes an array out of a properties list.
+</p></td>
+</tr>
+<tr>
+<td class="type">private  void</td>
 <td class="description"><p class="name"><a href="#_loadContextXML()">_loadContextXML</a>()</p><p class="description">
 Loads the 'context.xml'.
 </p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#addContext()">addContext</a>(string contextXMLPath, boolean overwrite)</p><p class="description">
+Adds a custom context to the BeanFactory.</p></td>
+</tr>
+<tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#clean()">clean</a>()</p><p class="description">
+Removes the singleton
+/</p></td>
 </tr>
 <tr>
 <td class="type">static  stdclass</td>
@@ -139,6 +160,13 @@ Initializes the singleton instance of this Class.</p></td>
 <code class="signature">private  mixed <strong>$contextXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the generators that can be used. */</p></div>
+
+<hr>
+
+<h3 id="contextXml">contextXml</h3>
+<code class="signature">private  mixed <strong>$contextXml</strong></code>
+<div class="details">
+<p>The DOMDocument of the 'context.xml'. May contain user elements later */</p></div>
 
 <hr>
 
@@ -215,11 +243,36 @@ Constructor arguments are noted as </p><p><code>
 <p>
 Initializes the properties for the bean with the referenced id.
 Properties are noted as </p><p><code>
-<constructor-args>
+<bean...>
 		<property name="bla" ref="beanID" />
 		<property name="paramString2" value="..." />
-</constructor-args>
+</bean>
 </code></p><dl>
+<dt>Parameters:</dt>
+<dd>beanId - The id of the bean.</dd>
+<dd>instance - The bean whose properties should be initialized.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="_initializePropertyArray()">_initializePropertyArray</h3>
+<code class="signature">private  void <strong>_initializePropertyArray</strong>(string beanId, stdclass instance)</code>
+<div class="details">
+<p>
+Initializes an array out of a properties list.
+Properties are noted as </p><p><code>
+<bean...>
+	<properties name="myarray">
+		<property name="key1" value="value1" />
+		<property name="key2" value="value2" />
+ </properties>
+</bean>
+</code></p><p>This will result an array of that kind:</p><p><code>
+$myarray['key1'] = 'value1';
+$myarray['key2'] = 'value2';
+</code></p><p>A setter method will be called on the target bean: setMyarray($myarray)
+</p><dl>
 <dt>Parameters:</dt>
 <dd>beanId - The id of the bean.</dd>
 <dd>instance - The bean whose properties should be initialized.</dd>
@@ -233,6 +286,29 @@ Properties are noted as </p><p><code>
 <div class="details">
 <p>
 Loads the 'context.xml'.
+/</p></div>
+
+<hr>
+
+<h3 id="addContext()">addContext</h3>
+<code class="signature">public static  void <strong>addContext</strong>(string contextXMLPath, boolean overwrite)</code>
+<div class="details">
+<p>
+Adds a custom context to the BeanFactory.</p><dl>
+<dt>Parameters:</dt>
+<dd>contextXMLPath - Path of the file containing the xml-definition 
+ * of the generators that can be used.</dd>
+<dd>overwrite - Determines whether the existing beans are overridden.</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="clean()">clean</h3>
+<code class="signature">public static  void <strong>clean</strong>()</code>
+<div class="details">
+<p>
+Removes the singleton
 /</p></div>
 
 <hr>

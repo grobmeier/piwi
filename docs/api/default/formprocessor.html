@@ -62,6 +62,10 @@ It is also possible to handle multiple forms on one page.
 </tr>
 <tr>
 <td class="type">private  mixed</td>
+<td class="description"><p class="name"><a href="#formFactory">$formFactory</a></p><p class="description">Injected FormFactory */</p></td>
+</tr>
+<tr>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#formId">$formId</a></p><p class="description">The id of the currently processed form. </p></td>
 </tr>
 <tr>
@@ -185,6 +189,11 @@ Returns if a validation has failed while processing.</p></td>
 <td class="description"><p class="name"><a href="#process()">process</a>(string id)</p><p class="description">
 Loads the form from the given file and generates the the content as PiwiXML.</p></td>
 </tr>
+<tr>
+<td class="type"> unknown_type</td>
+<td class="description"><p class="name"><a href="#setFormFactory()">setFormFactory</a>(mixed factory, $factory )</p><p class="description">
+Getter for the form factory injection</p></td>
+</tr>
 </table>
 
 <h2 id="detail_field">Field Detail</h2>
@@ -192,6 +201,13 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <code class="signature">private  mixed <strong>$currentStep</strong></code>
 <div class="details">
 <p>The current step of the currently processed form. */</p></div>
+
+<hr>
+
+<h3 id="formFactory">formFactory</h3>
+<code class="signature">private  mixed <strong>$formFactory</strong> = null</code>
+<div class="details">
+<p>Injected FormFactory */</p></div>
 
 <hr>
 
@@ -457,6 +473,14 @@ Loads the form from the given file and generates the the content as PiwiXML.</p>
 <dd>The rendered form as PiwiXML.</dd>
 </dl>
 </div>
+
+<hr>
+
+<h3 id="setFormFactory()">setFormFactory</h3>
+<code class="signature">public  unknown_type <strong>setFormFactory</strong>(mixed factory, $factory )</code>
+<div class="details">
+<p>
+Getter for the form factory injection</p></div>
 
 <hr>
 

@@ -55,7 +55,7 @@ Renders the requested page and creates the navigation based on 'site.xml'.
 
 <table class="inherit">
 <tr><th colspan="2">Fields inherited from default.Page</th></tr>
-<tr><td><a href="../default/page.html#content">content</a>, <a href="../default/page.html#contentPath">contentPath</a>, <a href="../default/page.html#site">site</a></td></tr></table>
+<tr><td><a href="../default/page.html#configuration">configuration</a>, <a href="../default/page.html#content">content</a>, <a href="../default/page.html#contentPath">contentPath</a>, <a href="../default/page.html#site">site</a></td></tr></table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
@@ -68,15 +68,20 @@ Constructor.</p></td>
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type"> void</td>
+<td class="type"> the</td>
 <td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setContent()">setContent</a>(string content)</p><p class="description">
+Sets the content of the page.</p></td>
 </tr>
 </table>
 
 <table class="inherit">
 <tr><th colspan="2">Methods inherited from default.Page</th></tr>
-<tr><td><a href="../default/page.html#checkPermissions()">checkPermissions</a>, <a href="../default/page.html#generateContent()">generateContent</a>, <a href="../default/page.html#getCache()">getCache</a>, <a href="../default/page.html#getContent()">getContent</a>, <a href="../default/page.html#getSite()">getSite</a>, <a href="../default/page.html#serialize()">serialize</a>, <a href="../default/page.html#setContent()">setContent</a>, <a href="../default/page.html#setContentPath()">setContentPath</a>, <a href="../default/page.html#setSite()">setSite</a></td></tr></table>
+<tr><td><a href="../default/page.html#checkPermissions()">checkPermissions</a>, <a href="../default/page.html#generateContent()">generateContent</a>, <a href="../default/page.html#getCache()">getCache</a>, <a href="../default/page.html#getContent()">getContent</a>, <a href="../default/page.html#setConfiguration()">setConfiguration</a>, <a href="../default/page.html#setContentPath()">setContentPath</a>, <a href="../default/page.html#setSite()">setSite</a></td></tr></table>
 
 <h2 id="detail_constr">Constructor Detail</h2>
 <h3 id="XMLPage()">XMLPage</h3>
@@ -95,13 +100,29 @@ Constructor.</p><dl>
 
 <h2 id="detail_method">Method Detail</h2>
 <h3 id="generateContent()">generateContent</h3>
-<code class="signature">public  void <strong>generateContent</strong>()</code>
+<code class="signature">public  the <strong>generateContent</strong>()</code>
 <div class="details">
 <p>
 Reads the xml of the requested page and transforms the Generators to Piwi-XML.
 TODO refactor: some stuff should go to the parent generate content method
 TODO refactor: this class must be easily able extend
-/</p></div>
+/</p><dl>
+<dt>Returns:</dt>
+<dd>generated content</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="setContent()">setContent</h3>
+<code class="signature">public  void <strong>setContent</strong>(string content)</code>
+<div class="details">
+<p>
+Sets the content of the page.</p><dl>
+<dt>Parameters:</dt>
+<dd>content - The content as xml.</dd>
+</dl>
+</div>
 
 <hr>
 

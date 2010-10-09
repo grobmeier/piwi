@@ -52,10 +52,10 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <div class="comment" id="overview_description"><p>
 XML RoleProvider.
-Uses an xml file for a simple authentification.
+Uses an xml file for a simple authentication.
 Can be enabled in configuration xml with:</p><p><authentication enabled="1" roleProvider="XmlRoleProvider" loginPageId="login">
 		<authFile>custom/resources/auth.xml</authFile>
-</authentication></p><p>The XML file for authentification must follow the auth.xsd structure:</p><p><?xml version="1.0" encoding="UTF-8"?>
+</authentication></p><p>The XML file for authentication must follow the auth.xsd structure:</p><p><?xml version="1.0" encoding="UTF-8"?>
 <piwi-users xmlns="http://piwi.googlecode.com/xsd/auth"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://piwi.googlecode.com/xsd/auth ../../resources/xsd/auth.xsd">
@@ -71,7 +71,7 @@ Can be enabled in configuration xml with:</p><p><authentication enabled="1" role
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#auth">$auth</a></p><p class="description">The DOMXPath of the authentification xml file */</p></td>
+<td class="description"><p class="name"><a href="#auth">$auth</a></p><p class="description">The DOMXPath of the authentication xml file */</p></td>
 </tr>
 </table>
 
@@ -110,7 +110,7 @@ Set the auth file as defined in the config.xml
 <h3 id="auth">auth</h3>
 <code class="signature">private  mixed <strong>$auth</strong> = null</code>
 <div class="details">
-<p>The DOMXPath of the authentification xml file */</p></div>
+<p>The DOMXPath of the authentication xml file */</p></div>
 
 <hr>
 
@@ -163,8 +163,8 @@ This method is just a dummy, normally you will query a database here.</p><dl>
 <div class="details">
 <p>
 Checks if a user has one of the given roles. 
-If the user has at least one of the given roles, true is returned, otherwise false.</p><p>If a user is not authentificated and the roles array contains the
-role "anonymous", the user is in role.
+If the user has at least one of the given roles, true is returned, otherwise false.</p><p>If a user is not authenticated and the roles array contains the
+role "!", the user is in role.</p><p>In other terms, if a page has the ! role, it can only be viewed by unauthenticated users.
 </p><dl>
 <dt>Parameters:</dt>
 <dd>username - The name of the user.</dd>

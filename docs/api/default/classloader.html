@@ -70,6 +70,10 @@ it like mentioned above and puts it into the cache.
 <td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#cache">$cache</a></p><p class="description">ClassLoader Cache - will be initalized lazily. </p></td>
 </tr>
+<tr>
+<td class="type">private static  mixed</td>
+<td class="description"><p class="name"><a href="#classloader">$classloader</a></p><p class="description">For singleton usage **/</p></td>
+</tr>
 </table>
 
 <table id="summary_constr">
@@ -84,9 +88,15 @@ Constructor.
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type">static  void</td>
+<td class="description"><p class="name"><a href="#autoload()">autoload</a>(string class)</p><p class="description">
+Autoload uses the ClassLoader class to recursively look up
+needed classes. </p></td>
+</tr>
+<tr>
 <td class="type"> boolean</td>
 <td class="description"><p class="name"><a href="#loadClass()">loadClass</a>(string directory, string class, mixed cache)</p><p class="description">
-Trys to load a class from the given directory. </p></td>
+Tries to load a class from the given directory. </p></td>
 </tr>
 </table>
 
@@ -95,6 +105,13 @@ Trys to load a class from the given directory. </p></td>
 <code class="signature">private  mixed <strong>$cache</strong> = null</code>
 <div class="details">
 <p>ClassLoader Cache - will be initalized lazily. */</p></div>
+
+<hr>
+
+<h3 id="classloader">classloader</h3>
+<code class="signature">private static  mixed <strong>$classloader</strong> = null</code>
+<div class="details">
+<p>For singleton usage **/</p></div>
 
 <hr>
 
@@ -116,11 +133,26 @@ If this argument is not passed, no cache is used at all.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
+<h3 id="autoload()">autoload</h3>
+<code class="signature">public static  void <strong>autoload</strong>(string class)</code>
+<div class="details">
+<p>
+Autoload uses the ClassLoader class to recursively look up
+needed classes. Use one file per class/interface and name it: 
+	- yourclass.class.php
+	- yourinterface.if.php</p><dl>
+<dt>Parameters:</dt>
+<dd>class - Name of the of the class or interface.</dd>
+</dl>
+</div>
+
+<hr>
+
 <h3 id="loadClass()">loadClass</h3>
 <code class="signature">public  boolean <strong>loadClass</strong>(string directory, string class, mixed cache)</code>
 <div class="details">
 <p>
-Trys to load a class from the given directory. 
+Tries to load a class from the given directory. 
 All subdirectories are used for lookup. </p><dl>
 <dt>Parameters:</dt>
 <dd>directory - The path in which the class should be found.</dd>
