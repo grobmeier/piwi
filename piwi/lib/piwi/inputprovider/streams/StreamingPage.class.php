@@ -12,8 +12,9 @@ class StreamingPage extends Page {
     public function __construct() {
     }
     
-    /**
-	 * TODO
+	/**
+	 * Processes the contents of the page.
+	 * @return the generated content
 	 */
 	public function generateContent() {
 		if (!$this->checkPermissions()) {
