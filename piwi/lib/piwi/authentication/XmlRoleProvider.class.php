@@ -113,7 +113,15 @@ class XmlRoleProvider implements RoleProvider {
 	 * Set the auth file as defined in the config.xml
 	 */
 	public function setAuthFile($authFile) {
+		if (!file_exists($authFile)) {
+	    	throw new PiwiException("Auth file not found: authFile not found at '" . $authFile, 
+				PiwiException :: ERR_404);
+	    }
 	    $this->auth = simplexml_load_file($authFile);
+	    if ($this->auth == false) {
+	    	throw new PiwiException("Could not load authFile: '" . $authFile, 
+				PiwiException :: ERR_ILLEGAL_STATE);
+	    }
 		$this->auth->registerXPathNamespace('auth', 'http://piwi.googlecode.com/xsd/auth');
 	}
 }
