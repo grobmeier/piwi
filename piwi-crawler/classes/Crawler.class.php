@@ -92,9 +92,9 @@ class Crawler {
 		foreach ($this->formats as $format) {
 			echo " " . strtoupper($format) . ":\n";
 			foreach ($this->pagesAlreadyCrawled as $page) {
-       	$page->setFormat($format);
-       	echo $page->getURL() . "\n";	
-       	$page->save();
+		       	$page->setFormat($format);
+		       	echo $page->getURL() . "\n";	
+		       	$page->save();
 			}
 		}
 	}

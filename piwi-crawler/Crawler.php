@@ -1,6 +1,6 @@
 <?php
 /**
- * $argv[1]: The adress of the server. E.g. 'http://127.0.0.1:80/'
+ * $argv[1]: The address of the server. E.g. 'http://127.0.0.1:80/'
  * $argv[2]: The url where the crawling should be started. E.g. 'default.html'
  * $argv[3]: The languages that, apart from 'default', should be crawled. E.g 'en,fr'
  * $argv[4]: The directory where the crawled site should be placed. E.g. 'target'
