@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context xmlns="http://piwi.googlecode.com/xsd/context" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://piwi.googlecode.com/xsd/context ../xsd/context.xsd">
+    
+    <bean id="configurationManager" class="ConfigurationManager" scope="request">
+        <property name="configFilePath" value="test/unit/lib/piwi/authentication/data/config.xml" />
+    </bean>
+</context>

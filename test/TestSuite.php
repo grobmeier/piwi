@@ -16,6 +16,7 @@
   $this->addFile('test/unit/lib/piwi/page-processing/SiteMapHelperTest.php');     
   $this->addFile('test/unit/lib/piwi/page-processing/ConfigurationManagerTest.php');
   $this->addFile('test/unit/lib/piwi/inputprovider/streams/StreamManagerTest.php');
+  $this->addFile('test/unit/lib/piwi/authentication/XmlRoleProviderTest.php');
   
   // Webtest
   $this->addFile('test/web/FormsTest.php');  
