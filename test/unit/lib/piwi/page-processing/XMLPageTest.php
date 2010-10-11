@@ -35,10 +35,7 @@ class XMLPageTest extends UnitTestCase {
 		$this->page = BeanFactory :: getBeanById('xmlPage');
 
 		$this->expectException('PiwiException', 'Page should not exist.');
-		ob_start();
 		$this->page->generateContent();
-		ob_end_clean();
-		
 	}
 	
 	function testGenerateContentWithDoublePageId() {
@@ -47,9 +44,7 @@ class XMLPageTest extends UnitTestCase {
 		Request::setPageId('test');
 		
 		$this->expectException('PiwiException', 'PageId should exist twice.');
-		ob_start();
 		$this->page->generateContent();
-		ob_end_clean();
 	}
 }
 ?>
