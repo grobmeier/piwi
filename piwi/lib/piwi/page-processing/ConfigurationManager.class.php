@@ -141,7 +141,7 @@ class ConfigurationManager implements Configuration {
 				if (error_reporting() > E_ERROR) {
 					echo "Custom Navigation Generator not found: " . $generator->getAttribute('class');
 				}
-			}			
+			}
 		}
 		
 		return $navigations;
