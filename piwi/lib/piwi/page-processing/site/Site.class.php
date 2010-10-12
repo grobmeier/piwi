@@ -15,10 +15,13 @@ class Site {
 	/** Name of the folder where your templates are placed. */
 	protected $templatesPath = null;
 	
+	private $log;
+	
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
+		$this->log = Logger :: getLogger('Site.class');
     }	
 
 	/**
@@ -29,11 +32,18 @@ class Site {
 		if ($this->domXPath == null) {
     		$this->_loadSite();
     	}
-    	
-		$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
+    	$template = null;
+		try {
+			$template = $this->_getCurrentPageDOMNode()->getAttribute("template");
+		} catch (PiwiException $e) {
+		 	if ($e->getCode() == PiwiException :: ERR_404) {
+				$this->log->warn('Could not fine template for: ' . Request::getPageId() . " - returning default.php");
+			} else {
+				throw $e;
+			}
+		}
 		
 		if ($template == null) {
-			
 			$template = 'default.php';
 		}
 		return $this->templatesPath . '/' . $template;
@@ -249,7 +259,7 @@ class Site {
         } else if ($result->length > 1) {
        		throw new PiwiException("The id of the requested page is not unique (Page: '" . 
        				$pageId . "').", 
-				PiwiException :: ERR_404);
+				PiwiException :: XML_ID_NOT_UNIQUE);
         } else {
             throw new PiwiException("Could not find the requested page (Page: '" . 
             		$pageId . "').", 

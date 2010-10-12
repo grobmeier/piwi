@@ -136,17 +136,17 @@ $pipeline = BeanFactory :: getBeanById('pipeline');
 $logger->debug('Pipeline initialized successfully');
 
 try {
-	$logger->debug('Site generating content');
-	$pipeline->generateContent();
-	$logger->debug("Beginning serialization");
-	$pipeline->serialize();
+	$logger->debug('Generate full pipeline');
+	$pipeline->generate();
+	$logger->debug("Input -> Output succeded");
 } catch (Exception $exception) {
 	// Show a page displaying the error
-	Request :: setPageId('default');
-	$exceptionPageGenerator = new ExceptionPageGenerator($exception);
-	$xmlpage = BeanFactory :: getBeanById('xmlPage');
-	$xmlpage->setContent($exceptionPageGenerator->generate());
-	$pipeline->serialize($xmlpage);
+	$expage = new ExceptionPageGenerator($exception);
+	$pipeline->input('xml');
+	$pipeline->getPage()->setContent($expage->generate());
+	$pipeline->getPage()->generateContent(true);
+	$pipeline->output();
+	
 	$logger->error('Site generation failed with exception: ' . $exception->getMessage());
 }
 

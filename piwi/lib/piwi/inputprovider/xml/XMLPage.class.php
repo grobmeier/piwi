@@ -17,26 +17,31 @@ class XMLPage extends Page {
 	 * TODO refactor: some stuff should go to the parent generate content method
 	 * TODO refactor: this class must be easily able extend
 	 */
-	public function generateContent() {
-		$this->checkPermissions();
-
-		$cache = $this->getCache();
-		$content = $cache->getPage();
+	public function generateContent($manualContent = null) {
+		$content = null;
+		$cache = null;
 		
+		if (!$manualContent) {
+			$this->checkPermissions();
+			$cache = $this->getCache();
+			$content = $cache->getPage();
+		}
 		if ($content != null) {
 			// Page has been found in cache
 			$this->content = $content;
 		} else {
 			// Page has not been found in cache, so load it and save it in the cache
-			$filePath = $this->contentPath . '/' . $this->site->getFilePath();
-
-			if (!file_exists($filePath)) {
-				throw new PiwiException("Could not find the the requested page (Path: '" . $filePath . "').", 
-					PiwiException :: ERR_404);
+			if (!$manualContent) {
+				$filePath = $this->contentPath . '/' . $this->site->getFilePath();
+	
+				if (!file_exists($filePath)) {
+					throw new PiwiException("Could not find the the requested page (Path: '" . $filePath . "').", 
+						PiwiException :: ERR_404);
+				}
+				
+				$this->content = new DOMDocument;
+				$this->content->load($filePath);
 			}
-
-			$this->content = new DOMDocument;
-			$this->content->load($filePath);
 
 			// Configure the transformer
 			$processor = new XSLTProcessor;
@@ -48,7 +53,9 @@ class XMLPage extends Page {
 			$this->content = $processor->transformToDoc($this->content);
 
 			// Save page in cache
-			$cache->cachePage($this->content);
+			if ($cache != null) {
+				$cache->cachePage($this->content);
+			}
 		}
 		return $this->content;
 	}

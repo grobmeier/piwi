@@ -1,45 +1,60 @@
 <?php
 /**
- * The SiteSelector class selects a matching inputprovider implementation based on the
+ * The Pipeline class selects a matching inputprovider implementation based on the
  * file ending of the requested content. The actual file which is to be read is defined 
  * in the site.xml. 
  * 
- * In other words, the SiteSelector connects the Site implementation to the Page implementation.
+ * In other words, the pipeline:
  * 
- * New inputprovider implementations can be added in the context.xml with adding the 
- * extension and the preferred Page implementation for it. 
+ * - chooses the input provider
+ * - takes care the input provider transforms the content to piwi xml
+ * - chooses the output provider
+ * - takes care the output provider transforms the content to the choosen output format
+ * 
+ * New inputprovider implementations can be added in the context.xml with adding the
+ * extension and the preferred Page implementation for it.
  */
 class Pipeline {
 	/** Reference to the processed page. */
 	private $page = null;
 	
-	private $errormode = false;
-	
+	/** Map of extension / Page implementations */
 	private $pagemap = null;
 	
+	/** Configuration */
 	private $configuration = null;
 	
-	/**
-	 * Constructor.
-	 */
+	/** Constructor */
 	public function __construct() {
 	}
 	
 	/**
-	 * Processes the contents of the page.
+	 * Standard generation of content.
+	 * Choose input, generate content, choose output.
 	 */
-	public function generateContent() {
-		$this->_choosePipeline();
+	public function generate() {
+		$this->input();
 		$this->page->generateContent();		
+		$this->output();
 	}
 
 	/**
 	 * Selects a Page implementation based on the file extension.
+	 * 
+	 * @param string $extension the extension to use for selecting the input file, selected from the page map 
+	 * @param string $pageId the page id from the site
+	 * @return void
 	 */
-	private function _choosePipeline() {
-		$path = $this->getSite()->getFilePath();
-		$pos = strrpos($path, ".");
-		$extension = substr($path, $pos + 1);
+	public function input($extension = null, $pageId = null) {
+		if ($pageId != null) {
+			Request::setPageId($pageId);
+		}
+		
+		if ($extension == null) {
+			$path = $this->getSite()->getFilePath();
+			$pos = strrpos($path, ".");
+			$extension = substr($path, $pos + 1);
+		}
 
 		if (isset($this->pagemap[$extension])) {
 			if (is_object($this->pagemap[$extension])) {
@@ -57,28 +72,16 @@ class Pipeline {
 	}
 	
 	/**
-	 * Sets the content of the page.
-	 * @param string $content The content as xml.
+	 * Outputs the content, based on the serializer choosen by the url extension
 	 */
-	public function setContent($content) {
-		$this->page->setContent($content);
-	}
-	
-	/**
-	 * Executes the Serializer.
-	 */
-	public function serialize($page = null) {
+	public function output() {
 		$extension = Request :: getExtension();
 
 		$serializer = $this->configuration->getSerializer($extension);
-
 		if ($serializer == null) {
 			$serializer = new HTMLSerializer();
 		}
-		if ($page == null) {
-			$page = $this->page;
-		}
-		$serializer->serialize($page->getContent());
+		$serializer->serialize($this->page->getContent());
 	}
 	
 	/**
@@ -114,7 +117,8 @@ class Pipeline {
 	}
 	
 	/**
-	 * Sets the Pagemap
+	 * Sets the Pagemap as defined in the context.xml
+	 * 
 	 * @param array $pagemap
 	 * @return unknown_type
 	 */

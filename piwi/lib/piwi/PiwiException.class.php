@@ -27,7 +27,10 @@ class PiwiException extends Exception {
 
     /** Errorcode PERMISSION_DENIED. */
 	const PERMISSION_DENIED			= 1008;
-		
+
+	/** Errorcode INVALID_XML_DEFINITION. */
+	const XML_ID_NOT_UNIQUE			= 1009;
+	
 	/**
 	 * Constructor.
 	 * @param string $message The error message.
