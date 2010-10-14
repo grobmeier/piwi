@@ -89,10 +89,6 @@ Calls actions configured for this stream
 <dd>
 Calls a preprocessor defined as an attribute in the step tag.
 </dd>
-<dt><a href="default/pipeline.html#_choosePipeline()">_choosePipeline()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
-<dd>
-Selects a Page implementation based on the file extension.
-</dd>
 <dt><a href="default/site.html#_generateSubnavigation()">_generateSubnavigation()</a> - Method in class <a href="default/site.html">default.Site</a></dt>
 <dd>
 Generates the submenus of the given nodes.</dd>
@@ -807,6 +803,10 @@ Returns true when we are in development mode.</dd>
 <dt><a href="default/beanfactory.html#initialize()">initialize()</a> - Method in class <a href="default/beanfactory.html">default.BeanFactory</a></dt>
 <dd>
 Initializes the singleton instance of this Class.</dd>
+<dt><a href="default/pipeline.html#input()">input()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
+<dd>
+Selects a Page implementation based on the file extension.
+</dd>
 <dt><a href="default/classloadercache.html#invalidate()">invalidate()</a> - Method in class <a href="default/classloadercache.html">default.ClassLoaderCache</a></dt>
 <dd>
 Resets the cache, should be called if a class 
@@ -927,6 +927,10 @@ Unset an option.</dd>
 <dt><a href="base/ezcbasefeatures.html#os()">os()</a> - Method in class <a href="base/ezcbasefeatures.html">Base.ezcBaseFeatures</a></dt>
 <dd>
 Returns the operating system on which PHP is running.</dd>
+<dt><a href="default/pipeline.html#output()">output()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
+<dd>
+Outputs the content, based on the serializer choosen by the url extension
+/</dd>
 </dl>
 <h1 id="letterP">P</h1>
 <dl>
@@ -947,7 +951,7 @@ Serializes the given XML to PDF.
 </dd>
 <dt><a href="default/pipeline.html">Pipeline()</a> - Class in package <a href="default/package-summary.html">default</a></dt>
 <dd>
-The SiteSelector class selects a matching inputprovider implementation based on the
+The Pipeline class selects a matching inputprovider implementation based on the
 file ending of the requested content. </dd>
 <dt><a href="default/piwiexception.html">PiwiException()</a> - Exception in package <a href="default/package-summary.html">default</a></dt>
 <dd>
@@ -1079,7 +1083,8 @@ Sets the reference to the processed page.</dd>
 Sets the id of the requested page.</dd>
 <dt><a href="default/pipeline.html#setPagemap()">setPagemap()</a> - Method in class <a href="default/pipeline.html">default.Pipeline</a></dt>
 <dd>
-Sets the Pagemap</dd>
+Sets the Pagemap as defined in the context.xml
+</dd>
 <dt><a href="default/siteelement.html#setParent()">setParent()</a> - Method in class <a href="default/siteelement.html">default.SiteElement</a></dt>
 <dd>
 Sets the parent SiteElement.</dd>

@@ -46,10 +46,13 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <p class="signature">public  class <strong>Pipeline</strong></p>
 
 <div class="comment" id="overview_description"><p>
-The SiteSelector class selects a matching inputprovider implementation based on the
+The Pipeline class selects a matching inputprovider implementation based on the
 file ending of the requested content. The actual file which is to be read is defined 
-in the site.xml. </p><p>In other words, the SiteSelector connects the Site implementation to the Page implementation.</p><p>New inputprovider implementations can be added in the context.xml with adding the 
-extension and the preferred Page implementation for it. 
+in the site.xml. </p><p>In other words, the pipeline:</p><p>- chooses the input provider
+- takes care the input provider transforms the content to piwi xml
+- chooses the output provider
+- takes care the output provider transforms the content to the choosen output format</p><p>New inputprovider implementations can be added in the context.xml with adding the
+extension and the preferred Page implementation for it.
 /</p></div>
 
 <hr>
@@ -58,11 +61,7 @@ extension and the preferred Page implementation for it.
 <tr><th colspan="2">Field Summary</th></tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#configuration">$configuration</a></p></td>
-</tr>
-<tr>
-<td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#errormode">$errormode</a></p></td>
+<td class="description"><p class="name"><a href="#configuration">$configuration</a></p><p class="description">Configuration */</p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -70,31 +69,23 @@ extension and the preferred Page implementation for it.
 </tr>
 <tr>
 <td class="type">private  mixed</td>
-<td class="description"><p class="name"><a href="#pagemap">$pagemap</a></p></td>
+<td class="description"><p class="name"><a href="#pagemap">$pagemap</a></p><p class="description">Map of extension / Page implementations */</p></td>
 </tr>
 </table>
 
 <table id="summary_constr">
 <tr><th colspan="2">Constructor Summary</th></tr>
 <tr>
-<td class="description"><p class="name"><a href="#Pipeline()">Pipeline</a>()</p><p class="description">
-Constructor.
-</p></td>
+<td class="description"><p class="name"><a href="#Pipeline()">Pipeline</a>()</p><p class="description">Constructor */</p></td>
 </tr>
 </table>
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
-<td class="type">private  void</td>
-<td class="description"><p class="name"><a href="#_choosePipeline()">_choosePipeline</a>()</p><p class="description">
-Selects a Page implementation based on the file extension.
-</p></td>
-</tr>
-<tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#generateContent()">generateContent</a>()</p><p class="description">
-Processes the contents of the page.
+<td class="description"><p class="name"><a href="#generate()">generate</a>()</p><p class="description">
+Standard generation of content.
 </p></td>
 </tr>
 <tr>
@@ -109,9 +100,15 @@ Returns the reference to the Site.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#serialize()">serialize</a>(mixed page)</p><p class="description">
-Executes the Serializer.
+<td class="description"><p class="name"><a href="#input()">input</a>(string extension, string pageId)</p><p class="description">
+Selects a Page implementation based on the file extension.
 </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#output()">output</a>()</p><p class="description">
+Outputs the content, based on the serializer choosen by the url extension
+/</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -121,18 +118,14 @@ Injected by dependency injection.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setContent()">setContent</a>(string content)</p><p class="description">
-Sets the content of the page.</p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setPage()">setPage</a>(<a href="../default/page.html">Page</a> page)</p><p class="description">
 Sets the reference to the processed page.</p></td>
 </tr>
 <tr>
 <td class="type"> unknown_type</td>
 <td class="description"><p class="name"><a href="#setPagemap()">setPagemap</a>(array pagemap)</p><p class="description">
-Sets the Pagemap</p></td>
+Sets the Pagemap as defined in the context.xml
+</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -145,14 +138,7 @@ Sets the reference to the Site.</p></td>
 <h3 id="configuration">configuration</h3>
 <code class="signature">private  mixed <strong>$configuration</strong> = null</code>
 <div class="details">
-</div>
-
-<hr>
-
-<h3 id="errormode">errormode</h3>
-<code class="signature">private  mixed <strong>$errormode</strong> = false</code>
-<div class="details">
-</div>
+<p>Configuration */</p></div>
 
 <hr>
 
@@ -166,7 +152,7 @@ Sets the reference to the Site.</p></td>
 <h3 id="pagemap">pagemap</h3>
 <code class="signature">private  mixed <strong>$pagemap</strong> = null</code>
 <div class="details">
-</div>
+<p>Map of extension / Page implementations */</p></div>
 
 <hr>
 
@@ -174,27 +160,17 @@ Sets the reference to the Site.</p></td>
 <h3 id="Pipeline()">Pipeline</h3>
 <code class="signature">public <strong>Pipeline</strong>()</code>
 <div class="details">
-<p>
-Constructor.
-/</p></div>
+<p>Constructor */</p></div>
 
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<h3 id="_choosePipeline()">_choosePipeline</h3>
-<code class="signature">private  void <strong>_choosePipeline</strong>()</code>
+<h3 id="generate()">generate</h3>
+<code class="signature">public  void <strong>generate</strong>()</code>
 <div class="details">
 <p>
-Selects a Page implementation based on the file extension.
-/</p></div>
-
-<hr>
-
-<h3 id="generateContent()">generateContent</h3>
-<code class="signature">public  void <strong>generateContent</strong>()</code>
-<div class="details">
-<p>
-Processes the contents of the page.
+Standard generation of content.
+Choose input, generate content, choose output.
 /</p></div>
 
 <hr>
@@ -223,11 +199,25 @@ Returns the reference to the Site.</p><dl>
 
 <hr>
 
-<h3 id="serialize()">serialize</h3>
-<code class="signature">public  void <strong>serialize</strong>(mixed page)</code>
+<h3 id="input()">input</h3>
+<code class="signature">public  void <strong>input</strong>(string extension, string pageId)</code>
 <div class="details">
 <p>
-Executes the Serializer.
+Selects a Page implementation based on the file extension.
+</p><dl>
+<dt>Parameters:</dt>
+<dd>extension - the extension to use for selecting the input file, selected from the page map</dd>
+<dd>pageId - the page id from the site</dd>
+</dl>
+</div>
+
+<hr>
+
+<h3 id="output()">output</h3>
+<code class="signature">public  void <strong>output</strong>()</code>
+<div class="details">
+<p>
+Outputs the content, based on the serializer choosen by the url extension
 /</p></div>
 
 <hr>
@@ -240,18 +230,6 @@ Sets the configuration
 Injected by dependency injection.</p><dl>
 <dt>Parameters:</dt>
 <dd>configuration - The reference to the configuration.</dd>
-</dl>
-</div>
-
-<hr>
-
-<h3 id="setContent()">setContent</h3>
-<code class="signature">public  void <strong>setContent</strong>(string content)</code>
-<div class="details">
-<p>
-Sets the content of the page.</p><dl>
-<dt>Parameters:</dt>
-<dd>content - The content as xml.</dd>
 </dl>
 </div>
 
@@ -273,7 +251,8 @@ Sets the reference to the processed page.</p><dl>
 <code class="signature">public  unknown_type <strong>setPagemap</strong>(array pagemap)</code>
 <div class="details">
 <p>
-Sets the Pagemap</p></div>
+Sets the Pagemap as defined in the context.xml
+</p></div>
 
 <hr>
 
