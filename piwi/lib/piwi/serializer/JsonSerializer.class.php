@@ -17,6 +17,7 @@ class JsonSerializer implements Serializer {
 
 		$elements = $domDocument->getElementsByTagName('content');
 		
+		$html = null;
 		foreach ($elements as $item) {
 			$position = DOMDocument::loadXML($domDocument->saveXML($item));
 			$html .=  $processor->transformToXML($position);
