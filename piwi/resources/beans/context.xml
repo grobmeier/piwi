@@ -20,6 +20,37 @@
         <property name="configuration" ref="configurationManager" />
     </bean>
    
+   <!-- Input Reader -->
+    <bean id="creoleWikiPage" class="CreoleWikiPage" scope="request">
+        <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
+        <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
+    </bean>
+    
+    <bean id="dokuWikiPage" class="DokuWikiPage" scope="request">
+        <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
+        <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
+    </bean>
+    
+    <bean id="rstPage" class="RSTPage" scope="request">
+        <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
+        <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
+    </bean>
+    
+     <bean id="docbookPage" class="DocbookPage" scope="request">
+        <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
+        <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
+    </bean>
+    
+    <bean id="fodtPage" class="FODTPage" scope="request">
+        <property name="contentPath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH" />
+        <property name="site" ref="site" />
+        <property name="configuration" ref="configurationManager" />
+    </bean>
+    
     <!-- Input Reader -->
     <bean id="streamingPage" class="StreamingPage" scope="request">
     	<property name="streamingFilePath" php="$GLOBALS['PIWI_ROOT'] . CONTENT_PATH . '/streams.xml'" />
@@ -35,6 +66,11 @@
     	<properties name="pagemap">
     		<property name="stream" ref="streamingPage" />
     		<property name="xml" ref="xmlPage" />
+			<property name="dwiki" ref="dokuWikiPage" />
+			<property name="cwiki" ref="creoleWikiPage" />
+			<property name="rst" ref="rstPage" />
+			<property name="docbook" ref="docbookPage" />
+			<property name="fodt" ref="fodtPage" />
     		<property name="default" ref="xmlPage" />
     	</properties>
     </bean> 
