@@ -1,0 +1,9 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"> 
+<article xmlns="http://docbook.org/ns/docbook"> 
+  <section> 
+    <title>Example text</title> 
+    <para>Just some exaple paragraph with a heading, some 
+    <emphasis Role="strong">emphasis</emphasis> markup and a 
+    <ulink url="http://ezcomponents.org">link</ulink>.</para> 
+  </section> 
+</article> 

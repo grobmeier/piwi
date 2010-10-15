@@ -26,6 +26,11 @@
 				<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
 				<page id="streamimage2" label="Stream Image 2 (Login required)" href="image2.stream" roles="admin" />
 			</page>
+			<page id="cwiki" label="Creole Wiki" href="en/features/input/input.cwiki" />		
+			<page id="dwiki" label="Doku Wiki" href="en/features/input/input.dwiki" />
+			<page id="rst" label="RST Input Format" href="en/features/input/input.rst" />
+			<page id="docbook" label="Docbook Input Format" href="en/features/input/input.docbook" />
+			<page id="fodt" label="FODTInput Format" href="en/features/input/input.fodt" />
 		</page>
 		<page id="help" label="Help" href="en/help.xml">
 			<page id="documentation" label="Documentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
@@ -61,7 +66,12 @@
 			<page id="streaming" label="Streaming" href="de/features/streaming.xml">
 				<page id="streamimage1" label="Stream Image 1" href="image1.stream" />
 				<page id="streamimage2" label="Stream Image 2 (Login benötigt)" href="image2.stream" roles="admin" />
-			</page>			
+			</page>
+			<page id="cwiki" label="Creole Wiki" href="de/features/input/input.cwiki" />		
+			<page id="dwiki" label="Doku Wiki" href="de/features/input/input.dwiki" />
+			<page id="rst" label="RST Input Format" href="de/features/input/input.rst" />
+			<page id="docbook" label="Docbook Input Format" href="de/features/input/input.docbook" />
+			<page id="fodt" label="FODTInput Format" href="de/features/input/input.fodt" />
 		</page>
 		<page id="help" label="Hilfe" href="de/help.xml">
 			<page id="documentation" label="Dokumentation" href="http://code.google.com/p/piwi/wiki/PIWIDocumentation?tm=6" />
