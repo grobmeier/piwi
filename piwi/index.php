@@ -29,9 +29,9 @@ if(ini_get('date.timezone') == '') {
  * -------------------------------------------------------------------------
  */
 
-error_reporting(0); // hide all errors
+//error_reporting(0); // hide all errors
 //error_reporting(E_ERROR); // show only errors
-//error_reporting(E_ALL); // show all errors
+error_reporting(E_ALL); // show all errors
 
 /**
  * -------------------------------------------------------------------------
@@ -65,7 +65,11 @@ require_once ('lib/swiftmailer/classes/Swift.php');
 
 spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 spl_autoload_register( array( 'ClassLoader', 'autoload' ) );
-spl_autoload_register( array('Swift', 'autoload') );
+spl_autoload_register( array('SwiftWrapper', 'autoload') );
+
+//Create the message
+$message = Swift_Message::newInstance();
+$message->setSubject('My subject');
 
 /* Enable logging */
 $logger = Logger :: getLogger('index.php');
