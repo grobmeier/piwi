@@ -61,9 +61,11 @@ $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
 /** ClassLoader which makes other includes dispensable. */
 require_once ("lib/piwi/classloader/ClassLoader.class.php");
 require_once ("lib/zetacomponents/Base/src/base.php");
+require_once ('lib/swiftmailer/classes/Swift.php');
 
 spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 spl_autoload_register( array( 'ClassLoader', 'autoload' ) );
+spl_autoload_register( array('Swift', 'autoload') );
 
 /* Enable logging */
 $logger = Logger :: getLogger('index.php');
