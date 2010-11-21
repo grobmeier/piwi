@@ -58,12 +58,8 @@ Used to initiate and retrieve Generators.
 <td class="description"><p class="name"><a href="#generators">$generators</a></p><p class="description">Map of the generators that have already been initialized. </p></td>
 </tr>
 <tr>
-<td class="type">private static  mixed</td>
+<td class="type">private  mixed</td>
 <td class="description"><p class="name"><a href="#generatorsXMLPath">$generatorsXMLPath</a></p><p class="description">Path of the file containing the xml-definition of the generators that can be used. </p></td>
-</tr>
-<tr>
-<td class="type">private static  mixed</td>
-<td class="description"><p class="name"><a href="#instance">$instance</a></p><p class="description">Singleton instance of the GeneratorFactory. </p></td>
 </tr>
 <tr>
 <td class="type">private  mixed</td>
@@ -95,14 +91,14 @@ Constructs an instance of the Generator with the given id.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  <a href="../default/generator.html">Generator</a></td>
+<td class="type">static  DOMDocument</td>
 <td class="description"><p class="name"><a href="#callGenerator()">callGenerator</a>(string generatorId)</p><p class="description">
 Used within the XSLT-Stylesheets to interpret the  tag. </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#setGeneratorsXMLPath()">setGeneratorsXMLPath</a>(string generatorsXMLPath)</p><p class="description">
-Set the path of the file containing the xml-definition </p></td>
+Set the path of the file containing the xml-definition</p></td>
 </tr>
 </table>
 
@@ -115,16 +111,9 @@ Set the path of the file containing the xml-definition </p></td>
 <hr>
 
 <h3 id="generatorsXMLPath">generatorsXMLPath</h3>
-<code class="signature">private static  mixed <strong>$generatorsXMLPath</strong> = null</code>
+<code class="signature">private  mixed <strong>$generatorsXMLPath</strong> = null</code>
 <div class="details">
 <p>Path of the file containing the xml-definition of the generators that can be used. */</p></div>
-
-<hr>
-
-<h3 id="instance">instance</h3>
-<code class="signature">private static  mixed <strong>$instance</strong> = null</code>
-<div class="details">
-<p>Singleton instance of the GeneratorFactory. */</p></div>
 
 <hr>
 
@@ -176,14 +165,14 @@ Arguments from the generator xml file will be passed to the Generator.</p><dl>
 <hr>
 
 <h3 id="callGenerator()">callGenerator</h3>
-<code class="signature">public static  <a href="../default/generator.html">Generator</a> <strong>callGenerator</strong>(string generatorId)</code>
+<code class="signature">public static  DOMDocument <strong>callGenerator</strong>(string generatorId)</code>
 <div class="details">
 <p>
 Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
 <dt>Parameters:</dt>
 <dd>generatorId - The id of the Generator.</dd>
 <dt>Returns:</dt>
-<dd>The Generator with the given id.</dd>
+<dd>The generated XML.</dd>
 </dl>
 </div>
 
@@ -193,7 +182,7 @@ Used within the XSLT-Stylesheets to interpret the <generator /> tag. </p><dl>
 <code class="signature">public  void <strong>setGeneratorsXMLPath</strong>(string generatorsXMLPath)</code>
 <div class="details">
 <p>
-Set the path of the file containing the xml-definition </p><dl>
+Set the path of the file containing the xml-definition</p><dl>
 <dt>Parameters:</dt>
 <dd>generatorsXMLPath - Path of the file containing the xml-definition</dd>
 </dl>

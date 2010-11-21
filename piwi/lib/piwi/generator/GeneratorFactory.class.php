@@ -7,7 +7,7 @@ class GeneratorFactory {
 	private $generators = array();
 
 	/** Path of the file containing the xml-definition of the generators that can be used. */
-	public $generatorsXMLPath = null;
+	private $generatorsXMLPath = null;
 
 	/** The generators definition as xml. */
 	private $xml = null;
@@ -17,7 +17,15 @@ class GeneratorFactory {
 	 */
 	public function __construct() {
 	}	
-
+	
+	/**
+	 * Set the path of the file containing the xml-definition
+	 * @param string $generatorsXMLPath Path of the file containing the xml-definition
+	 */
+	public function setGeneratorsXMLPath($generatorsXMLPath) {
+		$this->generatorsXMLPath = $generatorsXMLPath;
+	}	
+	
 	/**
 	 * Used within the XSLT-Stylesheets to interpret the <generator /> tag. 
 	 * @param string $generatorId The id of the Generator.
