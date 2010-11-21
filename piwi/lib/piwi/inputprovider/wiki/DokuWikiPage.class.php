@@ -29,8 +29,7 @@ class DokuWikiPage extends Page {
 			// Page has been found in cache
 			$this->content = $content;
 		} else {
-			// Page has not been found in cache, so load it and save it in the cache
-			
+			// Page has not been found in cache, so load it and save it in the cache			
 			$filePath = $this->contentPath . '/' . $this->site->getFilePath();
 
 			if (!file_exists($filePath)) {
@@ -44,12 +43,12 @@ class DokuWikiPage extends Page {
 			$docbook = $document->getAsDocbook();
 			
 			$html = new ezcDocumentXhtml();
-			$html->createFromDocbook( $docbook );
+			$html->createFromDocbook($docbook);
 
 			$this->content = $html->getDomDocument();
 			
 			// Configure the transformer
-			$processor = new XSLTProcessor;
+			$processor = new XSLTProcessor();
 			$processor->registerPHPFunctions();
 			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
 				"resources/xslt/WikiToPiwiTransformation.xsl"));
@@ -60,8 +59,7 @@ class DokuWikiPage extends Page {
 			// Save page in cache
 			if ($cache != null) {
 				$cache->cachePage($this->content);
-			}
-			
+			}			
 		}
 		
 		return $this->content;

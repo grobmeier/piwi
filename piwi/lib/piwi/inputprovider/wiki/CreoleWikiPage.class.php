@@ -29,8 +29,7 @@ class CreoleWikiPage extends Page {
 			// Page has been found in cache
 			$this->content = $content;
 		} else {
-			// Page has not been found in cache, so load it and save it in the cache
-			
+			// Page has not been found in cache, so load it and save it in the cache			
 			$filePath = $this->contentPath . '/' . $this->site->getFilePath();
 
 			if (!file_exists($filePath)) {
@@ -38,18 +37,17 @@ class CreoleWikiPage extends Page {
 					PiwiException :: ERR_404);
 			}
 			
-			$document = new ezcDocumentWiki();
-			
+			$document = new ezcDocumentWiki();			
 			$document->loadFile($filePath);
 			$docbook = $document->getAsDocbook();
 	
 			$html = new ezcDocumentXhtml();
-			$html->createFromDocbook( $docbook );
+			$html->createFromDocbook($docbook);
 
 			$this->content = $html->getDomDocument();
 			
 			// Configure the transformer
-			$processor = new XSLTProcessor;
+			$processor = new XSLTProcessor();
 			$processor->registerPHPFunctions();
 			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
 				"resources/xslt/WikiToPiwiTransformation.xsl"));

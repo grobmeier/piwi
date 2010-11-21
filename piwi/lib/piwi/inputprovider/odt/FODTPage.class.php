@@ -45,10 +45,10 @@ class FODTPage extends Page {
 			$this->content = $html->getDomDocument();
 
 			// Configure the transformer
-			$processor = new XSLTProcessor;
+			$processor = new XSLTProcessor();
 			$processor->registerPHPFunctions();
 			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
-				"resources/xslt/FODTToPiwiTransformation.xsl"));
+				"resources/xslt/WikiToPiwiTransformation.xsl"));
 
 			// Transform the Generators
 			$this->content = $processor->transformToDoc($this->content);
@@ -56,8 +56,7 @@ class FODTPage extends Page {
 			// Save page in cache
 			if ($cache != null) {
 				$cache->cachePage($this->content);
-			}
-			
+			}			
 		}
 		
 		return $this->content;
