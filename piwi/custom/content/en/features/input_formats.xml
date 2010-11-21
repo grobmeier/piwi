@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://piwi.googlecode.com/xsd/piwixml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://piwi.googlecode.com/xsd/piwixml ../../../../resources/xsd/content.xsd">
+	<head>
+		<title>Input Formats</title>
+		<keywords></keywords>
+	</head>
+	<content position="main">
+		<header>Input Formats</header>
+		<section>
+			PIWI can handle different input formats, in addition to XML the following formats are supported:
+			<br />
+			<generator id="inputFormatsSiteMap" />
+		</section>
+	</content>
+</document>

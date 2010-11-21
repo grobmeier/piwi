@@ -14,6 +14,7 @@
     * New: Added docbook inputfile feature
     * New: Added rst inputfile feature
     * New: Added odt inputfile feature
+    * Fixed issues: 46
 
 0.1.0 - Beanfactory Release
 

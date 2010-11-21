@@ -29,9 +29,9 @@ if(ini_get('date.timezone') == '') {
  * -------------------------------------------------------------------------
  */
 
-//error_reporting(0); // hide all errors
+error_reporting(0); // hide all errors
 //error_reporting(E_ERROR); // show only errors
-error_reporting(E_ALL); // show all errors
+//error_reporting(E_ALL); // show all errors
 
 /**
  * -------------------------------------------------------------------------
@@ -67,9 +67,10 @@ spl_autoload_register( array( 'ezcBase', 'autoload' ) );
 spl_autoload_register( array( 'ClassLoader', 'autoload' ) );
 spl_autoload_register( array('SwiftWrapper', 'autoload') );
 
+// TODO: Review if needed
 //Create the message
-$message = Swift_Message::newInstance();
-$message->setSubject('My subject');
+//$message = Swift_Message::newInstance();
+//$message->setSubject('My subject');
 
 /* Enable logging */
 $logger = Logger :: getLogger('index.php');
@@ -144,7 +145,7 @@ $logger->debug('Pipeline initialized successfully');
 try {
 	$logger->debug('Generate full pipeline');
 	$pipeline->generate();
-	$logger->debug("Input -> Output succeded");
+	$logger->debug("Input -> Output succeeded");
 } catch (Exception $exception) {
 	// Show a page displaying the error
 	$expage = new ExceptionPageGenerator($exception);

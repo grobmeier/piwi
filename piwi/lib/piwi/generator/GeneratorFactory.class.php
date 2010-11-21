@@ -3,14 +3,11 @@
  * Used to initiate and retrieve Generators.
  */
 class GeneratorFactory {
-	/** Singleton instance of the GeneratorFactory. */
-	private static $instance = null;
-
 	/** Map of the generators that have already been initialized. */
 	private $generators = array();
 
 	/** Path of the file containing the xml-definition of the generators that can be used. */
-	private static $generatorsXMLPath = null;
+	public $generatorsXMLPath = null;
 
 	/** The generators definition as xml. */
 	private $xml = null;
@@ -19,17 +16,22 @@ class GeneratorFactory {
 	 * Constructor.
 	 */
 	public function __construct() {
-		self :: $instance = null;
+	}	
+
+	/**
+	 * Used within the XSLT-Stylesheets to interpret the <generator /> tag. 
+	 * @param string $generatorId The id of the Generator.
+	 * @return DOMDocument The generated XML.
+	 */
+	public static function callGenerator($generatorId) {
+		$instance = BeanFactory :: getBeanById('generatorFactory');
+
+		$xml = $instance->_getGeneratorById($generatorId)->generate();
+		$doc = new DOMDocument();
+		$doc->loadXml('<section xmlns="http://piwi.googlecode.com/xsd/piwixml">' . $xml . '</section>');
+		return $doc;
 	}
 	
-	/**
-	 * Set the path of the file containing the xml-definition 
-	 * @param string $generatorsXMLPath Path of the file containing the xml-definition 
-	 */
-	public function setGeneratorsXMLPath($generatorsXMLPath) {
-		self :: $generatorsXMLPath = $generatorsXMLPath;
-	}
-
 	/**
 	 * Returns the Generator with the given id.
 	 * If the Generator is already instanciated, the instance will be returned.
@@ -52,12 +54,12 @@ class GeneratorFactory {
 			return;
 		}
 		if ($this->xml == null) {
-			if (!file_exists(self :: $generatorsXMLPath)) {
+			if (!file_exists($this->generatorsXMLPath)) {
 				throw new PiwiException("Could not find the generators definition file (Path: '" . 
-						self :: $generatorsXMLPath . "').", 
+						$this->generatorsXMLPath . "').", 
 					PiwiException :: ERR_NO_XML_DEFINITION);
 			}
-			$this->xml = simplexml_load_file(self :: $generatorsXMLPath);
+			$this->xml = simplexml_load_file($this->generatorsXMLPath);
 			$this->xml->registerXPathNamespace('generators', 'http://piwi.googlecode.com/xsd/generators');
 		}
 
@@ -81,22 +83,6 @@ class GeneratorFactory {
 					"' in the generators definition file (Path: '" . $this->generatorsXMLPath . "').", 
 				PiwiException :: ERR_NO_XML_DEFINITION);
 		}
-	}
-
-	/**
-	 * Used within the XSLT-Stylesheets to interpret the <generator /> tag. 
-	 * @param string $generatorId The id of the Generator.
-	 * @return Generator The Generator with the given id.
-	 */
-	public static function callGenerator($generatorId) {
-		if (self :: $instance == null) {
-			self :: $instance = BeanFactory :: getBeanById('generatorFactory');
-		}
-
-		$xml = self :: $instance->_getGeneratorById($generatorId)->generate();
-		$doc = new DOMDocument();
-		$doc->loadXml('<section xmlns="http://piwi.googlecode.com/xsd/piwixml">' . $xml . '</section>');
-		return $doc;
 	}
 }
 ?>

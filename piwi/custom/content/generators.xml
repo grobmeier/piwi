@@ -26,9 +26,14 @@ xsi:schemaLocation="http://piwi.googlecode.com/xsd/generators ../../resources/xs
 	<!-- SITEMAP -->
 	<generator id="fullSiteMap" class="SiteMapGenerator">
       <header>CONTENTS_OF_THIS_WEBSITE</header>
-   </generator>
+    </generator>
 	<generator id="featuresSiteMap" class="SiteMapGenerator">
 		<pageId>features</pageId>
+		<depth>1</depth>
+		<includeParent>0</includeParent>
+	</generator>
+	<generator id="inputFormatsSiteMap" class="SiteMapGenerator">
+		<pageId>input_formats</pageId>
 		<depth>1</depth>
 		<includeParent>0</includeParent>
 	</generator>

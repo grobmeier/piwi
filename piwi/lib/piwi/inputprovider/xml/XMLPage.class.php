@@ -44,7 +44,7 @@ class XMLPage extends Page {
 			}
 
 			// Configure the transformer
-			$processor = new XSLTProcessor;
+			$processor = new XSLTProcessor();
 			$processor->registerPHPFunctions();
 			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
 				"resources/xslt/GeneratorTransformation.xsl"));

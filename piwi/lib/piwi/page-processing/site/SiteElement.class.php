@@ -88,7 +88,7 @@ class SiteElement {
 	    if (is_array($roles)) {
 	        $this->roles = $roles;
 	    } else {
-	    	$this->roles = explode(',',$roles); 
+	    	$this->roles = explode(',', str_replace(', ', ',', $roles));
 	    }
 	}
 	
