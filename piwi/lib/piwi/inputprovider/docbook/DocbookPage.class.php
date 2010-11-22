@@ -48,7 +48,7 @@ class DocbookPage extends Page {
 			$processor = new XSLTProcessor();
 			$processor->registerPHPFunctions();
 			$processor->importStyleSheet(DOMDocument :: load($GLOBALS['PIWI_ROOT'] . 
-				"resources/xslt/WikiToPiwiTransformation.xsl"));
+				"resources/xslt/ZetaDocumentToPiwiTransformation.xsl"));
 
 			// Transform the Generators
 			$this->content = $processor->transformToDoc($this->content);
