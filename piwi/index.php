@@ -62,15 +62,11 @@ $GLOBALS['PIWI_ROOT'] = dirname(__FILE__) . '/';
 require_once ("lib/piwi/classloader/ClassLoader.class.php");
 require_once ("lib/zetacomponents/Base/src/base.php");
 require_once ('lib/swiftmailer/classes/Swift.php');
+require_once ("lib/piwi/SwiftWrapper.class.php");
 
 spl_autoload_register( array( 'ezcBase', 'autoload' ) );
+spl_autoload_register( array( 'SwiftWrapper', 'autoload' ) );
 spl_autoload_register( array( 'ClassLoader', 'autoload' ) );
-spl_autoload_register( array('SwiftWrapper', 'autoload') );
-
-// TODO: Review if needed
-//Create the message
-//$message = Swift_Message::newInstance();
-//$message->setSubject('My subject');
 
 /* Enable logging */
 $logger = Logger :: getLogger('index.php');
