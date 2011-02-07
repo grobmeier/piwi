@@ -50,6 +50,8 @@
 									Kommentieren Sie folgende Zeile
 								<span class="bold">aus</span>:<br />
 								<code>extension=php_domxml.dll</code></li>
+                           <li><span class="bold">Fügen</span> Sie folgende Zeile hinzu (wenn sie fehlt):<br />
+									<code>extension=php_xsl.dll</code></li>
 									<li>Kommentieren Sie folgende Zeile
 								<span class="bold">ein</span>:<br /><code>extension=php_pdo_sqlite.dll</code>
 										(nur wenn Sie SQLite 3 Datenbanken einsetzen)</li>
