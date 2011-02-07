@@ -46,6 +46,8 @@
 								<ul>
 									<li><span class="bold">Uncomment</span> the following line:<br />
 									<code>extension=php_domxml.dll</code></li>
+                           <li><span class="bold">Add</span> the following line (if it is missing)<br />
+									<code>extension=php_xsl.dll</code></li>
 									<li><span class="bold">Comment in</span> the following line:<br />
 									<code>extension=php_pdo_sqlite.dll</code>
 										(only when you want to use SQLite 3 databases)</li>
